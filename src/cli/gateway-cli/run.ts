@@ -248,6 +248,10 @@ function getGatewayStartGuardErrors(params: {
   if (params.allowUnconfigured || params.mode === "local") {
     return [];
   }
+  if (params.mode === undefined) {
+    // Treat missing gateway.mode as local when no config exists (packaged distribution).
+    return [];
+  }
   if (!params.configExists) {
     return [
       `Missing config. Run \`${formatCliCommand("openclaw setup")}\` or set gateway.mode=local (or pass --allow-unconfigured).`,
