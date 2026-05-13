@@ -1,5 +1,5 @@
 import { collectDurableServiceEnvVars } from "../config/state-dir-dotenv.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { hasConfiguredSecretInput } from "../config/types.secrets.js";
 import { normalizeOptionalString } from "../shared/string-coerce.js";
 
@@ -27,7 +27,7 @@ function hasDurableGatewayPasswordEnvForInstall(
 ): boolean {
   const durableServiceEnv = collectDurableServiceEnvVars({ env, config: cfg });
   return Boolean(
-    normalizeOptionalString(durableServiceEnv.OPENCLAW_GATEWAY_PASSWORD) ||
+    normalizeOptionalString(durableServiceEnv.cimiclaw_GATEWAY_PASSWORD) ||
     normalizeOptionalString(durableServiceEnv.CLAWDBOT_GATEWAY_PASSWORD),
   );
 }

@@ -372,7 +372,7 @@ export function printDaemonStatus(status: DaemonStatus, opts: { json: boolean })
       defaultRuntime.error(`${errorText("Last gateway error:")} ${status.lastError}`);
     }
     if (process.platform === "linux") {
-      const unit = resolveGatewaySystemdServiceName(serviceEnv.OPENCLAW_PROFILE);
+      const unit = resolveGatewaySystemdServiceName(serviceEnv.cimiclaw_PROFILE);
       defaultRuntime.error(
         errorText(`Logs: journalctl --user -u ${unit}.service -n 200 --no-pager`),
       );

@@ -265,10 +265,10 @@ describe("runCli exit behavior", () => {
       throw new Error(`unexpected process.exit(${String(code)})`);
     }) as typeof process.exit);
 
-    await runCli(["node", "openclaw", "status"]);
+    await runCli(["node", "cimiclaw", "status"]);
 
-    expect(maybeRunCliInContainerMock).toHaveBeenCalledWith(["node", "openclaw", "status"]);
-    expect(tryRouteCliMock).toHaveBeenCalledWith(["node", "openclaw", "status"]);
+    expect(maybeRunCliInContainerMock).toHaveBeenCalledWith(["node", "cimiclaw", "status"]);
+    expect(tryRouteCliMock).toHaveBeenCalledWith(["node", "cimiclaw", "status"]);
     expect(closeActiveMemorySearchManagersMock).not.toHaveBeenCalled();
     expect(disposeRegisteredAgentHarnessesMock).not.toHaveBeenCalled();
     expect(ensureTaskRegistryReadyMock).not.toHaveBeenCalled();
@@ -286,9 +286,9 @@ describe("runCli exit behavior", () => {
       parseAsync,
     });
 
-    await runCli(["node", "openclaw", "agent", "--local"]);
+    await runCli(["node", "cimiclaw", "agent", "--local"]);
 
-    expect(parseAsync).toHaveBeenCalledWith(["node", "openclaw", "agent", "--local"]);
+    expect(parseAsync).toHaveBeenCalledWith(["node", "cimiclaw", "agent", "--local"]);
     expect(disposeRegisteredAgentHarnessesMock).toHaveBeenCalledTimes(1);
   });
 
@@ -304,9 +304,9 @@ describe("runCli exit behavior", () => {
     const pauseSpy = vi.spyOn(process.stdin, "pause").mockImplementation(() => process.stdin);
 
     try {
-      await runCli(["node", "openclaw", "channels"]);
+      await runCli(["node", "cimiclaw", "channels"]);
 
-      expect(parseAsync).toHaveBeenCalledWith(["node", "openclaw", "channels"]);
+      expect(parseAsync).toHaveBeenCalledWith(["node", "cimiclaw", "channels"]);
       expect(pauseSpy).toHaveBeenCalledTimes(1);
     } finally {
       pauseSpy.mockRestore();
@@ -319,23 +319,23 @@ describe("runCli exit behavior", () => {
   });
 
   it("emits the startup banner before gateway foreground fast-path startup", async () => {
-    await runCli(["node", "openclaw", "gateway", "--force"]);
+    await runCli(["node", "cimiclaw", "gateway", "--force"]);
 
     expect(tryRouteCliMock).not.toHaveBeenCalled();
     expect(emitCliBannerMock).toHaveBeenCalledWith("9.9.9-test", {
-      argv: ["node", "openclaw", "gateway", "--force"],
+      argv: ["node", "cimiclaw", "gateway", "--force"],
     });
     expect(addGatewayRunCommandMock).toHaveBeenCalledTimes(2);
     expect(commanderParseAsyncMock).toHaveBeenCalledWith([
       "node",
-      "openclaw",
+      "cimiclaw",
       "gateway",
       "--force",
     ]);
   });
 
   it("installs console capture before parsing the gateway foreground fast path", async () => {
-    await runCli(["node", "openclaw", "gateway", "--force"]);
+    await runCli(["node", "cimiclaw", "gateway", "--force"]);
 
     expect(enableConsoleCaptureMock).toHaveBeenCalledTimes(1);
     expect(commanderParseAsyncMock).toHaveBeenCalledTimes(1);
@@ -348,11 +348,11 @@ describe("runCli exit behavior", () => {
   it("honors banner suppression on the gateway foreground fast path", async () => {
     process.env.OPENCLAW_HIDE_BANNER = "1";
 
-    await runCli(["node", "openclaw", "gateway"]);
+    await runCli(["node", "cimiclaw", "gateway"]);
 
     expect(tryRouteCliMock).not.toHaveBeenCalled();
     expect(emitCliBannerMock).not.toHaveBeenCalled();
-    expect(commanderParseAsyncMock).toHaveBeenCalledWith(["node", "openclaw", "gateway"]);
+    expect(commanderParseAsyncMock).toHaveBeenCalledWith(["node", "cimiclaw", "gateway"]);
   });
 
   it("renders browser help from startup metadata without building the full program", async () => {
@@ -361,11 +361,11 @@ describe("runCli exit behavior", () => {
       throw new Error(`unexpected process.exit(${String(code)})`);
     }) as typeof process.exit);
 
-    await runCli(["node", "openclaw", "browser", "--help"]);
+    await runCli(["node", "cimiclaw", "browser", "--help"]);
 
     expect(maybeRunCliInContainerMock).toHaveBeenCalledWith([
       "node",
-      "openclaw",
+      "cimiclaw",
       "browser",
       "--help",
     ]);
@@ -381,7 +381,7 @@ describe("runCli exit behavior", () => {
   it("keeps root help on the precomputed path without proxy bootstrap", async () => {
     outputPrecomputedRootHelpTextMock.mockReturnValueOnce(true);
 
-    await runCli(["node", "openclaw", "--help"]);
+    await runCli(["node", "cimiclaw", "--help"]);
 
     expect(outputPrecomputedRootHelpTextMock).toHaveBeenCalledTimes(1);
     expect(hasEnvHttpProxyAgentConfiguredMock).not.toHaveBeenCalled();
@@ -394,9 +394,9 @@ describe("runCli exit behavior", () => {
       throw new Error(`unexpected process.exit(${String(code)})`);
     }) as typeof process.exit);
 
-    await runCli(["node", "openclaw", "--help"]);
+    await runCli(["node", "cimiclaw", "--help"]);
 
-    expect(maybeRunCliInContainerMock).toHaveBeenCalledWith(["node", "openclaw", "--help"]);
+    expect(maybeRunCliInContainerMock).toHaveBeenCalledWith(["node", "cimiclaw", "--help"]);
     expect(tryRouteCliMock).not.toHaveBeenCalled();
     expect(outputPrecomputedRootHelpTextMock).toHaveBeenCalledTimes(1);
     expect(outputRootHelpMock).toHaveBeenCalledTimes(1);
@@ -409,57 +409,57 @@ describe("runCli exit behavior", () => {
   it("does not start the managed proxy for local gateway client commands", async () => {
     tryRouteCliMock.mockResolvedValueOnce(true);
 
-    await runCli(["node", "openclaw", "status"]);
+    await runCli(["node", "cimiclaw", "status"]);
 
     expect(startProxyMock).not.toHaveBeenCalled();
     expect(stopProxyMock).not.toHaveBeenCalled();
   });
 
   it.each([
-    ["gateway runtime", ["node", "openclaw", "gateway", "run"]],
-    ["bare gateway runtime", ["node", "openclaw", "gateway"]],
-    ["node runtime", ["node", "openclaw", "node", "run"]],
-    ["local agent runtime", ["node", "openclaw", "agent", "--local"]],
-    ["provider inference", ["node", "openclaw", "infer", "web", "fetch", "https://example.com"]],
-    ["model command", ["node", "openclaw", "models", "auth", "login", "openai"]],
-    ["plugin command", ["node", "openclaw", "plugins", "marketplace", "list"]],
-    ["skill command", ["node", "openclaw", "skills", "search", "browser"]],
-    ["update command", ["node", "openclaw", "update", "check"]],
-    ["channel probe", ["node", "openclaw", "channels", "status", "--probe"]],
-    ["channel capabilities probe", ["node", "openclaw", "channels", "capabilities"]],
-    ["directory plugin command", ["node", "openclaw", "directory", "peers", "list"]],
-    ["message plugin command", ["node", "openclaw", "message", "send", "--to", "demo"]],
-    ["metadata-owned plugin command", ["node", "openclaw", "googlemeet", "login"]],
+    ["gateway runtime", ["node", "cimiclaw", "gateway", "run"]],
+    ["bare gateway runtime", ["node", "cimiclaw", "gateway"]],
+    ["node runtime", ["node", "cimiclaw", "node", "run"]],
+    ["local agent runtime", ["node", "cimiclaw", "agent", "--local"]],
+    ["provider inference", ["node", "cimiclaw", "infer", "web", "fetch", "https://example.com"]],
+    ["model command", ["node", "cimiclaw", "models", "auth", "login", "openai"]],
+    ["plugin command", ["node", "cimiclaw", "plugins", "marketplace", "list"]],
+    ["skill command", ["node", "cimiclaw", "skills", "search", "browser"]],
+    ["update command", ["node", "cimiclaw", "update", "check"]],
+    ["channel probe", ["node", "cimiclaw", "channels", "status", "--probe"]],
+    ["channel capabilities probe", ["node", "cimiclaw", "channels", "capabilities"]],
+    ["directory plugin command", ["node", "cimiclaw", "directory", "peers", "list"]],
+    ["message plugin command", ["node", "cimiclaw", "message", "send", "--to", "demo"]],
+    ["metadata-owned plugin command", ["node", "cimiclaw", "googlemeet", "login"]],
   ])("starts managed proxy routing for %s", (_name, argv) => {
     expect(shouldStartProxyForCli(argv)).toBe(true);
   });
 
   it.each([
-    ["root help", ["node", "openclaw", "--help"]],
-    ["root version", ["node", "openclaw", "--version"]],
-    ["gateway help", ["node", "openclaw", "gateway", "--help"]],
-    ["gateway run help", ["node", "openclaw", "gateway", "run", "--help"]],
-    ["status", ["node", "openclaw", "status"]],
-    ["health", ["node", "openclaw", "health"]],
-    ["gateway status", ["node", "openclaw", "gateway", "status"]],
-    ["gateway health", ["node", "openclaw", "gateway", "health"]],
-    ["remote agent control-plane", ["node", "openclaw", "agent", "run"]],
-    ["chat control-plane", ["node", "openclaw", "chat"]],
-    ["terminal control-plane", ["node", "openclaw", "terminal"]],
-    ["config", ["node", "openclaw", "config", "get", "proxy.enabled"]],
-    ["channels parent help", ["node", "openclaw", "channels"]],
-    ["completion", ["node", "openclaw", "completion", "zsh"]],
-    ["debug proxy cli", ["node", "openclaw", "proxy", "start"]],
-    ["agents list", ["node", "openclaw", "agents", "list"]],
-    ["models list", ["node", "openclaw", "models", "list"]],
-    ["models status without live probe", ["node", "openclaw", "models", "status"]],
-    ["skills check", ["node", "openclaw", "skills", "check"]],
-    ["skills info", ["node", "openclaw", "skills", "info", "weather"]],
-    ["skills list", ["node", "openclaw", "skills", "list"]],
-    ["tasks list", ["node", "openclaw", "tasks", "list"]],
-    ["legacy singular tool namespace", ["node", "openclaw", "tool", "image_generate"]],
-    ["gateway tools namespace typo", ["node", "openclaw", "tools", "effective"]],
-    ["migrate", ["node", "openclaw", "migrate"]],
+    ["root help", ["node", "cimiclaw", "--help"]],
+    ["root version", ["node", "cimiclaw", "--version"]],
+    ["gateway help", ["node", "cimiclaw", "gateway", "--help"]],
+    ["gateway run help", ["node", "cimiclaw", "gateway", "run", "--help"]],
+    ["status", ["node", "cimiclaw", "status"]],
+    ["health", ["node", "cimiclaw", "health"]],
+    ["gateway status", ["node", "cimiclaw", "gateway", "status"]],
+    ["gateway health", ["node", "cimiclaw", "gateway", "health"]],
+    ["remote agent control-plane", ["node", "cimiclaw", "agent", "run"]],
+    ["chat control-plane", ["node", "cimiclaw", "chat"]],
+    ["terminal control-plane", ["node", "cimiclaw", "terminal"]],
+    ["config", ["node", "cimiclaw", "config", "get", "proxy.enabled"]],
+    ["channels parent help", ["node", "cimiclaw", "channels"]],
+    ["completion", ["node", "cimiclaw", "completion", "zsh"]],
+    ["debug proxy cli", ["node", "cimiclaw", "proxy", "start"]],
+    ["agents list", ["node", "cimiclaw", "agents", "list"]],
+    ["models list", ["node", "cimiclaw", "models", "list"]],
+    ["models status without live probe", ["node", "cimiclaw", "models", "status"]],
+    ["skills check", ["node", "cimiclaw", "skills", "check"]],
+    ["skills info", ["node", "cimiclaw", "skills", "info", "weather"]],
+    ["skills list", ["node", "cimiclaw", "skills", "list"]],
+    ["tasks list", ["node", "cimiclaw", "tasks", "list"]],
+    ["legacy singular tool namespace", ["node", "cimiclaw", "tool", "image_generate"]],
+    ["gateway tools namespace typo", ["node", "cimiclaw", "tools", "effective"]],
+    ["migrate", ["node", "cimiclaw", "migrate"]],
   ])("skips managed proxy routing for %s", (_name, argv) => {
     expect(shouldStartProxyForCli(argv)).toBe(false);
   });
@@ -467,7 +467,7 @@ describe("runCli exit behavior", () => {
   it("starts the managed proxy for network-capable commands by default", async () => {
     tryRouteCliMock.mockResolvedValueOnce(true);
 
-    await runCli(["node", "openclaw", "plugins", "marketplace", "list"]);
+    await runCli(["node", "cimiclaw", "plugins", "marketplace", "list"]);
 
     expect(startProxyMock).toHaveBeenCalledWith(undefined);
   });
@@ -475,13 +475,13 @@ describe("runCli exit behavior", () => {
   it("starts the managed proxy for metadata-owned plugin commands by default", async () => {
     tryRouteCliMock.mockResolvedValueOnce(true);
 
-    await runCli(["node", "openclaw", "googlemeet", "login"]);
+    await runCli(["node", "cimiclaw", "googlemeet", "login"]);
 
     expect(startProxyMock).toHaveBeenCalledWith(undefined);
   });
 
   it("rejects unowned command roots before proxy and plugin runtime registration", async () => {
-    await expect(runCli(["node", "openclaw", "foo"])).rejects.toThrow(
+    await expect(runCli(["node", "cimiclaw", "foo"])).rejects.toThrow(
       'No built-in command or plugin CLI metadata owns "foo"',
     );
 
@@ -500,7 +500,7 @@ describe("runCli exit behavior", () => {
 
     let error: unknown;
     try {
-      await runCli(["node", "openclaw", "totally-unknown"]);
+      await runCli(["node", "cimiclaw", "totally-unknown"]);
     } catch (caught) {
       error = caught;
     }
@@ -530,7 +530,7 @@ describe("runCli exit behavior", () => {
       }) => (primaryCommand === "qa" && cfg?.plugins?.allow?.length === 0 ? ["qa-lab"] : []),
     );
 
-    await expect(runCli(["node", "openclaw", "qa"])).rejects.toThrow(
+    await expect(runCli(["node", "cimiclaw", "qa"])).rejects.toThrow(
       'Add "qa-lab" to `plugins.allow` instead of "qa"',
     );
     expect(startProxyMock).not.toHaveBeenCalled();
@@ -545,7 +545,7 @@ describe("runCli exit behavior", () => {
       availability: "loaded",
     });
 
-    await expect(runCli(["node", "openclaw", "lcm_recent"])).rejects.toThrow(
+    await expect(runCli(["node", "cimiclaw", "lcm_recent"])).rejects.toThrow(
       '"lcm_recent" is an agent tool available from the "lossless-claw" plugin',
     );
 
@@ -558,16 +558,16 @@ describe("runCli exit behavior", () => {
     hasEnvHttpProxyAgentConfiguredMock.mockReturnValue(true);
     tryRouteCliMock.mockResolvedValueOnce(true);
 
-    await runCli(["node", "openclaw", "skills", "check"]);
+    await runCli(["node", "cimiclaw", "skills", "check"]);
 
     expect(hasEnvHttpProxyAgentConfiguredMock).not.toHaveBeenCalled();
     expect(ensureGlobalUndiciEnvProxyDispatcherMock).not.toHaveBeenCalled();
   });
 
   it.each([
-    ["auth", ["node", "openclaw", "auth", "--help"]],
-    ["tool", ["node", "openclaw", "tool", "image_generate"]],
-    ["tools", ["node", "openclaw", "tools", "effective"]],
+    ["auth", ["node", "cimiclaw", "auth", "--help"]],
+    ["tool", ["node", "cimiclaw", "tool", "image_generate"]],
+    ["tools", ["node", "cimiclaw", "tools", "effective"]],
   ])("keeps reserved %s command roots out of plugin command discovery", async (_name, argv) => {
     const parseAsync = vi.fn().mockResolvedValueOnce(undefined);
     buildProgramMock.mockReturnValueOnce({
@@ -586,7 +586,7 @@ describe("runCli exit behavior", () => {
   it("fails protected commands when managed proxy activation fails", async () => {
     startProxyMock.mockRejectedValueOnce(new Error("proxy: enabled but no HTTP proxy URL"));
 
-    await expect(runCli(["node", "openclaw", "gateway", "run"])).rejects.toThrow(
+    await expect(runCli(["node", "cimiclaw", "gateway", "run"])).rejects.toThrow(
       "proxy: enabled but no HTTP proxy URL",
     );
 
@@ -599,7 +599,7 @@ describe("runCli exit behavior", () => {
       throw new Error("config parse failed");
     });
 
-    await expect(runCli(["node", "openclaw", "gateway", "run"])).rejects.toThrow(
+    await expect(runCli(["node", "cimiclaw", "gateway", "run"])).rejects.toThrow(
       "config parse failed",
     );
 
@@ -611,7 +611,7 @@ describe("runCli exit behavior", () => {
     const handle = makeProxyHandle();
     startProxyMock.mockResolvedValueOnce(handle);
 
-    await runCli(["node", "openclaw", "gateway", "run"]);
+    await runCli(["node", "cimiclaw", "gateway", "run"]);
 
     expect(startProxyMock).toHaveBeenCalledWith(undefined);
     expect(stopProxyMock).toHaveBeenCalledOnce();
@@ -635,7 +635,7 @@ describe("runCli exit behavior", () => {
     }) as typeof process.exit);
 
     try {
-      const runPromise = runCli(["node", "openclaw", "plugins", "marketplace", "list"]);
+      const runPromise = runCli(["node", "cimiclaw", "plugins", "marketplace", "list"]);
       await vi.waitFor(() => {
         expect(
           processOnceSpy.mock.calls.some(
@@ -678,7 +678,7 @@ describe("runCli exit behavior", () => {
 
     const processOnceSpy = vi.spyOn(process, "once");
     try {
-      const runPromise = runCli(["node", "openclaw", "plugins", "marketplace", "list"]);
+      const runPromise = runCli(["node", "cimiclaw", "plugins", "marketplace", "list"]);
       await vi.waitFor(() => {
         expect(
           processOnceSpy.mock.calls.reduce(
@@ -711,7 +711,7 @@ describe("runCli exit behavior", () => {
     Object.defineProperty(process.stdout, "isTTY", { configurable: true, value: true });
 
     try {
-      await runCli(["node", "openclaw"]);
+      await runCli(["node", "cimiclaw"]);
     } finally {
       if (stdinTty) {
         Object.defineProperty(process.stdin, "isTTY", stdinTty);
@@ -738,7 +738,7 @@ describe("runCli exit behavior", () => {
   it("bootstraps env proxy before modern onboard Crestodian startup", async () => {
     hasEnvHttpProxyAgentConfiguredMock.mockReturnValue(true);
 
-    await runCli(["node", "openclaw", "onboard", "--modern", "--json"]);
+    await runCli(["node", "cimiclaw", "onboard", "--modern", "--json"]);
 
     expect(ensureGlobalUndiciEnvProxyDispatcherMock).toHaveBeenCalledTimes(1);
     expect(runCrestodianMock).toHaveBeenCalledWith({
@@ -756,7 +756,7 @@ describe("runCli exit behavior", () => {
     tryRouteCliMock.mockResolvedValueOnce(true);
     hasMemoryRuntimeMock.mockReturnValue(true);
 
-    await runCli(["node", "openclaw", "status"]);
+    await runCli(["node", "cimiclaw", "status"]);
 
     expect(closeActiveMemorySearchManagersMock).toHaveBeenCalledTimes(1);
   });
@@ -767,7 +767,7 @@ describe("runCli exit behavior", () => {
       throw new Error("stale memory-state chunk");
     });
 
-    await expect(runCli(["node", "openclaw", "status"])).resolves.toBeUndefined();
+    await expect(runCli(["node", "cimiclaw", "status"])).resolves.toBeUndefined();
 
     expect(closeActiveMemorySearchManagersMock).not.toHaveBeenCalled();
   });
@@ -775,11 +775,11 @@ describe("runCli exit behavior", () => {
   it("returns after a handled container-target invocation", async () => {
     maybeRunCliInContainerMock.mockReturnValueOnce({ handled: true, exitCode: 0 });
 
-    await runCli(["node", "openclaw", "--container", "demo", "status"]);
+    await runCli(["node", "cimiclaw", "--container", "demo", "status"]);
 
     expect(maybeRunCliInContainerMock).toHaveBeenCalledWith([
       "node",
-      "openclaw",
+      "cimiclaw",
       "--container",
       "demo",
       "status",
@@ -793,7 +793,7 @@ describe("runCli exit behavior", () => {
     const exitCode = process.exitCode;
     maybeRunCliInContainerMock.mockReturnValueOnce({ handled: true, exitCode: 7 });
 
-    await runCli(["node", "openclaw", "--container", "demo", "status"]);
+    await runCli(["node", "cimiclaw", "--container", "demo", "status"]);
 
     expect(process.exitCode).toBe(7);
     process.exitCode = exitCode;
@@ -810,11 +810,11 @@ describe("runCli exit behavior", () => {
         ),
     });
 
-    await expect(runCli(["node", "openclaw", "status"])).resolves.toBeUndefined();
+    await expect(runCli(["node", "cimiclaw", "status"])).resolves.toBeUndefined();
 
     expect(registerSubCliByNameMock).toHaveBeenCalledWith(expect.anything(), "status", [
       "node",
-      "openclaw",
+      "cimiclaw",
       "status",
     ]);
     expect(process.exitCode).toBe(1);
@@ -829,17 +829,17 @@ describe("runCli exit behavior", () => {
     const ctx = { programVersion: "0.0.0-test" };
     getProgramContextMock.mockReturnValueOnce(ctx as never);
 
-    await runCli(["node", "openclaw", "doctor", "--help"]);
+    await runCli(["node", "cimiclaw", "doctor", "--help"]);
 
     expect(registerCoreCliByNameMock).toHaveBeenCalledWith(expect.anything(), ctx, "doctor", [
       "node",
-      "openclaw",
+      "cimiclaw",
       "doctor",
       "--help",
     ]);
     expect(registerSubCliByNameMock).toHaveBeenCalledWith(expect.anything(), "doctor", [
       "node",
-      "openclaw",
+      "cimiclaw",
       "doctor",
       "--help",
     ]);
@@ -857,7 +857,7 @@ describe("runCli exit behavior", () => {
       throw new Error(`process.exit(${String(code)})`);
     }) as typeof process.exit);
 
-    await runCli(["node", "openclaw", "status"]);
+    await runCli(["node", "cimiclaw", "status"]);
 
     const handler = processOnSpy.mock.calls.find(([event]) => event === "uncaughtException")?.[1];
     if (typeof handler !== "function") {
@@ -867,9 +867,9 @@ describe("runCli exit behavior", () => {
     try {
       expect(() => handler(new Error("boom"))).toThrow("process.exit(1)");
       expect(consoleErrorSpy).toHaveBeenCalledWith(
-        "[openclaw] OpenClaw hit an unexpected runtime error.",
+        "[cimiclaw] OpenClaw hit an unexpected runtime error.",
       );
-      expect(consoleErrorSpy).toHaveBeenCalledWith("[openclaw] Reason: boom");
+      expect(consoleErrorSpy).toHaveBeenCalledWith("[cimiclaw] Reason: boom");
       expect(restoreTerminalStateMock).toHaveBeenCalledWith("uncaught exception", {
         resumeStdinIfPaused: false,
       });
@@ -895,7 +895,7 @@ describe("runCli exit behavior", () => {
       throw new Error(`process.exit(${String(code)})`);
     }) as typeof process.exit);
 
-    await runCli(["node", "openclaw", "status"]);
+    await runCli(["node", "cimiclaw", "status"]);
 
     const handler = processOnSpy.mock.calls.find(([event]) => event === "uncaughtException")?.[1];
     if (typeof handler !== "function") {
@@ -908,7 +908,7 @@ describe("runCli exit behavior", () => {
       });
       expect(handler(hostUnreachable)).toBeUndefined();
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        "[openclaw] Non-fatal uncaught exception (continuing):",
+        "[cimiclaw] Non-fatal uncaught exception (continuing):",
         expect.stringContaining("EHOSTUNREACH"),
       );
       expect(restoreTerminalStateMock).not.toHaveBeenCalled();

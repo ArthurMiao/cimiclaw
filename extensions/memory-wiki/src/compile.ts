@@ -45,8 +45,8 @@ const COMPILE_PAGE_GROUPS: Array<{ kind: WikiPageKind; dir: string; heading: str
   { kind: "synthesis", dir: "syntheses", heading: "Syntheses" },
   { kind: "report", dir: "reports", heading: "Reports" },
 ];
-const AGENT_DIGEST_PATH = ".openclaw-wiki/cache/agent-digest.json";
-const CLAIMS_DIGEST_PATH = ".openclaw-wiki/cache/claims.jsonl";
+const AGENT_DIGEST_PATH = ".cimiclaw-wiki/cache/agent-digest.json";
+const CLAIMS_DIGEST_PATH = ".cimiclaw-wiki/cache/claims.jsonl";
 const MAX_RELATED_PAGES_PER_SECTION = 12;
 const MAX_SHARED_SOURCE_FANOUT = 24;
 

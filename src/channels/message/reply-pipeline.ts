@@ -4,7 +4,7 @@ import {
   resolveSourceReplyDeliveryMode,
   type SourceReplyDeliveryModeContext,
 } from "../../auto-reply/reply/source-reply-delivery-mode.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { getLoadedChannelPluginForRead } from "../plugins/registry-loaded-read.js";
 import { normalizeAnyChannelId } from "../registry-normalize.js";
 import {

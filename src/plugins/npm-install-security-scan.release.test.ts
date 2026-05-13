@@ -133,7 +133,7 @@ function collectPublishablePluginPackages(): PublishablePluginPackage[] {
       } catch {
         return [];
       }
-      if (packageJson.openclaw?.release?.publishToNpm !== true) {
+      if (packageJson.cimiclaw?.release?.publishToNpm !== true) {
         return [];
       }
       if (typeof packageJson.name !== "string" || !packageJson.name.trim()) {

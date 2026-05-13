@@ -8,7 +8,7 @@ title: "Plugin bundles"
 ---
 
 OpenClaw can install plugins from three external ecosystems: **Codex**, **Claude**,
-and **Cursor**. These are called **bundles** â€” content and metadata packs that
+and **Cursor**. These are called **bundles** â€?content and metadata packs that
 OpenClaw maps into native features like skills, hooks, and MCP tools.
 
 <Info>
@@ -249,8 +249,8 @@ These are recognized and shown in diagnostics, but OpenClaw does not run them:
 
 OpenClaw checks for native plugin format first:
 
-1. `openclaw.plugin.json` or valid `package.json` with `openclaw.extensions` â€” treated as **native plugin**
-2. Bundle markers (`.codex-plugin/`, `.claude-plugin/`, or default Claude/Cursor layout) â€” treated as **bundle**
+1. `cimiclaw.plugin.json` or valid `package.json` with `openclaw.extensions` â€?treated as **native plugin**
+2. Bundle markers (`.codex-plugin/`, `.claude-plugin/`, or default Claude/Cursor layout) â€?treated as **bundle**
 
 If a directory contains both, OpenClaw uses the native path. This prevents
 dual-format packages from being partially installed as bundles.
@@ -284,7 +284,7 @@ bundles as trusted content for the features they do expose.
 <AccordionGroup>
   <Accordion title="Bundle is detected but capabilities do not run">
     Run `openclaw plugins inspect <id>`. If a capability is listed but marked as
-    not wired, that is a product limit â€” not a broken install.
+    not wired, that is a product limit â€?not a broken install.
   </Accordion>
 
   <Accordion title="Claude command files do not appear">
@@ -306,5 +306,5 @@ bundles as trusted content for the features they do expose.
 ## Related
 
 - [Install and Configure Plugins](/tools/plugin)
-- [Building Plugins](/plugins/building-plugins) â€” create a native plugin
-- [Plugin Manifest](/plugins/manifest) â€” native manifest schema
+- [Building Plugins](/plugins/building-plugins) â€?create a native plugin
+- [Plugin Manifest](/plugins/manifest) â€?native manifest schema

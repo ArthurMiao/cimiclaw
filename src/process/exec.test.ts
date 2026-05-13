@@ -2,7 +2,7 @@ import type { ChildProcess } from "node:child_process";
 import { EventEmitter } from "node:events";
 import process from "node:process";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { OPENCLAW_CLI_ENV_VALUE } from "../infra/openclaw-exec-env.js";
+import { OPENCLAW_CLI_ENV_VALUE } from "../infra/cimiclaw-exec-env.js";
 
 const spawnMock = vi.hoisted(() => vi.fn());
 
@@ -112,10 +112,10 @@ describe("runCommandWithTimeout", () => {
       },
     });
 
-    expect(resolved.OPENCLAW_BASE_ENV).toBe("base");
-    expect(resolved.OPENCLAW_TEST_ENV).toBe("ok");
-    expect(resolved.OPENCLAW_TO_REMOVE).toBeUndefined();
-    expect(resolved.OPENCLAW_CLI).toBe(OPENCLAW_CLI_ENV_VALUE);
+    expect(resolved.cimiclaw_BASE_ENV).toBe("base");
+    expect(resolved.cimiclaw_TEST_ENV).toBe("ok");
+    expect(resolved.cimiclaw_TO_REMOVE).toBeUndefined();
+    expect(resolved.cimiclaw_CLI).toBe(OPENCLAW_CLI_ENV_VALUE);
   });
 
   it("suppresses npm fund prompts for npm argv", () => {

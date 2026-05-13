@@ -1,5 +1,5 @@
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { createFixtureSuite } from "../test-utils/fixture-suite.js";
 import { NON_ENV_SECRETREF_MARKER } from "./model-auth-markers.js";
 import {

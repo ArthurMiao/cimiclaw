@@ -4,7 +4,7 @@ import {
   OUTCOME_FALLBACK_RUNTIME_CONTRACT,
 } from "openclaw/plugin-sdk/agent-runtime-test-contracts";
 import { describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { runWithModelFallback } from "./model-fallback.js";
 import { classifyEmbeddedPiRunResultForModelFallback } from "./pi-embedded-runner/result-fallback-classifier.js";
 

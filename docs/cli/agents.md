@@ -20,12 +20,12 @@ Related:
 ```bash
 openclaw agents list
 openclaw agents list --bindings
-openclaw agents add work --workspace ~/.openclaw/workspace-work
-openclaw agents add ops --workspace ~/.openclaw/workspace-ops --bind telegram:ops --non-interactive
+openclaw agents add work --workspace ~/.cimiclaw/workspace-work
+openclaw agents add ops --workspace ~/.cimiclaw/workspace-ops --bind telegram:ops --non-interactive
 openclaw agents bindings
 openclaw agents bind --agent work --bind telegram:ops
 openclaw agents unbind --agent work --bind telegram:ops
-openclaw agents set-identity --workspace ~/.openclaw/workspace --from-identity
+openclaw agents set-identity --workspace ~/.cimiclaw/workspace --from-identity
 openclaw agents set-identity --agent main --avatar avatars/openclaw.png
 openclaw agents delete work
 ```
@@ -34,7 +34,7 @@ openclaw agents delete work
 
 Use routing bindings to pin inbound channel traffic to a specific agent.
 
-If you also want different visible skills per agent, configure `agents.defaults.skills` and `agents.list[].skills` in `openclaw.json`. See [Skills config](/tools/skills-config) and [Configuration reference](/gateway/config-agents#agents-defaults-skills).
+If you also want different visible skills per agent, configure `agents.defaults.skills` and `agents.list[].skills` in `cimiclaw.json`. See [Skills config](/tools/skills-config) and [Configuration reference](/gateway/config-agents#agents-defaults-skills).
 
 List bindings:
 
@@ -161,7 +161,7 @@ Notes:
 
 Each agent workspace can include an `IDENTITY.md` at the workspace root:
 
-- Example path: `~/.openclaw/workspace/IDENTITY.md`
+- Example path: `~/.cimiclaw/workspace/IDENTITY.md`
 - `set-identity --from-identity` reads from the workspace root (or an explicit `--identity-file`)
 
 Avatar paths resolve relative to the workspace root.
@@ -196,7 +196,7 @@ Notes:
 Load from `IDENTITY.md`:
 
 ```bash
-openclaw agents set-identity --workspace ~/.openclaw/workspace --from-identity
+openclaw agents set-identity --workspace ~/.cimiclaw/workspace --from-identity
 ```
 
 Override fields explicitly:

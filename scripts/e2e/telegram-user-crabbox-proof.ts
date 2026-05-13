@@ -226,9 +226,9 @@ function parseArgs(argv: string[]): Options {
   const opts: Options = {
     crabboxClass: "standard",
     command,
-    crabboxBin: trimToValue(process.env.OPENCLAW_TELEGRAM_USER_CRABBOX_BIN) ?? "crabbox",
+    crabboxBin: trimToValue(process.env.cimiclaw_TELEGRAM_USER_CRABBOX_BIN) ?? "crabbox",
     desktopChatTitle:
-      trimToValue(process.env.OPENCLAW_TELEGRAM_USER_DESKTOP_CHAT_TITLE) ?? "OpenClaw Testing",
+      trimToValue(process.env.cimiclaw_TELEGRAM_USER_DESKTOP_CHAT_TITLE) ?? "OpenClaw Testing",
     dryRun: false,
     expect: ["OpenClaw"],
     gatewayPort: 19_879,
@@ -240,7 +240,7 @@ function parseArgs(argv: string[]): Options {
     previewCropWidth: TELEGRAM_PROOF_VIEW.cropWidth,
     previewFps: 24,
     previewWidth: 1920,
-    provider: process.env.OPENCLAW_TELEGRAM_USER_CRABBOX_PROVIDER?.trim() || "aws",
+    provider: process.env.cimiclaw_TELEGRAM_USER_CRABBOX_PROVIDER?.trim() || "aws",
     publishFullArtifacts: false,
     publishRepo: "openclaw/openclaw",
     recordFps: 24,
@@ -1456,8 +1456,8 @@ async function startSession(root: string, opts: Options, outputDir: string) {
 
   const convexEnvFile = expandHome(opts.envFile ?? DEFAULT_CONVEX_ENV_FILE);
   const hasConvexEnv =
-    trimToValue(process.env.OPENCLAW_QA_CONVEX_SITE_URL) &&
-    trimToValue(process.env.OPENCLAW_QA_CONVEX_SECRET_CI);
+    trimToValue(process.env.cimiclaw_QA_CONVEX_SITE_URL) &&
+    trimToValue(process.env.cimiclaw_QA_CONVEX_SECRET_CI);
   if (!hasConvexEnv && !fs.existsSync(convexEnvFile)) {
     throw new Error(`Missing Convex env file: ${opts.envFile ?? DEFAULT_CONVEX_ENV_FILE}`);
   }
@@ -1938,8 +1938,8 @@ async function main() {
   try {
     const convexEnvFile = expandHome(opts.envFile ?? DEFAULT_CONVEX_ENV_FILE);
     const hasConvexEnv =
-      trimToValue(process.env.OPENCLAW_QA_CONVEX_SITE_URL) &&
-      trimToValue(process.env.OPENCLAW_QA_CONVEX_SECRET_CI);
+      trimToValue(process.env.cimiclaw_QA_CONVEX_SITE_URL) &&
+      trimToValue(process.env.cimiclaw_QA_CONVEX_SECRET_CI);
     if (!hasConvexEnv && !fs.existsSync(convexEnvFile)) {
       throw new Error(`Missing Convex env file: ${opts.envFile ?? DEFAULT_CONVEX_ENV_FILE}`);
     }

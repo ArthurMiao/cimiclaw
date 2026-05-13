@@ -38,7 +38,7 @@ describe("bundle plugins", () => {
     useNoBundledPlugins();
     const workspaceDir = makeTempDir();
     const stateDir = makeTempDir();
-    const bundleRoot = path.join(workspaceDir, ".openclaw", "extensions", "sample-bundle");
+    const bundleRoot = path.join(workspaceDir, ".cimiclaw", "extensions", "sample-bundle");
     mkdirSafe(path.join(bundleRoot, ".codex-plugin"));
     mkdirSafe(path.join(bundleRoot, "skills"));
     fs.writeFileSync(

@@ -27,7 +27,7 @@ run_logged agents-delete-shared-workspace docker_e2e_docker_cmd run --rm \
   "$IMAGE_NAME" \
   -lc '
 set -euo pipefail
-source scripts/lib/openclaw-e2e-instance.sh
+source scripts/lib/cimiclaw-e2e-instance.sh
 
 run_openclaw() {
   if command -v openclaw >/dev/null 2>&1; then

@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../../config/types.cimiclaw.js";
 import type { ProviderSystemPromptContributionContext } from "../../../plugins/types.js";
 
 export const GPT5_CONTRACT_MODEL_ID = "gpt-5.4";

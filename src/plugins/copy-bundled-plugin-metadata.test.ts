@@ -33,7 +33,7 @@ function createPlugin(
 ) {
   const pluginDir = path.join(repoRoot, "extensions", params.id);
   fs.mkdirSync(pluginDir, { recursive: true });
-  writeJson(path.join(pluginDir, "openclaw.plugin.json"), {
+  writeJson(path.join(pluginDir, "cimiclaw.plugin.json"), {
     id: params.id,
     configSchema: { type: "object" },
     ...params.manifest,
@@ -48,7 +48,7 @@ function createPlugin(
 function readBundledManifest(repoRoot: string, pluginId: string): Record<string, unknown> {
   return JSON.parse(
     fs.readFileSync(
-      path.join(repoRoot, "dist", "extensions", pluginId, "openclaw.plugin.json"),
+      path.join(repoRoot, "dist", "extensions", pluginId, "cimiclaw.plugin.json"),
       "utf8",
     ),
   ) as Record<string, unknown>;
@@ -113,7 +113,7 @@ describe("copyBundledPluginMetadata", () => {
     copyBundledPluginMetadata({ repoRoot });
 
     expect(
-      fs.existsSync(path.join(repoRoot, "dist", "extensions", "acpx", "openclaw.plugin.json")),
+      fs.existsSync(path.join(repoRoot, "dist", "extensions", "acpx", "cimiclaw.plugin.json")),
     ).toBe(true);
     expect(
       fs.readFileSync(
@@ -345,7 +345,7 @@ describe("copyBundledPluginMetadata", () => {
       "export default {}\n",
       "utf8",
     );
-    writeJson(path.join(repoRoot, "dist", "extensions", "removed-plugin", "openclaw.plugin.json"), {
+    writeJson(path.join(repoRoot, "dist", "extensions", "removed-plugin", "cimiclaw.plugin.json"), {
       id: "removed-plugin",
       configSchema: { type: "object" },
       skills: ["./bundled-skills/@scope/skill"],
@@ -367,7 +367,7 @@ describe("copyBundledPluginMetadata", () => {
     const staleDistDir = path.join(repoRoot, "dist", "extensions", "google-gemini-cli-auth");
     fs.mkdirSync(staleDistDir, { recursive: true });
     fs.writeFileSync(path.join(staleDistDir, "index.js"), "export default {}\n", "utf8");
-    writeJson(path.join(staleDistDir, "openclaw.plugin.json"), {
+    writeJson(path.join(staleDistDir, "cimiclaw.plugin.json"), {
       id: "google-gemini-cli-auth",
       configSchema: { type: "object" },
     });
@@ -400,7 +400,7 @@ describe("copyBundledPluginMetadata", () => {
       env: { OPENCLAW_BUILD_PRIVATE_QA: "1" } as NodeJS.ProcessEnv,
     });
 
-    expect(fs.existsSync(path.join(staleDistDir, "openclaw.plugin.json"))).toBe(true);
+    expect(fs.existsSync(path.join(staleDistDir, "cimiclaw.plugin.json"))).toBe(true);
     expect(fs.existsSync(path.join(staleDistDir, "package.json"))).toBe(true);
   });
 
@@ -469,7 +469,7 @@ describe("copyBundledPluginMetadata", () => {
     ).toBe(true);
     expect(
       fs.existsSync(
-        path.join(repoRoot, "dist", "extensions", "image-generation-core", "openclaw.plugin.json"),
+        path.join(repoRoot, "dist", "extensions", "image-generation-core", "cimiclaw.plugin.json"),
       ),
     ).toBe(false);
     expect(

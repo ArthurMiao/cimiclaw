@@ -32,7 +32,7 @@ import {
   type SessionEntry,
   type SessionScope,
 } from "../config/sessions.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { readRecentSessionUsageFromTranscript } from "../gateway/session-utils.fs.js";
 import { formatTimeAgo } from "../infra/format-time/format-relative.ts";
 import { resolveCommitHash } from "../infra/git-commit.js";
@@ -260,7 +260,7 @@ const readUsageFromSessionLog = (
       model?: string;
     }
   | undefined => {
-  // Transcripts are stored at the session file path (fallback: ~/.openclaw/sessions/<SessionId>.jsonl)
+  // Transcripts are stored at the session file path (fallback: ~/.cimiclaw/sessions/<SessionId>.jsonl)
   if (!sessionId) {
     return undefined;
   }

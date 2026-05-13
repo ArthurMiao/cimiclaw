@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { loadChannelSecretContractApi } from "./channel-contract-api.js";
 import { getPath } from "./path-utils.js";
 import { getCoreSecretTargetRegistry, getSecretTargetRegistry } from "./target-registry-data.js";
@@ -76,7 +76,7 @@ function getCompiledSecretTargetRegistryState() {
   }
   const compiledSecretTargetRegistry = getSecretTargetRegistry().map(compileTargetRegistryEntry);
   const openClawCompiledSecretTargets = compiledSecretTargetRegistry.filter(
-    (entry) => entry.configFile === "openclaw.json",
+    (entry) => entry.configFile === "cimiclaw.json",
   );
   const authProfilesCompiledSecretTargets = compiledSecretTargetRegistry.filter(
     (entry) => entry.configFile === "auth-profiles.json",
@@ -98,7 +98,7 @@ function getCompiledCoreOpenClawTargetState() {
     return compiledCoreOpenClawTargetState;
   }
   const openClawCompiledSecretTargets = getCoreSecretTargetRegistry()
-    .filter((entry) => entry.configFile === "openclaw.json")
+    .filter((entry) => entry.configFile === "cimiclaw.json")
     .map(compileTargetRegistryEntry);
   compiledCoreOpenClawTargetState = {
     knownTargetIds: new Set(openClawCompiledSecretTargets.map((entry) => entry.id)),
@@ -125,7 +125,7 @@ function getCompiledChannelOpenClawTargets(
       config: {} as OpenClawConfig,
       env: process.env,
     })
-      ?.secretTargetRegistryEntries?.filter((entry) => entry.configFile === "openclaw.json")
+      ?.secretTargetRegistryEntries?.filter((entry) => entry.configFile === "cimiclaw.json")
       .map(compileTargetRegistryEntry) ?? null;
   compiledChannelOpenClawTargets.set(normalizedChannelId, compiledEntries);
   return compiledEntries;

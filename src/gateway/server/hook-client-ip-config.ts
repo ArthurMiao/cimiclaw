@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { HookClientIpConfig } from "./hooks-request-handler.js";
 
 export function resolveHookClientIpConfig(cfg: OpenClawConfig): HookClientIpConfig {

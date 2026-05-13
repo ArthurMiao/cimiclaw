@@ -18,7 +18,7 @@ vi.mock("../plugins/manifest-registry.js", () => ({
   loadPluginManifestRegistry,
 }));
 
-vi.mock("../infra/openclaw-root.js", () => ({
+vi.mock("../infra/cimiclaw-root.js", () => ({
   resolveOpenClawPackageRootSync,
 }));
 
@@ -266,7 +266,7 @@ describe("plugin-sdk qa-runner-runtime", () => {
     const module = await import("./qa-runner-runtime.js");
 
     expect(() => module.listQaRunnerCliContributions()).toThrow(
-      'QA runner plugin "qa-matrix" exported "extra" from runtime-api.js but did not declare it in openclaw.plugin.json',
+      'QA runner plugin "qa-matrix" exported "extra" from runtime-api.js but did not declare it in cimiclaw.plugin.json',
     );
   });
 });

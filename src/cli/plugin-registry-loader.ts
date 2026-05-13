@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { loggingState } from "../logging/state.js";
 import { createLazyImportLoader } from "../shared/lazy-promise.js";
 import type { CliPluginRegistryScope } from "./command-catalog.js";

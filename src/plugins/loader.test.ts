@@ -163,7 +163,7 @@ function simplePluginBody(id: string) {
 }
 
 function updatePluginManifest(plugin: Pick<TempPlugin, "dir">, patch: Record<string, unknown>) {
-  const manifestPath = path.join(plugin.dir, "openclaw.plugin.json");
+  const manifestPath = path.join(plugin.dir, "cimiclaw.plugin.json");
   const raw = JSON.parse(fs.readFileSync(manifestPath, "utf-8")) as Record<string, unknown>;
   fs.writeFileSync(manifestPath, JSON.stringify({ ...raw, ...patch }, null, 2), "utf-8");
 }
@@ -201,7 +201,7 @@ function writeWorkspacePlugin(params: {
   workspaceDir?: string;
 }) {
   const workspaceDir = params.workspaceDir ?? makeTempDir();
-  const workspacePluginDir = path.join(workspaceDir, ".openclaw", "extensions", params.id);
+  const workspacePluginDir = path.join(workspaceDir, ".cimiclaw", "extensions", params.id);
   mkdirSafe(workspacePluginDir);
   const plugin = writePlugin({
     id: params.id,
@@ -582,7 +582,7 @@ function createEscapingEntryFixture(params: { id: string; sourceBody: string }) 
   const linkedEntry = path.join(pluginDir, "entry.cjs");
   fs.writeFileSync(outsideEntry, params.sourceBody, "utf-8");
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify(
       {
         id: params.id,
@@ -684,7 +684,7 @@ function createSetupEntryChannelPluginFixture(params: {
     "utf-8",
   );
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify(
       {
         id: params.id,
@@ -934,7 +934,7 @@ describe("loadOpenClawPlugins", () => {
       },
     };
     const manifestRegistry = loadPluginManifestRegistry({ config });
-    fs.rmSync(path.join(plugin.dir, "openclaw.plugin.json"));
+    fs.rmSync(path.join(plugin.dir, "cimiclaw.plugin.json"));
 
     const registry = loadOpenClawPlugins({
       cache: false,
@@ -1071,7 +1071,7 @@ describe("loadOpenClawPlugins", () => {
       "utf-8",
     );
     fs.writeFileSync(
-      path.join(pluginRoot, "openclaw.plugin.json"),
+      path.join(pluginRoot, "cimiclaw.plugin.json"),
       JSON.stringify(
         {
           id: "discord",
@@ -1546,7 +1546,7 @@ module.exports = { id: "manifest-only-plugin", register() { throw new Error("man
 module.exports = { id: "manifest-surfaces-plugin", register() { throw new Error("manifest-only snapshot should not register"); } };`,
         });
         fs.writeFileSync(
-          path.join(plugin.dir, "openclaw.plugin.json"),
+          path.join(plugin.dir, "cimiclaw.plugin.json"),
           JSON.stringify(
             {
               id: "manifest-surfaces-plugin",
@@ -1603,7 +1603,7 @@ module.exports = { id: "manifest-surfaces-plugin", register() { throw new Error(
 };`,
         });
         fs.writeFileSync(
-          path.join(memoryPlugin.dir, "openclaw.plugin.json"),
+          path.join(memoryPlugin.dir, "cimiclaw.plugin.json"),
           JSON.stringify(
             {
               id: "memory-demo",
@@ -2168,7 +2168,7 @@ module.exports = { id: "throws-after-import", register() {} };`,
       };`,
     });
     fs.writeFileSync(
-      path.join(plugin.dir, "openclaw.plugin.json"),
+      path.join(plugin.dir, "cimiclaw.plugin.json"),
       JSON.stringify(
         {
           id: "hook-config-context",
@@ -4497,7 +4497,7 @@ module.exports = { id: "throws-after-import", register() {} };`,
       "utf-8",
     );
     fs.writeFileSync(
-      path.join(pluginDir, "openclaw.plugin.json"),
+      path.join(pluginDir, "cimiclaw.plugin.json"),
       JSON.stringify(
         {
           id: "nested-default-channel",
@@ -4581,7 +4581,7 @@ module.exports = { id: "throws-after-import", register() {} };`,
       body: `module.exports = { id: "unrelated-plugin", register() { throw new Error("unrelated plugin should not load"); } };`,
     });
     fs.writeFileSync(
-      path.join(unrelated.dir, "openclaw.plugin.json"),
+      path.join(unrelated.dir, "cimiclaw.plugin.json"),
       JSON.stringify(
         {
           id: "unrelated-plugin",
@@ -4644,7 +4644,7 @@ module.exports = {
 };`,
     });
     fs.writeFileSync(
-      path.join(plugin.dir, "openclaw.plugin.json"),
+      path.join(plugin.dir, "cimiclaw.plugin.json"),
       JSON.stringify(
         {
           id: "lazy-channel-plugin",
@@ -5166,7 +5166,7 @@ module.exports = {
       "utf-8",
     );
     fs.writeFileSync(
-      path.join(pluginDir, "openclaw.plugin.json"),
+      path.join(pluginDir, "cimiclaw.plugin.json"),
       JSON.stringify(
         {
           id: "setup-entry-throws-test",
@@ -5233,7 +5233,7 @@ module.exports = {
       "utf-8",
     );
     fs.writeFileSync(
-      path.join(brokenDir, "openclaw.plugin.json"),
+      path.join(brokenDir, "cimiclaw.plugin.json"),
       JSON.stringify(
         {
           id: "setup-entry-throws-sibling-test",
@@ -5338,7 +5338,7 @@ module.exports = {
     mkdirSafe(sourceDir);
     mkdirSafe(runtimeDir);
     fs.writeFileSync(
-      path.join(sourceDir, "openclaw.plugin.json"),
+      path.join(sourceDir, "cimiclaw.plugin.json"),
       JSON.stringify(
         {
           id: "startup-artifact-test",
@@ -5724,7 +5724,7 @@ module.exports = {
             body: memoryPluginBody("memory-b"),
           });
           fs.writeFileSync(
-            path.join(memoryADir, "openclaw.plugin.json"),
+            path.join(memoryADir, "cimiclaw.plugin.json"),
             JSON.stringify(
               {
                 id: "memory-a",
@@ -5737,7 +5737,7 @@ module.exports = {
             "utf-8",
           );
           fs.writeFileSync(
-            path.join(memoryBDir, "openclaw.plugin.json"),
+            path.join(memoryBDir, "cimiclaw.plugin.json"),
             JSON.stringify(
               {
                 id: "memory-b",
@@ -5796,7 +5796,7 @@ module.exports = {
           });
           const openSchema = { type: "object", additionalProperties: true };
           fs.writeFileSync(
-            path.join(memoryCoreDir, "openclaw.plugin.json"),
+            path.join(memoryCoreDir, "cimiclaw.plugin.json"),
             JSON.stringify(
               { id: "memory-core", kind: "memory", configSchema: EMPTY_PLUGIN_SCHEMA },
               null,
@@ -5805,7 +5805,7 @@ module.exports = {
             "utf-8",
           );
           fs.writeFileSync(
-            path.join(memoryLanceDir, "openclaw.plugin.json"),
+            path.join(memoryLanceDir, "cimiclaw.plugin.json"),
             JSON.stringify(
               { id: "memory-lancedb", kind: "memory", configSchema: openSchema },
               null,
@@ -5859,7 +5859,7 @@ module.exports = {
             body: memoryPluginBody("memory-lancedb"),
           });
           fs.writeFileSync(
-            path.join(memoryCoreDir, "openclaw.plugin.json"),
+            path.join(memoryCoreDir, "cimiclaw.plugin.json"),
             JSON.stringify(
               { id: "memory-core", kind: "memory", configSchema: EMPTY_PLUGIN_SCHEMA },
               null,
@@ -5868,7 +5868,7 @@ module.exports = {
             "utf-8",
           );
           fs.writeFileSync(
-            path.join(memoryLanceDir, "openclaw.plugin.json"),
+            path.join(memoryLanceDir, "cimiclaw.plugin.json"),
             JSON.stringify(
               { id: "memory-lancedb", kind: "memory", configSchema: EMPTY_PLUGIN_SCHEMA },
               null,
@@ -5912,7 +5912,7 @@ module.exports = {
             body: `throw new Error("memory-core should not load when memory slot is none");`,
           });
           fs.writeFileSync(
-            path.join(memoryCoreDir, "openclaw.plugin.json"),
+            path.join(memoryCoreDir, "cimiclaw.plugin.json"),
             JSON.stringify(
               { id: "memory-core", kind: "memory", configSchema: EMPTY_PLUGIN_SCHEMA },
               null,
@@ -6273,7 +6273,7 @@ module.exports = {
       body: simplePluginBody("profile-aware"),
     });
     fs.writeFileSync(
-      path.join(plugin.dir, "openclaw.plugin.json"),
+      path.join(plugin.dir, "cimiclaw.plugin.json"),
       JSON.stringify(
         {
           id: "profile-aware",
@@ -6460,7 +6460,7 @@ module.exports = {
 
           const pluginDir = path.join(
             realHome,
-            ".openclaw",
+            ".cimiclaw",
             "npm",
             "node_modules",
             "@example",
@@ -6480,7 +6480,7 @@ module.exports = {
                 spec: "@example/tracked-symlink-install@1.0.0",
                 installPath: path.join(
                   linkedHome,
-                  ".openclaw",
+                  ".cimiclaw",
                   "npm",
                   "node_modules",
                   "@example",

@@ -407,7 +407,7 @@ describe("acquireSessionWriteLock", () => {
         staleMs: 30_000,
         nowMs,
         removeStale: true,
-        readOwnerProcessArgs: () => ["node", "/opt/openclaw/openclaw.mjs", "agent"],
+        readOwnerProcessArgs: () => ["node", "/opt/cimiclaw/cimiclaw.mjs", "agent"],
       });
 
       expect(result.locks).toHaveLength(3);
@@ -522,7 +522,7 @@ describe("acquireSessionWriteLock", () => {
         staleMs: 30_000,
         nowMs,
         removeStale: true,
-        readOwnerProcessArgs: () => ["node", "/opt/openclaw/openclaw.mjs", "agent"],
+        readOwnerProcessArgs: () => ["node", "/opt/cimiclaw/cimiclaw.mjs", "agent"],
       });
 
       expect(openclawResult.cleaned).toEqual([]);

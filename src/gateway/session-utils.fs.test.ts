@@ -130,9 +130,9 @@ function expectMessageFields(
   if ("content" in fields) {
     expect(record.content).toEqual(fields.content);
   }
-  if (fields.openclaw) {
+  if (fields.cimiclaw) {
     const metadata = requireRecord(record.__openclaw, "message metadata");
-    for (const [key, value] of Object.entries(fields.openclaw)) {
+    for (const [key, value] of Object.entries(fields.cimiclaw)) {
       expect(metadata[key]).toEqual(value);
     }
   }
@@ -1769,7 +1769,7 @@ describe("resolveSessionTranscriptCandidates", () => {
     const candidates = resolveSessionTranscriptCandidates("sess-1", undefined);
     const fallback = candidates[candidates.length - 1];
     expect(fallback).toBe(
-      path.join(path.resolve("/srv/openclaw-home"), ".openclaw", "sessions", "sess-1.jsonl"),
+      path.join(path.resolve("/srv/openclaw-home"), ".cimiclaw", "sessions", "sess-1.jsonl"),
     );
   });
 });

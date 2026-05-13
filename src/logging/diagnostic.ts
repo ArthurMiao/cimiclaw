@@ -1,6 +1,6 @@
 import { monitorEventLoopDelay, performance } from "node:perf_hooks";
 import { getRuntimeConfig } from "../config/config.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   areDiagnosticsEnabledForProcess,
   emitDiagnosticEvent,

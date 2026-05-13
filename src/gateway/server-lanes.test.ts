@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { enqueueCommandInLane, resetCommandQueueStateForTest } from "../process/command-queue.js";
 import { CommandLane } from "../process/lanes.js";
 import { applyGatewayLaneConcurrency } from "./server-lanes.js";

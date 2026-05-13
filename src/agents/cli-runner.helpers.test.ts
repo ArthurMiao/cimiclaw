@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import type { ImageContent } from "@mariozechner/pi-ai";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-cimiclaw-dir.js";
 import { MAX_IMAGE_BYTES } from "../media/constants.js";
 import {
   buildCliArgs,
@@ -371,7 +371,7 @@ describe("writeCliImages", () => {
       expect(prepared.prompt).toContain("\n\n@");
       expect(prepared.prompt).toContain(prepared.imagePaths?.[0] ?? "");
       expect(prepared.prompt.trimEnd().endsWith(`@${prepared.imagePaths?.[0] ?? ""}`)).toBe(true);
-      expect(prepared.imagePaths?.[0]?.startsWith(path.join(tempDir, ".openclaw-cli-images"))).toBe(
+      expect(prepared.imagePaths?.[0]?.startsWith(path.join(tempDir, ".cimiclaw-cli-images"))).toBe(
         true,
       );
 

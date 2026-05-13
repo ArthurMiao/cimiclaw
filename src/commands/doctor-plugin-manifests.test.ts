@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { cleanupTrackedTempDirs } from "../plugins/test-helpers/fs-fixtures.js";
 import type { RuntimeEnv } from "../runtime.js";
 import {
@@ -32,7 +32,7 @@ function configWithPluginLoadPath(pluginRoot: string): OpenClawConfig {
 
 function writeManifest(dir: string, manifest: Record<string, unknown>) {
   fs.writeFileSync(
-    path.join(dir, "openclaw.plugin.json"),
+    path.join(dir, "cimiclaw.plugin.json"),
     `${JSON.stringify(manifest, null, 2)}\n`,
     "utf-8",
   );
@@ -143,7 +143,7 @@ describe("doctor plugin manifest legacy contract repair", () => {
       note: vi.fn(),
     });
 
-    const next = JSON.parse(fs.readFileSync(path.join(root, "openclaw.plugin.json"), "utf-8")) as {
+    const next = JSON.parse(fs.readFileSync(path.join(root, "cimiclaw.plugin.json"), "utf-8")) as {
       speechProviders?: string[];
       mediaUnderstandingProviders?: string[];
       contracts?: Record<string, string[]>;

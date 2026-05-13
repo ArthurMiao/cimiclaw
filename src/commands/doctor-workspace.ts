@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { resolveAgentWorkspaceDir, resolveDefaultAgentId } from "../agents/agent-scope.js";
 import { DEFAULT_AGENTS_FILENAME } from "../agents/workspace.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { formatErrorMessage } from "../infra/errors.js";
 import {
   CANONICAL_ROOT_MEMORY_FILENAME,

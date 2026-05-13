@@ -55,7 +55,7 @@ extraction (highlights, text, summaries).
 ```
 
 **Environment alternative:** set `EXA_API_KEY` in the Gateway environment.
-For a gateway install, put it in `~/.openclaw/.env`.
+For a gateway install, put it in `~/.cimiclaw/.env`.
 
 ## Base URL override
 
@@ -72,7 +72,7 @@ Search query.
 </ParamField>
 
 <ParamField path="count" type="number">
-Results to return (1–100).
+Results to return (1鈥?00).
 </ParamField>
 
 <ParamField path="type" type="'auto' | 'neural' | 'fast' | 'deep' | 'deep-reasoning' | 'instant'">
@@ -136,8 +136,8 @@ await web_search({
 - Results preserve `highlightScores` and `summary` fields from the Exa API
   response when available
 - Result descriptions are resolved from highlights first, then summary, then
-  full text — whichever is available
-- `freshness` and `date_after`/`date_before` cannot be combined — use one
+  full text 鈥?whichever is available
+- `freshness` and `date_after`/`date_before` cannot be combined 鈥?use one
   time-filter mode
 - Up to 100 results can be returned per query (subject to Exa search-type
   limits)

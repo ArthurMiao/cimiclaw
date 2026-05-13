@@ -107,7 +107,7 @@ In the VNC window:
 
 After setup completes, enable SSH:
 
-1. Open System Settings â†’ General â†’ Sharing
+1. Open System Settings â†?General â†?Sharing
 2. Enable "Remote Login"
 
 ---
@@ -150,7 +150,7 @@ Follow the onboarding prompts to set up your model provider (Anthropic, OpenAI, 
 Edit the config file:
 
 ```bash
-nano ~/.openclaw/openclaw.json
+nano ~/.cimiclaw/cimiclaw.json
 ```
 
 Add your channels:
@@ -251,7 +251,7 @@ lume run openclaw --no-display
 Keep the VM running by:
 
 - Keeping your Mac plugged in
-- Disabling sleep in System Settings â†’ Energy Saver
+- Disabling sleep in System Settings â†?Energy Saver
 - Using `caffeinate` if needed
 
 For true always-on, consider a dedicated Mac mini or a small VPS. See [VPS hosting](/vps).

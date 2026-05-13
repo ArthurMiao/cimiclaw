@@ -467,7 +467,7 @@ Per-account overrides use `channels.whatsapp.accounts.<id>.reactionLevel`.
 ## Acknowledgment reactions
 
 WhatsApp supports immediate ack reactions on inbound receipt via `channels.whatsapp.ackReaction`.
-Ack reactions are gated by `reactionLevel` â€” they are suppressed when `reactionLevel` is `"off"`.
+Ack reactions are gated by `reactionLevel` â€?they are suppressed when `reactionLevel` is `"off"`.
 
 ```json5
 {
@@ -501,9 +501,9 @@ Behavior notes:
   </Accordion>
 
   <Accordion title="Credential paths and legacy compatibility">
-    - current auth path: `~/.openclaw/credentials/whatsapp/<accountId>/creds.json`
+    - current auth path: `~/.cimiclaw/credentials/whatsapp/<accountId>/creds.json`
     - backup file: `creds.json.bak`
-    - legacy default auth in `~/.openclaw/credentials/` is still recognized/migrated for default-account flows
+    - legacy default auth in `~/.cimiclaw/credentials/` is still recognized/migrated for default-account flows
 
   </Accordion>
 
@@ -571,11 +571,11 @@ Behavior notes:
     openclaw logs --follow
     ```
 
-    If `~/.openclaw/logs/whatsapp-health.log` says `Gateway inactive` but
+    If `~/.cimiclaw/logs/whatsapp-health.log` says `Gateway inactive` but
     `openclaw gateway status` and `openclaw channels status --probe` show the
     gateway and WhatsApp are healthy, run `openclaw doctor`. On Linux, doctor
     warns about legacy crontab entries that still invoke
-    `~/.openclaw/bin/ensure-whatsapp.sh`; remove those stale entries with
+    `~/.cimiclaw/bin/ensure-whatsapp.sh`; remove those stale entries with
     `crontab -e` because cron can lack the systemd user-bus environment and
     make that old script misreport gateway health.
 
@@ -613,7 +613,7 @@ Behavior notes:
     - `groupAllowFrom` / `allowFrom`
     - `groups` allowlist entries
     - mention gating (`requireMention` + mention patterns)
-    - duplicate keys in `openclaw.json` (JSON5): later entries override earlier ones, so keep a single `groupPolicy` per scope
+    - duplicate keys in `cimiclaw.json` (JSON5): later entries override earlier ones, so keep a single `groupPolicy` per scope
 
   </Accordion>
 
@@ -644,7 +644,7 @@ The effective `direct` map is determined first: if the account defines its own `
 `dms` remains the lightweight per-DM history override bucket (`dms.<id>.historyLimit`). Prompt overrides live under `direct`.
 </Note>
 
-**Difference from Telegram multi-account behavior:** In Telegram, root `groups` is intentionally suppressed for all accounts in a multi-account setup â€” even accounts that define no `groups` of their own â€” to prevent a bot from receiving group messages for groups it does not belong to. WhatsApp does not apply this guard: root `groups` and root `direct` are always inherited by accounts that define no account-level override, regardless of how many accounts are configured. In a multi-account WhatsApp setup, if you want per-account group or direct prompts, define the full map under each account explicitly rather than relying on root-level defaults.
+**Difference from Telegram multi-account behavior:** In Telegram, root `groups` is intentionally suppressed for all accounts in a multi-account setup â€?even accounts that define no `groups` of their own â€?to prevent a bot from receiving group messages for groups it does not belong to. WhatsApp does not apply this guard: root `groups` and root `direct` are always inherited by accounts that define no account-level override, regardless of how many accounts are configured. In a multi-account WhatsApp setup, if you want per-account group or direct prompts, define the full map under each account explicitly rather than relying on root-level defaults.
 
 Important behavior:
 

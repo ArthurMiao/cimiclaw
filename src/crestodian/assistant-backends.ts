@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { CrestodianOverview } from "./overview.js";
 
 const CRESTODIAN_CLAUDE_CLI_MODEL = "claude-opus-4-7";

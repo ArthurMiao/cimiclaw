@@ -324,15 +324,15 @@ describe("install.sh", () => {
     expect(result?.stdout).toContain(`path=${home}/.npm-global/bin`);
   });
 
-  it("uses a quoted absolute openclaw path in follow-up commands when npm bin is not on the original PATH", () => {
+  it("uses a quoted absolute cimiclaw path in follow-up commands when npm bin is not on the original PATH", () => {
     const tmp = mkdtempSync(join(tmpdir(), "openclaw-install-command-"));
     const npmBin = join(tmp, "npm bin");
     const visibleBin = join(tmp, "visible-bin");
     mkdirSync(npmBin, { recursive: true });
     mkdirSync(visibleBin, { recursive: true });
-    const openclawBin = join(npmBin, "openclaw");
-    writeFileSync(openclawBin, "#!/bin/sh\nexit 0\n");
-    chmodSync(openclawBin, 0o755);
+    const cimiclawBin = join(npmBin, "cimiclaw");
+    writeFileSync(cimiclawBin, "#!/bin/sh\nexit 0\n");
+    chmodSync(cimiclawBin, 0o755);
 
     let result: ReturnType<typeof runInstallShell> | undefined;
     try {
@@ -340,17 +340,17 @@ describe("install.sh", () => {
         set -euo pipefail
         source "${SCRIPT_PATH}"
         ORIGINAL_PATH=${JSON.stringify(`${visibleBin}:/usr/bin:/bin`)}
-        printf 'missing=%s\\n' "$(openclaw_command_for_user "${openclawBin}")"
+        printf 'missing=%s\\n' "$(openclaw_command_for_user "${cimiclawBin}")"
         ORIGINAL_PATH=${JSON.stringify(`${npmBin}:${visibleBin}:/usr/bin:/bin`)}
-        printf 'present=%s\\n' "$(openclaw_command_for_user "${openclawBin}")"
+        printf 'present=%s\\n' "$(openclaw_command_for_user "${cimiclawBin}")"
       `);
     } finally {
       rmSync(tmp, { recursive: true, force: true });
     }
 
     expect(result?.status).toBe(0);
-    expect(result?.stdout).toContain(`missing=${openclawBin.replace(/ /g, "\\ ")}`);
-    expect(result?.stdout).toContain("present=openclaw");
+    expect(result?.stdout).toContain(`missing=${cimiclawBin.replace(/ /g, "\\ ")}`);
+    expect(result?.stdout).toContain("present=cimiclaw");
   });
 });
 

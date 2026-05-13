@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../../config/types.cimiclaw.js";
 import type { ProviderTransformSystemPromptContext } from "../../../plugins/types.js";
 import {
   appendAgentBootstrapSystemPromptSupplement,

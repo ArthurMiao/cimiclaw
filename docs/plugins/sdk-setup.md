@@ -8,7 +8,7 @@ read_when:
   - You are defining plugin config schemas or package.json openclaw metadata
 ---
 
-Reference for plugin packaging (`package.json` metadata), manifests (`openclaw.plugin.json`), setup entries, and config schemas.
+Reference for plugin packaging (`package.json` metadata), manifests (`cimiclaw.plugin.json`), setup entries, and config schemas.
 
 <Tip>
 **Looking for a walkthrough?** The how-to guides cover packaging in context: [Channel plugins](/plugins/sdk-channel-plugins#step-1-package-and-manifest) and [Provider plugins](/plugins/sdk-provider-plugins#step-1-package-and-manifest).
@@ -166,7 +166,7 @@ Example:
 
 <AccordionGroup>
   <Accordion title="Onboarding behavior">
-    Interactive onboarding also uses `openclaw.install` for install-on-demand surfaces. If your plugin exposes provider auth choices or channel setup/catalog metadata before runtime loads, onboarding can show that choice, prompt for ClawHub, npm, or local install, install or enable the plugin, then continue the selected flow. ClawHub onboarding choices use `clawhubSpec` and are preferred when present; npm choices require trusted catalog metadata with a registry `npmSpec`; exact versions and `expectedIntegrity` are optional npm pins. If `expectedIntegrity` is present, install/update flows enforce it for npm. Keep the "what to show" metadata in `openclaw.plugin.json` and the "how to install it" metadata in `package.json`.
+    Interactive onboarding also uses `openclaw.install` for install-on-demand surfaces. If your plugin exposes provider auth choices or channel setup/catalog metadata before runtime loads, onboarding can show that choice, prompt for ClawHub, npm, or local install, install or enable the plugin, then continue the selected flow. ClawHub onboarding choices use `clawhubSpec` and are preferred when present; npm choices require trusted catalog metadata with a registry `npmSpec`; exact versions and `expectedIntegrity` are optional npm pins. If `expectedIntegrity` is present, install/update flows enforce it for npm. Keep the "what to show" metadata in `cimiclaw.plugin.json` and the "how to install it" metadata in `package.json`.
   </Accordion>
   <Accordion title="minHostVersion enforcement">
     If `minHostVersion` is set, install and non-bundled manifest-registry loading both enforce it. Older hosts skip external plugins; invalid version strings are rejected. Bundled source plugins are assumed to be co-versioned with the host checkout.
@@ -218,7 +218,7 @@ If your setup/full entry registers gateway RPC methods, keep them on a plugin-sp
 
 ## Plugin manifest
 
-Every native plugin must ship an `openclaw.plugin.json` in the package root. OpenClaw uses this to validate config without executing plugin code.
+Every native plugin must ship an `cimiclaw.plugin.json` in the package root. OpenClaw uses this to validate config without executing plugin code.
 
 ```json
 {
@@ -413,7 +413,7 @@ const configSchema = buildJsonChannelConfigSchema(
 );
 ```
 
-For third-party plugins, the cold-path contract is still the plugin manifest: mirror the generated JSON Schema into `openclaw.plugin.json#channelConfigs` so config schema, setup, and UI surfaces can inspect `channels.<id>` without loading runtime code.
+For third-party plugins, the cold-path contract is still the plugin manifest: mirror the generated JSON Schema into `cimiclaw.plugin.json#channelConfigs` so config schema, setup, and UI surfaces can inspect `channels.<id>` without loading runtime code.
 
 ## Setup wizards
 
@@ -528,7 +528,7 @@ openclaw plugins install <package-name>
 ```
 
 <Info>
-For npm-sourced installs, `openclaw plugins install` installs the package under `~/.openclaw/npm` with lifecycle scripts disabled. Keep plugin dependency trees pure JS/TS and avoid packages that require `postinstall` builds.
+For npm-sourced installs, `openclaw plugins install` installs the package under `~/.cimiclaw/npm` with lifecycle scripts disabled. Keep plugin dependency trees pure JS/TS and avoid packages that require `postinstall` builds.
 </Info>
 
 <Note>
@@ -539,6 +539,6 @@ Bundled package metadata is explicit, not inferred from built JavaScript at gate
 
 ## Related
 
-- [Building plugins](/plugins/building-plugins) â€” step-by-step getting started guide
-- [Plugin manifest](/plugins/manifest) â€” full manifest schema reference
-- [SDK entry points](/plugins/sdk-entrypoints) â€” `definePluginEntry` and `defineChannelPluginEntry`
+- [Building plugins](/plugins/building-plugins) â€?step-by-step getting started guide
+- [Plugin manifest](/plugins/manifest) â€?full manifest schema reference
+- [SDK entry points](/plugins/sdk-entrypoints) â€?`definePluginEntry` and `defineChannelPluginEntry`

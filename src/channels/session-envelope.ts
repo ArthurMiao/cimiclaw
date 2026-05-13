@@ -1,6 +1,6 @@
 import { resolveEnvelopeFormatOptions } from "../auto-reply/envelope.js";
 import { readSessionUpdatedAt, resolveStorePath } from "../config/sessions.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 
 export function resolveInboundSessionEnvelopeContext(params: {
   cfg: OpenClawConfig;

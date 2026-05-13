@@ -130,7 +130,7 @@ function requireMatrixQaCliRuntimeEnv(context: MatrixQaScenarioContext) {
 }
 
 function requireMatrixQaGatewayConfigPath(context: MatrixQaScenarioContext) {
-  const configPath = requireMatrixQaCliRuntimeEnv(context).OPENCLAW_CONFIG_PATH?.trim();
+  const configPath = requireMatrixQaCliRuntimeEnv(context).cimiclaw_CONFIG_PATH?.trim();
   if (!configPath) {
     throw new Error("Matrix CLI QA scenarios require the gateway config path");
   }

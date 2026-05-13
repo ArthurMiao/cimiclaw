@@ -21,7 +21,7 @@ function createOpenClawToolsMcpServer(
   } = {},
 ): Server {
   const tools = params.tools ?? resolveOpenClawToolsForMcp();
-  return createToolsMcpServer({ name: "openclaw-tools", tools });
+  return createToolsMcpServer({ name: "cimiclaw-tools", tools });
 }
 
 async function serveOpenClawToolsMcp(): Promise<void> {

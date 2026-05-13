@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { isRecord } from "../utils.js";
 
 function hasOwnValue(record: Record<string, unknown>, key: string): boolean {

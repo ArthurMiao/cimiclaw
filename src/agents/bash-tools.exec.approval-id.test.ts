@@ -184,7 +184,7 @@ function buildPreparedSystemRunPayload(rawInvokeParams: unknown) {
 }
 
 async function writeExecApprovalsConfig(config: Record<string, unknown>) {
-  const approvalsPath = path.join(process.env.HOME ?? "", ".openclaw", "exec-approvals.json");
+  const approvalsPath = path.join(process.env.HOME ?? "", ".cimiclaw", "exec-approvals.json");
   await fs.mkdir(path.dirname(approvalsPath), { recursive: true });
   await fs.writeFile(approvalsPath, JSON.stringify(config, null, 2));
 }
@@ -774,7 +774,7 @@ describe("exec approvals", () => {
     expect(calls).toContain("exec.approval.request");
     expect(calls).toContain("exec.approval.waitDecision");
 
-    const approvalsPath = path.join(process.env.HOME ?? "", ".openclaw", "exec-approvals.json");
+    const approvalsPath = path.join(process.env.HOME ?? "", ".cimiclaw", "exec-approvals.json");
     await expect
       .poll(
         async () => {
@@ -1234,7 +1234,7 @@ describe("exec approvals", () => {
     }
     const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-skill-wrapper-"));
     try {
-      const skillDir = path.join(tempDir, ".openclaw", "skills", "gog");
+      const skillDir = path.join(tempDir, ".cimiclaw", "skills", "gog");
       const skillPath = path.join(skillDir, "SKILL.md");
       const binDir = path.join(tempDir, "bin");
       const wrapperPath = path.join(binDir, "gog-wrapper");

@@ -197,16 +197,16 @@ exit 1
       });
       expect(scriptPath.endsWith(".sh")).toBe(true);
       expect(content).toContain("#!/bin/sh");
-      expect(content).toContain("launchctl kickstart -k 'gui/501/ai.openclaw.gateway'");
+      expect(content).toContain("launchctl kickstart -k 'gui/501/ai.cimiclaw.gateway'");
       // Should clear disabled state and fall back to bootstrap when kickstart fails.
-      expect(content).toContain("launchctl enable 'gui/501/ai.openclaw.gateway'");
+      expect(content).toContain("launchctl enable 'gui/501/ai.cimiclaw.gateway'");
       expect(content).toContain("launchctl bootstrap 'gui/501'");
       expect(content).toContain("Bootstrap loads RunAtLoad agents");
       expect(content).toContain('rm -f "$0"');
       await cleanupScript(scriptPath);
     });
 
-    it("captures macOS launchctl stderr to ~/.openclaw/logs/gateway-restart.log (#68486)", async () => {
+    it("captures macOS launchctl stderr to ~/.cimiclaw/logs/gateway-restart.log (#68486)", async () => {
       // Silent failure in macOS update restart helper: previously every
       // launchctl call redirected stderr to /dev/null and the final kickstart
       // was chained with `|| true`, so bootstrap/kickstart failures were
@@ -220,7 +220,7 @@ exit 1
         OPENCLAW_PROFILE: "default",
         HOME: "/Users/testuser",
       });
-      expect(content).toContain("exec >>'/Users/testuser/.openclaw/logs/gateway-restart.log' 2>&1");
+      expect(content).toContain("exec >>'/Users/testuser/.cimiclaw/logs/gateway-restart.log' 2>&1");
       // Every launchctl call should allow output through now (no `2>/dev/null`)
       // and the final kickstart must not swallow its exit code.
       expect(content).not.toMatch(/launchctl[^\n]*2>\/dev\/null/);
@@ -278,8 +278,8 @@ exit 0
       const log = await fs.readFile(path.join(stateDir, "logs", "gateway-restart.log"), "utf-8");
 
       expect(result.code).toBe(42);
-      expect(log).toContain("openclaw restart attempt source=update target=ai.openclaw.gateway");
-      expect(log).toContain("launchctl kickstart -k gui/501/ai.openclaw.gateway");
+      expect(log).toContain("openclaw restart attempt source=update target=ai.cimiclaw.gateway");
+      expect(log).toContain("launchctl kickstart -k gui/501/ai.cimiclaw.gateway");
       expect(log).toContain("openclaw restart failed source=update status=42");
       expect(log).not.toContain("openclaw restart done source=update");
     });
@@ -328,7 +328,7 @@ exit 0
       await writeFakeLaunchctl(fakeBinDir);
 
       const { scriptPath } = await prepareAndReadScript({
-        OPENCLAW_LAUNCHD_LABEL: "ai.openclaw.$(echo injected)",
+        OPENCLAW_LAUNCHD_LABEL: "ai.cimiclaw.$(echo injected)",
         HOME: path.join(tmpDir, "home"),
         OPENCLAW_STATE_DIR: stateDir,
       });
@@ -339,8 +339,8 @@ exit 0
       const log = await fs.readFile(path.join(stateDir, "logs", "gateway-restart.log"), "utf-8");
 
       expect(result.code).toBeNull();
-      expect(log).toContain("target=ai.openclaw.$(echo injected)");
-      expect(log).not.toContain("target=ai.openclaw.injected");
+      expect(log).toContain("target=ai.cimiclaw.$(echo injected)");
+      expect(log).not.toContain("target=ai.cimiclaw.injected");
     });
 
     it("uses OPENCLAW_LAUNCHD_LABEL override on macOS", async () => {
@@ -349,9 +349,9 @@ exit 0
 
       const { scriptPath, content } = await prepareAndReadScript({
         OPENCLAW_PROFILE: "default",
-        OPENCLAW_LAUNCHD_LABEL: "com.custom.openclaw",
+        OPENCLAW_LAUNCHD_LABEL: "com.custom.cimiclaw",
       });
-      expect(content).toContain("launchctl kickstart -k 'gui/501/com.custom.openclaw'");
+      expect(content).toContain("launchctl kickstart -k 'gui/501/com.custom.cimiclaw'");
       await cleanupScript(scriptPath);
     });
 
@@ -374,7 +374,7 @@ exit 0
       expect(content).toContain("Get-ScheduledTask -TaskName $TaskName");
       expect(content).toContain("openclaw restart skipped schtasks end");
       expect(content).toContain(
-        '$launcherPath = Join-Path $env:USERPROFILE ".openclaw\\gateway.cmd"',
+        '$launcherPath = Join-Path $env:USERPROFILE ".cimiclaw\\gateway.cmd"',
       );
       expect(content).toContain("openclaw restart launched startup fallback");
       expectWindowsRestartWaitOrdering(content);
@@ -433,7 +433,7 @@ exit 0
       const { scriptPath, content } = await prepareAndReadScript({
         OPENCLAW_PROFILE: "staging",
       });
-      expect(content).toContain("gui/502/ai.openclaw.staging");
+      expect(content).toContain("gui/502/ai.cimiclaw.staging");
       await cleanupScript(scriptPath);
     });
 
@@ -511,10 +511,10 @@ exit 0
 
       const { scriptPath, content } = await prepareAndReadScript({
         HOME: "/Users/testuser",
-        OPENCLAW_LAUNCHD_LABEL: "ai.openclaw.it's-a-test",
+        OPENCLAW_LAUNCHD_LABEL: "ai.cimiclaw.it's-a-test",
       });
       // The plist path must also shell-escape the label to prevent injection
-      expect(content).toContain("ai.openclaw.it'\\''s-a-test.plist");
+      expect(content).toContain("ai.cimiclaw.it'\\''s-a-test.plist");
       await cleanupScript(scriptPath);
     });
 

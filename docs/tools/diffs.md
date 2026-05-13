@@ -264,7 +264,7 @@ Mode behavior summary:
 
 ## Plugin defaults
 
-Set plugin-wide defaults in `~/.openclaw/openclaw.json`:
+Set plugin-wide defaults in `~/.cimiclaw/cimiclaw.json`:
 
 ```json5
 {
@@ -455,11 +455,11 @@ Fix by installing Chrome, Chromium, Edge, or Brave, or setting one of the execut
 
 <AccordionGroup>
   <Accordion title="Input validation errors">
-    - `Provide patch or both before and after text.` — include both `before` and `after`, or provide `patch`.
-    - `Provide either patch or before/after input, not both.` — do not mix input modes.
-    - `Invalid baseUrl: ...` — use `http(s)` origin with optional path, no query/hash.
-    - `{field} exceeds maximum size (...)` — reduce payload size.
-    - Large patch rejection — reduce patch file count or total lines.
+    - `Provide patch or both before and after text.` 鈥?include both `before` and `after`, or provide `patch`.
+    - `Provide either patch or before/after input, not both.` 鈥?do not mix input modes.
+    - `Invalid baseUrl: ...` 鈥?use `http(s)` origin with optional path, no query/hash.
+    - `{field} exceeds maximum size (...)` 鈥?reduce payload size.
+    - Large patch rejection 鈥?reduce patch file count or total lines.
 
   </Accordion>
   <Accordion title="Viewer accessibility">

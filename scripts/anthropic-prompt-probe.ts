@@ -20,21 +20,21 @@ import { callGateway } from "../src/gateway/call.js";
 import { extractPayloadText } from "../src/gateway/test-helpers.agent-results.js";
 import { getFreePortBlockWithPermissionFallback } from "../src/test-utils/ports.js";
 
-const TRANSPORT = process.env.OPENCLAW_PROMPT_TRANSPORT?.trim() === "direct" ? "direct" : "gateway";
+const TRANSPORT = process.env.cimiclaw_PROMPT_TRANSPORT?.trim() === "direct" ? "direct" : "gateway";
 const GATEWAY_PROMPT_MODE =
-  process.env.OPENCLAW_PROMPT_MODE?.trim() === "override" ? "override" : "extra";
-const PROMPT_TEXT = process.env.OPENCLAW_PROMPT_TEXT?.trim() ?? "";
-const PROMPT_LIST_JSON = process.env.OPENCLAW_PROMPT_LIST_JSON?.trim() ?? "";
-const USER_PROMPT = process.env.OPENCLAW_USER_PROMPT?.trim() || "is clawd here?";
-const ENABLE_CAPTURE = process.env.OPENCLAW_PROMPT_CAPTURE === "1";
-const INCLUDE_RAW = process.env.OPENCLAW_PROMPT_INCLUDE_RAW === "1";
+  process.env.cimiclaw_PROMPT_MODE?.trim() === "override" ? "override" : "extra";
+const PROMPT_TEXT = process.env.cimiclaw_PROMPT_TEXT?.trim() ?? "";
+const PROMPT_LIST_JSON = process.env.cimiclaw_PROMPT_LIST_JSON?.trim() ?? "";
+const USER_PROMPT = process.env.cimiclaw_USER_PROMPT?.trim() || "is clawd here?";
+const ENABLE_CAPTURE = process.env.cimiclaw_PROMPT_CAPTURE === "1";
+const INCLUDE_RAW = process.env.cimiclaw_PROMPT_INCLUDE_RAW === "1";
 const CLAUDE_BIN = process.env.CLAUDE_BIN?.trim() || "claude";
-const NODE_BIN = process.env.OPENCLAW_NODE_BIN?.trim() || process.execPath;
-const TIMEOUT_MS = Number(process.env.OPENCLAW_PROMPT_TIMEOUT_MS ?? "45000");
-const GATEWAY_TIMEOUT_MS = Number(process.env.OPENCLAW_PROMPT_GATEWAY_TIMEOUT_MS ?? "120000");
-const SETUP_TOKEN_RAW = process.env.OPENCLAW_LIVE_SETUP_TOKEN?.trim() ?? "";
-const SETUP_TOKEN_VALUE = process.env.OPENCLAW_LIVE_SETUP_TOKEN_VALUE?.trim() ?? "";
-const SETUP_TOKEN_PROFILE = process.env.OPENCLAW_LIVE_SETUP_TOKEN_PROFILE?.trim() ?? "";
+const NODE_BIN = process.env.cimiclaw_NODE_BIN?.trim() || process.execPath;
+const TIMEOUT_MS = Number(process.env.cimiclaw_PROMPT_TIMEOUT_MS ?? "45000");
+const GATEWAY_TIMEOUT_MS = Number(process.env.cimiclaw_PROMPT_GATEWAY_TIMEOUT_MS ?? "120000");
+const SETUP_TOKEN_RAW = process.env.cimiclaw_LIVE_SETUP_TOKEN?.trim() ?? "";
+const SETUP_TOKEN_VALUE = process.env.cimiclaw_LIVE_SETUP_TOKEN_VALUE?.trim() ?? "";
+const SETUP_TOKEN_PROFILE = process.env.cimiclaw_LIVE_SETUP_TOKEN_PROFILE?.trim() ?? "";
 const DIRECT_CLAUDE_ARGS = ["-p", "--append-system-prompt"];
 
 if (!PROMPT_TEXT && !PROMPT_LIST_JSON) {
@@ -425,7 +425,7 @@ async function startGatewayProcess(params: {
   const logFile = await fs.open(params.logPath, "a");
   const child = spawn(
     NODE_BIN,
-    ["openclaw.mjs", "gateway", "--port", String(params.port), "--bind", "loopback", "--force"],
+    ["cimiclaw.mjs", "gateway", "--port", String(params.port), "--bind", "loopback", "--force"],
     {
       cwd: process.cwd(),
       env: {

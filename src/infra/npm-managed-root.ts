@@ -4,7 +4,7 @@ import { runCommandWithTimeout } from "../process/exec.js";
 import type { NpmSpecResolution } from "./install-source-utils.js";
 import { readJson, readJsonIfExists, writeJson } from "./json-files.js";
 import type { ParsedRegistryNpmSpec } from "./npm-registry-spec.js";
-import { resolveOpenClawPackageRootSync } from "./openclaw-root.js";
+import { resolveOpenClawPackageRootSync } from "./cimiclaw-root.js";
 import { createSafeNpmInstallEnv } from "./safe-package-install.js";
 
 type ManagedNpmRootManifest = {
@@ -188,12 +188,12 @@ export async function upsertManagedNpmRootDependency(params: {
   const managedOverrides = readOverrideRecord(params.managedOverrides);
   const managedOverrideKeys = Object.keys(managedOverrides).toSorted();
   const overrides = readOverrideRecord(manifest.overrides);
-  for (const key of readManagedOverrideKeys(manifest.openclaw)) {
+  for (const key of readManagedOverrideKeys(manifest.cimiclaw)) {
     delete overrides[key];
   }
   Object.assign(overrides, managedOverrides);
   const openclawMetadata = buildManagedOpenClawMetadata({
-    current: manifest.openclaw,
+    current: manifest.cimiclaw,
     managedOverrideKeys,
   });
   const next: ManagedNpmRootManifest = {
@@ -210,9 +210,9 @@ export async function upsertManagedNpmRootDependency(params: {
     delete next.overrides;
   }
   if (openclawMetadata) {
-    next.openclaw = openclawMetadata;
+    next.cimiclaw = openclawMetadata;
   } else {
-    delete next.openclaw;
+    delete next.cimiclaw;
   }
   await writeJson(manifestPath, next, { trailingNewline: true });
 }
@@ -341,7 +341,7 @@ async function scrubManagedNpmRootOpenClawPeer(params: { npmRoot: string }): Pro
       if (isRecord(rootPackage) && isRecord(rootPackage.dependencies)) {
         const dependencies = { ...rootPackage.dependencies };
         if ("openclaw" in dependencies) {
-          delete dependencies.openclaw;
+          delete dependencies.cimiclaw;
           parsed.packages[""] = { ...rootPackage, dependencies };
           lockChanged = true;
         }
@@ -353,7 +353,7 @@ async function scrubManagedNpmRootOpenClawPeer(params: { npmRoot: string }): Pro
     }
     if (isRecord(parsed.dependencies) && "openclaw" in parsed.dependencies) {
       const dependencies = { ...parsed.dependencies };
-      delete dependencies.openclaw;
+      delete dependencies.cimiclaw;
       parsed.dependencies = dependencies;
       lockChanged = true;
     }

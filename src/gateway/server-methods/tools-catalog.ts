@@ -10,7 +10,7 @@ import {
   resolveCoreToolProfiles,
 } from "../../agents/tool-catalog.js";
 import { summarizeToolDescriptionText } from "../../agents/tool-description-summary.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { getActivePluginRegistry } from "../../plugins/runtime.js";
 import {
   buildPluginToolMetadataKey,

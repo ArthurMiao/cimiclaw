@@ -54,11 +54,11 @@ export function configureProgramHelp(program: Command, ctx: ProgramContext) {
     )
     .option(
       "--dev",
-      "Dev profile: isolate state under ~/.openclaw-dev, default gateway port 19001, and shift derived ports (browser/canvas)",
+      "Dev profile: isolate state under ~/.cimiclaw-dev, default gateway port 19001, and shift derived ports (browser/canvas)",
     )
     .option(
       "--profile <name>",
-      "Use a named profile (isolates OPENCLAW_STATE_DIR/OPENCLAW_CONFIG_PATH under ~/.openclaw-<name>)",
+      "Use a named profile (isolates OPENCLAW_STATE_DIR/OPENCLAW_CONFIG_PATH under ~/.cimiclaw-<name>)",
     )
     .option(
       "--log-level <level>",

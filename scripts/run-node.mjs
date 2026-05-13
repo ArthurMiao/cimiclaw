@@ -364,7 +364,7 @@ const listRequiredBundledPluginMetadataOutputs = (pluginEntries, deps) =>
       requiredPaths.push(path.join(builtPluginDir, "package.json"));
     }
     if (hasManifest) {
-      requiredPaths.push(path.join(builtPluginDir, "openclaw.plugin.json"));
+      requiredPaths.push(path.join(builtPluginDir, "cimiclaw.plugin.json"));
     }
     return requiredPaths;
   });
@@ -795,7 +795,7 @@ const getInterruptedSpawnExitCode = (res) => {
 
 const runOpenClaw = async (deps) => {
   const diagnosticArgs = resolveRunNodeDiagnosticArgs(deps);
-  const nodeProcess = deps.spawn(deps.execPath, [...diagnosticArgs, "openclaw.mjs", ...deps.args], {
+  const nodeProcess = deps.spawn(deps.execPath, [...diagnosticArgs, "cimiclaw.mjs", ...deps.args], {
     cwd: deps.cwd,
     env: deps.env,
     stdio: deps.outputTee ? ["inherit", "pipe", "pipe"] : "inherit",

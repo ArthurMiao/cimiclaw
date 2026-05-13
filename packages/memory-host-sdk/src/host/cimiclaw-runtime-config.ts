@@ -7,7 +7,7 @@ export {
   parseNonNegativeByteSize,
   resolveSessionTranscriptsDirForAgent,
   resolveStateDir,
-} from "./openclaw-runtime.js";
+} from "./cimiclaw-runtime.js";
 export type {
   MemoryBackend,
   MemoryCitationsMode,
@@ -19,4 +19,4 @@ export type {
   OpenClawConfig,
   SecretInput,
   SessionSendPolicyConfig,
-} from "./openclaw-runtime.js";
+} from "./cimiclaw-runtime.js";

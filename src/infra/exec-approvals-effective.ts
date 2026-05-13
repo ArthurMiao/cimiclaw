@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { DEFAULT_AGENT_ID } from "../routing/session-key.js";
 import {
   DEFAULT_EXEC_APPROVAL_ASK_FALLBACK,
@@ -15,7 +15,7 @@ import {
 
 const DEFAULT_REQUESTED_SECURITY: ExecSecurity = "full";
 const DEFAULT_REQUESTED_ASK: ExecAsk = "off";
-const DEFAULT_HOST_PATH = "~/.openclaw/exec-approvals.json";
+const DEFAULT_HOST_PATH = "~/.cimiclaw/exec-approvals.json";
 const REQUESTED_DEFAULT_LABEL = {
   security: DEFAULT_REQUESTED_SECURITY,
   ask: DEFAULT_REQUESTED_ASK,

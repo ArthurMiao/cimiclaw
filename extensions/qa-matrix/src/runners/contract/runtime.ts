@@ -800,7 +800,7 @@ export async function runMatrixQaLive(params: {
                 observerPassword: provisioning.observer.password,
                 observerUserId: provisioning.observer.userId,
                 gatewayRuntimeEnv: scenarioGateway.harness.gateway.runtimeEnv,
-                gatewayStateDir: scenarioGateway.harness.gateway.runtimeEnv?.OPENCLAW_STATE_DIR,
+                gatewayStateDir: scenarioGateway.harness.gateway.runtimeEnv?.cimiclaw_STATE_DIR,
                 gatewayCall: async (method, params, opts) =>
                   await scenarioGateway.harness.gateway.call(method, params ?? {}, opts),
                 outputDir,

@@ -206,20 +206,20 @@ function defaultOutputDir(repoRoot: string, startedAt: Date) {
 
 function buildCrabboxEnv(env: NodeJS.ProcessEnv): NodeJS.ProcessEnv {
   const next = { ...env };
-  if (!trimToValue(next.OPENCLAW_LIVE_OPENAI_KEY) && trimToValue(next.OPENAI_API_KEY)) {
-    next.OPENCLAW_LIVE_OPENAI_KEY = next.OPENAI_API_KEY;
+  if (!trimToValue(next.cimiclaw_LIVE_OPENAI_KEY) && trimToValue(next.OPENAI_API_KEY)) {
+    next.cimiclaw_LIVE_OPENAI_KEY = next.OPENAI_API_KEY;
   }
-  if (!trimToValue(next.OPENCLAW_MANTIS_TELEGRAM_GROUP_ID)) {
-    next.OPENCLAW_MANTIS_TELEGRAM_GROUP_ID = trimToValue(next.OPENCLAW_QA_TELEGRAM_GROUP_ID);
+  if (!trimToValue(next.cimiclaw_MANTIS_TELEGRAM_GROUP_ID)) {
+    next.cimiclaw_MANTIS_TELEGRAM_GROUP_ID = trimToValue(next.cimiclaw_QA_TELEGRAM_GROUP_ID);
   }
-  if (!trimToValue(next.OPENCLAW_MANTIS_TELEGRAM_DRIVER_BOT_TOKEN)) {
-    next.OPENCLAW_MANTIS_TELEGRAM_DRIVER_BOT_TOKEN = trimToValue(
-      next.OPENCLAW_QA_TELEGRAM_DRIVER_BOT_TOKEN,
+  if (!trimToValue(next.cimiclaw_MANTIS_TELEGRAM_DRIVER_BOT_TOKEN)) {
+    next.cimiclaw_MANTIS_TELEGRAM_DRIVER_BOT_TOKEN = trimToValue(
+      next.cimiclaw_QA_TELEGRAM_DRIVER_BOT_TOKEN,
     );
   }
-  if (!trimToValue(next.OPENCLAW_MANTIS_TELEGRAM_SUT_BOT_TOKEN)) {
-    next.OPENCLAW_MANTIS_TELEGRAM_SUT_BOT_TOKEN = trimToValue(
-      next.OPENCLAW_QA_TELEGRAM_SUT_BOT_TOKEN,
+  if (!trimToValue(next.cimiclaw_MANTIS_TELEGRAM_SUT_BOT_TOKEN)) {
+    next.cimiclaw_MANTIS_TELEGRAM_SUT_BOT_TOKEN = trimToValue(
+      next.cimiclaw_QA_TELEGRAM_SUT_BOT_TOKEN,
     );
   }
   return next;
@@ -462,7 +462,7 @@ process.stdout.write(JSON.stringify({ ok: body.ok, id: body.result?.id, username
 if (!body.ok || !body.result?.id) process.exit(1);
 MANTIS_TELEGRAM_GETME
 node --input-type=module -e 'import fs from "node:fs"; const value = JSON.parse(fs.readFileSync(process.argv[1], "utf8")); process.stdout.write(String(value.id || ""));' "$out/telegram-driver-getme.json")"
-    export OPENCLAW_HOME="$HOME/.openclaw-mantis/telegram-openclaw"
+    export OPENCLAW_HOME="$HOME/.cimiclaw-mantis/telegram-openclaw"
     mkdir -p "$OPENCLAW_HOME"
     cat >"$out/telegram.patch.json5" <<MANTIS_TELEGRAM_PATCH
 {

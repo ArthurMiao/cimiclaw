@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { resolvePreferredOpenClawTmpDir } from "../../../../infra/tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../../../../infra/tmp-cimiclaw-dir.js";
 import { getChannelPluginCatalogEntry, listChannelPluginCatalogEntries } from "../../catalog.js";
 
 type CatalogEntryMeta = {
@@ -61,7 +61,7 @@ export function describeBundledMetadataOnlyChannelCatalogContract(params: {
       const workspaceDir = fs.mkdtempSync(
         path.join(resolvePreferredOpenClawTmpDir(), "openclaw-bundled-catalog-"),
       );
-      const bundledDir = path.join(workspaceDir, ".openclaw", "extensions", params.pluginId);
+      const bundledDir = path.join(workspaceDir, ".cimiclaw", "extensions", params.pluginId);
       fs.mkdirSync(bundledDir, { recursive: true });
       fs.writeFileSync(
         path.join(workspaceDir, "package.json"),

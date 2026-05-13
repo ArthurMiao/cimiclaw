@@ -12,7 +12,7 @@ import { runEmbeddedPiAgent } from "../agents/pi-embedded.js";
 import { BASE_THINKING_LEVELS } from "../auto-reply/thinking.shared.js";
 import * as runtimeSnapshotModule from "../config/runtime-snapshot.js";
 import { clearSessionStoreCacheForTest } from "../config/sessions/store.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   emitAgentEvent,
   onAgentEvent,
@@ -208,7 +208,7 @@ vi.mock("../config/sessions/transcript-resolve.runtime.js", () => {
     return normalizedParts.join(separator);
   };
   const resolveSessionFile = (sessionId: string, agentId: string, sessionsDir?: string): string =>
-    joinPath(sessionsDir ?? ".openclaw", "agents", agentId, "sessions", `${sessionId}.jsonl`);
+    joinPath(sessionsDir ?? ".cimiclaw", "agents", agentId, "sessions", `${sessionId}.jsonl`);
 
   return {
     resolveSessionTranscriptFile: vi.fn(

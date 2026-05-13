@@ -66,7 +66,7 @@ function createCandidate(rootDir: string): PluginCandidate {
     "utf8",
   );
   fs.writeFileSync(
-    path.join(rootDir, "openclaw.plugin.json"),
+    path.join(rootDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: "demo",
       name: "Demo",
@@ -130,7 +130,7 @@ function createIndex(
     plugins: [
       {
         pluginId,
-        manifestPath: path.join(pluginRoot, "openclaw.plugin.json"),
+        manifestPath: path.join(pluginRoot, "cimiclaw.plugin.json"),
         manifestHash: "manifest-hash",
         rootDir: pluginRoot,
         origin: "global",
@@ -323,7 +323,7 @@ describe("plugin registry facade", () => {
       env,
       index,
     });
-    fs.unlinkSync(path.join(rootDir, "openclaw.plugin.json"));
+    fs.unlinkSync(path.join(rootDir, "cimiclaw.plugin.json"));
 
     expect(listPluginContributionIds({ lookUpTable, contribution: "providers" })).toEqual(["demo"]);
     expect(resolveProviderOwners({ lookUpTable, providerId: "DEMO" })).toEqual(["demo"]);
@@ -362,7 +362,7 @@ describe("plugin registry facade", () => {
     const rootDir = makeTempDir();
     fs.writeFileSync(path.join(rootDir, "index.ts"), "", "utf8");
     fs.writeFileSync(
-      path.join(rootDir, "openclaw.plugin.json"),
+      path.join(rootDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "openai",
         configSchema: { type: "object" },
@@ -375,7 +375,7 @@ describe("plugin registry facade", () => {
       plugins: [
         {
           ...createIndex("openai").plugins[0],
-          manifestPath: path.join(rootDir, "openclaw.plugin.json"),
+          manifestPath: path.join(rootDir, "cimiclaw.plugin.json"),
           source: path.join(rootDir, "index.ts"),
           rootDir,
         },
@@ -416,7 +416,7 @@ describe("plugin registry facade", () => {
       env,
       index,
     });
-    fs.unlinkSync(path.join(rootDir, "openclaw.plugin.json"));
+    fs.unlinkSync(path.join(rootDir, "cimiclaw.plugin.json"));
 
     const normalizePluginId = createPluginRegistryIdNormalizer(index, {
       manifestRegistry: lookUpTable.manifestRegistry,
@@ -441,7 +441,7 @@ describe("plugin registry facade", () => {
     const config = {} as const;
     fs.writeFileSync(path.join(persistedRootDir, "index.ts"), "", "utf8");
     fs.writeFileSync(
-      path.join(persistedRootDir, "openclaw.plugin.json"),
+      path.join(persistedRootDir, "cimiclaw.plugin.json"),
       JSON.stringify({ id: "persisted", configSchema: { type: "object" } }),
       "utf8",
     );
@@ -451,8 +451,8 @@ describe("plugin registry facade", () => {
         plugins: [
           {
             ...createIndex("persisted").plugins[0],
-            manifestPath: path.join(persistedRootDir, "openclaw.plugin.json"),
-            manifestHash: hashFile(path.join(persistedRootDir, "openclaw.plugin.json")),
+            manifestPath: path.join(persistedRootDir, "cimiclaw.plugin.json"),
+            manifestHash: hashFile(path.join(persistedRootDir, "cimiclaw.plugin.json")),
             source: path.join(persistedRootDir, "index.ts"),
             rootDir: persistedRootDir,
           },
@@ -512,7 +512,7 @@ describe("plugin registry facade", () => {
     });
     await writePersistedInstalledPluginIndex(persisted, { stateDir });
     fs.writeFileSync(
-      path.join(rootDir, "openclaw.plugin.json"),
+      path.join(rootDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "demo",
         name: "Demo",
@@ -623,7 +623,7 @@ describe("plugin registry facade", () => {
         plugins: [
           {
             ...createIndex("persisted").plugins[0],
-            manifestPath: path.join(staleBundledRootDir, "openclaw.plugin.json"),
+            manifestPath: path.join(staleBundledRootDir, "cimiclaw.plugin.json"),
             source: path.join(staleBundledRootDir, "index.ts"),
             rootDir: staleBundledRootDir,
             origin: "bundled",
@@ -716,7 +716,7 @@ describe("plugin registry facade", () => {
       env,
     });
     const manifestReadsAfterFirst = readFileSyncSpy.mock.calls.filter((call) =>
-      String(call[0]).endsWith("openclaw.plugin.json"),
+      String(call[0]).endsWith("cimiclaw.plugin.json"),
     ).length;
 
     const second = loadPluginRegistrySnapshotWithMetadata({
@@ -726,7 +726,7 @@ describe("plugin registry facade", () => {
       env,
     });
     const manifestReadsAfterSecond = readFileSyncSpy.mock.calls.filter((call) =>
-      String(call[0]).endsWith("openclaw.plugin.json"),
+      String(call[0]).endsWith("cimiclaw.plugin.json"),
     ).length;
 
     expect(first.source).toBe("derived");

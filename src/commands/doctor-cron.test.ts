@@ -394,7 +394,7 @@ describe("noteLegacyWhatsAppCrontabHealthCheck", () => {
       readCrontab: async () => ({
         stdout: [
           "# keep comments ignored",
-          "*/5 * * * * ~/.openclaw/bin/ensure-whatsapp.sh >> ~/.openclaw/logs/whatsapp-health.log 2>&1",
+          "*/5 * * * * ~/.cimiclaw/bin/ensure-whatsapp.sh >> ~/.cimiclaw/logs/whatsapp-health.log 2>&1",
           "0 9 * * * /usr/bin/true",
           "",
         ].join("\n"),

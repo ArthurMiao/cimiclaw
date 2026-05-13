@@ -2,7 +2,7 @@ import { mkdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { requireNodeSqlite } from "../infra/node-sqlite.js";
-import { withOpenClawTestState } from "../test-utils/openclaw-test-state.js";
+import { withOpenClawTestState } from "../test-utils/cimiclaw-test-state.js";
 import { createManagedTaskFlow, resetTaskFlowRegistryForTests } from "./task-flow-registry.js";
 import {
   createTaskRecord,

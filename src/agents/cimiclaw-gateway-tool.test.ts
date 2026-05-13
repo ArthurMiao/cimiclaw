@@ -246,7 +246,7 @@ describe("gateway tool", () => {
       if (method === "config.apply") {
         return {
           ok: true,
-          path: "/tmp/openclaw.json",
+          path: "/tmp/cimiclaw.json",
           config: { agents: { defaults: { systemPromptOverride: "You are a terse assistant." } } },
           restart: { ok: true, config: "nested field preserved" },
         };
@@ -267,7 +267,7 @@ describe("gateway tool", () => {
       ok: true,
       result: {
         ok: true,
-        path: "/tmp/openclaw.json",
+        path: "/tmp/cimiclaw.json",
         restart: { ok: true, config: "nested field preserved" },
       },
     });
@@ -298,7 +298,7 @@ describe("gateway tool", () => {
         return {
           ok: true,
           noop: true,
-          path: "/tmp/openclaw.json",
+          path: "/tmp/cimiclaw.json",
           config: { channels: { telegram: { groups: {} } } },
         };
       }
@@ -318,7 +318,7 @@ describe("gateway tool", () => {
       result: {
         ok: true,
         noop: true,
-        path: "/tmp/openclaw.json",
+        path: "/tmp/cimiclaw.json",
       },
     });
     expectConfigMutationCall({

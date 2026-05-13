@@ -20,7 +20,7 @@ import { resolveSelectedAndActiveModel } from "../auto-reply/model-runtime.js";
 import type { ThinkLevel } from "../auto-reply/thinking.js";
 import { toAgentModelListLike } from "../config/model-input.js";
 import type { SessionEntry } from "../config/sessions.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { formatDurationCompact } from "../infra/format-time/format-duration.ts";
 import {
   formatUsageWindowSummary,

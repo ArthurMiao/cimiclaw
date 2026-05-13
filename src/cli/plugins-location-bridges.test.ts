@@ -81,7 +81,7 @@ describe("listPersistedBundledPluginLocationBridges", () => {
     readPersistedInstalledPluginIndexMock.mockResolvedValue(
       makeIndex({
         pluginId: "diagnostics-otel",
-        manifestPath: "/app/dist/extensions/diagnostics-otel/openclaw.plugin.json",
+        manifestPath: "/app/dist/extensions/diagnostics-otel/cimiclaw.plugin.json",
         manifestHash: "hash",
         source: "/app/dist/extensions/diagnostics-otel/index.js",
         rootDir: "/app/dist/extensions/diagnostics-otel",
@@ -127,7 +127,7 @@ describe("listPersistedBundledPluginLocationBridges", () => {
     readPersistedInstalledPluginIndexMock.mockResolvedValue(
       makeIndex({
         pluginId: "diagnostics-otel",
-        manifestPath: "/app/dist/extensions/diagnostics-otel/openclaw.plugin.json",
+        manifestPath: "/app/dist/extensions/diagnostics-otel/cimiclaw.plugin.json",
         manifestHash: "hash",
         source: "/app/dist/extensions/diagnostics-otel/index.js",
         rootDir: "/app/dist/extensions/diagnostics-otel",
@@ -166,7 +166,7 @@ describe("listPersistedBundledPluginLocationBridges", () => {
     readPersistedInstalledPluginIndexMock.mockResolvedValue(
       makeIndex({
         pluginId: "local-only",
-        manifestPath: "/app/dist/extensions/local-only/openclaw.plugin.json",
+        manifestPath: "/app/dist/extensions/local-only/cimiclaw.plugin.json",
         manifestHash: "hash",
         source: "/app/dist/extensions/local-only/index.js",
         rootDir: "/app/dist/extensions/local-only",

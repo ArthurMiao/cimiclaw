@@ -5,7 +5,7 @@ import path from "node:path";
 import type { AssistantMessage } from "@mariozechner/pi-ai";
 import { CURRENT_SESSION_VERSION, SessionManager } from "@mariozechner/pi-coding-agent";
 import { afterEach, describe, expect, test, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   captureCompactionCheckpointSnapshotAsync,
   cleanupCompactionCheckpointSnapshot,

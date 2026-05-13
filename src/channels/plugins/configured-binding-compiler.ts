@@ -1,5 +1,5 @@
 import { listConfiguredBindings } from "../../config/bindings.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { pickFirstExistingAgentId } from "../../routing/resolve-route.js";
 import {
   normalizeOptionalLowercaseString,

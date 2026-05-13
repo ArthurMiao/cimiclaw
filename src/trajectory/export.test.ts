@@ -199,7 +199,7 @@ describe("exportTrajectoryBundle", () => {
     expect(outputDir).toBe(
       path.join(
         "/tmp/workspace",
-        ".openclaw",
+        ".cimiclaw",
         "trajectory-exports",
         "openclaw-trajectory-___evil_-2026-04-22T08-00-00",
       ),

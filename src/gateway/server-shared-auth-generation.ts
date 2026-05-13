@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveGatewayReloadSettings } from "./config-reload-settings.js";
 
 export type SharedGatewayAuthClient = {

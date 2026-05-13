@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { ensureAuthProfileStore } from "./auth-profiles/store.js";
 import { normalizeConfiguredProviderCatalogModelId } from "./model-ref-shared.js";
 import {

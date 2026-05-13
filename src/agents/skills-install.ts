@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveBrewExecutable as defaultResolveBrewExecutable } from "../infra/brew.js";
 import { formatErrorMessage } from "../infra/errors.js";
 import {
@@ -124,7 +124,7 @@ function resolveDefaultNodeInstallStateDir({
   if (platform !== "win32" && getuid?.() === 0) {
     return path.join(path.parse(cwd).root, "var", "lib", "openclaw");
   }
-  return path.join(homedir(), ".openclaw");
+  return path.join(homedir(), ".cimiclaw");
 }
 
 async function buildNodeInstallEnv(prefs: SkillsInstallPreferences): Promise<NodeJS.ProcessEnv> {

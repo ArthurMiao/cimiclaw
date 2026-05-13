@@ -4,7 +4,7 @@ import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { CommandContext } from "../auto-reply/reply/commands-types.js";
 import { clearConfigCache } from "../config/config.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { runCrestodianRescueMessage } from "./rescue-message.js";
 
 const originalStateDir = process.env.OPENCLAW_STATE_DIR;
@@ -66,7 +66,7 @@ describeLive("Crestodian live rescue channel smoke", () => {
 
   it("handles /crestodian status and a persistent approval roundtrip", async () => {
     const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "crestodian-live-rescue-"));
-    const configPath = path.join(tempDir, "openclaw.json");
+    const configPath = path.join(tempDir, "cimiclaw.json");
     vi.stubEnv("OPENCLAW_STATE_DIR", tempDir);
     vi.stubEnv("OPENCLAW_CONFIG_PATH", configPath);
     await fs.writeFile(

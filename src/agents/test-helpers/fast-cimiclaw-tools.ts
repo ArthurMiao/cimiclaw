@@ -56,7 +56,7 @@ const createOpenClawToolsMock = vi.fn(
   },
 );
 
-vi.mock("../openclaw-tools.js", () => ({
+vi.mock("../cimiclaw-tools.js", () => ({
   createOpenClawTools: createOpenClawToolsMock,
   __testing: {
     setDepsForTest: () => {},

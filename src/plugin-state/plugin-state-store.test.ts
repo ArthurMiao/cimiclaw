@@ -4,7 +4,7 @@ import { requireNodeSqlite } from "../infra/node-sqlite.js";
 import {
   createOpenClawTestState,
   type OpenClawTestState,
-} from "../test-utils/openclaw-test-state.js";
+} from "../test-utils/cimiclaw-test-state.js";
 import {
   clearPluginStateStoreForTests,
   closePluginStateSqliteStore,

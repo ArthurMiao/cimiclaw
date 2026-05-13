@@ -441,7 +441,7 @@ describe("browser config", () => {
           platform: "linux",
           env: noDisplayEnv,
         }),
-      ).toContain("browser.profiles.openclaw.headless=false");
+      ).toContain("browser.profiles.cimiclaw.headless=false");
     });
   });
 

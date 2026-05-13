@@ -250,7 +250,7 @@ describe("runEmbeddedPiAgent overflow compaction trigger routing", () => {
 
     expect(mockedEnsureAuthProfileStore).not.toHaveBeenCalled();
     expect(mockedEnsureAuthProfileStoreWithoutExternalProfiles).toHaveBeenCalledWith(
-      expect.stringMatching(/[/\\]\.openclaw[/\\]agents[/\\]main[/\\]agent$/),
+      expect.stringMatching(/[/\\]\.cimiclaw[/\\]agents[/\\]main[/\\]agent$/),
       { allowKeychainPrompt: false },
     );
   });

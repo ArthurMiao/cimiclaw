@@ -826,7 +826,7 @@ export function resolveDefaultTrajectoryExportDir(params: {
   const sessionFileName = safeTrajectorySessionFileName(params.sessionId);
   return path.join(
     params.workspaceDir,
-    ".openclaw",
+    ".cimiclaw",
     "trajectory-exports",
     `openclaw-trajectory-${sessionFileName.slice(0, 8)}-${timestamp}`,
   );

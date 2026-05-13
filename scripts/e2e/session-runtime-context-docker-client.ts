@@ -53,7 +53,7 @@ function messageText(content: unknown): string {
 }
 
 async function verifyRuntimeContextTranscriptShape(root: string) {
-  const sessionFile = path.join(root, ".openclaw", "agents", "main", "sessions", "runtime.jsonl");
+  const sessionFile = path.join(root, ".cimiclaw", "agents", "main", "sessions", "runtime.jsonl");
   await fs.mkdir(path.dirname(sessionFile), { recursive: true });
   const sessionManager = SessionManager.open(sessionFile);
   const effectivePrompt = [
@@ -190,7 +190,7 @@ async function seedBrokenSession(stateDir: string): Promise<string> {
 }
 
 async function verifyDoctorRepair(root: string) {
-  const stateDir = path.join(root, ".openclaw");
+  const stateDir = path.join(root, ".cimiclaw");
   const configPath = path.join(stateDir, "openclaw.json");
   const sessionFile = await seedBrokenSession(stateDir);
   await fs.mkdir(path.dirname(configPath), { recursive: true });
@@ -245,14 +245,14 @@ async function verifyDoctorRepair(root: string) {
 async function main() {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-session-runtime-context-"));
   process.env.HOME = root;
-  process.env.OPENCLAW_STATE_DIR = path.join(root, ".openclaw");
-  process.env.OPENCLAW_CONFIG_PATH = path.join(process.env.OPENCLAW_STATE_DIR, "openclaw.json");
+  process.env.cimiclaw_STATE_DIR = path.join(root, ".cimiclaw");
+  process.env.cimiclaw_CONFIG_PATH = path.join(process.env.cimiclaw_STATE_DIR, "openclaw.json");
   try {
     await verifyRuntimeContextTranscriptShape(root);
     await verifyDoctorRepair(root);
     console.log("session runtime context Docker E2E passed");
   } finally {
-    if (process.env.OPENCLAW_SESSION_RUNTIME_CONTEXT_KEEP_ARTIFACTS !== "1") {
+    if (process.env.cimiclaw_SESSION_RUNTIME_CONTEXT_KEEP_ARTIFACTS !== "1") {
       await fs.rm(root, { recursive: true, force: true });
     } else {
       console.error(`kept artifacts: ${root}`);

@@ -131,7 +131,7 @@ Define providers under `secrets.providers`:
       default: { source: "env" },
       filemain: {
         source: "file",
-        path: "~/.openclaw/secrets.json",
+        path: "~/.cimiclaw/secrets.json",
         mode: "json", // or "singleValue"
       },
       vault: {
@@ -374,7 +374,7 @@ Runtime-minted or rotating credentials and OAuth refresh material are intentiona
 Warning and audit signals:
 
 - `SECRETS_REF_OVERRIDES_PLAINTEXT` (runtime warning)
-- `REF_SHADOWED` (audit finding when `auth-profiles.json` credentials take precedence over `openclaw.json` refs)
+- `REF_SHADOWED` (audit finding when `auth-profiles.json` credentials take precedence over `cimiclaw.json` refs)
 
 Google Chat compatibility behavior:
 
@@ -469,10 +469,10 @@ Default operator flow:
   <Accordion title="secrets audit">
     Findings include:
 
-    - plaintext values at rest (`openclaw.json`, `auth-profiles.json`, `.env`, and generated `agents/*/agent/models.json`)
+    - plaintext values at rest (`cimiclaw.json`, `auth-profiles.json`, `.env`, and generated `agents/*/agent/models.json`)
     - plaintext sensitive provider header residues in generated `models.json` entries
     - unresolved refs
-    - precedence shadowing (`auth-profiles.json` taking priority over `openclaw.json` refs)
+    - precedence shadowing (`auth-profiles.json` taking priority over `cimiclaw.json` refs)
     - legacy residues (`auth.json`, OAuth reminders)
 
     Exec note:
@@ -489,7 +489,7 @@ Default operator flow:
     Interactive helper that:
 
     - configures `secrets.providers` first (`env`/`file`/`exec`, add/edit/remove)
-    - lets you select supported secret-bearing fields in `openclaw.json` plus `auth-profiles.json` for one agent scope
+    - lets you select supported secret-bearing fields in `cimiclaw.json` plus `auth-profiles.json` for one agent scope
     - can create a new `auth-profiles.json` mapping directly in the target picker
     - captures SecretRef details (`source`, `provider`, `id`)
     - runs preflight resolution
@@ -559,9 +559,9 @@ Some SecretInput unions are easier to configure in raw editor mode than in form 
 
 ## Related
 
-- [Authentication](/gateway/authentication) â€” auth setup
-- [CLI: secrets](/cli/secrets) â€” CLI commands
-- [Environment Variables](/help/environment) â€” environment precedence
-- [SecretRef Credential Surface](/reference/secretref-credential-surface) â€” credential surface
-- [Secrets Apply Plan Contract](/gateway/secrets-plan-contract) â€” plan contract details
-- [Security](/gateway/security) â€” security posture
+- [Authentication](/gateway/authentication) â€?auth setup
+- [CLI: secrets](/cli/secrets) â€?CLI commands
+- [Environment Variables](/help/environment) â€?environment precedence
+- [SecretRef Credential Surface](/reference/secretref-credential-surface) â€?credential surface
+- [Secrets Apply Plan Contract](/gateway/secrets-plan-contract) â€?plan contract details
+- [Security](/gateway/security) â€?security posture

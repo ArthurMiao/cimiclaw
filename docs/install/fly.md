@@ -17,8 +17,8 @@ read_when:
 
 ## Beginner quick path
 
-1. Clone repo â†’ customize `fly.toml`
-2. Create app + volume â†’ set secrets
+1. Clone repo â†?customize `fly.toml`
+2. Create app + volume â†?set secrets
 3. Deploy with `fly deploy`
 4. SSH in to create config or use Control UI
 
@@ -112,7 +112,7 @@ read_when:
 
     - Non-loopback binds (`--bind lan`) require a valid gateway auth path. This Fly.io example uses `OPENCLAW_GATEWAY_TOKEN`, but `gateway.auth.password` or a correctly configured non-loopback `trusted-proxy` deployment also satisfy the requirement.
     - Treat these tokens like passwords.
-    - **Prefer env vars over config file** for all API keys and tokens. This keeps secrets out of `openclaw.json` where they could be accidentally exposed or logged.
+    - **Prefer env vars over config file** for all API keys and tokens. This keeps secrets out of `cimiclaw.json` where they could be accidentally exposed or logged.
 
   </Step>
 
@@ -150,7 +150,7 @@ read_when:
 
     ```bash
     mkdir -p /data
-    cat > /data/openclaw.json << 'EOF'
+    cat > /data/cimiclaw.json << 'EOF'
     {
       "agents": {
         "defaults": {
@@ -207,7 +207,7 @@ read_when:
     EOF
     ```
 
-    **Note:** With `OPENCLAW_STATE_DIR=/data`, the config path is `/data/openclaw.json`.
+    **Note:** With `OPENCLAW_STATE_DIR=/data`, the config path is `/data/cimiclaw.json`.
 
     **Note:** Replace `https://my-openclaw.fly.dev` with your real Fly app
     origin. Gateway startup seeds local Control UI origins from the runtime
@@ -312,12 +312,12 @@ The lock file is at `/data/gateway.*.lock` (not in a subdirectory).
 
 ### Config not being read
 
-`--allow-unconfigured` only bypasses the startup guard. It does not create or repair `/data/openclaw.json`, so make sure your real config exists and includes `gateway.mode="local"` when you want a normal local gateway start.
+`--allow-unconfigured` only bypasses the startup guard. It does not create or repair `/data/cimiclaw.json`, so make sure your real config exists and includes `gateway.mode="local"` when you want a normal local gateway start.
 
 Verify the config exists:
 
 ```bash
-fly ssh console --command "cat /data/openclaw.json"
+fly ssh console --command "cat /data/cimiclaw.json"
 ```
 
 ### Writing config via SSH
@@ -326,17 +326,17 @@ The `fly ssh console -C` command doesn't support shell redirection. To write a c
 
 ```bash
 # Use echo + tee (pipe from local to remote)
-echo '{"your":"config"}' | fly ssh console -C "tee /data/openclaw.json"
+echo '{"your":"config"}' | fly ssh console -C "tee /data/cimiclaw.json"
 
 # Or use sftp
 fly sftp shell
-> put /local/path/config.json /data/openclaw.json
+> put /local/path/config.json /data/cimiclaw.json
 ```
 
 **Note:** `fly sftp` may fail if the file already exists. Delete first:
 
 ```bash
-fly ssh console --command "rm /data/openclaw.json"
+fly ssh console --command "rm /data/cimiclaw.json"
 ```
 
 ### State not persisting

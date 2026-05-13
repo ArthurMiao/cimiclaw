@@ -1,5 +1,5 @@
 import { STATE_DIR } from "../config/paths.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   emitTrustedDiagnosticEvent,
   onInternalDiagnosticEvent,

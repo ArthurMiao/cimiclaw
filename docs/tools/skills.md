@@ -23,7 +23,7 @@ OpenClaw loads skills from these sources, **highest precedence first**:
 | 1   | Workspace skills      | `<workspace>/skills`             |
 | 2   | Project agent skills  | `<workspace>/.agents/skills`     |
 | 3   | Personal agent skills | `~/.agents/skills`               |
-| 4   | Managed/local skills  | `~/.openclaw/skills`             |
+| 4   | Managed/local skills  | `~/.cimiclaw/skills`             |
 | 5   | Bundled skills        | shipped with the install         |
 | 6   | Extra skill folders   | `skills.load.extraDirs` (config) |
 
@@ -46,10 +46,10 @@ In **multi-agent** setups each agent has its own workspace:
 | Per-agent            | `<workspace>/skills`                        | Only that agent             |
 | Project-agent        | `<workspace>/.agents/skills`                | Only that workspace's agent |
 | Personal-agent       | `~/.agents/skills`                          | All agents on that machine  |
-| Shared managed/local | `~/.openclaw/skills`                        | All agents on that machine  |
+| Shared managed/local | `~/.cimiclaw/skills`                        | All agents on that machine  |
 | Shared extra dirs    | `skills.load.extraDirs` (lowest precedence) | All agents on that machine  |
 
-Same name in multiple places → highest source wins. Workspace beats
+Same name in multiple places 鈫?highest source wins. Workspace beats
 project-agent, beats personal-agent, beats managed/local, beats bundled,
 beats extra dirs.
 
@@ -89,7 +89,7 @@ allowlists decide which skills an agent can actually use.
 ## Plugins and skills
 
 Plugins can ship their own skills by listing `skills` directories in
-`openclaw.plugin.json` (paths relative to the plugin root). Plugin skills
+`cimiclaw.plugin.json` (paths relative to the plugin root). Plugin skills
 load when the plugin is enabled. This is the right place for tool-specific
 operating guides that are too long for the tool description but should be
 available whenever the plugin is installed - for example, the browser
@@ -149,7 +149,7 @@ archive with `skills.upload.begin`, `skills.upload.chunk`, and
 an explicit admin upload path for trusted clients, not the normal
 `openclaw skills install <slug>` or ClawHub install flow. It is off by default
 and only works when `skills.install.allowUploadedArchives: true` is set in
-`openclaw.json`. Upload mode still installs into the default agent workspace
+`cimiclaw.json`. Upload mode still installs into the default agent workspace
 `skills/<slug>` directory; the archive's internal folder name is ignored for the
 final install target.
 
@@ -262,7 +262,7 @@ Fields under `metadata.openclaw`:
   Env var must exist or be provided in config.
 </ParamField>
 <ParamField path="requires.config" type="string[]">
-  List of `openclaw.json` paths that must be truthy.
+  List of `cimiclaw.json` paths that must be truthy.
 </ParamField>
 <ParamField path="primaryEnv" type="string">
   Env var name associated with `skills.entries.<name>.apiKey`.
@@ -297,7 +297,7 @@ metadata:
   {
     "openclaw":
       {
-        "emoji": "♊️",
+        "emoji": "鈾婏笍",
         "requires": { "bins": ["gemini"] },
         "install":
           [
@@ -319,14 +319,14 @@ metadata:
     - If multiple installers are listed, the gateway picks a single preferred option (brew when available, otherwise node).
     - If all installers are `download`, OpenClaw lists each entry so you can see the available artifacts.
     - Installer specs can include `os: ["darwin"|"linux"|"win32"]` to filter options by platform.
-    - Node installs honor `skills.install.nodeManager` in `openclaw.json` (default: npm; options: npm/pnpm/yarn/bun). This only affects skill installs; the Gateway runtime should still be Node - Bun is not recommended for WhatsApp/Telegram.
+    - Node installs honor `skills.install.nodeManager` in `cimiclaw.json` (default: npm; options: npm/pnpm/yarn/bun). This only affects skill installs; the Gateway runtime should still be Node - Bun is not recommended for WhatsApp/Telegram.
     - Gateway-backed installer selection is preference-driven: when install specs mix kinds, OpenClaw prefers Homebrew when `skills.install.preferBrew` is enabled and `brew` exists, then `uv`, then the configured node manager, then other fallbacks like `go` or `download`.
     - If every install spec is `download`, OpenClaw surfaces all download options instead of collapsing to one preferred installer.
 
   </Accordion>
   <Accordion title="Per-installer details">
     - **Go installs:** if `go` is missing and `brew` is available, the gateway installs Go via Homebrew first and sets `GOBIN` to Homebrew's `bin` when possible.
-    - **Download installs:** `url` (required), `archive` (`tar.gz` | `tar.bz2` | `zip`), `extract` (default: auto when archive detected), `stripComponents`, `targetDir` (default: `~/.openclaw/tools/<skillKey>`).
+    - **Download installs:** `url` (required), `archive` (`tar.gz` | `tar.bz2` | `zip`), `extract` (default: auto when archive detected), `stripComponents`, `targetDir` (default: `~/.cimiclaw/tools/<skillKey>`).
 
   </Accordion>
 </AccordionGroup>
@@ -334,7 +334,7 @@ metadata:
 ## Config overrides
 
 Bundled and managed skills can be toggled and supplied with env values
-under `skills.entries` in `~/.openclaw/openclaw.json`:
+under `skills.entries` in `~/.cimiclaw/cimiclaw.json`:
 
 ```json5
 {
@@ -470,24 +470,24 @@ When skills are eligible, OpenClaw injects a compact XML list of available
 skills into the system prompt (via `formatSkillsForPrompt` in
 `pi-coding-agent`). The cost is deterministic:
 
-- **Base overhead** (only when ≥1 skill): 195 characters.
+- **Base overhead** (only when 鈮? skill): 195 characters.
 - **Per skill:** 97 characters + the length of the XML-escaped `<name>`, `<description>`, and `<location>` values.
 
 Formula (characters):
 
 ```text
-total = 195 + Σ (97 + len(name_escaped) + len(description_escaped) + len(location_escaped))
+total = 195 + 危 (97 + len(name_escaped) + len(description_escaped) + len(location_escaped))
 ```
 
 XML escaping expands `& < > " '` into entities (`&amp;`, `&lt;`, etc.),
 increasing length. Token counts vary by model tokenizer. A rough
-OpenAI-style estimate is ~4 chars/token, so **97 chars ≈ 24 tokens** per
+OpenAI-style estimate is ~4 chars/token, so **97 chars 鈮?24 tokens** per
 skill plus your actual field lengths.
 
 ## Managed skills lifecycle
 
 OpenClaw ships a baseline set of skills as **bundled skills** with the
-install (npm package or OpenClaw.app). `~/.openclaw/skills` exists for
+install (npm package or OpenClaw.app). `~/.cimiclaw/skills` exists for
 local overrides - for example, pinning or patching a skill without
 changing the bundled copy. Workspace skills are user-owned and override
 both on name conflicts.

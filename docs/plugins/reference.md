@@ -9,7 +9,7 @@ title: "Plugin reference"
 # Plugin reference
 
 This page is generated from `extensions/*/package.json` and
-`openclaw.plugin.json`. Regenerate it with:
+`cimiclaw.plugin.json`. Regenerate it with:
 
 ```bash
 pnpm plugins:inventory:gen

@@ -11,11 +11,11 @@ services:
       # Pin container-side workspace and config paths so host values written to
       # `.env` (used by Compose for the bind-mount source below) cannot leak
       # into runtime code that resolves these env vars inside the container.
-      # Without this override, a macOS host path like /Users/<you>/.openclaw/...
+      # Without this override, a macOS host path like /Users/<you>/.cimiclaw/...
       # imported from .env caused first-reply `mkdir '/Users'` EACCES failures
       # in Linux Docker (#77436).
-      OPENCLAW_CONFIG_DIR: /home/node/.openclaw
-      OPENCLAW_WORKSPACE_DIR: /home/node/.openclaw/workspace
+      OPENCLAW_CONFIG_DIR: /home/node/.cimiclaw
+      OPENCLAW_WORKSPACE_DIR: /home/node/.cimiclaw/workspace
       OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN:-}
       OPENCLAW_ALLOW_INSECURE_PRIVATE_WS: ${OPENCLAW_ALLOW_INSECURE_PRIVATE_WS:-}
       # Empty means auto: Bonjour disables itself in detected containers.
@@ -36,8 +36,8 @@ services:
       CLAUDE_WEB_COOKIE: ${CLAUDE_WEB_COOKIE:-}
       TZ: ${OPENCLAW_TZ:-UTC}
     volumes:
-      - ${OPENCLAW_CONFIG_DIR:-${HOME:-/tmp}/.openclaw}:/home/node/.openclaw
-      - ${OPENCLAW_WORKSPACE_DIR:-${HOME:-/tmp}/.openclaw/workspace}:/home/node/.openclaw/workspace
+      - ${OPENCLAW_CONFIG_DIR:-${HOME:-/tmp}/.cimiclaw}:/home/node/.cimiclaw
+      - ${OPENCLAW_WORKSPACE_DIR:-${HOME:-/tmp}/.cimiclaw/workspace}:/home/node/.cimiclaw/workspace
       ## Uncomment the lines below to enable sandbox isolation
       ## (agents.defaults.sandbox). Requires Docker CLI in the image
       ## (build with --build-arg OPENCLAW_INSTALL_DOCKER_CLI=1) or use
@@ -100,8 +100,8 @@ services:
       TERM: xterm-256color
       # Pin container-side workspace and config paths so host values written to
       # `.env` cannot leak into runtime code via the env_file import (#77436).
-      OPENCLAW_CONFIG_DIR: /home/node/.openclaw
-      OPENCLAW_WORKSPACE_DIR: /home/node/.openclaw/workspace
+      OPENCLAW_CONFIG_DIR: /home/node/.cimiclaw
+      OPENCLAW_WORKSPACE_DIR: /home/node/.cimiclaw/workspace
       OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN:-}
       OPENCLAW_ALLOW_INSECURE_PRIVATE_WS: ${OPENCLAW_ALLOW_INSECURE_PRIVATE_WS:-}
       BROWSER: echo
@@ -110,8 +110,8 @@ services:
       CLAUDE_WEB_COOKIE: ${CLAUDE_WEB_COOKIE:-}
       TZ: ${OPENCLAW_TZ:-UTC}
     volumes:
-      - ${OPENCLAW_CONFIG_DIR:-${HOME:-/tmp}/.openclaw}:/home/node/.openclaw
-      - ${OPENCLAW_WORKSPACE_DIR:-${HOME:-/tmp}/.openclaw/workspace}:/home/node/.openclaw/workspace
+      - ${OPENCLAW_CONFIG_DIR:-${HOME:-/tmp}/.cimiclaw}:/home/node/.cimiclaw
+      - ${OPENCLAW_WORKSPACE_DIR:-${HOME:-/tmp}/.cimiclaw/workspace}:/home/node/.cimiclaw/workspace
     stdin_open: true
     tty: true
     init: true

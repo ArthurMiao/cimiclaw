@@ -12,7 +12,7 @@ export async function appendMemoryWikiLog(
   vaultRoot: string,
   entry: MemoryWikiLogEntry,
 ): Promise<void> {
-  const logPath = path.join(vaultRoot, ".openclaw-wiki", "log.jsonl");
+  const logPath = path.join(vaultRoot, ".cimiclaw-wiki", "log.jsonl");
   await fs.mkdir(path.dirname(logPath), { recursive: true });
   await appendRegularFile({
     filePath: logPath,

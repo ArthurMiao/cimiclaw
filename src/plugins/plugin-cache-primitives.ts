@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 
 export type PluginLruCacheResult<T> = { hit: true; value: T } | { hit: false };
 

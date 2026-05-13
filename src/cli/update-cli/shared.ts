@@ -2,7 +2,7 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { resolveOpenClawPackageRoot } from "../../infra/openclaw-root.js";
+import { resolveOpenClawPackageRoot } from "../../infra/cimiclaw-root.js";
 import { readPackageName, readPackageVersion } from "../../infra/package-json.js";
 import { normalizePackageTagInput } from "../../infra/package-tag.js";
 import { trimLogTail } from "../../infra/restart-sentinel.js";
@@ -264,7 +264,7 @@ const COMPLETION_CACHE_MANUAL_REFRESH_HINT =
   "Shell tab-completion may be stale; refresh manually with: openclaw completion --write-state";
 
 export async function tryWriteCompletionCache(root: string, jsonMode: boolean): Promise<void> {
-  const binPath = path.join(root, "openclaw.mjs");
+  const binPath = path.join(root, "cimiclaw.mjs");
   if (!(await pathExists(binPath))) {
     return;
   }

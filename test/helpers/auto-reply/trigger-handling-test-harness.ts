@@ -6,7 +6,7 @@ import { afterAll, afterEach, beforeAll, expect, vi } from "vitest";
 import { clearRuntimeAuthProfileStoreSnapshots } from "../../../src/agents/auth-profiles.js";
 import type { EmbeddedPiQueueMessageOutcome } from "../../../src/agents/pi-embedded-runner/runs.js";
 import { withFastReplyConfig } from "../../../src/auto-reply/reply/get-reply-fast-path.js";
-import type { OpenClawConfig } from "../../../src/config/types.openclaw.js";
+import type { OpenClawConfig } from "../../../src/config/types.cimiclaw.js";
 
 // Avoid exporting vitest mock types (TS2742 under pnpm + d.ts emit).
 type AnyMock = any;
@@ -220,7 +220,7 @@ function setTempHomeEnv(home: string): void {
   process.env.HOME = home;
   process.env.USERPROFILE = home;
   delete process.env.OPENCLAW_HOME;
-  process.env.OPENCLAW_STATE_DIR = join(home, ".openclaw");
+  process.env.OPENCLAW_STATE_DIR = join(home, ".cimiclaw");
 
   if (process.platform !== "win32") {
     return;
@@ -253,7 +253,7 @@ afterAll(async () => {
 export async function withTempHome<T>(fn: (home: string) => Promise<T>): Promise<T> {
   const home = join(suiteTempHomeRoot, `case-${++suiteTempHomeId}`);
   const snapshot = snapshotTempHomeEnv();
-  await fs.mkdir(join(home, ".openclaw", "agents", "main", "sessions"), { recursive: true });
+  await fs.mkdir(join(home, ".cimiclaw", "agents", "main", "sessions"), { recursive: true });
   setTempHomeEnv(home);
 
   try {

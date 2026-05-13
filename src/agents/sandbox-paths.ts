@@ -9,7 +9,7 @@ import {
 } from "../infra/local-file-access.js";
 import { assertNoPathAliasEscape, type PathAliasPolicy } from "../infra/path-alias-guards.js";
 import { isPathInside } from "../infra/path-guards.js";
-import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-cimiclaw-dir.js";
 import { isPassThroughRemoteMediaSource } from "../media/media-source-url.js";
 import { resolveConfigDir } from "../utils.js";
 

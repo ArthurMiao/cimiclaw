@@ -209,7 +209,7 @@ function resolveMode(input: string): "off" | "serve" | "funnel" {
 }
 
 function resolveDefaultStorePath(config: VoiceCallConfig): string {
-  const preferred = path.join(os.homedir(), ".openclaw", "voice-calls");
+  const preferred = path.join(os.homedir(), ".cimiclaw", "voice-calls");
   const resolvedPreferred = resolveUserPath(preferred);
   const existing =
     [resolvedPreferred].find((dir) => {

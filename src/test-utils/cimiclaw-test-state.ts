@@ -94,11 +94,11 @@ function resolveLayout(
 } {
   if (layout === "home") {
     const home = path.join(root, "home");
-    const stateDir = path.join(home, ".openclaw");
+    const stateDir = path.join(home, ".cimiclaw");
     return {
       home,
       stateDir,
-      configPath: path.join(stateDir, "openclaw.json"),
+      configPath: path.join(stateDir, "cimiclaw.json"),
       workspaceDir: path.join(home, "workspace"),
     };
   }
@@ -108,7 +108,7 @@ function resolveLayout(
     return {
       home,
       stateDir,
-      configPath: path.join(root, "config", "openclaw.json"),
+      configPath: path.join(root, "config", "cimiclaw.json"),
       workspaceDir: path.join(root, "workspace"),
     };
   }
@@ -116,7 +116,7 @@ function resolveLayout(
   return {
     home: path.join(root, "home"),
     stateDir,
-    configPath: path.join(stateDir, "openclaw.json"),
+    configPath: path.join(stateDir, "cimiclaw.json"),
     workspaceDir: path.join(root, "workspace"),
   };
 }

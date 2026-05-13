@@ -2,7 +2,7 @@ import type { AgentMessage } from "@mariozechner/pi-agent-core";
 import { SessionManager } from "@mariozechner/pi-coding-agent";
 import type { SessionEntry } from "../../config/sessions/types.js";
 import type { AgentCompactionMode } from "../../config/types.agent-defaults.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { ensureContextEnginesInitialized as ensureContextEnginesInitializedImpl } from "../../context-engine/init.js";
 import { resolveContextEngine as resolveContextEngineImpl } from "../../context-engine/registry.js";
 import type { ContextEngine } from "../../context-engine/types.js";

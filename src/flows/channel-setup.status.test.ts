@@ -315,7 +315,7 @@ describe("resolveChannelSetupSelectionContributions", () => {
     if (typeof docsLink !== "function") {
       throw new Error("Expected docs link formatter");
     }
-    expect(docsLink("/channels/zalo", "Docs")).toContain("https://docs.openclaw.ai/channels/zalo");
+    expect(docsLink("/channels/zalo", "Docs")).toContain("https://docs.cimiclaw.ai/channels/zalo");
     expect(lines).toEqual(["Zalo\\nBot — Setup\\nhelp"]);
   });
 });

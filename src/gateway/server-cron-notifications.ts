@@ -1,6 +1,6 @@
 import type { CliDeps } from "../cli/deps.types.js";
 import type { CronFailureDestinationConfig } from "../config/types.cron.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   resolveCronDeliveryPlan,
   resolveFailureDestination,

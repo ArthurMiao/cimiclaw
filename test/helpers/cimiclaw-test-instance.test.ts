@@ -33,8 +33,8 @@ describe("openclaw test instance", () => {
     try {
       expect(process.env.HOME).toBe(previousHome);
       expect(inst.homeDir).toBe(path.join(inst.state.root, "home"));
-      expect(inst.stateDir).toBe(path.join(inst.homeDir, ".openclaw"));
-      expect(inst.configPath).toBe(path.join(inst.stateDir, "openclaw.json"));
+      expect(inst.stateDir).toBe(path.join(inst.homeDir, ".cimiclaw"));
+      expect(inst.configPath).toBe(path.join(inst.stateDir, "cimiclaw.json"));
       expect(inst.env.HOME).toBe(inst.homeDir);
       expect(inst.env.OPENCLAW_STATE_DIR).toBe(inst.stateDir);
       expect(inst.env.OPENCLAW_CONFIG_PATH).toBe(inst.configPath);

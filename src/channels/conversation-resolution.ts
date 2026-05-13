@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveConversationIdFromTargets } from "../infra/outbound/conversation-id.js";
 import { normalizeConversationTargetRef } from "../infra/outbound/session-binding-normalization.js";
 import { stringifyRouteThreadId } from "../plugin-sdk/channel-route.js";

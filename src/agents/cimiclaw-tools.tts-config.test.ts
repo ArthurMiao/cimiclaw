@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
-import { __testing, createOpenClawTools } from "./openclaw-tools.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
+import { __testing, createOpenClawTools } from "./cimiclaw-tools.js";
 import type { AnyAgentTool } from "./tools/common.js";
 
 const mocks = vi.hoisted(() => {
@@ -26,11 +26,11 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("./openclaw-plugin-tools.js", () => ({
+vi.mock("./cimiclaw-plugin-tools.js", () => ({
   resolveOpenClawPluginToolsForOptions: () => [],
 }));
 
-vi.mock("./openclaw-tools.nodes-workspace-guard.js", () => ({
+vi.mock("./cimiclaw-tools.nodes-workspace-guard.js", () => ({
   applyNodesToolWorkspaceGuard: (tool: AnyAgentTool) => tool,
 }));
 

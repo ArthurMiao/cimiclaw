@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { resolveProviderIdForAuth } from "../provider-auth-aliases.js";
 import { findNormalizedProviderValue, normalizeProviderId } from "../provider-id.js";
 import {

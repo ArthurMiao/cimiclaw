@@ -28,10 +28,10 @@ See [Security](/gateway/security) and [VPS hosting](/vps).
 - Rent a small Linux server (Hetzner VPS)
 - Install Docker (isolated app runtime)
 - Start the OpenClaw Gateway in Docker
-- Persist `~/.openclaw` + `~/.openclaw/workspace` on the host (survives restarts/rebuilds)
+- Persist `~/.cimiclaw` + `~/.cimiclaw/workspace` on the host (survives restarts/rebuilds)
 - Access the Control UI from your laptop via an SSH tunnel
 
-That mounted `~/.openclaw` state includes `openclaw.json`, per-agent
+That mounted `~/.cimiclaw` state includes `cimiclaw.json`, per-agent
 `agents/<agentId>/agent/auth-profiles.json`, and `.env`.
 
 The Gateway can be accessed via:
@@ -119,10 +119,10 @@ For the generic Docker flow, see [Docker](/install/docker).
     All long-lived state must live on the host.
 
     ```bash
-    mkdir -p /root/.openclaw/workspace
+    mkdir -p /root/.cimiclaw/workspace
 
     # Set ownership to the container user (uid 1000):
-    chown -R 1000:1000 /root/.openclaw
+    chown -R 1000:1000 /root/.cimiclaw
     ```
 
   </Step>
@@ -136,11 +136,11 @@ For the generic Docker flow, see [Docker](/install/docker).
     OPENCLAW_GATEWAY_BIND=lan
     OPENCLAW_GATEWAY_PORT=18789
 
-    OPENCLAW_CONFIG_DIR=/root/.openclaw
-    OPENCLAW_WORKSPACE_DIR=/root/.openclaw/workspace
+    OPENCLAW_CONFIG_DIR=/root/.cimiclaw
+    OPENCLAW_WORKSPACE_DIR=/root/.cimiclaw/workspace
 
     GOG_KEYRING_PASSWORD=
-    XDG_CONFIG_HOME=/home/node/.openclaw
+    XDG_CONFIG_HOME=/home/node/.cimiclaw
     ```
 
     Set `OPENCLAW_GATEWAY_TOKEN` when you want to manage the stable gateway
@@ -157,7 +157,7 @@ For the generic Docker flow, see [Docker](/install/docker).
 
     This `.env` file is for container/runtime env such as `OPENCLAW_GATEWAY_TOKEN`.
     Stored provider OAuth/API-key auth lives in the mounted
-    `~/.openclaw/agents/<agentId>/agent/auth-profiles.json`.
+    `~/.cimiclaw/agents/<agentId>/agent/auth-profiles.json`.
 
   </Step>
 
@@ -183,8 +183,8 @@ For the generic Docker flow, see [Docker](/install/docker).
           - XDG_CONFIG_HOME=${XDG_CONFIG_HOME}
           - PATH=/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
         volumes:
-          - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw
-          - ${OPENCLAW_WORKSPACE_DIR}:/home/node/.openclaw/workspace
+          - ${OPENCLAW_CONFIG_DIR}:/home/node/.cimiclaw
+          - ${OPENCLAW_WORKSPACE_DIR}:/home/node/.cimiclaw/workspace
         ports:
           # Recommended: keep the Gateway loopback-only on the VPS; access via SSH tunnel.
           # To expose it publicly, remove the `127.0.0.1:` prefix and firewall accordingly.

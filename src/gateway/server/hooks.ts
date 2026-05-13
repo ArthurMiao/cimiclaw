@@ -7,7 +7,7 @@ import {
   resolveMainSessionKey,
   resolveMainSessionKeyFromConfig,
 } from "../../config/sessions.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { RunCronAgentTurnResult } from "../../cron/isolated-agent/run.types.js";
 import type { CronJob } from "../../cron/types.js";
 import { requestHeartbeat } from "../../infra/heartbeat-wake.js";

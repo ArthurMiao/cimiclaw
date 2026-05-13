@@ -9,7 +9,7 @@ import {
   resolveIMessageMessageId,
 } from "./monitor-reply-cache.js";
 
-// Isolate from any live ~/.openclaw/imessage/reply-cache.jsonl that the
+// Isolate from any live ~/.cimiclaw/imessage/reply-cache.jsonl that the
 // developer might have from a running gateway. Without this, the on-disk
 // hydrate path picks up production data and tests get cross-pollinated.
 //

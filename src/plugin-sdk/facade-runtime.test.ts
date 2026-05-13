@@ -374,7 +374,7 @@ describe("plugin-sdk facade runtime", () => {
       "utf8",
     );
     fs.writeFileSync(
-      path.join(lineDir, "openclaw.plugin.json"),
+      path.join(lineDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "line",
         channels: ["line"],
@@ -422,7 +422,7 @@ describe("plugin-sdk facade runtime", () => {
       "utf8",
     );
     fs.writeFileSync(
-      path.join(encodedDir, "openclaw.plugin.json"),
+      path.join(encodedDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "line",
         channels: ["line"],
@@ -477,7 +477,7 @@ describe("plugin-sdk facade runtime", () => {
       "utf8",
     );
     fs.writeFileSync(
-      path.join(dir, "demo", "openclaw.plugin.json"),
+      path.join(dir, "demo", "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "demo",
       }),

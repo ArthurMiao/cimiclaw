@@ -12,7 +12,7 @@ import {
   getOrCreateSessionMcpRuntime,
 } from "../../dist/agents/pi-bundle-mcp-runtime.js";
 import { applyFinalEffectiveToolPolicy } from "../../dist/agents/pi-embedded-runner/effective-tool-policy.js";
-import type { OpenClawConfig } from "../../dist/config/types.openclaw.js";
+import type { OpenClawConfig } from "../../dist/config/types.cimiclaw.js";
 import { getPluginToolMeta } from "../../dist/plugins/tools.js";
 
 const require = createRequire(import.meta.url);
@@ -65,7 +65,7 @@ function applyPolicy(params: {
 
 async function main() {
   const stateDir =
-    process.env.OPENCLAW_STATE_DIR?.trim() ||
+    process.env.cimiclaw_STATE_DIR?.trim() ||
     path.join(os.tmpdir(), `openclaw-pi-bundle-mcp-${process.pid}`);
   const probeDir = path.join(stateDir, "pi-bundle-mcp-tools");
   const serverPath = path.join(probeDir, "probe-server.mjs");

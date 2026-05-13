@@ -42,7 +42,7 @@ afterEach(async () => {
 
 function createParams(baseEnv?: NodeJS.ProcessEnv) {
   return {
-    configPath: "/tmp/openclaw-qa/openclaw.json",
+    configPath: "/tmp/openclaw-qa/cimiclaw.json",
     gatewayToken: "qa-token",
     homeDir: "/tmp/openclaw-qa/home",
     stateDir: "/tmp/openclaw-qa/state",
@@ -775,7 +775,7 @@ describe("buildQaRuntimeEnv", () => {
       await rm(stagedRoot, { recursive: true, force: true });
     });
 
-    await writeFile(path.join(tempRoot, "openclaw.json"), "{}", "utf8");
+    await writeFile(path.join(tempRoot, "cimiclaw.json"), "{}", "utf8");
     await writeFile(path.join(stagedRoot, "marker.txt"), "x", "utf8");
 
     await __testing.cleanupQaGatewayTempRoots({
@@ -870,7 +870,7 @@ describe("qa bundled plugin dir", () => {
       recursive: true,
     });
     await writeFile(
-      path.join(repoRoot, "dist", "extensions", "kimi-coding", "openclaw.plugin.json"),
+      path.join(repoRoot, "dist", "extensions", "kimi-coding", "cimiclaw.plugin.json"),
       JSON.stringify({ id: "kimi", providers: ["kimi"] }),
       "utf8",
     );
@@ -900,14 +900,14 @@ describe("qa bundled plugin dir", () => {
       "utf8",
     );
     await writeFile(
-      path.join(repoRoot, "dist", "extensions", "memory-core", "openclaw.plugin.json"),
+      path.join(repoRoot, "dist", "extensions", "memory-core", "cimiclaw.plugin.json"),
       JSON.stringify({ id: "memory-core", kind: "memory" }),
       "utf8",
     );
     await mkdir(path.join(repoRoot, "extensions", "memory-core"), { recursive: true });
     await writeFile(path.join(repoRoot, "extensions", "memory-core", "package.json"), "{}", "utf8");
     await writeFile(
-      path.join(repoRoot, "extensions", "memory-core", "openclaw.plugin.json"),
+      path.join(repoRoot, "extensions", "memory-core", "cimiclaw.plugin.json"),
       JSON.stringify({ id: "memory-core", kind: "memory" }),
       "utf8",
     );
@@ -1235,7 +1235,7 @@ describe("qa bundled plugin dir", () => {
     });
     await mkdir(path.join(repoRoot, "dist", "extensions", "openai"), { recursive: true });
     await writeFile(
-      path.join(repoRoot, "dist", "extensions", "openai", "openclaw.plugin.json"),
+      path.join(repoRoot, "dist", "extensions", "openai", "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "openai",
         providers: ["openai", "openai-codex"],
@@ -1259,7 +1259,7 @@ describe("qa bundled plugin dir", () => {
     });
     await mkdir(path.join(repoRoot, "dist", "extensions", "openai"), { recursive: true });
     await writeFile(
-      path.join(repoRoot, "dist", "extensions", "openai", "openclaw.plugin.json"),
+      path.join(repoRoot, "dist", "extensions", "openai", "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "openai",
         providers: ["openai"],
@@ -1297,7 +1297,7 @@ describe("qa bundled plugin dir", () => {
   it("copies selected live provider configs from the host config", async () => {
     const configPath = path.join(
       await mkdtemp(path.join(os.tmpdir(), "qa-provider-config-")),
-      "openclaw.json",
+      "cimiclaw.json",
     );
     cleanups.push(async () => {
       await rm(path.dirname(configPath), { recursive: true, force: true });

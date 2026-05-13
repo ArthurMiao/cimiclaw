@@ -747,7 +747,7 @@ function createConfigRuntime(
           previousHash: null,
         });
         return {
-          path: "/tmp/openclaw.json",
+          path: "/tmp/cimiclaw.json",
           previousHash: null,
           snapshot: {} as never,
           nextConfig: configState,

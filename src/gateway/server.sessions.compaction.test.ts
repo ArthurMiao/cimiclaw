@@ -294,7 +294,7 @@ test("sessions.patch preserves nested model ids under provider overrides", async
         list: [{ id: "main", default: true, workspace: dir }],
       },
     };
-    const configPath = path.join(dir, "openclaw.json");
+    const configPath = path.join(dir, "cimiclaw.json");
     await fs.writeFile(configPath, JSON.stringify(cfg, null, 2), "utf-8");
 
     await withEnvAsync({ OPENCLAW_CONFIG_PATH: configPath }, async () => {

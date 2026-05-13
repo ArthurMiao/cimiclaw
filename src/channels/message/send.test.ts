@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { OutboundDeliveryError } from "../../infra/outbound/deliver-types.js";
 import type { OutboundPayloadDeliveryOutcome } from "../../infra/outbound/deliver-types.js";
 import type { OutboundDeliveryIntent } from "../../infra/outbound/deliver.js";

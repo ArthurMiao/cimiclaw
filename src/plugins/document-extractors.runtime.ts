@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveEnabledBundledManifestContractPlugins } from "./bundled-manifest-contract-plugins.js";
 import { loadBundledDocumentExtractorEntriesFromDir } from "./document-extractor-public-artifacts.js";
 import type { PluginDocumentExtractorEntry } from "./document-extractor-types.js";

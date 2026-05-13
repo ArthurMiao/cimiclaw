@@ -2,11 +2,11 @@
 summary: "Matrix MessagePresentation metadata for OpenClaw-aware clients"
 read_when:
   - Building Matrix clients that render OpenClaw rich responses
-  - Debugging com.openclaw.presentation event content
+  - Debugging com.cimiclaw.presentation event content
 title: "Matrix presentation metadata"
 ---
 
-OpenClaw can attach normalized `MessagePresentation` metadata to outbound Matrix `m.room.message` events under `com.openclaw.presentation`.
+OpenClaw can attach normalized `MessagePresentation` metadata to outbound Matrix `m.room.message` events under `com.cimiclaw.presentation`.
 
 Stock Matrix clients continue to render the plain text `body`. OpenClaw-aware clients can read the structured metadata and render native UI such as buttons, selects, context rows, and dividers.
 
@@ -18,7 +18,7 @@ The metadata is stored in Matrix event content:
 {
   "msgtype": "m.text",
   "body": "Select model\n\n- DeepSeek: /model deepseek/deepseek-chat",
-  "com.openclaw.presentation": {
+  "com.cimiclaw.presentation": {
     "version": 1,
     "type": "message.presentation",
     "title": "Select model",
@@ -66,9 +66,9 @@ For example, a button with value `/model deepseek/deepseek-chat` can be handled 
 
 ## Relationship to approval metadata
 
-`com.openclaw.presentation` is for general rich message presentation.
+`com.cimiclaw.presentation` is for general rich message presentation.
 
-Approval prompts use the dedicated `com.openclaw.approval` metadata because approvals carry safety-sensitive state, decisions, and exec/plugin details. If both metadata keys are present on the same event, clients should prefer the dedicated approval renderer.
+Approval prompts use the dedicated `com.cimiclaw.approval` metadata because approvals carry safety-sensitive state, decisions, and exec/plugin details. If both metadata keys are present on the same event, clients should prefer the dedicated approval renderer.
 
 ## Media messages
 

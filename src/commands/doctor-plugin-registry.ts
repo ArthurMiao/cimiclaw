@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { formatCliCommand } from "../cli/command-format.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { saveJsonFile } from "../infra/json-file.js";
 import { tryReadJsonSync } from "../infra/json-files.js";
 import { resolveDefaultPluginNpmDir } from "../plugins/install-paths.js";

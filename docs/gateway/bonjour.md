@@ -48,7 +48,7 @@ openclaw dns setup --apply
 This installs CoreDNS and configures it to:
 
 - listen on port 53 only on the gateway's Tailscale interfaces
-- serve your chosen domain (example: `openclaw.internal.`) from `~/.openclaw/dns/<domain>.db`
+- serve your chosen domain (example: `openclaw.internal.`) from `~/.cimiclaw/dns/<domain>.db`
 
 Validate from a tailnet-connected machine:
 
@@ -74,7 +74,7 @@ access, bind explicitly and keep auth enabled.
 
 For tailnet-only setups:
 
-- Set `gateway.bind: "tailnet"` in `~/.openclaw/openclaw.json`.
+- Set `gateway.bind: "tailnet"` in `~/.cimiclaw/cimiclaw.json`.
 - Restart the Gateway (or restart the macOS menubar app).
 
 ## What advertises
@@ -153,8 +153,8 @@ The iOS node uses `NWBrowser` to discover `_openclaw-gw._tcp`.
 
 To capture logs:
 
-- Settings → Gateway → Advanced → **Discovery Debug Logs**
-- Settings → Gateway → Advanced → **Discovery Logs** → reproduce → **Copy**
+- Settings �?Gateway �?Advanced �?**Discovery Debug Logs**
+- Settings �?Gateway �?Advanced �?**Discovery Logs** �?reproduce �?**Copy**
 
 The log includes browser state transitions and result-set changes.
 
@@ -285,7 +285,7 @@ sequences (e.g. spaces become `\032`).
 - `OPENCLAW_DISABLE_BONJOUR=1` disables LAN multicast advertising without changing plugin config; accepted truthy values are `1`, `true`, `yes`, and `on` (legacy: `OPENCLAW_DISABLE_BONJOUR`).
 - `OPENCLAW_DISABLE_BONJOUR=0` forces LAN multicast advertising on, including inside detected containers; accepted falsy values are `0`, `false`, `no`, and `off`.
 - When the Bonjour plugin is enabled and `OPENCLAW_DISABLE_BONJOUR` is unset, Bonjour advertises on normal hosts and auto-disables inside detected containers.
-- `gateway.bind` in `~/.openclaw/openclaw.json` controls the Gateway bind mode.
+- `gateway.bind` in `~/.cimiclaw/cimiclaw.json` controls the Gateway bind mode.
 - `OPENCLAW_SSH_PORT` overrides the SSH port when `sshPort` is advertised (legacy: `OPENCLAW_SSH_PORT`).
 - `OPENCLAW_TAILNET_DNS` publishes a MagicDNS hint in TXT when mDNS full mode is enabled (legacy: `OPENCLAW_TAILNET_DNS`).
 - `OPENCLAW_CLI_PATH` overrides the advertised CLI path (legacy: `OPENCLAW_CLI_PATH`).

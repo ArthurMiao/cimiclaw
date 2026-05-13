@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import type { CommandContext } from "../auto-reply/reply/commands-types.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { extractCrestodianRescueMessage, runCrestodianRescueMessage } from "./rescue-message.js";
 
@@ -15,7 +15,7 @@ type TestConfig = Record<string, unknown>;
 
 const mockConfig = vi.hoisted(() => {
   const state = {
-    path: "/tmp/openclaw.json",
+    path: "/tmp/cimiclaw.json",
     config: {} as TestConfig,
     hash: "mock-hash-0" as string | undefined,
   };
@@ -40,7 +40,7 @@ const mockConfig = vi.hoisted(() => {
   };
   return {
     reset() {
-      state.path = "/tmp/openclaw.json";
+      state.path = "/tmp/cimiclaw.json";
       state.config = {};
       state.hash = "mock-hash-0";
     },

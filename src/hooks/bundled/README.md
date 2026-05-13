@@ -4,13 +4,13 @@ This directory contains hooks that ship with OpenClaw. These hooks are automatic
 
 ## Available Hooks
 
-### 💾 session-memory
+### 馃捑 session-memory
 
 Automatically saves session context to memory when you issue `/new` or `/reset`.
 
 **Events**: `command:new`, `command:reset`
 **What it does**: Creates a dated memory file with LLM-generated slug based on conversation content.
-**Output**: `<workspace>/memory/YYYY-MM-DD-slug.md` (defaults to `~/.openclaw/workspace`)
+**Output**: `<workspace>/memory/YYYY-MM-DD-slug.md` (defaults to `~/.cimiclaw/workspace`)
 
 **Enable**:
 
@@ -18,7 +18,7 @@ Automatically saves session context to memory when you issue `/new` or `/reset`.
 openclaw hooks enable session-memory
 ```
 
-### 📎 bootstrap-extra-files
+### 馃搸 bootstrap-extra-files
 
 Injects extra bootstrap files (for example monorepo `AGENTS.md`/`TOOLS.md`) during prompt assembly.
 
@@ -32,13 +32,13 @@ Injects extra bootstrap files (for example monorepo `AGENTS.md`/`TOOLS.md`) duri
 openclaw hooks enable bootstrap-extra-files
 ```
 
-### 📝 command-logger
+### 馃摑 command-logger
 
 Logs all command events to a centralized audit file.
 
 **Events**: `command` (all commands)
 **What it does**: Appends JSONL entries to command log file.
-**Output**: `~/.openclaw/logs/commands.log`
+**Output**: `~/.cimiclaw/logs/commands.log`
 
 **Enable**:
 
@@ -46,7 +46,7 @@ Logs all command events to a centralized audit file.
 openclaw hooks enable command-logger
 ```
 
-### 🚀 boot-md
+### 馃殌 boot-md
 
 Runs `BOOT.md` whenever the gateway starts (after channels start).
 
@@ -71,8 +71,8 @@ Example structure:
 
 ```
 session-memory/
-├── HOOK.md          # Metadata + docs
-└── handler.ts       # Handler implementation
+鈹溾攢鈹€ HOOK.md          # Metadata + docs
+鈹斺攢鈹€ handler.ts       # Handler implementation
 ```
 
 ## HOOK.md Format
@@ -83,7 +83,7 @@ name: my-hook
 description: "Short description"
 homepage: https://docs.openclaw.ai/automation/hooks#my-hook
 metadata:
-  { "openclaw": { "emoji": "🔗", "events": ["command:new"], "requires": { "bins": ["node"] } } }
+  { "openclaw": { "emoji": "馃敆", "events": ["command:new"], "requires": { "bins": ["node"] } } }
 ---
 # Hook Title
 
@@ -107,7 +107,7 @@ Documentation goes here...
 To create your own hooks, place them in:
 
 - **Workspace hooks**: `<workspace>/hooks/` (highest precedence)
-- **Managed hooks**: `~/.openclaw/hooks/` (shared across workspaces)
+- **Managed hooks**: `~/.cimiclaw/hooks/` (shared across workspaces)
 
 Custom hooks follow the same structure as bundled hooks.
 
@@ -140,7 +140,7 @@ openclaw hooks disable command-logger
 
 ## Configuration
 
-Hooks can be configured in `~/.openclaw/openclaw.json`:
+Hooks can be configured in `~/.cimiclaw/cimiclaw.json`:
 
 ```json
 {
@@ -204,7 +204,7 @@ const myHandler: HookHandler = async (event) => {
   console.log("New command triggered!");
 
   // Optionally send message to user
-  event.messages.push("✨ Hook executed!");
+  event.messages.push("鉁?Hook executed!");
 };
 
 export default myHandler;

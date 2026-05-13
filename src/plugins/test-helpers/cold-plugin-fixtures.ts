@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 
 type ColdPluginFixture = {
   authChoiceId: string;
@@ -47,7 +47,7 @@ export function createColdPluginFixture(options: ColdPluginFixtureOptions): Cold
     "utf8",
   );
   fs.writeFileSync(
-    path.join(options.rootDir, "openclaw.plugin.json"),
+    path.join(options.rootDir, "cimiclaw.plugin.json"),
     JSON.stringify(
       {
         id: pluginId,

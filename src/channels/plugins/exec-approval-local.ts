@@ -1,5 +1,5 @@
 import type { ReplyPayload } from "../../auto-reply/reply-payload.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { hasActiveApprovalNativeRouteRuntime } from "../../infra/approval-native-route-coordinator.js";
 import { getChannelPlugin, normalizeChannelId } from "./registry.js";
 

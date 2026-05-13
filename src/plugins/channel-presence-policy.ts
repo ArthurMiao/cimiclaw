@@ -5,7 +5,7 @@ import {
   listPotentialConfiguredChannelPresenceSignals,
   type ChannelPresenceSignalSource,
 } from "../channels/config-presence.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { isSafeChannelEnvVarTriggerName } from "../secrets/channel-env-var-names.js";
 import { normalizeOptionalLowercaseString } from "../shared/string-coerce.js";
 import { resolveManifestActivationPluginIds } from "./activation-planner.js";

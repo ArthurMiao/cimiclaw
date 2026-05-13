@@ -2,7 +2,7 @@
 set -euo pipefail
 trap "" PIPE
 export TERM=xterm-256color
-source scripts/lib/openclaw-e2e-instance.sh
+source scripts/lib/cimiclaw-e2e-instance.sh
 openclaw_e2e_eval_test_state_from_b64 "${OPENCLAW_TEST_STATE_FUNCTION_B64:?missing OPENCLAW_TEST_STATE_FUNCTION_B64}"
 ONBOARD_FLAGS="--flow quickstart --auth-choice skip --skip-channels --skip-skills --skip-daemon --skip-ui"
 OPENCLAW_ENTRY="$(openclaw_e2e_resolve_entrypoint)"

@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { tryReadJsonSync } from "../infra/json-files.js";
 import { replaceFileAtomicSync } from "../infra/replace-file.js";
 import { isRecord } from "../utils.js";

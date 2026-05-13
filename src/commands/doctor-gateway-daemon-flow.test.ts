@@ -37,8 +37,8 @@ vi.mock("../config/config.js", async () => {
 });
 
 vi.mock("../daemon/constants.js", () => ({
-  resolveGatewayLaunchAgentLabel: vi.fn(() => "ai.openclaw.gateway"),
-  resolveNodeLaunchAgentLabel: vi.fn(() => "ai.openclaw.node"),
+  resolveGatewayLaunchAgentLabel: vi.fn(() => "ai.cimiclaw.gateway"),
+  resolveNodeLaunchAgentLabel: vi.fn(() => "ai.cimiclaw.node"),
 }));
 
 vi.mock("../daemon/diagnostics.js", () => ({
@@ -271,7 +271,7 @@ describe("maybeRepairGatewayDaemon", () => {
       programArguments: ["/bin/node", "cli", "gateway"],
       environment: {
         OPENCLAW_STATE_DIR: "/tmp/openclaw-service",
-        OPENCLAW_CONFIG_PATH: "/tmp/openclaw-service/openclaw.json",
+        OPENCLAW_CONFIG_PATH: "/tmp/openclaw-service/cimiclaw.json",
       },
     });
     readGatewayRestartHandoffSync.mockReturnValueOnce({
@@ -303,8 +303,8 @@ describe("maybeRepairGatewayDaemon", () => {
     const [handoffEnv] = readGatewayRestartHandoffSync.mock.calls[0] as unknown as [
       { OPENCLAW_STATE_DIR?: string; OPENCLAW_CONFIG_PATH?: string },
     ];
-    expect(handoffEnv?.OPENCLAW_STATE_DIR).toBe("/tmp/openclaw-service");
-    expect(handoffEnv?.OPENCLAW_CONFIG_PATH).toBe("/tmp/openclaw-service/openclaw.json");
+    expect(handoffEnv?.cimiclaw_STATE_DIR).toBe("/tmp/openclaw-service");
+    expect(handoffEnv?.cimiclaw_CONFIG_PATH).toBe("/tmp/openclaw-service/cimiclaw.json");
     expect(note).toHaveBeenCalledWith(
       expect.stringContaining("Recent restart handoff: full-process via systemd"),
       "Gateway",

@@ -135,7 +135,7 @@ function buildContainerExecArgs(params: {
   stdoutIsTTY: boolean;
 }): string[] {
   const envFlag = params.exec.runtime === "docker" ? "-e" : "--env";
-  const proxyUrl = normalizeOptionalString(params.env.OPENCLAW_PROXY_URL);
+  const proxyUrl = normalizeOptionalString(params.env.cimiclaw_PROXY_URL);
   if (proxyUrl) {
     assertContainerProxyUrlIsReachable(proxyUrl, params.env);
   }
@@ -217,15 +217,15 @@ function buildContainerExecEnv(env: NodeJS.ProcessEnv): NodeJS.ProcessEnv {
   const next = { ...env };
   // Container-targeted CLI invocations should use the container's own profile
   // and gateway auth/runtime state rather than inheriting host overrides.
-  delete next.OPENCLAW_PROFILE;
-  delete next.OPENCLAW_GATEWAY_PORT;
-  delete next.OPENCLAW_GATEWAY_URL;
-  delete next.OPENCLAW_GATEWAY_TOKEN;
-  delete next.OPENCLAW_GATEWAY_PASSWORD;
+  delete next.cimiclaw_PROFILE;
+  delete next.cimiclaw_GATEWAY_PORT;
+  delete next.cimiclaw_GATEWAY_URL;
+  delete next.cimiclaw_GATEWAY_TOKEN;
+  delete next.cimiclaw_GATEWAY_PASSWORD;
   // The child CLI should render container-aware follow-up commands via
   // OPENCLAW_CONTAINER_HINT, but it should not treat itself as still
   // container-targeted for validation/routing.
-  next.OPENCLAW_CONTAINER = "";
+  next.cimiclaw_CONTAINER = "";
   return next;
 }
 
@@ -264,7 +264,7 @@ export function maybeRunCliInContainer(
     stdoutIsTTY: deps?.stdoutIsTTY ?? process.stdout.isTTY,
   };
 
-  if (resolvedDeps.env.OPENCLAW_CLI_CONTAINER_BYPASS === "1") {
+  if (resolvedDeps.env.cimiclaw_CLI_CONTAINER_BYPASS === "1") {
     return { handled: false, argv };
   }
 

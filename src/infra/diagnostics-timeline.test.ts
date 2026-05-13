@@ -2,7 +2,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   emitDiagnosticsTimelineEvent,
   flushDiagnosticsTimelineForTest,
@@ -89,7 +89,7 @@ describe("diagnostics timeline", () => {
   it("honors config diagnostics flags after config is available", async () => {
     const { env } = await createTimelineEnv();
     const envWithoutFlag = { ...env };
-    delete envWithoutFlag.OPENCLAW_DIAGNOSTICS;
+    delete envWithoutFlag.cimiclaw_DIAGNOSTICS;
     const configWithTimeline = { diagnostics: { flags: ["timeline"] } } as OpenClawConfig;
     const configWithWildcard = { diagnostics: { flags: ["*"] } } as OpenClawConfig;
     const configWithoutTimeline = { diagnostics: { flags: ["telegram.http"] } } as OpenClawConfig;
@@ -152,7 +152,7 @@ describe("diagnostics timeline", () => {
   it("records span start and end events around successful work", async () => {
     const { env, path } = await createTimelineEnv();
     const configOnlyEnv = { ...env };
-    delete configOnlyEnv.OPENCLAW_DIAGNOSTICS;
+    delete configOnlyEnv.cimiclaw_DIAGNOSTICS;
 
     await expect(
       measureDiagnosticsTimelineSpan("runtimeDeps.stage", () => "ok", {

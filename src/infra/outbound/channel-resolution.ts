@@ -18,7 +18,7 @@ import type {
   ChannelStreamingAdapter,
   ChannelThreadingAdapter,
 } from "../../channels/plugins/types.public.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { getActivePluginRegistry } from "../../plugins/runtime.js";
 import {
   isDeliverableMessageChannel,

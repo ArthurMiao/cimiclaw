@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { isLoopbackIpAddress } from "../shared/net/ip.js";
 import { resolveGatewayClientBootstrap } from "./client-bootstrap.js";
 import { startGatewayClientWhenEventLoopReady } from "./client-start-readiness.js";

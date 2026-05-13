@@ -1,5 +1,5 @@
 import type { EffectiveToolInventoryResult } from "../../agents/tools-effective-inventory.types.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { logDebug, logWarn } from "../../logger.js";
 import { stringifyRouteThreadId } from "../../plugin-sdk/channel-route.js";
 import { normalizeOptionalString } from "../../shared/string-coerce.js";

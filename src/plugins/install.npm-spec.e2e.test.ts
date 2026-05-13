@@ -82,7 +82,7 @@ async function packPlugin(params: {
     "utf8",
   );
   await fs.writeFile(
-    path.join(packageDir, "openclaw.plugin.json"),
+    path.join(packageDir, "cimiclaw.plugin.json"),
     `${JSON.stringify(
       {
         id: params.pluginId,
@@ -518,7 +518,7 @@ describe("installPluginFromNpmSpec e2e", () => {
     const manifest = JSON.parse(await fs.readFile(path.join(npmRoot, "package.json"), "utf8")) as {
       dependencies?: Record<string, string>;
     };
-    expect(manifest.dependencies?.openclaw).toBeUndefined();
+    expect(manifest.dependencies?.cimiclaw).toBeUndefined();
     const lock = JSON.parse(await fs.readFile(path.join(npmRoot, "package-lock.json"), "utf8")) as {
       packages?: Record<string, unknown>;
     };

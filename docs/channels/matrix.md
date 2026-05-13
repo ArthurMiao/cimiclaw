@@ -115,11 +115,11 @@ DM and room allowlists are best populated with stable IDs:
 
 ### Account ID normalization
 
-The wizard converts a friendly name into a normalized account ID. For example, `Ops Bot` becomes `ops-bot`. Punctuation is escaped in scoped env-var names so that two accounts cannot collide: `-` → `_X2D_`, so `ops-prod` maps to `MATRIX_OPS_X2D_PROD_*`.
+The wizard converts a friendly name into a normalized account ID. For example, `Ops Bot` becomes `ops-bot`. Punctuation is escaped in scoped env-var names so that two accounts cannot collide: `-` �?`_X2D_`, so `ops-prod` maps to `MATRIX_OPS_X2D_PROD_*`.
 
 ### Cached credentials
 
-Matrix stores cached credentials under `~/.openclaw/credentials/matrix/`:
+Matrix stores cached credentials under `~/.cimiclaw/credentials/matrix/`:
 
 - default account: `credentials.json`
 - named accounts: `credentials-<account>.json`
@@ -213,7 +213,7 @@ form:
 
 | `streaming`       | Behavior                                                                                                                                                            |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `"off"` (default) | Wait for the full reply, send once. `true` ↔ `"partial"`, `false` ↔ `"off"`.                                                                                        |
+| `"off"` (default) | Wait for the full reply, send once. `true` �?`"partial"`, `false` �?`"off"`.                                                                                        |
 | `"partial"`       | Edit one normal text message in place as the model writes the current block. Stock Matrix clients may notify on the first preview, not the final edit.              |
 | `"quiet"`         | Same as `"partial"` but the message is a non-notifying notice. Recipients only get a notification once a per-user push rule matches the finalized edit (see below). |
 
@@ -233,9 +233,9 @@ Notes:
 
 ## Approval metadata
 
-Matrix native approval prompts are normal `m.room.message` events with OpenClaw-specific custom event content under `com.openclaw.approval`. Matrix permits custom event-content keys, so stock clients still render the text body while OpenClaw-aware clients can read the structured approval id, kind, state, available decisions, and exec/plugin details.
+Matrix native approval prompts are normal `m.room.message` events with OpenClaw-specific custom event content under `com.cimiclaw.approval`. Matrix permits custom event-content keys, so stock clients still render the text body while OpenClaw-aware clients can read the structured approval id, kind, state, available decisions, and exec/plugin details.
 
-When an approval prompt is too long for one Matrix event, OpenClaw chunks the visible text and attaches `com.openclaw.approval` to the first chunk only. Reactions for allow/deny decisions are bound to that first event, so long prompts keep the same approval target as single-event prompts.
+When an approval prompt is too long for one Matrix event, OpenClaw chunks the visible text and attaches `com.cimiclaw.approval` to the first chunk only. Reactions for allow/deny decisions are bound to that first event, so long prompts keep the same approval target as single-event prompts.
 
 ### Self-hosted push rules for quiet finalized previews
 
@@ -481,7 +481,7 @@ openclaw matrix devices prune-stale
   <Accordion title="Crypto store">
     Matrix E2EE uses the official `matrix-js-sdk` Rust crypto path with `fake-indexeddb` as the IndexedDB shim. Crypto state persists to `crypto-idb-snapshot.json` (restrictive file permissions).
 
-    Encrypted runtime state lives under `~/.openclaw/matrix/accounts/<account>/<homeserver>__<user>/<token-hash>/` and includes the sync store, crypto store, recovery key, IDB snapshot, thread bindings, and startup verification state. When the token changes but the account identity stays the same, OpenClaw reuses the best existing root so prior state remains visible.
+    Encrypted runtime state lives under `~/.cimiclaw/matrix/accounts/<account>/<homeserver>__<user>/<token-hash>/` and includes the sync store, crypto store, recovery key, IDB snapshot, thread bindings, and startup verification state. When the token changes but the account identity stays the same, OpenClaw reuses the best existing root so prior state remains visible.
 
   </Accordion>
 </AccordionGroup>
@@ -578,9 +578,9 @@ Outbound reaction tooling is gated by `channels.matrix.actions.reactions`:
 
 | Setting                 | Order                                                                            |
 | ----------------------- | -------------------------------------------------------------------------------- |
-| `ackReaction`           | per-account → channel → `messages.ackReaction` → agent identity emoji fallback   |
-| `ackReactionScope`      | per-account → channel → `messages.ackReactionScope` → default `"group-mentions"` |
-| `reactionNotifications` | per-account → channel → default `"own"`                                          |
+| `ackReaction`           | per-account �?channel �?`messages.ackReaction` �?agent identity emoji fallback   |
+| `ackReactionScope`      | per-account �?channel �?`messages.ackReactionScope` �?default `"group-mentions"` |
+| `reactionNotifications` | per-account �?channel �?default `"own"`                                          |
 
 `reactionNotifications: "own"` forwards added `m.reaction` events when they target bot-authored Matrix messages; `"off"` disables reaction system events. Reaction removals are not synthesized into system events because Matrix surfaces those as redactions, not as standalone `m.reaction` removals.
 
@@ -873,7 +873,7 @@ Allowlist-style fields (`groupAllowFrom`, `dm.allowFrom`, `groups.<room>.users`)
 - `replyToMode`: `"off"`, `"first"`, `"all"`, or `"batched"`.
 - `threadReplies`: `"off"`, `"inbound"`, or `"always"`.
 - `threadBindings`: per-channel overrides for thread-bound session routing and lifecycle.
-- `streaming`: `"off"` (default), `"partial"`, `"quiet"`, or object form `{ mode, preview: { toolProgress } }`. `true` ↔ `"partial"`, `false` ↔ `"off"`.
+- `streaming`: `"off"` (default), `"partial"`, `"quiet"`, or object form `{ mode, preview: { toolProgress } }`. `true` �?`"partial"`, `false` �?`"off"`.
 - `blockStreaming`: when `true`, completed assistant blocks are kept as separate progress messages.
 - `markdown`: optional Markdown rendering config for outbound text.
 - `responsePrefix`: optional string prepended to outbound replies.

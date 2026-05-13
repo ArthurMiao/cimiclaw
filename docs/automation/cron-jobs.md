@@ -40,8 +40,8 @@ Cron is the Gateway's built-in scheduler. It persists jobs, wakes the agent at t
 ## How cron works
 
 - Cron runs **inside the Gateway** process (not inside the model).
-- Job definitions persist at `~/.openclaw/cron/jobs.json` so restarts do not lose schedules.
-- Runtime execution state persists next to it in `~/.openclaw/cron/jobs-state.json`. If you track cron definitions in git, track `jobs.json` and gitignore `jobs-state.json`.
+- Job definitions persist at `~/.cimiclaw/cron/jobs.json` so restarts do not lose schedules.
+- Runtime execution state persists next to it in `~/.cimiclaw/cron/jobs-state.json`. If you track cron definitions in git, track `jobs.json` and gitignore `jobs-state.json`.
 - After the split, older OpenClaw versions can read `jobs.json` but may treat jobs as fresh because runtime fields now live in `jobs-state.json`.
 - When `jobs.json` is edited while the Gateway is running or stopped, OpenClaw compares the changed schedule fields with pending runtime slot metadata and clears stale `nextRunAtMs` values. Pure formatting or key-order-only rewrites preserve the pending slot.
 - All cron executions create [background task](/automation/tasks) records.
@@ -75,7 +75,7 @@ Recurring top-of-hour expressions are automatically staggered by up to 5 minutes
 
 ### Day-of-month and day-of-week use OR logic
 
-Cron expressions are parsed by [croner](https://github.com/Hexagon/croner). When both the day-of-month and day-of-week fields are non-wildcard, croner matches when **either** field matches â€” not both. This is standard Vixie cron behavior.
+Cron expressions are parsed by [croner](https://github.com/Hexagon/croner). When both the day-of-month and day-of-week fields are non-wildcard, croner matches when **either** field matches â€?not both. This is standard Vixie cron behavior.
 
 ```
 # Intended: "9 AM on the 15th, only if it's a Monday"
@@ -83,7 +83,7 @@ Cron expressions are parsed by [croner](https://github.com/Hexagon/croner). When
 0 9 15 * 1
 ```
 
-This fires ~5â€“6 times per month instead of 0â€“1 times per month. OpenClaw uses Croner's default OR behavior here. To require both conditions, use Croner's `+` day-of-week modifier (`0 9 15 * +1`) or schedule on one field and guard the other in your job's prompt or command.
+This fires ~5â€? times per month instead of 0â€? times per month. OpenClaw uses Croner's default OR behavior here. To require both conditions, use Croner's `+` day-of-week modifier (`0 9 15 * +1`) or schedule on one field and guard the other in your job's prompt or command.
 
 ## Execution styles
 
@@ -400,7 +400,7 @@ Model override note:
 {
   cron: {
     enabled: true,
-    store: "~/.openclaw/cron/jobs.json",
+    store: "~/.cimiclaw/cron/jobs.json",
     maxConcurrentRuns: 1,
     retry: {
       maxAttempts: 3,
@@ -482,7 +482,7 @@ openclaw doctor
 
 ## Related
 
-- [Automation & Tasks](/automation) â€” all automation mechanisms at a glance
-- [Background Tasks](/automation/tasks) â€” task ledger for cron executions
-- [Heartbeat](/gateway/heartbeat) â€” periodic main-session turns
-- [Timezone](/concepts/timezone) â€” timezone configuration
+- [Automation & Tasks](/automation) â€?all automation mechanisms at a glance
+- [Background Tasks](/automation/tasks) â€?task ledger for cron executions
+- [Heartbeat](/gateway/heartbeat) â€?periodic main-session turns
+- [Timezone](/concepts/timezone) â€?timezone configuration

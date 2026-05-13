@@ -6,7 +6,7 @@ import {
   resolveAllAgentSessionStoreTargetsSync,
   type SessionStoreTarget,
 } from "../config/sessions/targets.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   resolveSessionStoreAgentId,
   resolveSessionStoreKey,

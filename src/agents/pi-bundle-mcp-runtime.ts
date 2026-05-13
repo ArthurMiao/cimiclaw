@@ -11,7 +11,7 @@ import type {
   jsonSchemaValidator,
 } from "@modelcontextprotocol/sdk/validation/types.js";
 import type { ErrorObject, ValidateFunction } from "ajv";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { logWarn } from "../logger.js";
 import { resolveGlobalSingleton } from "../shared/global-singleton.js";
 import { redactSensitiveUrlLikeString } from "../shared/net/redact-sensitive-url.js";

@@ -80,7 +80,7 @@ export function windowsAgentTurnConfigPatchScript(modelId: string): string {
     operations: batchJson ? (JSON.parse(batchJson) as unknown) : [],
   });
   return `$agentTurnConfigPatchPath = $env:OPENCLAW_CONFIG_PATH
-if (-not $agentTurnConfigPatchPath) { $agentTurnConfigPatchPath = Join-Path $env:USERPROFILE '.openclaw\\openclaw.json' }
+if (-not $agentTurnConfigPatchPath) { $agentTurnConfigPatchPath = Join-Path $env:USERPROFILE '.cimiclaw\\openclaw.json' }
 $agentTurnVersionText = Invoke-OpenClaw --version 2>$null | Out-String
 $agentTurnRuntimePolicySupported = $false
 if ($agentTurnVersionText -match 'OpenClaw\\s+(\\d{4})\\.(\\d{1,2})\\.(\\d{1,2})') {
@@ -98,9 +98,9 @@ $agentTurnConfigPatchScriptPath = Join-Path ([System.IO.Path]::GetTempPath()) 'o
 @'
 const fs = require("node:fs");
 const path = require("node:path");
-const configPath = process.env.OPENCLAW_PARALLELS_AGENT_CONFIG_PATH;
-const payload = JSON.parse(process.env.OPENCLAW_PARALLELS_AGENT_CONFIG_PATCH || "{}");
-const canWriteAgentRuntime = process.env.OPENCLAW_PARALLELS_AGENT_RUNTIME_POLICY_SUPPORTED === "1";
+const configPath = process.env.cimiclaw_PARALLELS_AGENT_CONFIG_PATH;
+const payload = JSON.parse(process.env.cimiclaw_PARALLELS_AGENT_CONFIG_PATCH || "{}");
+const canWriteAgentRuntime = process.env.cimiclaw_PARALLELS_AGENT_RUNTIME_POLICY_SUPPORTED === "1";
 function readJsonFile(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8").replace(/^\\uFEFF/u, ""));
 }
@@ -188,10 +188,10 @@ export const windowsOpenClawResolver = String.raw`function Resolve-OpenClawComma
   }
   $entryCandidates = @()
   if ($env:APPDATA) {
-    $entryCandidates += Join-Path $env:APPDATA 'npm\node_modules\openclaw\openclaw.mjs'
+    $entryCandidates += Join-Path $env:APPDATA 'npm\node_modules\openclaw\cimiclaw.mjs'
   }
   if ($npmPrefix) {
-    $entryCandidates += Join-Path $npmPrefix 'node_modules\openclaw\openclaw.mjs'
+    $entryCandidates += Join-Path $npmPrefix 'node_modules\openclaw\cimiclaw.mjs'
   }
   foreach ($candidate in $entryCandidates) {
     if ($candidate -and (Test-Path $candidate)) {

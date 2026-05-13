@@ -146,13 +146,13 @@ describe("OpenClaw dual-published plugin metadata", () => {
         };
       };
 
-      expect(packageJson.openclaw?.install).toEqual({
+      expect(packageJson.cimiclaw?.install).toEqual({
         clawhubSpec: `clawhub:${plugin.packageName}`,
         defaultChoice: "npm",
         minHostVersion: ">=2026.4.25",
         npmSpec: plugin.packageName,
       });
-      expect(packageJson.openclaw?.release).toEqual({
+      expect(packageJson.cimiclaw?.release).toEqual({
         publishToClawHub: true,
         publishToNpm: true,
       });

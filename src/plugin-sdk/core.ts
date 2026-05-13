@@ -22,7 +22,7 @@ import type {
 import type { ChannelPlugin } from "../channels/plugins/types.plugin.js";
 import type { ChannelMeta } from "../channels/plugins/types.public.js";
 import type { ReplyToMode } from "../config/types.base.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { buildOutboundBaseSessionKey } from "../infra/outbound/base-session-key.js";
 import type { OutboundDeliveryResult } from "../infra/outbound/deliver.js";
 import { normalizeOutboundThreadId } from "../infra/outbound/thread-id.js";

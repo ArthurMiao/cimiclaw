@@ -190,7 +190,7 @@ describe("security audit install metadata findings", () => {
       installRecords: records,
       plugins: Object.keys(records).map((pluginId) => ({
         pluginId,
-        manifestPath: path.join(stateDir, "extensions", pluginId, "openclaw.plugin.json"),
+        manifestPath: path.join(stateDir, "extensions", pluginId, "cimiclaw.plugin.json"),
         manifestHash: "manifest",
         rootDir: path.join(stateDir, "extensions", pluginId),
         origin: "global" as const,
@@ -383,7 +383,7 @@ describe("security audit install metadata findings", () => {
     const stateDir = await makeTmpDir("installed-plugin-debris");
     for (const name of [
       "live-plugin",
-      ".openclaw-install-backups",
+      ".cimiclaw-install-backups",
       "node_modules",
       "old-plugin.backup-20260502",
       "old-plugin.disabled.20260502",
@@ -405,7 +405,7 @@ describe("security audit install metadata findings", () => {
     );
     expect(toolsReachable.detail).toContain("Enabled extension plugins: live-plugin.");
     expect(findings.map((finding) => finding.detail).join("\n")).not.toContain(
-      ".openclaw-install-backups",
+      ".cimiclaw-install-backups",
     );
   });
 

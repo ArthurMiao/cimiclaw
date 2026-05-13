@@ -43,14 +43,14 @@ describe("buildSystemdUnit", () => {
     const unit = buildSystemdUnit({
       description: "OpenClaw Gateway",
       programArguments: ["/usr/bin/openclaw", "gateway", "run"],
-      environmentFiles: ["/home/test/.openclaw/.env"],
+      environmentFiles: ["/home/test/.cimiclaw/.env"],
       environment: {
         OPENCLAW_GATEWAY_PORT: "18789",
       },
     });
-    expect(unit).toContain("EnvironmentFile=-/home/test/.openclaw/.env");
+    expect(unit).toContain("EnvironmentFile=-/home/test/.cimiclaw/.env");
     expect(unit).toContain("Environment=OPENCLAW_GATEWAY_PORT=18789");
-    expect(unit.indexOf("EnvironmentFile=-/home/test/.openclaw/.env")).toBeLessThan(
+    expect(unit.indexOf("EnvironmentFile=-/home/test/.cimiclaw/.env")).toBeLessThan(
       unit.indexOf("Environment=OPENCLAW_GATEWAY_PORT=18789"),
     );
   });

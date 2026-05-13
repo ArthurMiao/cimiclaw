@@ -89,7 +89,7 @@ vi.mock("../config/paths.js", async () => {
   return {
     ...actual,
     STATE_DIR: "/tmp/openclaw-state",
-    resolveConfigPath: vi.fn(() => "/tmp/openclaw-state/openclaw.json"),
+    resolveConfigPath: vi.fn(() => "/tmp/openclaw-state/cimiclaw.json"),
     resolveGatewayPort: vi.fn(() => 18789),
     resolveStateDir: vi.fn(() => "/tmp/openclaw-state"),
   };
@@ -312,7 +312,7 @@ describe("startGatewayPostAttachRuntime", () => {
     const osHome = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-home-"));
     try {
       const openclawHome = path.join(osHome, "openclaw-home");
-      const stateDirFromHome = path.join(openclawHome, ".openclaw");
+      const stateDirFromHome = path.join(openclawHome, ".cimiclaw");
       fs.mkdirSync(stateDirFromHome, { recursive: true });
       fs.writeFileSync(path.join(stateDirFromHome, "restart-sentinel.json"), "{}\n");
 

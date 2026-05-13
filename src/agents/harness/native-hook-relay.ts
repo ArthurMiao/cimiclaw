@@ -9,8 +9,8 @@ import {
 } from "node:http";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
-import { resolveOpenClawPackageRootSync } from "../../infra/openclaw-root.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
+import { resolveOpenClawPackageRootSync } from "../../infra/cimiclaw-root.js";
 import { privateFileStoreSync } from "../../infra/private-file-store.js";
 import { createSubsystemLogger } from "../../logging/subsystem.js";
 import { PluginApprovalResolutions } from "../../plugins/types.js";
@@ -1534,7 +1534,7 @@ function resolveOpenClawCliExecutable(): string {
   });
   if (packageRoot) {
     for (const candidate of [
-      path.join(packageRoot, "openclaw.mjs"),
+      path.join(packageRoot, "cimiclaw.mjs"),
       path.join(packageRoot, "dist", "entry.js"),
       path.join(packageRoot, "scripts", "run-node.mjs"),
     ]) {

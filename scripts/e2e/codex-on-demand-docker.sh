@@ -40,7 +40,7 @@ if ! docker_e2e_run_with_harness \
   -i "$IMAGE_NAME" bash -s >"$run_log" 2>&1 <<'EOF'; then
 set -euo pipefail
 
-source scripts/lib/openclaw-e2e-instance.sh
+source scripts/lib/cimiclaw-e2e-instance.sh
 openclaw_e2e_eval_test_state_from_b64 "${OPENCLAW_TEST_STATE_SCRIPT_B64:?missing OPENCLAW_TEST_STATE_SCRIPT_B64}"
 export NPM_CONFIG_PREFIX="$HOME/.npm-global"
 export npm_config_prefix="$NPM_CONFIG_PREFIX"

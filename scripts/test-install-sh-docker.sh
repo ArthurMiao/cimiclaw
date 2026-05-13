@@ -274,7 +274,7 @@ process.stdout.write(last.filename);
 ' "$pack_json_file"
   )"
   if [[ -z "$UPDATE_PACKAGE_SPEC" ]]; then
-    node scripts/check-openclaw-package-tarball.mjs "${UPDATE_DIR}/${UPDATE_TGZ_FILE}"
+    node scripts/check-cimiclaw-package-tarball.mjs "${UPDATE_DIR}/${UPDATE_TGZ_FILE}"
   fi
   print_pack_audit "update" "$pack_json_file"
   assert_pack_unpacked_size_budget "update" "$pack_json_file"

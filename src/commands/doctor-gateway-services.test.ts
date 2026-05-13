@@ -604,10 +604,10 @@ describe("maybeRepairGatewayServiceConfig", () => {
       callArg(mocks.buildGatewayInstallPlan, 0, "buildGatewayInstallPlan call"),
       "buildGatewayInstallPlan options",
     );
-    expect(requireRecord(installPlanOptions.env, "install env").OPENCLAW_WRAPPER).toBe(wrapperPath);
+    expect(requireRecord(installPlanOptions.env, "install env").cimiclaw_WRAPPER).toBe(wrapperPath);
     expect(
       requireRecord(installPlanOptions.existingEnvironment, "install existing environment")
-        .OPENCLAW_WRAPPER,
+        .cimiclaw_WRAPPER,
     ).toBe(wrapperPath);
     expectNoNoteContaining(
       "Gateway service entrypoint does not match the current install.",

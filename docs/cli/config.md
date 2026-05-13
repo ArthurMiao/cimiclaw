@@ -6,10 +6,10 @@ title: "Config"
 sidebarTitle: "Config"
 ---
 
-Config helpers for non-interactive edits in `openclaw.json`: get/set/patch/unset/file/schema/validate values by path and print the active config file. Run without a subcommand to open the configure wizard (same as `openclaw configure`).
+Config helpers for non-interactive edits in `cimiclaw.json`: get/set/patch/unset/file/schema/validate values by path and print the active config file. Run without a subcommand to open the configure wizard (same as `openclaw configure`).
 
 <Note>
-When `OPENCLAW_NIX_MODE=1`, OpenClaw treats `openclaw.json` as immutable. Read-only commands such as `config get`, `config file`, `config schema`, and `config validate` still work, but config writers refuse. Agents should edit the Nix source for the install instead; for the first-party nix-openclaw distribution, use [nix-openclaw Quick Start](https://github.com/openclaw/nix-openclaw#quick-start) and set values under `programs.openclaw.config` or `instances.<name>.config`.
+When `OPENCLAW_NIX_MODE=1`, OpenClaw treats `cimiclaw.json` as immutable. Read-only commands such as `config get`, `config file`, `config schema`, and `config validate` still work, but config writers refuse. Agents should edit the Nix source for the install instead; for the first-party nix-openclaw distribution, use [nix-openclaw Quick Start](https://github.com/openclaw/nix-openclaw#quick-start) and set values under `programs.openclaw.config` or `instances.<name>.config`.
 </Note>
 
 ## Root options
@@ -44,7 +44,7 @@ openclaw config validate --json
 
 ### `config schema`
 
-Print the generated JSON schema for `openclaw.json` to stdout as JSON.
+Print the generated JSON schema for `cimiclaw.json` to stdout as JSON.
 
 <AccordionGroup>
   <Accordion title="What it includes">
@@ -290,7 +290,7 @@ openclaw config set secrets.providers.vault \
 
 ## Dry run
 
-Use `--dry-run` to validate changes without writing `openclaw.json`.
+Use `--dry-run` to validate changes without writing `cimiclaw.json`.
 
 ```bash
 openclaw config set channels.discord.token \
@@ -370,7 +370,7 @@ openclaw config set channels.discord.token \
     {
       "ok": true,
       "operations": 1,
-      "configPath": "~/.openclaw/openclaw.json",
+      "configPath": "~/.cimiclaw/cimiclaw.json",
       "inputModes": ["builder"],
       "checks": {
         "schema": false,
@@ -387,7 +387,7 @@ openclaw config set channels.discord.token \
     {
       "ok": false,
       "operations": 1,
-      "configPath": "~/.openclaw/openclaw.json",
+      "configPath": "~/.cimiclaw/cimiclaw.json",
       "inputModes": ["builder"],
       "checks": {
         "schema": false,
@@ -421,10 +421,10 @@ openclaw config set channels.discord.token \
 
 ## Write safety
 
-`openclaw config set` and other OpenClaw-owned config writers validate the full post-change config before committing it to disk. If the new payload fails schema validation or looks like a destructive clobber, the active config is left alone and the rejected payload is saved beside it as `openclaw.json.rejected.*`.
+`openclaw config set` and other OpenClaw-owned config writers validate the full post-change config before committing it to disk. If the new payload fails schema validation or looks like a destructive clobber, the active config is left alone and the rejected payload is saved beside it as `cimiclaw.json.rejected.*`.
 
 <Warning>
-The active config path must be a regular file. Symlinked `openclaw.json` layouts are unsupported for writes; use `OPENCLAW_CONFIG_PATH` to point directly at the real file instead.
+The active config path must be a regular file. Symlinked `cimiclaw.json` layouts are unsupported for writes; use `OPENCLAW_CONFIG_PATH` to point directly at the real file instead.
 </Warning>
 
 Prefer CLI writes for small edits:
@@ -443,7 +443,7 @@ ls -lt "$CONFIG".rejected.* 2>/dev/null | head
 openclaw config validate
 ```
 
-Direct editor writes are still allowed, but the running Gateway treats them as untrusted until they validate. Invalid direct edits fail startup or are skipped by hot reload; Gateway does not rewrite `openclaw.json`. Run `openclaw doctor --fix` to repair prefixed/clobbered config or restore the last-known-good copy. See [Gateway troubleshooting](/gateway/troubleshooting#gateway-rejected-invalid-config).
+Direct editor writes are still allowed, but the running Gateway treats them as untrusted until they validate. Invalid direct edits fail startup or are skipped by hot reload; Gateway does not rewrite `cimiclaw.json`. Run `openclaw doctor --fix` to repair prefixed/clobbered config or restore the last-known-good copy. See [Gateway troubleshooting](/gateway/troubleshooting#gateway-rejected-invalid-config).
 
 Whole-file recovery is reserved for doctor repair. Plugin schema changes or `minHostVersion` skew stay loud instead of rolling back unrelated user settings such as models, providers, auth profiles, channels, gateway exposure, tools, memory, browser, or cron config.
 

@@ -134,8 +134,8 @@ function sanitizeFailureRetriesInput(raw: unknown): Record<string, number> {
 /**
  * Cursor file path: `<openclawStateDir>/imessage/catchup/<safePrefix>__<sha256[:12]>.json`.
  * `openclawStateDir` resolves through `OPENCLAW_STATE_DIR` (or the plugin-sdk default,
- * `~/.openclaw`). On a default install the cursor lands at
- * `~/.openclaw/imessage/catchup/<safePrefix>__<sha256[:12]>.json`.
+ * `~/.cimiclaw`). On a default install the cursor lands at
+ * `~/.cimiclaw/imessage/catchup/<safePrefix>__<sha256[:12]>.json`.
  */
 export async function loadIMessageCatchupCursor(
   accountId: string,

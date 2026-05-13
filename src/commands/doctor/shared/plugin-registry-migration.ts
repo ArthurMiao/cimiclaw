@@ -4,7 +4,7 @@ import {
   extractShippedPluginInstallConfigRecords,
   stripShippedPluginInstallConfigRecords,
 } from "../../../config/plugin-install-config-migration.js";
-import type { OpenClawConfig } from "../../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../../config/types.cimiclaw.js";
 import { loadInstalledPluginIndexInstallRecords } from "../../../plugins/installed-plugin-index-records.js";
 import {
   inspectPersistedInstalledPluginIndex,

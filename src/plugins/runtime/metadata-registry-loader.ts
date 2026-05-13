@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { loadOpenClawPlugins } from "../loader.js";
 import type { PluginManifestRegistry } from "../manifest-registry.js";
 import { hasExplicitPluginIdScope } from "../plugin-scope.js";

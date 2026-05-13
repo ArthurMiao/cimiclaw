@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { normalizeSecretInputString, resolveSecretInputRef } from "../config/types.secrets.js";
 import { normalizeOptionalString } from "../shared/string-coerce.js";
 
@@ -17,7 +17,7 @@ export function resolveGatewayAuthTokenSourceConflict(params: {
   cfg: OpenClawConfig;
   env: NodeJS.ProcessEnv;
 }): GatewayAuthTokenSourceConflict | null {
-  const envToken = normalizeOptionalString(params.env.OPENCLAW_GATEWAY_TOKEN);
+  const envToken = normalizeOptionalString(params.env.cimiclaw_GATEWAY_TOKEN);
   if (!envToken) {
     return null;
   }

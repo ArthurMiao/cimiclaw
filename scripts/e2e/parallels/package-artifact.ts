@@ -194,8 +194,8 @@ async function withPackageLock<T>(lockDir: string, fn: () => Promise<T>): Promis
 }
 
 async function acquirePackageLock(lockDir: string, ownerToken: string): Promise<void> {
-  const timeoutMs = Number(process.env.OPENCLAW_PARALLELS_PACKAGE_LOCK_TIMEOUT_MS || 30 * 60_000);
-  const staleMs = Number(process.env.OPENCLAW_PARALLELS_PACKAGE_LOCK_STALE_MS || 2 * 60 * 60_000);
+  const timeoutMs = Number(process.env.cimiclaw_PARALLELS_PACKAGE_LOCK_TIMEOUT_MS || 30 * 60_000);
+  const staleMs = Number(process.env.cimiclaw_PARALLELS_PACKAGE_LOCK_STALE_MS || 2 * 60 * 60_000);
   const startedAt = Date.now();
   let announcedWait = false;
   while (Date.now() - startedAt < timeoutMs) {

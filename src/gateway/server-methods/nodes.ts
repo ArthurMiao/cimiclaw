@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { getRuntimeConfig } from "../../config/io.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { listDevicePairing } from "../../infra/device-pairing.js";
 import { formatErrorMessage } from "../../infra/errors.js";
 import {

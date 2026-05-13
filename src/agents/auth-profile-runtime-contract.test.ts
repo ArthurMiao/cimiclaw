@@ -8,7 +8,7 @@ import {
 } from "openclaw/plugin-sdk/agent-runtime-test-contracts";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { SessionEntry } from "../config/sessions.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type * as ManifestRegistryModule from "../plugins/manifest-registry.js";
 import { runAgentAttempt } from "./command/attempt-execution.js";
 import type { RunEmbeddedPiAgentParams } from "./pi-embedded-runner/run/params.js";
@@ -139,7 +139,7 @@ function providerRuntimeConfig(provider: string, runtime: string): OpenClawConfi
     models: {
       providers: {
         [provider]: {
-          baseUrl: "https://api.openclaw.test/v1",
+          baseUrl: "https://api.cimiclaw.test/v1",
           agentRuntime: { id: runtime },
           models: [],
         },
@@ -328,7 +328,7 @@ describe("Auth profile runtime contract - Pi and CLI adapter", () => {
         models: {
           providers: {
             [AUTH_PROFILE_RUNTIME_CONTRACT.openAiProvider]: {
-              baseUrl: "https://api.openclaw.test/v1",
+              baseUrl: "https://api.cimiclaw.test/v1",
               agentRuntime: { id: "codex" },
               models: [],
             },

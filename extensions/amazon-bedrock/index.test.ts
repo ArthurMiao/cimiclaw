@@ -576,7 +576,7 @@ describe("amazon-bedrock provider plugin", () => {
   describe("guardrail config schema", () => {
     it("defines discovery and guardrail objects with the expected shape", () => {
       const pluginJson = JSON.parse(
-        readFileSync(resolve(import.meta.dirname, "openclaw.plugin.json"), "utf-8"),
+        readFileSync(resolve(import.meta.dirname, "cimiclaw.plugin.json"), "utf-8"),
       );
       const discovery = pluginJson.configSchema?.properties?.discovery;
       const guardrail = pluginJson.configSchema?.properties?.guardrail;

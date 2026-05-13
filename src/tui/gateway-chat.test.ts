@@ -123,7 +123,7 @@ describe("resolveGatewayConnection", () => {
     );
     resolveConfigPath.mockImplementation(
       (env: NodeJS.ProcessEnv, stateDir: string) =>
-        env.OPENCLAW_CONFIG_PATH ?? `${stateDir}/openclaw.json`,
+        env.OPENCLAW_CONFIG_PATH ?? `${stateDir}/cimiclaw.json`,
     );
     delete process.env.OPENCLAW_GATEWAY_URL;
     delete process.env.OPENCLAW_GATEWAY_TOKEN;

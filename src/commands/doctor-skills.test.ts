@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { SkillStatusEntry, SkillStatusReport } from "../agents/skills-status.js";
 import { createEmptyInstallChecks } from "../cli/requirements-test-fixtures.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   collectUnavailableAgentSkills,
   disableUnavailableSkillsInConfig,

@@ -13,7 +13,7 @@ describe("browser remote profile fallback and attachOnly behavior", () => {
   it("uses profile-level attachOnly when global attachOnly is false", async () => {
     const state = deps.makeState("openclaw");
     state.resolved.attachOnly = false;
-    state.resolved.profiles.openclaw = {
+    state.resolved.profiles.cimiclaw = {
       cdpPort: 18800,
       attachOnly: true,
       color: "#FF4500",
@@ -35,7 +35,7 @@ describe("browser remote profile fallback and attachOnly behavior", () => {
   it("keeps attachOnly websocket failures off the loopback ownership error path", async () => {
     const state = deps.makeState("openclaw");
     state.resolved.attachOnly = false;
-    state.resolved.profiles.openclaw = {
+    state.resolved.profiles.cimiclaw = {
       cdpPort: 18800,
       attachOnly: true,
       color: "#FF4500",
@@ -173,7 +173,7 @@ describe("browser remote profile fallback and attachOnly behavior", () => {
     const state = deps.makeState("openclaw");
     state.resolved.remoteCdpTimeoutMs = 2345;
     state.resolved.remoteCdpHandshakeTimeoutMs = 6789;
-    state.resolved.profiles.openclaw = {
+    state.resolved.profiles.cimiclaw = {
       cdpPort: 18800,
       attachOnly: true,
       color: "#FF4500",

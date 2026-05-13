@@ -17,7 +17,7 @@ import {
 } from "../../config/config.js";
 import { formatConfigIssueLines } from "../../config/issue-format.js";
 import { asResolvedSourceConfig, asRuntimeConfig } from "../../config/materialize.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { PluginInstallRecord } from "../../config/types.plugins.js";
 import { GATEWAY_SERVICE_KIND, GATEWAY_SERVICE_MARKER } from "../../daemon/constants.js";
 import { resolveGatewayInstallEntrypoint } from "../../daemon/gateway-entrypoint.js";
@@ -687,8 +687,8 @@ function disableUpdatedPackageCompileCacheEnv(env: NodeJS.ProcessEnv): NodeJS.Pr
 
 function stripGatewayServiceMarkerEnv(env: NodeJS.ProcessEnv): NodeJS.ProcessEnv {
   const resolvedEnv = { ...env };
-  delete resolvedEnv.OPENCLAW_SERVICE_MARKER;
-  delete resolvedEnv.OPENCLAW_SERVICE_KIND;
+  delete resolvedEnv.cimiclaw_SERVICE_MARKER;
+  delete resolvedEnv.cimiclaw_SERVICE_KIND;
   return resolvedEnv;
 }
 

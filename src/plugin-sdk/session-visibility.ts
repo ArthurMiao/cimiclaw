@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { callGateway as defaultCallGateway } from "../gateway/call.js";
 import { resolveAgentIdFromSessionKey } from "../routing/session-key.js";
 import {

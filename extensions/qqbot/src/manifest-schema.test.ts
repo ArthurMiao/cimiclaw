@@ -3,7 +3,7 @@ import { validateJsonSchemaValue } from "openclaw/plugin-sdk/config-schema";
 import { describe, expect, it } from "vitest";
 
 const manifest = JSON.parse(
-  fs.readFileSync(new URL("../openclaw.plugin.json", import.meta.url), "utf-8"),
+  fs.readFileSync(new URL("../cimiclaw.plugin.json", import.meta.url), "utf-8"),
 ) as { configSchema: Record<string, unknown> };
 const manifestConfigSchemaCacheKey = "qqbot.manifest.config-schema";
 

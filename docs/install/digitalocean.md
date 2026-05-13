@@ -10,8 +10,8 @@ Run a persistent OpenClaw Gateway on a DigitalOcean Droplet (~$6/month for the 1
 
 DigitalOcean is the simplest paid VPS path. If you prefer cheaper or free options:
 
-- [Hetzner](/install/hetzner) â€” â‚¬3.79/mo, more cores/RAM per dollar.
-- [Oracle Cloud](/install/oracle) â€” Always Free ARM (up to 4 OCPU, 24 GB RAM), but signup can be finicky and ARM-only.
+- [Hetzner](/install/hetzner) â€?â‚?.79/mo, more cores/RAM per dollar.
+- [Oracle Cloud](/install/oracle) â€?Always Free ARM (up to 4 OCPU, 24 GB RAM), but signup can be finicky and ARM-only.
 
 ## Prerequisites
 
@@ -60,7 +60,7 @@ DigitalOcean is the simplest paid VPS path. If you prefer cheaper or free option
     openclaw --version
     ```
 
-    Use the root shell only for system bootstrap. Run OpenClaw commands as the non-root `openclaw` user so state lives under `/home/openclaw/.openclaw/` and the Gateway installs as that user's systemd service.
+    Use the root shell only for system bootstrap. Run OpenClaw commands as the non-root `openclaw` user so state lives under `/home/openclaw/.cimiclaw/` and the Gateway installs as that user's systemd service.
 
   </Step>
 
@@ -132,8 +132,8 @@ DigitalOcean is the simplest paid VPS path. If you prefer cheaper or free option
 
 OpenClaw state lives under:
 
-- `~/.openclaw/` â€” `openclaw.json`, per-agent `auth-profiles.json`, channel/provider state, and session data.
-- `~/.openclaw/workspace/` â€” the agent workspace (SOUL.md, memory, artifacts).
+- `~/.cimiclaw/` â€?`cimiclaw.json`, per-agent `auth-profiles.json`, channel/provider state, and session data.
+- `~/.cimiclaw/workspace/` â€?the agent workspace (SOUL.md, memory, artifacts).
 
 These survive Droplet reboots. To take a portable snapshot:
 
@@ -148,7 +148,7 @@ DigitalOcean snapshots back the whole Droplet up; `openclaw backup create` is po
 The $6 Droplet only has 1 GB RAM. To keep things smooth:
 
 - Make sure the swap step above is in `/etc/fstab` so it survives reboots.
-- Prefer API-based models (Claude, GPT) over local ones â€” local LLM inference does not fit in 1 GB.
+- Prefer API-based models (Claude, GPT) over local ones â€?local LLM inference does not fit in 1 GB.
 - Set `agents.defaults.model.primary` to a smaller model if you hit OOMs on large prompts.
 - Monitor with `free -h` and `htop`.
 

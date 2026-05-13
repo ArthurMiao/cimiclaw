@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { PluginManifestRecord } from "../plugins/manifest-registry.js";
 import type { PluginConfigUiHint } from "../plugins/types.js";
 import { getPath, setPathCreateStrict } from "../secrets/path-utils.js";

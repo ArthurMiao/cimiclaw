@@ -4,7 +4,7 @@ import { clearRuntimeAuthProfileStoreSnapshots } from "../agents/auth-profiles/s
 import {
   createOpenClawTestState,
   type OpenClawTestState,
-} from "../test-utils/openclaw-test-state.js";
+} from "../test-utils/cimiclaw-test-state.js";
 import { maybeRepairLegacyFlatAuthProfileStores } from "./doctor-auth-flat-profiles.js";
 import type { DoctorPrompter } from "./doctor-prompter.js";
 

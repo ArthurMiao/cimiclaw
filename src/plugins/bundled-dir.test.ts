@@ -67,7 +67,7 @@ function seedBundledPluginTree(rootDir: string, relativeDir: string, pluginId = 
     "utf8",
   );
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     `${JSON.stringify({ id: pluginId }, null, 2)}\n`,
     "utf8",
   );
@@ -119,7 +119,7 @@ function expectResolvedBundledDirFromRoot(params: {
   expectResolvedBundledDir({
     cwd: params.cwd ?? params.repoRoot,
     expectedDir: path.join(params.repoRoot, params.expectedRelativeDir),
-    argv1: params.argv1 ?? path.join(params.repoRoot, "openclaw.mjs"),
+    argv1: params.argv1 ?? path.join(params.repoRoot, "cimiclaw.mjs"),
     ...(params.bundledDirOverride ? { bundledDirOverride: params.bundledDirOverride } : {}),
     ...(params.vitest !== undefined ? { vitest: params.vitest } : {}),
     ...(params.execArgv ? { execArgv: params.execArgv } : {}),
@@ -331,7 +331,7 @@ describe("resolveBundledPluginsDir", () => {
     });
     seedBundledPluginTree(repoRoot, "extensions", "twitch");
     vi.spyOn(process, "cwd").mockReturnValue(repoRoot);
-    process.argv[1] = path.join(repoRoot, "openclaw.mjs");
+    process.argv[1] = path.join(repoRoot, "cimiclaw.mjs");
 
     expect(resolveSourceCheckoutDependencyDiagnostic()).toEqual({
       source: repoRoot,
@@ -390,7 +390,7 @@ describe("resolveBundledPluginsDir", () => {
     seedBundledPluginTree(installedRoot, path.join("dist", "extensions"));
 
     vi.spyOn(process, "cwd").mockReturnValue(installedRoot);
-    process.argv[1] = path.join(installedRoot, "openclaw.mjs");
+    process.argv[1] = path.join(installedRoot, "cimiclaw.mjs");
     process.execArgv.length = 0;
     delete process.env.VITEST;
     process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = path.join(installedRoot, "dist", "extensions");
@@ -472,7 +472,7 @@ describe("resolveBundledPluginsDir", () => {
     seedBundledPluginTree(overrideRoot, "extensions", "memory-core");
 
     vi.spyOn(process, "cwd").mockReturnValue(makeRepoRoot("openclaw-bundled-dir-rejected-cwd-"));
-    process.argv[1] = path.join(installedRoot, "openclaw.mjs");
+    process.argv[1] = path.join(installedRoot, "cimiclaw.mjs");
     process.execArgv.length = 0;
     delete process.env.VITEST;
     process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = path.join(overrideRoot, "extensions");
@@ -530,7 +530,7 @@ describe("resolveBundledPluginsDir", () => {
         return {
           installedRoot,
           cwd: cwdRepoRoot,
-          argv1: path.join(installedRoot, "openclaw.mjs"),
+          argv1: path.join(installedRoot, "cimiclaw.mjs"),
         };
       },
     },
@@ -544,7 +544,7 @@ describe("resolveBundledPluginsDir", () => {
         seedBundledPluginTree(installedRoot, path.join("dist", "extensions"));
         return {
           installedRoot,
-          argv1: path.join(installedRoot, "openclaw.mjs"),
+          argv1: path.join(installedRoot, "cimiclaw.mjs"),
           bundledDirOverride: path.join(installedRoot, "missing-extensions"),
         };
       },

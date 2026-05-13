@@ -2,7 +2,7 @@ import path from "node:path";
 import { MANIFEST_KEY } from "../../compat/legacy-names.js";
 import { tryReadJsonSync } from "../../infra/json-files.js";
 import { isPrereleaseSemverVersion, parseRegistryNpmSpec } from "../../infra/npm-registry-spec.js";
-import { resolveOpenClawPackageRootSync } from "../../infra/openclaw-root.js";
+import { resolveOpenClawPackageRootSync } from "../../infra/cimiclaw-root.js";
 import { listChannelCatalogEntries } from "../../plugins/channel-catalog-registry.js";
 import {
   describePluginInstallSource,

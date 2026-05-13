@@ -54,7 +54,7 @@ function createCandidate(rootDir: string, id = "demo"): PluginCandidate {
     "utf8",
   );
   fs.writeFileSync(
-    path.join(rootDir, "openclaw.plugin.json"),
+    path.join(rootDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id,
       name: id,
@@ -83,7 +83,7 @@ function createBundledCandidate(params: {
     "utf8",
   );
   fs.writeFileSync(
-    path.join(params.rootDir, "openclaw.plugin.json"),
+    path.join(params.rootDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: params.id,
       name: params.id,
@@ -172,7 +172,7 @@ function createManagedNpmPlugin(params: {
     "utf8",
   );
   fs.writeFileSync(
-    path.join(packageDir, "openclaw.plugin.json"),
+    path.join(packageDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: params.id,
       name: params.id,

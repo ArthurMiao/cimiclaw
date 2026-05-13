@@ -117,7 +117,7 @@ function createSandboxConfig(
     backend: "docker",
     scope: "shared",
     workspaceAccess,
-    workspaceRoot: "~/.openclaw/sandboxes",
+    workspaceRoot: "~/.cimiclaw/sandboxes",
     docker: {
       image: "openclaw-sandbox:test",
       containerPrefix: "oc-test-",

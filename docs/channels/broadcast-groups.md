@@ -14,7 +14,7 @@ sidebarTitle: "Broadcast groups"
 
 ## Overview
 
-Broadcast Groups enable multiple agents to process and respond to the same message simultaneously. This allows you to create specialized agent teams that work together in a single WhatsApp group or DM â€” all using one phone number.
+Broadcast Groups enable multiple agents to process and respond to the same message simultaneously. This allows you to create specialized agent teams that work together in a single WhatsApp group or DM â€?all using one phone number.
 
 Current scope: **WhatsApp only** (web channel).
 
@@ -234,7 +234,7 @@ In group `120363403215116621@g.us` with agents `["alfred", "baerbel"]`:
     }
     ```
 
-    âœ… **Good:** Each agent has one job. âŒ **Bad:** One generic "dev-helper" agent.
+    âœ?**Good:** Each agent has one job. â?**Bad:** One generic "dev-helper" agent.
 
   </Accordion>
   <Accordion title="2. Use descriptive names">
@@ -282,7 +282,7 @@ In group `120363403215116621@g.us` with agents `["alfred", "baerbel"]`:
     Agents fail independently. One agent's error doesn't block others:
 
     ```
-    Message â†’ [Agent A âœ“, Agent B âœ— error, Agent C âœ“]
+    Message â†?[Agent A âœ? Agent B âœ?error, Agent C âœ“]
     Result: Agent A and C respond, Agent B logs error
     ```
 
@@ -295,7 +295,7 @@ In group `120363403215116621@g.us` with agents `["alfred", "baerbel"]`:
 
 Broadcast groups currently work with:
 
-- âœ… WhatsApp (implemented)
+- âœ?WhatsApp (implemented)
 - ğŸš§ Telegram (planned)
 - ğŸš§ Discord (planned)
 - ğŸš§ Slack (planned)
@@ -338,7 +338,7 @@ Broadcast groups work alongside existing routing:
     **Debug:**
 
     ```bash
-    tail -f ~/.openclaw/logs/gateway.log | grep broadcast
+    tail -f ~/.cimiclaw/logs/gateway.log | grep broadcast
     ```
 
   </Accordion>

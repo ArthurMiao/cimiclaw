@@ -7,8 +7,8 @@ read_when:
 title: "Configuration"
 ---
 
-OpenClaw reads an optional <Tooltip tip="JSON5 supports comments and trailing commas">**JSON5**</Tooltip> config from `~/.openclaw/openclaw.json`.
-The active config path must be a regular file. Symlinked `openclaw.json`
+OpenClaw reads an optional <Tooltip tip="JSON5 supports comments and trailing commas">**JSON5**</Tooltip> config from `~/.cimiclaw/cimiclaw.json`.
+The active config path must be a regular file. Symlinked `cimiclaw.json`
 layouts are unsupported for OpenClaw-owned writes; an atomic write may replace
 the path instead of preserving the symlink. If you keep config outside the
 default state directory, point `OPENCLAW_CONFIG_PATH` directly at the real file.
@@ -33,9 +33,9 @@ field map and defaults.
 ## Minimal config
 
 ```json5
-// ~/.openclaw/openclaw.json
+// ~/.cimiclaw/cimiclaw.json
 {
-  agents: { defaults: { workspace: "~/.openclaw/workspace" } },
+  agents: { defaults: { workspace: "~/.cimiclaw/workspace" } },
   channels: { whatsapp: { allowFrom: ["+15555550123"] } },
 }
 ```
@@ -65,7 +65,7 @@ field map and defaults.
     fetch one path-scoped schema node plus immediate child summaries.
   </Tab>
   <Tab title="Direct edit">
-    Edit `~/.openclaw/openclaw.json` directly. The Gateway watches the file and applies changes automatically (see [hot reload](#config-hot-reload)).
+    Edit `~/.cimiclaw/cimiclaw.json` directly. The Gateway watches the file and applies changes automatically (see [hot reload](#config-hot-reload)).
   </Tab>
 </Tabs>
 
@@ -90,7 +90,7 @@ When validation fails:
 - Run `openclaw doctor --fix` (or `--yes`) to apply repairs
 
 The Gateway keeps a trusted last-known-good copy after each successful startup,
-but startup and hot reload do not restore it automatically. If `openclaw.json`
+but startup and hot reload do not restore it automatically. If `cimiclaw.json`
 fails validation (including plugin-local validation), Gateway startup fails or
 the reload is skipped and the current runtime keeps the last accepted config.
 Run `openclaw doctor --fix` (or `--yes`) to repair prefixed/clobbered config or
@@ -336,7 +336,7 @@ candidate contains redacted secret placeholders such as `***`.
   </Accordion>
 
   <Accordion title="Enable relay-backed push for official iOS builds">
-    Relay-backed push is configured in `openclaw.json`.
+    Relay-backed push is configured in `cimiclaw.json`.
 
     Set this in gateway config:
 
@@ -478,8 +478,8 @@ candidate contains redacted secret placeholders such as `***`.
     {
       agents: {
         list: [
-          { id: "home", default: true, workspace: "~/.openclaw/workspace-home" },
-          { id: "work", workspace: "~/.openclaw/workspace-work" },
+          { id: "home", default: true, workspace: "~/.cimiclaw/workspace-home" },
+          { id: "work", workspace: "~/.cimiclaw/workspace-work" },
         ],
       },
       bindings: [
@@ -497,7 +497,7 @@ candidate contains redacted secret placeholders such as `***`.
     Use `$include` to organize large configs:
 
     ```json5
-    // ~/.openclaw/openclaw.json
+    // ~/.cimiclaw/cimiclaw.json
     {
       gateway: { port: 18789 },
       agents: { $include: "./agents.json5" },
@@ -514,12 +514,12 @@ candidate contains redacted secret placeholders such as `***`.
     - **Relative paths**: resolved relative to the including file
     - **OpenClaw-owned writes**: when a write changes only one top-level section
       backed by a single-file include such as `plugins: { $include: "./plugins.json5" }`,
-      OpenClaw updates that included file and leaves `openclaw.json` intact
+      OpenClaw updates that included file and leaves `cimiclaw.json` intact
     - **Unsupported write-through**: root includes, include arrays, and includes
       with sibling overrides fail closed for OpenClaw-owned writes instead of
       flattening the config
     - **Confinement**: `$include` paths must resolve under the directory holding
-      `openclaw.json`. To share a tree across machines or users, set
+      `cimiclaw.json`. To share a tree across machines or users, set
       `OPENCLAW_INCLUDE_ROOTS` to a path-list (`:` on POSIX, `;` on Windows) of
       additional directories that includes may reference. Symlinks are resolved
       and re-checked, so a path that lexically lives in a config dir but whose
@@ -531,11 +531,11 @@ candidate contains redacted secret placeholders such as `***`.
 
 ## Config hot reload
 
-The Gateway watches `~/.openclaw/openclaw.json` and applies changes automatically - no manual restart needed for most settings.
+The Gateway watches `~/.cimiclaw/cimiclaw.json` and applies changes automatically - no manual restart needed for most settings.
 
 Direct file edits are treated as untrusted until they validate. The watcher waits
 for editor temp-write/rename churn to settle, reads the final file, and rejects
-invalid external edits without rewriting `openclaw.json`. OpenClaw-owned config
+invalid external edits without rewriting `cimiclaw.json`. OpenClaw-owned config
 writes use the same schema gate before writing; destructive clobbers such as
 dropping `gateway.mode` or shrinking the file by more than half are rejected and
 saved as `.rejected.*` for inspection.
@@ -635,7 +635,7 @@ config already exists.
 OpenClaw reads env vars from the parent process plus:
 
 - `.env` from the current working directory (if present)
-- `~/.openclaw/.env` (global fallback)
+- `~/.cimiclaw/.env` (global fallback)
 
 Neither file overrides existing env vars. You can also set inline env vars in config:
 
@@ -678,7 +678,7 @@ Rules:
 - Missing/empty vars throw an error at load time
 - Escape with `$${VAR}` for literal output
 - Works inside `$include` files
-- Inline substitution: `"${BASE}/v1"` â†’ `"https://api.example.com/v1"`
+- Inline substitution: `"${BASE}/v1"` â†?`"https://api.example.com/v1"`
 
 </Accordion>
 

@@ -9,7 +9,7 @@ import type { ChannelId } from "../channels/plugins/types.public.js";
 import { inspectReadOnlyChannelAccount } from "../channels/read-only-account-inspect.js";
 import { formatCliCommand } from "../cli/command-format.js";
 import { isDangerousNameMatchingEnabled } from "../config/dangerous-name-matching.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { formatErrorMessage } from "../infra/errors.js";
 import type { SecurityAuditFinding, SecurityAuditSeverity } from "./audit.types.js";
 

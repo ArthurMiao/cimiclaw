@@ -1,12 +1,12 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 
 const runEmbeddedPiAgentMock = vi.fn();
 
 vi.mock("../agents/agent-scope.js", () => ({
   resolveDefaultAgentId: vi.fn(() => "main"),
   resolveAgentWorkspaceDir: vi.fn(() => "/tmp/openclaw-agent"),
-  resolveAgentDir: vi.fn(() => "/tmp/openclaw-agent/.openclaw-agent"),
+  resolveAgentDir: vi.fn(() => "/tmp/openclaw-agent/.cimiclaw-agent"),
   resolveAgentEffectiveModelPrimary: vi.fn((cfg: OpenClawConfig) => {
     const model = cfg.agents?.defaults?.model;
     if (typeof model === "string") {

@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveVideoGenerationModeCapabilities } from "./capabilities.js";
 import type { GenerateVideoParams } from "./runtime-types.js";
 import type {

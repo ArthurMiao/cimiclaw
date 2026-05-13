@@ -50,7 +50,7 @@ describe("runDaemonInstall integration", () => {
       "OPENCLAW_GATEWAY_PASSWORD",
     ]);
     tempHome = await makeTempWorkspace("openclaw-daemon-install-int-");
-    configPath = path.join(tempHome, "openclaw.json");
+    configPath = path.join(tempHome, "cimiclaw.json");
     process.env.HOME = tempHome;
     process.env.OPENCLAW_STATE_DIR = tempHome;
     process.env.OPENCLAW_CONFIG_PATH = configPath;
@@ -160,6 +160,6 @@ describe("runDaemonInstall integration", () => {
     expect((persistedToken ?? "").length).toBeGreaterThan(0);
 
     const installEnv = serviceMock.install.mock.calls[0]?.[0]?.environment;
-    expect(installEnv?.OPENCLAW_GATEWAY_TOKEN).toBeUndefined();
+    expect(installEnv?.cimiclaw_GATEWAY_TOKEN).toBeUndefined();
   });
 });

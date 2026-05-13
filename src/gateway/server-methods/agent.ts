@@ -44,7 +44,7 @@ import {
   type SessionEntry,
   updateSessionStore,
 } from "../../config/sessions.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { registerAgentRunContext } from "../../infra/agent-events.js";
 import { formatUncaughtError } from "../../infra/errors.js";
 import {

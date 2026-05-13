@@ -80,7 +80,7 @@ describe("gateway network runtime", () => {
       process.env.HTTPS_PROXY = "http://127.0.0.1:9";
 
       process.env.HOME = tempHome;
-      process.env.OPENCLAW_STATE_DIR = path.join(tempHome, ".openclaw");
+      process.env.OPENCLAW_STATE_DIR = path.join(tempHome, ".cimiclaw");
       process.env.OPENCLAW_SKIP_CHANNELS = "1";
       process.env.OPENCLAW_SKIP_GMAIL_WATCHER = "1";
       process.env.OPENCLAW_SKIP_CRON = "1";
@@ -93,7 +93,7 @@ describe("gateway network runtime", () => {
 
       const token = `proxy-token-${process.pid}-${process.env.VITEST_POOL_ID ?? "0"}`;
       process.env.OPENCLAW_GATEWAY_TOKEN = token;
-      const configPath = path.join(tempHome, ".openclaw", "openclaw.json");
+      const configPath = path.join(tempHome, ".cimiclaw", "cimiclaw.json");
       await fs.mkdir(path.dirname(configPath), { recursive: true });
       await fs.writeFile(
         configPath,

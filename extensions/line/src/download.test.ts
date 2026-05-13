@@ -57,7 +57,7 @@ describe("downloadLineMedia", () => {
     saveMediaBufferMock.mockReset();
     saveMediaBufferMock.mockImplementation(
       async (_buffer: Buffer, contentType?: string, subdir?: string) => ({
-        path: `/home/user/.openclaw/media/${subdir ?? "unknown"}/saved-media`,
+        path: `/home/user/.cimiclaw/media/${subdir ?? "unknown"}/saved-media`,
         contentType,
       }),
     );
@@ -76,7 +76,7 @@ describe("downloadLineMedia", () => {
     expect(call?.[2]).toBe("inbound");
     expect(call?.[3]).toBe(10 * 1024 * 1024);
     expect(result).toEqual({
-      path: "/home/user/.openclaw/media/inbound/saved-media",
+      path: "/home/user/.cimiclaw/media/inbound/saved-media",
       contentType: "image/jpeg",
       size: jpeg.length,
     });

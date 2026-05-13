@@ -17,7 +17,7 @@ OpenClaw treats **wake words as a single global list** owned by the **Gateway**.
 
 Wake words are stored on the gateway machine at:
 
-- `~/.openclaw/settings/voicewake.json`
+- `~/.cimiclaw/settings/voicewake.json`
 
 Shape:
 
@@ -29,18 +29,18 @@ Shape:
 
 ### Methods
 
-- `voicewake.get` â†’ `{ triggers: string[] }`
-- `voicewake.set` with params `{ triggers: string[] }` â†’ `{ triggers: string[] }`
+- `voicewake.get` â†?`{ triggers: string[] }`
+- `voicewake.set` with params `{ triggers: string[] }` â†?`{ triggers: string[] }`
 
 Notes:
 
 - Triggers are normalized (trimmed, empties dropped). Empty lists fall back to defaults.
 - Limits are enforced for safety (count/length caps).
 
-### Routing methods (trigger â†’ target)
+### Routing methods (trigger â†?target)
 
-- `voicewake.routing.get` â†’ `{ config: VoiceWakeRoutingConfig }`
-- `voicewake.routing.set` with params `{ config: VoiceWakeRoutingConfig }` â†’ `{ config: VoiceWakeRoutingConfig }`
+- `voicewake.routing.get` â†?`{ config: VoiceWakeRoutingConfig }`
+- `voicewake.routing.set` with params `{ config: VoiceWakeRoutingConfig }` â†?`{ config: VoiceWakeRoutingConfig }`
 
 `VoiceWakeRoutingConfig` shape:
 

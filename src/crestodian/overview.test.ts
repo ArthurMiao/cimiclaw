@@ -19,7 +19,7 @@ describe("loadCrestodianOverview", () => {
       gateway: { port: 19001 },
     };
     const snapshot: ConfigFileSnapshot = {
-      path: "/tmp/openclaw.json",
+      path: "/tmp/cimiclaw.json",
       exists: true,
       raw: "{}",
       parsed: runtimeConfig,
@@ -37,7 +37,7 @@ describe("loadCrestodianOverview", () => {
       env: { OPENCLAW_TEST_FAST: "1" },
       deps: {
         readConfigFileSnapshot: async () => snapshot,
-        resolveConfigPath: () => "/tmp/openclaw.json",
+        resolveConfigPath: () => "/tmp/cimiclaw.json",
         resolveGatewayPort: (cfg) => cfg?.gateway?.port ?? 8765,
         buildGatewayConnectionDetails: (input) => ({
           url: `ws://127.0.0.1:${input.config.gateway?.port ?? 8765}`,

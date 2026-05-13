@@ -6,7 +6,7 @@ import { loadSessionStore, updateSessionStore } from "../../../config/sessions/s
 import { resolveAllAgentSessionStoreTargetsSync } from "../../../config/sessions/targets.js";
 import type { SessionEntry } from "../../../config/sessions/types.js";
 import type { AgentRuntimePolicyConfig } from "../../../config/types.agents-shared.js";
-import type { OpenClawConfig } from "../../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../../config/types.cimiclaw.js";
 
 type CodexRouteHit = {
   path: string;

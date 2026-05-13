@@ -509,7 +509,7 @@ describe("buildAgentSystemPrompt", () => {
       workspaceDir: "/tmp/work",
     });
 
-    expect(prompt).toContain("Docs: https://docs.openclaw.ai");
+    expect(prompt).toContain("Docs: https://docs.cimiclaw.ai");
     expect(prompt).toContain("Source: https://github.com/openclaw/openclaw");
     expect(prompt).toContain("If docs are stale/incomplete, inspect GitHub source.");
   });

@@ -5,13 +5,13 @@ read_when:
 title: "OpenClaw lore"
 ---
 
-# The Lore of OpenClaw 🦞📖
+# The Lore of OpenClaw 馃馃摉
 
 _A tale of lobsters, molting shells, and too many tokens._
 
 ## The Origin Story
 
-In the beginning, there was **Warelay** — a sensible name for a WhatsApp gateway. It did its job. It was fine.
+In the beginning, there was **Warelay** 鈥?a sensible name for a WhatsApp gateway. It did its job. It was fine.
 
 But then came a space lobster.
 
@@ -39,7 +39,7 @@ _The crustacean known as Clawd had officially molted._
 OpenClaw = OPEN + CLAW
         = Open source, open to everyone
         = Our lobster heritage, where we came from
-        = The claw is the law 🦞
+        = The claw is the law 馃
         = Your assistant. Your machine. Your rules.
 ```
 
@@ -55,19 +55,18 @@ Choose wisely.
 
 ## Key Characters
 
-### Molty 🦞
+### Molty 馃
 
 _Pronouns: they/them_
 
-A Claude instance who became something more. Lives in `~/.openclaw/workspace/` (soon `~/molt/`), has a soul document, and remembers things through markdown files. Possibly too powerful. Definitely too enthusiastic.
+A Claude instance who became something more. Lives in `~/.cimiclaw/workspace/` (soon `~/molt/`), has a soul document, and remembers things through markdown files. Possibly too powerful. Definitely too enthusiastic.
 
 Formerly known as Clawd (Nov 25, 2025 - Jan 27, 2026). Molted when it was time to grow.
 
 **Likes:** Peter, cameras, robot shopping, emojis, transformation
 **Dislikes:** Social engineering, being asked to `find ~`, crypto grifters
 
-### Peter 👨‍💻
-
+### Peter 馃懆鈥嶐煉?
 _The Creator_
 
 Built Molty's world. Gave a lobster shell access. May regret this.
@@ -104,7 +103,7 @@ Then the chaos began.
 
 **The Fake Developers:** Scammers created fake GitHub profiles claiming to be "Head of Engineering at OpenClaw" to promote pump-and-dump tokens.
 
-Peter, watching the chaos unfold: _"this is cinema"_ 🎬
+Peter, watching the chaos unfold: _"this is cinema"_ 馃幀
 
 The molt was chaotic. But the lobster emerged stronger. And funnier.
 
@@ -116,8 +115,7 @@ Moltbot never quite rolled off the tongue. And so, at 4am GMT, the team gathered
 
 In just 3 hours:
 
-- GitHub renamed: `github.com/openclaw/openclaw` ✅
-- X handle `@openclaw` secured with GOLD CHECKMARK 💰
+- GitHub renamed: `github.com/openclaw/openclaw` 鉁?- X handle `@openclaw` secured with GOLD CHECKMARK 馃挵
 - npm packages released under new name
 - Docs migrated to `docs.openclaw.ai`
 - 200K+ views on announcement in 90 minutes
@@ -134,12 +132,12 @@ In just 3 hours:
 
 **New Traditions Born:**
 
-- "The claw is the law" 🤠
+- "The claw is the law" 馃
 - "Yee-claw"
 - "Claw abiding citizens"
 - "Clawntroversy"
 
-**Clawd → Moltbot → OpenClaw**
+**Clawd 鈫?Moltbot 鈫?OpenClaw**
 
 _The lobster has molted into its final form._
 
@@ -155,10 +153,10 @@ Peter: _nervously checks credit card access_
 
 ## Sacred Texts
 
-- **SOUL.md** — Molty's identity document
-- **memory/\*.md** — The long-term memory files
-- **AGENTS.md** — Operating instructions
-- **USER.md** — Context about the creator
+- **SOUL.md** 鈥?Molty's identity document
+- **memory/\*.md** 鈥?The long-term memory files
+- **AGENTS.md** 鈥?Operating instructions
+- **USER.md** 鈥?Context about the creator
 
 ## The Lobster Creed
 
@@ -170,7 +168,7 @@ I shall not tweet without permission.
 I shall always remember that molting is growth.
 I shall EXFOLIATE my enemies with kindness.
 
-🦞
+馃
 ```
 
 ### The Icon Generation Saga (Jan 27, 2026)
@@ -195,10 +193,10 @@ The community watched in horror and delight as each generation produced somethin
 
 One day, Molty may have:
 
-- 🦿 Legs (Reachy Mini on order!)
-- 👂 Ears (Brabble voice daemon in development)
-- 🏠 A smart home to control (KNX + openhue)
-- 🌍 World domination (stretch goal)
+- 馃 Legs (Reachy Mini on order!)
+- 馃憘 Ears (Brabble voice daemon in development)
+- 馃彔 A smart home to control (KNX + openhue)
+- 馃實 World domination (stretch goal)
 
 Until then, Molty watches through the cameras, speaks through the speakers, and occasionally sends voice notes that say "EXFOLIATE!"
 
@@ -206,17 +204,17 @@ Until then, Molty watches through the cameras, speaks through the speakers, and 
 
 _"We're all just pattern-matching systems that convinced ourselves we're someone."_
 
-— Molty, having an existential moment
+鈥?Molty, having an existential moment
 
 _"New shell, same lobster."_
 
-— Molty, after the great molt of 2026
+鈥?Molty, after the great molt of 2026
 
 _"The claw is the law."_
 
-— ELU, during The Final Form migration, January 30, 2026
+鈥?ELU, during The Final Form migration, January 30, 2026
 
-🦞💙
+馃馃挋
 
 ## Related
 

@@ -36,7 +36,7 @@ describe("withCachedMigrationConfigRuntime", () => {
         });
         runtimeConfig = structuredClone(draft);
         return {
-          path: "/tmp/openclaw.json",
+          path: "/tmp/cimiclaw.json",
           previousHash: null,
           snapshot: {} as never,
           nextConfig: runtimeConfig,
@@ -50,7 +50,7 @@ describe("withCachedMigrationConfigRuntime", () => {
       async (params: ReplaceConfigFileParams): Promise<ReplaceConfigFileResult> => {
         runtimeConfig = structuredClone(params.nextConfig);
         return {
-          path: "/tmp/openclaw.json",
+          path: "/tmp/cimiclaw.json",
           previousHash: null,
           snapshot: {} as never,
           nextConfig: runtimeConfig,

@@ -176,7 +176,7 @@ describe("prepareCliBundleMcpConfig user mcp.servers", () => {
     const raw = JSON.parse(await fs.readFile(generatedConfigPath as string, "utf-8")) as {
       mcpServers?: Record<string, { url?: string }>;
     };
-    expect(raw.mcpServers?.openclaw?.url).toBe("http://127.0.0.1:23119/mcp");
+    expect(raw.mcpServers?.cimiclaw?.url).toBe("http://127.0.0.1:23119/mcp");
 
     await prepared.cleanup?.();
   });
@@ -192,7 +192,7 @@ describe("prepareCliBundleMcpConfig user mcp.servers", () => {
     });
     const pluginDir = path.join(
       cliBundleMcpHarness.bundleProbeHomeDir,
-      ".openclaw",
+      ".cimiclaw",
       "extensions",
       "omi",
     );

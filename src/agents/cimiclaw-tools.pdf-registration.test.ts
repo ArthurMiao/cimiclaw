@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { collectPresentOpenClawTools } from "./openclaw-tools.registration.js";
+import { collectPresentOpenClawTools } from "./cimiclaw-tools.registration.js";
 import { createPdfTool } from "./tools/pdf-tool.js";
 
 describe("createOpenClawTools PDF registration", () => {

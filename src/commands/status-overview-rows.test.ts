@@ -49,7 +49,7 @@ describe("status-overview-rows", () => {
         gatewayConnection: { url: "wss://gateway.example.com", urlSource: "config" },
       },
       osLabel: "macOS",
-      configPath: "/tmp/openclaw.json",
+      configPath: "/tmp/cimiclaw.json",
       secretDiagnosticsCount: 2,
       agentStatus: {
         bootstrapPendingCount: 1,
@@ -61,7 +61,7 @@ describe("status-overview-rows", () => {
 
     expect(findRowValue(rows, "Version")).toBe(VERSION);
     expect(findRowValue(rows, "OS")).toBe("macOS");
-    expect(findRowValue(rows, "Config")).toBe("/tmp/openclaw.json");
+    expect(findRowValue(rows, "Config")).toBe("/tmp/cimiclaw.json");
     expect(findRowValue(rows, "Security")).toBe("Run: openclaw security audit --deep");
     expect(findRowValue(rows, "Secrets")).toBe("2 diagnostics");
   });

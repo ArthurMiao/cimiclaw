@@ -133,7 +133,7 @@ Set `browser.defaultProfile: "openclaw"` if you want managed mode by default.
 
 ## Configuration
 
-Browser settings live in `~/.openclaw/openclaw.json`.
+Browser settings live in `~/.cimiclaw/cimiclaw.json`.
 
 ```json5
 {
@@ -245,7 +245,7 @@ Browser settings live in `~/.openclaw/openclaw.json`.
 - `executablePath` can be set globally or per local managed profile. Per-profile values override `browser.executablePath`, so different managed profiles can launch different Chromium-based browsers. Both forms accept `~` for your OS home directory.
 - `color` (top-level and per-profile) tints the browser UI so you can see which profile is active.
 - Default profile is `openclaw` (managed standalone). Use `defaultProfile: "user"` to opt into the signed-in user browser.
-- Auto-detect order: system default browser if Chromium-based; otherwise Chrome → Brave → Edge → Chromium → Chrome Canary.
+- Auto-detect order: system default browser if Chromium-based; otherwise Chrome 鈫?Brave 鈫?Edge 鈫?Chromium 鈫?Chrome Canary.
 - `driver: "existing-session"` uses Chrome DevTools MCP instead of raw CDP. Do not set `cdpUrl` for that driver.
 - Set `browser.profiles.<name>.userDataDir` when an existing-session profile should attach to a non-default Chromium user profile (Brave, Edge, etc.). This path also accepts `~` for your OS home directory.
 
@@ -632,8 +632,8 @@ pinned versions, vendored binaries):
 When `cdpUrl` is set on an existing-session profile, OpenClaw skips
 `--autoConnect` and forwards the endpoint to Chrome MCP automatically:
 
-- `http(s)://...` → `--browserUrl <url>` (DevTools HTTP discovery endpoint).
-- `ws(s)://...` → `--wsEndpoint <url>` (direct CDP WebSocket).
+- `http(s)://...` 鈫?`--browserUrl <url>` (DevTools HTTP discovery endpoint).
+- `ws(s)://...` 鈫?`--wsEndpoint <url>` (direct CDP WebSocket).
 
 Endpoint flags and `userDataDir` cannot be combined: when `cdpUrl` is set,
 `userDataDir` is ignored for Chrome MCP launch, since Chrome MCP attaches to

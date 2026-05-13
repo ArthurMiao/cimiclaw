@@ -1,5 +1,5 @@
 import { resolveAgentModelPrimaryValue } from "../config/model-input.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import type { PluginManifestRecord } from "../plugins/manifest-registry.js";
 import {

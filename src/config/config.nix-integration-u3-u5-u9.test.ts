@@ -40,8 +40,8 @@ describe("Nix integration (U3, U5, U9)", () => {
   });
 
   describe("U5: CONFIG_PATH and STATE_DIR env var overrides", () => {
-    it("STATE_DIR defaults to ~/.openclaw when env not set", () => {
-      expect(resolveStateDir(envWith({ OPENCLAW_STATE_DIR: undefined }))).toMatch(/\.openclaw$/);
+    it("STATE_DIR defaults to ~/.cimiclaw when env not set", () => {
+      expect(resolveStateDir(envWith({ OPENCLAW_STATE_DIR: undefined }))).toMatch(/\.cimiclaw$/);
     });
 
     it("STATE_DIR respects OPENCLAW_STATE_DIR override", () => {
@@ -54,10 +54,10 @@ describe("Nix integration (U3, U5, U9)", () => {
       const customHome = path.join(path.sep, "custom", "home");
       expect(
         resolveStateDir(envWith({ OPENCLAW_HOME: customHome, OPENCLAW_STATE_DIR: undefined })),
-      ).toBe(path.join(path.resolve(customHome), ".openclaw"));
+      ).toBe(path.join(path.resolve(customHome), ".cimiclaw"));
     });
 
-    it("CONFIG_PATH defaults to OPENCLAW_HOME/.openclaw/openclaw.json", () => {
+    it("CONFIG_PATH defaults to OPENCLAW_HOME/.cimiclaw/cimiclaw.json", () => {
       const customHome = path.join(path.sep, "custom", "home");
       expect(
         resolveConfigPathCandidate(
@@ -67,33 +67,33 @@ describe("Nix integration (U3, U5, U9)", () => {
             OPENCLAW_STATE_DIR: undefined,
           }),
         ),
-      ).toBe(path.join(path.resolve(customHome), ".openclaw", "openclaw.json"));
+      ).toBe(path.join(path.resolve(customHome), ".cimiclaw", "cimiclaw.json"));
     });
 
-    it("CONFIG_PATH defaults to ~/.openclaw/openclaw.json when env not set", () => {
+    it("CONFIG_PATH defaults to ~/.cimiclaw/cimiclaw.json when env not set", () => {
       expect(
         resolveConfigPathCandidate(
           envWith({ OPENCLAW_CONFIG_PATH: undefined, OPENCLAW_STATE_DIR: undefined }),
         ),
-      ).toMatch(/\.openclaw[\\/]openclaw\.json$/);
+      ).toMatch(/\.cimiclaw[\\/]openclaw\.json$/);
     });
 
     it("CONFIG_PATH respects OPENCLAW_CONFIG_PATH override", () => {
       expect(
         resolveConfigPathCandidate(
-          envWith({ OPENCLAW_CONFIG_PATH: "/nix/store/abc/openclaw.json" }),
+          envWith({ OPENCLAW_CONFIG_PATH: "/nix/store/abc/cimiclaw.json" }),
         ),
-      ).toBe(path.resolve("/nix/store/abc/openclaw.json"));
+      ).toBe(path.resolve("/nix/store/abc/cimiclaw.json"));
     });
 
     it("CONFIG_PATH expands ~ in OPENCLAW_CONFIG_PATH override", async () => {
       await withTempHome(async (home) => {
         expect(
           resolveConfigPathCandidate(
-            envWith({ OPENCLAW_HOME: home, OPENCLAW_CONFIG_PATH: "~/.openclaw/custom.json" }),
+            envWith({ OPENCLAW_HOME: home, OPENCLAW_CONFIG_PATH: "~/.cimiclaw/custom.json" }),
             () => home,
           ),
-        ).toBe(path.join(home, ".openclaw", "custom.json"));
+        ).toBe(path.join(home, ".cimiclaw", "custom.json"));
       });
     });
 
@@ -103,7 +103,7 @@ describe("Nix integration (U3, U5, U9)", () => {
           envWith({ OPENCLAW_STATE_DIR: "/custom/state", OPENCLAW_TEST_FAST: "1" }),
           () => path.join(path.sep, "tmp", "openclaw-config-home"),
         ),
-      ).toBe(path.join(path.resolve("/custom/state"), "openclaw.json"));
+      ).toBe(path.join(path.resolve("/custom/state"), "cimiclaw.json"));
     });
   });
 

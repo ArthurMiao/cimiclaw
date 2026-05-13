@@ -52,7 +52,7 @@ RUN corepack enable
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
-COPY openclaw.mjs ./
+COPY cimiclaw.mjs ./
 COPY ui/package.json ./ui/package.json
 COPY patches ./patches
 COPY scripts/postinstall-bundled-plugins.mjs scripts/preinstall-package-manager-warning.mjs scripts/npm-runner.mjs scripts/windows-cmd-helpers.mjs ./scripts/
@@ -149,8 +149,8 @@ LABEL org.opencontainers.image.source="https://github.com/openclaw/openclaw" \
   org.opencontainers.image.url="https://openclaw.ai" \
   org.opencontainers.image.documentation="https://docs.openclaw.ai/install/docker" \
   org.opencontainers.image.licenses="MIT" \
-  org.opencontainers.image.title="OpenClaw" \
-  org.opencontainers.image.description="OpenClaw gateway and CLI runtime container image"
+  org.opencontainers.image.title="CimiClaw" \
+  org.opencontainers.image.description="CimiClaw gateway and CLI runtime container image"
 
 WORKDIR /app
 
@@ -173,7 +173,7 @@ COPY --from=runtime-assets --chown=node:node /app/node_modules ./node_modules
 COPY --from=runtime-assets --chown=node:node /app/package.json .
 COPY --from=runtime-assets --chown=node:node /app/pnpm-workspace.yaml .
 COPY --from=runtime-assets --chown=node:node /app/patches ./patches
-COPY --from=runtime-assets --chown=node:node /app/openclaw.mjs .
+COPY --from=runtime-assets --chown=node:node /app/cimiclaw.mjs .
 COPY --from=runtime-assets --chown=node:node /app/${OPENCLAW_BUNDLED_PLUGIN_DIR} ./${OPENCLAW_BUNDLED_PLUGIN_DIR}
 COPY --from=runtime-assets --chown=node:node /app/skills ./skills
 COPY --from=runtime-assets --chown=node:node /app/docs ./docs
@@ -262,13 +262,13 @@ RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,shar
     fi
 
 # Expose the CLI binary without requiring npm global writes as non-root.
-RUN ln -sf /app/openclaw.mjs /usr/local/bin/openclaw \
- && chmod 755 /app/openclaw.mjs
+RUN ln -sf /app/cimiclaw.mjs /usr/local/bin/cimiclaw \
+ && chmod 755 /app/cimiclaw.mjs
 
 # Pre-create the default state dir so first-run Docker named volumes mounted
 # here inherit node ownership instead of root-owned state.
-RUN install -d -m 0700 -o node -g node /home/node/.openclaw && \
-    stat -c '%U:%G %a' /home/node/.openclaw | grep -qx 'node:node 700'
+RUN install -d -m 0700 -o node -g node /home/node/.cimiclaw && \
+    stat -c '%U:%G %a' /home/node/.cimiclaw | grep -qx 'node:node 700'
 
 ENV NODE_ENV=production
 
@@ -292,4 +292,4 @@ USER node
 HEALTHCHECK --interval=3m --timeout=10s --start-period=15s --retries=3 \
   CMD node -e "fetch('http://127.0.0.1:18789/healthz').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 ENTRYPOINT ["tini", "-s", "--"]
-CMD ["node", "openclaw.mjs", "gateway", "--allow-unconfigured"]
+CMD ["node", "cimiclaw.mjs", "gateway", "--allow-unconfigured"]

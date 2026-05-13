@@ -118,7 +118,7 @@ async function createStagedNpmInstall(
     return null;
   }
   await fs.mkdir(targetLayout.globalRoot, { recursive: true });
-  const prefix = await fs.mkdtemp(path.join(targetLayout.globalRoot, ".openclaw-update-stage-"));
+  const prefix = await fs.mkdtemp(path.join(targetLayout.globalRoot, ".cimiclaw-update-stage-"));
   const layout = resolveNpmGlobalPrefixLayoutFromPrefix(prefix);
   const command = installTarget.manager === "npm" ? installTarget.command : "npm";
   return {
@@ -216,7 +216,7 @@ async function replaceNpmBinShims(params: {
 
   const backup: NpmBinShimBackup = {
     backupDir: await fs.mkdtemp(
-      path.join(params.targetLayout.globalRoot, ".openclaw-shim-backup-"),
+      path.join(params.targetLayout.globalRoot, ".cimiclaw-shim-backup-"),
     ),
     targetBinDir: params.targetLayout.binDir,
     entries: [],
@@ -278,7 +278,7 @@ async function swapStagedNpmInstall(params: {
     };
   }
 
-  const backupRoot = path.join(targetLayout.globalRoot, `.openclaw-${process.pid}-${Date.now()}`);
+  const backupRoot = path.join(targetLayout.globalRoot, `.cimiclaw-${process.pid}-${Date.now()}`);
   let movedExisting = false;
   let movedStaged = false;
   try {

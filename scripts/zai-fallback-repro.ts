@@ -98,7 +98,7 @@ async function main() {
   };
   await fs.writeFile(configPath, JSON.stringify(config, null, 2), "utf8");
 
-  const sessionId = process.env.OPENCLAW_ZAI_FALLBACK_SESSION_ID ?? randomUUID();
+  const sessionId = process.env.cimiclaw_ZAI_FALLBACK_SESSION_ID ?? randomUUID();
 
   const baseEnv: NodeJS.ProcessEnv = {
     ...process.env,

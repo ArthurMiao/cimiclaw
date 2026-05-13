@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { withEnvAsync } from "../test-utils/env.js";
 import type { AuthProfileStore } from "./auth-profiles.js";
 import { resolveEnvApiKey } from "./model-auth-env.js";
@@ -14,11 +14,11 @@ import {
 import { hasAuthForModelProvider } from "./model-provider-auth.js";
 
 async function writeWorkspaceAuthEvidencePlugin(workspaceDir: string) {
-  const pluginDir = path.join(workspaceDir, ".openclaw", "extensions", "workspace-cloud");
+  const pluginDir = path.join(workspaceDir, ".cimiclaw", "extensions", "workspace-cloud");
   await fs.mkdir(pluginDir, { recursive: true });
   await fs.writeFile(path.join(pluginDir, "index.ts"), "export default {}\n", "utf8");
   await fs.writeFile(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: "workspace-cloud",
       configSchema: { type: "object" },

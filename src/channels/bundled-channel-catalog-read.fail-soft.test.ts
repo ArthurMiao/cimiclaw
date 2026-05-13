@@ -8,7 +8,7 @@ afterEach(() => {
 
 describe("listBundledChannelCatalogEntries discovery failures", () => {
   it("falls back when bundled plugin catalog discovery is unavailable during import", async () => {
-    vi.doMock("../infra/openclaw-root.js", () => ({
+    vi.doMock("../infra/cimiclaw-root.js", () => ({
       resolveOpenClawPackageRootSync: () => null,
       resolveOpenClawPackageRoot: async () => null,
     }));

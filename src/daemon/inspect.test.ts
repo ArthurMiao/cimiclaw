@@ -236,7 +236,7 @@ describe("findExtraGatewayServices (darwin / scanLaunchdDir) — real filesystem
         `<?xml version="1.0" encoding="UTF-8"?>
 <plist version="1.0"><dict>
 <key>Label</key><string>com.example.companion</string>
-<key>KeepAlive</key><dict><key>OtherJobEnabled</key><dict><key>ai.openclaw.gateway</key><true/></dict></dict>
+<key>KeepAlive</key><dict><key>OtherJobEnabled</key><dict><key>ai.cimiclaw.gateway</key><true/></dict></dict>
 <key>ProgramArguments</key><array><string>/usr/local/bin/openclaw-helper</string><string>sync</string></array>
 </dict></plist>`,
       );
@@ -270,14 +270,14 @@ describe("findExtraGatewayServices (darwin / scanLaunchdDir) — real filesystem
   it("reports custom LaunchAgents that execute openclaw gateway", async () => {
     const tmpHome = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-test-"));
     const launchdDir = path.join(tmpHome, "Library", "LaunchAgents");
-    const plistPath = path.join(launchdDir, "com.example.openclaw-gateway.plist");
+    const plistPath = path.join(launchdDir, "com.example.cimiclaw-gateway.plist");
     try {
       await fs.mkdir(launchdDir, { recursive: true });
       await fs.writeFile(
         plistPath,
         `<?xml version="1.0" encoding="UTF-8"?>
 <plist version="1.0"><dict>
-<key>Label</key><string>com.example.openclaw-gateway</string>
+<key>Label</key><string>com.example.cimiclaw-gateway</string>
 <key>ProgramArguments</key><array><string>/usr/local/bin/openclaw</string><string>gateway</string><string>--port</string><string>18888</string></array>
 </dict></plist>`,
       );
@@ -285,7 +285,7 @@ describe("findExtraGatewayServices (darwin / scanLaunchdDir) — real filesystem
       expect(result).toEqual([
         {
           platform: "darwin",
-          label: "com.example.openclaw-gateway",
+          label: "com.example.cimiclaw-gateway",
           detail: `plist: ${plistPath}`,
           scope: "user",
           marker: "openclaw",

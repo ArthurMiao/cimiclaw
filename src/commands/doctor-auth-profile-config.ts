@@ -1,7 +1,7 @@
 import { splitTrailingAuthProfile } from "../agents/model-ref-profile.js";
 import { collectConfiguredModelRefs } from "../config/model-refs.js";
 import type { AuthProfileConfig } from "../config/types.auth.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   normalizeLowercaseStringOrEmpty,
   normalizeOptionalString,

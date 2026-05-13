@@ -19,7 +19,7 @@ import type {
 import { logVerbose, shouldLogVerbose } from "../globals.js";
 import { writeExternalFileWithinRoot } from "../infra/fs-safe.js";
 import { resolveProxyFetchFromEnv } from "../infra/net/proxy-fetch.js";
-import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-cimiclaw-dir.js";
 import { runFfmpeg } from "../media/ffmpeg-exec.js";
 import { runExec } from "../process/exec.js";
 import { normalizeLowercaseStringOrEmpty } from "../shared/string-coerce.js";

@@ -12,7 +12,7 @@ import {
   sanitizeHostExecEnvWithDiagnostics,
   sanitizeSystemRunEnvOverrides,
 } from "./host-env-security.js";
-import { OPENCLAW_CLI_ENV_VALUE } from "./openclaw-exec-env.js";
+import { OPENCLAW_CLI_ENV_VALUE } from "./cimiclaw-exec-env.js";
 
 function findSystemCommandPath(command: string) {
   if (process.platform === "win32") {

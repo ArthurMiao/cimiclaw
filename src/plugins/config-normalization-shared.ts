@@ -1,5 +1,5 @@
 import { normalizeChatChannelId } from "../channels/ids.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   normalizeOptionalLowercaseString,
   normalizeOptionalString,

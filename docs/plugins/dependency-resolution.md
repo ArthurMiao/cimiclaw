@@ -34,14 +34,14 @@ OpenClaw owns only the plugin lifecycle:
 
 OpenClaw uses stable per-source roots:
 
-- npm packages install under `~/.openclaw/npm`
-- git packages clone under `~/.openclaw/git`
+- npm packages install under `~/.cimiclaw/npm`
+- git packages clone under `~/.cimiclaw/git`
 - local/path/archive installs are copied or referenced without dependency repair
 
 npm installs run in the npm root with:
 
 ```bash
-cd ~/.openclaw/npm
+cd ~/.cimiclaw/npm
 npm install --omit=dev --omit=peer --legacy-peer-deps --ignore-scripts --no-audit --no-fund
 ```
 
@@ -52,7 +52,7 @@ and then verifies the installed lockfile metadata before trusting the plugin.
 This is intended for package-acceptance and release-candidate proof where a
 local pack artifact should behave like the registry artifact it simulates.
 
-npm may hoist transitive dependencies to `~/.openclaw/npm/node_modules` beside
+npm may hoist transitive dependencies to `~/.cimiclaw/npm/node_modules` beside
 the plugin package. OpenClaw scans the managed npm root before trusting the
 install and uses npm to remove npm-managed packages during uninstall, so hoisted
 runtime dependencies stay inside the managed cleanup boundary.
@@ -135,7 +135,7 @@ Older OpenClaw versions generated bundled-plugin dependency roots at startup or
 during doctor repair. Current doctor cleanup removes those stale directories and
 symlinks when `--fix` is used, including old `plugin-runtime-deps` roots, global
 Node-prefix package symlinks that point at pruned `plugin-runtime-deps` targets,
-`.openclaw-runtime-deps*` manifests, generated plugin `node_modules`, install
+`.cimiclaw-runtime-deps*` manifests, generated plugin `node_modules`, install
 stage directories, and package-local pnpm stores. Packaged postinstall also
 removes those global symlinks before pruning the legacy target roots so upgrades
 do not leave dangling ESM package imports.

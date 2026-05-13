@@ -2,7 +2,7 @@
 # One-time host setup for rootless OpenClaw in Podman. Uses the current
 # non-root user throughout, builds or pulls the image into that user's Podman
 # store, writes config under ~/.openclaw by default, and uses the repo-local
-# launch script at ./scripts/run-openclaw-podman.sh.
+# launch script at ./scripts/run-cimiclaw-podman.sh.
 #
 # Usage: ./scripts/podman/setup.sh [--quadlet|--container]
 #   --quadlet   Install a Podman Quadlet as the current user's systemd service
@@ -10,15 +10,15 @@
 #   Or set OPENCLAW_PODMAN_QUADLET=1 (or 0) to choose without a flag.
 #
 # After this, start the gateway manually:
-#   ./scripts/run-openclaw-podman.sh launch
-#   ./scripts/run-openclaw-podman.sh launch setup
+#   ./scripts/run-cimiclaw-podman.sh launch
+#   ./scripts/run-cimiclaw-podman.sh launch setup
 # Or, if you used --quadlet:
 #   systemctl --user start openclaw.service
 set -euo pipefail
 
 REPO_PATH="${OPENCLAW_REPO_PATH:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}"
-RUN_SCRIPT_SRC="$REPO_PATH/scripts/run-openclaw-podman.sh"
-QUADLET_TEMPLATE="$REPO_PATH/scripts/podman/openclaw.container.in"
+RUN_SCRIPT_SRC="$REPO_PATH/scripts/run-cimiclaw-podman.sh"
+QUADLET_TEMPLATE="$REPO_PATH/scripts/podman/cimiclaw.container.in"
 OPENCLAW_USER="$(id -un)"
 OPENCLAW_HOME="${HOME:-}"
 OPENCLAW_CONFIG_DIR="${OPENCLAW_CONFIG_DIR:-}"
@@ -419,7 +419,7 @@ seed_local_control_ui_origins "$CONFIG_JSON" "$SEED_GATEWAY_PORT"
 
 if [[ "$INSTALL_QUADLET" == true ]]; then
   QUADLET_DIR="$OPENCLAW_HOME/.config/containers/systemd"
-  QUADLET_DST="$QUADLET_DIR/openclaw.container"
+  QUADLET_DST="$QUADLET_DIR/cimiclaw.container"
   echo "Installing Quadlet to $QUADLET_DST ..."
   mkdir -p "$QUADLET_DIR"
   ensure_safe_existing_dir "quadlet directory" "$QUADLET_DIR"
@@ -456,6 +456,6 @@ fi
 
 echo
 echo "Next:"
-echo "  ./scripts/run-openclaw-podman.sh launch"
-echo "  ./scripts/run-openclaw-podman.sh launch setup"
+echo "  ./scripts/run-cimiclaw-podman.sh launch"
+echo "  ./scripts/run-cimiclaw-podman.sh launch setup"
 echo "  openclaw --container $OPENCLAW_CONTAINER_NAME dashboard --no-open"

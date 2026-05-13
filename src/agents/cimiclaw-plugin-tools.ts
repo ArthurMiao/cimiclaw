@@ -3,7 +3,7 @@ import {
   getRuntimeConfigSnapshot,
   getRuntimeConfigSourceSnapshot,
 } from "../config/runtime-snapshot.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolvePluginTools } from "../plugins/tools.js";
 import { normalizeDeliveryContext } from "../utils/delivery-context.js";
 import { resolveApiKeyForProfile, resolveAuthProfileOrder } from "./auth-profiles.js";
@@ -11,7 +11,7 @@ import type { AuthProfileStore } from "./auth-profiles/types.js";
 import {
   resolveOpenClawPluginToolInputs,
   type OpenClawPluginToolOptions,
-} from "./openclaw-tools.plugin-context.js";
+} from "./cimiclaw-tools.plugin-context.js";
 import { applyPluginToolDeliveryDefaults } from "./plugin-tool-delivery-defaults.js";
 import type { AnyAgentTool } from "./tools/common.js";
 

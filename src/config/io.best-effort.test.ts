@@ -23,8 +23,8 @@ describe("readBestEffortConfig", () => {
 
       expect(snapshot.sourceConfig).toEqual({ update: { channel: "beta" } });
       expect(await fs.readFile(configPath, "utf-8")).toBe(directEditRaw);
-      const entries = await fs.readdir(`${home}/.openclaw`);
-      expect(entries.some((entry) => entry.startsWith("openclaw.json.clobbered."))).toBe(false);
+      const entries = await fs.readdir(`${home}/.cimiclaw`);
+      expect(entries.some((entry) => entry.startsWith("cimiclaw.json.clobbered."))).toBe(false);
     });
   });
 

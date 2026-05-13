@@ -174,7 +174,7 @@ describe("daemon-cli coverage", () => {
       "OPENCLAW_PROFILE",
     ]);
     process.env.OPENCLAW_STATE_DIR = tmpDir;
-    process.env.OPENCLAW_CONFIG_PATH = path.join(tmpDir, "openclaw.json");
+    process.env.OPENCLAW_CONFIG_PATH = path.join(tmpDir, "cimiclaw.json");
     delete process.env.OPENCLAW_GATEWAY_PORT;
     delete process.env.OPENCLAW_PROFILE;
     serviceReadCommand.mockResolvedValue(null);
@@ -212,10 +212,10 @@ describe("daemon-cli coverage", () => {
       environment: {
         OPENCLAW_PROFILE: "dev",
         OPENCLAW_STATE_DIR: "/tmp/openclaw-daemon-state",
-        OPENCLAW_CONFIG_PATH: "/tmp/openclaw-daemon-state/openclaw.json",
+        OPENCLAW_CONFIG_PATH: "/tmp/openclaw-daemon-state/cimiclaw.json",
         OPENCLAW_GATEWAY_PORT: "19001",
       },
-      sourcePath: "/tmp/ai.openclaw.gateway.plist",
+      sourcePath: "/tmp/ai.cimiclaw.gateway.plist",
     });
 
     await runDaemonCommand(["daemon", "status", "--json"]);
@@ -288,7 +288,7 @@ describe("daemon-cli coverage", () => {
         GOPATH: "/Users/test/.local/gopath",
         GOBIN: "/Users/test/.local/gopath/bin",
       },
-      sourcePath: "/tmp/ai.openclaw.gateway.plist",
+      sourcePath: "/tmp/ai.cimiclaw.gateway.plist",
     });
 
     await runDaemonCommand(["daemon", "install", "--force", "--json"]);

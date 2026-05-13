@@ -32,7 +32,7 @@ openclaw config set commitments.enabled true
 openclaw config set commitments.maxPerDay 3
 ```
 
-Equivalent `openclaw.json`:
+Equivalent `cimiclaw.json`:
 
 ```json
 {

@@ -1,6 +1,6 @@
 import { normalizeProviderId } from "../agents/provider-id.js";
 import type { ModelProviderConfig } from "../config/types.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveBundledPluginsDir } from "./bundled-dir.js";
 import { loadPluginManifestRegistry, type PluginManifestRegistry } from "./manifest-registry.js";
 import type {

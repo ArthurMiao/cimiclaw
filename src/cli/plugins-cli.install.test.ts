@@ -249,7 +249,7 @@ function primeHookPackNpmFallback() {
   mockClawHubPackageNotFound("@acme/demo-hooks");
   installPluginFromNpmSpec.mockResolvedValue({
     ok: false,
-    error: "package.json missing openclaw.plugin.json",
+    error: "package.json missing cimiclaw.plugin.json",
   });
   installHooksFromNpmSpec.mockResolvedValue({
     ...createHookPackInstallResult("/tmp/hooks/demo-hooks"),
@@ -1438,7 +1438,7 @@ describe("plugins cli install", () => {
     installPluginFromNpmSpec.mockResolvedValue({
       ok: false,
       error:
-        "plugin already exists: /home/openclaw/.openclaw/extensions/lossless-claw (delete it first)",
+        "plugin already exists: /home/openclaw/.cimiclaw/extensions/lossless-claw (delete it first)",
     });
     installHooksFromNpmSpec.mockResolvedValue({
       ok: false,
@@ -1708,7 +1708,7 @@ describe("plugins cli install", () => {
     loadConfig.mockReturnValue(cfg);
     installPluginFromPath.mockResolvedValue({
       ok: false,
-      error: "package.json missing openclaw.plugin.json",
+      error: "package.json missing cimiclaw.plugin.json",
       code: "missing_openclaw_extensions",
     });
     installHooksFromPath.mockResolvedValue({
@@ -1758,7 +1758,7 @@ describe("plugins cli install", () => {
     });
     installPluginFromNpmSpec.mockResolvedValue({
       ok: false,
-      error: "package.json missing openclaw.plugin.json",
+      error: "package.json missing cimiclaw.plugin.json",
       code: "missing_openclaw_extensions",
     });
     installHooksFromNpmSpec.mockResolvedValue({

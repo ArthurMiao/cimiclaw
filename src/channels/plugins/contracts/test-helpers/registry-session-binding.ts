@@ -7,7 +7,7 @@ import {
   type SessionBindingCapabilities,
   type SessionBindingRecord,
 } from "../../../../infra/outbound/session-binding-service.js";
-import { resolvePreferredOpenClawTmpDir } from "../../../../infra/tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../../../../infra/tmp-cimiclaw-dir.js";
 import { setActivePluginRegistry } from "../../../../plugins/runtime.js";
 import { createTestRegistry } from "../../../../test-utils/channel-plugins.js";
 import { createChannelConversationBindingManager } from "../../conversation-bindings.js";

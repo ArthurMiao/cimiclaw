@@ -63,7 +63,7 @@ import { loadSessionStore } from "../config/sessions/store-load.js";
 import { archiveRemovedSessionTranscripts, updateSessionStore } from "../config/sessions/store.js";
 import type { SessionEntry } from "../config/sessions/types.js";
 import type { AgentDefaultsConfig } from "../config/types.agent-defaults.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { hasActiveCronJobs } from "../cron/active-jobs.js";
 import { resolveCronSession } from "../cron/isolated-agent/session.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";

@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { withActivatedPluginIds } from "../../plugins/activation-context.js";
 import { resolveAgentHarnessPolicy } from "./selection.js";
 

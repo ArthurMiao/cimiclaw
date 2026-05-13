@@ -16,7 +16,7 @@ import {
 } from "../../config/redact-snapshot.js";
 import { loadGatewayRuntimeConfigSchema } from "../../config/runtime-schema.js";
 import { lookupConfigSchema, type ConfigSchemaResponse } from "../../config/schema.js";
-import type { ConfigValidationIssue, OpenClawConfig } from "../../config/types.openclaw.js";
+import type { ConfigValidationIssue, OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { formatErrorMessage } from "../../infra/errors.js";
 import {
   prepareSecretsRuntimeSnapshot,

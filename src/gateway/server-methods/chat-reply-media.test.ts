@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { getAgentScopedMediaLocalRoots } from "../../media/local-roots.js";
 import { createManagedOutgoingImageBlocks } from "../managed-image-attachments.js";
 import { normalizeWebchatReplyMediaPathsForDisplay } from "./chat-reply-media.js";

@@ -117,7 +117,7 @@ Imported themes are stored only in the current browser profile. They are not wri
 
   </Accordion>
   <Accordion title="Config">
-    - View/edit `~/.openclaw/openclaw.json` (`config.get`, `config.set`).
+    - View/edit `~/.cimiclaw/cimiclaw.json` (`config.get`, `config.set`).
     - Apply + restart with validation (`config.apply`) and wake the last active session.
     - Writes include a base-hash guard to prevent clobbering concurrent edits.
     - Writes (`config.set`/`config.apply`/`config.patch`) preflight active SecretRef resolution for refs in the submitted config payload; unresolved active submitted refs are rejected before write.
@@ -214,10 +214,10 @@ Override the VAPID keypair through env vars on the Gateway process when you want
 
 The Control UI uses these scope-gated Gateway methods to register and test browser subscriptions:
 
-- `push.web.vapidPublicKey` — fetches the active VAPID public key.
-- `push.web.subscribe` — registers an `endpoint` plus `keys.p256dh`/`keys.auth`.
-- `push.web.unsubscribe` — removes a registered endpoint.
-- `push.web.test` — sends a test notification to the caller's subscription.
+- `push.web.vapidPublicKey` 鈥?fetches the active VAPID public key.
+- `push.web.subscribe` 鈥?registers an `endpoint` plus `keys.p256dh`/`keys.auth`.
+- `push.web.unsubscribe` 鈥?removes a registered endpoint.
+- `push.web.test` 鈥?sends a test notification to the caller's subscription.
 
 <Note>
 Web Push is independent of the iOS APNS relay path (see [Configuration](/gateway/configuration) for relay-backed push) and the existing `push.test` method, which target native mobile pairing.
@@ -381,7 +381,7 @@ What this means in practice:
 - Local `blob:` URLs created by the Control UI still render.
 - Remote avatar URLs emitted by channel metadata are stripped at the Control UI's avatar helpers and replaced with the built-in logo/badge, so a compromised or malicious channel cannot force arbitrary remote image fetches from an operator browser.
 
-You do not need to change anything to get this behavior — it is always on and not configurable.
+You do not need to change anything to get this behavior 鈥?it is always on and not configurable.
 
 ## Avatar route auth
 
@@ -482,7 +482,7 @@ Remote access setup details: [Remote access](/gateway/remote).
 
 ## Related
 
-- [Dashboard](/web/dashboard) — gateway dashboard
-- [Health Checks](/gateway/health) — gateway health monitoring
-- [TUI](/web/tui) — terminal user interface
-- [WebChat](/web/webchat) — browser-based chat interface
+- [Dashboard](/web/dashboard) 鈥?gateway dashboard
+- [Health Checks](/gateway/health) 鈥?gateway health monitoring
+- [TUI](/web/tui) 鈥?terminal user interface
+- [WebChat](/web/webchat) 鈥?browser-based chat interface

@@ -6,7 +6,7 @@ import { describe, expect, it } from "vitest";
 import { isLiveTestEnabled } from "../agents/live-test-helpers.js";
 import type { ChannelOutboundContext } from "../channels/plugins/types.public.js";
 import { clearConfigCache, clearRuntimeConfigSnapshot } from "../config/config.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { isTruthyEnvValue } from "../infra/env.js";
 import { getSessionBindingService } from "../infra/outbound/session-binding-service.js";
 import { resolveBundledPluginWorkspaceSourcePath } from "../plugins/bundled-plugin-metadata.js";
@@ -292,7 +292,7 @@ async function writePluginBindingApproval(params: {
   channel: string;
   accountId: string;
 }): Promise<void> {
-  const openclawDir = path.join(params.homeDir, ".openclaw");
+  const openclawDir = path.join(params.homeDir, ".cimiclaw");
   await fs.mkdir(openclawDir, { recursive: true });
   await fs.writeFile(
     path.join(openclawDir, "plugin-binding-approvals.json"),
@@ -377,7 +377,7 @@ describeLive("gateway live (native Codex conversation binding)", () => {
       const tempHome = path.join(tempRoot, "home");
       const stateDir = path.join(tempRoot, "state");
       const workspace = path.join(tempRoot, "workspace");
-      const configPath = path.join(tempRoot, "openclaw.json");
+      const configPath = path.join(tempRoot, "cimiclaw.json");
       const token = `test-${randomUUID()}`;
       const port = await getFreeGatewayPort();
       const sessionKey = "main";

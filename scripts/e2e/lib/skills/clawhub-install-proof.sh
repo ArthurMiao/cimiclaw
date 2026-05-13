@@ -5,7 +5,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../.." && pwd)"
 cd "$ROOT_DIR"
 
-source "$ROOT_DIR/scripts/lib/openclaw-e2e-instance.sh"
+source "$ROOT_DIR/scripts/lib/cimiclaw-e2e-instance.sh"
 
 OPENCLAW_TEST_STATE_SCRIPT_B64="${OPENCLAW_TEST_STATE_SCRIPT_B64:-}"
 if [ -n "$OPENCLAW_TEST_STATE_SCRIPT_B64" ]; then

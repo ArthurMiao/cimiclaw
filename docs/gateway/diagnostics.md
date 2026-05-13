@@ -152,7 +152,7 @@ Create a diagnostics zip from the newest persisted bundle:
 openclaw gateway stability --bundle latest --export
 ```
 
-Persisted bundles live under `~/.openclaw/logs/stability/` when events exist.
+Persisted bundles live under `~/.cimiclaw/logs/stability/` when events exist.
 
 ## Useful options
 
@@ -195,4 +195,4 @@ Gateway logging.
 - [Gateway CLI](/cli/gateway#gateway-diagnostics-export)
 - [Gateway protocol](/gateway/protocol#system-and-identity)
 - [Logging](/logging)
-- [OpenTelemetry export](/gateway/opentelemetry) â€” separate flow for streaming diagnostics to a collector
+- [OpenTelemetry export](/gateway/opentelemetry) â€?separate flow for streaming diagnostics to a collector

@@ -1,5 +1,5 @@
 import { completionRequiresMessageToolDelivery } from "../auto-reply/reply/completion-delivery-policy.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { ConversationRef } from "../infra/outbound/session-binding-service.js";
 import { stringifyRouteThreadId } from "../plugin-sdk/channel-route.js";
 import { normalizeAccountId } from "../routing/session-key.js";

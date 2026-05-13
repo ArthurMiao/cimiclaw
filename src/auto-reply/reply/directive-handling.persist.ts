@@ -9,7 +9,7 @@ import { listLegacyRuntimeModelProviderAliases } from "../../agents/model-runtim
 import { normalizeProviderId, type ModelAliasIndex } from "../../agents/model-selection.js";
 import { updateSessionStore } from "../../config/sessions/store.js";
 import type { SessionEntry } from "../../config/sessions/types.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { enqueueSystemEvent } from "../../infra/system-events.js";
 import { applyTraceOverride, applyVerboseOverride } from "../../sessions/level-overrides.js";
 import { applyModelOverrideToSessionEntry } from "../../sessions/model-overrides.js";

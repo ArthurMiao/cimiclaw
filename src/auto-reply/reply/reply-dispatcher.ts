@@ -1,7 +1,7 @@
 import type { TypingCallbacks } from "../../channels/typing.js";
 import { resolveSilentReplySettings } from "../../config/silent-reply.js";
 import type { HumanDelayConfig } from "../../config/types.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { generateSecureInt } from "../../infra/secure-random.js";
 import { createSubsystemLogger } from "../../logging/subsystem.js";
 import {

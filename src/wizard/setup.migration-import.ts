@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { OnboardOptions } from "../commands/onboard-types.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { formatErrorMessage } from "../infra/errors.js";
 import type { MigrationProviderPlugin } from "../plugins/types.js";
 import type { RuntimeEnv } from "../runtime.js";

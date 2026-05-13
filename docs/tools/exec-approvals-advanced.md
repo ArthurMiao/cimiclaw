@@ -4,7 +4,7 @@ read_when:
   - Configuring safe bins or custom safe-bin profiles
   - Forwarding approvals to Slack/Discord/Telegram or other chat channels
   - Implementing a native approval client for a channel
-title: "Exec approvals — advanced"
+title: "Exec approvals 鈥?advanced"
 ---
 
 Advanced exec-approval topics: the `safeBins` fast-path, interpreter/runtime
@@ -115,7 +115,7 @@ Configuration location:
 - `safeBins` comes from config (`tools.exec.safeBins` or per-agent `agents.list[].tools.exec.safeBins`).
 - `safeBinTrustedDirs` comes from config (`tools.exec.safeBinTrustedDirs` or per-agent `agents.list[].tools.exec.safeBinTrustedDirs`).
 - `safeBinProfiles` comes from config (`tools.exec.safeBinProfiles` or per-agent `agents.list[].tools.exec.safeBinProfiles`). Per-agent profile keys override global keys.
-- allowlist entries live in host-local `~/.openclaw/exec-approvals.json` under `agents.<id>.allowlist` (or via Control UI / `openclaw approvals allowlist ...`).
+- allowlist entries live in host-local `~/.cimiclaw/exec-approvals.json` under `agents.<id>.allowlist` (or via Control UI / `openclaw approvals allowlist ...`).
 - `openclaw security audit` warns with `tools.exec.safe_bins_interpreter_unprofiled` when interpreter/runtime bins appear in `safeBins` without explicit profiles.
 - `openclaw doctor --fix` can scaffold missing custom `safeBinProfiles.<bin>` entries as `{}` (review and tighten afterward). Interpreter/runtime bins are not auto-scaffolded.
 
@@ -309,7 +309,7 @@ Shared behavior:
   without a second Slack-local fallback layer
 - Matrix native DM/channel routing and reaction shortcuts handle both exec and plugin approvals;
   plugin authorization still comes from `channels.matrix.dm.allowFrom`
-- Matrix native prompts include `com.openclaw.approval` custom event content on the first prompt
+- Matrix native prompts include `com.cimiclaw.approval` custom event content on the first prompt
   event so OpenClaw-aware Matrix clients can read structured approval state while stock clients
   keep the plain-text `/approve` fallback
 - the requester does not need to be an approver
@@ -354,7 +354,7 @@ Security notes:
 
 ## Related
 
-- [Exec approvals](/tools/exec-approvals) — core policy and approval flow
+- [Exec approvals](/tools/exec-approvals) 鈥?core policy and approval flow
 - [Exec tool](/tools/exec)
 - [Elevated mode](/tools/elevated)
-- [Skills](/tools/skills) — skill-backed auto-allow behavior
+- [Skills](/tools/skills) 鈥?skill-backed auto-allow behavior

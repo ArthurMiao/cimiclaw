@@ -1,6 +1,6 @@
 import { resolveChannelGroupRequireMention } from "../../config/group-policy.js";
 import type { GroupKeyResolution, SessionEntry } from "../../config/sessions.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { createLazyImportLoader } from "../../shared/lazy-promise.js";
 import type { SilentReplyPolicy } from "../../shared/silent-reply-policy.js";
 import {

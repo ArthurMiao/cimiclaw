@@ -96,8 +96,8 @@ To expose host GPUs to Docker sandboxes, set `agents.defaults.sandbox.docker.gpu
 
 If you deploy the OpenClaw Gateway itself as a Docker container, it orchestrates sibling sandbox containers using the host's Docker socket (DooD). This introduces a specific path mapping constraint:
 
-- **Config requires host paths**: The `openclaw.json` `workspace` configuration MUST contain the **Host's absolute path** (e.g. `/home/user/.openclaw/workspaces`), not the internal Gateway container path. When OpenClaw asks the Docker daemon to spawn a sandbox, the daemon evaluates paths relative to the Host OS namespace, not the Gateway namespace.
-- **FS bridge parity (identical volume map)**: The OpenClaw Gateway native process also writes heartbeat and bridge files to the `workspace` directory. Because the Gateway evaluates the exact same string (the host path) from within its own containerized environment, the Gateway deployment MUST include an identical volume map linking the host namespace natively (`-v /home/user/.openclaw:/home/user/.openclaw`).
+- **Config requires host paths**: The `cimiclaw.json` `workspace` configuration MUST contain the **Host's absolute path** (e.g. `/home/user/.cimiclaw/workspaces`), not the internal Gateway container path. When OpenClaw asks the Docker daemon to spawn a sandbox, the daemon evaluates paths relative to the Host OS namespace, not the Gateway namespace.
+- **FS bridge parity (identical volume map)**: The OpenClaw Gateway native process also writes heartbeat and bridge files to the `workspace` directory. Because the Gateway evaluates the exact same string (the host path) from within its own containerized environment, the Gateway deployment MUST include an identical volume map linking the host namespace natively (`-v /home/user/.cimiclaw:/home/user/.cimiclaw`).
 
 If you map paths internally without absolute host parity, OpenClaw natively throws an `EACCES` permission error attempting to write its heartbeat inside the container environment because the fully qualified path string doesn't exist natively.
 </Warning>
@@ -285,7 +285,7 @@ For `mirror` mode, recreate mainly resets the remote execution environment becau
 
 <Tabs>
   <Tab title="none (default)">
-    Tools see a sandbox workspace under `~/.openclaw/sandboxes`.
+    Tools see a sandbox workspace under `~/.cimiclaw/sandboxes`.
   </Tab>
   <Tab title="ro">
     Mounts the agent workspace read-only at `/agent` (disables `write`/`edit`/`apply_patch`).
@@ -524,8 +524,8 @@ Each agent can override sandbox + tools: `agents.list[].sandbox` and `agents.lis
 
 ## Related
 
-- [Multi-Agent Sandbox & Tools](/tools/multi-agent-sandbox-tools) — per-agent overrides and precedence
-- [OpenShell](/gateway/openshell) — managed sandbox backend setup, workspace modes, and config reference
+- [Multi-Agent Sandbox & Tools](/tools/multi-agent-sandbox-tools) �?per-agent overrides and precedence
+- [OpenShell](/gateway/openshell) �?managed sandbox backend setup, workspace modes, and config reference
 - [Sandbox configuration](/gateway/config-agents#agentsdefaultssandbox)
-- [Sandbox vs Tool Policy vs Elevated](/gateway/sandbox-vs-tool-policy-vs-elevated) — debugging "why is this blocked?"
+- [Sandbox vs Tool Policy vs Elevated](/gateway/sandbox-vs-tool-policy-vs-elevated) �?debugging "why is this blocked?"
 - [Security](/gateway/security)

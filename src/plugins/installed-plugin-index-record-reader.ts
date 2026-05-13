@@ -54,7 +54,7 @@ function readStringRecord(value: unknown): Record<string, string> {
 }
 
 function hasPackagePluginMetadata(manifest: Record<string, unknown>): boolean {
-  const openclaw = manifest.openclaw;
+  const openclaw = manifest.cimiclaw;
   if (!isRecord(openclaw)) {
     return false;
   }

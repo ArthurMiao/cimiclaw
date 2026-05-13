@@ -44,7 +44,7 @@ You will need to create a new application with a bot, add the bot to your server
     Scroll back up on the **Bot** page and click **Reset Token**.
 
     <Note>
-    Despite the name, this generates your first token ‚Äî nothing is being "reset."
+    Despite the name, this generates your first token ‚Ä?nothing is being "reset."
     </Note>
 
     Copy the token and save it somewhere. This is your **Bot Token** and you will need it shortly.
@@ -78,16 +78,16 @@ You will need to create a new application with a bot, add the bot to your server
   <Step title="Enable Developer Mode and collect your IDs">
     Back in the Discord app, you need to enable Developer Mode so you can copy internal IDs.
 
-    1. Click **User Settings** (gear icon next to your avatar) ‚Üí **Advanced** ‚Üí toggle on **Developer Mode**
-    2. Right-click your **server icon** in the sidebar ‚Üí **Copy Server ID**
-    3. Right-click your **own avatar** ‚Üí **Copy User ID**
+    1. Click **User Settings** (gear icon next to your avatar) ‚Ü?**Advanced** ‚Ü?toggle on **Developer Mode**
+    2. Right-click your **server icon** in the sidebar ‚Ü?**Copy Server ID**
+    3. Right-click your **own avatar** ‚Ü?**Copy User ID**
 
-    Save your **Server ID** and **User ID** alongside your Bot Token ‚Äî you'll send all three to OpenClaw in the next step.
+    Save your **Server ID** and **User ID** alongside your Bot Token ‚Ä?you'll send all three to OpenClaw in the next step.
 
   </Step>
 
   <Step title="Allow DMs from server members">
-    For pairing to work, Discord needs to allow your bot to DM you. Right-click your **server icon** ‚Üí **Privacy Settings** ‚Üí toggle on **Direct Messages**.
+    For pairing to work, Discord needs to allow your bot to DM you. Right-click your **server icon** ‚Ü?**Privacy Settings** ‚Ü?toggle on **Direct Messages**.
 
     This lets server members (including bots) send you DMs. Keep this enabled if you want to use Discord DMs with OpenClaw. If you only plan to use guild channels, you can disable DMs after pairing.
 
@@ -114,7 +114,7 @@ openclaw gateway
 ```
 
     If OpenClaw is already running as a background service, restart it via the OpenClaw Mac app or by stopping and restarting the `openclaw gateway run` process.
-    For managed service installs, run `openclaw gateway install` from a shell where `DISCORD_BOT_TOKEN` is present, or store the variable in `~/.openclaw/.env`, so the service can resolve the env SecretRef after restart.
+    For managed service installs, run `openclaw gateway install` from a shell where `DISCORD_BOT_TOKEN` is present, or store the variable in `~/.cimiclaw/.env`, so the service can resolve the env SecretRef after restart.
     If your host is blocked or rate-limited by Discord's startup application lookup, set the Discord application/client ID from the Developer Portal so startup can skip that REST call. Use `channels.discord.applicationId` for the default account, or `channels.discord.accounts.<accountId>.applicationId` when you run multiple Discord bots.
 
   </Step>
@@ -297,7 +297,7 @@ Once DMs are working, you can set up your Discord server as a full workspace whe
   </Step>
 </Steps>
 
-Now create some channels on your Discord server and start chatting. Your agent can see the channel name, and each channel gets its own isolated session ‚Äî so you can set up `#coding`, `#home`, `#research`, or whatever fits your workflow.
+Now create some channels on your Discord server and start chatting. Your agent can see the channel name, and each channel gets its own isolated session ‚Ä?so you can set up `#coding`, `#home`, `#research`, or whatever fits your workflow.
 
 ## Runtime model
 
@@ -687,7 +687,7 @@ Default slash command settings:
     - `block` emits draft-sized chunks (use `draftChunk` to tune size and breakpoints, clamped to `textChunkLimit`).
     - Media, error, and explicit-reply finals cancel pending preview edits.
     - `streaming.preview.toolProgress` (default `true`) controls whether tool/progress updates reuse the preview message.
-    - Tool/progress rows render as compact emoji + title + detail when available, for example `üõ†Ô∏è Bash: run tests` or `üîé Web Search: for "query"`.
+    - Tool/progress rows render as compact emoji + title + detail when available, for example `üõ†Ô∏?Bash: run tests` or `üîé Web Search: for "query"`.
     - `streaming.preview.commandText` / `streaming.progress.commandText` controls command/exec detail in compact progress lines: `raw` (default) or `status` (tool label only).
 
     Hide raw command/exec text while keeping compact progress lines:
@@ -1225,7 +1225,7 @@ Notes:
 - If receive logs repeatedly show `DecryptionFailed(UnencryptedWhenPassthroughDisabled)` after updating, collect a dependency report and logs. The bundled `@discordjs/voice` line includes the upstream padding fix from discord.js PR #11449, which closed discord.js issue #11419.
 - `The operation was aborted` receive events are expected when OpenClaw finalizes a captured speaker segment; they are verbose diagnostics, not warnings.
 - Verbose Discord voice logs include a bounded one-line STT transcript preview for each accepted speaker segment, so debugging shows both the user side and the agent reply side without dumping unbounded transcript text.
-- In `agent-proxy` mode, forced consult fallback skips likely incomplete transcript fragments such as text ending in `...` or a trailing connector like `and`, plus obvious non-actionable closings like ‚Äúbe right back‚Äù or ‚Äúbye‚Äù. Logs show `forced agent consult skipped reason=...` when this prevents a stale queued answer.
+- In `agent-proxy` mode, forced consult fallback skips likely incomplete transcript fragments such as text ending in `...` or a trailing connector like `and`, plus obvious non-actionable closings like ‚Äúbe right back‚Ä?or ‚Äúbye‚Ä? Logs show `forced agent consult skipped reason=...` when this prevents a stale queued answer.
 
 Native opus setup for source checkouts:
 

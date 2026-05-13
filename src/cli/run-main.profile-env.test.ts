@@ -144,7 +144,7 @@ describe("runCli profile env bootstrap", () => {
 
   it("applies --profile before dotenv loading", async () => {
     fileState.hasCliDotEnv = true;
-    await runCli(["node", "openclaw", "--profile", "rawdog", "status"]);
+    await runCli(["node", "cimiclaw", "--profile", "rawdog", "status"]);
 
     expect(dotenvState.loadDotEnv).toHaveBeenCalledOnce();
     expect(dotenvState.state.profileAtDotenvLoad).toBe("rawdog");
@@ -153,7 +153,7 @@ describe("runCli profile env bootstrap", () => {
 
   it("rejects --container combined with --profile", async () => {
     await expect(
-      runCli(["node", "openclaw", "--container", "demo", "--profile", "rawdog", "status"]),
+      runCli(["node", "cimiclaw", "--container", "demo", "--profile", "rawdog", "status"]),
     ).rejects.toThrow("--container cannot be combined with --profile/--dev");
 
     expect(dotenvState.loadDotEnv).not.toHaveBeenCalled();
@@ -162,13 +162,13 @@ describe("runCli profile env bootstrap", () => {
 
   it("rejects --container combined with interleaved --profile", async () => {
     await expect(
-      runCli(["node", "openclaw", "status", "--container", "demo", "--profile", "rawdog"]),
+      runCli(["node", "cimiclaw", "status", "--container", "demo", "--profile", "rawdog"]),
     ).rejects.toThrow("--container cannot be combined with --profile/--dev");
   });
 
   it("rejects --container combined with interleaved --dev", async () => {
     await expect(
-      runCli(["node", "openclaw", "status", "--container", "demo", "--dev"]),
+      runCli(["node", "cimiclaw", "status", "--container", "demo", "--dev"]),
     ).rejects.toThrow("--container cannot be combined with --profile/--dev");
   });
 
@@ -180,15 +180,15 @@ describe("runCli profile env bootstrap", () => {
       dotenvState.state.containerAtDotenvLoad = process.env.OPENCLAW_CONTAINER;
     });
 
-    await runCli(["node", "openclaw", "status"]);
+    await runCli(["node", "cimiclaw", "status"]);
 
     expect(dotenvState.loadDotEnv).toHaveBeenCalledOnce();
     expect(process.env.OPENCLAW_CONTAINER).toBe("demo");
     expect(dotenvState.state.containerAtDotenvLoad).toBe("demo");
-    expect(maybeRunCliInContainerMock).toHaveBeenCalledWith(["node", "openclaw", "status"]);
+    expect(maybeRunCliInContainerMock).toHaveBeenCalledWith(["node", "cimiclaw", "status"]);
     expect(maybeRunCliInContainerMock).toHaveReturnedWith({
       handled: false,
-      argv: ["node", "openclaw", "status"],
+      argv: ["node", "cimiclaw", "status"],
     });
   });
 
@@ -196,7 +196,7 @@ describe("runCli profile env bootstrap", () => {
     process.env.OPENCLAW_PROFILE = "work";
 
     await expect(
-      runCli(["node", "openclaw", "--container", "demo", "status"]),
+      runCli(["node", "cimiclaw", "--container", "demo", "status"]),
     ).resolves.toBeUndefined();
   });
 
@@ -209,7 +209,7 @@ describe("runCli profile env bootstrap", () => {
     process.env[key] = value;
 
     await expect(
-      runCli(["node", "openclaw", "--container", "demo", "status"]),
+      runCli(["node", "cimiclaw", "--container", "demo", "status"]),
     ).resolves.toBeUndefined();
   });
 
@@ -217,15 +217,15 @@ describe("runCli profile env bootstrap", () => {
     process.env.OPENCLAW_STATE_DIR = "/tmp/openclaw-host-state";
 
     await expect(
-      runCli(["node", "openclaw", "--container", "demo", "status"]),
+      runCli(["node", "cimiclaw", "--container", "demo", "status"]),
     ).resolves.toBeUndefined();
   });
 
   it("allows container mode when only OPENCLAW_CONFIG_PATH is set in env", async () => {
-    process.env.OPENCLAW_CONFIG_PATH = "/tmp/openclaw-host-state/openclaw.json";
+    process.env.OPENCLAW_CONFIG_PATH = "/tmp/openclaw-host-state/cimiclaw.json";
 
     await expect(
-      runCli(["node", "openclaw", "--container", "demo", "status"]),
+      runCli(["node", "cimiclaw", "--container", "demo", "status"]),
     ).resolves.toBeUndefined();
   });
 });

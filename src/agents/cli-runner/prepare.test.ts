@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { CURRENT_SESSION_VERSION } from "@mariozechner/pi-coding-agent";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { getGlobalHookRunner } from "../../plugins/hook-runner-global.js";
 import { __testing as cliBackendsTesting } from "../cli-backends.js";
 import { hashCliSessionText } from "../cli-session.js";

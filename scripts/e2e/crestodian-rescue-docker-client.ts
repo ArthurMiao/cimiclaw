@@ -6,7 +6,7 @@ import os from "node:os";
 import path from "node:path";
 import { handleCrestodianCommand } from "../../dist/auto-reply/reply/commands-crestodian.js";
 import { clearConfigCache } from "../../dist/config/config.js";
-import type { OpenClawConfig } from "../../dist/config/types.openclaw.js";
+import type { OpenClawConfig } from "../../dist/config/types.cimiclaw.js";
 import { runCrestodianRescueMessage } from "../../dist/crestodian/rescue-message.js";
 
 type CommandResult = Awaited<ReturnType<typeof handleCrestodianCommand>>;
@@ -52,11 +52,11 @@ async function invoke(commandBody: string, cfg: OpenClawConfig, isGroup = false)
 
 async function main() {
   const stateDir =
-    process.env.OPENCLAW_STATE_DIR ??
+    process.env.cimiclaw_STATE_DIR ??
     (await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-crestodian-")));
-  const configPath = process.env.OPENCLAW_CONFIG_PATH ?? path.join(stateDir, "openclaw.json");
-  process.env.OPENCLAW_STATE_DIR = stateDir;
-  process.env.OPENCLAW_CONFIG_PATH = configPath;
+  const configPath = process.env.cimiclaw_CONFIG_PATH ?? path.join(stateDir, "openclaw.json");
+  process.env.cimiclaw_STATE_DIR = stateDir;
+  process.env.cimiclaw_CONFIG_PATH = configPath;
   await fs.mkdir(stateDir, { recursive: true });
   await fs.writeFile(
     configPath,

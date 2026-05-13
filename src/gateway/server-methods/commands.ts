@@ -7,7 +7,7 @@ import type {
 } from "../../auto-reply/commands-registry.types.js";
 import { listSkillCommandsForAgents } from "../../auto-reply/skill-commands.js";
 import { getChannelPlugin } from "../../channels/plugins/index.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { getPluginCommandSpecs } from "../../plugins/command-specs.js";
 import { listPluginCommands } from "../../plugins/commands.js";
 import { normalizeOptionalLowercaseString } from "../../shared/string-coerce.js";

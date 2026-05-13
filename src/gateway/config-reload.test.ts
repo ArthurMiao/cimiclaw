@@ -526,7 +526,7 @@ function makeSnapshot(partial: Partial<ConfigFileSnapshot> = {}): ConfigFileSnap
     {}) as ConfigFileSnapshot["sourceConfig"];
   const runtimeConfig = partial.runtimeConfig ?? partial.config ?? {};
   return {
-    path: "/tmp/openclaw.json",
+    path: "/tmp/cimiclaw.json",
     exists: true,
     raw: "{}",
     parsed: {},
@@ -562,7 +562,7 @@ function makeZeroDebounceHookSnapshot(hash: string): ConfigFileSnapshot {
 
 function makeZeroDebounceHookWrite(persistedHash: string): ConfigWriteNotification {
   return {
-    configPath: "/tmp/openclaw.json",
+    configPath: "/tmp/cimiclaw.json",
     sourceConfig: { gateway: { reload: { debounceMs: 0 } }, hooks: { enabled: true } },
     runtimeConfig: {
       gateway: { reload: { debounceMs: 0 } },
@@ -616,7 +616,7 @@ function createReloaderHarness(
     onHotReload,
     onRestart,
     log,
-    watchPath: "/tmp/openclaw.json",
+    watchPath: "/tmp/cimiclaw.json",
   });
   return {
     watcher,
@@ -1064,7 +1064,7 @@ describe("startGatewayConfigReloader", () => {
     const harness = createReloaderHarness(readSnapshot, { initialCompareConfig: sourceConfig });
 
     harness.emitWrite({
-      configPath: "/tmp/openclaw.json",
+      configPath: "/tmp/cimiclaw.json",
       sourceConfig: {
         ...sourceConfig,
         plugins: {
@@ -1152,7 +1152,7 @@ describe("startGatewayConfigReloader", () => {
     const harness = createReloaderHarness(readSnapshot, { initialCompareConfig: sourceConfig });
 
     harness.emitWrite({
-      configPath: "/tmp/openclaw.json",
+      configPath: "/tmp/cimiclaw.json",
       sourceConfig: nextSourceConfig,
       runtimeConfig: nextSourceConfig,
       persistedHash: "plugin-collision-1",

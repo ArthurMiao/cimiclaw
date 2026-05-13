@@ -10,12 +10,12 @@ Short guide to verify channel connectivity without guessing.
 
 ## Quick checks
 
-- `openclaw status` â€” local summary: gateway reachability/mode, update hint, linked channel auth age, sessions + recent activity.
-- `openclaw status --all` â€” full local diagnosis (read-only, color, safe to paste for debugging).
-- `openclaw status --deep` â€” asks the running gateway for a live health probe (`health` with `probe:true`), including per-account channel probes when supported.
-- `openclaw health` â€” asks the running gateway for its health snapshot (WS-only; no direct channel sockets from the CLI).
-- `openclaw health --verbose` â€” forces a live health probe and prints gateway connection details.
-- `openclaw health --json` â€” machine-readable health snapshot output.
+- `openclaw status` â€?local summary: gateway reachability/mode, update hint, linked channel auth age, sessions + recent activity.
+- `openclaw status --all` â€?full local diagnosis (read-only, color, safe to paste for debugging).
+- `openclaw status --deep` â€?asks the running gateway for a live health probe (`health` with `probe:true`), including per-account channel probes when supported.
+- `openclaw health` â€?asks the running gateway for its health snapshot (WS-only; no direct channel sockets from the CLI).
+- `openclaw health --verbose` â€?forces a live health probe and prints gateway connection details.
+- `openclaw health --json` â€?machine-readable health snapshot output.
 - Send `/status` as a standalone message in WhatsApp/WebChat to get a status reply without invoking the agent.
 - Logs: tail `/tmp/openclaw/openclaw-*.log` and filter for `web-heartbeat`, `web-reconnect`, `web-auto-reply`, `web-inbound`.
 
@@ -27,10 +27,10 @@ health commands above for live connectivity checks.
 
 ## Deep diagnostics
 
-- Creds on disk: `ls -l ~/.openclaw/credentials/whatsapp/<accountId>/creds.json` (mtime should be recent).
-- Session store: `ls -l ~/.openclaw/agents/<agentId>/sessions/sessions.json` (path can be overridden in config). Count and recent recipients are surfaced via `status`.
-- Relink flow: `openclaw channels logout && openclaw channels login --verbose` when status codes 409â€“515 or `loggedOut` appear in logs. (Note: the QR login flow auto-restarts once for status 515 after pairing.)
-- Diagnostics are enabled by default. The gateway records operational facts unless `diagnostics.enabled: false` is set. Memory events record RSS/heap byte counts, threshold pressure, and growth pressure. Liveness warnings record event-loop delay, event-loop utilization, CPU-core ratio, and active/waiting/queued session counts when the process is running but saturated. Oversized-payload events record what was rejected, truncated, or chunked, plus sizes and limits when available. They do not record the message text, attachment contents, webhook body, raw request or response body, tokens, cookies, or secret values. The same heartbeat starts the bounded stability recorder, which is available through `openclaw gateway stability` or the `diagnostics.stability` Gateway RPC. Fatal Gateway exits, shutdown timeouts, and restart startup failures persist the latest recorder snapshot under `~/.openclaw/logs/stability/` when events exist; inspect the newest saved bundle with `openclaw gateway stability --bundle latest`.
+- Creds on disk: `ls -l ~/.cimiclaw/credentials/whatsapp/<accountId>/creds.json` (mtime should be recent).
+- Session store: `ls -l ~/.cimiclaw/agents/<agentId>/sessions/sessions.json` (path can be overridden in config). Count and recent recipients are surfaced via `status`.
+- Relink flow: `openclaw channels logout && openclaw channels login --verbose` when status codes 409â€?15 or `loggedOut` appear in logs. (Note: the QR login flow auto-restarts once for status 515 after pairing.)
+- Diagnostics are enabled by default. The gateway records operational facts unless `diagnostics.enabled: false` is set. Memory events record RSS/heap byte counts, threshold pressure, and growth pressure. Liveness warnings record event-loop delay, event-loop utilization, CPU-core ratio, and active/waiting/queued session counts when the process is running but saturated. Oversized-payload events record what was rejected, truncated, or chunked, plus sizes and limits when available. They do not record the message text, attachment contents, webhook body, raw request or response body, tokens, cookies, or secret values. The same heartbeat starts the bounded stability recorder, which is available through `openclaw gateway stability` or the `diagnostics.stability` Gateway RPC. Fatal Gateway exits, shutdown timeouts, and restart startup failures persist the latest recorder snapshot under `~/.cimiclaw/logs/stability/` when events exist; inspect the newest saved bundle with `openclaw gateway stability --bundle latest`.
 - For bug reports, run `openclaw gateway diagnostics export` and attach the generated zip. The export combines a Markdown summary, the newest stability bundle, sanitized log metadata, sanitized Gateway status/health snapshots, and config shape. It is meant to be shared: chat text, webhook bodies, tool outputs, credentials, cookies, account/message identifiers, and secret values are omitted or redacted. See [Diagnostics Export](/gateway/diagnostics).
 
 ## Health monitor config
@@ -44,9 +44,9 @@ health commands above for live connectivity checks.
 
 ## When something fails
 
-- `logged out` or status 409â€“515 â†’ relink with `openclaw channels logout` then `openclaw channels login`.
-- Gateway unreachable â†’ start it: `openclaw gateway --port 18789` (use `--force` if the port is busy).
-- No inbound messages â†’ confirm linked phone is online and the sender is allowed (`channels.whatsapp.allowFrom`); for group chats, ensure allowlist + mention rules match (`channels.whatsapp.groups`, `agents.list[].groupChat.mentionPatterns`).
+- `logged out` or status 409â€?15 â†?relink with `openclaw channels logout` then `openclaw channels login`.
+- Gateway unreachable â†?start it: `openclaw gateway --port 18789` (use `--force` if the port is busy).
+- No inbound messages â†?confirm linked phone is online and the sender is allowed (`channels.whatsapp.allowFrom`); for group chats, ensure allowlist + mention rules match (`channels.whatsapp.groups`, `agents.list[].groupChat.mentionPatterns`).
 
 ## Dedicated "health" command
 

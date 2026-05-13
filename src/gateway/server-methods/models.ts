@@ -3,7 +3,7 @@ import { DEFAULT_PROVIDER } from "../../agents/defaults.js";
 import { resolveVisibleModelCatalog } from "../../agents/model-catalog-visibility.js";
 import { parseConfiguredModelVisibilityEntries } from "../../agents/model-selection-shared.js";
 import { resolveDefaultAgentWorkspaceDir } from "../../agents/workspace.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import {
   ErrorCodes,
   errorShape,

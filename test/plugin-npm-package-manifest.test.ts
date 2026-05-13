@@ -67,7 +67,7 @@ function writePublishablePluginPackage(repoDir: string): string {
       },
     },
   });
-  writeJsonFile(join(packageDir, "openclaw.plugin.json"), { id: "diffs" });
+  writeJsonFile(join(packageDir, "cimiclaw.plugin.json"), { id: "diffs" });
   writeFileText(join(packageDir, "README.md"), "# Diffs\n");
   writeFileText(join(packageDir, "SKILL.md"), "# Diffs Skill\n");
   writeFileText(join(packageDir, "skills", "diffs", "SKILL.md"), "# Diffs Skill\n");
@@ -88,7 +88,7 @@ describe("plugin npm package manifest staging", () => {
         properties: {},
       },
     };
-    writeJsonFile(join(packageDir, "openclaw.plugin.json"), sourceManifest);
+    writeJsonFile(join(packageDir, "cimiclaw.plugin.json"), sourceManifest);
     writeGeneratedChannelMetadata(repoDir);
 
     const resolved = resolveAugmentedPluginNpmManifest({
@@ -119,14 +119,14 @@ describe("plugin npm package manifest staging", () => {
       },
     });
 
-    const originalText = readFileSync(join(packageDir, "openclaw.plugin.json"), "utf8");
+    const originalText = readFileSync(join(packageDir, "cimiclaw.plugin.json"), "utf8");
     withAugmentedPluginNpmManifestForPackage({ repoRoot: repoDir, packageDir }, () => {
       const stagedManifest = JSON.parse(
-        readFileSync(join(packageDir, "openclaw.plugin.json"), "utf8"),
+        readFileSync(join(packageDir, "cimiclaw.plugin.json"), "utf8"),
       );
       expect(stagedManifest.channelConfigs.twitch.description).toBe("Twitch chat integration");
     });
-    expect(readFileSync(join(packageDir, "openclaw.plugin.json"), "utf8")).toBe(originalText);
+    expect(readFileSync(join(packageDir, "cimiclaw.plugin.json"), "utf8")).toBe(originalText);
   });
 
   it("overlays package-local runtime metadata while packing and restores source package json", () => {
@@ -144,7 +144,7 @@ describe("plugin npm package manifest staging", () => {
       name: "@openclaw/diffs",
       version: "2026.5.3",
       type: "module",
-      files: ["dist/**", "openclaw.plugin.json", "README.md", "SKILL.md", "skills/**"],
+      files: ["dist/**", "cimiclaw.plugin.json", "README.md", "SKILL.md", "skills/**"],
       peerDependencies: {
         openclaw: ">=2026.4.30",
       },
@@ -170,13 +170,13 @@ describe("plugin npm package manifest staging", () => {
     const originalText = readFileSync(join(packageDir, "package.json"), "utf8");
     withAugmentedPluginNpmManifestForPackage({ repoRoot: repoDir, packageDir }, () => {
       const stagedPackageJson = JSON.parse(readFileSync(join(packageDir, "package.json"), "utf8"));
-      expect(stagedPackageJson.openclaw.extensions).toEqual(["./index.ts"]);
-      expect(stagedPackageJson.openclaw.runtimeExtensions).toEqual(["./dist/index.js"]);
-      expect(stagedPackageJson.openclaw.runtimeSetupEntry).toBe("./dist/setup-entry.js");
+      expect(stagedPackageJson.cimiclaw.extensions).toEqual(["./index.ts"]);
+      expect(stagedPackageJson.cimiclaw.runtimeExtensions).toEqual(["./dist/index.js"]);
+      expect(stagedPackageJson.cimiclaw.runtimeSetupEntry).toBe("./dist/setup-entry.js");
       expect(stagedPackageJson.files).toContain("dist/**");
       expect(stagedPackageJson.files).toContain("skills/**");
-      expect(stagedPackageJson.peerDependencies.openclaw).toBe(">=2026.4.30");
-      expect(stagedPackageJson.peerDependenciesMeta.openclaw.optional).toBe(true);
+      expect(stagedPackageJson.peerDependencies.cimiclaw).toBe(">=2026.4.30");
+      expect(stagedPackageJson.peerDependenciesMeta.cimiclaw.optional).toBe(true);
     });
     expect(readFileSync(join(packageDir, "package.json"), "utf8")).toBe(originalText);
   });

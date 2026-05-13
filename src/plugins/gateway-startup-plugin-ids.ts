@@ -3,7 +3,7 @@ import {
   listExplicitlyDisabledChannelIdsForConfig,
   listPotentialConfiguredChannelIds,
 } from "../channels/config-presence.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   DEFAULT_MEMORY_DREAMING_PLUGIN_ID,
   resolveMemoryDreamingConfig,

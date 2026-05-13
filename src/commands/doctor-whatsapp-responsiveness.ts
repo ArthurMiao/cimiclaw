@@ -1,6 +1,6 @@
 import { spawnSync } from "node:child_process";
 import { formatCliCommand } from "../cli/command-format.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { note } from "../terminal/note.js";
 import type { StatusSummary } from "./status.types.js";
 

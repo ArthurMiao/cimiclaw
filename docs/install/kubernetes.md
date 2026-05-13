@@ -6,7 +6,7 @@ read_when:
 title: "Kubernetes"
 ---
 
-A minimal starting point for running OpenClaw on Kubernetes — not a production-ready deployment. It covers the core resources and is meant to be adapted to your environment.
+A minimal starting point for running OpenClaw on Kubernetes �?not a production-ready deployment. It covers the core resources and is meant to be adapted to your environment.
 
 ## Why not Helm?
 
@@ -53,7 +53,7 @@ Then deploy as usual with `./scripts/k8s/deploy.sh`.
 
 ### 1) Deploy
 
-**Option A** — API key in environment (one step):
+**Option A** �?API key in environment (one step):
 
 ```bash
 # Replace with your provider: ANTHROPIC, GEMINI, OPENAI, or OPENROUTER
@@ -63,7 +63,7 @@ export <PROVIDER>_API_KEY="..."
 
 The script creates a Kubernetes Secret with the API key and an auto-generated gateway token, then deploys. If the Secret already exists, it preserves the current gateway token and any provider keys not being changed.
 
-**Option B** — create the secret separately:
+**Option B** �?create the secret separately:
 
 ```bash
 export <PROVIDER>_API_KEY="..."
@@ -87,7 +87,7 @@ Namespace: openclaw (configurable via OPENCLAW_NAMESPACE)
 ├── Deployment/openclaw        # Single pod, init container + gateway
 ├── Service/openclaw           # ClusterIP on port 18789
 ├── PersistentVolumeClaim      # 10Gi for agent state and config
-├── ConfigMap/openclaw-config  # openclaw.json + AGENTS.md
+├── ConfigMap/openclaw-config  # cimiclaw.json + AGENTS.md
 └── Secret/openclaw-secrets    # Gateway token + API keys
 ```
 
@@ -103,7 +103,7 @@ Edit the `AGENTS.md` in `scripts/k8s/manifests/configmap.yaml` and redeploy:
 
 ### Gateway config
 
-Edit `openclaw.json` in `scripts/k8s/manifests/configmap.yaml`. See [Gateway configuration](/gateway/configuration) for the full reference.
+Edit `cimiclaw.json` in `scripts/k8s/manifests/configmap.yaml`. See [Gateway configuration](/gateway/configuration) for the full reference.
 
 ### Add providers
 
@@ -169,11 +169,11 @@ This deletes the namespace and all resources in it, including the PVC.
 ## Architecture notes
 
 - The gateway binds to loopback inside the pod by default, so the included setup is for `kubectl port-forward`
-- No cluster-scoped resources — everything lives in a single namespace
+- No cluster-scoped resources �?everything lives in a single namespace
 - Security: `readOnlyRootFilesystem`, `drop: ALL` capabilities, non-root user (UID 1000)
 - The default config keeps the Control UI on the safer local-access path: loopback bind plus `kubectl port-forward` to `http://127.0.0.1:18789`
 - If you move beyond localhost access, use the supported remote model: HTTPS/Tailscale plus the appropriate gateway bind and Control UI origin settings
-- Secrets are generated in a temp directory and applied directly to the cluster — no secret material is written to the repo checkout
+- Secrets are generated in a temp directory and applied directly to the cluster �?no secret material is written to the repo checkout
 
 ## File structure
 
@@ -183,7 +183,7 @@ scripts/k8s/
 ├── create-kind.sh              # Local Kind cluster (auto-detects docker/podman)
 └── manifests/
     ├── kustomization.yaml      # Kustomize base
-    ├── configmap.yaml          # openclaw.json + AGENTS.md
+    ├── configmap.yaml          # cimiclaw.json + AGENTS.md
     ├── deployment.yaml         # Pod spec with security hardening
     ├── pvc.yaml                # 10Gi persistent storage
     └── service.yaml            # ClusterIP on 18789

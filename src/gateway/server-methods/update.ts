@@ -1,6 +1,6 @@
 import { isRestartEnabled } from "../../config/commands.flags.js";
 import { extractDeliveryInfo } from "../../config/sessions.js";
-import { resolveOpenClawPackageRoot } from "../../infra/openclaw-root.js";
+import { resolveOpenClawPackageRoot } from "../../infra/cimiclaw-root.js";
 import { readPackageVersion } from "../../infra/package-json.js";
 import {
   buildRestartSuccessContinuation,

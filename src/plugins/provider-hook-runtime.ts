@@ -1,5 +1,5 @@
 import { normalizeProviderId } from "../agents/provider-id.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { normalizeLowercaseStringOrEmpty } from "../shared/string-coerce.js";
 import { getLoadedRuntimePluginRegistry } from "./active-runtime-registry.js";
 import {

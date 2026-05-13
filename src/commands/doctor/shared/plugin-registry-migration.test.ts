@@ -49,7 +49,7 @@ function createCandidate(
     "utf8",
   );
   fs.writeFileSync(
-    path.join(rootDir, "openclaw.plugin.json"),
+    path.join(rootDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id,
       name: id,

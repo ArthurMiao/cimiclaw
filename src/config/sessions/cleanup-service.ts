@@ -4,7 +4,7 @@ import { resolveDefaultAgentId } from "../../agents/agent-scope.js";
 import { resolveStoredSessionOwnerAgentId } from "../../gateway/session-store-key.js";
 import { getLogger } from "../../logging/logger.js";
 import { normalizeAgentId, parseAgentSessionKey } from "../../routing/session-key.js";
-import type { OpenClawConfig } from "../types.openclaw.js";
+import type { OpenClawConfig } from "../types.cimiclaw.js";
 import {
   enforceSessionDiskBudget,
   pruneUnreferencedSessionArtifacts,

@@ -28,7 +28,7 @@ function writeJson(filePath: string, value: unknown): void {
 }
 
 function requireInstall(entry: OfficialChannelCatalogEntry | undefined): OfficialChannelInstall {
-  const install = entry?.openclaw?.install;
+  const install = entry?.cimiclaw?.install;
   if (!install) {
     throw new Error("expected official channel install config");
   }
@@ -58,9 +58,9 @@ function summarizeCatalogEntry(entry: OfficialChannelCatalogEntry) {
     name: entry.name,
     description: entry.description,
     source: entry.source,
-    plugin: entry.openclaw?.plugin,
-    channel: entry.openclaw?.channel,
-    install: entry.openclaw?.install,
+    plugin: entry.cimiclaw?.plugin,
+    channel: entry.cimiclaw?.channel,
+    install: entry.cimiclaw?.install,
   };
 }
 
@@ -219,12 +219,12 @@ describe("buildOfficialChannelCatalog", () => {
   it("allows official OpenClaw channel npm specs without integrity during launch", () => {
     const repoRoot = makeRepoRoot("openclaw-official-channel-catalog-openclaw-policy-");
     const twitch = buildOfficialChannelCatalog({ repoRoot }).entries.find(
-      (entry) => entry.openclaw?.channel?.id === "twitch",
+      (entry) => entry.cimiclaw?.channel?.id === "twitch",
     );
 
     expect({
       name: twitch?.name,
-      install: twitch?.openclaw?.install,
+      install: twitch?.cimiclaw?.install,
     }).toEqual({
       name: "@openclaw/twitch",
       install: {
@@ -262,7 +262,7 @@ describe("buildOfficialChannelCatalog", () => {
     });
 
     const entry = buildOfficialChannelCatalog({ repoRoot }).entries.find(
-      (candidate) => candidate.openclaw?.channel?.id === "storepack-chat",
+      (candidate) => candidate.cimiclaw?.channel?.id === "storepack-chat",
     );
 
     expect(requireInstall(entry)).toEqual({
@@ -307,7 +307,7 @@ describe("buildOfficialChannelCatalog", () => {
     const whatsappEntry = findCatalogEntry(
       entries,
       (entry: { openclaw?: { channel?: { id?: string } } }) =>
-        entry.openclaw?.channel?.id === "whatsapp",
+        entry.cimiclaw?.channel?.id === "whatsapp",
     );
     expect(summarizeCatalogEntry(whatsappEntry)).toEqual({
       name: "@openclaw/whatsapp",
@@ -332,7 +332,7 @@ describe("buildOfficialChannelCatalog", () => {
     });
     const whatsappEntries = entries.filter(
       (entry: { openclaw?: { channel?: { id?: string } } }) =>
-        entry.openclaw?.channel?.id === "whatsapp",
+        entry.cimiclaw?.channel?.id === "whatsapp",
     );
     expect(whatsappEntries).toHaveLength(1);
   });

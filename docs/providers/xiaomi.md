@@ -152,9 +152,9 @@ Opus with `ffmpeg` before delivery.
   </Accordion>
 
   <Accordion title="Model details">
-    - **mimo-v2-flash** â€” lightweight and fast, ideal for general-purpose text tasks. No reasoning support.
-    - **mimo-v2-pro** â€” supports reasoning with a 1M token context window for long-document workloads.
-    - **mimo-v2-omni** â€” reasoning-enabled multimodal model that accepts both text and image inputs.
+    - **mimo-v2-flash** â€?lightweight and fast, ideal for general-purpose text tasks. No reasoning support.
+    - **mimo-v2-pro** â€?supports reasoning with a 1M token context window for long-document workloads.
+    - **mimo-v2-omni** â€?reasoning-enabled multimodal model that accepts both text and image inputs.
 
     <Note>
     All models use the `xiaomi/` prefix (for example `xiaomi/mimo-v2-pro`).
@@ -164,10 +164,10 @@ Opus with `ffmpeg` before delivery.
 
   <Accordion title="Troubleshooting">
     - If models do not appear, confirm `XIAOMI_API_KEY` is set and valid.
-    - When the Gateway runs as a daemon, ensure the key is available to that process (for example in `~/.openclaw/.env` or via `env.shellEnv`).
+    - When the Gateway runs as a daemon, ensure the key is available to that process (for example in `~/.cimiclaw/.env` or via `env.shellEnv`).
 
     <Warning>
-    Keys set only in your interactive shell are not visible to daemon-managed gateway processes. Use `~/.openclaw/.env` or `env.shellEnv` config for persistent availability.
+    Keys set only in your interactive shell are not visible to daemon-managed gateway processes. Use `~/.cimiclaw/.env` or `env.shellEnv` config for persistent availability.
     </Warning>
 
   </Accordion>

@@ -3,7 +3,7 @@ import {
   listPotentialConfiguredChannelIds,
 } from "../channels/config-presence.js";
 import { applyPluginAutoEnable } from "../config/plugin-auto-enable.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { normalizeOptionalLowercaseString } from "../shared/string-coerce.js";
 import {
   listExplicitConfiguredChannelIdsForConfig,

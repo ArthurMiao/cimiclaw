@@ -1,5 +1,5 @@
 import type { CliBackendConfig } from "../config/types.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 
 export type PluginTextReplacement = {
   from: string | RegExp;

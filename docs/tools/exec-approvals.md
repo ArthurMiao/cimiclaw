@@ -19,7 +19,7 @@ skips approvals).
 Effective policy is the **stricter** of `tools.exec.*` and approvals
 defaults; if an approvals field is omitted, the `tools.exec` value is
 used. Host exec also uses local approvals state on that machine - a
-host-local `ask: "always"` in `~/.openclaw/exec-approvals.json` keeps
+host-local `ask: "always"` in `~/.cimiclaw/exec-approvals.json` keeps
 prompting even if session or config defaults request `ask: "on-miss"`.
 </Note>
 
@@ -41,7 +41,7 @@ normally prompt is resolved by the **ask fallback** (default: `deny`).
 <Tip>
 Native chat approval clients can seed channel-specific affordances on the
 pending approval message. For example, Matrix seeds reaction shortcuts
-(`✅` allow once, `❌` deny, `♾️` allow always) while still leaving
+(`鉁卄 allow once, `鉂宍 deny, `鈾撅笍` allow always) while still leaving
 `/approve ...` commands in the message as a fallback.
 </Tip>
 
@@ -49,8 +49,8 @@ pending approval message. For example, Matrix seeds reaction shortcuts
 
 Exec approvals are enforced locally on the execution host:
 
-- **Gateway host** → `openclaw` process on the gateway machine.
-- **Node host** → node runner (macOS companion app or headless node host).
+- **Gateway host** 鈫?`openclaw` process on the gateway machine.
+- **Node host** 鈫?node runner (macOS companion app or headless node host).
 
 ### Trust model
 
@@ -72,7 +72,7 @@ Exec approvals are enforced locally on the execution host:
 Approvals live in a local JSON file on the execution host:
 
 ```text
-~/.openclaw/exec-approvals.json
+~/.cimiclaw/exec-approvals.json
 ```
 
 Example schema:
@@ -81,7 +81,7 @@ Example schema:
 {
   "version": 1,
   "socket": {
-    "path": "~/.openclaw/exec-approvals.sock",
+    "path": "~/.cimiclaw/exec-approvals.sock",
     "token": "base64url-token"
   },
   "defaults": {
@@ -171,7 +171,7 @@ automatically.
 If you want host exec to run without approval prompts, you must open
 **both** policy layers - requested exec policy in OpenClaw config
 (`tools.exec.*`) **and** host-local approvals policy in
-`~/.openclaw/exec-approvals.json`.
+`~/.cimiclaw/exec-approvals.json`.
 
 YOLO is the default host behavior unless you tighten it explicitly:
 
@@ -238,7 +238,7 @@ openclaw exec-policy preset yolo
 That local shortcut updates both:
 
 - Local `tools.exec.host/security/ask`.
-- Local `~/.openclaw/exec-approvals.json` defaults.
+- Local `~/.cimiclaw/exec-approvals.json` defaults.
 
 It is intentionally local-only. To change gateway-host or node-host
 approvals remotely, use `openclaw approvals set --gateway` or
@@ -370,7 +370,7 @@ native approval clients), see
 
 ## Control UI editing
 
-Use the **Control UI → Nodes → Exec approvals** card to edit defaults,
+Use the **Control UI 鈫?Nodes 鈫?Exec approvals** card to edit defaults,
 per-agent overrides, and allowlists. Pick a scope (Defaults or an agent),
 tweak the policy, add/remove allowlist patterns, then **Save**. The UI
 shows last-used metadata per pattern so you can keep the list tidy.
@@ -378,7 +378,7 @@ shows last-used metadata per pattern so you can keep the list tidy.
 The target selector chooses **Gateway** (local approvals) or a **Node**.
 Nodes must advertise `system.execApprovals.get/set` (macOS app or
 headless node host). If a node does not advertise exec approvals yet,
-edit its local `~/.openclaw/exec-approvals.json` directly.
+edit its local `~/.cimiclaw/exec-approvals.json` directly.
 
 CLI: `openclaw approvals` supports gateway or node editing - see
 [Approvals CLI](/cli/approvals).

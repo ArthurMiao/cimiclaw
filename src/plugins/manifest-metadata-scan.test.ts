@@ -30,15 +30,15 @@ describe("listOpenClawPluginManifestMetadata", () => {
     const bundledRoot = path.join(root, "extensions");
     const staleBundledRoot = path.join(root, "stale", "extensions");
 
-    writeJson(path.join(bundledRoot, "openai", "openclaw.plugin.json"), {
+    writeJson(path.join(bundledRoot, "openai", "cimiclaw.plugin.json"), {
       id: "openai",
       providerEndpoints: [{ endpointClass: "openai-public", hosts: ["api.openai.com"] }],
     });
-    writeJson(path.join(staleBundledRoot, "openai", "openclaw.plugin.json"), {
+    writeJson(path.join(staleBundledRoot, "openai", "cimiclaw.plugin.json"), {
       id: "openai",
       providers: ["openai"],
     });
-    writeJson(path.join(home, ".openclaw", "plugins", "installs.json"), {
+    writeJson(path.join(home, ".cimiclaw", "plugins", "installs.json"), {
       plugins: [{ rootDir: path.join(staleBundledRoot, "openai"), origin: "bundled" }],
     });
 

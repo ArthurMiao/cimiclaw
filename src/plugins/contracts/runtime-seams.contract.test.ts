@@ -49,7 +49,7 @@ function createInstalledRuntimePluginDir(
     "utf8",
   );
   fs.writeFileSync(
-    path.join(pluginRoot, "openclaw.plugin.json"),
+    path.join(pluginRoot, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: pluginId,
       channels: [pluginId],

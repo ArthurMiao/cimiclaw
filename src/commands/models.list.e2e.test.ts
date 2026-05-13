@@ -335,11 +335,11 @@ describe("models list/status", () => {
   }
 
   async function writeWorkspaceAuthEvidencePlugin(workspaceDir: string) {
-    const pluginDir = path.join(workspaceDir, ".openclaw", "extensions", "workspace-cloud");
+    const pluginDir = path.join(workspaceDir, ".cimiclaw", "extensions", "workspace-cloud");
     await fs.mkdir(pluginDir, { recursive: true });
     await fs.writeFile(path.join(pluginDir, "index.ts"), "export default {}\n", "utf8");
     await fs.writeFile(
-      path.join(pluginDir, "openclaw.plugin.json"),
+      path.join(pluginDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "workspace-cloud",
         configSchema: { type: "object" },

@@ -544,7 +544,7 @@ export async function buildGatewayInstallPlan(params: {
     port: params.port,
     launchdLabel:
       platform === "darwin"
-        ? resolveGatewayLaunchAgentLabel(serviceInputEnv.OPENCLAW_PROFILE)
+        ? resolveGatewayLaunchAgentLabel(serviceInputEnv.cimiclaw_PROFILE)
         : undefined,
     platform,
     extraPathDirs: resolveDaemonNodeBinDir(nodePath),

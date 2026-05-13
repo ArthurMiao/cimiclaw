@@ -5,7 +5,7 @@ import {
   type AuthStorage,
   type ModelRegistry,
 } from "@mariozechner/pi-coding-agent";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { ProviderRuntimeModel } from "../../plugins/provider-runtime-model.types.js";
 import {
   applyProviderResolvedModelCompatWithPlugins,

@@ -1319,7 +1319,7 @@ describe("control UI credential redaction (issue #72283)", () => {
         type: "tool_execution_start",
         toolName: "exec",
         toolCallId: "tool-exec-secret",
-        args: { command: "cat ~/.openclaw/openclaw.json" },
+        args: { command: "cat ~/.cimiclaw/cimiclaw.json" },
       } as never,
     );
 

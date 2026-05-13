@@ -13,7 +13,7 @@ import {
   type ChannelOutboundAdapter,
 } from "./runtime-api.js";
 
-const MATRIX_OPENCLAW_PRESENTATION_KEY = "com.openclaw.presentation" as const;
+const MATRIX_OPENCLAW_PRESENTATION_KEY = "com.cimiclaw.presentation" as const;
 const MATRIX_OPENCLAW_PRESENTATION_TYPE = "message.presentation" as const;
 const MATRIX_EMPTY_PRESENTATION_FALLBACK_TEXT = "---";
 

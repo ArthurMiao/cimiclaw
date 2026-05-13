@@ -26,7 +26,7 @@ function writePlugin(rootDir: string, pluginId: string, modelPrefix: string) {
     "utf8",
   );
   fs.writeFileSync(
-    path.join(rootDir, "openclaw.plugin.json"),
+    path.join(rootDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: pluginId,
       configSchema: { type: "object" },
@@ -51,7 +51,7 @@ function createIndex(rootDir: string): InstalledPluginIndex {
     plugins: [
       {
         pluginId: "installed",
-        manifestPath: path.join(rootDir, "openclaw.plugin.json"),
+        manifestPath: path.join(rootDir, "cimiclaw.plugin.json"),
         manifestHash: "manifest-hash",
         source: path.join(rootDir, "index.ts"),
         rootDir,
@@ -73,7 +73,7 @@ function createIndex(rootDir: string): InstalledPluginIndex {
 describe("loadPluginManifestRegistryForInstalledIndex", () => {
   it("reconstructs installed-index manifest registries when manifest files change", () => {
     const rootDir = makeTempDir();
-    const manifestPath = path.join(rootDir, "openclaw.plugin.json");
+    const manifestPath = path.join(rootDir, "cimiclaw.plugin.json");
     writePlugin(rootDir, "installed", "installed-");
     const index = createIndex(rootDir);
     const env = {

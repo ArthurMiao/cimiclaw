@@ -210,8 +210,8 @@ describe("triggerOpenClawRestart", () => {
       ok: true,
       method: "launchctl",
       tried: [
-        `launchctl kickstart -k gui/${uid}/ai.openclaw.gateway`,
-        `launchctl bootstrap gui/${uid} /Users/test/Library/LaunchAgents/ai.openclaw.gateway.plist`,
+        `launchctl kickstart -k gui/${uid}/ai.cimiclaw.gateway`,
+        `launchctl bootstrap gui/${uid} /Users/test/Library/LaunchAgents/ai.cimiclaw.gateway.plist`,
       ],
     });
   });
@@ -245,9 +245,9 @@ describe("triggerOpenClawRestart", () => {
       ok: true,
       method: "launchctl",
       tried: [
-        `launchctl kickstart -k gui/${uid}/ai.openclaw.gateway`,
-        `launchctl bootstrap gui/${uid} /Users/test/Library/LaunchAgents/ai.openclaw.gateway.plist`,
-        `launchctl kickstart gui/${uid}/ai.openclaw.gateway`,
+        `launchctl kickstart -k gui/${uid}/ai.cimiclaw.gateway`,
+        `launchctl bootstrap gui/${uid} /Users/test/Library/LaunchAgents/ai.cimiclaw.gateway.plist`,
+        `launchctl kickstart gui/${uid}/ai.cimiclaw.gateway`,
       ],
     });
   });

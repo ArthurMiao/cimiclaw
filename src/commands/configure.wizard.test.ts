@@ -46,7 +46,7 @@ vi.mock("@clack/prompts", () => ({
 }));
 
 vi.mock("../config/config.js", () => ({
-  CONFIG_PATH: "~/.openclaw/openclaw.json",
+  CONFIG_PATH: "~/.cimiclaw/cimiclaw.json",
   readConfigFileSnapshot: mocks.readConfigFileSnapshot,
   writeConfigFile: mocks.writeConfigFile,
   replaceConfigFile: mocks.replaceConfigFile,
@@ -66,7 +66,7 @@ vi.mock("../terminal/note.js", () => ({
 }));
 
 vi.mock("./onboard-helpers.js", () => ({
-  DEFAULT_WORKSPACE: "~/.openclaw/workspace",
+  DEFAULT_WORKSPACE: "~/.cimiclaw/workspace",
   applyWizardMetadata: (cfg: OpenClawConfig) => cfg,
   ensureWorkspaceAndSessions: vi.fn(),
   guardCancel: <T>(value: T) => value,
@@ -410,7 +410,7 @@ describe("runConfigureWizard", () => {
         envVars: [],
         placeholder: "(no key needed)",
         signupUrl: "https://duckduckgo.com/",
-        docsUrl: "https://docs.openclaw.ai/tools/web",
+        docsUrl: "https://docs.cimiclaw.ai/tools/web",
         credentialPath: "",
       }),
     ]);
@@ -594,7 +594,7 @@ describe("runConfigureWizard", () => {
     };
     const agents = requireRecord(retryCall.nextConfig.agents, "agents config");
     const defaults = requireRecord(agents.defaults, "agent defaults");
-    expect(String(defaults.workspace)).toContain("/.openclaw/workspace");
+    expect(String(defaults.workspace)).toContain("/.cimiclaw/workspace");
     const githubCopilot = getPluginEntry(retryCall.nextConfig, "github-copilot");
     expect(githubCopilot.enabled).toBe(false);
     const pluginConfig = requireRecord(githubCopilot.config, "github-copilot config");

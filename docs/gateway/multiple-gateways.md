@@ -70,7 +70,7 @@ In practice, that means the rescue bot gets its own:
 
 - config file
 - state directory
-- workspace (by default `~/.openclaw/workspace-rescue`)
+- workspace (by default `~/.cimiclaw/workspace-rescue`)
 - managed service name
 
 The prompts are otherwise the same as normal onboarding.
@@ -118,10 +118,10 @@ different channels, tenants, workspaces, or operational roles.
 
 Keep these unique per Gateway instance:
 
-- `OPENCLAW_CONFIG_PATH` — per-instance config file
-- `OPENCLAW_STATE_DIR` — per-instance sessions, creds, caches
-- `agents.defaults.workspace` — per-instance workspace root
-- `gateway.port` (or `--port`) — unique per instance
+- `OPENCLAW_CONFIG_PATH` �?per-instance config file
+- `OPENCLAW_STATE_DIR` �?per-instance sessions, creds, caches
+- `agents.defaults.workspace` �?per-instance workspace root
+- `gateway.port` (or `--port`) �?unique per instance
 - derived browser/canvas/CDP ports
 
 If these are shared, you will hit config races and port conflicts.
@@ -146,12 +146,12 @@ If you override any of these in config or env, you must keep them unique per ins
 ## Manual env example
 
 ```bash
-OPENCLAW_CONFIG_PATH=~/.openclaw/main.json \
-OPENCLAW_STATE_DIR=~/.openclaw \
+OPENCLAW_CONFIG_PATH=~/.cimiclaw/main.json \
+OPENCLAW_STATE_DIR=~/.cimiclaw \
 openclaw gateway --port 18789
 
-OPENCLAW_CONFIG_PATH=~/.openclaw/rescue.json \
-OPENCLAW_STATE_DIR=~/.openclaw-rescue \
+OPENCLAW_CONFIG_PATH=~/.cimiclaw/rescue.json \
+OPENCLAW_STATE_DIR=~/.cimiclaw-rescue \
 openclaw gateway --port 19789
 ```
 

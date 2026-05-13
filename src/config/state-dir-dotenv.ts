@@ -43,7 +43,7 @@ export function readStateDirDotEnvVarsFromStateDir(stateDir: string): Record<str
 }
 
 /**
- * Read and parse `~/.openclaw/.env` (or `$OPENCLAW_STATE_DIR/.env`), returning
+ * Read and parse `~/.cimiclaw/.env` (or `$OPENCLAW_STATE_DIR/.env`), returning
  * a filtered record of key-value pairs suitable for a managed service
  * environment source.
  */

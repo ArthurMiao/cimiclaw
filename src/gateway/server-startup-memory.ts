@@ -1,6 +1,6 @@
 import { listAgentEntries, listAgentIds, resolveDefaultAgentId } from "../agents/agent-scope.js";
 import { resolveMemorySearchConfig } from "../agents/memory-search.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   resolveMemoryBackendConfig,
   type ResolvedQmdConfig,

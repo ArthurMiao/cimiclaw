@@ -2,7 +2,7 @@ import { assertMediaNotDataUrl, resolveSandboxedMediaSource } from "../../agents
 import { readStringParam } from "../../agents/tools/common.js";
 import { resolveChannelMessageToolMediaSourceParamKeys } from "../../channels/plugins/message-action-discovery.js";
 import type { ChannelId, ChannelMessageActionName } from "../../channels/plugins/types.public.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { root } from "../../infra/fs-safe.js";
 import { basenameFromMediaSource } from "../../infra/local-file-access.js";
 import { resolveChannelAccountMediaMaxMb } from "../../media/configured-max-bytes.js";

@@ -3,7 +3,7 @@ import path from "node:path";
 import JSON5 from "json5";
 import { collectBundledPluginBuildEntries } from "./bundled-plugin-build-entries.mjs";
 
-const MANIFEST_NAMES = ["openclaw.plugin.json", "openclaw.plugin.json5"];
+const MANIFEST_NAMES = ["cimiclaw.plugin.json", "cimiclaw.plugin.json5"];
 
 function isPlainObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value);

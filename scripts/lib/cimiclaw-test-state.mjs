@@ -18,9 +18,9 @@ const SCENARIOS = new Set([
 
 function usage() {
   return `Usage:
-  node scripts/lib/openclaw-test-state.mjs -- create [--label <name>] [--scenario <name>] [--env-file <path>] [--json]
-  node scripts/lib/openclaw-test-state.mjs shell [--label <name>] [--scenario <name>]
-  node scripts/lib/openclaw-test-state.mjs shell-function
+  node scripts/lib/cimiclaw-test-state.mjs -- create [--label <name>] [--scenario <name>] [--env-file <path>] [--json]
+  node scripts/lib/cimiclaw-test-state.mjs shell [--label <name>] [--scenario <name>]
+  node scripts/lib/cimiclaw-test-state.mjs shell-function
 
 Scenarios: ${[...SCENARIOS].join(", ")}
 `;

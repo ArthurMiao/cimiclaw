@@ -6,7 +6,7 @@ import {
   SELF_HOSTED_DEFAULT_MAX_TOKENS,
 } from "../agents/self-hosted-provider-defaults.js";
 import type { ModelDefinitionConfig } from "../config/types.models.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { fetchWithSsrFGuard } from "../infra/net/fetch-guard.js";
 import type { SsrFPolicy } from "../infra/net/ssrf.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";

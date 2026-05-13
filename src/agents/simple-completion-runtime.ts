@@ -5,7 +5,7 @@ import {
   type ThinkingLevel as SimpleCompletionThinkingLevel,
 } from "@mariozechner/pi-ai";
 import type { ThinkLevel } from "../auto-reply/thinking.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { formatErrorMessage } from "../infra/errors.js";
 import { prepareProviderRuntimeAuth } from "../plugins/provider-runtime.runtime.js";
 import { resolveAgentDir, resolveAgentEffectiveModelPrimary } from "./agent-scope.js";

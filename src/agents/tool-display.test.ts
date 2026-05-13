@@ -121,8 +121,8 @@ describe("tool display details", () => {
         name: "exec",
         args: {
           command:
-            "set -euo pipefail\ngit -C /Users/adityasingh/.openclaw/workspace status --short | head -n 3",
-          workdir: "/Users/adityasingh/.openclaw/workspace",
+            "set -euo pipefail\ngit -C /Users/adityasingh/.cimiclaw/workspace status --short | head -n 3",
+          workdir: "/Users/adityasingh/.cimiclaw/workspace",
         },
       }),
     );
@@ -359,7 +359,7 @@ describe("tool display details", () => {
         name: "exec",
         args: {
           command: "python3 <<PY\nprint('x')\nPY",
-          workdir: "/Users/adityasingh/.openclaw/workspace",
+          workdir: "/Users/adityasingh/.cimiclaw/workspace",
         },
       }),
     );
@@ -368,7 +368,7 @@ describe("tool display details", () => {
         name: "exec",
         args: {
           command: "node --check /tmp/test.js",
-          workdir: "/Users/adityasingh/.openclaw/workspace",
+          workdir: "/Users/adityasingh/.cimiclaw/workspace",
         },
       }),
     );
@@ -377,7 +377,7 @@ describe("tool display details", () => {
         name: "exec",
         args: {
           command: "node -c /tmp/test.js",
-          workdir: "/Users/adityasingh/.openclaw/workspace",
+          workdir: "/Users/adityasingh/.cimiclaw/workspace",
         },
       }),
     );

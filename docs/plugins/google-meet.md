@@ -7,7 +7,7 @@ read_when:
 title: "Google Meet plugin"
 ---
 
-Google Meet participant support for OpenClaw â€” the plugin is explicit by design:
+Google Meet participant support for OpenClaw â€?the plugin is explicit by design:
 
 - It only joins an explicit `https://meet.google.com/...` URL.
 - It can create a new Meet space through the Google Meet API, then join the
@@ -287,7 +287,7 @@ openclaw node restart
 ```
 
 `OPENCLAW_ALLOW_INSECURE_PRIVATE_WS=1` is process environment, not an
-`openclaw.json` setting. `openclaw node install` stores it in the LaunchAgent
+`cimiclaw.json` setting. `openclaw node install` stores it in the LaunchAgent
 environment when it is present on the install command.
 
 Approve the node from the Gateway host:
@@ -482,7 +482,7 @@ Enable the Voice Call plugin on the Gateway host, not on the Chrome node:
 ```
 
 Provide Twilio credentials through environment or config. Environment keeps
-secrets out of `openclaw.json`:
+secrets out of `cimiclaw.json`:
 
 ```bash
 export TWILIO_ACCOUNT_SID=AC...

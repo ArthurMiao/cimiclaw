@@ -2,7 +2,7 @@ import {
   ensureControlUiAllowedOriginsForNonLoopbackBind,
   type GatewayNonLoopbackBindMode,
 } from "../config/gateway-control-ui-origins.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { isContainerEnvironment } from "./net.js";
 
 export async function maybeSeedControlUiAllowedOriginsAtStartup(params: {

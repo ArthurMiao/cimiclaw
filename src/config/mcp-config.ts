@@ -5,7 +5,7 @@ import {
   normalizeConfiguredMcpServers,
 } from "./mcp-config-normalize.js";
 import { replaceConfigFile } from "./mutate.js";
-import type { OpenClawConfig } from "./types.openclaw.js";
+import type { OpenClawConfig } from "./types.cimiclaw.js";
 import { validateConfigObjectWithPlugins } from "./validation.js";
 
 type ConfigMcpServers = ReturnType<typeof normalizeConfiguredMcpServers>;

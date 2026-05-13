@@ -58,7 +58,7 @@ const serviceReadCommand = vi.fn<
   programArguments: ["/bin/node", "cli", "gateway", "--port", "19001"],
   environment: {
     OPENCLAW_STATE_DIR: "/tmp/openclaw-daemon",
-    OPENCLAW_CONFIG_PATH: "/tmp/openclaw-daemon/openclaw.json",
+    OPENCLAW_CONFIG_PATH: "/tmp/openclaw-daemon/cimiclaw.json",
   },
 }));
 const resolveGatewayBindHost = vi.fn(
@@ -70,7 +70,7 @@ const resolveStateDir = vi.fn(
   (env: NodeJS.ProcessEnv) => env.OPENCLAW_STATE_DIR ?? "/tmp/openclaw-cli",
 );
 const resolveConfigPath = vi.fn((env: NodeJS.ProcessEnv, stateDir: string) => {
-  return env.OPENCLAW_CONFIG_PATH ?? `${stateDir}/openclaw.json`;
+  return env.OPENCLAW_CONFIG_PATH ?? `${stateDir}/cimiclaw.json`;
 });
 const createConfigIOCalls = vi.fn((configPath: string, pluginValidation?: "full" | "skip") => ({
   configPath,
@@ -201,7 +201,7 @@ describe("gatherDaemonStatus", () => {
       "DAEMON_GATEWAY_PASSWORD",
     ]);
     process.env.OPENCLAW_STATE_DIR = "/tmp/openclaw-cli";
-    process.env.OPENCLAW_CONFIG_PATH = "/tmp/openclaw-cli/openclaw.json";
+    process.env.OPENCLAW_CONFIG_PATH = "/tmp/openclaw-cli/cimiclaw.json";
     delete process.env.OPENCLAW_GATEWAY_TOKEN;
     delete process.env.OPENCLAW_GATEWAY_PASSWORD;
     delete process.env.DAEMON_GATEWAY_TOKEN;
@@ -274,7 +274,7 @@ describe("gatherDaemonStatus", () => {
       configPath?: string;
     };
     expect(probeInput.requireRpc).toBe(true);
-    expect(probeInput.configPath).toBe("/tmp/openclaw-daemon/openclaw.json");
+    expect(probeInput.configPath).toBe("/tmp/openclaw-daemon/cimiclaw.json");
   });
 
   it("uses configured handshake timeout as the default daemon probe budget", async () => {
@@ -315,7 +315,7 @@ describe("gatherDaemonStatus", () => {
     });
 
     expect(readConfigFileSnapshotCalls).toHaveBeenCalledTimes(1);
-    expect(readConfigFileSnapshotCalls).toHaveBeenCalledWith("/tmp/openclaw-cli/openclaw.json");
+    expect(readConfigFileSnapshotCalls).toHaveBeenCalledWith("/tmp/openclaw-cli/cimiclaw.json");
     expect(loadConfigCalls).not.toHaveBeenCalled();
   });
 
@@ -388,7 +388,7 @@ describe("gatherDaemonStatus", () => {
       programArguments: ["/bin/node", "cli", "gateway", "--port", "19001"],
       environment: {
         OPENCLAW_GATEWAY_PORT: "19001",
-        OPENCLAW_CONFIG_PATH: "/tmp/openclaw-daemon/openclaw.json",
+        OPENCLAW_CONFIG_PATH: "/tmp/openclaw-daemon/cimiclaw.json",
         OPENCLAW_STATE_DIR: "/tmp/openclaw-daemon",
       } as Record<string, string>,
     });
@@ -431,8 +431,8 @@ describe("gatherDaemonStatus", () => {
     });
 
     const handoffInput = callArg(readGatewayRestartHandoffSync) as NodeJS.ProcessEnv;
-    expect(handoffInput.OPENCLAW_STATE_DIR).toBe("/tmp/openclaw-daemon");
-    expect(handoffInput.OPENCLAW_CONFIG_PATH).toBe("/tmp/openclaw-daemon/openclaw.json");
+    expect(handoffInput.cimiclaw_STATE_DIR).toBe("/tmp/openclaw-daemon");
+    expect(handoffInput.cimiclaw_CONFIG_PATH).toBe("/tmp/openclaw-daemon/cimiclaw.json");
     expect(status.service.restartHandoff?.reason).toBe("plugin source changed");
     expect(status.service.restartHandoff?.restartKind).toBe("full-process");
     expect(status.service.restartHandoff?.supervisorMode).toBe("launchd");
@@ -450,7 +450,7 @@ describe("gatherDaemonStatus", () => {
 
   it("uses the fast config path for plain same-file status reads", async () => {
     const tmp = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-status-config-"));
-    const configPath = path.join(tmp, "openclaw.json");
+    const configPath = path.join(tmp, "cimiclaw.json");
     await fs.writeFile(
       configPath,
       JSON.stringify({
@@ -494,7 +494,7 @@ describe("gatherDaemonStatus", () => {
 
   it("uses full plugin-aware config validation for deep status", async () => {
     const tmp = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-status-config-"));
-    const configPath = path.join(tmp, "openclaw.json");
+    const configPath = path.join(tmp, "cimiclaw.json");
     await fs.writeFile(
       configPath,
       JSON.stringify({

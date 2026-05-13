@@ -120,7 +120,7 @@ docker_e2e_run_with_harness \
   "${DOCKER_E2E_PACKAGE_ARGS[@]}" \
   "$IMAGE_NAME" \
   timeout "$DOCKER_RUN_TIMEOUT" bash -lc 'set -euo pipefail
-source scripts/lib/openclaw-e2e-instance.sh
+source scripts/lib/cimiclaw-e2e-instance.sh
 
 export npm_config_loglevel=error
 export npm_config_fund=false

@@ -260,7 +260,7 @@ async function runSubagentCleanupScenario(params: {
 async function main() {
   const gatewayUrl = process.env.GW_URL?.trim();
   const gatewayToken = process.env.GW_TOKEN?.trim();
-  const stateDir = process.env.OPENCLAW_STATE_DIR?.trim() || path.join(os.homedir(), ".openclaw");
+  const stateDir = process.env.cimiclaw_STATE_DIR?.trim() || path.join(os.homedir(), ".cimiclaw");
   const pidPath = path.join(stateDir, "cron-mcp-cleanup", "probe.pid");
   const pidsPath = path.join(stateDir, "cron-mcp-cleanup", "probe.pids");
   const exitPath = path.join(stateDir, "cron-mcp-cleanup", "probe.exit");

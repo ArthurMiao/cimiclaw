@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import {
   clearAgentHarnesses,
   disposeRegisteredAgentHarnesses,
@@ -55,7 +55,7 @@ function providerRuntimeConfig(provider: string, runtime: string): OpenClawConfi
     models: {
       providers: {
         [provider]: {
-          baseUrl: "https://api.openclaw.test/v1",
+          baseUrl: "https://api.cimiclaw.test/v1",
           agentRuntime: { id: runtime },
           models: [],
         },

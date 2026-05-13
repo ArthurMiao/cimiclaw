@@ -42,7 +42,7 @@ describe("website installer sync workflow", () => {
   it("syncs verified scripts to openclaw.ai only after all installer checks pass", () => {
     expect(workflow).toContain("needs: [static, linux-docker, macos-installer, windows-installer]");
     expect(workflow).toContain("repository: openclaw/openclaw.ai");
-    expect(workflow).toContain("token: ${{ secrets.OPENCLAW_GH_TOKEN }}");
+    expect(workflow).toContain("token: ${{ secrets.cimiclaw_GH_TOKEN }}");
     expect(workflow).toContain("cp openclaw/scripts/install.sh openclaw.ai/public/install.sh");
     expect(workflow).toContain(
       "cp openclaw/scripts/install-cli.sh openclaw.ai/public/install-cli.sh",

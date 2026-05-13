@@ -253,7 +253,7 @@ describe("diagnostics command", () => {
     });
     expect(
       String((execCalls[0]?.defaults as { approvalWarningText?: string }).approvalWarningText),
-    ).toContain("https://docs.openclaw.ai/gateway/diagnostics");
+    ).toContain("https://docs.cimiclaw.ai/gateway/diagnostics");
     expect(execCalls[0]?.params).toMatchObject({
       security: "allowlist",
       ask: "always",
@@ -326,7 +326,7 @@ describe("diagnostics command", () => {
     expect(result?.reply?.text).toContain(
       "Diagnostics can include sensitive local logs and host-level runtime metadata.",
     );
-    expect(result?.reply?.text).toContain("https://docs.openclaw.ai/gateway/diagnostics");
+    expect(result?.reply?.text).toContain("https://docs.cimiclaw.ai/gateway/diagnostics");
     expect(result?.reply?.text).toContain("no interactive approval client");
     expect(execCalls).toHaveLength(1);
   });

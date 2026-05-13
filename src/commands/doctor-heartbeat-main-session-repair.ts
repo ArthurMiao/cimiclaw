@@ -9,7 +9,7 @@ import {
 } from "../config/sessions/paths.js";
 import { updateSessionStore } from "../config/sessions/store.js";
 import type { SessionEntry } from "../config/sessions/types.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { parseAgentSessionKey } from "../sessions/session-key-utils.js";
 import { asNullableObjectRecord } from "../shared/record-coerce.js";
 import type { note } from "../terminal/note.js";

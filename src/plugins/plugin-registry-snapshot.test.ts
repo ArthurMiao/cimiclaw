@@ -36,7 +36,7 @@ function writePackagePlugin(rootDir: string) {
   fs.mkdirSync(rootDir, { recursive: true });
   fs.writeFileSync(path.join(rootDir, "index.ts"), "export default { register() {} };\n", "utf8");
   fs.writeFileSync(
-    path.join(rootDir, "openclaw.plugin.json"),
+    path.join(rootDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: "demo",
       name: "Demo",
@@ -190,7 +190,7 @@ describe("loadPluginRegistrySnapshotWithMetadata", () => {
       throw new Error("expected package plugin index record with file signatures");
     }
     expect(record.manifestFile.size).toBe(
-      fs.statSync(path.join(rootDir, "openclaw.plugin.json")).size,
+      fs.statSync(path.join(rootDir, "cimiclaw.plugin.json")).size,
     );
     expect(record.packageJson.fileSignature.size).toBe(
       fs.statSync(path.join(rootDir, "package.json")).size,
@@ -222,7 +222,7 @@ describe("loadPluginRegistrySnapshotWithMetadata", () => {
     writePersistedInstalledPluginIndexSync(index, { stateDir });
 
     replaceFilePreservingSizeAndMtime(
-      path.join(rootDir, "openclaw.plugin.json"),
+      path.join(rootDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "demo",
         name: "Demo",

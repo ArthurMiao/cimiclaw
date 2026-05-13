@@ -1,6 +1,6 @@
 import { getLoadedChannelPlugin } from "../channels/plugins/index.js";
 import { resolveReadOnlyChannelCommandDefaults } from "../channels/plugins/read-only-command-defaults.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { normalizeOptionalLowercaseString } from "../shared/string-coerce.js";
 import { pluginCommandSupportsChannel } from "./command-registration.js";
 import { pluginCommands } from "./command-registry-state.js";

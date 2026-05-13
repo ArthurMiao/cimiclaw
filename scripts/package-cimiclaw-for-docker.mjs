@@ -170,7 +170,7 @@ async function main() {
   const checkStartedAt = Date.now();
   await run(
     "node",
-    [path.join(ROOT_DIR, "scripts/check-openclaw-package-tarball.mjs"), tarball],
+    [path.join(ROOT_DIR, "scripts/check-cimiclaw-package-tarball.mjs"), tarball],
     sourceDir,
     { timeoutMs: 5 * 60 * 1000 },
   );

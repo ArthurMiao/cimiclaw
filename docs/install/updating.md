@@ -40,7 +40,7 @@ See [Development channels](/install/development-channels) for channel semantics.
 ## Switch between npm and git installs
 
 Use channels when you want to change the install type. The updater keeps your
-state, config, credentials, and workspace in `~/.openclaw`; it only changes
+state, config, credentials, and workspace in `~/.cimiclaw`; it only changes
 which OpenClaw code install the CLI and gateway use.
 
 ```bash
@@ -128,7 +128,7 @@ bun add -g openclaw@latest
     Give OpenClaw write access to its config/state roots so explicit plugin installs, plugin updates, and doctor cleanup can persist their changes:
 
     ```ini
-    ReadWritePaths=/var/lib/openclaw /home/openclaw/.openclaw /tmp
+    ReadWritePaths=/var/lib/cimiclaw /home/cimiclaw/.cimiclaw /tmp
     ```
 
   </Accordion>
@@ -139,7 +139,7 @@ bun add -g openclaw@latest
 
 ## Auto-updater
 
-The auto-updater is off by default. Enable it in `~/.openclaw/openclaw.json`:
+The auto-updater is off by default. Enable it in `~/.cimiclaw/cimiclaw.json`:
 
 ```json5
 {

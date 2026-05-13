@@ -25,7 +25,7 @@ describe("tokenjuice bundled plugin", () => {
 
   it("is opt-in by default", () => {
     const manifest = JSON.parse(
-      fs.readFileSync(new URL("./openclaw.plugin.json", import.meta.url), "utf8"),
+      fs.readFileSync(new URL("./cimiclaw.plugin.json", import.meta.url), "utf8"),
     ) as { enabledByDefault?: unknown };
 
     expect(manifest.enabledByDefault).toBeUndefined();

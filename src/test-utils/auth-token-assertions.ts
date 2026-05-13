@@ -1,5 +1,5 @@
 import { expect } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 
 export function expectGeneratedTokenPersistedToGatewayAuth(params: {
   generatedToken?: string;

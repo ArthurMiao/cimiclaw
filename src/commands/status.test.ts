@@ -473,7 +473,7 @@ const mocks = vi.hoisted(() => ({
     readRuntime: async () => ({ status: "running", pid: 1234 }),
     readCommand: async () => ({
       programArguments: ["node", "dist/entry.js", "gateway"],
-      sourcePath: "/tmp/Library/LaunchAgents/ai.openclaw.gateway.plist",
+      sourcePath: "/tmp/Library/LaunchAgents/ai.cimiclaw.gateway.plist",
     }),
   }),
   resolveNodeService: vi.fn().mockReturnValue({
@@ -489,7 +489,7 @@ const mocks = vi.hoisted(() => ({
     readRuntime: async () => ({ status: "running", pid: 4321 }),
     readCommand: async () => ({
       programArguments: ["node", "dist/entry.js", "node-host"],
-      sourcePath: "/tmp/Library/LaunchAgents/ai.openclaw.node.plist",
+      sourcePath: "/tmp/Library/LaunchAgents/ai.cimiclaw.node.plist",
     }),
   }),
 }));
@@ -671,7 +671,7 @@ vi.mock("../gateway/call.js", () => ({
 vi.mock("../gateway/agent-list.js", () => ({
   listGatewayAgentsBasic: mocks.listGatewayAgentsBasic,
 }));
-vi.mock("../infra/openclaw-root.js", () => ({
+vi.mock("../infra/cimiclaw-root.js", () => ({
   resolveOpenClawPackageRoot: vi.fn().mockResolvedValue("/tmp/openclaw"),
   resolveOpenClawPackageRootSync: vi.fn(() => "/tmp/openclaw"),
 }));
@@ -961,7 +961,7 @@ describe("statusCommand", () => {
       readRuntime: async () => ({ status: "running", pid: 1234 }),
       readCommand: async () => ({
         programArguments: ["node", "dist/entry.js", "gateway"],
-        sourcePath: "/tmp/Library/LaunchAgents/ai.openclaw.gateway.plist",
+        sourcePath: "/tmp/Library/LaunchAgents/ai.cimiclaw.gateway.plist",
       }),
     });
     mocks.resolveNodeService.mockReset();
@@ -978,7 +978,7 @@ describe("statusCommand", () => {
       readRuntime: async () => ({ status: "running", pid: 4321 }),
       readCommand: async () => ({
         programArguments: ["node", "dist/entry.js", "node-host"],
-        sourcePath: "/tmp/Library/LaunchAgents/ai.openclaw.node.plist",
+        sourcePath: "/tmp/Library/LaunchAgents/ai.cimiclaw.node.plist",
       }),
     });
     runtimeLogMock.mockClear();

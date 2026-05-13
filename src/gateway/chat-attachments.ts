@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { formatErrorMessage } from "../infra/errors.js";
 import { estimateBase64DecodedBytes } from "../media/base64.js";
 import { MAX_IMAGE_BYTES } from "../media/constants.js";

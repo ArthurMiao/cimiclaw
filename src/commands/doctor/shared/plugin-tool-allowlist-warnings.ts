@@ -1,5 +1,5 @@
 import { normalizeToolName } from "../../../agents/tool-policy-shared.js";
-import type { OpenClawConfig } from "../../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../../config/types.cimiclaw.js";
 import { normalizePluginId } from "../../../plugins/config-state.js";
 import { loadManifestMetadataSnapshot } from "../../../plugins/manifest-contract-eligibility.js";
 import type { PluginManifestRegistry } from "../../../plugins/manifest-registry.js";

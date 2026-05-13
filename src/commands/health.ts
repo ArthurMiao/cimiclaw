@@ -12,7 +12,7 @@ import type { ChannelAccountSnapshot } from "../channels/plugins/types.public.js
 import { withProgress } from "../cli/progress.js";
 import { getRuntimeConfig } from "../config/config.js";
 import { resolveStorePath } from "../config/sessions/paths.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { buildGatewayConnectionDetails, callGateway } from "../gateway/call.js";
 import {
   DEFAULT_CHANNEL_CONNECT_GRACE_MS,

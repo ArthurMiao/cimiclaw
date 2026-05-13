@@ -1,6 +1,6 @@
 import { normalizeFastMode } from "../auto-reply/thinking.shared.js";
 import type { SessionEntry } from "../config/sessions.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveAgentConfig } from "./agent-scope.js";
 import { modelKey } from "./model-ref-shared.js";
 

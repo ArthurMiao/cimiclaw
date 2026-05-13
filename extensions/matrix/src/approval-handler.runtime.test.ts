@@ -19,7 +19,7 @@ type MatrixPendingPluginApprovalView = Extract<
   { approvalKind: "plugin" }
 >;
 
-const MATRIX_APPROVAL_METADATA_KEY = "com.openclaw.approval";
+const MATRIX_APPROVAL_METADATA_KEY = "com.cimiclaw.approval";
 
 function expectRecordFields(value: unknown, expected: Record<string, unknown>) {
   expect(value).toBeDefined();

@@ -8,7 +8,7 @@ import {
   type TestSnapshot,
 } from "./redact-snapshot.test-helpers.js";
 import { buildConfigSchema, type ConfigUiHints } from "./schema.js";
-import type { ConfigFileSnapshot } from "./types.openclaw.js";
+import type { ConfigFileSnapshot } from "./types.cimiclaw.js";
 
 function expectNestedLevelPairValue(
   source: Record<string, Record<string, Record<string, unknown>>>,
@@ -45,7 +45,7 @@ describe("redactConfigSnapshot", () => {
             {
               id: "demo",
               rootDir: "/private/plugin/root",
-              manifestPath: "/private/plugin/root/openclaw.plugin.json",
+              manifestPath: "/private/plugin/root/cimiclaw.plugin.json",
             },
           ],
           diagnostics: [],

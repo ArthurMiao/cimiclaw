@@ -8,7 +8,7 @@ import {
   createReplyOperation,
   replyRunRegistry,
 } from "../auto-reply/reply/reply-run-registry.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { getGlobalHookRunner } from "../plugins/hook-runner-global.js";
 import { runPreparedCliAgent } from "./cli-runner.js";
 import {

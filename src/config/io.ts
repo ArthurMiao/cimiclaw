@@ -2142,7 +2142,7 @@ export function createConfigIO(
         return;
       }
       const isVitest = deps.env.VITEST === "true";
-      const shouldLogInVitest = deps.env.OPENCLAW_TEST_CONFIG_OVERWRITE_LOG === "1";
+      const shouldLogInVitest = deps.env.cimiclaw_TEST_CONFIG_OVERWRITE_LOG === "1";
       if (isVitest && !shouldLogInVitest) {
         return;
       }
@@ -2164,7 +2164,7 @@ export function createConfigIO(
       }
       // Tests often write minimal configs (missing meta, etc); keep output quiet unless requested.
       const isVitest = deps.env.VITEST === "true";
-      const shouldLogInVitest = deps.env.OPENCLAW_TEST_CONFIG_WRITE_ANOMALY_LOG === "1";
+      const shouldLogInVitest = deps.env.cimiclaw_TEST_CONFIG_WRITE_ANOMALY_LOG === "1";
       if (isVitest && !shouldLogInVitest) {
         return;
       }
@@ -2350,7 +2350,7 @@ export function projectConfigOntoRuntimeSourceSnapshot(config: OpenClawConfig): 
 export function loadConfig(): OpenClawConfig {
   // First successful load becomes the process snapshot. Long-lived runtimes
   // should swap this snapshot via explicit reload/watcher paths instead of
-  // reparsing openclaw.json on hot code paths.
+  // reparsing cimiclaw.json on hot code paths.
   return loadPinnedRuntimeConfig(() => createConfigIO().loadConfig());
 }
 

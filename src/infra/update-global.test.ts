@@ -655,9 +655,9 @@ describe("update global helpers", () => {
 
   it("cleans only renamed package directories", async () => {
     await withTempDir({ prefix: "openclaw-update-cleanup-" }, async (root) => {
-      await fs.mkdir(path.join(root, ".openclaw-123"), { recursive: true });
-      await fs.mkdir(path.join(root, ".openclaw-456"), { recursive: true });
-      await fs.writeFile(path.join(root, ".openclaw-file"), "nope", "utf8");
+      await fs.mkdir(path.join(root, ".cimiclaw-123"), { recursive: true });
+      await fs.mkdir(path.join(root, ".cimiclaw-456"), { recursive: true });
+      await fs.writeFile(path.join(root, ".cimiclaw-file"), "nope", "utf8");
       await fs.mkdir(path.join(root, "openclaw"), { recursive: true });
 
       await expect(
@@ -666,10 +666,10 @@ describe("update global helpers", () => {
           packageName: "openclaw",
         }),
       ).resolves.toEqual({
-        removed: [".openclaw-123", ".openclaw-456"],
+        removed: [".cimiclaw-123", ".cimiclaw-456"],
       });
       const packageDirStat = await fs.stat(path.join(root, "openclaw"));
-      const markerFileStat = await fs.stat(path.join(root, ".openclaw-file"));
+      const markerFileStat = await fs.stat(path.join(root, ".cimiclaw-file"));
       expect(packageDirStat.isDirectory()).toBe(true);
       expect(markerFileStat.isFile()).toBe(true);
     });
@@ -709,7 +709,7 @@ describe("update global helpers", () => {
       await fs.mkdir(path.join(packageRoot, "dist", "extensions", "brave"), { recursive: true });
       await writePackageDistInventory(packageRoot);
 
-      for (const stageDir of [".openclaw-install-stage", ".openclaw-install-stage-retry"]) {
+      for (const stageDir of [".cimiclaw-install-stage", ".cimiclaw-install-stage-retry"]) {
         const stagedFile = path.join(
           packageRoot,
           "dist",
@@ -727,8 +727,8 @@ describe("update global helpers", () => {
       }
 
       await expect(collectInstalledGlobalPackageErrors({ packageRoot })).resolves.toEqual([
-        "unexpected packaged dist file dist/extensions/brave/.openclaw-install-stage-retry/node_modules/typebox/build/compile/code.mjs",
-        "unexpected packaged dist file dist/extensions/brave/.openclaw-install-stage/node_modules/typebox/build/compile/code.mjs",
+        "unexpected packaged dist file dist/extensions/brave/.cimiclaw-install-stage-retry/node_modules/typebox/build/compile/code.mjs",
+        "unexpected packaged dist file dist/extensions/brave/.cimiclaw-install-stage/node_modules/typebox/build/compile/code.mjs",
       ]);
     });
   });

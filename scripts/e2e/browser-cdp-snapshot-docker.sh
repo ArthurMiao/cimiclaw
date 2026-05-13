@@ -55,7 +55,7 @@ docker_e2e_docker_cmd run -d \
   -e "OPENCLAW_TEST_STATE_SCRIPT_B64=$OPENCLAW_TEST_STATE_SCRIPT_B64" \
   "$IMAGE_NAME" \
   bash -lc "set -euo pipefail
-source scripts/lib/openclaw-e2e-instance.sh
+source scripts/lib/cimiclaw-e2e-instance.sh
 openclaw_e2e_eval_test_state_from_b64 \"\${OPENCLAW_TEST_STATE_SCRIPT_B64:?missing OPENCLAW_TEST_STATE_SCRIPT_B64}\"
 openclaw_e2e_write_state_env
 entry=\"\$(openclaw_e2e_resolve_entrypoint)\"
@@ -72,7 +72,7 @@ openclaw_e2e_exec_gateway \"\$entry\" $PORT loopback /tmp/browser-cdp-gateway.lo
 
 echo "Waiting for Chromium and Gateway..."
 if ! docker_e2e_wait_container_bash "$CONTAINER_NAME" 180 0.5 "
-    source scripts/lib/openclaw-e2e-instance.sh
+    source scripts/lib/cimiclaw-e2e-instance.sh
     openclaw_e2e_probe_http_status http://127.0.0.1:$CDP_PORT/json/version
     openclaw_e2e_probe_tcp 127.0.0.1 $PORT
 "; then
@@ -84,8 +84,8 @@ fi
 echo "Running browser CDP snapshot smoke..."
 docker_e2e_docker_cmd exec "$CONTAINER_NAME" bash -lc "
 set -euo pipefail
-source /tmp/openclaw-test-state-env
-source scripts/lib/openclaw-e2e-instance.sh
+source /tmp/cimiclaw-test-state-env
+source scripts/lib/cimiclaw-e2e-instance.sh
 entry=\"\$(openclaw_e2e_resolve_entrypoint)\"
 base_args=(--url ws://127.0.0.1:$PORT --token '$TOKEN')
 node \"\$entry\" browser \"\${base_args[@]}\" --browser-profile docker-cdp doctor --deep >/tmp/browser-cdp-doctor.txt

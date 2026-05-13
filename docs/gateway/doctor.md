@@ -63,7 +63,7 @@ openclaw doctor
 If you want to review changes before writing, open the config file first:
 
 ```bash
-cat ~/.openclaw/openclaw.json
+cat ~/.cimiclaw/cimiclaw.json
 ```
 
 ## What it does (summary)
@@ -85,7 +85,7 @@ cat ~/.openclaw/openclaw.json
     - OAuth TLS prerequisites check for OpenAI Codex OAuth profiles.
     - Plugin/tool allowlist warnings when `plugins.allow` is restrictive but tool policy still asks for wildcard or plugin-owned tools.
     - Legacy on-disk state migration (sessions/agent dir/WhatsApp auth).
-    - Legacy plugin manifest contract key migration (`speechProviders`, `realtimeTranscriptionProviders`, `realtimeVoiceProviders`, `mediaUnderstandingProviders`, `imageGenerationProviders`, `videoGenerationProviders`, `webFetchProviders`, `webSearchProviders` → `contracts`).
+    - Legacy plugin manifest contract key migration (`speechProviders`, `realtimeTranscriptionProviders`, `realtimeVoiceProviders`, `mediaUnderstandingProviders`, `imageGenerationProviders`, `videoGenerationProviders`, `webFetchProviders`, `webSearchProviders` �?`contracts`).
     - Legacy cron store migration (`jobId`, `schedule.cron`, top-level delivery/payload fields, payload `provider`, simple `notify: true` webhook fallback jobs).
     - Legacy whole-agent runtime-policy cleanup; provider/model runtime policy is the active route selector.
     - Stale plugin config cleanup when plugins are enabled; when `plugins.enabled=false`, stale plugin references are treated as inert containment config and are preserved.
@@ -184,45 +184,45 @@ That stages grounded durable candidates into the short-term dreaming store while
 
     - Explain which legacy keys were found.
     - Show the migration it applied.
-    - Rewrite `~/.openclaw/openclaw.json` with the updated schema.
+    - Rewrite `~/.cimiclaw/cimiclaw.json` with the updated schema.
 
-    Gateway startup refuses legacy config formats and asks you to run `openclaw doctor --fix`; it does not rewrite `openclaw.json` on startup. Cron job store migrations are also handled by `openclaw doctor --fix`.
+    Gateway startup refuses legacy config formats and asks you to run `openclaw doctor --fix`; it does not rewrite `cimiclaw.json` on startup. Cron job store migrations are also handled by `openclaw doctor --fix`.
 
     Current migrations:
 
-    - `routing.allowFrom` → `channels.whatsapp.allowFrom`
-    - `routing.groupChat.requireMention` → `channels.whatsapp/telegram/imessage.groups."*".requireMention`
-    - `routing.groupChat.historyLimit` → `messages.groupChat.historyLimit`
-    - `routing.groupChat.mentionPatterns` → `messages.groupChat.mentionPatterns`
-    - `channels.telegram.requireMention` → `channels.telegram.groups."*".requireMention`
-    - configured-channel configs missing visible reply policy → `messages.groupChat.visibleReplies: "message_tool"`
-    - `routing.queue` → `messages.queue`
-    - `routing.bindings` → top-level `bindings`
-    - `routing.agents`/`routing.defaultAgentId` → `agents.list` + `agents.list[].default`
-    - legacy `talk.voiceId`/`talk.voiceAliases`/`talk.modelId`/`talk.outputFormat`/`talk.apiKey` → `talk.provider` + `talk.providers.<provider>`
-    - legacy top-level realtime Talk selectors (`talk.mode`/`talk.transport`/`talk.brain`/`talk.model`/`talk.voice`) + `talk.provider`/`talk.providers` → `talk.realtime`
-    - `routing.agentToAgent` → `tools.agentToAgent`
-    - `routing.transcribeAudio` → `tools.media.audio.models`
-    - `messages.tts.<provider>` (`openai`/`elevenlabs`/`microsoft`/`edge`) → `messages.tts.providers.<provider>`
-    - `messages.tts.provider: "edge"` and `messages.tts.providers.edge` → `messages.tts.provider: "microsoft"` and `messages.tts.providers.microsoft`
-    - `channels.discord.voice.tts.<provider>` (`openai`/`elevenlabs`/`microsoft`/`edge`) → `channels.discord.voice.tts.providers.<provider>`
-    - `channels.discord.accounts.<id>.voice.tts.<provider>` (`openai`/`elevenlabs`/`microsoft`/`edge`) → `channels.discord.accounts.<id>.voice.tts.providers.<provider>`
-    - `plugins.entries.voice-call.config.tts.<provider>` (`openai`/`elevenlabs`/`microsoft`/`edge`) → `plugins.entries.voice-call.config.tts.providers.<provider>`
-    - `plugins.entries.voice-call.config.tts.provider: "edge"` and `plugins.entries.voice-call.config.tts.providers.edge` → `provider: "microsoft"` and `providers.microsoft`
-    - `plugins.entries.voice-call.config.provider: "log"` → `"mock"`
-    - `plugins.entries.voice-call.config.twilio.from` → `plugins.entries.voice-call.config.fromNumber`
-    - `plugins.entries.voice-call.config.streaming.sttProvider` → `plugins.entries.voice-call.config.streaming.provider`
-    - `plugins.entries.voice-call.config.streaming.openaiApiKey|sttModel|silenceDurationMs|vadThreshold` → `plugins.entries.voice-call.config.streaming.providers.openai.*`
-    - `bindings[].match.accountID` → `bindings[].match.accountId`
+    - `routing.allowFrom` �?`channels.whatsapp.allowFrom`
+    - `routing.groupChat.requireMention` �?`channels.whatsapp/telegram/imessage.groups."*".requireMention`
+    - `routing.groupChat.historyLimit` �?`messages.groupChat.historyLimit`
+    - `routing.groupChat.mentionPatterns` �?`messages.groupChat.mentionPatterns`
+    - `channels.telegram.requireMention` �?`channels.telegram.groups."*".requireMention`
+    - configured-channel configs missing visible reply policy �?`messages.groupChat.visibleReplies: "message_tool"`
+    - `routing.queue` �?`messages.queue`
+    - `routing.bindings` �?top-level `bindings`
+    - `routing.agents`/`routing.defaultAgentId` �?`agents.list` + `agents.list[].default`
+    - legacy `talk.voiceId`/`talk.voiceAliases`/`talk.modelId`/`talk.outputFormat`/`talk.apiKey` �?`talk.provider` + `talk.providers.<provider>`
+    - legacy top-level realtime Talk selectors (`talk.mode`/`talk.transport`/`talk.brain`/`talk.model`/`talk.voice`) + `talk.provider`/`talk.providers` �?`talk.realtime`
+    - `routing.agentToAgent` �?`tools.agentToAgent`
+    - `routing.transcribeAudio` �?`tools.media.audio.models`
+    - `messages.tts.<provider>` (`openai`/`elevenlabs`/`microsoft`/`edge`) �?`messages.tts.providers.<provider>`
+    - `messages.tts.provider: "edge"` and `messages.tts.providers.edge` �?`messages.tts.provider: "microsoft"` and `messages.tts.providers.microsoft`
+    - `channels.discord.voice.tts.<provider>` (`openai`/`elevenlabs`/`microsoft`/`edge`) �?`channels.discord.voice.tts.providers.<provider>`
+    - `channels.discord.accounts.<id>.voice.tts.<provider>` (`openai`/`elevenlabs`/`microsoft`/`edge`) �?`channels.discord.accounts.<id>.voice.tts.providers.<provider>`
+    - `plugins.entries.voice-call.config.tts.<provider>` (`openai`/`elevenlabs`/`microsoft`/`edge`) �?`plugins.entries.voice-call.config.tts.providers.<provider>`
+    - `plugins.entries.voice-call.config.tts.provider: "edge"` and `plugins.entries.voice-call.config.tts.providers.edge` �?`provider: "microsoft"` and `providers.microsoft`
+    - `plugins.entries.voice-call.config.provider: "log"` �?`"mock"`
+    - `plugins.entries.voice-call.config.twilio.from` �?`plugins.entries.voice-call.config.fromNumber`
+    - `plugins.entries.voice-call.config.streaming.sttProvider` �?`plugins.entries.voice-call.config.streaming.provider`
+    - `plugins.entries.voice-call.config.streaming.openaiApiKey|sttModel|silenceDurationMs|vadThreshold` �?`plugins.entries.voice-call.config.streaming.providers.openai.*`
+    - `bindings[].match.accountID` �?`bindings[].match.accountId`
     - For channels with named `accounts` but lingering single-account top-level channel values, move those account-scoped values into the promoted account chosen for that channel (`accounts.default` for most channels; Matrix can preserve an existing matching named/default target)
-    - `identity` → `agents.list[].identity`
-    - `agent.*` → `agents.defaults` + `tools.*` (tools/elevated/exec/sandbox/subagents)
-    - `agent.model`/`allowedModels`/`modelAliases`/`modelFallbacks`/`imageModelFallbacks` → `agents.defaults.models` + `agents.defaults.model.primary/fallbacks` + `agents.defaults.imageModel.primary/fallbacks`
+    - `identity` �?`agents.list[].identity`
+    - `agent.*` �?`agents.defaults` + `tools.*` (tools/elevated/exec/sandbox/subagents)
+    - `agent.model`/`allowedModels`/`modelAliases`/`modelFallbacks`/`imageModelFallbacks` �?`agents.defaults.models` + `agents.defaults.model.primary/fallbacks` + `agents.defaults.imageModel.primary/fallbacks`
     - remove `agents.defaults.llm`; use `models.providers.<id>.timeoutSeconds` for slow provider/model timeouts
-    - `browser.ssrfPolicy.allowPrivateNetwork` → `browser.ssrfPolicy.dangerouslyAllowPrivateNetwork`
-    - `browser.profiles.*.driver: "extension"` → `"existing-session"`
+    - `browser.ssrfPolicy.allowPrivateNetwork` �?`browser.ssrfPolicy.dangerouslyAllowPrivateNetwork`
+    - `browser.profiles.*.driver: "extension"` �?`"existing-session"`
     - remove `browser.relayBindHost` (legacy extension relay setting)
-    - legacy `models.providers.*.api: "openai"` → `"openai-completions"` (gateway startup also skips providers whose `api` is set to a future or unknown enum value rather than failing closed)
+    - legacy `models.providers.*.api: "openai"` �?`"openai-completions"` (gateway startup also skips providers whose `api` is set to a future or unknown enum value rather than failing closed)
     - remove `plugins.entries.codex.config.codexDynamicToolsProfile`; Codex app-server always keeps Codex-native workspace tools native
 
     Doctor warnings also include account-default guidance for multi-account channels:
@@ -289,12 +289,12 @@ That stages grounded durable candidates into the short-term dreaming store while
     Doctor can migrate older on-disk layouts into the current structure:
 
     - Sessions store + transcripts:
-      - from `~/.openclaw/sessions/` to `~/.openclaw/agents/<agentId>/sessions/`
+      - from `~/.cimiclaw/sessions/` to `~/.cimiclaw/agents/<agentId>/sessions/`
     - Agent dir:
-      - from `~/.openclaw/agent/` to `~/.openclaw/agents/<agentId>/agent/`
+      - from `~/.cimiclaw/agent/` to `~/.cimiclaw/agents/<agentId>/agent/`
     - WhatsApp auth state (Baileys):
-      - from legacy `~/.openclaw/credentials/*.json` (except `oauth.json`)
-      - to `~/.openclaw/credentials/whatsapp/<accountId>/...` (default account id: `default`)
+      - from legacy `~/.cimiclaw/credentials/*.json` (except `oauth.json`)
+      - to `~/.cimiclaw/credentials/whatsapp/<accountId>/...` (default account id: `default`)
 
     These migrations are best-effort and idempotent; doctor will emit warnings when it leaves any legacy folders behind as backups. The Gateway/CLI also auto-migrates the legacy sessions + agent dir on startup so history/auth/models land in the per-agent path without a manual doctor run. WhatsApp auth is intentionally only migrated via `openclaw doctor`. Talk provider/provider-map normalization now compares by structural equality, so key-order-only diffs no longer trigger repeat no-op `doctor --fix` changes.
 
@@ -303,24 +303,24 @@ That stages grounded durable candidates into the short-term dreaming store while
     Doctor scans all installed plugin manifests for deprecated top-level capability keys (`speechProviders`, `realtimeTranscriptionProviders`, `realtimeVoiceProviders`, `mediaUnderstandingProviders`, `imageGenerationProviders`, `videoGenerationProviders`, `webFetchProviders`, `webSearchProviders`). When found, it offers to move them into the `contracts` object and rewrite the manifest file in-place. This migration is idempotent; if the `contracts` key already has the same values, the legacy key is removed without duplicating the data.
   </Accordion>
   <Accordion title="3b. Legacy cron store migrations">
-    Doctor also checks the cron job store (`~/.openclaw/cron/jobs.json` by default, or `cron.store` when overridden) for old job shapes that the scheduler still accepts for compatibility.
+    Doctor also checks the cron job store (`~/.cimiclaw/cron/jobs.json` by default, or `cron.store` when overridden) for old job shapes that the scheduler still accepts for compatibility.
 
     Current cron cleanups include:
 
-    - `jobId` → `id`
-    - `schedule.cron` → `schedule.expr`
-    - top-level payload fields (`message`, `model`, `thinking`, ...) → `payload`
-    - top-level delivery fields (`deliver`, `channel`, `to`, `provider`, ...) → `delivery`
-    - payload `provider` delivery aliases → explicit `delivery.channel`
-    - simple legacy `notify: true` webhook fallback jobs → explicit `delivery.mode="webhook"` with `delivery.to=cron.webhook`
+    - `jobId` �?`id`
+    - `schedule.cron` �?`schedule.expr`
+    - top-level payload fields (`message`, `model`, `thinking`, ...) �?`payload`
+    - top-level delivery fields (`deliver`, `channel`, `to`, `provider`, ...) �?`delivery`
+    - payload `provider` delivery aliases �?explicit `delivery.channel`
+    - simple legacy `notify: true` webhook fallback jobs �?explicit `delivery.mode="webhook"` with `delivery.to=cron.webhook`
 
     Doctor only auto-migrates `notify: true` jobs when it can do so without changing behavior. If a job combines legacy notify fallback with an existing non-webhook delivery mode, doctor warns and leaves that job for manual review.
 
-    On Linux, doctor also warns when the user's crontab still invokes legacy `~/.openclaw/bin/ensure-whatsapp.sh`. That host-local script is not maintained by current OpenClaw and can write false `Gateway inactive` messages to `~/.openclaw/logs/whatsapp-health.log` when cron cannot reach the systemd user bus. Remove the stale crontab entry with `crontab -e`; use `openclaw channels status --probe`, `openclaw doctor`, and `openclaw gateway status` for current health checks.
+    On Linux, doctor also warns when the user's crontab still invokes legacy `~/.cimiclaw/bin/ensure-whatsapp.sh`. That host-local script is not maintained by current OpenClaw and can write false `Gateway inactive` messages to `~/.cimiclaw/logs/whatsapp-health.log` when cron cannot reach the systemd user bus. Remove the stale crontab entry with `crontab -e`; use `openclaw channels status --probe`, `openclaw doctor`, and `openclaw gateway status` for current health checks.
 
   </Accordion>
   <Accordion title="3c. Session lock cleanup">
-    Doctor scans every agent session directory for stale write-lock files — files left behind when a session exited abnormally. For each lock file found it reports: the path, PID, whether the PID is still alive, lock age, and whether it is considered stale (dead PID, older than 30 minutes, or a live PID that can be proven to belong to a non-OpenClaw process). In `--fix` / `--repair` mode it removes stale lock files automatically; otherwise it prints a note and instructs you to rerun with `--fix`.
+    Doctor scans every agent session directory for stale write-lock files �?files left behind when a session exited abnormally. For each lock file found it reports: the path, PID, whether the PID is still alive, lock age, and whether it is considered stale (dead PID, older than 30 minutes, or a live PID that can be proven to belong to a non-OpenClaw process). In `--fix` / `--repair` mode it removes stale lock files automatically; otherwise it prints a note and instructs you to rerun with `--fix`.
   </Accordion>
   <Accordion title="3d. Session transcript branch repair">
     Doctor scans agent session JSONL files for the duplicated branch shape created by the 2026.4.24 prompt transcript rewrite bug: an abandoned user turn with OpenClaw internal runtime context plus an active sibling containing the same visible user prompt. In `--fix` / `--repair` mode, doctor backs up each affected file next to the original and rewrites the transcript to the active branch so gateway history and memory readers no longer see duplicate turns.
@@ -337,9 +337,9 @@ That stages grounded durable candidates into the short-term dreaming store while
     - **Session dirs missing**: `sessions/` and the session store directory are required to persist history and avoid `ENOENT` crashes.
     - **Transcript mismatch**: warns when recent session entries have missing transcript files.
     - **Main session "1-line JSONL"**: flags when the main transcript has only one line (history is not accumulating).
-    - **Multiple state dirs**: warns when multiple `~/.openclaw` folders exist across home directories or when `OPENCLAW_STATE_DIR` points elsewhere (history can split between installs).
+    - **Multiple state dirs**: warns when multiple `~/.cimiclaw` folders exist across home directories or when `OPENCLAW_STATE_DIR` points elsewhere (history can split between installs).
     - **Remote mode reminder**: if `gateway.mode=remote`, doctor reminds you to run it on the remote host (the state lives there).
-    - **Config file permissions**: warns if `~/.openclaw/openclaw.json` is group/world readable and offers to tighten to `600`.
+    - **Config file permissions**: warns if `~/.cimiclaw/cimiclaw.json` is group/world readable and offers to tighten to `600`.
 
   </Accordion>
   <Accordion title="5. Model auth health (OAuth expiry)">

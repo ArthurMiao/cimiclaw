@@ -78,7 +78,7 @@ On Discord, native command specs may include `descriptionLocalizations`, which O
   Controls how long bash waits before switching to background mode (`0` backgrounds immediately).
 </ParamField>
 <ParamField path="commands.config" type="boolean" default="false">
-  Enables `/config` (reads/writes `openclaw.json`).
+  Enables `/config` (reads/writes `cimiclaw.json`).
 </ParamField>
 <ParamField path="commands.mcp" type="boolean" default="false">
   Enables `/mcp` (reads/writes OpenClaw-managed MCP config under `mcp.servers`).
@@ -96,7 +96,7 @@ On Discord, native command specs may include `descriptionLocalizations`, which O
   Sets the explicit owner allowlist for owner-only command/tool surfaces. This is the human operator account that can approve dangerous actions and run commands such as `/diagnostics`, `/export-trajectory`, and `/config`. It is separate from `commands.allowFrom` and from DM pairing access.
 </ParamField>
 <ParamField path="channels.<channel>.commands.enforceOwnerForCommands" type="boolean" default="false">
-  Per-channel: makes owner-only commands require **owner identity** to run on that surface. When `true`, the sender must either match a resolved owner candidate (for example an entry in `commands.ownerAllowFrom` or provider-native owner metadata) or hold internal `operator.admin` scope on an internal message channel. A wildcard entry in channel `allowFrom`, or an empty/unresolved owner-candidate list, is **not** sufficient — owner-only commands fail closed on that channel. Leave this off if you want owner-only commands gated only by `ownerAllowFrom` and the standard command allowlists.
+  Per-channel: makes owner-only commands require **owner identity** to run on that surface. When `true`, the sender must either match a resolved owner candidate (for example an entry in `commands.ownerAllowFrom` or provider-native owner metadata) or hold internal `operator.admin` scope on an internal message channel. A wildcard entry in channel `allowFrom`, or an empty/unresolved owner-candidate list, is **not** sufficient 鈥?owner-only commands fail closed on that channel. Leave this off if you want owner-only commands gated only by `ownerAllowFrom` and the standard command allowlists.
 </ParamField>
 <ParamField path="commands.ownerDisplay" type='"raw" | "hash"'>
   Controls how owner ids appear in the system prompt.
@@ -179,7 +179,7 @@ Current source-of-truth:
 
   </Accordion>
   <Accordion title="Owner-only writes and admin">
-    - `/config show|get|set|unset` reads or writes `openclaw.json`. Owner-only. Requires `commands.config: true`.
+    - `/config show|get|set|unset` reads or writes `cimiclaw.json`. Owner-only. Requires `commands.config: true`.
     - `/mcp show|get|set|unset` reads or writes OpenClaw-managed MCP server config under `mcp.servers`. Owner-only. Requires `commands.mcp: true`.
     - `/plugins list|inspect|show|get|install|enable|disable` inspects or mutates plugin state. `/plugin` is an alias. Owner-only for writes. Requires `commands.plugins: true`.
     - `/debug show|set|unset|reset` manages runtime-only config overrides. Owner-only. Requires `commands.debug: true`.
@@ -292,7 +292,7 @@ User-invocable skills are also exposed as slash commands:
       - `/skill <name> [input]` runs a skill by name (useful when native command limits prevent per-skill commands).
       - By default, skill commands are forwarded to the model as a normal request.
       - Skills may optionally declare `command-dispatch: tool` to route the command directly to a tool (deterministic, no model).
-      - Example: `/prose` (OpenProse plugin) — see [OpenProse](/prose).
+      - Example: `/prose` (OpenProse plugin) 鈥?see [OpenProse](/prose).
     - **Native command arguments:** Discord uses autocomplete for dynamic options (and button menus when you omit required args). Telegram and Slack show a button menu when a command supports choices and you omit the arg. Dynamic choices are resolved against the target session model, so model-specific options such as `/think` levels follow that session's `/model` override.
 
   </Accordion>
@@ -355,7 +355,7 @@ Examples:
 ```
 
 <Note>
-Overrides apply immediately to new config reads, but do **not** write to `openclaw.json`. Use `/debug reset` to clear all overrides and return to the on-disk config.
+Overrides apply immediately to new config reads, but do **not** write to `cimiclaw.json`. Use `/debug reset` to clear all overrides and return to the on-disk config.
 </Note>
 
 ## Plugin trace output
@@ -381,7 +381,7 @@ Notes:
 
 ## Config updates
 
-`/config` writes to your on-disk config (`openclaw.json`). Owner-only. Disabled by default; enable with `commands.config: true`.
+`/config` writes to your on-disk config (`cimiclaw.json`). Owner-only. Disabled by default; enable with `commands.config: true`.
 
 Examples:
 

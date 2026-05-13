@@ -135,7 +135,7 @@ describe("registerSubCliCommands", () => {
   });
 
   it("registers the primary placeholder plus completion and dispatches", async () => {
-    const program = createRegisteredProgram(["node", "openclaw", "acp"]);
+    const program = createRegisteredProgram(["node", "cimiclaw", "acp"]);
 
     expect(program.commands.map((cmd) => cmd.name())).toEqual(["acp", "completion"]);
 
@@ -146,7 +146,7 @@ describe("registerSubCliCommands", () => {
   });
 
   it("registers placeholders for all subcommands when no primary", () => {
-    const program = createRegisteredProgram(["node", "openclaw"]);
+    const program = createRegisteredProgram(["node", "cimiclaw"]);
 
     const names = program.commands.map((cmd) => cmd.name());
     expect(names).toContain("acp");
@@ -159,13 +159,13 @@ describe("registerSubCliCommands", () => {
   it("omits the qa placeholder when the private qa cli is disabled", () => {
     delete process.env.OPENCLAW_ENABLE_PRIVATE_QA_CLI;
 
-    const program = createRegisteredProgram(["node", "openclaw"]);
+    const program = createRegisteredProgram(["node", "cimiclaw"]);
 
     expect(program.commands.map((cmd) => cmd.name())).not.toContain("qa");
   });
 
   it("re-parses argv for lazy subcommands", async () => {
-    const program = createRegisteredProgram(["node", "openclaw", "nodes", "list"], "openclaw");
+    const program = createRegisteredProgram(["node", "cimiclaw", "nodes", "list"], "cimiclaw");
 
     expect(program.commands.map((cmd) => cmd.name())).toEqual(["nodes", "completion"]);
 
@@ -176,7 +176,7 @@ describe("registerSubCliCommands", () => {
   });
 
   it("registers the infer placeholder and dispatches through the capability registrar", async () => {
-    const program = createRegisteredProgram(["node", "openclaw", "infer"], "openclaw");
+    const program = createRegisteredProgram(["node", "cimiclaw", "infer"], "cimiclaw");
 
     expect(program.commands.map((cmd) => cmd.name())).toEqual(["infer", "completion"]);
 
@@ -187,7 +187,7 @@ describe("registerSubCliCommands", () => {
   });
 
   it("replaces placeholder when registering a subcommand by name", async () => {
-    const program = createRegisteredProgram(["node", "openclaw", "acp", "--help"], "openclaw");
+    const program = createRegisteredProgram(["node", "cimiclaw", "acp", "--help"], "cimiclaw");
 
     await registerSubCliByName(program, "acp");
 
@@ -200,9 +200,9 @@ describe("registerSubCliCommands", () => {
   });
 
   it("registers only the gateway run surface for gateway startup", async () => {
-    const argv = ["node", "openclaw", "gateway", "--force"];
+    const argv = ["node", "cimiclaw", "gateway", "--force"];
     process.argv = argv;
-    const program = new Command().name("openclaw");
+    const program = new Command().name("cimiclaw");
 
     await registerSubCliByName(program, "gateway", argv);
 
@@ -213,9 +213,9 @@ describe("registerSubCliCommands", () => {
   });
 
   it("keeps the full gateway CLI for non-run gateway subcommands", async () => {
-    const argv = ["node", "openclaw", "gateway", "call", "health"];
+    const argv = ["node", "cimiclaw", "gateway", "call", "health"];
     process.argv = argv;
-    const program = new Command().name("openclaw");
+    const program = new Command().name("cimiclaw");
 
     await registerSubCliByName(program, "gateway", argv);
 
@@ -224,8 +224,8 @@ describe("registerSubCliCommands", () => {
   });
 
   it("passes completion context to channel registration", async () => {
-    const argv = ["node", "openclaw", "completion", "--write-state"];
-    const program = new Command().name("openclaw");
+    const argv = ["node", "cimiclaw", "completion", "--write-state"];
+    const program = new Command().name("cimiclaw");
 
     await registerSubCliByName(program, "channels", argv, { purpose: "completion" });
 
@@ -244,8 +244,8 @@ describe("registerSubCliCommands", () => {
     ["plugins doctor", ["plugins", "doctor"]],
     ["plugins --help", ["plugins", "--help"]],
   ])("does not preload plugin CLI registrations for builtin %s", async (_label, args) => {
-    process.argv = ["node", "openclaw", ...args];
-    const program = new Command().name("openclaw");
+    process.argv = ["node", "cimiclaw", ...args];
+    const program = new Command().name("cimiclaw");
 
     await registerSubCliByName(program, "plugins");
 
@@ -254,8 +254,8 @@ describe("registerSubCliCommands", () => {
   });
 
   it("keeps plugin CLI registrations available for the plugins command root", async () => {
-    process.argv = ["node", "openclaw", "plugins"];
-    const program = new Command().name("openclaw");
+    process.argv = ["node", "cimiclaw", "plugins"];
+    const program = new Command().name("cimiclaw");
 
     await registerSubCliByName(program, "plugins");
 

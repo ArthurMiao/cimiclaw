@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { isCommandEnabled } from "../commands-registry-list.js";
 import { maybeResolveTextAlias } from "../commands-registry-normalize.js";
 import { shouldHandleTextCommands } from "../commands-text-routing.js";

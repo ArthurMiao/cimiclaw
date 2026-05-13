@@ -93,7 +93,7 @@ async function runStopLaunchAgentWithFakeTimers(args: Parameters<typeof stopLaun
 
 function expectLaunchctlEnableBootstrapOrder(env: Record<string, string | undefined>) {
   const domain = typeof process.getuid === "function" ? `gui/${process.getuid()}` : "gui/501";
-  const label = "ai.openclaw.gateway";
+  const label = "ai.cimiclaw.gateway";
   const plistPath = resolveLaunchAgentPlistPath(env);
   const serviceId = `${domain}/${label}`;
   const enableIndex = state.launchctlCalls.findIndex(
@@ -393,7 +393,7 @@ describe("launchd runtime state", () => {
 
 describe("launchctl list detection", () => {
   it("detects the resolved label in launchctl list", async () => {
-    state.listOutput = "123 0 ai.openclaw.gateway\n";
+    state.listOutput = "123 0 ai.cimiclaw.gateway\n";
     const listed = await isLaunchAgentListed({
       env: { HOME: "/Users/test", OPENCLAW_PROFILE: "default" },
     });
@@ -514,7 +514,7 @@ describe("launchd install", () => {
 
   it("writes LaunchAgent environment to an owner-only env file when provided", async () => {
     const env = createDefaultLaunchdEnv();
-    const tmpDir = "/Users/test/.openclaw/tmp";
+    const tmpDir = "/Users/test/.cimiclaw/tmp";
     const apiKey = "secret-api-key";
     await installLaunchAgent({
       env,
@@ -524,8 +524,8 @@ describe("launchd install", () => {
     });
 
     const plistPath = resolveLaunchAgentPlistPath(env);
-    const envFilePath = "/Users/test/.openclaw/service-env/ai.openclaw.gateway.env";
-    const wrapperPath = "/Users/test/.openclaw/service-env/ai.openclaw.gateway-env-wrapper.sh";
+    const envFilePath = "/Users/test/.cimiclaw/service-env/ai.cimiclaw.gateway.env";
+    const wrapperPath = "/Users/test/.cimiclaw/service-env/ai.cimiclaw.gateway-env-wrapper.sh";
     const plist = state.files.get(plistPath) ?? "";
     expect(plist).not.toContain("<key>EnvironmentVariables</key>");
     expect(plist).not.toContain(apiKey);
@@ -536,7 +536,7 @@ describe("launchd install", () => {
     expect(envFile).toContain(`export OPENAI_API_KEY='${apiKey}'`);
     expect(state.fileModes.get(envFilePath)).toBe(0o600);
     expect(state.fileModes.get(wrapperPath)).toBe(0o700);
-    expect(state.dirModes.get("/Users/test/.openclaw/service-env")).toBe(0o700);
+    expect(state.dirModes.get("/Users/test/.cimiclaw/service-env")).toBe(0o700);
 
     const command = await readLaunchAgentProgramArguments(env);
     expect(command?.programArguments).toEqual(defaultProgramArguments);
@@ -552,7 +552,7 @@ describe("launchd install", () => {
 
   it("creates the LaunchAgent TMPDIR before bootstrap", async () => {
     const env = createDefaultLaunchdEnv();
-    const tmpDir = "/Users/test/.openclaw/tmp";
+    const tmpDir = "/Users/test/.cimiclaw/tmp";
     await installLaunchAgent({
       env,
       stdout: new PassThrough(),
@@ -600,7 +600,7 @@ describe("launchd install", () => {
         '<plist version="1.0">',
         "  <dict>",
         "    <key>Label</key>",
-        "    <string>ai.openclaw.gateway</string>",
+        "    <string>ai.cimiclaw.gateway</string>",
         "    <key>ProgramArguments</key>",
         "    <array>",
         "      <string>node</string>",
@@ -659,7 +659,7 @@ describe("launchd install", () => {
     await stopLaunchAgent({ env, stdout });
 
     const domain = typeof process.getuid === "function" ? `gui/${process.getuid()}` : "gui/501";
-    const serviceId = `${domain}/ai.openclaw.gateway`;
+    const serviceId = `${domain}/ai.cimiclaw.gateway`;
     expect(state.launchctlCalls).toContainEqual(["bootout", serviceId]);
     expect(launchctlCommandNames()).not.toContain("disable");
     expect(launchctlCommandNames()).not.toContain("stop");
@@ -677,9 +677,9 @@ describe("launchd install", () => {
     await stopLaunchAgent({ env, stdout, disable: true });
 
     const domain = typeof process.getuid === "function" ? `gui/${process.getuid()}` : "gui/501";
-    const serviceId = `${domain}/ai.openclaw.gateway`;
+    const serviceId = `${domain}/ai.cimiclaw.gateway`;
     expect(state.launchctlCalls).toContainEqual(["disable", serviceId]);
-    expect(state.launchctlCalls).toContainEqual(["stop", "ai.openclaw.gateway"]);
+    expect(state.launchctlCalls).toContainEqual(["stop", "ai.cimiclaw.gateway"]);
     expect(launchctlCommandNames()).not.toContain("bootout");
     expect(output).toContain("Stopped LaunchAgent");
   });
@@ -700,7 +700,7 @@ describe("launchd install", () => {
 
     expect(state.launchctlCalls).toContainEqual([
       "disable",
-      `${typeof process.getuid === "function" ? `gui/${process.getuid()}` : "gui/501"}/ai.openclaw.gateway`,
+      `${typeof process.getuid === "function" ? `gui/${process.getuid()}` : "gui/501"}/ai.cimiclaw.gateway`,
     ]);
     expect(launchctlCommandNames()).not.toContain("bootout");
     expect(output).toContain("Stopped LaunchAgent");
@@ -860,7 +860,7 @@ describe("launchd install", () => {
     });
 
     const domain = typeof process.getuid === "function" ? `gui/${process.getuid()}` : "gui/501";
-    const label = "ai.openclaw.gateway";
+    const label = "ai.cimiclaw.gateway";
     const serviceId = `${domain}/${label}`;
     expect(result).toEqual({ outcome: "completed" });
     expect(cleanStaleGatewayProcessesSync).toHaveBeenCalledWith(18789);
@@ -907,7 +907,7 @@ describe("launchd install", () => {
     });
 
     const domain = typeof process.getuid === "function" ? `gui/${process.getuid()}` : "gui/501";
-    const serviceId = `${domain}/ai.openclaw.gateway`;
+    const serviceId = `${domain}/ai.cimiclaw.gateway`;
     const kickstartCalls = state.launchctlCalls.filter(
       (c) => c[0] === "kickstart" && c[1] === "-k" && c[2] === serviceId,
     );
@@ -1002,7 +1002,7 @@ describe("launchd install", () => {
     }
     expect(message).toContain("logged-in macOS GUI session");
     expect(message).toContain("wrong user (including sudo)");
-    expect(message).toContain("https://docs.openclaw.ai/gateway");
+    expect(message).toContain("https://docs.cimiclaw.ai/gateway");
   });
 
   it("surfaces generic bootstrap failures without GUI-specific guidance", async () => {
@@ -1024,12 +1024,12 @@ describe("resolveLaunchAgentPlistPath", () => {
     {
       name: "uses default label when OPENCLAW_PROFILE is unset",
       env: { HOME: "/Users/test" },
-      expected: "/Users/test/Library/LaunchAgents/ai.openclaw.gateway.plist",
+      expected: "/Users/test/Library/LaunchAgents/ai.cimiclaw.gateway.plist",
     },
     {
       name: "uses profile-specific label when OPENCLAW_PROFILE is set to a custom value",
       env: { HOME: "/Users/test", OPENCLAW_PROFILE: "jbphoenix" },
-      expected: "/Users/test/Library/LaunchAgents/ai.openclaw.jbphoenix.plist",
+      expected: "/Users/test/Library/LaunchAgents/ai.cimiclaw.jbphoenix.plist",
     },
     {
       name: "prefers OPENCLAW_LAUNCHD_LABEL over OPENCLAW_PROFILE",
@@ -1055,7 +1055,7 @@ describe("resolveLaunchAgentPlistPath", () => {
         OPENCLAW_PROFILE: "myprofile",
         OPENCLAW_LAUNCHD_LABEL: "   ",
       },
-      expected: "/Users/test/Library/LaunchAgents/ai.openclaw.myprofile.plist",
+      expected: "/Users/test/Library/LaunchAgents/ai.cimiclaw.myprofile.plist",
     },
   ])("$name", ({ env, expected }) => {
     expect(resolveLaunchAgentPlistPath(env)).toBe(expected);

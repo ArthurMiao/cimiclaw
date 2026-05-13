@@ -19,9 +19,9 @@ async function importBrowserSafeLogger(params?: {
       throw new Error("resolvePreferredOpenClawTmpDir should not run during browser-safe import");
     });
 
-  vi.doMock("../infra/tmp-openclaw-dir.js", async () => {
-    const actual = await vi.importActual<typeof import("../infra/tmp-openclaw-dir.js")>(
-      "../infra/tmp-openclaw-dir.js",
+  vi.doMock("../infra/tmp-cimiclaw-dir.js", async () => {
+    const actual = await vi.importActual<typeof import("../infra/tmp-cimiclaw-dir.js")>(
+      "../infra/tmp-cimiclaw-dir.js",
     );
     return {
       ...actual,
@@ -43,7 +43,7 @@ async function importBrowserSafeLogger(params?: {
 
 describe("logging/logger browser-safe import", () => {
   afterEach(() => {
-    vi.doUnmock("../infra/tmp-openclaw-dir.js");
+    vi.doUnmock("../infra/tmp-cimiclaw-dir.js");
     Object.defineProperty(process, "getBuiltinModule", {
       configurable: true,
       value: originalGetBuiltinModule,

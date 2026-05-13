@@ -34,12 +34,12 @@ const createInstallPlanFixture = vi.hoisted(() => {
   return async (params?: { wrapperPath?: string; env?: Record<string, string | undefined> }) => {
     const environment: Record<string, string | undefined> = {};
     if (params?.wrapperPath || params?.env?.OPENCLAW_WRAPPER) {
-      environment.OPENCLAW_WRAPPER = params.wrapperPath ?? params.env?.OPENCLAW_WRAPPER;
+      environment.cimiclaw_WRAPPER = params.wrapperPath ?? params.env?.OPENCLAW_WRAPPER;
     }
     return {
       programArguments: params?.wrapperPath
         ? [params.wrapperPath, "gateway", "run"]
-        : ["openclaw", "gateway", "run"],
+        : ["cimiclaw", "gateway", "run"],
       workingDirectory: "/tmp",
       environment,
     };
@@ -78,7 +78,7 @@ vi.mock("../../config/io.js", () => ({
   loadConfig: loadConfigMock,
   readConfigFileSnapshotForWrite: vi.fn(async () => ({
     snapshot: await readConfigFileSnapshotMock(),
-    writeOptions: { expectedConfigPath: "/tmp/openclaw.json" },
+    writeOptions: { expectedConfigPath: "/tmp/cimiclaw.json" },
   })),
 }));
 
@@ -91,7 +91,7 @@ vi.mock("../../commands/gateway-install-token.persist.runtime.js", () => ({
   readConfigFileSnapshot: readConfigFileSnapshotMock,
   readConfigFileSnapshotForWrite: vi.fn(async () => ({
     snapshot: await readConfigFileSnapshotMock(),
-    writeOptions: { expectedConfigPath: "/tmp/openclaw.json" },
+    writeOptions: { expectedConfigPath: "/tmp/cimiclaw.json" },
   })),
   replaceConfigFile: replaceConfigFileMock,
 }));
@@ -380,7 +380,7 @@ describe("runDaemonInstall", () => {
       NODE_USE_SYSTEM_CA: undefined,
     });
     service.readCommand.mockResolvedValue({
-      programArguments: ["openclaw", "gateway", "run"],
+      programArguments: ["cimiclaw", "gateway", "run"],
       environment: {
         NODE_EXTRA_CA_CERTS: "/etc/ssl/certs/ca-certificates.crt",
       },
@@ -395,7 +395,7 @@ describe("runDaemonInstall", () => {
   it("reinstalls when the loaded service still embeds OPENCLAW_GATEWAY_TOKEN", async () => {
     service.isLoaded.mockResolvedValue(true);
     service.readCommand.mockResolvedValue({
-      programArguments: ["openclaw", "gateway", "run"],
+      programArguments: ["cimiclaw", "gateway", "run"],
       environment: {
         OPENCLAW_GATEWAY_TOKEN: "stale-service-token",
       },
@@ -412,13 +412,13 @@ describe("runDaemonInstall", () => {
   it("returns already-installed when the embedded gateway token matches the install plan", async () => {
     service.isLoaded.mockResolvedValue(true);
     service.readCommand.mockResolvedValue({
-      programArguments: ["openclaw", "gateway", "run"],
+      programArguments: ["cimiclaw", "gateway", "run"],
       environment: {
         OPENCLAW_GATEWAY_TOKEN: "durable-token",
       },
     } as never);
     buildGatewayInstallPlanMock.mockResolvedValueOnce({
-      programArguments: ["openclaw", "gateway", "run"],
+      programArguments: ["cimiclaw", "gateway", "run"],
       workingDirectory: "/tmp",
       environment: {
         OPENCLAW_GATEWAY_TOKEN: "durable-token",
@@ -477,13 +477,13 @@ describe("runDaemonInstall", () => {
   it("reinstalls when the embedded gateway token differs from the install plan", async () => {
     service.isLoaded.mockResolvedValue(true);
     service.readCommand.mockResolvedValue({
-      programArguments: ["openclaw", "gateway", "run"],
+      programArguments: ["cimiclaw", "gateway", "run"],
       environment: {
         OPENCLAW_GATEWAY_TOKEN: "stale-service-token",
       },
     } as never);
     buildGatewayInstallPlanMock.mockResolvedValueOnce({
-      programArguments: ["openclaw", "gateway", "run"],
+      programArguments: ["cimiclaw", "gateway", "run"],
       workingDirectory: "/tmp",
       environment: {
         OPENCLAW_GATEWAY_TOKEN: "fresh-token",
@@ -501,7 +501,7 @@ describe("runDaemonInstall", () => {
   it("does not reinstall when OPENCLAW_GATEWAY_TOKEN comes from an env file", async () => {
     service.isLoaded.mockResolvedValue(true);
     service.readCommand.mockResolvedValue({
-      programArguments: ["openclaw", "gateway", "run"],
+      programArguments: ["cimiclaw", "gateway", "run"],
       environment: {
         OPENCLAW_GATEWAY_TOKEN: "env-file-token",
       },
@@ -523,7 +523,7 @@ describe("runDaemonInstall", () => {
       NODE_USE_SYSTEM_CA: undefined,
     });
     service.readCommand.mockResolvedValue({
-      programArguments: ["openclaw", "gateway", "run"],
+      programArguments: ["cimiclaw", "gateway", "run"],
       environment: {},
     } as never);
 
@@ -557,7 +557,7 @@ describe("runDaemonInstall", () => {
   it("reuses env-backed service secrets during forced reinstall when the current shell is missing them", async () => {
     service.isLoaded.mockResolvedValue(true);
     service.readCommand.mockResolvedValue({
-      programArguments: ["openclaw", "gateway", "run"],
+      programArguments: ["cimiclaw", "gateway", "run"],
       environment: {
         OPENAI_API_KEY: "service-openai-key",
       },
@@ -583,10 +583,10 @@ describe("runDaemonInstall", () => {
   it("does not reuse stale service control env during forced reinstall", async () => {
     service.isLoaded.mockResolvedValue(true);
     service.readCommand.mockResolvedValue({
-      programArguments: ["openclaw", "gateway", "run"],
+      programArguments: ["cimiclaw", "gateway", "run"],
       environment: {
         OPENCLAW_STATE_DIR: "/tmp/openclaw-doctor-manual",
-        OPENCLAW_CONFIG_PATH: "/tmp/openclaw-doctor-manual/openclaw.json",
+        OPENCLAW_CONFIG_PATH: "/tmp/openclaw-doctor-manual/cimiclaw.json",
         OPENCLAW_GATEWAY_TOKEN: "stale-service-token",
         PATH: "/tmp/doctor-bin:/usr/bin",
         NODE_OPTIONS: "--require /tmp/evil.js",

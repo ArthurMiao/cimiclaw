@@ -1,5 +1,5 @@
 import { modelKey } from "../agents/model-selection.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { SecretInput } from "../config/types.secrets.js";
 import { ensureApiKeyFromEnvOrPrompt } from "../plugins/provider-auth-input.js";
 import type { RuntimeEnv } from "../runtime.js";

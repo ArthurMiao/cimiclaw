@@ -14,7 +14,7 @@ import {
   setRuntimeConfigSnapshot,
   writeConfigFile,
 } from "./io.js";
-import type { ConfigFileSnapshot, OpenClawConfig } from "./types.openclaw.js";
+import type { ConfigFileSnapshot, OpenClawConfig } from "./types.cimiclaw.js";
 
 // Mock the plugin manifest registry so we can register a fake channel whose
 // AJV JSON Schema carries a `default` value.  This lets the #56772 regression
@@ -178,8 +178,8 @@ describe("config io write", () => {
 
   it("logs health-state write failures through public config reads", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
-      const healthPath = path.join(home, ".openclaw", "logs", "config-health.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
+      const healthPath = path.join(home, ".cimiclaw", "logs", "config-health.json");
       await fs.mkdir(path.dirname(configPath), { recursive: true });
       await fs.writeFile(
         configPath,
@@ -215,7 +215,7 @@ describe("config io write", () => {
 
   it("refuses direct config writes in Nix mode without changing the file", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       await fs.mkdir(path.dirname(configPath), { recursive: true });
       const initialRaw = `${JSON.stringify({ gateway: { mode: "local" } }, null, 2)}\n`;
       await fs.writeFile(configPath, initialRaw, "utf-8");
@@ -239,9 +239,9 @@ describe("config io write", () => {
 
   it("loads shipped plugin install config records without mutating config or plugin index", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
-      const pluginDir = path.join(home, ".openclaw", "plugins", "demo");
-      const manifestPath = path.join(pluginDir, "openclaw.plugin.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
+      const pluginDir = path.join(home, ".cimiclaw", "plugins", "demo");
+      const manifestPath = path.join(pluginDir, "cimiclaw.plugin.json");
       const source = path.join(pluginDir, "index.ts");
       await fs.mkdir(pluginDir, { recursive: true });
       await fs.writeFile(source, "export function register() {}\n", "utf-8");
@@ -315,7 +315,7 @@ describe("config io write", () => {
         });
         await expect(
           readPersistedInstalledPluginIndex({
-            stateDir: path.join(home, ".openclaw"),
+            stateDir: path.join(home, ".cimiclaw"),
           }),
         ).resolves.toBeNull();
         await expect(fs.readFile(configPath, "utf-8")).resolves.toBe(initialRaw);
@@ -330,9 +330,9 @@ describe("config io write", () => {
 
   it("migrates shipped plugin install config records into the plugin index during explicit writes", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
-      const pluginDir = path.join(home, ".openclaw", "plugins", "demo");
-      const manifestPath = path.join(pluginDir, "openclaw.plugin.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
+      const pluginDir = path.join(home, ".cimiclaw", "plugins", "demo");
+      const manifestPath = path.join(pluginDir, "cimiclaw.plugin.json");
       const source = path.join(pluginDir, "index.ts");
       await fs.mkdir(pluginDir, { recursive: true });
       await fs.writeFile(source, "export function register() {}\n", "utf-8");
@@ -393,7 +393,7 @@ describe("config io write", () => {
 
         const index = requireRecord(
           await readPersistedInstalledPluginIndex({
-            stateDir: path.join(home, ".openclaw"),
+            stateDir: path.join(home, ".cimiclaw"),
           }),
           "persisted plugin index",
         );
@@ -422,8 +422,8 @@ describe("config io write", () => {
 
   it("migrates shipped plugin install config records during explicit writes even when the manifest is missing", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
-      const pluginDir = path.join(home, ".openclaw", "plugins", "missing");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
+      const pluginDir = path.join(home, ".cimiclaw", "plugins", "missing");
       await fs.mkdir(path.dirname(configPath), { recursive: true });
       await fs.writeFile(
         configPath,
@@ -455,7 +455,7 @@ describe("config io write", () => {
 
       const index = requireRecord(
         await readPersistedInstalledPluginIndex({
-          stateDir: path.join(home, ".openclaw"),
+          stateDir: path.join(home, ".cimiclaw"),
         }),
         "persisted plugin index",
       );
@@ -474,8 +474,8 @@ describe("config io write", () => {
 
   it("keeps shipped plugin install config records when index migration fails", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
-      const unwritableStatePath = path.join(home, ".openclaw");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
+      const unwritableStatePath = path.join(home, ".cimiclaw");
       const pluginDir = path.join(unwritableStatePath, "plugins", "demo");
       const original = {
         plugins: {
@@ -524,8 +524,8 @@ describe("config io write", () => {
 
   it("rolls back shipped plugin install index migration when config write fails", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
-      const pluginDir = path.join(home, ".openclaw", "plugins", "demo");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
+      const pluginDir = path.join(home, ".cimiclaw", "plugins", "demo");
       const original = {
         plugins: {
           entries: { demo: { enabled: true } },
@@ -555,7 +555,7 @@ describe("config io write", () => {
       });
       await expect(
         readPersistedInstalledPluginIndex({
-          stateDir: path.join(home, ".openclaw"),
+          stateDir: path.join(home, ".cimiclaw"),
         }),
       ).resolves.toBeNull();
     });
@@ -578,7 +578,7 @@ describe("config io write", () => {
     "tightens world-writable state dir when writing the default config",
     async () => {
       await withSuiteHome(async (home) => {
-        const stateDir = path.join(home, ".openclaw");
+        const stateDir = path.join(home, ".cimiclaw");
         await fs.mkdir(stateDir, { recursive: true, mode: 0o777 });
         await fs.chmod(stateDir, 0o777);
 
@@ -598,7 +598,7 @@ describe("config io write", () => {
 
   it("keeps writes inside an OPENCLAW_STATE_DIR override even when the real home config exists", async () => {
     await withSuiteHome(async (home) => {
-      const liveConfigPath = path.join(home, ".openclaw", "openclaw.json");
+      const liveConfigPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       await fs.mkdir(path.dirname(liveConfigPath), { recursive: true });
       await fs.writeFile(
         liveConfigPath,
@@ -614,7 +614,7 @@ describe("config io write", () => {
         logger: silentLogger,
       });
 
-      expect(io.configPath).toBe(path.join(overrideDir, "openclaw.json"));
+      expect(io.configPath).toBe(path.join(overrideDir, "cimiclaw.json"));
 
       await io.writeConfigFile({
         agents: { list: [{ id: "main", default: true }] },
@@ -628,7 +628,7 @@ describe("config io write", () => {
       expect(livePersisted.gateway).toEqual({ mode: "local", port: 18789 });
 
       const overridePersisted = JSON.parse(
-        await fs.readFile(path.join(overrideDir, "openclaw.json"), "utf-8"),
+        await fs.readFile(path.join(overrideDir, "cimiclaw.json"), "utf-8"),
       ) as {
         session?: { store?: unknown };
       };
@@ -638,7 +638,7 @@ describe("config io write", () => {
 
   it("does not mutate caller config when unsetPaths is applied on first write", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       const io = createConfigIO({
         env: {} as NodeJS.ProcessEnv,
         homedir: () => home,
@@ -686,7 +686,7 @@ describe("config io write", () => {
 
   it("suppresses overwrite audit output when skipOutputLogs is set", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       await fs.mkdir(path.dirname(configPath), { recursive: true });
       await fs.writeFile(
         configPath,
@@ -722,7 +722,7 @@ describe("config io write", () => {
 
   it("preserves root $schema during partial writes", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       await fs.mkdir(path.dirname(configPath), { recursive: true });
       await fs.writeFile(
         configPath,
@@ -745,7 +745,7 @@ describe("config io write", () => {
 
   it("recovers configs polluted by a leading status line", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       const cleanConfig = {
         gateway: { mode: "local" },
         agents: { list: [{ id: "main", default: true }, { id: "discord-dm" }] },
@@ -785,7 +785,7 @@ describe("config io write", () => {
 
   it("caps repeated prefix-recovery clobber snapshots for doctor-style repair loops", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       const cleanConfig = {
         gateway: { mode: "local" },
         agents: { list: [{ id: "main", default: true }] },
@@ -820,7 +820,7 @@ describe("config io write", () => {
 
   it("rejects destructive internal writes before replacing the config", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       await fs.mkdir(path.dirname(configPath), { recursive: true });
       const original = {
         gateway: { mode: "local" },
@@ -872,7 +872,7 @@ describe("config io write", () => {
 
   it("allows intentional size-drop writes without disabling gateway-mode protection", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       await fs.mkdir(path.dirname(configPath), { recursive: true });
       const original = {
         meta: { lastTouchedVersion: "2026.4.30" },
@@ -929,7 +929,7 @@ describe("config io write", () => {
 
   it("keeps authored agent provider params during narrowed internal agent writes", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       await fs.mkdir(path.dirname(configPath), { recursive: true });
       const original = {
         gateway: { mode: "local" },
@@ -1009,7 +1009,7 @@ describe("config io write", () => {
 
   it("preserves parsed source config when snapshot validation fails", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       await fs.mkdir(path.dirname(configPath), { recursive: true });
       const original = {
         gateway: { mode: "local" },
@@ -1032,8 +1032,8 @@ describe("config io write", () => {
 
   it("rejects root-include partial writes instead of flattening the root config", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
-      const includePath = path.join(home, ".openclaw", "extra.json5");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
+      const includePath = path.join(home, ".cimiclaw", "extra.json5");
       await fs.mkdir(path.dirname(configPath), { recursive: true });
       await fs.writeFile(
         includePath,
@@ -1068,7 +1068,7 @@ describe("config io write", () => {
           hooks: [],
           rootDir: "/tmp/openclaw-test-required-plugin",
           source: "/tmp/openclaw-test-required-plugin/index.ts",
-          manifestPath: "/tmp/openclaw-test-required-plugin/openclaw.plugin.json",
+          manifestPath: "/tmp/openclaw-test-required-plugin/cimiclaw.plugin.json",
           configSchema: {
             type: "object",
             properties: {
@@ -1110,7 +1110,7 @@ describe("config io write", () => {
 
   it("writes runtime-derived edits back to source SecretRef markers", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       const previousConfigPath = process.env.OPENCLAW_CONFIG_PATH;
       process.env.OPENCLAW_CONFIG_PATH = configPath;
       await fs.mkdir(path.dirname(configPath), { recursive: true });
@@ -1209,7 +1209,7 @@ describe("config io write", () => {
 
   it("notifies in-process reloaders with resolved source config when persisted env refs are restored", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       const previousConfigPath = process.env.OPENCLAW_CONFIG_PATH;
       const previousGatewayToken = process.env.OPENCLAW_GATEWAY_TOKEN;
       process.env.OPENCLAW_CONFIG_PATH = configPath;
@@ -1306,7 +1306,7 @@ describe("config io write", () => {
           hooks: [],
           rootDir: "/tmp/openclaw-test-demo",
           source: "/tmp/openclaw-test-demo/index.ts",
-          manifestPath: "/tmp/openclaw-test-demo/openclaw.plugin.json",
+          manifestPath: "/tmp/openclaw-test-demo/cimiclaw.plugin.json",
           configSchema: {
             type: "object",
             properties: {
@@ -1319,7 +1319,7 @@ describe("config io write", () => {
     } satisfies PluginManifestRegistry);
 
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       const previousConfigPath = process.env.OPENCLAW_CONFIG_PATH;
       process.env.OPENCLAW_CONFIG_PATH = configPath;
       await fs.mkdir(path.dirname(configPath), { recursive: true });
@@ -1396,7 +1396,7 @@ describe("config io write", () => {
           hooks: [],
           rootDir: "/tmp/openclaw-test-demo",
           source: "/tmp/openclaw-test-demo/index.ts",
-          manifestPath: "/tmp/openclaw-test-demo/openclaw.plugin.json",
+          manifestPath: "/tmp/openclaw-test-demo/cimiclaw.plugin.json",
           configSchema: {
             type: "object",
             properties: {
@@ -1409,7 +1409,7 @@ describe("config io write", () => {
     } satisfies PluginManifestRegistry);
 
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       const previousConfigPath = process.env.OPENCLAW_CONFIG_PATH;
       process.env.OPENCLAW_CONFIG_PATH = configPath;
       await fs.mkdir(path.dirname(configPath), { recursive: true });
@@ -1452,7 +1452,7 @@ describe("config io write", () => {
 
   it("skipPluginValidation bypasses plugin schema rejection on writeConfigFile (#76800)", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       const previousConfigPath = process.env.OPENCLAW_CONFIG_PATH;
       process.env.OPENCLAW_CONFIG_PATH = configPath;
       await fs.mkdir(path.dirname(configPath), { recursive: true });
@@ -1470,7 +1470,7 @@ describe("config io write", () => {
             hooks: [],
             rootDir: "/tmp/openclaw-test-strict-plugin",
             source: "/tmp/openclaw-test-strict-plugin/index.ts",
-            manifestPath: "/tmp/openclaw-test-strict-plugin/openclaw.plugin.json",
+            manifestPath: "/tmp/openclaw-test-strict-plugin/cimiclaw.plugin.json",
             configSchema: {
               type: "object",
               properties: { token: { type: "string" } },
@@ -1515,7 +1515,7 @@ describe("config io write", () => {
 
   it("preserves authored tilde paths when runtime-shaped writes hand back absolute paths", async () => {
     await withSuiteHome(async (home) => {
-      const configPath = path.join(home, ".openclaw", "openclaw.json");
+      const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
       await fs.mkdir(path.dirname(configPath), { recursive: true });
       await fs.writeFile(
         configPath,

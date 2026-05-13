@@ -4,7 +4,7 @@ import type { ChannelMessageCapability } from "../../channels/plugins/message-ca
 import type { ChannelMessageActionName, ChannelPlugin } from "../../channels/plugins/types.js";
 import type { MessageActionRunResult } from "../../infra/outbound/message-action-runner.js";
 type CreateMessageTool = typeof import("./message-tool.js").createMessageTool;
-type CreateOpenClawTools = typeof import("../openclaw-tools.js").createOpenClawTools;
+type CreateOpenClawTools = typeof import("../cimiclaw-tools.js").createOpenClawTools;
 type ResetPluginRuntimeStateForTest =
   typeof import("../../plugins/runtime.js").resetPluginRuntimeStateForTest;
 type SetActivePluginRegistry = typeof import("../../plugins/runtime.js").setActivePluginRegistry;
@@ -259,7 +259,7 @@ beforeAll(async () => {
     await import("../../plugins/runtime.js"));
   ({ createTestRegistry } = await import("../../test-utils/channel-plugins.js"));
   ({ createMessageTool } = await import("./message-tool.js"));
-  ({ createOpenClawTools } = await import("../openclaw-tools.js"));
+  ({ createOpenClawTools } = await import("../cimiclaw-tools.js"));
 });
 
 beforeEach(() => {

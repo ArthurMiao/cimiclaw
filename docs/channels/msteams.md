@@ -209,7 +209,7 @@ If you can't use the Teams CLI, you can set up the bot manually through the Azur
 2. Create an **Azure Bot** (App ID + secret + tenant ID).
 3. Build a **Teams app package** that references the bot and includes the RSC permissions below.
 4. Upload/install the Teams app into a team (or personal scope for DMs).
-5. Configure `msteams` in `~/.openclaw/openclaw.json` (or env vars) and start the gateway.
+5. Configure `msteams` in `~/.cimiclaw/cimiclaw.json` (or env vars) and start the gateway.
 6. The gateway listens for Bot Framework webhook traffic on `/api/messages` by default.
 
 ### Step 1: Create Azure Bot
@@ -230,27 +230,27 @@ If you can't use the Teams CLI, you can set up the bot manually through the Azur
 Creation of new multi-tenant bots was deprecated after 2025-07-31. Use **Single Tenant** for new bots.
 </Warning>
 
-3. Click **Review + create** → **Create** (wait ~1-2 minutes)
+3. Click **Review + create** �?**Create** (wait ~1-2 minutes)
 
 ### Step 2: Get Credentials
 
-1. Go to your Azure Bot resource → **Configuration**
-2. Copy **Microsoft App ID** → this is your `appId`
-3. Click **Manage Password** → go to the App Registration
-4. Under **Certificates & secrets** → **New client secret** → copy the **Value** → this is your `appPassword`
-5. Go to **Overview** → copy **Directory (tenant) ID** → this is your `tenantId`
+1. Go to your Azure Bot resource �?**Configuration**
+2. Copy **Microsoft App ID** �?this is your `appId`
+3. Click **Manage Password** �?go to the App Registration
+4. Under **Certificates & secrets** �?**New client secret** �?copy the **Value** �?this is your `appPassword`
+5. Go to **Overview** �?copy **Directory (tenant) ID** �?this is your `tenantId`
 
 ### Step 3: Configure Messaging Endpoint
 
-1. In Azure Bot → **Configuration**
+1. In Azure Bot �?**Configuration**
 2. Set **Messaging endpoint** to your webhook URL:
    - Production: `https://your-domain.com/api/messages`
    - Local dev: Use a tunnel (see [Local Development](#local-development-tunneling) below)
 
 ### Step 4: Enable Teams Channel
 
-1. In Azure Bot → **Channels**
-2. Click **Microsoft Teams** → Configure → Save
+1. In Azure Bot �?**Channels**
+2. Click **Microsoft Teams** �?Configure �?Save
 3. Accept the Terms of Service
 
 ### Step 5: Build Teams App Manifest
@@ -299,7 +299,7 @@ Use a PEM certificate registered with your Entra ID app registration.
 **Setup:**
 
 1. Generate or obtain a certificate (PEM format with private key).
-2. In Entra ID → App Registration → **Certificates & secrets** → **Certificates** → Upload the public certificate.
+2. In Entra ID �?App Registration �?**Certificates & secrets** �?**Certificates** �?Upload the public certificate.
 
 **Config:**
 
@@ -598,11 +598,11 @@ After updating, reinstall the app in each team for new permissions to take effec
 <summary>Manual manifest update (without CLI)</summary>
 
 1. Update your `manifest.json` with the new settings
-2. **Increment the `version` field** (e.g., `1.0.0` → `1.1.0`)
+2. **Increment the `version` field** (e.g., `1.0.0` �?`1.1.0`)
 3. **Re-zip** the manifest with icons (`manifest.json`, `outline.png`, `color.png`)
 4. Upload the new zip:
-   - **Teams Admin Center:** Teams apps → Manage apps → find your app → Upload new version
-   - **Sideload:** In Teams → Apps → Manage your apps → Upload a custom app
+   - **Teams Admin Center:** Teams apps �?Manage apps �?find your app �?Upload new version
+   - **Sideload:** In Teams �?Apps �?Manage your apps �?Upload a custom app
 
 </details>
 
@@ -728,8 +728,8 @@ Teams recently introduced two channel UI styles over the same underlying data mo
 
 **The problem:** The Teams API does not expose which UI style a channel uses. If you use the wrong `replyStyle`:
 
-- `thread` in a Threads-style channel → replies appear nested awkwardly
-- `top-level` in a Posts-style channel → replies appear as separate top-level posts instead of in-thread
+- `thread` in a Threads-style channel �?replies appear nested awkwardly
+- `top-level` in a Posts-style channel �?replies appear as separate top-level posts instead of in-thread
 
 **Solution:** Configure `replyStyle` per-channel based on how the channel is set up:
 
@@ -756,12 +756,12 @@ Teams recently introduced two channel UI styles over the same underlying data mo
 
 When the bot sends a reply into a channel, `replyStyle` is resolved from the most specific override down to the default. The first non-`undefined` value wins:
 
-1. **Per-channel** — `channels.msteams.teams.<teamId>.channels.<conversationId>.replyStyle`
-2. **Per-team** — `channels.msteams.teams.<teamId>.replyStyle`
-3. **Global** — `channels.msteams.replyStyle`
-4. **Implicit default** — derived from `requireMention`:
-   - `requireMention: true` → `thread`
-   - `requireMention: false` → `top-level`
+1. **Per-channel** �?`channels.msteams.teams.<teamId>.channels.<conversationId>.replyStyle`
+2. **Per-team** �?`channels.msteams.teams.<teamId>.replyStyle`
+3. **Global** �?`channels.msteams.replyStyle`
+4. **Implicit default** �?derived from `requireMention`:
+   - `requireMention: true` �?`thread`
+   - `requireMention: false` �?`top-level`
 
 If you set `requireMention: false` globally without an explicit `replyStyle`, mentions in Posts-style channels will surface as top-level posts even when the inbound was a thread reply. Pin `replyStyle: "thread"` at the global, team, or channel level to avoid surprises.
 
@@ -771,7 +771,7 @@ When `replyStyle: "thread"` is in effect and the bot was @mentioned from inside 
 
 The thread root is taken from the stored `threadId` on the conversation reference. Older stored references that predate `threadId` fall back to `activityId` (whatever inbound activity last seeded the conversation), so existing deployments keep working without a re-seed.
 
-When `replyStyle: "top-level"` is in effect, channel-thread inbounds are intentionally answered as new top-level posts — no thread suffix is attached. This is the correct behavior for Threads-style channels; if you see top-level posts where you expected threaded replies, your `replyStyle` is set incorrectly for that channel.
+When `replyStyle: "top-level"` is in effect, channel-thread inbounds are intentionally answered as new top-level posts �?no thread suffix is attached. This is the correct behavior for Threads-style channels; if you see top-level posts where you expected threaded replies, your `replyStyle` is set incorrectly for that channel.
 
 ## Attachments and images
 
@@ -791,8 +791,8 @@ Bots can send files in DMs using the FileConsentCard flow (built-in). However, *
 
 | Context                  | How files are sent                           | Setup needed                                    |
 | ------------------------ | -------------------------------------------- | ----------------------------------------------- |
-| **DMs**                  | FileConsentCard → user accepts → bot uploads | Works out of the box                            |
-| **Group chats/channels** | Upload to SharePoint → share link            | Requires `sharePointSiteId` + Graph permissions |
+| **DMs**                  | FileConsentCard �?user accepts �?bot uploads | Works out of the box                            |
+| **Group chats/channels** | Upload to SharePoint �?share link            | Requires `sharePointSiteId` + Graph permissions |
 | **Images (any context)** | Base64-encoded inline                        | Works out of the box                            |
 
 ### Why group chats need SharePoint
@@ -801,7 +801,7 @@ Bots don't have a personal OneDrive drive (the `/me/drive` Graph API endpoint do
 
 ### Setup
 
-1. **Add Graph API permissions** in Entra ID (Azure AD) → App Registration:
+1. **Add Graph API permissions** in Entra ID (Azure AD) �?App Registration:
    - `Sites.ReadWrite.All` (Application) - upload files to SharePoint
    - `Chat.Read.All` (Application) - optional, enables per-user sharing links
 
@@ -861,7 +861,7 @@ Uploaded files are stored in a `/OpenClawShared/` folder in the configured Share
 OpenClaw sends Teams polls as Adaptive Cards (there is no native Teams poll API).
 
 - CLI: `openclaw message poll --channel msteams --target conversation:<id> ...`
-- Votes are recorded by the gateway in `~/.openclaw/msteams-polls.json`.
+- Votes are recorded by the gateway in `~/.cimiclaw/msteams-polls.json`.
 - The gateway must stay online to record votes.
 - Polls do not auto-post result summaries yet (inspect the store file if needed).
 
@@ -963,16 +963,14 @@ The `groupId` query parameter in Teams URLs is **NOT** the team ID used for conf
 
 ```
 https://teams.microsoft.com/l/team/19%3ABk4j...%40thread.tacv2/conversations?groupId=...
-                                    └────────────────────────────┘
-                                    Team conversation ID (URL-decode this)
+                                    └────────────────────────────�?                                    Team conversation ID (URL-decode this)
 ```
 
 **Channel URL:**
 
 ```
 https://teams.microsoft.com/l/channel/19%3A15bc...%40thread.tacv2/ChannelName?groupId=...
-                                      └─────────────────────────┘
-                                      Channel ID (URL-decode this)
+                                      └─────────────────────────�?                                      Channel ID (URL-decode this)
 ```
 
 **For config:**
@@ -1012,7 +1010,7 @@ Bots have limited support in private channels:
 
 - **"Icon file cannot be empty":** The manifest references icon files that are 0 bytes. Create valid PNG icons (32x32 for `outline.png`, 192x192 for `color.png`).
 - **"webApplicationInfo.Id already in use":** The app is still installed in another team/chat. Find and uninstall it first, or wait 5-10 minutes for propagation.
-- **"Something went wrong" on upload:** Upload via [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com) instead, open browser DevTools (F12) → Network tab, and check the response body for the actual error.
+- **"Something went wrong" on upload:** Upload via [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com) instead, open browser DevTools (F12) �?Network tab, and check the response body for the actual error.
 - **Sideload failing:** Try "Upload an app to your org's app catalog" instead of "Upload a custom app" - this often bypasses sideload restrictions.
 
 ### RSC permissions not working

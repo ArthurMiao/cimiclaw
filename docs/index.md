@@ -22,7 +22,7 @@ title: "OpenClaw"
     />
 </p>
 
-> _"EXFOLIATE! EXFOLIATE!"_ â€” A space lobster, probably
+> _"EXFOLIATE! EXFOLIATE!"_ â€?A space lobster, probably
 
 <p align="center">
   <strong>Any OS gateway for AI agents across Discord, Google Chat, iMessage, Matrix, Microsoft Teams, Signal, Slack, Telegram, WhatsApp, Zalo, and more.</strong><br />
@@ -43,9 +43,9 @@ title: "OpenClaw"
 
 ## What is OpenClaw?
 
-OpenClaw is a **self-hosted gateway** that connects your favorite chat apps and channel surfaces â€” built-in channels plus bundled or external channel plugins such as Discord, Google Chat, iMessage, Matrix, Microsoft Teams, Signal, Slack, Telegram, WhatsApp, Zalo, and more â€” to AI coding agents like Pi. You run a single Gateway process on your own machine (or a server), and it becomes the bridge between your messaging apps and an always-available AI assistant.
+OpenClaw is a **self-hosted gateway** that connects your favorite chat apps and channel surfaces â€?built-in channels plus bundled or external channel plugins such as Discord, Google Chat, iMessage, Matrix, Microsoft Teams, Signal, Slack, Telegram, WhatsApp, Zalo, and more â€?to AI coding agents like Pi. You run a single Gateway process on your own machine (or a server), and it becomes the bridge between your messaging apps and an always-available AI assistant.
 
-**Who is it for?** Developers and power users who want a personal AI assistant they can message from anywhere â€” without giving up control of their data or relying on a hosted service.
+**Who is it for?** Developers and power users who want a personal AI assistant they can message from anywhere â€?without giving up control of their data or relying on a hosted service.
 
 **What makes it different?**
 
@@ -133,7 +133,7 @@ Open the browser Control UI after the Gateway starts.
 
 ## Configuration (optional)
 
-Config lives at `~/.openclaw/openclaw.json`.
+Config lives at `~/.cimiclaw/cimiclaw.json`.
 
 - If you **do nothing**, OpenClaw uses the bundled Pi binary in RPC mode with per-sender sessions.
 - If you want to lock it down, start with `channels.whatsapp.allowFrom` and (for groups) mention rules.

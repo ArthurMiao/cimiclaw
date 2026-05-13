@@ -398,9 +398,9 @@ async function runLane(params: {
     fakePluginDir: params.fakePluginDir,
   });
 
-  process.env.OPENCLAW_STATE_DIR = stateDir;
-  process.env.OPENCLAW_CONFIG_PATH = configPath;
-  process.env.OPENCLAW_TEST_FAST = "1";
+  process.env.cimiclaw_STATE_DIR = stateDir;
+  process.env.cimiclaw_CONFIG_PATH = configPath;
+  process.env.cimiclaw_TEST_FAST = "1";
   resetConfigRuntimeState();
 
   const server = await startGatewayServer(gatewayPort, {

@@ -9,7 +9,7 @@ import {
   updateLastRoute,
   updateSessionStore,
 } from "../config/sessions.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { createSuiteTempRootTracker } from "../test-helpers/temp-dir.js";
 import { listSessionsFromStore } from "./session-utils.js";
 

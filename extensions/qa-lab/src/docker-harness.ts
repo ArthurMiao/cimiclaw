@@ -126,7 +126,7 @@ ${imageBlock}    pull_policy: never
     ports:
       - "${params.gatewayPort}:18789"
     environment:
-      OPENCLAW_CONFIG_PATH: /tmp/openclaw/openclaw.json
+      OPENCLAW_CONFIG_PATH: /tmp/openclaw/cimiclaw.json
       OPENCLAW_STATE_DIR: /tmp/openclaw/state
       OPENCLAW_NO_RESPAWN: "1"
       OPENCLAW_SKIP_GMAIL_WATCHER: "1"
@@ -158,7 +158,7 @@ ${
     command:
       - sh
       - -lc
-      - mkdir -p /tmp/openclaw/workspace /tmp/openclaw/state && cp /opt/openclaw-scaffold/openclaw.json /tmp/openclaw/openclaw.json && cp -R /opt/openclaw-scaffold/seed-workspace/. /tmp/openclaw/workspace/ && ln -snf /opt/openclaw-repo /tmp/openclaw/workspace/repo && exec node dist/index.js gateway run --port 18789 --bind lan --allow-unconfigured
+      - mkdir -p /tmp/openclaw/workspace /tmp/openclaw/state && cp /opt/openclaw-scaffold/cimiclaw.json /tmp/openclaw/cimiclaw.json && cp -R /opt/openclaw-scaffold/seed-workspace/. /tmp/openclaw/workspace/ && ln -snf /opt/openclaw-repo /tmp/openclaw/workspace/repo && exec node dist/index.js gateway run --port 18789 --bind lan --allow-unconfigured
 `;
 }
 
@@ -193,7 +193,7 @@ Files:
 
 - \`docker-compose.qa.yml\`
 - \`.env.example\`
-- \`state/openclaw.json\`
+- \`state/cimiclaw.json\`
 
 Suggested flow:
 
@@ -274,7 +274,7 @@ export async function writeQaDockerHarnessFiles(params: {
     path.join(params.outputDir, "docker-compose.qa.yml"),
     path.join(params.outputDir, ".env.example"),
     path.join(params.outputDir, "README.md"),
-    path.join(params.outputDir, "state", "openclaw.json"),
+    path.join(params.outputDir, "state", "cimiclaw.json"),
   ];
 
   await Promise.all([
@@ -317,7 +317,7 @@ export async function writeQaDockerHarnessFiles(params: {
       "utf8",
     ),
     fs.writeFile(
-      path.join(params.outputDir, "state", "openclaw.json"),
+      path.join(params.outputDir, "state", "cimiclaw.json"),
       `${JSON.stringify(config, null, 2)}\n`,
       "utf8",
     ),

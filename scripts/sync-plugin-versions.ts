@@ -29,7 +29,7 @@ function syncOpenClawDependencyRange(
   deps: Record<string, string> | undefined,
   targetVersion: string,
 ): boolean {
-  const current = deps?.openclaw;
+  const current = deps?.cimiclaw;
   if (!current || current === "workspace:*" || !OPENCLAW_VERSION_RANGE_RE.test(current)) {
     return false;
   }
@@ -37,12 +37,12 @@ function syncOpenClawDependencyRange(
   if (current === next) {
     return false;
   }
-  deps.openclaw = next;
+  deps.cimiclaw = next;
   return true;
 }
 
 function syncPluginApiVersion(pkg: PackageJson, targetVersion: string): boolean {
-  const compat = pkg.openclaw?.compat;
+  const compat = pkg.cimiclaw?.compat;
   const current = compat?.pluginApi;
   if (!current || !OPENCLAW_VERSION_RANGE_RE.test(current)) {
     return false;
@@ -56,15 +56,15 @@ function syncPluginApiVersion(pkg: PackageJson, targetVersion: string): boolean 
 }
 
 function syncBuildOpenClawVersion(pkg: PackageJson, targetVersion: string): boolean {
-  const build = pkg.openclaw?.build;
-  const current = build?.openclawVersion;
+  const build = pkg.cimiclaw?.build;
+  const current = build?.cimiclawVersion;
   if (!current) {
     return false;
   }
   if (current === targetVersion) {
     return false;
   }
-  build.openclawVersion = targetVersion;
+  build.cimiclawVersion = targetVersion;
   return true;
 }
 

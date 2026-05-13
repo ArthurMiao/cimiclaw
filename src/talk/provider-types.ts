@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { TalkTransport } from "./talk-events.js";
 
 export type RealtimeVoiceProviderId = string;

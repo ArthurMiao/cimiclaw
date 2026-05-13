@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
-import { withOpenClawTestState } from "../test-utils/openclaw-test-state.js";
+import { withOpenClawTestState } from "../test-utils/cimiclaw-test-state.js";
 import type { AuthProfileStore } from "./auth-profiles.js";
 import { CHUTES_TOKEN_ENDPOINT } from "./chutes-oauth.js";
 

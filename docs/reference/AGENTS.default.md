@@ -8,33 +8,33 @@ read_when:
 
 ## First run (recommended)
 
-OpenClaw uses a dedicated workspace directory for the agent. Default: `~/.openclaw/workspace` (configurable via `agents.defaults.workspace`).
+OpenClaw uses a dedicated workspace directory for the agent. Default: `~/.cimiclaw/workspace` (configurable via `agents.defaults.workspace`).
 
 1. Create the workspace (if it doesn't already exist):
 
 ```bash
-mkdir -p ~/.openclaw/workspace
+mkdir -p ~/.cimiclaw/workspace
 ```
 
 2. Copy the default workspace templates into the workspace:
 
 ```bash
-cp docs/reference/templates/AGENTS.md ~/.openclaw/workspace/AGENTS.md
-cp docs/reference/templates/SOUL.md ~/.openclaw/workspace/SOUL.md
-cp docs/reference/templates/TOOLS.md ~/.openclaw/workspace/TOOLS.md
+cp docs/reference/templates/AGENTS.md ~/.cimiclaw/workspace/AGENTS.md
+cp docs/reference/templates/SOUL.md ~/.cimiclaw/workspace/SOUL.md
+cp docs/reference/templates/TOOLS.md ~/.cimiclaw/workspace/TOOLS.md
 ```
 
 3. Optional: if you want the personal assistant skill roster, replace AGENTS.md with this file:
 
 ```bash
-cp docs/reference/AGENTS.default.md ~/.openclaw/workspace/AGENTS.md
+cp docs/reference/AGENTS.default.md ~/.cimiclaw/workspace/AGENTS.md
 ```
 
 4. Optional: choose a different workspace by setting `agents.defaults.workspace` (supports `~`):
 
 ```json5
 {
-  agents: { defaults: { workspace: "~/.openclaw/workspace" } },
+  agents: { defaults: { workspace: "~/.cimiclaw/workspace" } },
 }
 ```
 
@@ -80,7 +80,7 @@ cp docs/reference/AGENTS.default.md ~/.openclaw/workspace/AGENTS.md
 If you treat this workspace as Clawd's "memory", make it a git repo (ideally private) so `AGENTS.md` and your memory files are backed up.
 
 ```bash
-cd ~/.openclaw/workspace
+cd ~/.cimiclaw/workspace
 git init
 git add AGENTS.md
 git commit -m "Add Clawd workspace"
@@ -93,7 +93,7 @@ git commit -m "Add Clawd workspace"
 - macOS app manages permissions (screen recording, notifications, microphone) and exposes the `openclaw` CLI via its bundled binary.
 - Direct chats collapse into the agent's `main` session by default; groups stay isolated as `agent:<agentId>:<channel>:group:<id>` (rooms/channels: `agent:<agentId>:<channel>:channel:<id>`); heartbeats keep background tasks alive.
 
-## Core skills (enable in Settings â†’ Skills)
+## Core skills (enable in Settings â†?Skills)
 
 - **mcporter** - Tool server runtime/CLI for managing external skill backends.
 - **Peekaboo** - Fast macOS screenshots with optional AI vision analysis.

@@ -36,7 +36,7 @@ openclaw plugins install ./path/to/local/googlechat-plugin
    - Go to the **Keys** tab.
    - Click **Add Key** > **Create new key**.
    - Select **JSON** and press **Create**.
-4. Store the downloaded JSON file on your gateway host (e.g., `~/.openclaw/googlechat-service-account.json`).
+4. Store the downloaded JSON file on your gateway host (e.g., `~/.cimiclaw/googlechat-service-account.json`).
 5. Create a Google Chat app in the [Google Cloud Console Chat Configuration](https://console.cloud.google.com/apis/api/chat.googleapis.com/hangouts-chat):
    - Fill in the **Application info**:
      - **App name**: (e.g. `OpenClaw`)
@@ -154,8 +154,8 @@ Configure your tunnel's ingress rules to only route the webhook path:
    - OpenClaw verifies bearer auth before reading/parsing full webhook bodies when the header is present.
    - Google Workspace Add-on requests that carry `authorizationEventObject.systemIdToken` in the body are supported via a stricter pre-auth body budget.
 2. OpenClaw verifies the token against the configured `audienceType` + `audience`:
-   - `audienceType: "app-url"` â†’ audience is your HTTPS webhook URL.
-   - `audienceType: "project-number"` â†’ audience is the Cloud project number.
+   - `audienceType: "app-url"` â†?audience is your HTTPS webhook URL.
+   - `audienceType: "project-number"` â†?audience is the Cloud project number.
 3. Messages are routed by space:
    - DMs use session key `agent:<agentId>:googlechat:direct:<spaceId>`.
    - Spaces use session key `agent:<agentId>:googlechat:group:<spaceId>`.
@@ -275,8 +275,8 @@ Related docs:
 
 ## Related
 
-- [Channels Overview](/channels) â€” all supported channels
-- [Pairing](/channels/pairing) â€” DM authentication and pairing flow
-- [Groups](/channels/groups) â€” group chat behavior and mention gating
-- [Channel Routing](/channels/channel-routing) â€” session routing for messages
-- [Security](/gateway/security) â€” access model and hardening
+- [Channels Overview](/channels) â€?all supported channels
+- [Pairing](/channels/pairing) â€?DM authentication and pairing flow
+- [Groups](/channels/groups) â€?group chat behavior and mention gating
+- [Channel Routing](/channels/channel-routing) â€?session routing for messages
+- [Security](/gateway/security) â€?access model and hardening

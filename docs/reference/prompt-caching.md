@@ -61,7 +61,7 @@ agents:
 
 Config merge order:
 
-1. `agents.defaults.params` (global default â€” applies to all models)
+1. `agents.defaults.params` (global default â€?applies to all models)
 2. `agents.defaults.models["provider/model"].params` (per-model override)
 3. `agents.list[].params` (matching agent id; overrides by key)
 
@@ -308,7 +308,7 @@ Why the assertions differ:
 diagnostics:
   cacheTrace:
     enabled: true
-    filePath: "~/.openclaw/logs/cache-trace.jsonl" # optional
+    filePath: "~/.cimiclaw/logs/cache-trace.jsonl" # optional
     includeMessages: false # default true
     includePrompt: false # default true
     includeSystem: false # default true

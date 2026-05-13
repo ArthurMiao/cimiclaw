@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { buildCommandTestParams } from "./commands.test-harness.js";
 
 const steerRuntimeMocks = vi.hoisted(() => ({

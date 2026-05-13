@@ -4,7 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   createOpenClawTestState,
   type OpenClawTestState,
-} from "../test-utils/openclaw-test-state.js";
+} from "../test-utils/cimiclaw-test-state.js";
 
 const note = vi.hoisted(() => vi.fn());
 
@@ -51,7 +51,7 @@ describe("noteSessionLockHealth", () => {
     await noteSessionLockHealth({
       shouldRepair: false,
       staleMs: 60_000,
-      readOwnerProcessArgs: () => ["node", "/opt/openclaw/openclaw.mjs", "doctor"],
+      readOwnerProcessArgs: () => ["node", "/opt/cimiclaw/cimiclaw.mjs", "doctor"],
     });
 
     expect(note).toHaveBeenCalledTimes(1);
@@ -84,7 +84,7 @@ describe("noteSessionLockHealth", () => {
     await noteSessionLockHealth({
       shouldRepair: true,
       staleMs: 30_000,
-      readOwnerProcessArgs: () => ["node", "/opt/openclaw/openclaw.mjs", "doctor"],
+      readOwnerProcessArgs: () => ["node", "/opt/cimiclaw/cimiclaw.mjs", "doctor"],
     });
 
     expect(note).toHaveBeenCalledTimes(1);

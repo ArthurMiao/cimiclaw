@@ -313,7 +313,7 @@ function classifyWorkspacePath(path: string): "agent" | "repo" | "workspace" | u
     if (!segment) {
       continue;
     }
-    if (segment === ".openclaw" && segments[index + 1] === "workspace") {
+    if (segment === ".cimiclaw" && segments[index + 1] === "workspace") {
       return "agent";
     }
     if (/[-_]workspace$/i.test(segment) && segment.toLowerCase() !== "workspace") {

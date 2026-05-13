@@ -78,7 +78,7 @@ Access groups are documented in detail here: [Access groups](/channels/access-gr
 
 ### Where the state lives
 
-Stored under `~/.openclaw/credentials/`:
+Stored under `~/.cimiclaw/credentials/`:
 
 - Pending requests: `<channel>-pairing.json`
 - Approved allowlist store:
@@ -112,7 +112,7 @@ If you use the `device-pair` plugin, you can do first-time device pairing entire
 
 1. In Telegram, message your bot: `/pair`
 2. The bot replies with two messages: an instruction message and a separate **setup code** message (easy to copy/paste in Telegram).
-3. On your phone, open the OpenClaw iOS app â†’ Settings â†’ Gateway.
+3. On your phone, open the OpenClaw iOS app â†?Settings â†?Gateway.
 4. Scan the QR code or paste the setup code and connect.
 5. Back in Telegram: `/pair pending` (review request IDs, role, and scopes), then approve.
 
@@ -187,7 +187,7 @@ approval.
 
 ### Node pairing state storage
 
-Stored under `~/.openclaw/devices/`:
+Stored under `~/.cimiclaw/devices/`:
 
 - `pending.json` (short-lived; pending requests expire)
 - `paired.json` (paired devices + tokens)

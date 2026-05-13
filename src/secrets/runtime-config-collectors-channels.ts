@@ -1,5 +1,5 @@
 import { getBootstrapChannelSecrets } from "../channels/plugins/bootstrap-registry.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { PluginOrigin } from "../plugins/plugin-origin.types.js";
 import { loadChannelSecretContractApi } from "./channel-contract-api.js";
 import { type ResolverContext, type SecretDefaults } from "./runtime-shared.js";

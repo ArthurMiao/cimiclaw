@@ -69,7 +69,7 @@ function createExternalChannelRecord(id: ExternalizedChannelId): PluginManifestR
     origin: "global",
     rootDir,
     source: path.join(rootDir, "index.js"),
-    manifestPath: path.join(rootDir, "openclaw.plugin.json"),
+    manifestPath: path.join(rootDir, "cimiclaw.plugin.json"),
   };
 }
 

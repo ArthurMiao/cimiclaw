@@ -399,7 +399,7 @@ class WindowsSmoke {
     this.status.freshGateway = "pass";
     await this.phase(
       "fresh.first-agent-turn",
-      Number(process.env.OPENCLAW_PARALLELS_WINDOWS_AGENT_TIMEOUT_S || 2700),
+      Number(process.env.cimiclaw_PARALLELS_WINDOWS_AGENT_TIMEOUT_S || 2700),
       () => this.verifyTurn(),
     );
     this.status.freshAgent = "pass";
@@ -445,7 +445,7 @@ class WindowsSmoke {
     await this.phase("upgrade.gateway-stop-before-update", 420, () => this.gatewayAction("stop"));
     await this.phase(
       "upgrade.update-dev",
-      Number(process.env.OPENCLAW_PARALLELS_WINDOWS_UPDATE_TIMEOUT_S || 1200),
+      Number(process.env.cimiclaw_PARALLELS_WINDOWS_UPDATE_TIMEOUT_S || 1200),
       () => this.runDevChannelUpdate(),
     );
     this.status.upgradeVersion = await this.extractLastVersion("upgrade.update-dev");
@@ -457,7 +457,7 @@ class WindowsSmoke {
     this.status.upgradeGateway = "pass";
     await this.phase(
       "upgrade.first-agent-turn",
-      Number(process.env.OPENCLAW_PARALLELS_WINDOWS_AGENT_TIMEOUT_S || 2700),
+      Number(process.env.cimiclaw_PARALLELS_WINDOWS_AGENT_TIMEOUT_S || 2700),
       () => this.verifyTurn(),
     );
     this.status.upgradeAgent = "pass";
@@ -674,7 +674,7 @@ if ($LASTEXITCODE -ne 0) { throw "openclaw onboard failed with exit code $LASTEX
     this.guestPowerShell(
       `$ErrorActionPreference = 'Stop'
 ${windowsPortableGitPathScript}
-$configPath = Join-Path $env:USERPROFILE '.openclaw\\openclaw.json'
+$configPath = Join-Path $env:USERPROFILE '.cimiclaw\\openclaw.json'
 $config = Get-Content $configPath -Raw | ConvertFrom-Json
 if ($null -eq $config.update) {
   $config | Add-Member -MemberType NoteProperty -Name update -Value ([pscustomobject]@{})
@@ -690,7 +690,7 @@ Invoke-WithScopedEnv @{ OPENCLAW_ALLOW_OLDER_BINARY_DESTRUCTIVE_ACTIONS = '1'; O
 if ($script:OpenClawUpdateExit -ne 0) { throw "openclaw update failed with exit code $script:OpenClawUpdateExit" }
 Invoke-OpenClaw --version
 Invoke-OpenClaw update status --json`,
-      { timeoutMs: Number(process.env.OPENCLAW_PARALLELS_WINDOWS_UPDATE_TIMEOUT_S || 1200) * 1000 },
+      { timeoutMs: Number(process.env.cimiclaw_PARALLELS_WINDOWS_UPDATE_TIMEOUT_S || 1200) * 1000 },
     );
   }
 
@@ -722,7 +722,7 @@ if ($LASTEXITCODE -ne 0) { throw "gateway ${action} failed with exit code $LASTE
     let attempt = 1;
     let recoveryTried = false;
     const recoveryAfter =
-      Number(process.env.OPENCLAW_PARALLELS_WINDOWS_GATEWAY_RECOVERY_AFTER_S || 180) * 1000;
+      Number(process.env.cimiclaw_PARALLELS_WINDOWS_GATEWAY_RECOVERY_AFTER_S || 180) * 1000;
     const start = Date.now();
     while (Date.now() < deadline) {
       const probe = this.guestPowerShell(
@@ -769,7 +769,7 @@ Set-Item -Path ('Env:' + ${psSingleQuote(this.auth.apiKeyEnv)}) -Value ${psSingl
 $agentOk = $false
 for ($attempt = 1; $attempt -le 2; $attempt++) {
   $sessionId = if ($attempt -eq 1) { 'parallels-windows-smoke' } else { "parallels-windows-smoke-retry-$attempt" }
-  $sessionsDir = Join-Path $env:USERPROFILE '.openclaw\\agents\\main\\sessions'
+  $sessionsDir = Join-Path $env:USERPROFILE '.cimiclaw\\agents\\main\\sessions'
   $sessionPath = Join-Path $sessionsDir "$sessionId.jsonl"
   Remove-Item $sessionPath -Force -ErrorAction SilentlyContinue
   $args = @(
@@ -804,7 +804,7 @@ for ($attempt = 1; $attempt -le 2; $attempt++) {
   }
 }
 if (-not $agentOk) { throw 'openclaw agent finished without OK response' }`,
-      Number(process.env.OPENCLAW_PARALLELS_WINDOWS_AGENT_TIMEOUT_S || 2700) * 1000,
+      Number(process.env.cimiclaw_PARALLELS_WINDOWS_AGENT_TIMEOUT_S || 2700) * 1000,
     );
   }
 

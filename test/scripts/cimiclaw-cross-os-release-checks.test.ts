@@ -216,7 +216,7 @@ describe("scripts/openclaw-cross-os-release-checks", () => {
     const releaseChecks = readFileSync(".github/workflows/openclaw-release-checks.yml", "utf8");
 
     expect(workflow).toContain(
-      "OPENCLAW_CROSS_OS_OPENAI_MODEL: ${{ inputs.openai_model || vars.OPENCLAW_CROSS_OS_OPENAI_MODEL || 'openai/gpt-5.4' }}",
+      "OPENCLAW_CROSS_OS_OPENAI_MODEL: ${{ inputs.openai_model || vars.cimiclaw_CROSS_OS_OPENAI_MODEL || 'openai/gpt-5.4' }}",
     );
     expect(releaseChecks).toContain("openai_model: openai/gpt-5.4");
   });
@@ -825,7 +825,7 @@ describe("scripts/openclaw-cross-os-release-checks", () => {
                 name: "global install swap",
                 exitCode: 1,
                 stderrTail:
-                  "EPERM: operation not permitted, unlink 'C:\\Users\\runner\\prefix\\node_modules\\.openclaw-5748-1777776287462\\node_modules\\@mariozechner\\clipboard-win32-x64-msvc\\clipboard.win32-x64-msvc.node'",
+                  "EPERM: operation not permitted, unlink 'C:\\Users\\runner\\prefix\\node_modules\\.cimiclaw-5748-1777776287462\\node_modules\\@mariozechner\\clipboard-win32-x64-msvc\\clipboard.win32-x64-msvc.node'",
               },
             ],
           }),
@@ -838,14 +838,14 @@ describe("scripts/openclaw-cross-os-release-checks", () => {
 
   it("recognizes the shipped Windows updater packaged-upgrade timeout", () => {
     const error = new Error(
-      "Command timed out: C:\\hostedtoolcache\\windows\\node\\24.15.0\\x64\\node.exe C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\openclaw-upgrade-q9DsA7\\prefix\\node_modules\\openclaw\\openclaw.mjs update --tag http://127.0.0.1:49951/openclaw-2026.5.4-beta.1.tgz --yes --json --no-restart --timeout 1500",
+      "Command timed out: C:\\hostedtoolcache\\windows\\node\\24.15.0\\x64\\node.exe C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\openclaw-upgrade-q9DsA7\\prefix\\node_modules\\openclaw\\cimiclaw.mjs update --tag http://127.0.0.1:49951/openclaw-2026.5.4-beta.1.tgz --yes --json --no-restart --timeout 1500",
     );
 
     expect(isRecoverableWindowsPackagedUpgradeTimeoutError(error, "win32")).toBe(true);
     expect(
       isRecoverableWindowsPackagedUpgradeTimeoutError(
         new Error(
-          "Command timed out: C:\\prefix\\node_modules\\openclaw\\openclaw.mjs update --tag http://127.0.0.1:49951/openclaw-current.tgz --yes --json --timeout 1500",
+          "Command timed out: C:\\prefix\\node_modules\\openclaw\\cimiclaw.mjs update --tag http://127.0.0.1:49951/openclaw-current.tgz --yes --json --timeout 1500",
         ),
         "win32",
       ),
@@ -853,7 +853,7 @@ describe("scripts/openclaw-cross-os-release-checks", () => {
     expect(isRecoverableWindowsPackagedUpgradeTimeoutError(error, "linux")).toBe(false);
     expect(
       isRecoverableWindowsPackagedUpgradeTimeoutError(
-        new Error("Command timed out: node openclaw.mjs update --tag openclaw@beta"),
+        new Error("Command timed out: node cimiclaw.mjs update --tag openclaw@beta"),
         "win32",
       ),
     ).toBe(false);
@@ -900,7 +900,7 @@ describe("scripts/openclaw-cross-os-release-checks", () => {
         {
           exitCode: 1,
           stdout:
-            "EPERM: operation not permitted, unlink '/tmp/prefix/node_modules/.openclaw-1-2/native.node'",
+            "EPERM: operation not permitted, unlink '/tmp/prefix/node_modules/.cimiclaw-1-2/native.node'",
           stderr: "",
         },
         "linux",
@@ -963,11 +963,11 @@ describe("scripts/openclaw-cross-os-release-checks", () => {
     const packageRoot = mkdtempSync(join(tmpdir(), "openclaw-cross-os-stage-debris-"));
     try {
       mkdirSync(
-        join(packageRoot, "dist", "Extensions", "demo", ".OpenClaw-Install-Stage", "node_modules"),
+        join(packageRoot, "dist", "Extensions", "demo", ".cimiclaw-Install-Stage", "node_modules"),
         { recursive: true },
       );
       writeFileSync(
-        join(packageRoot, "dist", "Extensions", "demo", ".OpenClaw-Install-Stage", "package.json"),
+        join(packageRoot, "dist", "Extensions", "demo", ".cimiclaw-Install-Stage", "package.json"),
         "{}\n",
         "utf8",
       );

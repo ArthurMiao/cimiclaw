@@ -4,7 +4,7 @@ read_when:
   - Configuring a channel plugin (auth, access control, multi-account)
   - Troubleshooting per-channel config keys
   - Auditing DM policy, group policy, or mention gating
-title: "Configuration â€” channels"
+title: "Configuration â€?channels"
 ---
 
 Per-channel configuration keys under `channels.*`. Covers DM and group access,
@@ -140,7 +140,7 @@ WhatsApp runs through the gateway's web channel (Baileys Web). It starts automat
         default: {},
         personal: {},
         biz: {
-          // authDir: "~/.openclaw/credentials/whatsapp/biz",
+          // authDir: "~/.cimiclaw/credentials/whatsapp/biz",
         },
       },
     },
@@ -821,7 +821,7 @@ The gateway hot-reloads `messages` config after the file is saved. Restart only 
 }
 ```
 
-Resolution: per-DM override â†’ provider default â†’ no limit (all retained).
+Resolution: per-DM override â†?provider default â†?no limit (all retained).
 
 Supported: `telegram`, `whatsapp`, `discord`, `slack`, `signal`, `imessage`, `msteams`.
 
@@ -886,7 +886,7 @@ Include your own number in `allowFrom` to enable self-chat mode (ignores native 
 - Override native skill registration per channel with `channels.<provider>.commands.nativeSkills`.
 - `channels.telegram.customCommands` adds extra Telegram bot menu entries.
 - `bash: true` enables `! <cmd>` for host shell. Requires `tools.elevated.enabled` and sender in `tools.elevated.allowFrom.<channel>`.
-- `config: true` enables `/config` (reads/writes `openclaw.json`). For gateway `chat.send` clients, persistent `/config set|unset` writes also require `operator.admin`; read-only `/config show` stays available to normal write-scoped operator clients.
+- `config: true` enables `/config` (reads/writes `cimiclaw.json`). For gateway `chat.send` clients, persistent `/config set|unset` writes also require `operator.admin`; read-only `/config show` stays available to normal write-scoped operator clients.
 - `mcp: true` enables `/mcp` for OpenClaw-managed MCP server config under `mcp.servers`.
 - `plugins: true` enables `/plugins` for plugin discovery, install, and enable/disable controls.
 - `channels.<provider>.configWrites` gates config mutations per channel (default: true).
@@ -910,6 +910,6 @@ Include your own number in `allowFrom` to enable self-chat mode (ignores native 
 
 ## Related
 
-- [Configuration reference](/gateway/configuration-reference) â€” top-level keys
-- [Configuration â€” agents](/gateway/config-agents)
+- [Configuration reference](/gateway/configuration-reference) â€?top-level keys
+- [Configuration â€?agents](/gateway/config-agents)
 - [Channels overview](/channels)

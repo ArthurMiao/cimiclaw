@@ -18,7 +18,7 @@ For how skills are loaded and prioritized, see [Skills](/tools/skills).
     Skills live in your workspace. Create a new folder:
 
     ```bash
-    mkdir -p ~/.openclaw/workspace/skills/hello-world
+    mkdir -p ~/.cimiclaw/workspace/skills/hello-world
     ```
 
   </Step>
@@ -96,10 +96,10 @@ The YAML frontmatter supports these fields:
 
 ## Best practices
 
-- **Be concise** — instruct the model on _what_ to do, not how to be an AI
-- **Safety first** — if your skill uses `exec`, ensure prompts don't allow arbitrary command injection from untrusted input
-- **Test locally** — use `openclaw agent --message "..."` to test before sharing
-- **Use ClawHub** — browse and contribute skills at [ClawHub](https://clawhub.ai)
+- **Be concise** 鈥?instruct the model on _what_ to do, not how to be an AI
+- **Safety first** 鈥?if your skill uses `exec`, ensure prompts don't allow arbitrary command injection from untrusted input
+- **Test locally** 鈥?use `openclaw agent --message "..."` to test before sharing
+- **Use ClawHub** 鈥?browse and contribute skills at [ClawHub](https://clawhub.ai)
 
 ## Where skills live
 
@@ -108,13 +108,13 @@ The YAML frontmatter supports these fields:
 | `\<workspace\>/skills/`         | Highest    | Per-agent             |
 | `\<workspace\>/.agents/skills/` | High       | Per-workspace agent   |
 | `~/.agents/skills/`             | Medium     | Shared agent profile  |
-| `~/.openclaw/skills/`           | Medium     | Shared (all agents)   |
+| `~/.cimiclaw/skills/`           | Medium     | Shared (all agents)   |
 | Bundled (shipped with OpenClaw) | Low        | Global                |
 | `skills.load.extraDirs`         | Lowest     | Custom shared folders |
 
 ## Related
 
-- [Skills reference](/tools/skills) — loading, precedence, and gating rules
-- [Skills config](/tools/skills-config) — `skills.*` config schema
-- [ClawHub](/clawhub) — public skill registry
-- [Building Plugins](/plugins/building-plugins) — plugins can ship skills
+- [Skills reference](/tools/skills) 鈥?loading, precedence, and gating rules
+- [Skills config](/tools/skills-config) 鈥?`skills.*` config schema
+- [ClawHub](/clawhub) 鈥?public skill registry
+- [Building Plugins](/plugins/building-plugins) 鈥?plugins can ship skills

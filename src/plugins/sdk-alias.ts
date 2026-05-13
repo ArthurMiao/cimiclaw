@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { tryReadJsonSync } from "../infra/json-files.js";
-import { resolveOpenClawPackageRootSync } from "../infra/openclaw-root.js";
+import { resolveOpenClawPackageRootSync } from "../infra/cimiclaw-root.js";
 import { normalizeLowercaseStringOrEmpty } from "../shared/string-coerce.js";
 import { PluginLruCache } from "./plugin-cache-primitives.js";
 
@@ -74,11 +74,11 @@ function hasTrustedOpenClawRootIndicator(params: {
   const hasCliEntryExport = Object.prototype.hasOwnProperty.call(packageExports, "./cli-entry");
   const hasOpenClawBin =
     (typeof params.packageJson.bin === "string" &&
-      normalizeLowercaseStringOrEmpty(params.packageJson.bin).includes("openclaw")) ||
+      normalizeLowercaseStringOrEmpty(params.packageJson.bin).includes("cimiclaw")) ||
     (typeof params.packageJson.bin === "object" &&
       params.packageJson.bin !== null &&
-      typeof params.packageJson.bin.openclaw === "string");
-  const hasOpenClawEntrypoint = fs.existsSync(path.join(params.packageRoot, "openclaw.mjs"));
+      typeof params.packageJson.bin.cimiclaw === "string");
+  const hasOpenClawEntrypoint = fs.existsSync(path.join(params.packageRoot, "cimiclaw.mjs"));
   return hasCliEntryExport || hasOpenClawBin || hasOpenClawEntrypoint;
 }
 

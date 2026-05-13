@@ -878,7 +878,7 @@ describe("ensureAuthProfileStore", () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-secrets-runtime-"));
     const previousStateDir = process.env.OPENCLAW_STATE_DIR;
     try {
-      const stateDir = path.join(root, ".openclaw");
+      const stateDir = path.join(root, ".cimiclaw");
       const mainAgentDir = path.join(stateDir, "agents", "main", "agent");
       const workerAgentDir = path.join(stateDir, "agents", "worker", "agent");
       const workerStorePath = path.join(workerAgentDir, "auth-profiles.json");
@@ -922,7 +922,7 @@ describe("ensureAuthProfileStore", () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-auth-read-through-"));
     const previousStateDir = process.env.OPENCLAW_STATE_DIR;
     try {
-      const stateDir = path.join(root, ".openclaw");
+      const stateDir = path.join(root, ".cimiclaw");
       const mainAgentDir = path.join(stateDir, "agents", "main", "agent");
       const workerAgentDir = path.join(stateDir, "agents", "worker", "agent");
       const workerStorePath = path.join(workerAgentDir, "auth-profiles.json");

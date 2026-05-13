@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-source scripts/lib/openclaw-e2e-instance.sh
+source scripts/lib/cimiclaw-e2e-instance.sh
 openclaw_e2e_eval_test_state_from_b64 "${OPENCLAW_TEST_STATE_FUNCTION_B64:?missing OPENCLAW_TEST_STATE_FUNCTION_B64}"
 
 # Keep logs focused; the npm global install step can emit noisy deprecation warnings.

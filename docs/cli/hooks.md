@@ -38,10 +38,10 @@ Gateway startup does not load internal hook handlers until at least one internal
 Hooks (4/4 ready)
 
 Ready:
-  🚀 boot-md ✓ - Run BOOT.md on gateway startup
-  📎 bootstrap-extra-files ✓ - Inject extra workspace bootstrap files during agent bootstrap
-  📝 command-logger ✓ - Log all command events to a centralized audit file
-  💾 session-memory ✓ - Save session context to memory when /new or /reset command is issued
+  🚀 boot-md �?- Run BOOT.md on gateway startup
+  📎 bootstrap-extra-files �?- Inject extra workspace bootstrap files during agent bootstrap
+  📝 command-logger �?- Log all command events to a centralized audit file
+  💾 session-memory �?- Save session context to memory when /new or /reset command is issued
 ```
 
 **Example (verbose):**
@@ -85,7 +85,7 @@ openclaw hooks info session-memory
 **Output:**
 
 ```
-💾 session-memory ✓ Ready
+💾 session-memory �?Ready
 
 Save session context to memory when /new or /reset command is issued
 
@@ -97,7 +97,7 @@ Details:
   Events: command:new, command:reset
 
 Requirements:
-  Config: ✓ workspace.dir
+  Config: �?workspace.dir
 ```
 
 ## Check hooks eligibility
@@ -128,7 +128,7 @@ Not ready: 0
 openclaw hooks enable <name>
 ```
 
-Enable a specific hook by adding it to your config (`~/.openclaw/openclaw.json` by default).
+Enable a specific hook by adding it to your config (`~/.cimiclaw/cimiclaw.json` by default).
 
 **Note:** Workspace hooks are disabled by default until enabled here or in config. Hooks managed by plugins show `plugin:<id>` in `openclaw hooks list` and can't be enabled/disabled here. Enable/disable the plugin instead.
 
@@ -145,7 +145,7 @@ openclaw hooks enable session-memory
 **Output:**
 
 ```
-✓ Enabled hook: 💾 session-memory
+�?Enabled hook: 💾 session-memory
 ```
 
 **What it does:**
@@ -182,7 +182,7 @@ openclaw hooks disable command-logger
 **Output:**
 
 ```
-⏸ Disabled hook: 📝 command-logger
+�?Disabled hook: 📝 command-logger
 ```
 
 **After disabling:**
@@ -219,7 +219,7 @@ prerelease tag such as `@beta`/`@rc` or an exact prerelease version.
 
 **What it does:**
 
-- Copies the hook pack into `~/.openclaw/hooks/<id>`
+- Copies the hook pack into `~/.cimiclaw/hooks/<id>`
 - Enables the installed hooks in `hooks.internal.entries.*`
 - Records the install under `hooks.internal.installs`
 
@@ -282,7 +282,7 @@ Saves session context to memory when you issue `/new` or `/reset`.
 openclaw hooks enable session-memory
 ```
 
-**Output:** `~/.openclaw/workspace/memory/YYYY-MM-DD-HHMM.md` by default. Set `hooks.internal.entries.session-memory.llmSlug: true` for model-generated filename slugs.
+**Output:** `~/.cimiclaw/workspace/memory/YYYY-MM-DD-HHMM.md` by default. Set `hooks.internal.entries.session-memory.llmSlug: true` for model-generated filename slugs.
 
 **See:** [session-memory documentation](/automation/hooks#session-memory)
 
@@ -308,19 +308,19 @@ Logs all command events to a centralized audit file.
 openclaw hooks enable command-logger
 ```
 
-**Output:** `~/.openclaw/logs/commands.log`
+**Output:** `~/.cimiclaw/logs/commands.log`
 
 **View logs:**
 
 ```bash
 # Recent commands
-tail -n 20 ~/.openclaw/logs/commands.log
+tail -n 20 ~/.cimiclaw/logs/commands.log
 
 # Pretty-print
-cat ~/.openclaw/logs/commands.log | jq .
+cat ~/.cimiclaw/logs/commands.log | jq .
 
 # Filter by action
-grep '"action":"new"' ~/.openclaw/logs/commands.log | jq .
+grep '"action":"new"' ~/.cimiclaw/logs/commands.log | jq .
 ```
 
 **See:** [command-logger documentation](/automation/hooks#command-logger)

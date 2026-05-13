@@ -206,7 +206,7 @@ describe("loginOpenAICodexOAuth", () => {
     expect(spin.stop).toHaveBeenCalledWith("OpenAI OAuth failed");
     expectRuntimeErrorContains(runtime, "oauth failed");
     expect(prompter.note).toHaveBeenCalledWith(
-      "Trouble with OAuth? See https://docs.openclaw.ai/start/faq",
+      "Trouble with OAuth? See https://docs.cimiclaw.ai/start/faq",
       "OAuth help",
     );
   });
@@ -228,7 +228,7 @@ describe("loginOpenAICodexOAuth", () => {
     expect(spin.stop).toHaveBeenCalledWith("OpenAI OAuth failed");
     expectRuntimeErrorContains(runtime, "HTTPS_PROXY");
     expect(prompter.note).toHaveBeenCalledWith(
-      "Trouble with OAuth? See https://docs.openclaw.ai/start/faq",
+      "Trouble with OAuth? See https://docs.cimiclaw.ai/start/faq",
       "OAuth help",
     );
   });

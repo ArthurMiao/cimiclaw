@@ -28,7 +28,7 @@ async function withPluginAssetFixture(run: (rootDir: string) => Promise<void>) {
       ),
     );
     fs.writeFileSync(
-      path.join(rootDir, "extensions", "canvas", "openclaw.plugin.json"),
+      path.join(rootDir, "extensions", "canvas", "cimiclaw.plugin.json"),
       JSON.stringify({ id: "canvas" }, null, 2),
     );
     await run(rootDir);

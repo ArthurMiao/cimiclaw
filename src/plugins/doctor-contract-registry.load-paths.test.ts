@@ -27,7 +27,7 @@ function makeHermeticDoctorEnv(stateDir: string): NodeJS.ProcessEnv {
     HOME: stateDir,
     OPENCLAW_HOME: stateDir,
     OPENCLAW_STATE_DIR: stateDir,
-    OPENCLAW_CONFIG_PATH: path.join(stateDir, "openclaw.json"),
+    OPENCLAW_CONFIG_PATH: path.join(stateDir, "cimiclaw.json"),
     OPENCLAW_DISABLE_BUNDLED_PLUGINS: "1",
   };
 }
@@ -35,7 +35,7 @@ function makeHermeticDoctorEnv(stateDir: string): NodeJS.ProcessEnv {
 function writeDoctorPlugin(pluginRoot: string, pluginId: string): void {
   fs.mkdirSync(pluginRoot, { recursive: true });
   fs.writeFileSync(
-    path.join(pluginRoot, "openclaw.plugin.json"),
+    path.join(pluginRoot, "cimiclaw.plugin.json"),
     JSON.stringify(
       {
         id: pluginId,
@@ -97,7 +97,7 @@ module.exports = {
 function writeDoctorSessionOwnerPlugin(pluginRoot: string, pluginId: string): void {
   fs.mkdirSync(pluginRoot, { recursive: true });
   fs.writeFileSync(
-    path.join(pluginRoot, "openclaw.plugin.json"),
+    path.join(pluginRoot, "cimiclaw.plugin.json"),
     JSON.stringify(
       {
         id: pluginId,

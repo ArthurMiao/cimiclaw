@@ -4,7 +4,7 @@ read_when:
   - Tuning agent defaults (models, thinking, workspace, heartbeat, media, skills)
   - Configuring multi-agent routing and bindings
   - Adjusting session, message delivery, and talk-mode behavior
-title: "Configuration â€” agents"
+title: "Configuration â€?agents"
 ---
 
 Agent-scoped configuration keys under `agents.*`, `multiAgent.*`, `session.*`,
@@ -15,11 +15,11 @@ top-level keys, see [Configuration reference](/gateway/configuration-reference).
 
 ### `agents.defaults.workspace`
 
-Default: `~/.openclaw/workspace`.
+Default: `~/.cimiclaw/workspace`.
 
 ```json5
 {
-  agents: { defaults: { workspace: "~/.openclaw/workspace" } },
+  agents: { defaults: { workspace: "~/.cimiclaw/workspace" } },
 }
 ```
 
@@ -566,7 +566,7 @@ Periodic heartbeat runs.
 - `isolatedSession`: when true, each heartbeat runs in a fresh session with no prior conversation history. Same isolation pattern as cron `sessionTarget: "isolated"`. Reduces per-heartbeat token cost from ~100K to ~2-5K tokens.
 - `skipWhenBusy`: when true, heartbeat runs defer on extra busy lanes: subagent or nested command work. Cron lanes always defer heartbeats, even without this flag.
 - Per-agent: set `agents.list[].heartbeat`. When any agent defines `heartbeat`, **only those agents** run heartbeats.
-- Heartbeats run full agent turns â€” shorter intervals burn more tokens.
+- Heartbeats run full agent turns â€?shorter intervals burn more tokens.
 
 ### `agents.defaults.compaction`
 
@@ -678,7 +678,7 @@ See [Session Pruning](/concepts/session-pruning) for behavior details.
 
 - Non-Telegram channels require explicit `*.blockStreaming: true` to enable block replies.
 - Channel overrides: `channels.<channel>.blockStreamingCoalesce` (and per-account variants). Signal/Slack/Discord/Google Chat default `minChars: 1500`.
-- `humanDelay`: randomized pause between block replies. `natural` = 800â€“2500ms. Per-agent override: `agents.list[].humanDelay`.
+- `humanDelay`: randomized pause between block replies. `natural` = 800â€?500ms. Per-agent override: `agents.list[].humanDelay`.
 
 See [Streaming](/concepts/streaming) for behavior + chunking details.
 
@@ -715,7 +715,7 @@ Optional sandboxing for the embedded agent. See [Sandboxing](/gateway/sandboxing
         backend: "docker", // docker | ssh | openshell
         scope: "agent", // session | agent | shared
         workspaceAccess: "none", // none | ro | rw
-        workspaceRoot: "~/.openclaw/sandboxes",
+        workspaceRoot: "~/.cimiclaw/sandboxes",
         docker: {
           image: "openclaw-sandbox:bookworm-slim",
           containerPrefix: "openclaw-sbx-",
@@ -836,7 +836,7 @@ When `backend: "openshell"` is selected, runtime-specific settings move to
 
 **Workspace access:**
 
-- `none`: per-scope sandbox workspace under `~/.openclaw/sandboxes`
+- `none`: per-scope sandbox workspace under `~/.cimiclaw/sandboxes`
 - `ro`: sandbox workspace at `/workspace`, agent workspace mounted read-only at `/agent`
 - `rw`: agent workspace mounted read/write at `/workspace`
 
@@ -882,7 +882,7 @@ Transport is SSH into the OpenShell sandbox, but the plugin owns sandbox lifecyc
 
 **`setupCommand`** runs once after container creation (via `sh -lc`). Needs network egress, writable root, root user.
 
-**Containers default to `network: "none"`** â€” set to `"bridge"` (or a custom bridge network) if the agent needs outbound access.
+**Containers default to `network: "none"`** â€?set to `"bridge"` (or a custom bridge network) if the agent needs outbound access.
 `"host"` is blocked. `"container:<id>"` is blocked by default unless you explicitly set
 `sandbox.docker.dangerouslyAllowContainerNamespaceJoin: true` (break-glass).
 
@@ -890,7 +890,7 @@ Transport is SSH into the OpenShell sandbox, but the plugin owns sandbox lifecyc
 
 **`docker.binds`** mounts additional host directories; global and per-agent binds are merged.
 
-**Sandboxed browser** (`sandbox.browser.enabled`): Chromium + CDP in a container. noVNC URL injected into system prompt. Does not require `browser.enabled` in `openclaw.json`.
+**Sandboxed browser** (`sandbox.browser.enabled`): Chromium + CDP in a container. noVNC URL injected into system prompt. Does not require `browser.enabled` in `cimiclaw.json`.
 noVNC observer access uses VNC auth by default and OpenClaw emits a short-lived token URL (instead of exposing the password in the shared URL).
 
 - `allowHostControl: false` (default) blocks sandboxed sessions from targeting the host browser.
@@ -958,8 +958,8 @@ for provider examples and precedence.
         id: "main",
         default: true,
         name: "Main Agent",
-        workspace: "~/.openclaw/workspace",
-        agentDir: "~/.openclaw/agents/main/agent",
+        workspace: "~/.cimiclaw/workspace",
+        agentDir: "~/.cimiclaw/agents/main/agent",
         model: "anthropic/claude-opus-4-6", // or { primary, fallbacks }
         thinkingDefault: "high", // per-agent thinking level override
         reasoningDefault: "on", // per-agent reasoning visibility override
@@ -1028,8 +1028,8 @@ Run multiple isolated agents inside one Gateway. See [Multi-Agent](/concepts/mul
 {
   agents: {
     list: [
-      { id: "home", default: true, workspace: "~/.openclaw/workspace-home" },
-      { id: "work", workspace: "~/.openclaw/workspace-work" },
+      { id: "home", default: true, workspace: "~/.cimiclaw/workspace-home" },
+      { id: "work", workspace: "~/.cimiclaw/workspace-work" },
     ],
   },
   bindings: [
@@ -1071,7 +1071,7 @@ For `type: "acp"` entries, OpenClaw resolves by exact conversation identity (`ma
     list: [
       {
         id: "personal",
-        workspace: "~/.openclaw/workspace-personal",
+        workspace: "~/.cimiclaw/workspace-personal",
         sandbox: { mode: "off" },
       },
     ],
@@ -1089,7 +1089,7 @@ For `type: "acp"` entries, OpenClaw resolves by exact conversation identity (`ma
     list: [
       {
         id: "family",
-        workspace: "~/.openclaw/workspace-family",
+        workspace: "~/.cimiclaw/workspace-family",
         sandbox: { mode: "all", scope: "agent", workspaceAccess: "ro" },
         tools: {
           allow: [
@@ -1118,7 +1118,7 @@ For `type: "acp"` entries, OpenClaw resolves by exact conversation identity (`ma
     list: [
       {
         id: "public",
-        workspace: "~/.openclaw/workspace-public",
+        workspace: "~/.cimiclaw/workspace-public",
         sandbox: { mode: "all", scope: "agent", workspaceAccess: "none" },
         tools: {
           allow: [
@@ -1181,7 +1181,7 @@ See [Multi-Agent Sandbox & Tools](/tools/multi-agent-sandbox-tools) for preceden
       group: { mode: "idle", idleMinutes: 120 },
     },
     resetTriggers: ["/new", "/reset"],
-    store: "~/.openclaw/agents/{agentId}/sessions/sessions.json",
+    store: "~/.cimiclaw/agents/{agentId}/sessions/sessions.json",
     maintenance: {
       mode: "warn", // warn | enforce
       pruneAfter: "30d",
@@ -1274,7 +1274,7 @@ See [Multi-Agent Sandbox & Tools](/tools/multi-agent-sandbox-tools) for preceden
 
 Per-channel/account overrides: `channels.<channel>.responsePrefix`, `channels.<channel>.accounts.<id>.responsePrefix`.
 
-Resolution (most specific wins): account â†’ channel â†’ global. `""` disables and stops cascade. `"auto"` derives `[{identity.name}]`.
+Resolution (most specific wins): account â†?channel â†?global. `""` disables and stops cascade. `"auto"` derives `[{identity.name}]`.
 
 **Template variables:**
 
@@ -1292,7 +1292,7 @@ Variables are case-insensitive. `{think}` is an alias for `{thinkingLevel}`.
 
 - Defaults to active agent's `identity.emoji`, otherwise `"ðŸ‘€"`. Set `""` to disable.
 - Per-channel overrides: `channels.<channel>.ackReaction`, `channels.<channel>.accounts.<id>.ackReaction`.
-- Resolution order: account â†’ channel â†’ `messages.ackReaction` â†’ identity fallback.
+- Resolution order: account â†?channel â†?`messages.ackReaction` â†?identity fallback.
 - Scope: `group-mentions` (default), `group-all`, `direct`, `all`.
 - `removeAckAfterReply`: removes ack after reply on reaction-capable channels such as Slack, Discord, Telegram, WhatsApp, and iMessage.
 - `messages.statusReactions.enabled`: enables lifecycle status reactions on Slack, Discord, and Telegram.
@@ -1316,7 +1316,7 @@ Batches rapid text-only messages from the same sender into a single agent turn. 
       modelOverrides: { enabled: true },
       maxTextLength: 4000,
       timeoutMs: 30000,
-      prefsPath: "~/.openclaw/settings/tts.json",
+      prefsPath: "~/.cimiclaw/settings/tts.json",
       providers: {
         elevenlabs: {
           apiKey: "elevenlabs_api_key",
@@ -1425,6 +1425,6 @@ Defaults for Talk mode (macOS/iOS/Android).
 
 ## Related
 
-- [Configuration reference](/gateway/configuration-reference) â€” all other config keys
-- [Configuration](/gateway/configuration) â€” common tasks and quick setup
+- [Configuration reference](/gateway/configuration-reference) â€?all other config keys
+- [Configuration](/gateway/configuration) â€?common tasks and quick setup
 - [Configuration examples](/gateway/configuration-examples)

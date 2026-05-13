@@ -49,7 +49,7 @@ on:
         default: ""
         type: string
       package_artifact_name:
-        description: Existing workflow artifact containing openclaw-current.tgz; blank packs the selected ref
+        description: Existing workflow artifact containing cimiclaw-current.tgz; blank packs the selected ref
         required: false
         default: ""
         type: string
@@ -144,7 +144,7 @@ on:
         default: ""
         type: string
       package_artifact_name:
-        description: Existing workflow artifact containing openclaw-current.tgz; blank packs the selected ref
+        description: Existing workflow artifact containing cimiclaw-current.tgz; blank packs the selected ref
         required: false
         default: ""
         type: string
@@ -722,7 +722,7 @@ jobs:
       OPENCLAW_DOCKER_E2E_REPO_ROOT: ${{ github.workspace }}
       OPENCLAW_DOCKER_E2E_SELECTED_SHA: ${{ needs.validate_selected_ref.outputs.selected_sha }}
       OPENCLAW_DOCKER_ALL_RELEASE_PROFILE: ${{ inputs.release_test_profile }}
-      OPENCLAW_CURRENT_PACKAGE_TGZ: .artifacts/docker-e2e-package/openclaw-current.tgz
+      OPENCLAW_CURRENT_PACKAGE_TGZ: .artifacts/docker-e2e-package/cimiclaw-current.tgz
       OPENCLAW_UPGRADE_SURVIVOR_BASELINE_SPEC: ${{ inputs.published_upgrade_survivor_baseline }}
       OPENCLAW_UPGRADE_SURVIVOR_BASELINE_SPECS: ${{ inputs.published_upgrade_survivor_baselines }}
       OPENCLAW_UPGRADE_SURVIVOR_SCENARIOS: ${{ inputs.published_upgrade_survivor_scenarios }}
@@ -960,7 +960,7 @@ jobs:
       OPENCLAW_DOCKER_E2E_PACKAGE_ARTIFACT_NAME: ${{ inputs.package_artifact_name || 'docker-e2e-package' }}
       OPENCLAW_DOCKER_E2E_REPO_ROOT: ${{ github.workspace }}
       OPENCLAW_DOCKER_E2E_SELECTED_SHA: ${{ needs.validate_selected_ref.outputs.selected_sha }}
-      OPENCLAW_CURRENT_PACKAGE_TGZ: .artifacts/docker-e2e-package/openclaw-current.tgz
+      OPENCLAW_CURRENT_PACKAGE_TGZ: .artifacts/docker-e2e-package/cimiclaw-current.tgz
       OPENCLAW_UPGRADE_SURVIVOR_BASELINE_SPEC: ${{ inputs.published_upgrade_survivor_baseline }}
       OPENCLAW_UPGRADE_SURVIVOR_BASELINE_SPECS: ${{ matrix.group.published_upgrade_survivor_baselines || inputs.published_upgrade_survivor_baselines }}
       OPENCLAW_UPGRADE_SURVIVOR_SCENARIOS: ${{ inputs.published_upgrade_survivor_scenarios }}
@@ -1121,7 +1121,7 @@ jobs:
       OPENCLAW_DOCKER_E2E_PACKAGE_ARTIFACT_NAME: ${{ inputs.package_artifact_name || 'docker-e2e-package' }}
       OPENCLAW_DOCKER_E2E_REPO_ROOT: ${{ github.workspace }}
       OPENCLAW_DOCKER_E2E_SELECTED_SHA: ${{ needs.validate_selected_ref.outputs.selected_sha }}
-      OPENCLAW_CURRENT_PACKAGE_TGZ: .artifacts/docker-e2e-package/openclaw-current.tgz
+      OPENCLAW_CURRENT_PACKAGE_TGZ: .artifacts/docker-e2e-package/cimiclaw-current.tgz
       OPENCLAW_SKIP_DOCKER_BUILD: "1"
     steps:
       - name: Checkout selected ref
@@ -1334,7 +1334,7 @@ jobs:
           mkdir -p .artifacts/docker-e2e-package
           node scripts/package-openclaw-for-docker.mjs \
             --output-dir .artifacts/docker-e2e-package \
-            --output-name openclaw-current.tgz
+            --output-name cimiclaw-current.tgz
 
       - name: Validate OpenClaw Docker E2E package
         id: package
@@ -1343,7 +1343,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p .artifacts/docker-e2e-package
-          target=".artifacts/docker-e2e-package/openclaw-current.tgz"
+          target=".artifacts/docker-e2e-package/cimiclaw-current.tgz"
           if [[ ! -f "$target" ]]; then
             mapfile -t tgzs < <(find .artifacts/docker-e2e-package -type f -name '*.tgz' | sort)
             if [[ "${#tgzs[@]}" -ne 1 ]]; then
@@ -1372,7 +1372,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: ${{ inputs.package_artifact_name || 'docker-e2e-package' }}
-          path: .artifacts/docker-e2e-package/openclaw-current.tgz
+          path: .artifacts/docker-e2e-package/cimiclaw-current.tgz
           if-no-files-found: error
 
       - name: Resolve shared Docker E2E image tags

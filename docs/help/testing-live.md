@@ -102,7 +102,7 @@ Live tests are split into two layers so we can isolate failures:
     - "meaningful" response (no tools)
     - a real tool invocation works (read probe)
     - optional extra tool probes (exec+read probe)
-    - OpenAI regression paths (tool-call-only â†’ follow-up) keep working
+    - OpenAI regression paths (tool-call-only â†?follow-up) keep working
 - Probe details (so you can explain failures quickly):
   - `read` probe: the test writes a nonce file in the workspace and asks the agent to `read` it and echo the nonce back.
   - `exec+read` probe: the test asks the agent to `exec`-write a nonce into a temp file, then `read` it back.
@@ -404,11 +404,11 @@ Pick at least one per provider family:
 Optional additional coverage (nice to have):
 
 - xAI: `xai/grok-4.3` (or latest available)
-- Mistral: `mistral/`â€¦ (pick one "tools" capable model you have enabled)
-- Cerebras: `cerebras/`â€¦ (if you have access)
-- LM Studio: `lmstudio/`â€¦ (local; tool calling depends on API mode)
+- Mistral: `mistral/`â€?(pick one "tools" capable model you have enabled)
+- Cerebras: `cerebras/`â€?(if you have access)
+- LM Studio: `lmstudio/`â€?(local; tool calling depends on API mode)
 
-### Vision: image send (attachment â†’ multimodal message)
+### Vision: image send (attachment â†?multimodal message)
 
 Include at least one image-capable model in `OPENCLAW_LIVE_GATEWAY_MODELS` (Claude/Gemini/OpenAI vision-capable variants, etc.) to exercise the image probe.
 
@@ -435,9 +435,9 @@ Live tests discover credentials the same way the CLI does. Practical implication
 - If the CLI works, live tests should find the same keys.
 - If a live test says "no creds", debug the same way you'd debug `openclaw models list` / model selection.
 
-- Per-agent auth profiles: `~/.openclaw/agents/<agentId>/agent/auth-profiles.json` (this is what "profile keys" means in the live tests)
-- Config: `~/.openclaw/openclaw.json` (or `OPENCLAW_CONFIG_PATH`)
-- Legacy state dir: `~/.openclaw/credentials/` (copied into the staged live home when present, but not the main profile-key store)
+- Per-agent auth profiles: `~/.cimiclaw/agents/<agentId>/agent/auth-profiles.json` (this is what "profile keys" means in the live tests)
+- Config: `~/.cimiclaw/cimiclaw.json` (or `OPENCLAW_CONFIG_PATH`)
+- Legacy state dir: `~/.cimiclaw/credentials/` (copied into the staged live home when present, but not the main profile-key store)
 - Live local runs copy the active config, per-agent `auth-profiles.json` files, legacy `credentials/`, and supported external CLI auth dirs into a temp test home by default; staged live homes skip `workspace/` and `sandboxes/`, and `agents.*.workspace` / `agentDir` path overrides are stripped so probes stay off your real host workspace.
 
 If you want to rely on env keys (e.g. exported in your `~/.profile`), run local tests after `source ~/.profile`, or use the Docker runners below (they can mount `~/.profile` into the container).

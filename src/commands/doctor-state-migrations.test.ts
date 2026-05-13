@@ -41,7 +41,7 @@ vi.mock("../channels/plugins/bundled.js", async () => {
     cfg: OpenClawConfig;
     env: NodeJS.ProcessEnv;
   }) {
-    const root = params.env.OPENCLAW_STATE_DIR;
+    const root = params.env.cimiclaw_STATE_DIR;
     if (!root) {
       return [];
     }
@@ -285,7 +285,7 @@ const DIR_LINK_TYPE = process.platform === "win32" ? "junction" : "dir";
 
 function getStateDirMigrationPaths(root: string) {
   return {
-    targetDir: path.join(root, ".openclaw"),
+    targetDir: path.join(root, ".cimiclaw"),
     legacyDir: path.join(root, ".clawdbot"),
   };
 }

@@ -45,7 +45,7 @@ const EXTENSION_INDEX = bundledPluginFile("demo", "index.ts");
 const EXTENSION_SRC = bundledPluginFile("demo", "src/index.ts");
 const EXTENSION_EXTRA_SRC = bundledPluginFile("demo", "src/extra.ts");
 const EXTENSION_SKILL = bundledPluginFile("demo", "skills/SKILL.md");
-const EXTENSION_MANIFEST = bundledPluginFile("demo", "openclaw.plugin.json");
+const EXTENSION_MANIFEST = bundledPluginFile("demo", "cimiclaw.plugin.json");
 const EXTENSION_PACKAGE = bundledPluginFile("demo", "package.json");
 const EXTENSION_README = bundledPluginFile("demo", "README.md");
 const DIST_EXTENSION_INDEX = bundledDistPluginFile("demo", "index.js");
@@ -53,7 +53,7 @@ const DIST_EXTENSION_SRC = bundledDistPluginFile("demo", "src/index.js");
 const DIST_EXTENSION_SKILL = bundledDistPluginFile("demo", "skills/SKILL.md");
 const DIST_EXTENSION_RUNTIME_SRC = "dist-runtime/extensions/demo/src/index.js";
 const DIST_RUNTIME_EXTENSION_INDEX = "dist-runtime/extensions/demo/index.js";
-const DIST_RUNTIME_EXTENSION_MANIFEST = "dist-runtime/extensions/demo/openclaw.plugin.json";
+const DIST_RUNTIME_EXTENSION_MANIFEST = "dist-runtime/extensions/demo/cimiclaw.plugin.json";
 const DIST_RUNTIME_EXTENSION_PACKAGE = "dist-runtime/extensions/demo/package.json";
 const DIST_RUNTIME_EXTENSION_SKILL = "dist-runtime/extensions/demo/skills/SKILL.md";
 const DIST_OPENCLAW_ALIAS_PACKAGE = "dist/extensions/node_modules/openclaw/package.json";
@@ -63,7 +63,7 @@ const DIFFS_PACKAGE = "extensions/diffs/package.json";
 const DIFFS_VIEWER_RUNTIME_SOURCE = "extensions/diffs/assets/viewer-runtime.js";
 const DIST_DIFFS_VIEWER_RUNTIME = "dist/extensions/diffs/assets/viewer-runtime.js";
 const DIST_RUNTIME_DIFFS_VIEWER_RUNTIME = "dist-runtime/extensions/diffs/assets/viewer-runtime.js";
-const DIST_EXTENSION_MANIFEST = bundledDistPluginFile("demo", "openclaw.plugin.json");
+const DIST_EXTENSION_MANIFEST = bundledDistPluginFile("demo", "cimiclaw.plugin.json");
 const DIST_EXTENSION_PACKAGE = bundledDistPluginFile("demo", "package.json");
 
 const OLD_TIME = new Date("2026-03-13T10:00:00.000Z");
@@ -159,11 +159,11 @@ function expectedBundledPluginAssetBuildSpawn() {
 }
 
 function statusCommandSpawn() {
-  return [process.execPath, "openclaw.mjs", "status"];
+  return [process.execPath, "cimiclaw.mjs", "status"];
 }
 
 function gatewayCallStatusCommandSpawn() {
-  return [process.execPath, "openclaw.mjs", "gateway", "call", "status", "--json"];
+  return [process.execPath, "cimiclaw.mjs", "gateway", "call", "status", "--json"];
 }
 
 function resolvePath(tmp: string, relativePath: string) {
@@ -398,7 +398,7 @@ describe("run-node script", () => {
         expect(nodeCalls).toEqual([
           [process.execPath, "scripts/bundled-plugin-assets.mjs", "--phase", "build"],
           [process.execPath, "scripts/tsdown-build.mjs", "--no-clean"],
-          [process.execPath, "openclaw.mjs", "--version"],
+          [process.execPath, "cimiclaw.mjs", "--version"],
         ]);
       });
     },
@@ -474,8 +474,8 @@ describe("run-node script", () => {
           stdio: opts?.stdio,
         });
         return createPipedExitedProcess({
-          stdout: args[0] === "openclaw.mjs" ? "child stdout\n" : "",
-          stderr: args[0] === "openclaw.mjs" ? "child stderr\n" : "",
+          stdout: args[0] === "cimiclaw.mjs" ? "child stdout\n" : "",
+          stderr: args[0] === "cimiclaw.mjs" ? "child stderr\n" : "",
         });
       };
       const mutedStream = {
@@ -501,9 +501,9 @@ describe("run-node script", () => {
       expect(exitCode).toBe(0);
       await expect(fs.readFile(outputPath, "utf-8")).resolves.toContain("child stdout\n");
       await expect(fs.readFile(outputPath, "utf-8")).resolves.toContain("child stderr\n");
-      await expect(fs.readFile(outputPath, "utf-8")).resolves.toContain("[openclaw]");
-      expect(spawnCalls.at(-1)?.args).toEqual(["openclaw.mjs", "status"]);
-      expect(spawnCalls.at(-1)?.env.OPENCLAW_RUN_NODE_OUTPUT_LOG).toBe(outputPath);
+      await expect(fs.readFile(outputPath, "utf-8")).resolves.toContain("[cimiclaw]");
+      expect(spawnCalls.at(-1)?.args).toEqual(["cimiclaw.mjs", "status"]);
+      expect(spawnCalls.at(-1)?.env.cimiclaw_RUN_NODE_OUTPUT_LOG).toBe(outputPath);
       expect(spawnCalls.at(-1)?.stdio).toEqual(["inherit", "pipe", "pipe"]);
     });
   });
@@ -522,7 +522,7 @@ describe("run-node script", () => {
       ].join("");
       const spawn = (_cmd: string, args: string[]) =>
         createPipedExitedProcess({
-          stderr: args[0] === "openclaw.mjs" ? childStderr : "",
+          stderr: args[0] === "cimiclaw.mjs" ? childStderr : "",
         });
       const stderrChunks: string[] = [];
       const stderr = {
@@ -614,10 +614,10 @@ describe("run-node script", () => {
       expect(childArgs[0]).toBe("--cpu-prof");
       expect(childArgs[1]).toBe(`--cpu-prof-dir=${profileDir}`);
       expect(childArgs[2]).toMatch(
-        /^--cpu-prof-name=openclaw-status-4242-\d{4}-\d{2}-\d{2}T.*\.cpuprofile$/,
+        /^--cpu-prof-name=cimiclaw-status-4242-\d{4}-\d{2}-\d{2}T.*\.cpuprofile$/,
       );
-      expect(childArgs.slice(3)).toEqual(["openclaw.mjs", "status"]);
-      expect(spawnCalls.at(-1)?.env.OPENCLAW_RUN_NODE_CPU_PROF_DIR).toBe(profileDir);
+      expect(childArgs.slice(3)).toEqual(["cimiclaw.mjs", "status"]);
+      expect(spawnCalls.at(-1)?.env.cimiclaw_RUN_NODE_CPU_PROF_DIR).toBe(profileDir);
       expect(fsSync.existsSync(profileDir)).toBe(true);
     });
   });
@@ -656,7 +656,7 @@ describe("run-node script", () => {
       });
 
       expect(exitCode).toBe(0);
-      expect(spawnCalls.at(-1)).toEqual(["--trace-sync-io", "openclaw.mjs", "gateway", "--force"]);
+      expect(spawnCalls.at(-1)).toEqual(["--trace-sync-io", "cimiclaw.mjs", "gateway", "--force"]);
     });
   });
 
@@ -723,8 +723,8 @@ describe("run-node script", () => {
 
       expect(exitCode).toBe(0);
       const childArgs = spawnCalls.at(-1)?.args ?? [];
-      expect(childArgs).toEqual(["openclaw.mjs", "qa", "matrix"]);
-      expect(spawnCalls.at(-1)?.env.OPENCLAW_RUN_NODE_OUTPUT_LOG).toBeUndefined();
+      expect(childArgs).toEqual(["cimiclaw.mjs", "qa", "matrix"]);
+      expect(spawnCalls.at(-1)?.env.cimiclaw_RUN_NODE_OUTPUT_LOG).toBeUndefined();
     });
   });
 
@@ -777,7 +777,7 @@ describe("run-node script", () => {
       expect(spawnCalls).toEqual([
         [
           process.execPath,
-          "openclaw.mjs",
+          "cimiclaw.mjs",
           "qa",
           "suite",
           "--transport",
@@ -812,7 +812,7 @@ describe("run-node script", () => {
         expectedBuildSpawn(),
         [
           process.execPath,
-          "openclaw.mjs",
+          "cimiclaw.mjs",
           "qa",
           "suite",
           "--transport",
@@ -1328,7 +1328,7 @@ describe("run-node script", () => {
       expect(exitCode).toBe(143);
       expect(spawn).toHaveBeenCalledWith(
         process.execPath,
-        ["openclaw.mjs", "status"],
+        ["cimiclaw.mjs", "status"],
         expect.objectContaining({ stdio: "inherit" }),
       );
       expect(child.kill).toHaveBeenCalledWith("SIGTERM");

@@ -454,7 +454,7 @@ describe("qa cli registration", () => {
       expect.arrayContaining(["mock-openai", "aimock"]),
     );
 
-    await program.parseAsync(["node", "openclaw", "qa", "aimock", "--port", "44080"]);
+    await program.parseAsync(["node", "cimiclaw", "qa", "aimock", "--port", "44080"]);
 
     expect(runQaProviderServerCommand).toHaveBeenCalledWith("aimock", {
       host: "127.0.0.1",
@@ -468,7 +468,7 @@ describe("qa cli registration", () => {
     registerQaLabCli(blockedProgram);
 
     await expect(
-      blockedProgram.parseAsync(["node", "openclaw", "qa", TEST_QA_RUNNER.commandName]),
+      blockedProgram.parseAsync(["node", "cimiclaw", "qa", TEST_QA_RUNNER.commandName]),
     ).rejects.toThrow(`Enable or allow plugin "${TEST_QA_RUNNER.pluginId}"`);
   });
 
@@ -483,7 +483,7 @@ describe("qa cli registration", () => {
   });
 
   it("routes telegram CLI defaults into the lane runtime", async () => {
-    await program.parseAsync(["node", "openclaw", "qa", "telegram"]);
+    await program.parseAsync(["node", "cimiclaw", "qa", "telegram"]);
 
     expect(runQaTelegramCommand).toHaveBeenCalledWith({
       repoRoot: undefined,
@@ -502,7 +502,7 @@ describe("qa cli registration", () => {
   });
 
   it("forwards --list-scenarios for telegram runs", async () => {
-    await program.parseAsync(["node", "openclaw", "qa", "telegram", "--list-scenarios"]);
+    await program.parseAsync(["node", "cimiclaw", "qa", "telegram", "--list-scenarios"]);
 
     expect(runQaTelegramCommand).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -512,7 +512,7 @@ describe("qa cli registration", () => {
   });
 
   it("forwards --allow-failures for telegram runs", async () => {
-    await program.parseAsync(["node", "openclaw", "qa", "telegram", "--allow-failures"]);
+    await program.parseAsync(["node", "cimiclaw", "qa", "telegram", "--allow-failures"]);
 
     expect(runQaTelegramCommand).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -522,7 +522,7 @@ describe("qa cli registration", () => {
   });
 
   it("forwards --allow-failures for suite runs", async () => {
-    await program.parseAsync(["node", "openclaw", "qa", "suite", "--allow-failures"]);
+    await program.parseAsync(["node", "cimiclaw", "qa", "suite", "--allow-failures"]);
 
     expect(runQaSuiteCommand).toHaveBeenCalledWith(
       expect.objectContaining({

@@ -7,21 +7,21 @@ read_when:
 ---
 
 OpenClaw remembers things by writing **plain Markdown files** in your agent's
-workspace. The model only "remembers" what gets saved to disk â€” there is no
+workspace. The model only "remembers" what gets saved to disk â€?there is no
 hidden state.
 
 ## How it works
 
 Your agent has three memory-related files:
 
-- **`MEMORY.md`** â€” long-term memory. Durable facts, preferences, and
+- **`MEMORY.md`** â€?long-term memory. Durable facts, preferences, and
   decisions. Loaded at the start of every DM session.
-- **`memory/YYYY-MM-DD.md`** â€” daily notes. Running context and observations.
+- **`memory/YYYY-MM-DD.md`** â€?daily notes. Running context and observations.
   Today and yesterday's notes are loaded automatically.
-- **`DREAMS.md`** (optional) â€” Dream Diary and dreaming sweep
+- **`DREAMS.md`** (optional) â€?Dream Diary and dreaming sweep
   summaries for human review, including grounded historical backfill entries.
 
-These files live in the agent workspace (default `~/.openclaw/workspace`).
+These files live in the agent workspace (default `~/.cimiclaw/workspace`).
 
 ## What goes where
 
@@ -67,9 +67,9 @@ Explicit reminders still use [scheduled tasks](/automation/cron-jobs).
 
 The agent has two tools for working with memory:
 
-- **`memory_search`** â€” finds relevant notes using semantic search, even when
+- **`memory_search`** â€?finds relevant notes using semantic search, even when
   the wording differs from the original.
-- **`memory_get`** â€” reads a specific memory file or line range.
+- **`memory_get`** â€?reads a specific memory file or line range.
 
 Both tools are provided by the active memory plugin (default: `memory-core`).
 
@@ -96,7 +96,7 @@ See [Memory Wiki](/plugins/memory-wiki).
 ## Memory search
 
 When an embedding provider is configured, `memory_search` uses **hybrid
-search** â€” combining vector similarity (semantic meaning) with keyword matching
+search** â€?combining vector similarity (semantic meaning) with keyword matching
 (exact terms like IDs and code symbols). This works out of the box once you have
 an API key for any supported provider.
 
@@ -143,7 +143,7 @@ dashboards, bridge mode, and Obsidian-friendly workflows.
 
 Before [compaction](/concepts/compaction) summarizes your conversation, OpenClaw
 runs a silent turn that reminds the agent to save important context to memory
-files. This is on by default â€” you do not need to configure anything.
+files. This is on by default â€?you do not need to configure anything.
 
 To keep that housekeeping turn on a local model, set an exact memory-flush model
 override:

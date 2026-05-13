@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { OpenClawConfig } from "../config/config.js";
-import { createOpenClawTools } from "./openclaw-tools.js";
-import { isUpdatePlanToolEnabledForOpenClawTools } from "./openclaw-tools.registration.js";
+import { createOpenClawTools } from "./cimiclaw-tools.js";
+import { isUpdatePlanToolEnabledForOpenClawTools } from "./cimiclaw-tools.registration.js";
 import { isToolWrappedWithBeforeToolCallHook } from "./pi-tools.before-tool-call.js";
 import { createUpdatePlanTool } from "./tools/update-plan-tool.js";
 

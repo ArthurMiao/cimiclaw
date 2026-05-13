@@ -19,7 +19,7 @@ import {
 import {
   buildCurrentOpenClawCliArgv,
   buildCurrentOpenClawCliCommand,
-} from "./commands-openclaw-cli.js";
+} from "./commands-cimiclaw-cli.js";
 import {
   deliverPrivateCommandReply,
   readCommandDeliveryTarget,

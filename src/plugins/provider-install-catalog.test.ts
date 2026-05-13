@@ -95,7 +95,7 @@ describe("provider install catalog", () => {
         {
           pluginId: "openai",
           origin: "bundled",
-          manifestPath: "/repo/extensions/openai/openclaw.plugin.json",
+          manifestPath: "/repo/extensions/openai/cimiclaw.plugin.json",
           manifestHash: "hash",
           rootDir: "/repo/extensions/openai",
           enabled: true,
@@ -196,9 +196,9 @@ describe("provider install catalog", () => {
         {
           pluginId: "vllm",
           origin: "global",
-          manifestPath: "/Users/test/.openclaw/plugins/vllm/openclaw.plugin.json",
+          manifestPath: "/Users/test/.cimiclaw/plugins/vllm/cimiclaw.plugin.json",
           manifestHash: "hash",
-          rootDir: "/Users/test/.openclaw/plugins/vllm",
+          rootDir: "/Users/test/.cimiclaw/plugins/vllm",
           enabled: true,
           startup: {
             sidecar: false,
@@ -285,9 +285,9 @@ describe("provider install catalog", () => {
         {
           pluginId: "vllm",
           origin: "global",
-          manifestPath: "/Users/test/.openclaw/plugins/vllm/openclaw.plugin.json",
+          manifestPath: "/Users/test/.cimiclaw/plugins/vllm/cimiclaw.plugin.json",
           manifestHash: "hash",
-          rootDir: "/Users/test/.openclaw/plugins/vllm",
+          rootDir: "/Users/test/.cimiclaw/plugins/vllm",
           enabled: true,
           startup: {
             sidecar: false,
@@ -355,9 +355,9 @@ describe("provider install catalog", () => {
         {
           pluginId: "demo-provider",
           origin: "global",
-          manifestPath: "/Users/test/.openclaw/plugins/demo-provider/openclaw.plugin.json",
+          manifestPath: "/Users/test/.cimiclaw/plugins/demo-provider/cimiclaw.plugin.json",
           manifestHash: "hash",
-          rootDir: "/Users/test/.openclaw/plugins/demo-provider",
+          rootDir: "/Users/test/.cimiclaw/plugins/demo-provider",
           enabled: true,
           startup: {
             sidecar: false,
@@ -409,7 +409,7 @@ describe("provider install catalog", () => {
         {
           pluginId: "demo-provider",
           origin: "workspace",
-          manifestPath: "/repo/extensions/demo-provider/openclaw.plugin.json",
+          manifestPath: "/repo/extensions/demo-provider/cimiclaw.plugin.json",
           manifestHash: "hash",
           rootDir: "/repo/extensions/demo-provider",
           enabled: false,
@@ -646,7 +646,7 @@ describe("provider install catalog", () => {
         {
           pluginId: "moonshot",
           origin: "bundled",
-          manifestPath: "/repo/extensions/moonshot/openclaw.plugin.json",
+          manifestPath: "/repo/extensions/moonshot/cimiclaw.plugin.json",
           manifestHash: "hash",
           rootDir: "/repo/extensions/moonshot",
           enabled: true,
@@ -702,7 +702,7 @@ describe("provider install catalog", () => {
         {
           pluginId: "moonshot",
           origin: "bundled",
-          manifestPath: "/repo/extensions/moonshot/openclaw.plugin.json",
+          manifestPath: "/repo/extensions/moonshot/cimiclaw.plugin.json",
           manifestHash: "hash",
           rootDir: "/repo/extensions/moonshot",
           enabled: true,

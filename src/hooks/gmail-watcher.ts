@@ -8,7 +8,7 @@
 import { type ChildProcess, spawn } from "node:child_process";
 import path from "node:path";
 import { hasBinary } from "../agents/skills.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveExecutable } from "../infra/executable-path.js";
 import { getWindowsInstallRoots } from "../infra/windows-install-roots.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";

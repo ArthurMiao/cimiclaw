@@ -314,9 +314,9 @@ export function collectReleasePackageMetadataErrors(pkg: PackageJson): string[] 
       }.`,
     );
   }
-  if (pkg.bin?.openclaw !== "openclaw.mjs") {
+  if (pkg.bin?.cimiclaw !== "cimiclaw.mjs") {
     errors.push(
-      `package.json bin.openclaw must be "openclaw.mjs"; found "${pkg.bin?.openclaw ?? ""}".`,
+      `package.json bin.cimiclaw must be "cimiclaw.mjs"; found "${pkg.bin?.cimiclaw ?? ""}".`,
     );
   }
   if (pkg.dependencies?.[OPTIONAL_LOCAL_EMBEDDING_RUNTIME_PACKAGE]) {

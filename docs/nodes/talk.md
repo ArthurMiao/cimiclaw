@@ -26,7 +26,7 @@ Transcription-only Talk emits the same common Talk event envelope as realtime an
 ## Behavior (macOS)
 
 - **Always-on overlay** while Talk mode is enabled.
-- **Listening â†’ Thinking â†’ Speaking** phase transitions.
+- **Listening â†?Thinking â†?Speaking** phase transitions.
 - On a **short pause** (silence window), the current transcript is sent.
 - Replies are **written to WebChat** (same as typing).
 - **Interrupt on speech** (default on): if the user starts talking while the assistant is speaking, we stop playback and note the interruption timestamp for the next prompt.
@@ -55,7 +55,7 @@ Supported keys:
 - `seed`, `normalize`, `lang`, `output_format`, `latency_tier`
 - `once`
 
-## Config (`~/.openclaw/openclaw.json`)
+## Config (`~/.cimiclaw/cimiclaw.json`)
 
 ```json5
 {

@@ -191,7 +191,7 @@ description: test skill
       const tmpDir = await makeTmpDir("audit-scanner-install-debris");
       for (const name of [
         "demo",
-        ".openclaw-install-backups",
+        ".cimiclaw-install-backups",
         "node_modules",
         "old-plugin.backup-20260502",
         "old-plugin.disabled.20260502",
@@ -211,7 +211,7 @@ description: test skill
         "plugin code-safety",
       );
       expect(codeSafetyFinding.title).toContain('Plugin "demo"');
-      expect(findings.map((f) => f.title).join("\n")).not.toContain(".openclaw-install-backups");
+      expect(findings.map((f) => f.title).join("\n")).not.toContain(".cimiclaw-install-backups");
     } finally {
       scanSpy.mockRestore();
     }

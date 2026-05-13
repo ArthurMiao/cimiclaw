@@ -7,12 +7,12 @@ import { createServer, type ViteDevServer } from "vite";
 import { buildOpenAIRealtimeVoiceProvider } from "../../extensions/openai/realtime-voice-provider.ts";
 
 const OPENAI_REALTIME_MODEL =
-  process.env.OPENCLAW_REALTIME_OPENAI_MODEL?.trim() || "gpt-realtime-2";
-const OPENAI_REALTIME_VOICE = process.env.OPENCLAW_REALTIME_OPENAI_VOICE?.trim() || "alloy";
+  process.env.cimiclaw_REALTIME_OPENAI_MODEL?.trim() || "gpt-realtime-2";
+const OPENAI_REALTIME_VOICE = process.env.cimiclaw_REALTIME_OPENAI_VOICE?.trim() || "alloy";
 const GOOGLE_REALTIME_MODEL =
-  process.env.OPENCLAW_REALTIME_GOOGLE_MODEL?.trim() ||
+  process.env.cimiclaw_REALTIME_GOOGLE_MODEL?.trim() ||
   "gemini-2.5-flash-native-audio-preview-12-2025";
-const GOOGLE_REALTIME_VOICE = process.env.OPENCLAW_REALTIME_GOOGLE_VOICE?.trim() || "Kore";
+const GOOGLE_REALTIME_VOICE = process.env.cimiclaw_REALTIME_GOOGLE_VOICE?.trim() || "Kore";
 const GOOGLE_LIVE_WS_URL =
   "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContentConstrained";
 

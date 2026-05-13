@@ -3,7 +3,7 @@ import {
   type OwnerDisplaySecretRuntimeState,
   retainGeneratedOwnerDisplaySecret,
 } from "./io.owner-display-secret.js";
-import type { OpenClawConfig } from "./types.openclaw.js";
+import type { OpenClawConfig } from "./types.cimiclaw.js";
 
 function createState(): OwnerDisplaySecretRuntimeState {
   return {
@@ -14,7 +14,7 @@ function createState(): OwnerDisplaySecretRuntimeState {
 describe("retainGeneratedOwnerDisplaySecret", () => {
   it("keeps generated owner display secrets in runtime state without persisting config", () => {
     const state = createState();
-    const configPath = "/tmp/openclaw.json";
+    const configPath = "/tmp/cimiclaw.json";
     const config = {
       commands: {
         ownerDisplay: "hash",
@@ -35,7 +35,7 @@ describe("retainGeneratedOwnerDisplaySecret", () => {
 
   it("clears pending state when no generated secret is present", () => {
     const state = createState();
-    const configPath = "/tmp/openclaw.json";
+    const configPath = "/tmp/cimiclaw.json";
     state.pendingByPath.set(configPath, "stale-secret");
     const config = {
       commands: {

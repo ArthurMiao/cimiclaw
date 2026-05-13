@@ -32,7 +32,7 @@ import {
   resolveSessionTranscriptsDirForAgent,
 } from "../../config/sessions.js";
 import type { IdentityConfig } from "../../config/types.base.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { root, FsSafeError, type ReadResult } from "../../infra/fs-safe.js";
 import { movePathToTrash } from "../../plugin-sdk/browser-maintenance.js";
 import { DEFAULT_AGENT_ID, normalizeAgentId } from "../../routing/session-key.js";

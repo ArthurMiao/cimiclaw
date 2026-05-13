@@ -14,7 +14,7 @@ import {
   validateConfigObjectWithPlugins,
 } from "../../config/config.js";
 import { assertConfigWriteAllowedInCurrentMode } from "../../config/nix-mode-write-guard.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { PluginInstallRecord } from "../../config/types.plugins.js";
 import { resolveArchiveKind } from "../../infra/archive.js";
 import { parseClawHubPluginSpec } from "../../infra/clawhub.js";

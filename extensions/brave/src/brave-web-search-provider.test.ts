@@ -32,7 +32,7 @@ vi.mock("openclaw/plugin-sdk/runtime-env", () => ({
 }));
 
 const braveManifest = JSON.parse(
-  fs.readFileSync(new URL("../openclaw.plugin.json", import.meta.url), "utf-8"),
+  fs.readFileSync(new URL("../cimiclaw.plugin.json", import.meta.url), "utf-8"),
 ) as {
   configSchema?: Record<string, unknown>;
 };
@@ -83,10 +83,10 @@ describe("brave web search provider", () => {
 
   it("points provider metadata at the canonical Brave docs page", () => {
     expect(createBraveWebSearchProvider().docsUrl).toBe(
-      "https://docs.openclaw.ai/tools/brave-search",
+      "https://docs.cimiclaw.ai/tools/brave-search",
     );
     expect(createBraveWebSearchContractProvider().docsUrl).toBe(
-      "https://docs.openclaw.ai/tools/brave-search",
+      "https://docs.cimiclaw.ai/tools/brave-search",
     );
   });
 

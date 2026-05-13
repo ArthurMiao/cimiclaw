@@ -28,7 +28,7 @@ OpenClaw keeps up to five numbered archives beside the active file, such as
 `openclaw-YYYY-MM-DD.1.log`, and keeps writing to a fresh active log instead of
 suppressing diagnostics.
 
-You can override this in `~/.openclaw/openclaw.json`:
+You can override this in `~/.cimiclaw/cimiclaw.json`:
 
 ```json
 {
@@ -150,7 +150,7 @@ openclaw gateway --verbose --ws-log full
 
 ## Configuring logging
 
-All logging configuration lives under `logging` in `~/.openclaw/openclaw.json`.
+All logging configuration lives under `logging` in `~/.cimiclaw/cimiclaw.json`.
 
 ```json
 {
@@ -170,7 +170,7 @@ All logging configuration lives under `logging` in `~/.openclaw/openclaw.json`.
 - `logging.level`: **file logs** (JSONL) level.
 - `logging.consoleLevel`: **console** verbosity level.
 
-You can override both via the **`OPENCLAW_LOG_LEVEL`** environment variable (e.g. `OPENCLAW_LOG_LEVEL=debug`). The env var takes precedence over the config file, so you can raise verbosity for a single run without editing `openclaw.json`. You can also pass the global CLI option **`--log-level <level>`** (for example, `openclaw --log-level debug gateway run`), which overrides the environment variable for that command.
+You can override both via the **`OPENCLAW_LOG_LEVEL`** environment variable (e.g. `OPENCLAW_LOG_LEVEL=debug`). The env var takes precedence over the config file, so you can raise verbosity for a single run without editing `cimiclaw.json`. You can also pass the global CLI option **`--log-level <level>`** (for example, `openclaw --log-level debug gateway run`), which overrides the environment variable for that command.
 
 `--verbose` only affects console output and WS log verbosity; it does not change
 file log levels.
@@ -244,17 +244,17 @@ can still add project-specific patterns on those surfaces.
 
 Diagnostics are structured, machine-readable events for model runs and
 message-flow telemetry (webhooks, queueing, session state). They do **not**
-replace logs â€” they feed metrics, traces, and exporters. Events are emitted
+replace logs â€?they feed metrics, traces, and exporters. Events are emitted
 in-process whether or not you export them.
 
 Two adjacent surfaces:
 
-- **OpenTelemetry export** â€” send metrics, traces, and logs over OTLP/HTTP to
+- **OpenTelemetry export** â€?send metrics, traces, and logs over OTLP/HTTP to
   any OpenTelemetry-compatible collector or backend (Grafana, Datadog,
   Honeycomb, New Relic, Tempo, etc.). Full configuration, signal catalog,
   metric/span names, env vars, and privacy model live on a dedicated page:
   [OpenTelemetry export](/gateway/opentelemetry).
-- **Diagnostics flags** â€” targeted debug-log flags that route extra logs to
+- **Diagnostics flags** â€?targeted debug-log flags that route extra logs to
   `logging.file` without raising `logging.level`. Flags are case-insensitive
   and support wildcards (`telegram.*`, `*`). Configure under `diagnostics.flags`
   or via the `OPENCLAW_DIAGNOSTICS=...` env override. Full guide:
@@ -279,7 +279,7 @@ For OTLP export to a collector, see [OpenTelemetry export](/gateway/opentelemetr
 
 ## Related
 
-- [OpenTelemetry export](/gateway/opentelemetry) â€” OTLP/HTTP export, metric/span catalog, privacy model
-- [Diagnostics flags](/diagnostics/flags) â€” targeted debug-log flags
-- [Gateway logging internals](/gateway/logging) â€” WS log styles, subsystem prefixes, and console capture
-- [Configuration reference](/gateway/configuration-reference#diagnostics) â€” full `diagnostics.*` field reference
+- [OpenTelemetry export](/gateway/opentelemetry) â€?OTLP/HTTP export, metric/span catalog, privacy model
+- [Diagnostics flags](/diagnostics/flags) â€?targeted debug-log flags
+- [Gateway logging internals](/gateway/logging) â€?WS log styles, subsystem prefixes, and console capture
+- [Configuration reference](/gateway/configuration-reference#diagnostics) â€?full `diagnostics.*` field reference

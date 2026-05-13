@@ -8,7 +8,7 @@ import { normalizeConfiguredProviderCatalogModelId } from "../agents/model-ref-s
 import { resolveProviderRequestCapabilities } from "../agents/provider-attribution.js";
 import { findNormalizedProviderKey } from "../agents/provider-id.js";
 import type { ModelDefinitionConfig } from "../config/types.models.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { normalizeModelCatalog } from "../model-catalog/normalize.js";
 import type {
   ModelCatalogCost,

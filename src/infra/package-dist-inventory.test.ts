@@ -298,7 +298,7 @@ describe("package dist inventory", () => {
         "dist",
         "extensions",
         "brave",
-        ".openclaw-install-stage",
+        ".cimiclaw-install-stage",
         "node_modules",
         "typebox",
         "build",
@@ -310,7 +310,7 @@ describe("package dist inventory", () => {
         "dist",
         "extensions",
         "browser",
-        ".openclaw-install-stage-AbC123",
+        ".cimiclaw-install-stage-AbC123",
         "node_modules",
         "playwright-core",
         "package.json",
@@ -321,8 +321,8 @@ describe("package dist inventory", () => {
       await fs.writeFile(suffixedStageFile, "{}", "utf8");
 
       await expect(collectPackageDistInventoryErrors(packageRoot)).resolves.toEqual([
-        "unexpected packaged dist file dist/extensions/brave/.openclaw-install-stage/node_modules/typebox/build/compile/code.mjs",
-        "unexpected packaged dist file dist/extensions/browser/.openclaw-install-stage-AbC123/node_modules/playwright-core/package.json",
+        "unexpected packaged dist file dist/extensions/brave/.cimiclaw-install-stage/node_modules/typebox/build/compile/code.mjs",
+        "unexpected packaged dist file dist/extensions/browser/.cimiclaw-install-stage-AbC123/node_modules/playwright-core/package.json",
       ]);
     });
   });
@@ -330,26 +330,26 @@ describe("package dist inventory", () => {
   it("matches install-stage paths case-insensitively across path segments", () => {
     expect(
       isLegacyPluginDependencyInstallStagePath(
-        "dist/extensions/brave/.openclaw-install-stage/node_modules/typebox/package.json",
+        "dist/extensions/brave/.cimiclaw-install-stage/node_modules/typebox/package.json",
       ),
     ).toBe(true);
     expect(
       isLegacyPluginDependencyInstallStagePath(
-        "dist/Extensions/browser/.OPENCLAW-INSTALL-STAGE-AbC123/node_modules/playwright-core/package.json",
+        "dist/Extensions/browser/.cimiclaw-INSTALL-STAGE-AbC123/node_modules/playwright-core/package.json",
       ),
     ).toBe(true);
     expect(
       isLegacyPluginDependencyInstallStagePath(
-        "Dist/Extensions/browser/.OpenClaw-Install-Stage/package.json",
+        "Dist/Extensions/browser/.cimiclaw-Install-Stage/package.json",
       ),
     ).toBe(true);
     expect(
       isLegacyPluginDependencyInstallStagePath(
-        "dist/extensions/browser/.openclaw-runtime-deps-copy-AbC123/package.json",
+        "dist/extensions/browser/.cimiclaw-runtime-deps-copy-AbC123/package.json",
       ),
     ).toBe(false);
     expect(
-      isLegacyPluginDependencyInstallStagePath("dist/extensions/.openclaw-install-stage"),
+      isLegacyPluginDependencyInstallStagePath("dist/extensions/.cimiclaw-install-stage"),
     ).toBe(false);
   });
 
@@ -360,7 +360,7 @@ describe("package dist inventory", () => {
         "dist",
         "extensions",
         "evil",
-        ".openclaw-install-stage",
+        ".cimiclaw-install-stage",
         "package.json",
       );
       const suffixedSeed = path.join(
@@ -368,7 +368,7 @@ describe("package dist inventory", () => {
         "dist",
         "extensions",
         "browser",
-        ".openclaw-install-stage-AbC123",
+        ".cimiclaw-install-stage-AbC123",
         "node_modules",
         "playwright-core",
         "package.json",
@@ -379,8 +379,8 @@ describe("package dist inventory", () => {
       await fs.writeFile(suffixedSeed, "{}", "utf8");
 
       await expect(collectLegacyPluginDependencyStagingDebrisPaths(packageRoot)).resolves.toEqual([
-        "dist/extensions/browser/.openclaw-install-stage-AbC123",
-        "dist/extensions/evil/.openclaw-install-stage",
+        "dist/extensions/browser/.cimiclaw-install-stage-AbC123",
+        "dist/extensions/evil/.cimiclaw-install-stage",
       ]);
       await expect(assertNoLegacyPluginDependencyStagingDebris(packageRoot)).rejects.toThrow(
         /unexpected legacy plugin dependency staging debris/,
@@ -400,14 +400,14 @@ describe("package dist inventory", () => {
           "dist",
           "Extensions",
           "evil",
-          ".OpenClaw-Install-Stage",
+          ".cimiclaw-Install-Stage",
           "package.json",
         );
         await fs.mkdir(path.dirname(mixedCaseStage), { recursive: true });
         await fs.writeFile(mixedCaseStage, "{}", "utf8");
 
         await expect(collectLegacyPluginDependencyStagingDebrisPaths(packageRoot)).resolves.toEqual(
-          ["dist/Extensions/evil/.OpenClaw-Install-Stage"],
+          ["dist/Extensions/evil/.cimiclaw-Install-Stage"],
         );
         await expect(writePackageDistInventory(packageRoot)).rejects.toThrow(
           /unexpected legacy plugin dependency staging debris/,
@@ -423,14 +423,14 @@ describe("package dist inventory", () => {
           "Dist",
           "Extensions",
           "browser",
-          ".OPENCLAW-INSTALL-STAGE-AbC123",
+          ".cimiclaw-INSTALL-STAGE-AbC123",
           "package.json",
         );
         await fs.mkdir(path.dirname(mixedCaseStage), { recursive: true });
         await fs.writeFile(mixedCaseStage, "{}", "utf8");
 
         await expect(collectLegacyPluginDependencyStagingDebrisPaths(packageRoot)).resolves.toEqual(
-          ["Dist/Extensions/browser/.OPENCLAW-INSTALL-STAGE-AbC123"],
+          ["Dist/Extensions/browser/.cimiclaw-INSTALL-STAGE-AbC123"],
         );
         await expect(writePackageDistInventory(packageRoot)).rejects.toThrow(
           /unexpected legacy plugin dependency staging debris/,

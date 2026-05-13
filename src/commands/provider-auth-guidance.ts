@@ -1,7 +1,7 @@
 import { normalizeProviderId } from "../agents/model-selection.js";
 import { resolveProviderAuthAliasMap } from "../agents/provider-auth-aliases.js";
 import { formatCliCommand } from "../cli/command-format.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveManifestProviderAuthChoices } from "../plugins/provider-auth-choices.js";
 
 function normalizeProviderIdForAuth(

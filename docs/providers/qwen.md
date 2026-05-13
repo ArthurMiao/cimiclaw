@@ -218,7 +218,7 @@ See [Video Generation](/tools/video-generation) for shared tool parameters, prov
     | Model         | `qwen-vl-max-latest`  |
     | Supported input | Images, video       |
 
-    Media understanding is auto-resolved from the configured Qwen auth â€” no
+    Media understanding is auto-resolved from the configured Qwen auth â€?no
     additional config is needed. Ensure you are using a Standard (pay-as-you-go)
     endpoint for media understanding support.
 
@@ -309,7 +309,7 @@ See [Video Generation](/tools/video-generation) for shared tool parameters, prov
 
   <Accordion title="Environment and daemon setup">
     If the Gateway runs as a daemon (launchd/systemd), make sure `QWEN_API_KEY` is
-    available to that process (for example, in `~/.openclaw/.env` or via
+    available to that process (for example, in `~/.cimiclaw/.env` or via
     `env.shellEnv`).
   </Accordion>
 </AccordionGroup>

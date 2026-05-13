@@ -2805,7 +2805,7 @@ describe("chat directive tag stripping for non-streaming final payloads", () => 
       },
     ];
     mockState.savedMediaResults = [
-      { path: "/home/user/.openclaw/media/inbound/report.pdf", contentType: "application/pdf" },
+      { path: "/home/user/.cimiclaw/media/inbound/report.pdf", contentType: "application/pdf" },
     ];
     const respond = vi.fn();
     const context = createChatContext();
@@ -2830,10 +2830,10 @@ describe("chat directive tag stripping for non-streaming final payloads", () => 
     });
 
     expect(mockState.lastDispatchCtx?.MediaPaths).toEqual([
-      "/home/user/.openclaw/media/inbound/report.pdf",
+      "/home/user/.cimiclaw/media/inbound/report.pdf",
     ]);
     expect(mockState.lastDispatchCtx?.MediaPath).toBe(
-      "/home/user/.openclaw/media/inbound/report.pdf",
+      "/home/user/.cimiclaw/media/inbound/report.pdf",
     );
     expect(mockState.lastDispatchCtx?.MediaTypes).toEqual(["application/pdf"]);
     expect(mockState.lastDispatchCtx?.MediaType).toBe("application/pdf");
@@ -2864,7 +2864,7 @@ describe("chat directive tag stripping for non-streaming final payloads", () => 
       },
     ];
     mockState.savedMediaResults = [
-      { path: "/home/user/.openclaw/media/inbound/report.pdf", contentType: "application/pdf" },
+      { path: "/home/user/.cimiclaw/media/inbound/report.pdf", contentType: "application/pdf" },
     ];
     mockState.sandboxWorkspace = { workspaceDir: "/sandbox/workspace" };
     mockState.stagedRelativePaths = ["media/inbound/report.pdf"];
@@ -2912,7 +2912,7 @@ describe("chat directive tag stripping for non-streaming final payloads", () => 
       },
     ];
     mockState.savedMediaResults = [
-      { path: "/home/user/.openclaw/media/inbound/report.pdf", contentType: "application/pdf" },
+      { path: "/home/user/.cimiclaw/media/inbound/report.pdf", contentType: "application/pdf" },
     ];
     mockState.sandboxWorkspace = { workspaceDir: "/sandbox/workspace" };
     const stageError = Object.assign(new Error("ENOSPC: no space left on device"), {
@@ -3032,12 +3032,12 @@ describe("chat directive tag stripping for non-streaming final payloads", () => 
       },
     ];
     mockState.savedMediaResults = [
-      { path: "/home/user/.openclaw/media/inbound/report.pdf", contentType: "application/pdf" },
-      { path: "/home/user/.openclaw/media/inbound/oversize.pdf", contentType: "application/pdf" },
+      { path: "/home/user/.cimiclaw/media/inbound/report.pdf", contentType: "application/pdf" },
+      { path: "/home/user/.cimiclaw/media/inbound/oversize.pdf", contentType: "application/pdf" },
     ];
     mockState.sandboxWorkspace = { workspaceDir: "/sandbox/workspace" };
     mockState.stagedRelativePaths = ["media/inbound/report.pdf", "media/inbound/oversize.pdf"];
-    mockState.unstagedSources = ["/home/user/.openclaw/media/inbound/oversize.pdf"];
+    mockState.unstagedSources = ["/home/user/.cimiclaw/media/inbound/oversize.pdf"];
     const respond = vi.fn();
     const context = createChatContext();
     const pdf = Buffer.from("%PDF-1.4\n").toString("base64");
@@ -3093,7 +3093,7 @@ describe("chat directive tag stripping for non-streaming final payloads", () => 
       },
     ];
     mockState.savedMediaResults = [
-      { path: "/home/user/.openclaw/media/inbound/huge.pdf", contentType: "application/pdf" },
+      { path: "/home/user/.cimiclaw/media/inbound/huge.pdf", contentType: "application/pdf" },
     ];
     mockState.sandboxWorkspace = { workspaceDir: "/sandbox/workspace" };
     const respond = vi.fn();

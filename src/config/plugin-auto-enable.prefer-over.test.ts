@@ -18,7 +18,7 @@ const tempDirs: string[] = [];
 function makeTempDir(): string {
   const trustedRoot = path.resolve("dist-runtime", "extensions");
   fs.mkdirSync(trustedRoot, { recursive: true });
-  const dir = fs.mkdtempSync(path.join(trustedRoot, ".openclaw-plugin-prefer-over-"));
+  const dir = fs.mkdtempSync(path.join(trustedRoot, ".cimiclaw-plugin-prefer-over-"));
   tempDirs.push(dir);
   return dir;
 }
@@ -42,7 +42,7 @@ function writeBundledChannelPackage(rootDir: string, channelId: string): void {
     "utf-8",
   );
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: channelId,
       configSchema: { type: "object" },

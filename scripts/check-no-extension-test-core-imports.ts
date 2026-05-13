@@ -152,7 +152,7 @@ const RETIRED_EXTENSION_TEST_HELPER_BRIDGE_FILES = [
   "test/helpers/temp-home.ts",
   "test/helpers/agents/auth-profile-runtime-contract.ts",
   "test/helpers/agents/delivery-no-reply-runtime-contract.ts",
-  "test/helpers/agents/openclaw-owned-tool-runtime-contract.ts",
+  "test/helpers/agents/cimiclaw-owned-tool-runtime-contract.ts",
   "test/helpers/agents/outcome-fallback-runtime-contract.ts",
   "test/helpers/agents/prompt-overlay-runtime-contract.ts",
   "test/helpers/agents/schema-normalization-runtime-contract.ts",

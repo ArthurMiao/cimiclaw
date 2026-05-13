@@ -46,7 +46,7 @@ function posixAssertAgentOkScript(command: string, input: NpmUpdateScriptInput, 
 for attempt in 1 2; do
   session_id=${shellQuote(sessionId)}
   if [ "$attempt" -gt 1 ]; then session_id=${shellQuote(`${sessionId}-retry`)}"-$attempt"; fi
-  rm -f "$HOME/.openclaw/agents/main/sessions/$session_id.jsonl"
+  rm -f "$HOME/.cimiclaw/agents/main/sessions/$session_id.jsonl"
   output_file="$(mktemp)"
   set +e
   OPENCLAW_ALLOW_ROOT="\${OPENCLAW_ALLOW_ROOT:-}" ${input.auth.apiKeyEnv}=${shellQuote(input.auth.apiKeyValue)} ${command} agent --local --agent main --session-id "$session_id" --message 'Reply with exact ASCII text OK only.' --thinking minimal --json >"$output_file" 2>&1
@@ -108,14 +108,14 @@ Wait-OpenClawGateway`;
 
 function windowsAssertAgentOkScript(input: NpmUpdateScriptInput): string {
   return `${windowsAgentTurnConfigPatchScript(input.auth.modelId)}
-$sessionPath = Join-Path $env:USERPROFILE '.openclaw\\agents\\main\\sessions\\parallels-npm-update-windows.jsonl'
+$sessionPath = Join-Path $env:USERPROFILE '.cimiclaw\\agents\\main\\sessions\\parallels-npm-update-windows.jsonl'
 Remove-Item $sessionPath -Force -ErrorAction SilentlyContinue
 ${windowsAgentWorkspaceScript("Parallels npm update smoke test assistant.")}
 Set-Item -Path ('Env:' + ${psSingleQuote(input.auth.apiKeyEnv)}) -Value ${psSingleQuote(input.auth.apiKeyValue)}
 $agentOk = $false
 for ($attempt = 1; $attempt -le 2; $attempt++) {
   $sessionId = if ($attempt -eq 1) { 'parallels-npm-update-windows' } else { "parallels-npm-update-windows-retry-$attempt" }
-  $sessionsDir = Join-Path $env:USERPROFILE '.openclaw\\agents\\main\\sessions'
+  $sessionsDir = Join-Path $env:USERPROFILE '.cimiclaw\\agents\\main\\sessions'
   $sessionPath = Join-Path $sessionsDir "$sessionId.jsonl"
   Remove-Item $sessionPath -Force -ErrorAction SilentlyContinue
   $output = Invoke-OpenClaw agent --local --agent main --session-id $sessionId --model ${psSingleQuote(input.auth.modelId)} --message 'Reply with exact ASCII text OK only.' --thinking minimal --timeout ${resolveParallelsModelTimeoutSeconds("windows")} --json 2>&1
@@ -140,7 +140,7 @@ scrub_future_plugin_entries() {
   python3 - <<'PY'
 import json
 from pathlib import Path
-path = Path.home() / ".openclaw" / "openclaw.json"
+path = Path.home() / ".cimiclaw" / "openclaw.json"
 if not path.exists():
     raise SystemExit(0)
 try:
@@ -177,7 +177,7 @@ start_openclaw_gateway() {
   stop_openclaw_gateway_processes
   rm -f /tmp/openclaw-parallels-macos-gateway.log
   trap '' HUP
-  /usr/bin/env OPENCLAW_HOME="$HOME" OPENCLAW_STATE_DIR="$HOME/.openclaw" OPENCLAW_CONFIG_PATH="$HOME/.openclaw/openclaw.json" ${input.auth.apiKeyEnv}=${shellQuote(
+  /usr/bin/env OPENCLAW_HOME="$HOME" OPENCLAW_STATE_DIR="$HOME/.cimiclaw" OPENCLAW_CONFIG_PATH="$HOME/.cimiclaw/openclaw.json" ${input.auth.apiKeyEnv}=${shellQuote(
     input.auth.apiKeyValue,
   )} /opt/homebrew/bin/openclaw gateway run --bind loopback --port 18789 --force >/tmp/openclaw-parallels-macos-gateway.log 2>&1 </dev/null &
   sleep 1
@@ -214,7 +214,7 @@ $PSNativeCommandUseErrorActionPreference = $false
 ${windowsOpenClawResolver}
 ${windowsScopedEnvFunction}
 function Remove-FuturePluginEntries {
-  $configPath = Join-Path $env:USERPROFILE '.openclaw\\openclaw.json'
+  $configPath = Join-Path $env:USERPROFILE '.cimiclaw\\openclaw.json'
   if (-not (Test-Path $configPath)) { return }
   try { $config = Get-Content $configPath -Raw | ConvertFrom-Json -AsHashtable } catch { return }
   $plugins = $config['plugins']
@@ -263,7 +263,7 @@ scrub_future_plugin_entries() {
   node - <<'JS'
 const fs = require("node:fs");
 const path = require("node:path");
-const configPath = path.join(process.env.HOME || "/root", ".openclaw", "openclaw.json");
+const configPath = path.join(process.env.HOME || "/root", ".cimiclaw", "openclaw.json");
 if (!fs.existsSync(configPath)) process.exit(0);
 let config;
 try { config = JSON.parse(fs.readFileSync(configPath, "utf8")); } catch { process.exit(0); }
@@ -288,7 +288,7 @@ start_openclaw_gateway() {
   pkill -f "openclaw gateway run" >/dev/null 2>&1 || true
   rm -f /tmp/openclaw-parallels-linux-gateway.log
   setsid sh -lc ${shellQuote(
-    `exec env OPENCLAW_HOME=/root OPENCLAW_STATE_DIR=/root/.openclaw OPENCLAW_CONFIG_PATH=/root/.openclaw/openclaw.json OPENCLAW_DISABLE_BONJOUR=1 OPENCLAW_ALLOW_ROOT=1 ${input.auth.apiKeyEnv}=${shellQuote(
+    `exec env OPENCLAW_HOME=/root OPENCLAW_STATE_DIR=/root/.cimiclaw OPENCLAW_CONFIG_PATH=/root/.cimiclaw/openclaw.json OPENCLAW_DISABLE_BONJOUR=1 OPENCLAW_ALLOW_ROOT=1 ${input.auth.apiKeyEnv}=${shellQuote(
       input.auth.apiKeyValue,
     )} openclaw gateway run --bind loopback --port 18789 --force >/tmp/openclaw-parallels-linux-gateway.log 2>&1`,
   )} >/dev/null 2>&1 < /dev/null &

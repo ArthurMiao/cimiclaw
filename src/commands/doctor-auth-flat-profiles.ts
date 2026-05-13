@@ -11,7 +11,7 @@ import type { AuthProfileCredential, AuthProfileStore } from "../agents/auth-pro
 import { formatCliCommand } from "../cli/command-format.js";
 import { resolveStateDir } from "../config/paths.js";
 import type { AuthProfileConfig } from "../config/types.auth.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { loadJsonFile } from "../infra/json-file.js";
 import { note } from "../terminal/note.js";
 import { shortenHomePath } from "../utils.js";
@@ -333,7 +333,7 @@ export async function maybeRepairLegacyFlatAuthProfileStores(params: {
     ),
     ...awsSdkMarkerStores.map(
       (entry) =>
-        `- ${shortenHomePath(entry.authPath)} contains aws-sdk profile markers that belong in openclaw.json auth.profiles.`,
+        `- ${shortenHomePath(entry.authPath)} contains aws-sdk profile markers that belong in cimiclaw.json auth.profiles.`,
     ),
   ];
   if (legacyStores.length > 0) {

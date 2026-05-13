@@ -33,7 +33,7 @@ function requireFinding(
 describe("security audit exec surface findings", () => {
   // Redirect the OpenClaw home (OPENCLAW_HOME wins over HOME/USERPROFILE in
   // `resolveRawHomeDir`) to a per-test tempdir so `saveExecApprovals` never
-  // touches the real `~/.openclaw/exec-approvals.json` on the host running
+  // touches the real `~/.cimiclaw/exec-approvals.json` on the host running
   // the suite.
   let previousOpenClawHome: string | undefined;
   let previousHome: string | undefined;
@@ -50,7 +50,7 @@ describe("security audit exec surface findings", () => {
     previousHome = process.env.HOME;
     previousUserProfile = process.env.USERPROFILE;
     const tempDir = path.join(tempRoot, `case-${++tempCaseIndex}`);
-    await fs.mkdir(path.join(tempDir, ".openclaw"), { recursive: true });
+    await fs.mkdir(path.join(tempDir, ".cimiclaw"), { recursive: true });
     // OPENCLAW_HOME takes precedence over HOME/USERPROFILE in resolveRawHomeDir,
     // so all three must point at the tempdir to neutralize whichever the host
     // happens to have set.

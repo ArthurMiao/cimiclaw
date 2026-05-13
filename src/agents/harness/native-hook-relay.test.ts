@@ -90,7 +90,7 @@ describe("native hook relay registry", () => {
       allowedEvents: ["pre_tool_use"],
       ttlMs: 10_000,
       command: {
-        executable: "/opt/Open Claw/openclaw.mjs",
+        executable: "/opt/Open Claw/cimiclaw.mjs",
         nodeExecutable: "/usr/local/bin/node",
         timeoutMs: 1234,
       },
@@ -109,7 +109,7 @@ describe("native hook relay registry", () => {
       },
     );
     expect(relay.commandForEvent("pre_tool_use")).toBe(
-      "/usr/local/bin/node '/opt/Open Claw/openclaw.mjs' hooks relay --provider codex --relay-id " +
+      "/usr/local/bin/node '/opt/Open Claw/cimiclaw.mjs' hooks relay --provider codex --relay-id " +
         `${relay.relayId} --event pre_tool_use --timeout 1234`,
     );
   });

@@ -92,7 +92,7 @@ describe("resolveSessionStoreTargets", () => {
     await withTempHome(async () => {
       const cfg: OpenClawConfig = {
         session: {
-          store: "~/.openclaw/agents/{agentId}/sessions/sessions.json",
+          store: "~/.cimiclaw/agents/{agentId}/sessions/sessions.json",
         },
         agents: {
           list: [{ id: "main", default: true }, { id: "work" }],
@@ -184,7 +184,7 @@ describe("resolveAgentSessionStoreTargetsSync", () => {
 describe("resolveAllAgentSessionStoreTargets", () => {
   it("includes discovered on-disk agent stores alongside configured targets", async () => {
     await withTempHome(async (home) => {
-      const stateDir = path.join(home, ".openclaw");
+      const stateDir = path.join(home, ".cimiclaw");
       const storePaths = await createAgentSessionStores(stateDir, ["ops", "retired"]);
 
       const cfg: OpenClawConfig = {
@@ -311,7 +311,7 @@ describe("resolveAllAgentSessionStoreTargets", () => {
 
   it("skips discovered directories that only normalize into the default main agent", async () => {
     await withTempHome(async (home) => {
-      const stateDir = path.join(home, ".openclaw");
+      const stateDir = path.join(home, ".cimiclaw");
       const mainSessionsDir = path.join(stateDir, "agents", "main", "sessions");
       const junkSessionsDir = path.join(stateDir, "agents", "###", "sessions");
       await fs.mkdir(mainSessionsDir, { recursive: true });

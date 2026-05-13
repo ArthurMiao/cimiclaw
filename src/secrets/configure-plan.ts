@@ -1,6 +1,6 @@
 import { isDeepStrictEqual } from "node:util";
 import type { AuthProfileStore } from "../agents/auth-profiles/types.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   resolveSecretInputRef,
   type SecretProviderConfig,
@@ -18,7 +18,7 @@ export type ConfigureCandidate = {
   path: string;
   pathSegments: string[];
   label: string;
-  configFile: "openclaw.json" | "auth-profiles.json";
+  configFile: "cimiclaw.json" | "auth-profiles.json";
   expectedResolvedValue: "string" | "string-or-object";
   existingRef?: SecretRef;
   isDerived?: boolean;
@@ -103,7 +103,7 @@ export function buildConfigureCandidatesForScope(params: {
           path: entry.path,
           pathSegments: [...entry.pathSegments],
           label: entry.path,
-          configFile: `openclaw.json` as const,
+          configFile: `cimiclaw.json` as const,
           expectedResolvedValue: entry.entry.expectedResolvedValue,
         },
         resolved.ref ? { existingRef: resolved.ref } : {},

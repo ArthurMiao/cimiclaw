@@ -14,7 +14,7 @@ vi.mock("../process/exec.js", () => ({
   runCommandWithTimeout: (...args: unknown[]) => runCommandWithTimeoutMock(...args),
 }));
 
-vi.mock("../infra/openclaw-root.js", () => ({
+vi.mock("../infra/cimiclaw-root.js", () => ({
   resolveOpenClawPackageRootSync: (...args: unknown[]) =>
     resolveOpenClawPackageRootSyncMock(...args),
 }));
@@ -102,7 +102,7 @@ function writeInstalledNpmPlugin(params: {
     "utf-8",
   );
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: params.pluginId ?? params.packageName,
       name: params.pluginId ?? params.packageName,
@@ -493,7 +493,7 @@ describe("installPluginFromNpmSpec", () => {
     expect(runCommandWithTimeoutMock.mock.calls).toHaveLength(1);
   });
 
-  it("installs npm plugins into .openclaw/npm", async () => {
+  it("installs npm plugins into .cimiclaw/npm", async () => {
     const stateDir = suiteTempRootTracker.makeTempDir();
     const npmRoot = path.join(stateDir, "npm");
 
@@ -878,7 +878,7 @@ describe("installPluginFromNpmSpec", () => {
       dependencies?: Record<string, unknown>;
     };
     expect(lockfile.packages?.["node_modules/openclaw"]).toBeUndefined();
-    expect(lockfile.dependencies?.openclaw).toBeUndefined();
+    expect(lockfile.dependencies?.cimiclaw).toBeUndefined();
   });
 
   it("allows npm-spec installs with dangerous code patterns when forced unsafe install is set", async () => {

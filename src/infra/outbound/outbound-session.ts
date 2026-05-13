@@ -6,7 +6,7 @@ import {
   recordSessionMetaFromInbound,
   resolveStorePath,
 } from "../../config/sessions/inbound.runtime.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { RoutePeer } from "../../routing/resolve-route.js";
 import { resolveAgentIdFromSessionKey } from "../../routing/session-key.js";
 import { normalizeLowercaseStringOrEmpty } from "../../shared/string-coerce.js";

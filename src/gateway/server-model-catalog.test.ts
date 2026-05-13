@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { GatewayModelChoice } from "./server-model-catalog.js";
 import {
   __resetModelCatalogCacheForTest,

@@ -135,7 +135,7 @@ export function createHarnessEnv(params: {
     OPENCLAW_NPM_TELEGRAM_PROVIDER_MODE: params.providerMode,
     OPENCLAW_NPM_TELEGRAM_SCENARIOS: params.scenarios.join(","),
     OPENCLAW_NPM_TELEGRAM_OUTPUT_DIR: params.rawOutputDir,
-    OPENCLAW_NPM_TELEGRAM_FAST: params.baseEnv.OPENCLAW_NPM_TELEGRAM_FAST ?? "1",
+    OPENCLAW_NPM_TELEGRAM_FAST: params.baseEnv.cimiclaw_NPM_TELEGRAM_FAST ?? "1",
     OPENCLAW_NPM_TELEGRAM_WARM_SAMPLES: String(params.samples),
     OPENCLAW_NPM_TELEGRAM_SAMPLE_TIMEOUT_MS: String(params.sampleTimeoutMs),
     OPENCLAW_QA_TELEGRAM_CANARY_TIMEOUT_MS: String(params.timeoutMs),

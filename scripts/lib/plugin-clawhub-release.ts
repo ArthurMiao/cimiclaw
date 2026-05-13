@@ -118,7 +118,7 @@ export function collectClawHubPublishablePluginPackages(
     if (hasSelectedPackageNames && !selectedPackageNames.has(packageName)) {
       continue;
     }
-    if (packageJson.openclaw?.release?.publishToClawHub !== true) {
+    if (packageJson.cimiclaw?.release?.publishToClawHub !== true) {
       continue;
     }
     if (!SAFE_EXTENSION_ID_RE.test(extensionId)) {
@@ -300,7 +300,7 @@ export function collectClawHubVersionGateErrors(params: {
       ref: params.gitRange.baseRef,
       packageDir: plugin.packageDir,
     });
-    if (baseManifest?.openclaw?.release?.publishToClawHub !== true) {
+    if (baseManifest?.cimiclaw?.release?.publishToClawHub !== true) {
       continue;
     }
     const baseVersion =

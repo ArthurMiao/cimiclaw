@@ -6,7 +6,7 @@ import { normalizeChannelId as normalizeBundledChannelId } from "../channels/reg
 import { formatUnknownChannelMessage } from "../cli/error-format.js";
 import { isRouteBinding, listRouteBindings } from "../config/bindings.js";
 import type { AgentRouteBinding } from "../config/types.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { listManifestChannelContributionIds } from "../plugins/manifest-contribution-ids.js";
 import { DEFAULT_ACCOUNT_ID, normalizeAgentId } from "../routing/session-key.js";
 import { normalizeOptionalString } from "../shared/string-coerce.js";

@@ -5,7 +5,7 @@ import {
   resolveGatewayPort as resolveGatewayPortFromPaths,
   resolveStateDir as resolveStateDirFromPaths,
 } from "../config/paths.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { loadOrCreateDeviceIdentity, type DeviceIdentity } from "../infra/device-identity.js";
 import { loadGatewayTlsRuntime } from "../infra/tls/gateway.js";
 import { isLoopbackIpAddress } from "../shared/net/ip.js";

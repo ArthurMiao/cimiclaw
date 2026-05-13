@@ -1,7 +1,7 @@
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { resolveAgentWorkspaceDir, resolveDefaultAgentId } from "../../agents/agent-scope.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { formatErrorMessage } from "../../infra/errors.js";
 import { isBlockedObjectKey } from "../../infra/prototype-keys.js";
 import { createSubsystemLogger } from "../../logging/subsystem.js";

@@ -19,7 +19,7 @@ OpenClaw ships with a built-in `legacy` engine and uses it by default - most use
     ```bash
     openclaw doctor
     # or inspect config directly:
-    cat ~/.openclaw/openclaw.json | jq '.plugins.slots.contextEngine'
+    cat ~/.cimiclaw/cimiclaw.json | jq '.plugins.slots.contextEngine'
     ```
   </Step>
   <Step title="Install a plugin engine">
@@ -41,7 +41,7 @@ OpenClaw ships with a built-in `legacy` engine and uses it by default - most use
   </Step>
   <Step title="Enable and select the engine">
     ```json5
-    // openclaw.json
+    // cimiclaw.json
     {
       plugins: {
         slots: {
@@ -106,7 +106,7 @@ The `assemble` method can return a `systemPromptAddition` string. OpenClaw prepe
 The built-in `legacy` engine preserves OpenClaw's original behavior:
 
 - **Ingest**: no-op (the session manager handles message persistence directly).
-- **Assemble**: pass-through (the existing sanitize â†’ validate â†’ limit pipeline in the runtime handles context assembly).
+- **Assemble**: pass-through (the existing sanitize â†?validate â†?limit pipeline in the runtime handles context assembly).
 - **Compact**: delegates to the built-in summarization compaction, which creates a single summary of older messages and keeps recent messages intact.
 - **After turn**: no-op.
 

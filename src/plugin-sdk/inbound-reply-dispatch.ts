@@ -21,7 +21,7 @@ import type { DurableInboundReplyDeliveryOptions } from "../channels/turn/kernel
 import type { PreparedChannelTurn, RunChannelTurnParams } from "../channels/turn/types.js";
 export type { ChannelTurnRecordOptions } from "../channels/turn/types.js";
 export type { DurableInboundReplyDeliveryParams } from "../channels/turn/kernel.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { createChannelReplyPipeline } from "./channel-reply-core.js";
 import {
   normalizeOutboundReplyPayload,

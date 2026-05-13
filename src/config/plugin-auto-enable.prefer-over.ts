@@ -6,7 +6,7 @@ import { normalizeOptionalString } from "../shared/string-coerce.js";
 import { normalizeStringEntries } from "../shared/string-normalization.js";
 import { isRecord, resolveConfigDir, resolveUserPath } from "../utils.js";
 import type { PluginAutoEnableCandidate } from "./plugin-auto-enable.types.js";
-import type { OpenClawConfig } from "./types.openclaw.js";
+import type { OpenClawConfig } from "./types.cimiclaw.js";
 
 type ExternalCatalogChannelEntry = {
   id: string;
@@ -54,10 +54,10 @@ function parseExternalCatalogChannelEntries(raw: unknown): ExternalCatalogChanne
 
   const channels: ExternalCatalogChannelEntry[] = [];
   for (const entry of list) {
-    if (!isRecord(entry) || !isRecord(entry.openclaw) || !isRecord(entry.openclaw.channel)) {
+    if (!isRecord(entry) || !isRecord(entry.cimiclaw) || !isRecord(entry.cimiclaw.channel)) {
       continue;
     }
-    const channel = entry.openclaw.channel;
+    const channel = entry.cimiclaw.channel;
     const id = normalizeOptionalString(channel.id) ?? "";
     if (!id) {
       continue;

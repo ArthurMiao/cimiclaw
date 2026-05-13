@@ -37,10 +37,10 @@ describe("gateway tool defaults", () => {
   });
 
   afterAll(() => {
-    if (envSnapshot.openclaw === undefined) {
+    if (envSnapshot.cimiclaw === undefined) {
       delete process.env.OPENCLAW_GATEWAY_TOKEN;
     } else {
-      process.env.OPENCLAW_GATEWAY_TOKEN = envSnapshot.openclaw;
+      process.env.OPENCLAW_GATEWAY_TOKEN = envSnapshot.cimiclaw;
     }
   });
 

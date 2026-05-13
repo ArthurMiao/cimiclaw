@@ -9,7 +9,7 @@ const hoisted = await vi.hoisted(async () => {
   return {
     ...createExportCommandSessionMocks(vi),
     exportTrajectoryBundleMock: vi.fn(() => ({
-      outputDir: "/tmp/workspace/.openclaw/trajectory-exports/openclaw-trajectory-session",
+      outputDir: "/tmp/workspace/.cimiclaw/trajectory-exports/openclaw-trajectory-session",
       manifest: {
         eventCount: 7,
         runtimeEventCount: 3,
@@ -20,7 +20,7 @@ const hoisted = await vi.hoisted(async () => {
       supplementalFiles: ["metadata.json", "artifacts.json", "prompts.json"],
     })),
     resolveDefaultTrajectoryExportDirMock: vi.fn(
-      () => "/tmp/workspace/.openclaw/trajectory-exports/openclaw-trajectory-session",
+      () => "/tmp/workspace/.cimiclaw/trajectory-exports/openclaw-trajectory-session",
     ),
     accessMock: vi.fn(
       async (file: fs.PathLike, actualAccess: (path: fs.PathLike) => Promise<void>) => {
@@ -251,7 +251,7 @@ describe("buildExportTrajectoryReply", () => {
     await buildExportTrajectoryReply(params);
 
     expect(exportBundleParams().outputDir).toBe(
-      path.join(params.workspaceDir, ".openclaw", "trajectory-exports", "my-bundle"),
+      path.join(params.workspaceDir, ".cimiclaw", "trajectory-exports", "my-bundle"),
     );
   });
 
@@ -304,8 +304,8 @@ describe("buildExportTrajectoryReply", () => {
   it("rejects output paths redirected by a symlinked exports directory", async () => {
     const workspaceDir = makeTempDir();
     const outsideDir = makeTempDir();
-    fs.mkdirSync(path.join(workspaceDir, ".openclaw"), { recursive: true });
-    fs.symlinkSync(outsideDir, path.join(workspaceDir, ".openclaw", "trajectory-exports"));
+    fs.mkdirSync(path.join(workspaceDir, ".cimiclaw"), { recursive: true });
+    fs.symlinkSync(outsideDir, path.join(workspaceDir, ".cimiclaw", "trajectory-exports"));
     const params = makeParams(workspaceDir);
     params.command.commandBodyNormalized = "/export-trajectory my-bundle";
 
@@ -318,8 +318,8 @@ describe("buildExportTrajectoryReply", () => {
   it("rejects default output paths redirected by a symlinked exports directory", async () => {
     const workspaceDir = makeTempDir();
     const outsideDir = makeTempDir();
-    fs.mkdirSync(path.join(workspaceDir, ".openclaw"), { recursive: true });
-    fs.symlinkSync(outsideDir, path.join(workspaceDir, ".openclaw", "trajectory-exports"));
+    fs.mkdirSync(path.join(workspaceDir, ".cimiclaw"), { recursive: true });
+    fs.symlinkSync(outsideDir, path.join(workspaceDir, ".cimiclaw", "trajectory-exports"));
 
     const reply = await buildExportTrajectoryReply(makeParams(workspaceDir));
 
@@ -330,7 +330,7 @@ describe("buildExportTrajectoryReply", () => {
   it("rejects symlinked state directories before creating export folders", async () => {
     const workspaceDir = makeTempDir();
     const outsideDir = makeTempDir();
-    fs.symlinkSync(outsideDir, path.join(workspaceDir, ".openclaw"));
+    fs.symlinkSync(outsideDir, path.join(workspaceDir, ".cimiclaw"));
     const params = makeParams(workspaceDir);
     params.command.commandBodyNormalized = "/export-trajectory my-bundle";
 
@@ -356,7 +356,7 @@ describe("buildExportTrajectoryCommandReply", () => {
     expect(reply.text).toContain(
       "Trajectory exports can include prompts, model messages, tool schemas",
     );
-    expect(reply.text).toContain("https://docs.openclaw.ai/tools/trajectory");
+    expect(reply.text).toContain("https://docs.cimiclaw.ai/tools/trajectory");
     expect(reply.text).toContain("do not use allow-all");
     expect(reply.text).toContain("Allowed decisions: allow-once, deny");
     expect(execCalls).toHaveLength(1);

@@ -565,10 +565,10 @@ describe("test-projects args", () => {
 
     const firstEnv = specs[0]?.env;
     expect(firstEnv?.KEEP_ME).toBe("1");
-    expect(firstEnv?.OPENCLAW_VITEST_FS_MODULE_CACHE_PATH).toBe(
+    expect(firstEnv?.cimiclaw_VITEST_FS_MODULE_CACHE_PATH).toBe(
       "/repo/node_modules/.experimental-vitest-cache/0-test-vitest-vitest.gateway.config.ts",
     );
-    expect(specs[1]?.env.OPENCLAW_VITEST_FS_MODULE_CACHE_PATH).toBe(
+    expect(specs[1]?.env.cimiclaw_VITEST_FS_MODULE_CACHE_PATH).toBe(
       "/repo/node_modules/.experimental-vitest-cache/1-test-vitest-vitest.gateway-server.config.ts",
     );
   });
@@ -996,7 +996,7 @@ describe("test-projects args", () => {
       "extensions/discord/src/monitor/message-handler.preflight.test.ts",
     ]);
     expect(spec?.includeFilePath).toContain("openclaw-vitest-include-");
-    expect(spec?.env.OPENCLAW_VITEST_INCLUDE_FILE).toBe(spec?.includeFilePath);
+    expect(spec?.env.cimiclaw_VITEST_INCLUDE_FILE).toBe(spec?.includeFilePath);
   });
 
   it("skips channel contract configs with no matching external include patterns", () => {

@@ -44,13 +44,13 @@ describe("cleanupLegacyPluginDependencyState", () => {
       "dist",
       "extensions",
       "demo",
-      ".openclaw-runtime-deps-stamp.json",
+      ".cimiclaw-runtime-deps-stamp.json",
     );
     const legacyManifest = path.join(
       packageRoot,
       "extensions",
       "demo",
-      ".openclaw-runtime-deps.json",
+      ".cimiclaw-runtime-deps.json",
     );
     const thirdPartyNodeModules = path.join(
       stateDir,

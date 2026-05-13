@@ -52,7 +52,7 @@ API key auth, and dynamic model resolution.
     }
     ```
 
-    ```json openclaw.plugin.json
+    ```json cimiclaw.plugin.json
     {
       "id": "acme-ai",
       "name": "Acme AI",
@@ -774,7 +774,7 @@ Do not use the legacy skill-only publish alias here; plugin packages should use
 ```
 <bundled-plugin-root>/acme-ai/
 ├── package.json              # openclaw.providers metadata
-├── openclaw.plugin.json      # Manifest with provider auth metadata
+├── cimiclaw.plugin.json      # Manifest with provider auth metadata
 ├── index.ts                  # definePluginEntry + registerProvider
 └── src/
     ├── provider.test.ts      # Tests

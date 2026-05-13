@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { resolveDefaultAgentWorkspaceDir } from "../agents/workspace.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { isPathInside } from "../infra/path-guards.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { resolveHomeDir, resolveUserPath, shortenHomeInString } from "../utils.js";

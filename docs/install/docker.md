@@ -257,17 +257,17 @@ For gotchas and troubleshooting, see [Bonjour discovery](/gateway/bonjour).
 
 ### Storage and persistence
 
-Docker Compose bind-mounts `OPENCLAW_CONFIG_DIR` to `/home/node/.openclaw` and
-`OPENCLAW_WORKSPACE_DIR` to `/home/node/.openclaw/workspace`, so those paths
+Docker Compose bind-mounts `OPENCLAW_CONFIG_DIR` to `/home/node/.cimiclaw` and
+`OPENCLAW_WORKSPACE_DIR` to `/home/node/.cimiclaw/workspace`, so those paths
 survive container replacement. When either variable is unset, the bundled
-`docker-compose.yml` falls back to `${HOME}/.openclaw` (and
-`${HOME}/.openclaw/workspace` for the workspace mount), or `/tmp/.openclaw`
+`docker-compose.yml` falls back to `${HOME}/.cimiclaw` (and
+`${HOME}/.cimiclaw/workspace` for the workspace mount), or `/tmp/.cimiclaw`
 when `HOME` itself is also missing. That keeps `docker compose up` from
 emitting an empty-source volume spec on bare environments.
 
 That mounted config directory is where OpenClaw keeps:
 
-- `openclaw.json` for behavior config
+- `cimiclaw.json` for behavior config
 - `agents/<agentId>/agent/auth-profiles.json` for stored provider OAuth/API-key auth
 - `.env` for env-backed runtime secrets such as `OPENCLAW_GATEWAY_TOKEN`
 
@@ -363,7 +363,7 @@ See [ClawDock](/install/clawdock) for the full helper guide.
 
   <Accordion title="Permissions and EACCES">
     The image runs as `node` (uid 1000). If you see permission errors on
-    `/home/node/.openclaw`, make sure your host bind mounts are owned by uid 1000:
+    `/home/node/.cimiclaw`, make sure your host bind mounts are owned by uid 1000:
 
     ```bash
     sudo chown -R 1000:1000 /path/to/openclaw-config /path/to/openclaw-workspace
@@ -535,8 +535,8 @@ For npm installs without a source checkout, see [Sandboxing § Images and setup]
 
 ## Related
 
-- [Install Overview](/install) — all installation methods
-- [Podman](/install/podman) — Podman alternative to Docker
-- [ClawDock](/install/clawdock) — Docker Compose community setup
-- [Updating](/install/updating) — keeping OpenClaw up to date
-- [Configuration](/gateway/configuration) — gateway configuration after install
+- [Install Overview](/install) �?all installation methods
+- [Podman](/install/podman) �?Podman alternative to Docker
+- [ClawDock](/install/clawdock) �?Docker Compose community setup
+- [Updating](/install/updating) �?keeping OpenClaw up to date
+- [Configuration](/gateway/configuration) �?gateway configuration after install

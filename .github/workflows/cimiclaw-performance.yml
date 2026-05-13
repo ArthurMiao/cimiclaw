@@ -359,7 +359,7 @@ jobs:
           fi
 
           mkdir -p "$SOURCE_PERF_DIR/mock-hello"
-          if ! node -e "const fs=require('node:fs'); const scripts=require('./package.json').scripts||{}; process.exit(scripts['test:gateway:cpu-scenarios'] && scripts.openclaw && fs.existsSync('scripts/bench-cli-startup.ts') ? 0 : 1)"; then
+          if ! node -e "const fs=require('node:fs'); const scripts=require('./package.json').scripts||{}; process.exit(scripts['test:gateway:cpu-scenarios'] && scripts.cimiclaw && fs.existsSync('scripts/bench-cli-startup.ts') ? 0 : 1)"; then
             cat > "$SOURCE_PERF_DIR/index.md" <<EOF
           # OpenClaw Source Performance
 
@@ -403,8 +403,8 @@ jobs:
 
           gateway_home="$(mktemp -d)"
           gateway_port="$(node -e "const net=require('node:net'); const s=net.createServer(); s.listen(0,'127.0.0.1',()=>{ console.log(s.address().port); s.close(); });")"
-          gateway_state="$gateway_home/.openclaw"
-          gateway_config="$gateway_state/openclaw.json"
+          gateway_state="$gateway_home/.cimiclaw"
+          gateway_config="$gateway_state/cimiclaw.json"
           gateway_log="$SOURCE_PERF_DIR/cli-gateway.log"
           gateway_pid=""
           mkdir -p "$gateway_state"
@@ -460,7 +460,7 @@ jobs:
           cleanup_gateway
           trap - EXIT
 
-          node "$PERFORMANCE_HELPER_DIR/scripts/openclaw-performance-source-summary.mjs" \
+          node "$PERFORMANCE_HELPER_DIR/scripts/cimiclaw-performance-source-summary.mjs" \
             --source-dir "$SOURCE_PERF_DIR" \
             --output "$SOURCE_PERF_DIR/index.md"
 

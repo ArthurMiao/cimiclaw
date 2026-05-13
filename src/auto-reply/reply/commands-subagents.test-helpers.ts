@@ -1,5 +1,5 @@
 import type { SubagentRunRecord } from "../../agents/subagent-registry.types.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { handleSubagentsSendAction } from "./commands-subagents/action-send.js";
 import type { InlineDirectives } from "./directive-handling.js";
 

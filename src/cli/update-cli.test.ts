@@ -6,7 +6,7 @@ import path from "node:path";
 import { Command } from "commander";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { TEST_BUNDLED_RUNTIME_SIDECAR_PATHS } from "../../test/helpers/bundled-runtime-sidecars.js";
-import type { OpenClawConfig, ConfigFileSnapshot } from "../config/types.openclaw.js";
+import type { OpenClawConfig, ConfigFileSnapshot } from "../config/types.cimiclaw.js";
 import { writePackageDistInventory } from "../infra/package-dist-inventory.js";
 import { isBetaTag } from "../infra/update-channels.js";
 import type { UpdateRunResult } from "../infra/update-runner.js";
@@ -61,7 +61,7 @@ vi.mock("../infra/update-runner.js", () => ({
   runGatewayUpdate: vi.fn(),
 }));
 
-vi.mock("../infra/openclaw-root.js", () => ({
+vi.mock("../infra/cimiclaw-root.js", () => ({
   resolveOpenClawPackageRoot: vi.fn(),
   resolveOpenClawPackageRootSync: vi.fn(() => process.cwd()),
 }));
@@ -71,10 +71,10 @@ vi.mock("../config/config.js", () => ({
     if (process.env.OPENCLAW_NIX_MODE === "1") {
       throw new Error(
         [
-          "Config is managed by Nix (`OPENCLAW_NIX_MODE=1`), so OpenClaw treats openclaw.json as immutable.",
+          "Config is managed by Nix (`OPENCLAW_NIX_MODE=1`), so OpenClaw treats cimiclaw.json as immutable.",
           "Do not run setup, onboarding, openclaw update, plugin install/update/uninstall/enable, doctor repair/token-generation, or config set against this file.",
           "Agent-first Nix setup: https://github.com/openclaw/nix-openclaw#quick-start",
-          "OpenClaw Nix overview: https://docs.openclaw.ai/install/nix",
+          "OpenClaw Nix overview: https://docs.cimiclaw.ai/install/nix",
         ].join("\n"),
       );
     }
@@ -264,7 +264,7 @@ vi.mock("../runtime.js", () => ({
 }));
 
 const { runGatewayUpdate } = await import("../infra/update-runner.js");
-const { resolveOpenClawPackageRoot } = await import("../infra/openclaw-root.js");
+const { resolveOpenClawPackageRoot } = await import("../infra/cimiclaw-root.js");
 const { ConfigMutationConflictError, readConfigFileSnapshot, replaceConfigFile } =
   await import("../config/config.js");
 const { checkUpdateStatus, fetchNpmPackageTargetStatus, fetchNpmTagVersion, resolveNpmChannelTag } =
@@ -595,7 +595,7 @@ describe("update-cli", () => {
     serviceRestart.mockResolvedValue({ outcome: "completed" });
     serviceLoaded.mockResolvedValue(false);
     serviceReadCommand.mockImplementation(async () =>
-      (await serviceLoaded()) ? { programArguments: ["openclaw", "gateway", "run"] } : null,
+      (await serviceLoaded()) ? { programArguments: ["cimiclaw", "gateway", "run"] } : null,
     );
     serviceReadRuntime.mockResolvedValue({
       status: "running",
@@ -681,7 +681,7 @@ describe("update-cli", () => {
 
     const call = spawnSyncCall();
     expect(typeof call?.[0]).toBe("string");
-    expect(call?.[1]).toEqual([path.join(root, "openclaw.mjs"), "completion", "--write-state"]);
+    expect(call?.[1]).toEqual([path.join(root, "cimiclaw.mjs"), "completion", "--write-state"]);
     expect(call?.[2]?.env?.OPENCLAW_COMPLETION_SKIP_PLUGIN_COMMANDS).toBe("1");
     expect(call?.[2]?.timeout).toBe(30_000);
   });
@@ -743,7 +743,7 @@ describe("update-cli", () => {
     const kill = vi.fn();
     spawn.mockImplementationOnce((_command: unknown, _argv: unknown, options: unknown) => {
       const resultPath = (options as { env?: NodeJS.ProcessEnv }).env
-        ?.OPENCLAW_UPDATE_POST_CORE_RESULT_PATH;
+        ?.cimiclaw_UPDATE_POST_CORE_RESULT_PATH;
       if (!resultPath) {
         throw new Error("missing post-core result path");
       }
@@ -779,8 +779,8 @@ describe("update-cli", () => {
     );
 
     const spawnEnv = (spawn.mock.calls[0]?.[2] as { env?: NodeJS.ProcessEnv } | undefined)?.env;
-    expect(spawnEnv?.OPENCLAW_SERVICE_MARKER).toBeUndefined();
-    expect(spawnEnv?.OPENCLAW_SERVICE_KIND).toBeUndefined();
+    expect(spawnEnv?.cimiclaw_SERVICE_MARKER).toBeUndefined();
+    expect(spawnEnv?.cimiclaw_SERVICE_KIND).toBeUndefined();
   });
 
   it("passes pre-update plugin install records into the post-core update process", async () => {
@@ -1497,7 +1497,7 @@ describe("update-cli", () => {
 
   it("parses update status --json as the subcommand option", async () => {
     const program = new Command();
-    program.name("openclaw");
+    program.name("cimiclaw");
     program.enablePositionalOptions();
     let seenJson = false;
     const update = program.command("update").option("--json", "", false);
@@ -1508,7 +1508,7 @@ describe("update-cli", () => {
         seenJson = Boolean(opts.json);
       });
 
-    await program.parseAsync(["node", "openclaw", "update", "status", "--json"]);
+    await program.parseAsync(["node", "cimiclaw", "update", "status", "--json"]);
 
     expect(seenJson).toBe(true);
   });
@@ -1673,7 +1673,7 @@ describe("update-cli", () => {
   it("refuses package updates from inherited gateway service env when --no-restart leaves the gateway running", async () => {
     mockPackageInstallStatus(createCaseDir("openclaw-update"));
     serviceReadCommand.mockResolvedValue({
-      programArguments: ["openclaw", "gateway", "run"],
+      programArguments: ["cimiclaw", "gateway", "run"],
       environment: {
         OPENCLAW_SERVICE_MARKER: "openclaw",
         OPENCLAW_SERVICE_KIND: "gateway",
@@ -1717,7 +1717,7 @@ describe("update-cli", () => {
     async ({ setupRuntime }) => {
       mockPackageInstallStatus(createCaseDir("openclaw-update"));
       serviceReadCommand.mockResolvedValue({
-        programArguments: ["openclaw", "gateway", "run"],
+        programArguments: ["cimiclaw", "gateway", "run"],
         environment: {
           OPENCLAW_SERVICE_MARKER: "openclaw",
           OPENCLAW_SERVICE_KIND: "gateway",
@@ -2042,7 +2042,7 @@ describe("update-cli", () => {
     expect(doctorCall?.[0][0]).toContain("node");
     expect(doctorCall?.[0].slice(1)).toEqual([entryPath, "doctor", "--non-interactive", "--fix"]);
     expect(
-      (doctorCall?.[1].env as NodeJS.ProcessEnv | undefined)?.OPENCLAW_UPDATE_IN_PROGRESS,
+      (doctorCall?.[1].env as NodeJS.ProcessEnv | undefined)?.cimiclaw_UPDATE_IN_PROGRESS,
     ).toBe("1");
   });
 
@@ -2061,7 +2061,7 @@ describe("update-cli", () => {
     await fs.writeFile(entryPath, "export {};\n", "utf-8");
     await writePackageDistInventory(pkgRoot);
     serviceReadCommand.mockResolvedValue({
-      programArguments: ["openclaw", "gateway", "run"],
+      programArguments: ["cimiclaw", "gateway", "run"],
       environment: {
         OPENCLAW_SERVICE_MARKER: "openclaw",
         OPENCLAW_SERVICE_KIND: "gateway",
@@ -3162,7 +3162,7 @@ describe("update-cli", () => {
         await withEnvAsync(
           {
             OPENCLAW_STATE_DIR: "./state",
-            OPENCLAW_CONFIG_PATH: "./config/openclaw.json",
+            OPENCLAW_CONFIG_PATH: "./config/cimiclaw.json",
           },
           async () => {
             await updateCommand({});
@@ -3171,7 +3171,7 @@ describe("update-cli", () => {
       },
       expectedEnv: () => ({
         OPENCLAW_STATE_DIR: path.resolve("./state"),
-        OPENCLAW_CONFIG_PATH: path.resolve("./config/openclaw.json"),
+        OPENCLAW_CONFIG_PATH: path.resolve("./config/cimiclaw.json"),
       }),
       assertExtra: () => {
         expect(runDaemonInstall).not.toHaveBeenCalled();

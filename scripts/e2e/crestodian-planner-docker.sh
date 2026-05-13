@@ -26,7 +26,7 @@ docker_e2e_run_with_harness \
   -e "OPENCLAW_TEST_STATE_SCRIPT_B64=$OPENCLAW_TEST_STATE_SCRIPT_B64" \
   "$IMAGE_NAME" \
   bash -lc "set -euo pipefail
-    source scripts/lib/openclaw-e2e-instance.sh
+    source scripts/lib/cimiclaw-e2e-instance.sh
     openclaw_e2e_eval_test_state_from_b64 \"\${OPENCLAW_TEST_STATE_SCRIPT_B64:?missing OPENCLAW_TEST_STATE_SCRIPT_B64}\"
     node scripts/e2e/crestodian-planner-docker-client.mjs
   " >"$RUN_LOG" 2>&1

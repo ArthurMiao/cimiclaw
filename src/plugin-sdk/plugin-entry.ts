@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { emptyPluginConfigSchema } from "../plugins/config-schema.js";
 import type {
   AnyAgentTool,

@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { tryReadJson } from "../infra/json-files.js";
-import { resolveOpenClawPackageRootSync } from "../infra/openclaw-root.js";
+import { resolveOpenClawPackageRootSync } from "../infra/cimiclaw-root.js";
 import { extensionUsesSkippedScannerPath, isPathInside } from "../security/scan-paths.js";
 import { scanDirectoryWithSummary } from "../security/skill-scanner.js";
 import {

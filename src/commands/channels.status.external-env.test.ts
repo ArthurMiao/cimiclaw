@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   cleanupPluginLoaderFixturesForTest,
   EMPTY_PLUGIN_SCHEMA,
@@ -15,7 +15,7 @@ import { createCapturingTestRuntime } from "./test-runtime-config-helpers.js";
 
 const mocks = vi.hoisted(() => ({
   callGateway: vi.fn(),
-  readConfigFileSnapshot: vi.fn(async () => ({ path: "/tmp/openclaw.json" })),
+  readConfigFileSnapshot: vi.fn(async () => ({ path: "/tmp/cimiclaw.json" })),
   requireValidConfigSnapshot: vi.fn(),
   resolveCommandConfigWithSecrets: vi.fn(),
 }));
@@ -67,7 +67,7 @@ function writeExternalEnvChannelPlugin() {
     "utf-8",
   );
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify(
       {
         id: "external-env-channel-plugin",

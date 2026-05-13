@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { withOpenClawTestState } from "../test-utils/openclaw-test-state.js";
+import { withOpenClawTestState } from "../test-utils/cimiclaw-test-state.js";
 
 afterEach(() => {
   vi.doUnmock("node:fs");

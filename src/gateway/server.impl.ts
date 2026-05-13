@@ -21,7 +21,7 @@ import { isNixMode } from "../config/paths.js";
 import { applyPluginAutoEnable } from "../config/plugin-auto-enable.js";
 import { applyConfigOverrides } from "../config/runtime-overrides.js";
 import { resolveMainSessionKey } from "../config/sessions.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   isDiagnosticsEnabled,
   setDiagnosticsEnabledForProcess,
@@ -498,7 +498,7 @@ export type GatewayServerOptions = {
   startupStartedAt?: number;
   /**
    * Config snapshot already read by the CLI gateway preflight. Passing it avoids
-   * reparsing openclaw.json during server startup.
+   * reparsing cimiclaw.json during server startup.
    */
   startupConfigSnapshotRead?: ReadConfigFileSnapshotWithPluginMetadataResult;
 };

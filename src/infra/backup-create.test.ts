@@ -5,7 +5,7 @@ import * as tar from "tar";
 import { describe, expect, it, vi } from "vitest";
 import { backupVerifyCommand } from "../commands/backup-verify.js";
 import type { RuntimeEnv } from "../runtime.js";
-import { withOpenClawTestState } from "../test-utils/openclaw-test-state.js";
+import { withOpenClawTestState } from "../test-utils/cimiclaw-test-state.js";
 import {
   __test as backupCreateInternals,
   buildExtensionsNodeModulesFilter,
@@ -56,7 +56,7 @@ describe("formatBackupCreateSummary", () => {
             kind: "state",
             sourcePath: "/state",
             archivePath: "archive/state",
-            displayPath: "~/.openclaw",
+            displayPath: "~/.cimiclaw",
           },
         ],
         skipped: [
@@ -65,16 +65,16 @@ describe("formatBackupCreateSummary", () => {
             sourcePath: "/workspace",
             displayPath: "~/Projects/openclaw",
             reason: "covered",
-            coveredBy: "~/.openclaw",
+            coveredBy: "~/.cimiclaw",
           },
         ],
       }),
       expected: [
         backupArchiveLine,
         "Included 1 path:",
-        "- state: ~/.openclaw",
+        "- state: ~/.cimiclaw",
         "Skipped 1 path:",
-        "- workspace: ~/Projects/openclaw (covered by ~/.openclaw)",
+        "- workspace: ~/Projects/openclaw (covered by ~/.cimiclaw)",
         "Created /tmp/openclaw-backup.tar.gz",
         "Archive verification: passed",
       ],
@@ -88,21 +88,21 @@ describe("formatBackupCreateSummary", () => {
             kind: "config",
             sourcePath: "/config",
             archivePath: "archive/config",
-            displayPath: "~/.openclaw/config.json",
+            displayPath: "~/.cimiclaw/config.json",
           },
           {
             kind: "credentials",
             sourcePath: "/oauth",
             archivePath: "archive/oauth",
-            displayPath: "~/.openclaw/oauth",
+            displayPath: "~/.cimiclaw/oauth",
           },
         ],
       }),
       expected: [
         backupArchiveLine,
         "Included 2 paths:",
-        "- config: ~/.openclaw/config.json",
-        "- credentials: ~/.openclaw/oauth",
+        "- config: ~/.cimiclaw/config.json",
+        "- credentials: ~/.cimiclaw/oauth",
         "Dry run only; archive was not written.",
       ],
     },
@@ -119,7 +119,7 @@ describe("formatBackupCreateSummary", () => {
               kind: "state",
               sourcePath: "/state",
               archivePath: "archive/state",
-              displayPath: "~/.openclaw",
+              displayPath: "~/.cimiclaw",
             },
           ],
           skippedVolatileCount: 3,
@@ -128,7 +128,7 @@ describe("formatBackupCreateSummary", () => {
     ).toEqual([
       "Backup archive: /tmp/openclaw-backup.tar.gz",
       "Included 1 path:",
-      "- state: ~/.openclaw",
+      "- state: ~/.cimiclaw",
       "Created /tmp/openclaw-backup.tar.gz",
       "Skipped 3 volatile files (live sessions, cron logs, queues, sockets, pid/tmp).",
     ]);
@@ -268,7 +268,7 @@ describe("buildExtensionsNodeModulesFilter", () => {
   it("excludes dependency trees only under state extensions", () => {
     const filter = buildExtensionsNodeModulesFilter("/state/");
 
-    expect(filter("/state/extensions/demo/openclaw.plugin.json")).toBe(true);
+    expect(filter("/state/extensions/demo/cimiclaw.plugin.json")).toBe(true);
     expect(filter("/state/extensions/demo/src/index.js")).toBe(true);
     expect(filter("/state/extensions/demo/node_modules/dep/index.js")).toBe(false);
     expect(filter("/state/extensions/demo/vendor/node_modules/dep/index.js")).toBe(false);
@@ -277,11 +277,11 @@ describe("buildExtensionsNodeModulesFilter", () => {
   });
 
   it("normalizes Windows path separators", () => {
-    const filter = buildExtensionsNodeModulesFilter("C:\\Users\\me\\.openclaw\\");
+    const filter = buildExtensionsNodeModulesFilter("C:\\Users\\me\\.cimiclaw\\");
 
-    expect(filter(String.raw`C:\Users\me\.openclaw\extensions\demo\index.js`)).toBe(true);
+    expect(filter(String.raw`C:\Users\me\.cimiclaw\extensions\demo\index.js`)).toBe(true);
     expect(
-      filter(String.raw`C:\Users\me\.openclaw\extensions\demo\node_modules\dep\index.js`),
+      filter(String.raw`C:\Users\me\.cimiclaw\extensions\demo\node_modules\dep\index.js`),
     ).toBe(false);
   });
 });
@@ -362,7 +362,7 @@ describe("createBackupArchive", () => {
         await fs.mkdir(path.join(stateDir, "extensions", "demo", "src"), { recursive: true });
         await fs.mkdir(path.join(stateDir, "node_modules", "root-dep"), { recursive: true });
         await fs.writeFile(
-          path.join(stateDir, "extensions", "demo", "openclaw.plugin.json"),
+          path.join(stateDir, "extensions", "demo", "cimiclaw.plugin.json"),
           '{"id":"demo"}\n',
           "utf8",
         );
@@ -393,7 +393,7 @@ describe("createBackupArchive", () => {
         const entrySuffixes = entries.map((entry) => entry.replace(/^.*\/state\//, "/state/"));
         expect(entrySuffixes).toEqual(
           expect.arrayContaining([
-            "/state/extensions/demo/openclaw.plugin.json",
+            "/state/extensions/demo/cimiclaw.plugin.json",
             "/state/extensions/demo/src/index.js",
             "/state/node_modules/root-dep/index.js",
           ]),

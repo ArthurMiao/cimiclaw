@@ -5,7 +5,7 @@ import {
   listBundledChannelIdsWithPersistedAuthState,
 } from "../channels/plugins/persisted-auth-state.js";
 import { resolveStateDir } from "../config/paths.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { hasNonEmptyString } from "../infra/outbound/channel-target.js";
 import { normalizeOptionalLowercaseString } from "../shared/string-coerce.js";
 import { isRecord } from "../utils.js";

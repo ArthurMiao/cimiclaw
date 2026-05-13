@@ -58,7 +58,7 @@ function expectRuntimeArg(value: unknown) {
 const mockConfig = vi.hoisted(() => {
   const initial = {};
   const state = {
-    path: "/tmp/openclaw.json",
+    path: "/tmp/cimiclaw.json",
     exists: true,
     config: initial as TestConfig,
     hash: "mock-hash-0" as string | undefined,
@@ -84,7 +84,7 @@ const mockConfig = vi.hoisted(() => {
   };
   return {
     reset() {
-      state.path = "/tmp/openclaw.json";
+      state.path = "/tmp/cimiclaw.json";
       state.exists = true;
       state.config = {};
       state.hash = "mock-hash-0";
@@ -142,7 +142,7 @@ vi.mock("./overview.js", () => ({
       { id: "main", isDefault: true },
       { id: "work", isDefault: false, model: "openai/gpt-5.2" },
     ],
-    config: { path: "/tmp/openclaw.json", exists: true, valid: true, issues: [], hash: null },
+    config: { path: "/tmp/cimiclaw.json", exists: true, valid: true, issues: [], hash: null },
     tools: {
       codex: { command: "codex", found: false, error: "not found" },
       claude: { command: "claude", found: false, error: "not found" },
@@ -155,7 +155,7 @@ vi.mock("./overview.js", () => ({
       error: "offline",
     },
     references: {
-      docsUrl: "https://docs.openclaw.ai",
+      docsUrl: "https://docs.cimiclaw.ai",
       sourceUrl: "https://github.com/openclaw/openclaw",
     },
   })),
@@ -311,7 +311,7 @@ describe("parseCrestodianOperation", () => {
   });
 
   it("validates missing config without exiting the process", async () => {
-    mockConfig.missing("/tmp/openclaw.json");
+    mockConfig.missing("/tmp/cimiclaw.json");
     const { runtime, lines } = createCrestodianTestRuntime();
 
     const result = await executeCrestodianOperation({ kind: "config-validate" }, runtime);

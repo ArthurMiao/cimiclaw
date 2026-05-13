@@ -369,7 +369,7 @@ describe("bundled plugin postinstall", () => {
   it("does not prune user-state legacy runtime deps during source-checkout postinstall", async () => {
     const packageRoot = await createTempDirAsync("openclaw-source-checkout-state-skip-");
     const home = await createTempDirAsync("openclaw-source-checkout-home-");
-    const legacyRuntimeRoot = path.join(home, ".openclaw", "plugin-runtime-deps");
+    const legacyRuntimeRoot = path.join(home, ".cimiclaw", "plugin-runtime-deps");
     await fs.mkdir(path.join(packageRoot, ".git"), { recursive: true });
     await fs.mkdir(path.join(packageRoot, "src"), { recursive: true });
     await fs.mkdir(path.join(packageRoot, "extensions"), { recursive: true });
@@ -567,13 +567,13 @@ describe("bundled plugin postinstall", () => {
     const home = await createTempDirAsync("openclaw-packaged-home-");
     const stateOverride = path.join(home, "custom-state");
     const systemState = path.join(home, "system-state");
-    const defaultLegacyRoot = path.join(home, ".openclaw", "plugin-runtime-deps");
+    const defaultLegacyRoot = path.join(home, ".cimiclaw", "plugin-runtime-deps");
     const oldBrandLegacyRoot = path.join(home, ".clawdbot", "plugin-runtime-deps");
     const overrideLegacyRoot = path.join(stateOverride, "plugin-runtime-deps");
     const systemLegacyRoot = path.join(systemState, "plugin-runtime-deps");
     const thirdPartyNodeModules = path.join(
       home,
-      ".openclaw",
+      ".cimiclaw",
       "extensions",
       "lossless-claw",
       "node_modules",
@@ -635,7 +635,7 @@ describe("bundled plugin postinstall", () => {
     const home = await createTempDirAsync("openclaw-packaged-home-");
     const packageRoot = path.join(prefix, "lib", "node_modules", "openclaw");
     const nodeModulesRoot = path.dirname(packageRoot);
-    const legacyRuntimeRoot = path.join(home, ".openclaw", "plugin-runtime-deps");
+    const legacyRuntimeRoot = path.join(home, ".cimiclaw", "plugin-runtime-deps");
     const legacyTarget = path.join(
       legacyRuntimeRoot,
       "openclaw-2026.4.29-slack",
@@ -684,7 +684,7 @@ describe("bundled plugin postinstall", () => {
 
     expect(warn).toHaveBeenCalledWith(
       expect.stringContaining(
-        "[postinstall] could not prune legacy plugin runtime deps /home/alice/.openclaw/plugin-runtime-deps: Error: locked",
+        "[postinstall] could not prune legacy plugin runtime deps /home/alice/.cimiclaw/plugin-runtime-deps: Error: locked",
       ),
     );
   });
@@ -695,7 +695,7 @@ describe("bundled plugin postinstall", () => {
         env: {
           HOME: "/users/alice",
           OPENCLAW_HOME: "/srv/openclaw-home",
-          OPENCLAW_CONFIG_PATH: "~/profile/openclaw.json",
+          OPENCLAW_CONFIG_PATH: "~/profile/cimiclaw.json",
           OPENCLAW_STATE_DIR: "~/state",
           STATE_DIRECTORY: "/var/lib/openclaw",
         },
@@ -703,7 +703,7 @@ describe("bundled plugin postinstall", () => {
       }),
     ).toEqual([
       "/srv/openclaw-home/.clawdbot/plugin-runtime-deps",
-      "/srv/openclaw-home/.openclaw/plugin-runtime-deps",
+      "/srv/openclaw-home/.cimiclaw/plugin-runtime-deps",
       "/srv/openclaw-home/profile/plugin-runtime-deps",
       "/srv/openclaw-home/state/plugin-runtime-deps",
       "/var/lib/openclaw/plugin-runtime-deps",
@@ -769,7 +769,7 @@ describe("bundled plugin postinstall", () => {
       "dist",
       "extensions",
       "qa-lab",
-      "openclaw.plugin.json",
+      "cimiclaw.plugin.json",
     );
     await fs.mkdir(path.dirname(stalePackage), { recursive: true });
     await fs.writeFile(currentFile, "export {};\n");
@@ -791,7 +791,7 @@ describe("bundled plugin postinstall", () => {
       path.join(packageRoot, "dist", "extensions", "qa-channel", "package.json"),
     );
     await expectPathMissing(
-      path.join(packageRoot, "dist", "extensions", "qa-channel", "openclaw.plugin.json"),
+      path.join(packageRoot, "dist", "extensions", "qa-channel", "cimiclaw.plugin.json"),
     );
     await expectPathMissing(
       path.join(packageRoot, "dist", "extensions", "qa-lab", "runtime-api.js"),
@@ -907,7 +907,7 @@ describe("bundled plugin postinstall", () => {
       "dist",
       "extensions",
       "slack",
-      ".openclaw-install-stage",
+      ".cimiclaw-install-stage",
       "node_modules",
       "typebox",
       "build",
@@ -919,7 +919,7 @@ describe("bundled plugin postinstall", () => {
       "dist",
       "extensions",
       "slack",
-      ".openclaw-install-stage-retry",
+      ".cimiclaw-install-stage-retry",
       "node_modules",
       "typebox",
       "build",

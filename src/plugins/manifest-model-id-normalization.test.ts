@@ -66,7 +66,7 @@ function writeNormalizerManifest(params: { pluginDir: string; prefix: string }):
     "utf-8",
   );
   fs.writeFileSync(
-    path.join(params.pluginDir, "openclaw.plugin.json"),
+    path.join(params.pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: "normalizer",
       configSchema: { type: "object" },
@@ -100,7 +100,7 @@ function createCurrentSnapshot(params: {
     plugins: [
       {
         pluginId: "normalizer",
-        manifestPath: `/tmp/normalizer-${params.manifestHash}/openclaw.plugin.json`,
+        manifestPath: `/tmp/normalizer-${params.manifestHash}/cimiclaw.plugin.json`,
         manifestHash: params.manifestHash,
         source: `/tmp/normalizer-${params.manifestHash}/index.ts`,
         rootDir: `/tmp/normalizer-${params.manifestHash}`,
@@ -248,7 +248,7 @@ describe("manifest model id normalization", () => {
   it("reuses manifest metadata while file fingerprints are unchanged", () => {
     const stateDir = makeTempDir();
     const pluginDir = path.join(stateDir, "extensions", "normalizer");
-    const manifestPath = path.join(pluginDir, "openclaw.plugin.json");
+    const manifestPath = path.join(pluginDir, "cimiclaw.plugin.json");
     writeInstallIndex({ stateDir, pluginDir });
     writeNormalizerManifest({ pluginDir, prefix: "alpha" });
 

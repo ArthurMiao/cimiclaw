@@ -29,7 +29,7 @@ function makeTempDir() {
 }
 
 function writeManifest(dir: string, manifest: Record<string, unknown>) {
-  fs.writeFileSync(path.join(dir, "openclaw.plugin.json"), JSON.stringify(manifest), "utf-8");
+  fs.writeFileSync(path.join(dir, "cimiclaw.plugin.json"), JSON.stringify(manifest), "utf-8");
 }
 
 function writeTextFile(rootDir: string, relativePath: string, value: string) {
@@ -184,8 +184,8 @@ function prepareLinkedManifestFixture(params: { id: string; mode: "symlink" | "h
 } {
   const rootDir = makeTempDir();
   const outsideDir = makeTempDir();
-  const outsideManifest = path.join(outsideDir, "openclaw.plugin.json");
-  const linkedManifest = path.join(rootDir, "openclaw.plugin.json");
+  const outsideManifest = path.join(outsideDir, "cimiclaw.plugin.json");
+  const linkedManifest = path.join(rootDir, "cimiclaw.plugin.json");
   fs.writeFileSync(path.join(rootDir, "index.ts"), "export default function () {}", "utf-8");
   fs.writeFileSync(
     outsideManifest,
@@ -379,7 +379,7 @@ describe("loadPluginManifestRegistry", () => {
       }),
       "utf-8",
     );
-    const manifestPath = path.join(pluginDir, "openclaw.plugin.json");
+    const manifestPath = path.join(pluginDir, "cimiclaw.plugin.json");
     writeManifest(pluginDir, {
       id: "cached-manifest",
       name: "Before",
@@ -1115,7 +1115,7 @@ describe("loadPluginManifestRegistry", () => {
     expectDiagnosticFields(registry, {
       level: "warn",
       pluginId: "external-openai",
-      source: path.join(dir, "openclaw.plugin.json"),
+      source: path.join(dir, "cimiclaw.plugin.json"),
       messageIncludes: "providerAuthEnvVars is deprecated compatibility metadata",
     });
   });
@@ -1192,7 +1192,7 @@ describe("loadPluginManifestRegistry", () => {
     expectDiagnosticFields(registry, {
       level: "warn",
       pluginId: "external-chat",
-      source: path.join(dir, "openclaw.plugin.json"),
+      source: path.join(dir, "cimiclaw.plugin.json"),
       messageIncludes: "without channelConfigs metadata",
     });
   });
@@ -1331,7 +1331,7 @@ describe("loadPluginManifestRegistry", () => {
     const dir = makeTempDir();
     writeTextFile(
       dir,
-      "openclaw.plugin.json",
+      "cimiclaw.plugin.json",
       JSON.stringify({
         id: "external-chat",
         channels: ["safe-chat"],
@@ -1777,7 +1777,7 @@ describe("loadPluginManifestRegistry", () => {
         idHint: "telegram",
         rootDir: dir,
         origin: "bundled",
-        bundledManifestPath: path.join(dir, "openclaw.plugin.json"),
+        bundledManifestPath: path.join(dir, "cimiclaw.plugin.json"),
         bundledManifest: {
           id: "telegram",
           configSchema: { type: "object" },

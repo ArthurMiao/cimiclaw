@@ -7,7 +7,7 @@ import {
 } from "../../auto-reply/reply/reply-payloads.js";
 import type { ReplyPayload } from "../../auto-reply/types.js";
 import { resolveSilentReplySettings } from "../../config/silent-reply.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import {
   hasInteractiveReplyBlocks,
   hasMessagePresentationBlocks,

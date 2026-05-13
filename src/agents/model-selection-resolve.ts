@@ -1,5 +1,5 @@
 import { resolveAgentModelFallbackValues } from "../config/model-input.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { ModelCatalogEntry } from "./model-catalog.types.js";
 import type { ModelRef } from "./model-selection-normalize.js";
 import {

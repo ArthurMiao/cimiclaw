@@ -16,12 +16,12 @@ import type {
 export { type ResolvedAcpxPluginConfig } from "./config-schema.js";
 
 const ACPX_PLUGIN_TOOLS_MCP_SERVER_NAME = "openclaw-plugin-tools";
-const ACPX_OPENCLAW_TOOLS_MCP_SERVER_NAME = "openclaw-tools";
+const ACPX_OPENCLAW_TOOLS_MCP_SERVER_NAME = "cimiclaw-tools";
 const requireFromHere = createRequire(import.meta.url);
 
 function isAcpxPluginRoot(dir: string): boolean {
   return (
-    fs.existsSync(path.join(dir, "openclaw.plugin.json")) &&
+    fs.existsSync(path.join(dir, "cimiclaw.plugin.json")) &&
     fs.existsSync(path.join(dir, "package.json"))
   );
 }
@@ -166,14 +166,14 @@ function resolvePluginToolsMcpServerConfig(moduleUrl: string = import.meta.url):
 function resolveOpenClawToolsMcpServerConfig(moduleUrl: string = import.meta.url): McpServerConfig {
   const pluginRoot = resolveAcpxPluginRoot(moduleUrl);
   const openClawRoot = resolveOpenClawRoot(pluginRoot);
-  const distEntry = path.join(openClawRoot, "dist", "mcp", "openclaw-tools-serve.js");
+  const distEntry = path.join(openClawRoot, "dist", "mcp", "cimiclaw-tools-serve.js");
   if (fs.existsSync(distEntry)) {
     return {
       command: process.execPath,
       args: [distEntry],
     };
   }
-  const sourceEntry = path.join(openClawRoot, "src", "mcp", "openclaw-tools-serve.ts");
+  const sourceEntry = path.join(openClawRoot, "src", "mcp", "cimiclaw-tools-serve.ts");
   return {
     command: process.execPath,
     args: ["--import", resolveTsxImportSpecifier(), sourceEntry],

@@ -9,7 +9,7 @@ title: "OC Path plugin"
 
 The bundled `oc-path` plugin adds the [`openclaw path`](/cli/path) CLI for the
 `oc://` workspace-file addressing scheme. It ships in the OpenClaw repo under
-`extensions/oc-path/` but is opt-in â€” install/build leaves it dormant until you
+`extensions/oc-path/` but is opt-in â€?install/build leaves it dormant until you
 enable it.
 
 `oc://` addresses point at a single leaf (or a wildcard set of leaves) inside
@@ -41,7 +41,7 @@ core for installs that never need it.
 Common reasons to enable it:
 
 - **Local automation**: shell scripts can resolve or update one workspace value
-  with `openclaw path â€¦ --json` instead of carrying separate markdown, JSONC,
+  with `openclaw path â€?--json` instead of carrying separate markdown, JSONC,
   and JSONL parsing code.
 - **Agent-visible edits**: an agent can show a dry-run diff for one addressed
   leaf before writing, which is easier to review than a free-form file rewrite.
@@ -74,9 +74,9 @@ can build around.
 
 The plugin runs **in-process inside the `openclaw` CLI** on the host where you
 invoke the command. It does not need a running Gateway and does not open any
-network sockets â€” every verb is a pure transform over a file you point it at.
+network sockets â€?every verb is a pure transform over a file you point it at.
 
-The plugin metadata lives in `extensions/oc-path/openclaw.plugin.json`:
+The plugin metadata lives in `extensions/oc-path/cimiclaw.plugin.json`:
 
 ```json
 {
@@ -101,8 +101,7 @@ openclaw plugins enable oc-path
 ```
 
 Restart the Gateway (if you run one) so the manifest snapshot picks up the new
-state. Bare `openclaw path` invocations work immediately on the same host â€”
-the CLI loads the plugin on demand.
+state. Bare `openclaw path` invocations work immediately on the same host â€?the CLI loads the plugin on demand.
 
 Disable with:
 
@@ -112,7 +111,7 @@ openclaw plugins disable oc-path
 
 ## Dependencies
 
-All parser dependencies are plugin-local â€” enabling `oc-path` does not pull
+All parser dependencies are plugin-local â€?enabling `oc-path` does not pull
 new packages into the core runtime:
 
 | Dependency     | Purpose                                                             |
@@ -121,7 +120,7 @@ new packages into the core runtime:
 | `jsonc-parser` | JSONC parse + leaf edits with comments and trailing commas kept.    |
 | `markdown-it`  | Markdown tokenization for the section / item / field model.         |
 
-JSONL stays hand-rolled â€” line-oriented parsing is simpler than any
+JSONL stays hand-rolled â€?line-oriented parsing is simpler than any
 dependency, and the per-line JSONC parse already goes through `jsonc-parser`.
 
 ## What it provides

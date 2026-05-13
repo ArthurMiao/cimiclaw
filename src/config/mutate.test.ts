@@ -25,7 +25,7 @@ function createSnapshot(params: {
     params.sourceConfig) as ConfigFileSnapshot["config"];
   const sourceConfig = params.sourceConfig as ConfigFileSnapshot["sourceConfig"];
   return {
-    path: params.path ?? "/tmp/openclaw.json",
+    path: params.path ?? "/tmp/cimiclaw.json",
     exists: true,
     raw: "{}",
     parsed: params.parsed ?? params.sourceConfig,
@@ -164,7 +164,7 @@ describe("config mutate helpers", () => {
           draft.gateway = { ...draft.gateway, port: 19001 };
         },
       }),
-    ).rejects.toThrow("OpenClaw Nix overview: https://docs.openclaw.ai/install/nix");
+    ).rejects.toThrow("OpenClaw Nix overview: https://docs.cimiclaw.ai/install/nix");
 
     expect(ioMocks.writeConfigFile).not.toHaveBeenCalled();
   });
@@ -225,8 +225,8 @@ describe("config mutate helpers", () => {
 
   it("writes through a single-file top-level plugins include", async () => {
     const home = await suiteRootTracker.make("include");
-    const configPath = path.join(home, ".openclaw", "openclaw.json");
-    const pluginsPath = path.join(home, ".openclaw", "config", "plugins.json5");
+    const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
+    const pluginsPath = path.join(home, ".cimiclaw", "config", "plugins.json5");
     await fs.mkdir(path.dirname(pluginsPath), { recursive: true });
     await fs.writeFile(
       configPath,
@@ -338,7 +338,7 @@ describe("config mutate helpers", () => {
   it("falls back to the root writer when a plugins include write is not isolated", async () => {
     const snapshot = createSnapshot({
       hash: "hash-multi",
-      path: "/tmp/openclaw.json",
+      path: "/tmp/cimiclaw.json",
       parsed: { plugins: { $include: "./config/plugins.json5" }, gateway: { mode: "local" } },
       sourceConfig: {
         gateway: { mode: "local" },

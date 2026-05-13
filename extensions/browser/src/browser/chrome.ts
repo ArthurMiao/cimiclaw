@@ -6,7 +6,7 @@ import { prepareOomScoreAdjustedSpawn } from "openclaw/plugin-sdk/process-runtim
 import { normalizeOptionalString } from "openclaw/plugin-sdk/string-coerce-runtime";
 import type { SsrFPolicy } from "../infra/net/ssrf.js";
 import { ensurePortAvailable } from "../infra/ports.js";
-import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-cimiclaw-dir.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import { CONFIG_DIR } from "../utils.js";
 import { hasChromeProxyControlArg, omitChromeProxyEnv } from "./browser-proxy-mode.js";
@@ -202,7 +202,7 @@ function chromeLaunchHints(params: {
   }
   if (CHROME_SINGLETON_IN_USE_PATTERN.test(params.stderrOutput)) {
     hints.push(
-      `The Chromium profile "${params.profile.name}" is locked. Stop the existing browser or remove stale Singleton* lock files under ~/.openclaw/browser/${params.profile.name}/user-data.`,
+      `The Chromium profile "${params.profile.name}" is locked. Stop the existing browser or remove stale Singleton* lock files under ~/.cimiclaw/browser/${params.profile.name}/user-data.`,
     );
   }
   return hints.length > 0 ? `\nHint: ${hints.join("\nHint: ")}` : "";

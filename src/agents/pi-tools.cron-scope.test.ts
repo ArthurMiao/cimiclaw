@@ -19,7 +19,7 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("./openclaw-tools.js", () => ({
+vi.mock("./cimiclaw-tools.js", () => ({
   createOpenClawTools: (options: unknown) => {
     mocks.createOpenClawToolsOptions(options);
     return [mocks.stubTool("cron", true)];

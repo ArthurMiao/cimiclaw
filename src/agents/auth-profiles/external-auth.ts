@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { ProviderExternalAuthProfile } from "../../plugins/provider-external-auth.types.js";
 import { resolveExternalAuthProfilesWithPlugins } from "../../plugins/provider-runtime.js";
 import { cloneAuthProfileStore } from "./clone.js";

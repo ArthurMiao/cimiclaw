@@ -392,7 +392,7 @@ async function resolveScheduledTaskPort(env: GatewayServiceEnv): Promise<number 
   const command = await readScheduledTaskCommand(env).catch(() => null);
   return (
     parsePortFromProgramArguments(command?.programArguments) ??
-    parsePositivePort(command?.environment?.OPENCLAW_GATEWAY_PORT) ??
+    parsePositivePort(command?.environment?.cimiclaw_GATEWAY_PORT) ??
     resolveConfiguredGatewayPort(env)
   );
 }

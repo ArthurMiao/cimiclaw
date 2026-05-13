@@ -329,7 +329,7 @@ const TOOLING_SOURCE_TEST_TARGETS = new Map([
     ["test/scripts/check-deadcode-unused-files.test.ts"],
   ],
   ["scripts/lib/live-docker-stage.sh", ["test/scripts/live-docker-stage.test.ts"]],
-  ["scripts/lib/openclaw-test-state.mjs", ["test/scripts/openclaw-test-state.test.ts"]],
+  ["scripts/lib/cimiclaw-test-state.mjs", ["test/scripts/cimiclaw-test-state.test.ts"]],
   ["scripts/lib/vitest-local-scheduling.mjs", ["test/scripts/vitest-local-scheduling.test.ts"]],
   [
     "scripts/mantis/build-telegram-evidence.mjs",
@@ -387,7 +387,7 @@ const TOOLING_TEST_TARGETS = new Map([
     ["test/scripts/check-deadcode-unused-files.test.ts"],
   ],
   ["test/scripts/live-docker-stage.test.ts", ["test/scripts/live-docker-stage.test.ts"]],
-  ["test/scripts/openclaw-test-state.test.ts", ["test/scripts/openclaw-test-state.test.ts"]],
+  ["test/scripts/cimiclaw-test-state.test.ts", ["test/scripts/cimiclaw-test-state.test.ts"]],
   [
     "test/scripts/mantis-publish-pr-evidence.test.ts",
     ["test/scripts/mantis-publish-pr-evidence.test.ts"],
@@ -429,7 +429,7 @@ const GROUP_VISIBLE_REPLY_PROMPT_TEST_TARGETS = [
 ];
 const SOURCE_TEST_TARGETS = new Map([
   ...PRECISE_SOURCE_TEST_TARGETS,
-  ["src/test-utils/openclaw-test-state.ts", ["src/test-utils/openclaw-test-state.test.ts"]],
+  ["src/test-utils/cimiclaw-test-state.ts", ["src/test-utils/cimiclaw-test-state.test.ts"]],
   [
     "src/plugin-sdk/test-helpers/directory-ids.ts",
     [

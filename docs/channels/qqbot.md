@@ -29,7 +29,7 @@ openclaw plugins install @openclaw/qqbot
 2. Click **Create Bot** to create a new QQ bot.
 3. Find **AppID** and **AppSecret** on the bot's settings page and copy them.
 
-> AppSecret is not stored in plaintext â€” if you leave the page without saving it,
+> AppSecret is not stored in plaintext â€?if you leave the page without saving it,
 > you'll have to regenerate a new one.
 
 4. Add the channel:
@@ -273,7 +273,7 @@ QQ Bot ships as a self-contained engine inside the plugin:
 
 - Each account owns an isolated resource stack (WebSocket connection, API client, token cache, media storage root) keyed by `appId`. Accounts never share inbound/outbound state.
 - The multi-account logger tags log lines with the owning account so diagnostics stay separable when you run several bots under one gateway.
-- Inbound, outbound, and gateway bridge paths share a single media payload root under `~/.openclaw/media`, so uploads, downloads, and transcode caches land under one guarded directory instead of a per-subsystem tree.
+- Inbound, outbound, and gateway bridge paths share a single media payload root under `~/.cimiclaw/media`, so uploads, downloads, and transcode caches land under one guarded directory instead of a per-subsystem tree.
 - Rich media delivery goes through one `sendMedia` path for C2C and group targets. Local files and buffers above the large-file threshold use QQ's chunked upload endpoints, while smaller payloads use the one-shot media API.
 - Credentials can be backed up and restored as part of standard OpenClaw credential snapshots; the engine re-attaches each account's resource stack on restore without requiring a fresh QR-code pair.
 

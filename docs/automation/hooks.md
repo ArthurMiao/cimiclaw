@@ -141,7 +141,7 @@ Hooks are discovered from these directories, in order of increasing override pre
 
 1. **Bundled hooks**: shipped with OpenClaw
 2. **Plugin hooks**: hooks bundled inside installed plugins
-3. **Managed hooks**: `~/.openclaw/hooks/` (user-installed, shared across workspaces). Extra directories from `hooks.internal.load.extraDirs` share this precedence.
+3. **Managed hooks**: `~/.cimiclaw/hooks/` (user-installed, shared across workspaces). Extra directories from `hooks.internal.load.extraDirs` share this precedence.
 4. **Workspace hooks**: `<workspace>/hooks/` (per-agent, disabled by default until explicitly enabled)
 
 Workspace hooks can add new hook names but cannot override bundled, managed, or plugin-provided hooks with the same name.
@@ -164,7 +164,7 @@ Npm specs are registry-only (package name + optional exact version or dist-tag).
 | --------------------- | ------------------------------------------------- | -------------------------------------------------------------- |
 | session-memory        | `command:new`, `command:reset`                    | Saves session context to `<workspace>/memory/`                 |
 | bootstrap-extra-files | `agent:bootstrap`                                 | Injects additional bootstrap files from glob patterns          |
-| command-logger        | `command`                                         | Logs all commands to `~/.openclaw/logs/commands.log`           |
+| command-logger        | `command`                                         | Logs all commands to `~/.cimiclaw/logs/commands.log`           |
 | compaction-notifier   | `session:compact:before`, `session:compact:after` | Sends visible chat notices when session compaction starts/ends |
 | boot-md               | `gateway:startup`                                 | Runs `BOOT.md` when the gateway starts                         |
 
@@ -205,7 +205,7 @@ Paths resolve relative to workspace. Only recognized bootstrap basenames are loa
 
 ### command-logger details
 
-Logs every slash command to `~/.openclaw/logs/commands.log`.
+Logs every slash command to `~/.cimiclaw/logs/commands.log`.
 
 <a id="compaction-notifier"></a>
 
@@ -309,7 +309,7 @@ openclaw hooks disable <hook-name>
 
 ```bash
 # Verify directory structure
-ls -la ~/.openclaw/hooks/my-hook/
+ls -la ~/.cimiclaw/hooks/my-hook/
 # Should show: HOOK.md, handler.ts
 
 # List all discovered hooks
@@ -334,5 +334,5 @@ Check for missing binaries (PATH), environment variables, config values, or OS c
 
 - [CLI Reference: hooks](/cli/hooks)
 - [Webhooks](/automation/cron-jobs#webhooks)
-- [Plugin hooks](/plugins/hooks) — in-process plugin lifecycle hooks
+- [Plugin hooks](/plugins/hooks) �?in-process plugin lifecycle hooks
 - [Configuration](/gateway/configuration-reference#hooks)

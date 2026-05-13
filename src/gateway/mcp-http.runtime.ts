@@ -1,5 +1,5 @@
 import { applyOwnerOnlyToolPolicy } from "../agents/tool-policy.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   buildMcpToolSchema,
   type McpLoopbackTool,

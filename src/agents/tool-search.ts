@@ -7,7 +7,7 @@ import type {
 } from "@mariozechner/pi-agent-core";
 import type { ToolDefinition } from "@mariozechner/pi-coding-agent";
 import { Type } from "typebox";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { getPluginToolMeta } from "../plugins/tools.js";
 import {
   isToolWrappedWithBeforeToolCallHook,
@@ -307,7 +307,7 @@ async function runModelCode(code, timeoutMs) {
   });
   Object.defineProperties(sandbox, {
     console: { value: controller.console, enumerable: true },
-    openclaw: { value: controller.openclaw, enumerable: true },
+    openclaw: { value: controller.cimiclaw, enumerable: true },
   });
   activeController = controller;
   const pumpTimer = setInterval(() => pumpController(controller), 1);

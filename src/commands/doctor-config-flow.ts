@@ -1,7 +1,7 @@
 import path from "node:path";
 import { formatCliCommand } from "../cli/command-format.js";
 import { CONFIG_PATH } from "../config/paths.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { note } from "../terminal/note.js";
 import { noteOpencodeProviderOverrides } from "./doctor-config-analysis.js";

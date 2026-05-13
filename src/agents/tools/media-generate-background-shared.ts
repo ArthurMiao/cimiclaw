@@ -1,7 +1,7 @@
 import crypto from "node:crypto";
 import { completionRequiresMessageToolDelivery } from "../../auto-reply/reply/completion-delivery-policy.js";
 import { SILENT_REPLY_TOKEN } from "../../auto-reply/tokens.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { clearAgentRunContext, registerAgentRunContext } from "../../infra/agent-events.js";
 import { formatErrorMessage } from "../../infra/errors.js";
 import { createSubsystemLogger } from "../../logging/subsystem.js";

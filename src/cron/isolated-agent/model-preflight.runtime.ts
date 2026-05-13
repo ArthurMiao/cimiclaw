@@ -1,6 +1,6 @@
 import { normalizeProviderId } from "../../agents/provider-id.js";
 import type { ModelProviderConfig } from "../../config/types.models.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { fetchWithSsrFGuard } from "../../infra/net/fetch-guard.js";
 import type { SsrFPolicy } from "../../infra/net/ssrf.js";
 import { normalizeLowercaseStringOrEmpty } from "../../shared/string-coerce.js";

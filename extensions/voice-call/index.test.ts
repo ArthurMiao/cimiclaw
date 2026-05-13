@@ -262,7 +262,7 @@ describe("voice-call plugin", () => {
   it("still starts the webhook runtime for gateway CLI processes", async () => {
     const previousArgv = process.argv;
     vi.stubEnv("OPENCLAW_CLI", "1");
-    process.argv = ["node", "openclaw", "gateway", "run"];
+    process.argv = ["node", "cimiclaw", "gateway", "run"];
     const { service } = setup({ provider: "mock" });
 
     try {

@@ -17,7 +17,7 @@ vi.mock("../plugins/bundled-dir.js", () => ({
 // The channel-catalog.json fallback still walks package roots via
 // resolveOpenClawPackageRootSync. Isolate from the real repo by mocking
 // moduleUrl/argv1 resolution to null and deriving only from the tmp cwd.
-vi.mock("../infra/openclaw-root.js", () => ({
+vi.mock("../infra/cimiclaw-root.js", () => ({
   resolveOpenClawPackageRootSync: (opts: { cwd?: string; argv1?: string; moduleUrl?: string }) =>
     opts.cwd ?? null,
   resolveOpenClawPackageRoot: async (opts: { cwd?: string; argv1?: string; moduleUrl?: string }) =>
@@ -80,7 +80,7 @@ function seedChannelPkg(
       },
     },
   });
-  writeJsonFile(path.join(pluginDir, "openclaw.plugin.json"), {
+  writeJsonFile(path.join(pluginDir, "cimiclaw.plugin.json"), {
     id: opts.id,
     configSchema: { type: "object" },
     channels: [opts.id],

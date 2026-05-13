@@ -41,7 +41,7 @@ describe("createCacheTrace", () => {
         diagnostics: {
           cacheTrace: {
             enabled: true,
-            filePath: "~/.openclaw/logs/cache-trace.jsonl",
+            filePath: "~/.cimiclaw/logs/cache-trace.jsonl",
           },
         },
       },
@@ -54,7 +54,7 @@ describe("createCacheTrace", () => {
     });
 
     expect(typeof trace?.recordStage).toBe("function");
-    expect(trace?.filePath).toBe(resolveUserPath("~/.openclaw/logs/cache-trace.jsonl"));
+    expect(trace?.filePath).toBe(resolveUserPath("~/.cimiclaw/logs/cache-trace.jsonl"));
 
     trace?.recordStage("session:loaded", {
       messages: [],

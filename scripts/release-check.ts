@@ -330,8 +330,8 @@ function runPackedBundledPluginPostinstall(packageRoot: string): void {
 }
 
 export function writePackedBundledPluginActivationConfig(homeDir: string): void {
-  const configPath = join(homeDir, ".openclaw", "openclaw.json");
-  mkdirSync(join(homeDir, ".openclaw"), { recursive: true });
+  const configPath = join(homeDir, ".cimiclaw", "openclaw.json");
+  mkdirSync(join(homeDir, ".cimiclaw"), { recursive: true });
   writeFileSync(
     configPath,
     `${JSON.stringify(
@@ -382,14 +382,14 @@ function runPackedBundledPluginActivationSmoke(packageRoot: string, tmpRoot: str
   writePackedBundledPluginActivationConfig(homeDir);
   execFileSync(
     process.execPath,
-    [join(packageRoot, "openclaw.mjs"), ...PACKED_BUNDLED_RUNTIME_DEPS_REPAIR_ARGS],
+    [join(packageRoot, "cimiclaw.mjs"), ...PACKED_BUNDLED_RUNTIME_DEPS_REPAIR_ARGS],
     {
       cwd: packageRoot,
       stdio: "inherit",
       env,
     },
   );
-  execFileSync(process.execPath, [join(packageRoot, "openclaw.mjs"), "plugins", "doctor"], {
+  execFileSync(process.execPath, [join(packageRoot, "cimiclaw.mjs"), "plugins", "doctor"], {
     cwd: packageRoot,
     stdio: "inherit",
     env,
@@ -502,7 +502,7 @@ function runPackedBundledChannelEntrySmoke(): void {
 
     execFileSync(
       process.execPath,
-      [join(packageRoot, "openclaw.mjs"), ...PACKED_COMPLETION_SMOKE_ARGS],
+      [join(packageRoot, "cimiclaw.mjs"), ...PACKED_COMPLETION_SMOKE_ARGS],
       {
         cwd: packageRoot,
         stdio: "inherit",
@@ -565,8 +565,8 @@ export function collectForbiddenPackPaths(paths: Iterable<string>): string[] {
       (path) =>
         isLegacyPluginDependencyInstallStagePath(path) ||
         forbiddenPrefixes.some((prefix) => path.startsWith(prefix)) ||
-        /(^|\/)\.openclaw-runtime-deps-[^/]+(\/|$)/u.test(path) ||
-        path.endsWith("/.openclaw-runtime-deps-stamp.json") ||
+        /(^|\/)\.cimiclaw-runtime-deps-[^/]+(\/|$)/u.test(path) ||
+        path.endsWith("/.cimiclaw-runtime-deps-stamp.json") ||
         path.includes("node_modules/"),
     )
     .toSorted((left, right) => left.localeCompare(right));

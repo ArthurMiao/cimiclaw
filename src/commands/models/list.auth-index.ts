@@ -17,7 +17,7 @@ import {
 import { resolveProviderAuthAliasMap } from "../../agents/provider-auth-aliases.js";
 import { normalizeProviderIdForAuth } from "../../agents/provider-id.js";
 import { resolveAgentModelPrimaryValue } from "../../config/model-input.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { loadPluginRegistrySnapshotWithMetadata } from "../../plugins/plugin-registry.js";
 
 export type ModelListAuthIndex = {

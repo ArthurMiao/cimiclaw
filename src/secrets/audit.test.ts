@@ -126,8 +126,8 @@ async function expectPathMissing(filePath: string): Promise<void> {
 
 async function createAuditFixture(): Promise<AuditFixture> {
   const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-secrets-audit-"));
-  const stateDir = path.join(rootDir, ".openclaw");
-  const configPath = path.join(stateDir, "openclaw.json");
+  const stateDir = path.join(rootDir, ".cimiclaw");
+  const configPath = path.join(stateDir, "cimiclaw.json");
   const authStorePath = path.join(stateDir, "agents", "main", "agent", "auth-profiles.json");
   const authJsonPath = path.join(stateDir, "agents", "main", "agent", "auth.json");
   const modelsPath = path.join(stateDir, "agents", "main", "agent", "models.json");

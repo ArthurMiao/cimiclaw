@@ -3,7 +3,7 @@ import {
   canonicalizeMainSessionAlias,
   resolveMainSessionKey,
 } from "../config/sessions/main-session.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   DEFAULT_AGENT_ID,
   normalizeAgentId,

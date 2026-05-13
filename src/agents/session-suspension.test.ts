@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { CommandLane } from "../process/lanes.js";
 
 const sessionStoreMocks = vi.hoisted(() => ({

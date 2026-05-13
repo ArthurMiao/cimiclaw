@@ -1,6 +1,6 @@
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { setBundledPluginsDirOverrideForTest } from "../plugins/bundled-dir.js";
 import {
   clearCurrentPluginMetadataSnapshot,
@@ -12,15 +12,15 @@ import type { PluginManifestRecord } from "../plugins/manifest-registry.js";
 import type { PluginMetadataSnapshot } from "../plugins/plugin-metadata-snapshot.types.js";
 import { clearSecretsRuntimeSnapshot } from "../secrets/runtime.js";
 import type { AuthProfileStore } from "./auth-profiles/types.js";
-import { resolveOptionalMediaToolFactoryPlan } from "./openclaw-tools.media-factory-plan.js";
+import { resolveOptionalMediaToolFactoryPlan } from "./cimiclaw-tools.media-factory-plan.js";
 import * as pdfModelConfigModule from "./tools/pdf-tool.model-config.js";
 
 type CreateOpenClawToolsOptions = Parameters<
-  typeof import("./openclaw-tools.js").createOpenClawTools
+  typeof import("./cimiclaw-tools.js").createOpenClawTools
 >[0];
 
 async function createOpenClawToolsForTest(options?: CreateOpenClawToolsOptions) {
-  const { createOpenClawTools } = await import("./openclaw-tools.js");
+  const { createOpenClawTools } = await import("./cimiclaw-tools.js");
   return createOpenClawTools(options);
 }
 
@@ -55,7 +55,7 @@ function createPlugin(params: {
     origin: params.origin ?? "bundled",
     rootDir: `/plugins/${params.id}`,
     source: `/plugins/${params.id}/index.js`,
-    manifestPath: `/plugins/${params.id}/openclaw.plugin.json`,
+    manifestPath: `/plugins/${params.id}/cimiclaw.plugin.json`,
     channels: [],
     providers: [],
     cliBackends: [],

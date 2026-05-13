@@ -37,7 +37,7 @@ FROM node:24-bookworm
 
 RUN apt-get update && apt-get install -y socat && rm -rf /var/lib/apt/lists/*
 
-# Example binary 1: Gmail CLI (gogcli â€” installs as `gog`)
+# Example binary 1: Gmail CLI (gogcli â€?installs as `gog`)
 # Copy the current Linux asset URL from https://github.com/steipete/gogcli/releases
 RUN curl -L https://github.com/steipete/gogcli/releases/latest/download/gogcli_linux_amd64.tar.gz \
   | tar -xzO gog > /usr/local/bin/gog; \
@@ -124,13 +124,13 @@ All long-lived state must survive restarts, rebuilds, and reboots.
 
 | Component           | Location                                               | Persistence mechanism  | Notes                                                         |
 | ------------------- | ------------------------------------------------------ | ---------------------- | ------------------------------------------------------------- |
-| Gateway config      | `/home/node/.openclaw/`                                | Host volume mount      | Includes `openclaw.json`, `.env`                              |
-| Model auth profiles | `/home/node/.openclaw/agents/`                         | Host volume mount      | `agents/<agentId>/agent/auth-profiles.json` (OAuth, API keys) |
-| Skill configs       | `/home/node/.openclaw/skills/`                         | Host volume mount      | Skill-level state                                             |
-| Agent workspace     | `/home/node/.openclaw/workspace/`                      | Host volume mount      | Code and agent artifacts                                      |
-| WhatsApp session    | `/home/node/.openclaw/`                                | Host volume mount      | Preserves QR login                                            |
-| Gmail keyring       | `/home/node/.openclaw/`                                | Host volume + password | Requires `GOG_KEYRING_PASSWORD`                               |
-| Plugin packages     | `/home/node/.openclaw/npm`, `/home/node/.openclaw/git` | Host volume mount      | Downloadable plugin package roots                             |
+| Gateway config      | `/home/node/.cimiclaw/`                                | Host volume mount      | Includes `cimiclaw.json`, `.env`                              |
+| Model auth profiles | `/home/node/.cimiclaw/agents/`                         | Host volume mount      | `agents/<agentId>/agent/auth-profiles.json` (OAuth, API keys) |
+| Skill configs       | `/home/node/.cimiclaw/skills/`                         | Host volume mount      | Skill-level state                                             |
+| Agent workspace     | `/home/node/.cimiclaw/workspace/`                      | Host volume mount      | Code and agent artifacts                                      |
+| WhatsApp session    | `/home/node/.cimiclaw/`                                | Host volume mount      | Preserves QR login                                            |
+| Gmail keyring       | `/home/node/.cimiclaw/`                                | Host volume + password | Requires `GOG_KEYRING_PASSWORD`                               |
+| Plugin packages     | `/home/node/.cimiclaw/npm`, `/home/node/.cimiclaw/git` | Host volume mount      | Downloadable plugin package roots                             |
 | External binaries   | `/usr/local/bin/`                                      | Docker image           | Must be baked at build time                                   |
 | Node runtime        | Container filesystem                                   | Docker image           | Rebuilt every image build                                     |
 | OS packages         | Container filesystem                                   | Docker image           | Do not install at runtime                                     |

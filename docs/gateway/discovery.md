@@ -93,7 +93,7 @@ Enable/disable/override:
   Windows, and containerized deployments need explicit enablement.
   Use `0` only on host, macvlan, or another mDNS-capable network; use `1` to
   force-disable.
-- `gateway.bind` in `~/.openclaw/openclaw.json` controls the Gateway bind mode.
+- `gateway.bind` in `~/.cimiclaw/cimiclaw.json` controls the Gateway bind mode.
 - `OPENCLAW_SSH_PORT` overrides the SSH port advertised when `sshPort` is emitted.
 - `OPENCLAW_TAILNET_DNS` publishes a `tailnetDns` hint (MagicDNS).
 - `OPENCLAW_CLI_PATH` overrides the advertised CLI path.

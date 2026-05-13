@@ -54,7 +54,7 @@ const loadPluginManifestRegistryForPluginRegistry = vi.hoisted(() =>
         origin: "bundled",
         rootDir: "/tmp/openclaw-test-channel-fixture",
         source: "bundled",
-        manifestPath: "/tmp/openclaw-test-channel-fixture/openclaw.plugin.json",
+        manifestPath: "/tmp/openclaw-test-channel-fixture/cimiclaw.plugin.json",
       },
     ],
   })),

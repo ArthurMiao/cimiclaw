@@ -3,7 +3,7 @@ import type { ModelRegistry } from "@mariozechner/pi-coding-agent";
 import { resolveDefaultAgentDir } from "../../agents/agent-scope.js";
 import { shouldSuppressBuiltInModel } from "../../agents/model-suppression.js";
 import { discoverAuthStorage, discoverModels } from "../../agents/pi-model-discovery.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { loadModelRegistry } from "./list.registry.js";
 import type { ConfiguredEntry } from "./list.types.js";
 import { modelKey } from "./shared.js";

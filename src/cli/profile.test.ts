@@ -159,10 +159,10 @@ describe("applyCliProfileEnv", () => {
       env,
       homedir: () => "/home/peter",
     });
-    const expectedStateDir = path.join(path.resolve("/home/peter"), ".openclaw-dev");
+    const expectedStateDir = path.join(path.resolve("/home/peter"), ".cimiclaw-dev");
     expect(env.OPENCLAW_PROFILE).toBe("dev");
     expect(env.OPENCLAW_STATE_DIR).toBe(expectedStateDir);
-    expect(env.OPENCLAW_CONFIG_PATH).toBe(path.join(expectedStateDir, "openclaw.json"));
+    expect(env.OPENCLAW_CONFIG_PATH).toBe(path.join(expectedStateDir, "cimiclaw.json"));
     expect(env.OPENCLAW_GATEWAY_PORT).toBe("19001");
   });
 
@@ -178,7 +178,7 @@ describe("applyCliProfileEnv", () => {
     });
     expect(env.OPENCLAW_STATE_DIR).toBe("/custom");
     expect(env.OPENCLAW_GATEWAY_PORT).toBe("19099");
-    expect(env.OPENCLAW_CONFIG_PATH).toBe(path.join("/custom", "openclaw.json"));
+    expect(env.OPENCLAW_CONFIG_PATH).toBe(path.join("/custom", "cimiclaw.json"));
   });
 
   it("uses OPENCLAW_HOME when deriving profile state dir", () => {
@@ -193,9 +193,9 @@ describe("applyCliProfileEnv", () => {
     });
 
     const resolvedHome = path.resolve("/srv/openclaw-home");
-    expect(env.OPENCLAW_STATE_DIR).toBe(path.join(resolvedHome, ".openclaw-work"));
+    expect(env.OPENCLAW_STATE_DIR).toBe(path.join(resolvedHome, ".cimiclaw-work"));
     expect(env.OPENCLAW_CONFIG_PATH).toBe(
-      path.join(resolvedHome, ".openclaw-work", "openclaw.json"),
+      path.join(resolvedHome, ".cimiclaw-work", "cimiclaw.json"),
     );
   });
 });

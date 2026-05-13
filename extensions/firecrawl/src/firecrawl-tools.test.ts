@@ -301,7 +301,7 @@ describe("firecrawl tools", () => {
 
   it("keeps the compare-helper fetch facade owned by the Firecrawl extension", async () => {
     await fetchFirecrawlContent({
-      url: "https://docs.openclaw.ai",
+      url: "https://docs.cimiclaw.ai",
       extractMode: "markdown",
       apiKey: "firecrawl-key",
       baseUrl: "https://api.firecrawl.dev",
@@ -332,7 +332,7 @@ describe("firecrawl tools", () => {
           },
         },
       },
-      url: "https://docs.openclaw.ai",
+      url: "https://docs.cimiclaw.ai",
       extractMode: "markdown",
       maxChars: 1500,
       proxy: "stealth",
@@ -369,7 +369,7 @@ describe("firecrawl tools", () => {
     }
 
     await tool.execute({
-      url: "https://docs.openclaw.ai",
+      url: "https://docs.cimiclaw.ai",
       extractMode: "markdown",
       maxChars: 1500,
       proxy: "stealth",
@@ -378,7 +378,7 @@ describe("firecrawl tools", () => {
 
     expect(runFirecrawlScrape).toHaveBeenCalledWith({
       cfg: { test: true },
-      url: "https://docs.openclaw.ai",
+      url: "https://docs.cimiclaw.ai",
       extractMode: "markdown",
       maxChars: 1500,
       proxy: "stealth",
@@ -432,7 +432,7 @@ describe("firecrawl tools", () => {
     } as never);
 
     const result = await tool.execute("call-1", {
-      url: "https://docs.openclaw.ai",
+      url: "https://docs.cimiclaw.ai",
       maxChars: 1500,
       onlyMainContent: false,
       maxAgeMs: 5000,
@@ -443,7 +443,7 @@ describe("firecrawl tools", () => {
 
     expect(runFirecrawlScrape).toHaveBeenCalledWith({
       cfg: { env: "test" },
-      url: "https://docs.openclaw.ai",
+      url: "https://docs.cimiclaw.ai",
       extractMode: "markdown",
       maxChars: 1500,
       onlyMainContent: false,
@@ -456,7 +456,7 @@ describe("firecrawl tools", () => {
     expect(details.ok).toBe(true);
     expect(details.params).toEqual({
       cfg: { env: "test" },
-      url: "https://docs.openclaw.ai",
+      url: "https://docs.cimiclaw.ai",
       extractMode: "markdown",
       maxChars: 1500,
       onlyMainContent: false,
@@ -473,14 +473,14 @@ describe("firecrawl tools", () => {
     } as never);
 
     await tool.execute("call-2", {
-      url: "https://docs.openclaw.ai",
+      url: "https://docs.cimiclaw.ai",
       extractMode: "text",
       proxy: "invalid",
     });
 
     expect(runFirecrawlScrape).toHaveBeenCalledWith({
       cfg: { env: "test" },
-      url: "https://docs.openclaw.ai",
+      url: "https://docs.cimiclaw.ai",
       extractMode: "text",
       maxChars: undefined,
       onlyMainContent: undefined,

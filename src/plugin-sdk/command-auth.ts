@@ -10,7 +10,7 @@ import {
   buildHelpMessage as buildHelpMessageCompat,
 } from "../auto-reply/command-status-builders.js";
 import type { ChannelId } from "../channels/plugins/types.public.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   expandAllowFromWithAccessGroups,
   type AccessGroupMembershipResolver,

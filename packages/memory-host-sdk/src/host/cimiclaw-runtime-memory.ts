@@ -9,7 +9,7 @@ export {
   listRegisteredMemoryEmbeddingProviders,
   resolveCanonicalRootMemoryFile,
   shouldSkipRootMemoryAuxiliaryPath,
-} from "./openclaw-runtime.js";
+} from "./cimiclaw-runtime.js";
 export type {
   MemoryEmbeddingBatchChunk,
   MemoryEmbeddingBatchOptions,
@@ -26,4 +26,4 @@ export type {
   MemoryPluginRuntime,
   MemoryPromptSectionBuilder,
   OpenClawPluginApi,
-} from "./openclaw-runtime.js";
+} from "./cimiclaw-runtime.js";

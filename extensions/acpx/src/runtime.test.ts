@@ -9,7 +9,7 @@ type TestSessionStore = {
 };
 
 const DOCUMENTED_OPENCLAW_BRIDGE_COMMAND =
-  "env OPENCLAW_HIDE_BANNER=1 OPENCLAW_SUPPRESS_NOTES=1 openclaw acp --url ws://127.0.0.1:18789 --token-file ~/.openclaw/gateway.token --session agent:main:main";
+  "env OPENCLAW_HIDE_BANNER=1 OPENCLAW_SUPPRESS_NOTES=1 openclaw acp --url ws://127.0.0.1:18789 --token-file ~/.cimiclaw/gateway.token --session agent:main:main";
 const CODEX_ACP_COMMAND = "npx @zed-industries/codex-acp@0.13.0";
 const CODEX_ACP_WRAPPER_COMMAND = `node "/tmp/openclaw/acpx/codex-acp-wrapper.mjs"`;
 const CODEX_ACP_WRAPPER_COMMAND_WITH_LEASE = `${CODEX_ACP_WRAPPER_COMMAND} ${OPENCLAW_ACPX_LEASE_ID_ARG} lease-close ${OPENCLAW_GATEWAY_INSTANCE_ID_ARG} gateway-test`;
@@ -1251,7 +1251,7 @@ describe("AcpxRuntime fresh reset wrapper", () => {
       mcpServers: [{ name: "tools", command: "mcp-tools" }] as never,
       agentRegistry: {
         resolve: (agentName: string) =>
-          agentName === "openclaw" ? "env OPENCLAW_HIDE_BANNER=1 node openclaw.mjs acp" : agentName,
+          agentName === "openclaw" ? "env OPENCLAW_HIDE_BANNER=1 node cimiclaw.mjs acp" : agentName,
         list: () => ["codex", "openclaw"],
       },
     });

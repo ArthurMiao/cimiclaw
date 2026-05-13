@@ -39,7 +39,7 @@ the broader umbrella surface and shared helpers such as
 `buildChannelConfigSchema`.
 
 For channel config, publish the channel-owned JSON Schema through
-`openclaw.plugin.json#channelConfigs`. The `plugin-sdk/channel-config-schema`
+`cimiclaw.plugin.json#channelConfigs`. The `plugin-sdk/channel-config-schema`
 subpath is for shared schema primitives and the generic builder. OpenClaw's
 bundled plugins use `plugin-sdk/bundled-channel-config-schema` for retained
 bundled-channel schemas. Deprecated compatibility exports remain on
@@ -69,7 +69,7 @@ generic channel SDK subpaths instead.
 
 The plugin SDK is exposed as a set of narrow subpaths grouped by area (plugin
 entry, channel, provider, auth, runtime, capability, memory, and reserved
-bundled-plugin helpers). For the full catalog â€” grouped and linked â€” see
+bundled-plugin helpers). For the full catalog â€?grouped and linked â€?see
 [Plugin SDK subpaths](/plugins/sdk-subpaths).
 
 The compiler entrypoint inventory lives in

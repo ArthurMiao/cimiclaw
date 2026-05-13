@@ -31,7 +31,7 @@ vi.mock("../config/config.js", () => ({
   resolveGatewayPort: () => 18789,
 }));
 
-import "./test-helpers/fast-openclaw-tools-sessions.js";
+import "./test-helpers/fast-cimiclaw-tools-sessions.js";
 import { setActivePluginRegistry } from "../plugins/runtime.js";
 import { __testing as agentStepTesting } from "./tools/agent-step.js";
 import { createSessionsHistoryTool } from "./tools/sessions-history-tool.js";

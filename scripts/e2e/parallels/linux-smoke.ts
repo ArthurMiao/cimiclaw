@@ -207,7 +207,7 @@ function parseArgs(argv: string[]): LinuxOptions {
 
 class LinuxSmoke {
   private auth: ProviderAuth;
-  private disableBonjour = parseBoolEnv(process.env.OPENCLAW_PARALLELS_LINUX_DISABLE_BONJOUR);
+  private disableBonjour = parseBoolEnv(process.env.cimiclaw_PARALLELS_LINUX_DISABLE_BONJOUR);
   private hostIp = "";
   private hostPort = 0;
   private server: HostServer | null = null;
@@ -346,7 +346,7 @@ class LinuxSmoke {
     this.status.freshGateway = "pass";
     await this.phase(
       "fresh.first-local-agent-turn",
-      Number(process.env.OPENCLAW_PARALLELS_LINUX_AGENT_TIMEOUT_S || 1500),
+      Number(process.env.cimiclaw_PARALLELS_LINUX_AGENT_TIMEOUT_S || 1500),
       () => this.verifyLocalTurn(),
     );
     this.status.freshAgent = "pass";
@@ -376,7 +376,7 @@ class LinuxSmoke {
     this.status.upgradeGateway = "pass";
     await this.phase(
       "upgrade.first-local-agent-turn",
-      Number(process.env.OPENCLAW_PARALLELS_LINUX_AGENT_TIMEOUT_S || 1500),
+      Number(process.env.cimiclaw_PARALLELS_LINUX_AGENT_TIMEOUT_S || 1500),
       () => this.verifyLocalTurn(),
     );
     this.status.upgradeAgent = "pass";
@@ -552,7 +552,7 @@ printf 'preflight.npmRoot=%s\n' "$(npm root -g 2>/dev/null || true)"`);
 
   private injectBadPluginFixture(): void {
     this.guestBash(String.raw`set -euo pipefail
-plugin_dir=/root/.openclaw/test-bad-plugin
+plugin_dir=/root/.cimiclaw/test-bad-plugin
 mkdir -p "$plugin_dir"
 cat >"$plugin_dir/package.json" <<'JSON'
 {"name":"@openclaw/test-bad-plugin","version":"1.0.0","openclaw":{"extensions":["./index.cjs"],"setupEntry":"./setup-entry.cjs"}}
@@ -574,12 +574,12 @@ JS
 python3 - <<'PY'
 import json
 from pathlib import Path
-config_path = Path("/root/.openclaw/openclaw.json")
+config_path = Path("/root/.cimiclaw/openclaw.json")
 config = json.loads(config_path.read_text()) if config_path.exists() else {}
 plugins = config.setdefault("plugins", {})
 load = plugins.setdefault("load", {})
 paths = load.setdefault("paths", [])
-plugin_dir = "/root/.openclaw/test-bad-plugin"
+plugin_dir = "/root/.cimiclaw/test-bad-plugin"
 if plugin_dir not in paths:
     paths.append(plugin_dir)
 allow = plugins.get("allow")
@@ -599,7 +599,7 @@ PY`);
 rm -f /tmp/openclaw-parallels-linux-gateway.log
 setsid sh -lc ` +
         shellQuote(
-          `exec env OPENCLAW_HOME=/root OPENCLAW_STATE_DIR=/root/.openclaw OPENCLAW_CONFIG_PATH=/root/.openclaw/openclaw.json OPENCLAW_ALLOW_ROOT=1${bonjourEnv} ${this.auth.apiKeyEnv}=${shellQuote(
+          `exec env OPENCLAW_HOME=/root OPENCLAW_STATE_DIR=/root/.cimiclaw OPENCLAW_CONFIG_PATH=/root/.cimiclaw/openclaw.json OPENCLAW_ALLOW_ROOT=1${bonjourEnv} ${this.auth.apiKeyEnv}=${shellQuote(
             this.auth.apiKeyValue,
           )} openclaw gateway run --bind loopback --port 18789 --force >/tmp/openclaw-parallels-linux-gateway.log 2>&1`,
         ) +
@@ -685,19 +685,19 @@ setsid sh -lc ` +
 python3 - <<'PY'
 import json
 from pathlib import Path
-config_path = Path("/root/.openclaw/openclaw.json")
+config_path = Path("/root/.cimiclaw/openclaw.json")
 config = json.loads(config_path.read_text()) if config_path.exists() else {}
 plugins = config.setdefault("plugins", {})
 load = plugins.setdefault("load", {})
 paths = load.get("paths")
 if isinstance(paths, list):
-    load["paths"] = [path for path in paths if path != "/root/.openclaw/test-bad-plugin"]
+    load["paths"] = [path for path in paths if path != "/root/.cimiclaw/test-bad-plugin"]
 allow = plugins.get("allow")
 if isinstance(allow, list):
     plugins["allow"] = [plugin_id for plugin_id in allow if plugin_id != "test-bad-plugin"]
 config_path.write_text(json.dumps(config, indent=2) + "\n")
 PY
-rm -rf /root/.openclaw/test-bad-plugin`);
+rm -rf /root/.cimiclaw/test-bad-plugin`);
   }
 
   private verifyLocalTurn(): void {
@@ -726,7 +726,7 @@ rm -f "$provider_config_batch"`);
 for attempt in 1 2; do
   session_id="parallels-linux-smoke"
   if [ "$attempt" -gt 1 ]; then session_id="parallels-linux-smoke-retry-$attempt"; fi
-  rm -f "$HOME/.openclaw/agents/main/sessions/$session_id.jsonl"
+  rm -f "$HOME/.cimiclaw/agents/main/sessions/$session_id.jsonl"
   output_file="$(mktemp)"
   set +e
   /usr/bin/env OPENCLAW_ALLOW_ROOT=1 ${shellQuote(`${this.auth.apiKeyEnv}=${this.auth.apiKeyValue}`)} openclaw agent --local --agent main --session-id "$session_id" --message ${shellQuote(

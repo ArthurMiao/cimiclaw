@@ -531,7 +531,7 @@ describe("AcpSessionManager", () => {
         label: "Korean path",
         task: "Print the current directory in Korean",
         status: "succeeded",
-        progressSummary: "현재 작업 디렉토리는 /home/bykim0119/.openclaw/workspace 입니다",
+        progressSummary: "현재 작업 디렉토리는 /home/bykim0119/.cimiclaw/workspace 입니다",
       });
     });
   }, 300_000);

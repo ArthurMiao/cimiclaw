@@ -10,7 +10,7 @@ Each agent in a multi-agent setup can override the global sandbox and tool polic
 
 <CardGroup cols={3}>
   <Card title="Sandboxing" href="/gateway/sandboxing">
-    Backends and modes — full sandbox reference.
+    Backends and modes 鈥?full sandbox reference.
   </Card>
   <Card title="Sandbox vs tool policy vs elevated" href="/gateway/sandbox-vs-tool-policy-vs-elevated">
     Debug "why is this blocked?"
@@ -21,7 +21,7 @@ Each agent in a multi-agent setup can override the global sandbox and tool polic
 </CardGroup>
 
 <Warning>
-Auth is scoped by agent: each agent has its own `agentDir` auth store at `~/.openclaw/agents/<agentId>/agent/auth-profiles.json`. Never reuse `agentDir` across agents. Agents can read through to the default/main agent's auth profiles when they do not have a local profile, but OAuth refresh tokens are not cloned into secondary agent stores. If you copy credentials manually, copy only portable static `api_key` or `token` profiles.
+Auth is scoped by agent: each agent has its own `agentDir` auth store at `~/.cimiclaw/agents/<agentId>/agent/auth-profiles.json`. Never reuse `agentDir` across agents. Agents can read through to the default/main agent's auth profiles when they do not have a local profile, but OAuth refresh tokens are not cloned into secondary agent stores. If you copy credentials manually, copy only portable static `api_key` or `token` profiles.
 </Warning>
 
 ---
@@ -38,13 +38,13 @@ Auth is scoped by agent: each agent has its own `agentDir` auth store at `~/.ope
             "id": "main",
             "default": true,
             "name": "Personal Assistant",
-            "workspace": "~/.openclaw/workspace",
+            "workspace": "~/.cimiclaw/workspace",
             "sandbox": { "mode": "off" }
           },
           {
             "id": "family",
             "name": "Family Bot",
-            "workspace": "~/.openclaw/workspace-family",
+            "workspace": "~/.cimiclaw/workspace-family",
             "sandbox": {
               "mode": "all",
               "scope": "agent"
@@ -85,12 +85,12 @@ Auth is scoped by agent: each agent has its own `agentDir` auth store at `~/.ope
         "list": [
           {
             "id": "personal",
-            "workspace": "~/.openclaw/workspace-personal",
+            "workspace": "~/.cimiclaw/workspace-personal",
             "sandbox": { "mode": "off" }
           },
           {
             "id": "work",
-            "workspace": "~/.openclaw/workspace-work",
+            "workspace": "~/.cimiclaw/workspace-work",
             "sandbox": {
               "mode": "all",
               "scope": "shared",
@@ -140,14 +140,14 @@ Auth is scoped by agent: each agent has its own `agentDir` auth store at `~/.ope
         "list": [
           {
             "id": "main",
-            "workspace": "~/.openclaw/workspace",
+            "workspace": "~/.cimiclaw/workspace",
             "sandbox": {
               "mode": "off"
             }
           },
           {
             "id": "public",
-            "workspace": "~/.openclaw/workspace-public",
+            "workspace": "~/.cimiclaw/workspace-public",
             "sandbox": {
               "mode": "all",
               "scope": "agent"
@@ -246,7 +246,7 @@ Per-agent elevated overrides (`agents.list[].tools.elevated`) can further restri
     {
       "agents": {
         "defaults": {
-          "workspace": "~/.openclaw/workspace",
+          "workspace": "~/.cimiclaw/workspace",
           "sandbox": {
             "mode": "non-main"
           }
@@ -271,7 +271,7 @@ Per-agent elevated overrides (`agents.list[].tools.elevated`) can further restri
           {
             "id": "main",
             "default": true,
-            "workspace": "~/.openclaw/workspace",
+            "workspace": "~/.cimiclaw/workspace",
             "sandbox": { "mode": "off" }
           }
         ]
@@ -363,7 +363,7 @@ After configuring multi-agent sandbox and tools:
   </Step>
   <Step title="Monitor logs">
     ```bash
-    tail -f "${OPENCLAW_STATE_DIR:-$HOME/.openclaw}/logs/gateway.log" | grep -E "routing|sandbox|tools"
+    tail -f "${OPENCLAW_STATE_DIR:-$HOME/.cimiclaw}/logs/gateway.log" | grep -E "routing|sandbox|tools"
     ```
   </Step>
 </Steps>
@@ -379,7 +379,7 @@ After configuring multi-agent sandbox and tools:
 
   </Accordion>
   <Accordion title="Tools still available despite deny list">
-    - Check tool filtering order: global → agent → sandbox → subagent.
+    - Check tool filtering order: global 鈫?agent 鈫?sandbox 鈫?subagent.
     - Each level can only further restrict, not grant back.
     - Verify with logs: `[tools] filtering tools for agent:${agentId}`.
 
@@ -398,6 +398,6 @@ After configuring multi-agent sandbox and tools:
 - [Elevated mode](/tools/elevated)
 - [Multi-agent routing](/concepts/multi-agent)
 - [Sandbox configuration](/gateway/config-agents#agentsdefaultssandbox)
-- [Sandbox vs tool policy vs elevated](/gateway/sandbox-vs-tool-policy-vs-elevated) — debugging "why is this blocked?"
-- [Sandboxing](/gateway/sandboxing) — full sandbox reference (modes, scopes, backends, images)
+- [Sandbox vs tool policy vs elevated](/gateway/sandbox-vs-tool-policy-vs-elevated) 鈥?debugging "why is this blocked?"
+- [Sandboxing](/gateway/sandboxing) 鈥?full sandbox reference (modes, scopes, backends, images)
 - [Session management](/concepts/session)

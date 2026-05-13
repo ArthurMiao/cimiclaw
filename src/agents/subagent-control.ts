@@ -9,7 +9,7 @@ import {
 import { resolveStorePath } from "../config/sessions/paths.js";
 import { loadSessionStore, updateSessionStore } from "../config/sessions/store.js";
 import type { SessionEntry } from "../config/sessions/types.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { callGateway } from "../gateway/call.js";
 import { logVerbose } from "../globals.js";
 import { formatErrorMessage } from "../infra/errors.js";

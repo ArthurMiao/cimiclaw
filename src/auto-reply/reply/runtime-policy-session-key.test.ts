@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { resolveSandboxRuntimeStatus } from "../../agents/sandbox/runtime-status.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { MsgContext } from "../templating.js";
 import { resolveRuntimePolicySessionKey } from "./runtime-policy-session-key.js";
 

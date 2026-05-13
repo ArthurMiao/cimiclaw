@@ -13,7 +13,7 @@ import {
 import { resolveDefaultModelForAgent } from "../agents/model-selection.js";
 import { runEmbeddedPiAgent } from "../agents/pi-embedded.js";
 import { resolveAgentTimeoutMs } from "../agents/timeout.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import { normalizeLowercaseStringOrEmpty } from "../shared/string-coerce.js";
 

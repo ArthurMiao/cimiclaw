@@ -11,7 +11,7 @@ import type { PluginCommandDiagnosticsSession, PluginCommandResult } from "../..
 import { normalizeOptionalString } from "../../shared/string-coerce.js";
 import type { ReplyPayload } from "../types.js";
 import { rejectNonOwnerCommand } from "./command-gates.js";
-import { buildCurrentOpenClawCliCommand } from "./commands-openclaw-cli.js";
+import { buildCurrentOpenClawCliCommand } from "./commands-cimiclaw-cli.js";
 import {
   deliverPrivateCommandReply,
   readCommandDeliveryTarget,

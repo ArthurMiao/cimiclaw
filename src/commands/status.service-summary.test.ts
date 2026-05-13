@@ -21,7 +21,7 @@ describe("readServiceStatusSummary", () => {
     const summary = await readServiceStatusSummary(
       createService({
         isLoaded: vi.fn(async () => true),
-        readCommand: vi.fn(async () => ({ programArguments: ["openclaw", "gateway", "run"] })),
+        readCommand: vi.fn(async () => ({ programArguments: ["cimiclaw", "gateway", "run"] })),
         readRuntime: vi.fn(async () => ({ status: "running" })),
       }),
       "Daemon",
@@ -68,7 +68,7 @@ describe("readServiceStatusSummary", () => {
       createService({
         isLoaded,
         readCommand: vi.fn(async () => ({
-          programArguments: ["openclaw", "gateway", "run", "--port", "18789"],
+          programArguments: ["cimiclaw", "gateway", "run", "--port", "18789"],
           environment: { OPENCLAW_GATEWAY_PORT: "18789" },
         })),
         readRuntime,
@@ -79,7 +79,7 @@ describe("readServiceStatusSummary", () => {
     const loadedArgs = isLoaded.mock.calls[0]?.[0];
     expect(loadedArgs?.env?.OPENCLAW_GATEWAY_PORT).toBe("18789");
     const runtimeEnv = readRuntime.mock.calls[0]?.[0];
-    expect(runtimeEnv?.OPENCLAW_GATEWAY_PORT).toBe("18789");
+    expect(runtimeEnv?.cimiclaw_GATEWAY_PORT).toBe("18789");
     expect(summary.installed).toBe(true);
     expect(summary.loaded).toBe(true);
     expect(summary.runtime?.status).toBe("running");

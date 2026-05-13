@@ -32,7 +32,7 @@ docker_e2e_prepare_package_tgz() {
   local pack_dir
   pack_dir="$(mktemp -d "${TMPDIR:-/tmp}/openclaw-docker-e2e-pack.XXXXXX")"
   package_tgz="$(
-    node "$ROOT_DIR/scripts/package-openclaw-for-docker.mjs" \
+    node "$ROOT_DIR/scripts/package-cimiclaw-for-docker.mjs" \
       --output-dir "$pack_dir" \
       --output-name openclaw-current.tgz
   )"

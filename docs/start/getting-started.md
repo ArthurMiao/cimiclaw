@@ -6,14 +6,14 @@ read_when:
 title: "Getting started"
 ---
 
-Install OpenClaw, run onboarding, and chat with your AI assistant — all in
+Install OpenClaw, run onboarding, and chat with your AI assistant 鈥?all in
 about 5 minutes. By the end you will have a running Gateway, configured auth,
 and a working chat session.
 
 ## What you need
 
-- **Node.js** — Node 24 recommended (Node 22.16+ also supported)
-- **An API key** from a model provider (Anthropic, OpenAI, Google, etc.) — onboarding will prompt you
+- **Node.js** 鈥?Node 24 recommended (Node 22.16+ also supported)
+- **An API key** from a model provider (Anthropic, OpenAI, Google, etc.) 鈥?onboarding will prompt you
 
 <Tip>
 Check your Node version with `node --version`.
@@ -92,7 +92,7 @@ Need to install Node? See [Node setup](/install/node).
   assets and `index.html`.
 
 ```bash
-mkdir -p "$HOME/.openclaw/control-ui-custom"
+mkdir -p "$HOME/.cimiclaw/control-ui-custom"
 # Copy your built static files into that directory.
 ```
 
@@ -103,7 +103,7 @@ Then set:
   "gateway": {
     "controlUi": {
       "enabled": true,
-      "root": "$HOME/.openclaw/control-ui-custom"
+      "root": "$HOME/.cimiclaw/control-ui-custom"
     }
   }
 }
@@ -138,9 +138,9 @@ openclaw dashboard
 <Accordion title="Advanced: environment variables">
   If you run OpenClaw as a service account or want custom paths:
 
-- `OPENCLAW_HOME` — home directory for internal path resolution
-- `OPENCLAW_STATE_DIR` — override the state directory
-- `OPENCLAW_CONFIG_PATH` — override the config file path
+- `OPENCLAW_HOME` 鈥?home directory for internal path resolution
+- `OPENCLAW_STATE_DIR` 鈥?override the state directory
+- `OPENCLAW_CONFIG_PATH` 鈥?override the config file path
 
 Full reference: [Environment variables](/help/environment).
 </Accordion>

@@ -3,7 +3,7 @@ import { resolveReadOnlyChannelCommandDefaults } from "../channels/plugins/read-
 import type { ChannelId } from "../channels/plugins/types.public.js";
 import { normalizeOptionalLowercaseString } from "../shared/string-coerce.js";
 import type { NativeCommandsSetting } from "./types.js";
-import type { OpenClawConfig } from "./types.openclaw.js";
+import type { OpenClawConfig } from "./types.cimiclaw.js";
 export { isCommandFlagEnabled, isRestartEnabled } from "./commands.flags.js";
 
 function resolveAutoDefault(

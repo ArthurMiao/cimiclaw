@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { resolveOpenClawPackageRootSync } from "../infra/openclaw-root.js";
+import { resolveOpenClawPackageRootSync } from "../infra/cimiclaw-root.js";
 
 type PluginPeerLinkLogger = {
   info?: (message: string) => void;

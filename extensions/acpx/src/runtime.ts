@@ -580,9 +580,9 @@ export class AcpxRuntime implements AcpRuntime {
   constructor(options: OpenClawAcpxRuntimeOptions, testOptions?: AcpxRuntimeTestOptions) {
     const { openclawProcessCleanup, ...delegateTestOptions } = testOptions ?? {};
     this.processCleanupDeps = openclawProcessCleanup;
-    this.wrapperRoot = options.openclawWrapperRoot;
-    this.gatewayInstanceId = options.openclawGatewayInstanceId;
-    this.processLeaseStore = options.openclawProcessLeaseStore;
+    this.wrapperRoot = options.openClawWrapperRoot;
+    this.gatewayInstanceId = options.openClawGatewayInstanceId;
+    this.processLeaseStore = options.openClawProcessLeaseStore;
     this.cwd = options.cwd;
     this.sessionStore = createResetAwareSessionStore(options.sessionStore, {
       gatewayInstanceId: this.gatewayInstanceId,

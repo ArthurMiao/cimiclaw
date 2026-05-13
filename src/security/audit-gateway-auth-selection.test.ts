@@ -18,10 +18,10 @@ describe("security audit gateway auth selection", () => {
     const makeProbeEnv = (env?: { token?: string; password?: string }) => {
       const probeEnv: NodeJS.ProcessEnv = {};
       if (env?.token !== undefined) {
-        probeEnv.OPENCLAW_GATEWAY_TOKEN = env.token;
+        probeEnv.cimiclaw_GATEWAY_TOKEN = env.token;
       }
       if (env?.password !== undefined) {
-        probeEnv.OPENCLAW_GATEWAY_PASSWORD = env.password;
+        probeEnv.cimiclaw_GATEWAY_PASSWORD = env.password;
       }
       return probeEnv;
     };

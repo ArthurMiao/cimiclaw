@@ -471,7 +471,6 @@ export type OpenClawPluginNodeHostCommand = import("./types.js").OpenClawPluginN
 export type OpenClawPluginToolContext = import("./types.js").OpenClawPluginToolContext;
 export type OpenClawPluginHttpRouteParams = import("./types.js").OpenClawPluginHttpRouteParams;
 export type OpenClawPluginHookOptions = import("./types.js").OpenClawPluginHookOptions;
-export type PluginHookHandlerMap = import("./types.js").PluginHookHandlerMap;
 export type OpenClawPluginApi = import("./types.js").OpenClawPluginApi;
 export type TypedPluginHook = TypedPluginHookRegistration;
 export type OpenClawPluginChannelReg = OpenClawPluginChannelRegistration;

@@ -33,7 +33,7 @@ Move Canvas ownership to `extensions/canvas` while preserving the current paired
 Done:
 
 - Added bundled plugin package in `extensions/canvas`.
-- Added `extensions/canvas/openclaw.plugin.json`.
+- Added `extensions/canvas/cimiclaw.plugin.json`.
 - Moved the agent `canvas` tool from `src/agents/tools/canvas-tool.ts` to `extensions/canvas/src/tool.ts`.
 - Removed core registration of `createCanvasTool` from `src/agents/openclaw-tools.ts`.
 - Moved Canvas host implementation from `src/canvas-host` to `extensions/canvas/src/host`.

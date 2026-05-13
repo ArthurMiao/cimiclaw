@@ -1,5 +1,5 @@
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveProviderRuntimePlugin } from "../plugins/provider-hook-runtime.js";
 
 vi.mock("../plugins/provider-hook-runtime.js", async () => {

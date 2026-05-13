@@ -605,7 +605,7 @@ jobs:
             --source ref \
             --package-ref "$PACKAGE_REF" \
             --output-dir .artifacts/docker-e2e-package \
-            --output-name openclaw-current.tgz \
+            --output-name cimiclaw-current.tgz \
             --metadata .artifacts/docker-e2e-package/package-candidate.json \
             --github-output "$GITHUB_OUTPUT"
           digest="$(node -p "JSON.parse(require('fs').readFileSync('.artifacts/docker-e2e-package/package-candidate.json', 'utf8')).sha256")"
@@ -627,7 +627,7 @@ jobs:
         with:
           name: release-package-under-test
           path: |
-            .artifacts/docker-e2e-package/openclaw-current.tgz
+            .artifacts/docker-e2e-package/cimiclaw-current.tgz
             .artifacts/docker-e2e-package/package-candidate.json
           if-no-files-found: error
 

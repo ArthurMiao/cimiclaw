@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { AgentRouteBinding } from "../config/types.agents.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveFirstBoundAccountId } from "./bound-account-read.js";
 
 function cfgWithBindings(bindings: AgentRouteBinding[]): OpenClawConfig {

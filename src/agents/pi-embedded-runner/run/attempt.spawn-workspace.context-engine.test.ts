@@ -277,22 +277,22 @@ describe("runEmbeddedAttempt context engine sessionKey forwarding", () => {
       attemptOverrides: {
         skillsSnapshot: {
           prompt:
-            "<available_skills><skill><location>~/.openclaw/skills/smaug/SKILL.md</location></skill></available_skills>",
+            "<available_skills><skill><location>~/.cimiclaw/skills/smaug/SKILL.md</location></skill></available_skills>",
           skills: [{ name: "smaug" }],
           resolvedSkills: [
             {
               name: "smaug",
               description: "Host copy",
               disableModelInvocation: false,
-              filePath: "/Users/alice/.openclaw/skills/smaug/SKILL.md",
-              baseDir: "/Users/alice/.openclaw/skills/smaug",
+              filePath: "/Users/alice/.cimiclaw/skills/smaug/SKILL.md",
+              baseDir: "/Users/alice/.cimiclaw/skills/smaug",
               source: "openclaw-workspace",
               sourceInfo: {
-                path: "/Users/alice/.openclaw/skills/smaug/SKILL.md",
+                path: "/Users/alice/.cimiclaw/skills/smaug/SKILL.md",
                 source: "openclaw-workspace",
                 scope: "project",
                 origin: "top-level",
-                baseDir: "/Users/alice/.openclaw/skills/smaug",
+                baseDir: "/Users/alice/.cimiclaw/skills/smaug",
               },
             },
           ],

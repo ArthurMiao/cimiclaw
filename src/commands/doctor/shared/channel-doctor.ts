@@ -10,7 +10,7 @@ import type {
   ChannelDoctorEmptyAllowlistAccountContext,
   ChannelDoctorSequenceResult,
 } from "../../../channels/plugins/types.adapters.js";
-import type { OpenClawConfig } from "../../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../../config/types.cimiclaw.js";
 import { normalizeOptionalLowercaseString } from "../../../shared/string-coerce.js";
 
 type ChannelDoctorEntry = {

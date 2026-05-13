@@ -48,7 +48,7 @@ function createCommandWithTimeoutResult() {
 
 function createLegacyConfigSnapshot() {
   return {
-    path: "/tmp/openclaw.json",
+    path: "/tmp/cimiclaw.json",
     exists: false,
     raw: null,
     parsed: {},
@@ -224,7 +224,7 @@ export const runLegacyStateMigrations = vi.fn().mockResolvedValue({
 }) as unknown as MockFn;
 
 const DEFAULT_CONFIG_SNAPSHOT = {
-  path: "/tmp/openclaw.json",
+  path: "/tmp/cimiclaw.json",
   exists: true,
   raw: "{}",
   parsed: {},
@@ -256,7 +256,7 @@ vi.mock("../config/config.js", async () => {
   const actual = await vi.importActual<typeof import("../config/config.js")>("../config/config.js");
   return {
     ...actual,
-    CONFIG_PATH: "/tmp/openclaw.json",
+    CONFIG_PATH: "/tmp/cimiclaw.json",
     createConfigIO,
     readConfigFileSnapshot,
     writeConfigFile,
@@ -342,7 +342,7 @@ vi.mock("openclaw/plugin-sdk/runtime-env", () => ({
   }),
 }));
 
-vi.mock("../infra/openclaw-root.js", () => ({
+vi.mock("../infra/cimiclaw-root.js", () => ({
   resolveOpenClawPackageRoot,
   resolveOpenClawPackageRootSync: vi.fn(() => "/tmp/openclaw"),
 }));

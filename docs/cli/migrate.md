@@ -227,7 +227,7 @@ openclaw doctor
 
 ## Plugin contract
 
-Migration sources are plugins. A plugin declares its provider ids in `openclaw.plugin.json`:
+Migration sources are plugins. A plugin declares its provider ids in `cimiclaw.plugin.json`:
 
 ```json
 {

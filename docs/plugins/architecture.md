@@ -63,7 +63,7 @@ The capability model is landed in core and used by bundled/native plugins today,
 | New bundled/native plugins                        | Prefer explicit capability registration over vendor-specific reach-ins or new hook-only designs. |
 | External plugins adopting capability registration | Allowed, but treat capability-specific helper surfaces as evolving unless docs mark them stable. |
 
-Capability registration is the intended direction. Legacy hooks remain the safest no-breakage path for external plugins during the transition. Exported helper subpaths are not all equal â€” prefer narrow documented contracts over incidental helper exports.
+Capability registration is the intended direction. Legacy hooks remain the safest no-breakage path for external plugins during the transition. Exported helper subpaths are not all equal â€?prefer narrow documented contracts over incidental helper exports.
 
 ### Plugin shapes
 
@@ -117,7 +117,7 @@ OpenClaw's plugin system has four layers:
 
 <Steps>
   <Step title="Manifest + discovery">
-    OpenClaw finds candidate plugins from configured paths, workspace roots, global plugin roots, and bundled plugins. Discovery reads native `openclaw.plugin.json` manifests plus supported bundle manifests first.
+    OpenClaw finds candidate plugins from configured paths, workspace roots, global plugin roots, and bundled plugins. Discovery reads native `cimiclaw.plugin.json` manifests plus supported bundle manifests first.
   </Step>
   <Step title="Enablement + validation">
     Core decides whether a discovered plugin is enabled, disabled, blocked, or selected for an exclusive slot such as memory.
@@ -329,7 +329,7 @@ const plugin: OpenClawPluginDefinition = {
 
     api.registerSpeechProvider({
       id: "exampleai",
-      // vendor speech config â€” implement the SpeechProviderPlugin interface directly
+      // vendor speech config â€?implement the SpeechProviderPlugin interface directly
     });
 
     api.registerMediaUnderstandingProvider({
@@ -454,7 +454,7 @@ Use allowlists and explicit install/load paths for non-bundled plugins. Treat wo
 For bundled workspace package names, keep the plugin id anchored in the npm name: `@openclaw/<id>` by default, or an approved typed suffix such as `-provider`, `-plugin`, `-speech`, `-sandbox`, or `-media-understanding` when the package intentionally exposes a narrower plugin role.
 
 <Note>
-**Trust note:** `plugins.allow` trusts **plugin ids**, not source provenance. A workspace plugin with the same id as a bundled plugin intentionally shadows the bundled copy when that workspace plugin is enabled/allowlisted. This is normal and useful for local development, patch testing, and hotfixes. Bundled-plugin trust is resolved from the source snapshot â€” the manifest and code on disk at load time â€” rather than from install metadata. A corrupted or substituted install record cannot silently widen a bundled plugin's trust surface beyond what the actual source claims.
+**Trust note:** `plugins.allow` trusts **plugin ids**, not source provenance. A workspace plugin with the same id as a bundled plugin intentionally shadows the bundled copy when that workspace plugin is enabled/allowlisted. This is normal and useful for local development, patch testing, and hotfixes. Bundled-plugin trust is resolved from the source snapshot â€?the manifest and code on disk at load time â€?rather than from install metadata. A corrupted or substituted install record cannot silently widen a bundled plugin's trust surface beyond what the actual source claims.
 </Note>
 
 ## Export boundary

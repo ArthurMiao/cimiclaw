@@ -83,7 +83,7 @@ function setupDualFormatInstallFixture(params: { bundleFormat: "codex" | "claude
     "utf-8",
   );
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: "native-dual",
       configSchema: { type: "object", properties: {} },
@@ -119,7 +119,7 @@ function setupNativePluginInstallFixture() {
     "utf-8",
   );
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: "symlink-plugin",
       configSchema: { type: "object", properties: {} },

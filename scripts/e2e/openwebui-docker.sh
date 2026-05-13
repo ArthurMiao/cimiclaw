@@ -90,7 +90,7 @@ docker_e2e_docker_cmd run -d \
   "$IMAGE_NAME" \
   bash -lc '
     set -euo pipefail
-    source scripts/lib/openclaw-e2e-instance.sh
+    source scripts/lib/cimiclaw-e2e-instance.sh
     entry="$(openclaw_e2e_resolve_entrypoint)"
 
     openai_api_key="${OPENAI_API_KEY:?OPENAI_API_KEY required}"

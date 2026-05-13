@@ -580,7 +580,7 @@ describeLive("gateway live (ACP bind)", () => {
         process.env.OPENCLAW_LIVE_ACP_BIND_AGENT_COMMAND?.trim() || undefined;
       const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-live-acp-bind-"));
       const tempStateDir = path.join(tempRoot, "state");
-      const tempConfigPath = path.join(tempRoot, "openclaw.json");
+      const tempConfigPath = path.join(tempRoot, "cimiclaw.json");
       const port = await getFreeGatewayPort();
       const token = `test-${randomUUID()}`;
       const parentModel = resolveLiveParentModel();

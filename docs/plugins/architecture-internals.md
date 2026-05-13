@@ -28,7 +28,7 @@ At startup, OpenClaw does roughly this:
 8. expose the registry to commands/runtime surfaces
 
 <Note>
-`activate` is a legacy alias for `register` â€” the loader resolves whichever is present (`def.register ?? def.activate`) and calls it at the same point. All bundled plugins use `register`; prefer `register` for new plugins.
+`activate` is a legacy alias for `register` â€?the loader resolves whichever is present (`def.register ?? def.activate`) and calls it at the same point. All bundled plugins use `register`; prefer `register` for new plugins.
 </Note>
 
 The safety gates happen **before** runtime execution. Candidates are blocked
@@ -632,9 +632,9 @@ barrel when authoring new plugins. Core subpaths:
 | `openclaw/plugin-sdk/plugin-entry`  | Plugin registration primitives                     |
 | `openclaw/plugin-sdk/channel-core`  | Channel entry/build helpers                        |
 | `openclaw/plugin-sdk/core`          | Generic shared helpers and umbrella contract       |
-| `openclaw/plugin-sdk/config-schema` | Root `openclaw.json` Zod schema (`OpenClawSchema`) |
+| `openclaw/plugin-sdk/config-schema` | Root `cimiclaw.json` Zod schema (`OpenClawSchema`) |
 
-Channel plugins pick from a family of narrow seams â€” `channel-setup`,
+Channel plugins pick from a family of narrow seams â€?`channel-setup`,
 `setup-runtime`, `setup-tools`, `channel-pairing`,
 `channel-contract`, `channel-feedback`, `channel-inbound`, `channel-lifecycle`,
 `channel-reply-pipeline`, `command-auth`, `secret-input`, `webhook-ingress`,
@@ -657,10 +657,10 @@ older plugins. New code should import narrower generic primitives instead.
 
 Repo-internal entry points (per bundled plugin package root):
 
-- `index.js` â€” bundled plugin entry
-- `api.js` â€” helper/types barrel
-- `runtime-api.js` â€” runtime-only barrel
-- `setup-entry.js` â€” setup plugin entry
+- `index.js` â€?bundled plugin entry
+- `api.js` â€?helper/types barrel
+- `runtime-api.js` â€?runtime-only barrel
+- `setup-entry.js` â€?setup plugin entry
 
 External plugins should only import `openclaw/plugin-sdk/*` subpaths. Never
 import another plugin package's `src/*` from core or from another plugin.
@@ -669,7 +669,7 @@ exists, then fall back to the resolved config file on disk.
 
 Capability-specific subpaths such as `image-generation`, `media-understanding`,
 and `speech` exist because bundled plugins use them today. They are not
-automatically long-term frozen external contracts â€” check the relevant SDK
+automatically long-term frozen external contracts â€?check the relevant SDK
 reference page when relying on them.
 
 ## Message tool schemas
@@ -953,9 +953,9 @@ Useful `openclaw.channel` fields beyond the minimal example:
 OpenClaw can also merge **external channel catalogs** (for example, an MPM
 registry export). Drop a JSON file at one of:
 
-- `~/.openclaw/mpm/plugins.json`
-- `~/.openclaw/mpm/catalog.json`
-- `~/.openclaw/plugins/catalog.json`
+- `~/.cimiclaw/mpm/plugins.json`
+- `~/.cimiclaw/mpm/catalog.json`
+- `~/.cimiclaw/plugins/catalog.json`
 
 Or point `OPENCLAW_PLUGIN_CATALOG_PATHS` (or `OPENCLAW_MPM_CATALOG_PATHS`) at
 one or more JSON files (comma/semicolon/`PATH`-delimited). Each file should
@@ -1150,7 +1150,7 @@ That keeps the rule simple:
 
 ## Related
 
-- [Plugin architecture](/plugins/architecture) â€” public capability model and shapes
+- [Plugin architecture](/plugins/architecture) â€?public capability model and shapes
 - [Plugin SDK subpaths](/plugins/sdk-subpaths)
 - [Plugin SDK setup](/plugins/sdk-setup)
 - [Building plugins](/plugins/building-plugins)

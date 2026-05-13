@@ -14,7 +14,7 @@ import {
 import { buildReplyPromptBodies } from "../../../src/auto-reply/reply/prompt-prelude.js";
 import type { TemplateContext } from "../../../src/auto-reply/templating.js";
 import { SILENT_REPLY_TOKEN } from "../../../src/auto-reply/tokens.js";
-import type { OpenClawConfig } from "../../../src/config/types.openclaw.js";
+import type { OpenClawConfig } from "../../../src/config/types.cimiclaw.js";
 import type {
   AnyAgentTool,
   EmbeddedRunAttemptParams,

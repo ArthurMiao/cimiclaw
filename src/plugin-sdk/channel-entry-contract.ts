@@ -7,7 +7,7 @@ import type { ChannelOutboundAdapter } from "../channels/plugins/types.adapters.
 import type { ChannelConfigSchema } from "../channels/plugins/types.config.js";
 import type { ChannelLegacyStateMigrationPlan } from "../channels/plugins/types.core.js";
 import type { ChannelPlugin } from "../channels/plugins/types.plugin.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { openRootFileSync } from "../infra/boundary-file-read.js";
 import {
   createProfiler,

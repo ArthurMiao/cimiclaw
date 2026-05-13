@@ -20,7 +20,7 @@ before the main reply is generated.
 
 ## Quick start
 
-Paste this into `openclaw.json` for a safe-default setup â€” plugin on, scoped to
+Paste this into `cimiclaw.json` for a safe-default setup â€?plugin on, scoped to
 the `main` agent, direct-message sessions only, inherits the session model
 when available:
 
@@ -116,7 +116,7 @@ Add a Cerebras provider and point Active Memory at it:
 ```
 
 Make sure the Cerebras API key actually has `chat/completions` access for the
-chosen model â€” `/v1/models` visibility alone does not guarantee it.
+chosen model â€?`/v1/models` visibility alone does not guarantee it.
 
 ## How to see it
 
@@ -742,7 +742,7 @@ Then move to:
 Before v2026.5.2 the plugin silently extended your configured `timeoutMs` by an
 extra 30000 ms during cold-start so model warm-up, embedding-index load, and
 the first recall could share one larger budget. v2026.5.2 moved that grace
-behind an explicit `setupGraceTimeoutMs` config â€” your configured `timeoutMs`
+behind an explicit `setupGraceTimeoutMs` config â€?your configured `timeoutMs`
 is now the budget by default, unless you opt in.
 
 If you upgraded from v2026.4.x and you set `timeoutMs` to a value tuned for the
@@ -775,7 +775,7 @@ The embedded recall runner uses the same effective timeout budget, so
 blocking recall run.
 
 For resource-tight gateways where cold-start latency is a known trade-off,
-lower values (5000â€“15000 ms) work too â€” the trade-off is a higher chance of
+lower values (5000â€?5000 ms) work too â€?the trade-off is a higher chance of
 the very first recall after a gateway restart returning empty while warm-up
 finishes.
 

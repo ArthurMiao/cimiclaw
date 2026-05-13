@@ -48,7 +48,7 @@ describe("provider public artifacts", () => {
     const pluginDir = path.join(bundledPluginsDir, "openai");
     fs.mkdirSync(pluginDir, { recursive: true });
     fs.writeFileSync(
-      path.join(pluginDir, "openclaw.plugin.json"),
+      path.join(pluginDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "openai",
         configSchema: { type: "object" },
@@ -125,7 +125,7 @@ describe("provider public artifacts", () => {
       const pluginDir = path.join(bundledPluginsDir, pluginId);
       fs.mkdirSync(pluginDir, { recursive: true });
       fs.writeFileSync(
-        path.join(pluginDir, "openclaw.plugin.json"),
+        path.join(pluginDir, "cimiclaw.plugin.json"),
         JSON.stringify({
           id: pluginId,
           name: `${pluginId} ${version}`,
@@ -218,7 +218,7 @@ describe("provider public artifacts", () => {
             cliBackends: [],
             hooks: [],
             origin: "bundled",
-            manifestPath: "/tmp/owner/openclaw.plugin.json",
+            manifestPath: "/tmp/owner/cimiclaw.plugin.json",
             providers: ["alias"],
             rootDir: "/tmp/owner",
             skills: [],

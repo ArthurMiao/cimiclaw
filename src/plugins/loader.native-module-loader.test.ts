@@ -15,7 +15,7 @@ function makeTempDir() {
 function writeBundledPluginFixture(id: string) {
   const pluginRoot = makeTempDir();
   fs.writeFileSync(
-    path.join(pluginRoot, "openclaw.plugin.json"),
+    path.join(pluginRoot, "cimiclaw.plugin.json"),
     JSON.stringify(
       {
         id,
@@ -56,7 +56,7 @@ function writePackagedPluginFixture(id: string) {
     "utf-8",
   );
   fs.writeFileSync(
-    path.join(pluginRoot, "openclaw.plugin.json"),
+    path.join(pluginRoot, "cimiclaw.plugin.json"),
     JSON.stringify(
       {
         id,

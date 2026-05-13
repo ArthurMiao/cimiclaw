@@ -27,7 +27,7 @@ import {
   updateSessionStore,
 } from "../../config/sessions.js";
 import { resolveAgentMainSessionKey } from "../../config/sessions/main-session.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import {
   createInternalHookEvent,
   hasInternalHookListeners,

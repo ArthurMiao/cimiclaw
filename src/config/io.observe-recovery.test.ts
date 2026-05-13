@@ -202,7 +202,7 @@ describe("config observe recovery", () => {
     auditPath: string;
     warn: ReturnType<typeof vi.fn>;
   } {
-    const configPath = path.join(home, ".openclaw", "openclaw.json");
+    const configPath = path.join(home, ".cimiclaw", "cimiclaw.json");
     return {
       deps: {
         fs,
@@ -212,7 +212,7 @@ describe("config observe recovery", () => {
         logger: { warn },
       },
       configPath,
-      auditPath: path.join(home, ".openclaw", "logs", "config-audit.jsonl"),
+      auditPath: path.join(home, ".cimiclaw", "logs", "config-audit.jsonl"),
       warn,
     };
   }
@@ -533,7 +533,7 @@ describe("config observe recovery", () => {
     await withSuiteHome(async (home) => {
       const { deps, configPath, warn } = makeDeps(home);
       const snapshot = await makeSnapshot(configPath, recoverableTelegramConfig);
-      const healthPath = path.join(home, ".openclaw", "logs", "config-health.json");
+      const healthPath = path.join(home, ".cimiclaw", "logs", "config-health.json");
 
       await expect(
         promoteConfigSnapshotToLastKnownGood({
@@ -553,7 +553,7 @@ describe("config observe recovery", () => {
   it("logs sync health-state write failures", async () => {
     await withSuiteHome(async (home) => {
       const { deps, configPath, warn } = makeDeps(home);
-      const healthPath = path.join(home, ".openclaw", "logs", "config-health.json");
+      const healthPath = path.join(home, ".cimiclaw", "logs", "config-health.json");
       await seedConfigBackup(configPath, recoverableTelegramConfig);
       await writeClobberedUpdateChannel(configPath);
 

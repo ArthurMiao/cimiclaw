@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import type { GatewayAuthConfig, GatewayTailscaleConfig } from "../config/types.gateway.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { normalizeOptionalString } from "../shared/string-coerce.js";
 import {
   hasConfiguredGatewayAuthSecretInput,
@@ -90,7 +90,7 @@ function hasGatewayTokenCandidate(params: {
   env: NodeJS.ProcessEnv;
   authOverride?: GatewayAuthConfig;
 }): boolean {
-  const envToken = trimToUndefined(params.env.OPENCLAW_GATEWAY_TOKEN);
+  const envToken = trimToUndefined(params.env.cimiclaw_GATEWAY_TOKEN);
   if (envToken) {
     return true;
   }

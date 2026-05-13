@@ -29,7 +29,7 @@ This page lists every configuration knob for OpenClaw memory search. For concept
   </Card>
 </CardGroup>
 
-All memory search settings live under `agents.defaults.memorySearch` in `openclaw.json` unless noted otherwise.
+All memory search settings live under `agents.defaults.memorySearch` in `cimiclaw.json` unless noted otherwise.
 
 <Note>
 If you are looking for the **active memory** feature toggle and sub-agent config, that lives under `plugins.entries.active-memory` instead of `memorySearch`.
@@ -215,7 +215,7 @@ For custom OpenAI-compatible endpoints or overriding provider defaults:
   <Accordion title="Bedrock">
     ### Bedrock embedding config
 
-    Bedrock uses the AWS SDK default credential chain â€” no API keys needed. If OpenClaw runs on EC2 with a Bedrock-enabled instance role, just set the provider and model:
+    Bedrock uses the AWS SDK default credential chain â€?no API keys needed. If OpenClaw runs on EC2 with a Bedrock-enabled instance role, just set the provider and model:
 
     ```json5
     {
@@ -284,7 +284,7 @@ For custom OpenAI-compatible endpoints or overriding provider defaults:
     | --------------------- | ------------------ | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | `local.modelPath`     | `string`           | auto-downloaded        | Path to GGUF model file                                                                                                                                                                                                                                                                                              |
     | `local.modelCacheDir` | `string`           | node-llama-cpp default | Cache dir for downloaded models                                                                                                                                                                                                                                                                                      |
-    | `local.contextSize`   | `number \| "auto"` | `4096`                 | Context window size for the embedding context. 4096 covers typical chunks (128â€“512 tokens) while bounding non-weight VRAM. Lower to 1024â€“2048 on constrained hosts. `"auto"` uses the model's trained maximum â€” not recommended for 8B+ models (Qwen3-Embedding-8B: 40 960 tokens â†’ ~32 GB VRAM vs ~8.8 GB at 4096). |
+    | `local.contextSize`   | `number \| "auto"` | `4096`                 | Context window size for the embedding context. 4096 covers typical chunks (128â€?12 tokens) while bounding non-weight VRAM. Lower to 1024â€?048 on constrained hosts. `"auto"` uses the model's trained maximum â€?not recommended for 8B+ models (Qwen3-Embedding-8B: 40 960 tokens â†?~32 GB VRAM vs ~8.8 GB at 4096). |
 
     Default model: `embeddinggemma-300m-qat-Q8_0.gguf` (~0.6 GB, auto-downloaded). Source checkouts still require native build approval: `pnpm approve-builds` then `pnpm rebuild node-llama-cpp`.
 
@@ -466,7 +466,7 @@ When sqlite-vec is unavailable, OpenClaw falls back to in-process cosine similar
 
 | Key                   | Type     | Default                               | Description                                 |
 | --------------------- | -------- | ------------------------------------- | ------------------------------------------- |
-| `store.path`          | `string` | `~/.openclaw/memory/{agentId}.sqlite` | Index location (supports `{agentId}` token) |
+| `store.path`          | `string` | `~/.cimiclaw/memory/{agentId}.sqlite` | Index location (supports `{agentId}` token) |
 | `store.fts.tokenizer` | `string` | `unicode61`                           | FTS5 tokenizer (`unicode61` or `trigram`)   |
 
 ---

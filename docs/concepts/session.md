@@ -92,8 +92,8 @@ sessions should expire on a timer.
 All session state is owned by the **gateway**. UI clients query the gateway for
 session data.
 
-- **Store:** `~/.openclaw/agents/<agentId>/sessions/sessions.json`
-- **Transcripts:** `~/.openclaw/agents/<agentId>/sessions/<sessionId>.jsonl`
+- **Store:** `~/.cimiclaw/agents/<agentId>/sessions/sessions.json`
+- **Transcripts:** `~/.cimiclaw/agents/<agentId>/sessions/<sessionId>.jsonl`
 
 `sessions.json` keeps separate lifecycle timestamps:
 
@@ -153,9 +153,9 @@ Preview with `openclaw sessions cleanup --dry-run`.
 - [Session Tools](/concepts/session-tool) -- agent tools for cross-session work
 - [Session Management Deep Dive](/reference/session-management-compaction) --
   store schema, transcripts, send policy, origin metadata, and advanced config
-- [Multi-Agent](/concepts/multi-agent) â€” routing and session isolation across agents
-- [Background Tasks](/automation/tasks) â€” how detached work creates task records with session references
-- [Channel Routing](/channels/channel-routing) â€” how inbound messages are routed to sessions
+- [Multi-Agent](/concepts/multi-agent) â€?routing and session isolation across agents
+- [Background Tasks](/automation/tasks) â€?how detached work creates task records with session references
+- [Channel Routing](/channels/channel-routing) â€?how inbound messages are routed to sessions
 
 ## Related
 

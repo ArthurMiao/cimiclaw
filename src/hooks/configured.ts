@@ -1,5 +1,5 @@
 import type { HookConfig, HookInstallRecord } from "../config/types.hooks.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { getLegacyInternalHookHandlers } from "./legacy-config.js";
 
 function hasEnabledFlag(entry: HookConfig | undefined): boolean {

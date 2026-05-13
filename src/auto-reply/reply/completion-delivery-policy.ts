@@ -1,5 +1,5 @@
 import { normalizeChatType, type ChatType } from "../../channels/chat-type.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { deriveSessionChatType } from "../../sessions/session-chat-type.js";
 import type { DeliveryContext } from "../../utils/delivery-context.types.js";
 import { resolveSourceReplyDeliveryMode } from "./source-reply-delivery-mode.js";

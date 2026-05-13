@@ -9,7 +9,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { WebSocketServer } from "ws";
 import { withTempDir } from "../../../test-helpers/temp-dir.js";
 import { resolveSystemBin } from "../../resolve-system-bin.js";
-import { resolvePreferredOpenClawTmpDir } from "../../tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../../tmp-cimiclaw-dir.js";
 
 const CHILD_PROCESS_TIMEOUT_MS = process.env.CI ? 45_000 : 15_000;
 const PROBE_TIMEOUT_MS = process.env.CI ? 15_000 : 5_000;

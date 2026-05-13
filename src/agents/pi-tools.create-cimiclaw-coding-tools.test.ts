@@ -2,16 +2,16 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   findUnsupportedSchemaKeywords,
   GEMINI_UNSUPPORTED_SCHEMA_KEYWORDS,
 } from "../plugin-sdk/provider-tools.js";
 import "./test-helpers/fast-bash-tools.js";
 import "./test-helpers/fast-coding-tools.js";
-import "./test-helpers/fast-openclaw-tools.js";
-import * as openClawPluginTools from "./openclaw-plugin-tools.js";
-import { createOpenClawTools } from "./openclaw-tools.js";
+import "./test-helpers/fast-cimiclaw-tools.js";
+import * as openClawPluginTools from "./cimiclaw-plugin-tools.js";
+import { createOpenClawTools } from "./cimiclaw-tools.js";
 import { createOpenClawCodingTools } from "./pi-tools.js";
 import { createHostSandboxFsBridge } from "./test-helpers/host-sandbox-fs-bridge.js";
 import { expectReadWriteEditTools } from "./test-helpers/pi-tools-fs-helpers.js";
@@ -496,7 +496,7 @@ describe("createOpenClawCodingTools", () => {
       "base-coding-tools",
       "shell-tools",
       "openclaw-tools:test-helper",
-      "openclaw-tools",
+      "cimiclaw-tools",
       "message-provider-policy",
       "model-provider-policy",
       "authorization-policy",
@@ -508,7 +508,7 @@ describe("createOpenClawCodingTools", () => {
     expect(stages.indexOf("tool-policy")).toBeLessThan(stages.indexOf("workspace-policy"));
     expect(stages.indexOf("workspace-policy")).toBeLessThan(stages.indexOf("base-coding-tools"));
     expect(stages.indexOf("openclaw-tools:test-helper")).toBeLessThan(
-      stages.indexOf("openclaw-tools"),
+      stages.indexOf("cimiclaw-tools"),
     );
     expect(stages.indexOf("schema-normalization")).toBeLessThan(stages.indexOf("tool-hooks"));
   });

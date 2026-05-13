@@ -23,7 +23,7 @@ export function registerSetupCommand(program: Command) {
     )
     .option(
       "--workspace <dir>",
-      "Agent workspace directory (default: ~/.openclaw/workspace; stored as agents.defaults.workspace)",
+      "Agent workspace directory (default: ~/.cimiclaw/workspace; stored as agents.defaults.workspace)",
     )
     .option("--wizard", "Run interactive onboarding", false)
     .option("--non-interactive", "Run onboarding without prompts", false)

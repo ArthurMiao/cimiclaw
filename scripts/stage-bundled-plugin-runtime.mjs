@@ -119,7 +119,7 @@ function shouldCopyRuntimeFile(relativePath) {
   return (
     isBundledSkillRuntimePath(relativePath) ||
     isPathOrNestedPath(relativePath, "package.json") ||
-    isPathOrNestedPath(relativePath, "openclaw.plugin.json") ||
+    isPathOrNestedPath(relativePath, "cimiclaw.plugin.json") ||
     isPathOrNestedPath(relativePath, ".codex-plugin/plugin.json") ||
     isPathOrNestedPath(relativePath, ".claude-plugin/plugin.json") ||
     isPathOrNestedPath(relativePath, ".cursor-plugin/plugin.json") ||

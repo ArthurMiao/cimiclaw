@@ -20,12 +20,12 @@ async function withTempStateDir<T>(fn: (dir: string) => Promise<T>) {
     state: {
       resolveStateDir: (env, homedir) => {
         const stateEnv = env ?? process.env;
-        const override = stateEnv.OPENCLAW_STATE_DIR?.trim();
+        const override = stateEnv.cimiclaw_STATE_DIR?.trim();
         if (override) {
           return override;
         }
         const resolveHome = homedir ?? os.homedir;
-        return path.join(resolveHome(), ".openclaw");
+        return path.join(resolveHome(), ".cimiclaw");
       },
     },
   } as PluginRuntime);

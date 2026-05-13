@@ -1,5 +1,5 @@
 import path from "node:path";
-import { resolvePreferredOpenClawTmpDir } from "../../infra/tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../../infra/tmp-cimiclaw-dir.js";
 import { resetLogger, setLoggerOverride } from "../logger.js";
 import { createDiagnosticLogRecordCapture } from "./diagnostic-log-capture.js";
 

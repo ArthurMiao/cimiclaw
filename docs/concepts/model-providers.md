@@ -250,7 +250,7 @@ Gemini CLI OAuth is shipped as part of the bundled `google` plugin.
     openclaw models auth login --provider google-gemini-cli --set-default
     ```
 
-    Default model: `google-gemini-cli/gemini-3-flash-preview`. You do **not** paste a client id or secret into `openclaw.json`. The CLI login flow stores tokens in auth profiles on the gateway host.
+    Default model: `google-gemini-cli/gemini-3-flash-preview`. You do **not** paste a client id or secret into `cimiclaw.json`. The CLI login flow stores tokens in auth profiles on the gateway host.
 
   </Step>
   <Step title="Set project (if needed)">

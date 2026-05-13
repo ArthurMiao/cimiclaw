@@ -36,7 +36,7 @@ const mocks = vi.hoisted(() => ({
   loadInstalledPluginIndexInstallRecords: vi.fn(),
   loadPluginMetadataSnapshot: vi.fn(),
   getOfficialExternalPluginCatalogManifest: vi.fn(
-    (entry: { openclaw?: unknown }) => entry.openclaw,
+    (entry: { openclaw?: unknown }) => entry.cimiclaw,
   ),
   resolveOfficialExternalPluginId: vi.fn((entry: { id?: string }) => entry.id),
   resolveOfficialExternalPluginInstall: vi.fn(
@@ -1846,7 +1846,7 @@ describe("repairMissingConfiguredPluginInstalls", () => {
           level: "warn",
           pluginId: "discord",
           message:
-            "channel plugin manifest declares discord without channelConfigs metadata; add openclaw.plugin.json#channelConfigs so config schema and setup surfaces work before runtime loads",
+            "channel plugin manifest declares discord without channelConfigs metadata; add cimiclaw.plugin.json#channelConfigs so config schema and setup surfaces work before runtime loads",
         },
       ],
     });
@@ -2023,15 +2023,15 @@ describe("repairMissingConfiguredPluginInstalls", () => {
     ]);
     mocks.resolveOfficialExternalPluginId.mockImplementation(
       (entry: { id?: string; openclaw?: { plugin?: { id?: string } } }) =>
-        entry.openclaw?.plugin?.id ?? entry.id,
+        entry.cimiclaw?.plugin?.id ?? entry.id,
     );
     mocks.resolveOfficialExternalPluginInstall.mockImplementation(
       (entry: { install?: unknown; openclaw?: { install?: unknown } }) =>
-        entry.openclaw?.install ?? entry.install ?? null,
+        entry.cimiclaw?.install ?? entry.install ?? null,
     );
     mocks.resolveOfficialExternalPluginLabel.mockImplementation(
       (entry: { label?: string; openclaw?: { plugin?: { label?: string } } }) =>
-        entry.openclaw?.plugin?.label ?? entry.label ?? "plugin",
+        entry.cimiclaw?.plugin?.label ?? entry.label ?? "plugin",
     );
     mocks.installPluginFromNpmSpec.mockResolvedValueOnce({
       ok: true,
@@ -2101,15 +2101,15 @@ describe("repairMissingConfiguredPluginInstalls", () => {
     ]);
     mocks.resolveOfficialExternalPluginId.mockImplementation(
       (entry: { id?: string; openclaw?: { plugin?: { id?: string } } }) =>
-        entry.openclaw?.plugin?.id ?? entry.id,
+        entry.cimiclaw?.plugin?.id ?? entry.id,
     );
     mocks.resolveOfficialExternalPluginInstall.mockImplementation(
       (entry: { install?: unknown; openclaw?: { install?: unknown } }) =>
-        entry.openclaw?.install ?? entry.install ?? null,
+        entry.cimiclaw?.install ?? entry.install ?? null,
     );
     mocks.resolveOfficialExternalPluginLabel.mockImplementation(
       (entry: { label?: string; openclaw?: { plugin?: { label?: string } } }) =>
-        entry.openclaw?.plugin?.label ?? entry.label ?? "plugin",
+        entry.cimiclaw?.plugin?.label ?? entry.label ?? "plugin",
     );
     mocks.installPluginFromNpmSpec.mockResolvedValueOnce({
       ok: true,
@@ -2187,15 +2187,15 @@ describe("repairMissingConfiguredPluginInstalls", () => {
     ]);
     mocks.resolveOfficialExternalPluginId.mockImplementation(
       (entry: { id?: string; openclaw?: { plugin?: { id?: string } } }) =>
-        entry.openclaw?.plugin?.id ?? entry.id,
+        entry.cimiclaw?.plugin?.id ?? entry.id,
     );
     mocks.resolveOfficialExternalPluginInstall.mockImplementation(
       (entry: { install?: unknown; openclaw?: { install?: unknown } }) =>
-        entry.openclaw?.install ?? entry.install ?? null,
+        entry.cimiclaw?.install ?? entry.install ?? null,
     );
     mocks.resolveOfficialExternalPluginLabel.mockImplementation(
       (entry: { label?: string; openclaw?: { plugin?: { label?: string } } }) =>
-        entry.openclaw?.plugin?.label ?? entry.label ?? "plugin",
+        entry.cimiclaw?.plugin?.label ?? entry.label ?? "plugin",
     );
 
     const { repairMissingConfiguredPluginInstalls } =

@@ -22,7 +22,7 @@ function requireQQBotSetup() {
 describe("qqbot config", () => {
   it("accepts top-level speech overrides in the manifest schema", () => {
     const manifest = JSON.parse(
-      fs.readFileSync(new URL("../openclaw.plugin.json", import.meta.url), "utf-8"),
+      fs.readFileSync(new URL("../cimiclaw.plugin.json", import.meta.url), "utf-8"),
     ) as { configSchema: JsonSchemaObject };
 
     const result = validateJsonSchemaValue({
@@ -43,7 +43,7 @@ describe("qqbot config", () => {
 
   it("accepts defaultAccount in the manifest schema", () => {
     const manifest = JSON.parse(
-      fs.readFileSync(new URL("../openclaw.plugin.json", import.meta.url), "utf-8"),
+      fs.readFileSync(new URL("../cimiclaw.plugin.json", import.meta.url), "utf-8"),
     ) as { configSchema: JsonSchemaObject };
 
     const result = validateJsonSchemaValue({
@@ -95,7 +95,7 @@ describe("qqbot config", () => {
         transcodeEnabled: false,
       },
       urlDirectUpload: false,
-      upgradeUrl: "https://docs.openclaw.ai/channels/qqbot",
+      upgradeUrl: "https://docs.cimiclaw.ai/channels/qqbot",
       upgradeMode: "doc",
       accounts: {
         bot2: {
@@ -140,7 +140,7 @@ describe("qqbot config", () => {
             transcodeEnabled: false,
           },
           urlDirectUpload: false,
-          upgradeUrl: "https://docs.openclaw.ai/channels/qqbot",
+          upgradeUrl: "https://docs.cimiclaw.ai/channels/qqbot",
           upgradeMode: "hot-reload",
         },
       },
@@ -155,7 +155,7 @@ describe("qqbot config", () => {
       transcodeEnabled: false,
     });
     expect(resolved.config.urlDirectUpload).toBe(false);
-    expect(resolved.config.upgradeUrl).toBe("https://docs.openclaw.ai/channels/qqbot");
+    expect(resolved.config.upgradeUrl).toBe("https://docs.cimiclaw.ai/channels/qqbot");
     expect(resolved.config.upgradeMode).toBe("hot-reload");
   });
 

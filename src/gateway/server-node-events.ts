@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { updatePairedDeviceMetadata } from "../infra/device-pairing.js";
 import { formatErrorMessage } from "../infra/errors.js";
 import { updatePairedNodeMetadata } from "../infra/node-pairing.js";

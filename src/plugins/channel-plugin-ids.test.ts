@@ -86,7 +86,7 @@ function withManifestLoadPaths<T extends { id: string }>(
   return {
     rootDir: `/tmp/plugins/${plugin.id}`,
     source: `/tmp/plugins/${plugin.id}/index.ts`,
-    manifestPath: `/tmp/plugins/${plugin.id}/openclaw.plugin.json`,
+    manifestPath: `/tmp/plugins/${plugin.id}/cimiclaw.plugin.json`,
     skills: [],
     hooks: [],
     ...plugin,

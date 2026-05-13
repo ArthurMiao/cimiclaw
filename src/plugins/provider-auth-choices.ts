@@ -1,5 +1,5 @@
 import { resolveProviderIdForAuth } from "../agents/provider-auth-aliases.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { sanitizeForLog } from "../terminal/ansi.js";
 import { normalizePluginsConfig, resolveEffectiveEnableState } from "./config-state.js";
 import { loadManifestMetadataSnapshot } from "./manifest-contract-eligibility.js";

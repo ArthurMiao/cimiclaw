@@ -18,14 +18,14 @@ Compatible bundle formats use different manifest files:
 - Cursor bundle: `.cursor-plugin/plugin.json`
 
 OpenClaw auto-detects those bundle layouts too, but they are not validated
-against the `openclaw.plugin.json` schema described here.
+against the `cimiclaw.plugin.json` schema described here.
 
 For compatible bundles, OpenClaw currently reads bundle metadata plus declared
 skill roots, Claude command roots, Claude bundle `settings.json` defaults,
 Claude bundle LSP defaults, and supported hook packs when the layout matches
 OpenClaw runtime expectations.
 
-Every native OpenClaw plugin **must** ship a `openclaw.plugin.json` file in the
+Every native OpenClaw plugin **must** ship a `cimiclaw.plugin.json` file in the
 **plugin root**. OpenClaw uses this manifest to validate configuration
 **without executing plugin code**. Missing or invalid manifests are treated as
 plugin errors and block config validation.
@@ -36,7 +36,7 @@ For the native capability model and current external-compatibility guidance:
 
 ## What this file does
 
-`openclaw.plugin.json` is the metadata OpenClaw reads **before it loads your
+`cimiclaw.plugin.json` is the metadata OpenClaw reads **before it loads your
 plugin code**. Everything below must be cheap enough to inspect without booting
 plugin runtime.
 
@@ -1138,20 +1138,20 @@ The two files serve different jobs:
 
 | File                   | Use it for                                                                                                                       |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `openclaw.plugin.json` | Discovery, config validation, auth-choice metadata, and UI hints that must exist before plugin code runs                         |
+| `cimiclaw.plugin.json` | Discovery, config validation, auth-choice metadata, and UI hints that must exist before plugin code runs                         |
 | `package.json`         | npm metadata, dependency installation, and the `openclaw` block used for entrypoints, install gating, setup, or catalog metadata |
 
 If you are unsure where a piece of metadata belongs, use this rule:
 
-- if OpenClaw must know it before loading plugin code, put it in `openclaw.plugin.json`
+- if OpenClaw must know it before loading plugin code, put it in `cimiclaw.plugin.json`
 - if it is about packaging, entry files, or npm install behavior, put it in `package.json`
 
 ### package.json fields that affect discovery
 
 Some pre-runtime plugin metadata intentionally lives in `package.json` under the
-`openclaw` block instead of `openclaw.plugin.json`.
+`openclaw` block instead of `cimiclaw.plugin.json`.
 `openclaw.bundle` and `openclaw.bundle.json` are not OpenClaw plugin contracts;
-native plugins must use `openclaw.plugin.json` plus the supported
+native plugins must use `cimiclaw.plugin.json` plus the supported
 `package.json#openclaw` fields below.
 
 Important examples:
@@ -1176,7 +1176,7 @@ Important examples:
 Manifest metadata decides which provider/channel/setup choices appear in
 onboarding before runtime loads. `package.json#openclaw.install` tells
 onboarding how to fetch or enable that plugin when the user picks one of those
-choices. Do not move install hints into `openclaw.plugin.json`.
+choices. Do not move install hints into `cimiclaw.plugin.json`.
 
 `openclaw.install.minHostVersion` is enforced during install and manifest
 registry loading for non-bundled plugin sources. Invalid values are rejected;
@@ -1270,10 +1270,10 @@ OpenClaw discovers plugins from several roots (bundled, global install, workspac
 
 Precedence, highest to lowest:
 
-1. **Config-selected** â€” a path explicitly pinned in `plugins.entries.<id>`
-2. **Bundled** â€” plugins shipped with OpenClaw
-3. **Global install** â€” plugins installed into the global OpenClaw plugin root
-4. **Workspace** â€” plugins discovered relative to the current workspace
+1. **Config-selected** â€?a path explicitly pinned in `plugins.entries.<id>`
+2. **Bundled** â€?plugins shipped with OpenClaw
+3. **Global install** â€?plugins installed into the global OpenClaw plugin root
+4. **Workspace** â€?plugins discovered relative to the current workspace
 
 Implications:
 
@@ -1287,7 +1287,7 @@ Implications:
 - **Every plugin must ship a JSON Schema**, even if it accepts no config.
 - An empty schema is acceptable (for example, `{ "type": "object", "additionalProperties": false }`).
 - Schemas are validated at config read/write time, not at runtime.
-- When extending or forking a bundled plugin with new config keys, update that plugin's `openclaw.plugin.json` `configSchema` at the same time. Bundled plugin schemas are strict, so adding `plugins.entries.<id>.config.myNewKey` in user config without adding `myNewKey` to `configSchema.properties` will be rejected before the plugin runtime loads.
+- When extending or forking a bundled plugin with new config keys, update that plugin's `cimiclaw.plugin.json` `configSchema` at the same time. Bundled plugin schemas are strict, so adding `plugins.entries.<id>.config.myNewKey` in user config without adding `myNewKey` to `configSchema.properties` will be rejected before the plugin runtime loads.
 
 Example schema extension:
 

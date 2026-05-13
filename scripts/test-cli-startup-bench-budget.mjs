@@ -55,7 +55,7 @@ const opts = parseFlagArgs(
   {
     baseline: CLI_STARTUP_BENCH_FIXTURE_PATH,
     report: "",
-    entry: "openclaw.mjs",
+    entry: "cimiclaw.mjs",
     preset: "all",
     runs: 1,
     warmup: 0,

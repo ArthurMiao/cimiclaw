@@ -18,7 +18,7 @@ type CandidateDir = {
 };
 
 const OPENCLAW_PACKAGE_ROOT = fileURLToPath(new URL("../..", import.meta.url));
-const PLUGIN_MANIFEST_FILENAME = "openclaw.plugin.json";
+const PLUGIN_MANIFEST_FILENAME = "cimiclaw.plugin.json";
 let manifestMetadataCache:
   | {
       key: string;
@@ -48,7 +48,7 @@ function resolveStateDir(env: NodeJS.ProcessEnv): string {
     return resolveUserPath(override, env);
   }
   const home = env.OPENCLAW_HOME ?? env.HOME ?? env.USERPROFILE ?? os.homedir();
-  return path.join(home, ".openclaw");
+  return path.join(home, ".cimiclaw");
 }
 
 function areBundledPluginsDisabled(env: NodeJS.ProcessEnv): boolean {

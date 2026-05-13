@@ -20,7 +20,7 @@ import {
   resetDiagnosticEventsForTest,
   type DiagnosticEventPayload,
 } from "../diagnostic-events.js";
-import { resolvePreferredOpenClawTmpDir } from "../tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../tmp-cimiclaw-dir.js";
 
 const mocks = vi.hoisted(() => ({
   appendAssistantMessageToSessionTranscript: vi.fn(async () => ({ ok: true, sessionFile: "x" })),
@@ -1763,7 +1763,7 @@ describe("deliverOutboundPayloads", () => {
     expect(sendFormattedMediaCall?.mediaLocalRoots).toContain(expectedPreferredTmpRoot);
     expect(
       sendFormattedMediaCall?.mediaLocalRoots?.some((root) =>
-        root.endsWith(path.join(".openclaw", "workspace-work")),
+        root.endsWith(path.join(".cimiclaw", "workspace-work")),
       ),
     ).toBe(true);
     expect(sendMedia).not.toHaveBeenCalled();

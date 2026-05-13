@@ -2,7 +2,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { ConfigFileSnapshot } from "../config/types.openclaw.js";
+import type { ConfigFileSnapshot } from "../config/types.cimiclaw.js";
 import { collectIncludeFilePermFindings } from "./audit-extra.async.js";
 
 const inspectPathPermissionsMock = vi.hoisted(() => vi.fn());
@@ -40,7 +40,7 @@ describe("security audit config include permissions", () => {
     });
 
     const configSnapshot: ConfigFileSnapshot = {
-      path: path.join(stateDir, "openclaw.json"),
+      path: path.join(stateDir, "cimiclaw.json"),
       exists: true,
       raw: `{ "$include": ${JSON.stringify(includePath)} }\n`,
       parsed: { $include: includePath },

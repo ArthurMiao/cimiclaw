@@ -48,7 +48,7 @@ function createRuntimeStub(stateDir?: string): PluginRuntime {
         if (override) {
           return override;
         }
-        return stateDir ?? path.join(os.homedir(), ".openclaw");
+        return stateDir ?? path.join(os.homedir(), ".cimiclaw");
       },
     },
   } as unknown as PluginRuntime;

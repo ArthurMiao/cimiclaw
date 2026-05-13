@@ -28,7 +28,7 @@ import {
   resolveSessionTranscriptPath,
   resolveSessionTranscriptsDirForAgent,
 } from "../../config/sessions/paths.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { coerceSecretRef, normalizeSecretInputString } from "../../config/types.secrets.js";
 import { type SecretRefResolveCache, resolveSecretRefString } from "../../secrets/resolve.js";
 import { createLazyImportLoader } from "../../shared/lazy-promise.js";

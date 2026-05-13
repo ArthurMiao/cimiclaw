@@ -69,17 +69,17 @@ OpenClaw separates the selected provider/model from why it was selected. That so
 
 OpenClaw uses **auth profiles** for both API keys and OAuth tokens.
 
-- Secrets live in `~/.openclaw/agents/<agentId>/agent/auth-profiles.json` (legacy: `~/.openclaw/agent/auth-profiles.json`).
-- Runtime auth-routing state lives in `~/.openclaw/agents/<agentId>/agent/auth-state.json`.
+- Secrets live in `~/.cimiclaw/agents/<agentId>/agent/auth-profiles.json` (legacy: `~/.cimiclaw/agent/auth-profiles.json`).
+- Runtime auth-routing state lives in `~/.cimiclaw/agents/<agentId>/agent/auth-state.json`.
 - Config `auth.profiles` / `auth.order` are **metadata + routing only** (no secrets).
-- Legacy import-only OAuth file: `~/.openclaw/credentials/oauth.json` (imported into `auth-profiles.json` on first use).
+- Legacy import-only OAuth file: `~/.cimiclaw/credentials/oauth.json` (imported into `auth-profiles.json` on first use).
 
 More detail: [OAuth](/concepts/oauth)
 
 Credential types:
 
-- `type: "api_key"` â†’ `{ provider, key }`
-- `type: "oauth"` â†’ `{ provider, access, refresh, expires, email? }` (+ `projectId`/`enterpriseUrl` for some providers)
+- `type: "api_key"` â†?`{ provider, key }`
+- `type: "oauth"` â†?`{ provider, access, refresh, expires, email? }` (+ `projectId`/`enterpriseUrl` for some providers)
 
 ## Profile IDs
 
@@ -88,7 +88,7 @@ OAuth logins create distinct profiles so multiple accounts can coexist.
 - Default: `provider:default` when no email is available.
 - OAuth with email: `provider:<email>` (for example `google-antigravity:user@gmail.com`).
 
-Profiles live in `~/.openclaw/agents/<agentId>/agent/auth-profiles.json` under `profiles`.
+Profiles live in `~/.cimiclaw/agents/<agentId>/agent/auth-profiles.json` under `profiles`.
 
 ## Rotation order
 

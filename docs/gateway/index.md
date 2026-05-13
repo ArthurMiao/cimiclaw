@@ -109,8 +109,8 @@ All of these run on the main Gateway port and use the same trusted operator auth
 
 | Setting      | Resolution order                                              |
 | ------------ | ------------------------------------------------------------- |
-| Gateway port | `--port` → `OPENCLAW_GATEWAY_PORT` → `gateway.port` → `18789` |
-| Bind mode    | CLI/override → `gateway.bind` → `loopback`                    |
+| Gateway port | `--port` �?`OPENCLAW_GATEWAY_PORT` �?`gateway.port` �?`18789` |
+| Bind mode    | CLI/override �?`gateway.bind` �?`loopback`                    |
 
 Installed gateway services record the resolved `--port` in supervisor metadata. After changing `gateway.port`, run `openclaw doctor --fix` or `openclaw gateway install --force` so launchd/systemd/schtasks starts the process on the new port.
 
@@ -178,8 +178,8 @@ Checklist per instance:
 Example:
 
 ```bash
-OPENCLAW_CONFIG_PATH=~/.openclaw/a.json OPENCLAW_STATE_DIR=~/.openclaw-a openclaw gateway --port 19001
-OPENCLAW_CONFIG_PATH=~/.openclaw/b.json OPENCLAW_STATE_DIR=~/.openclaw-b openclaw gateway --port 19002
+OPENCLAW_CONFIG_PATH=~/.cimiclaw/a.json OPENCLAW_STATE_DIR=~/.cimiclaw-a openclaw gateway --port 19001
+OPENCLAW_CONFIG_PATH=~/.cimiclaw/b.json OPENCLAW_STATE_DIR=~/.cimiclaw-b openclaw gateway --port 19002
 ```
 
 Detailed setup: [/gateway/multiple-gateways](/gateway/multiple-gateways).
@@ -219,9 +219,9 @@ openclaw gateway stop
 
 Use `openclaw gateway restart` for restarts. Do not chain `openclaw gateway stop` and `openclaw gateway start` as a restart substitute.
 
-On macOS, `gateway stop` uses `launchctl bootout` by default — this removes the LaunchAgent from the current boot session without persisting a disable, so KeepAlive auto-recovery still works after unexpected crashes and `gateway start` re-enables cleanly. To persistently suppress auto-respawn across reboots, pass `--disable`: `openclaw gateway stop --disable`.
+On macOS, `gateway stop` uses `launchctl bootout` by default �?this removes the LaunchAgent from the current boot session without persisting a disable, so KeepAlive auto-recovery still works after unexpected crashes and `gateway start` re-enables cleanly. To persistently suppress auto-respawn across reboots, pass `--disable`: `openclaw gateway stop --disable`.
 
-LaunchAgent labels are `ai.openclaw.gateway` (default) or `ai.openclaw.<profile>` (named profile). `openclaw doctor` audits and repairs service config drift.
+LaunchAgent labels are `ai.cimiclaw.gateway` (default) or `ai.cimiclaw.<profile>` (named profile). `openclaw doctor` audits and repairs service config drift.
 
   </Tab>
 
@@ -312,7 +312,7 @@ Defaults include isolated state/config and base gateway port `19001`.
 - Gateway returns `hello-ok` snapshot (`presence`, `health`, `stateVersion`, `uptimeMs`, limits/policy).
 - `hello-ok.features.methods` / `events` are a conservative discovery list, not
   a generated dump of every callable helper route.
-- Requests: `req(method, params)` → `res(ok/payload|error)`.
+- Requests: `req(method, params)` �?`res(ok/payload|error)`.
 - Common events include `connect.challenge`, `agent`, `chat`,
   `session.message`, `session.tool`, `sessions.changed`, `presence`, `tick`,
   `health`, `heartbeat`, pairing/approval lifecycle events, and `shutdown`.

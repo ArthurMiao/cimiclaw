@@ -1,7 +1,7 @@
 import path from "node:path";
 import { resolveAgentMaxConcurrent, resolveSubagentMaxConcurrent } from "../config/agent-limits.js";
 import { updateSessionStoreEntry } from "../config/sessions.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import { setCommandLaneConcurrency } from "../process/command-queue.js";
 import { resolveStoredSessionKeyForSessionId } from "./command/session.js";

@@ -568,9 +568,9 @@ curl "https://api.telegram.org/bot<bot_token>/getUpdates"
           groups: {
             "-1001234567890": {
               topics: {
-                "1": { agentId: "main" },      // General topic â†’ main agent
-                "3": { agentId: "zu" },        // Dev topic â†’ zu agent
-                "5": { agentId: "coder" }      // Code review â†’ coder agent
+                "1": { agentId: "main" },      // General topic â†?main agent
+                "3": { agentId: "zu" },        // Dev topic â†?zu agent
+                "5": { agentId: "coder" }      // Code review â†?coder agent
               }
             }
           }
@@ -648,7 +648,7 @@ curl "https://api.telegram.org/bot<bot_token>/getUpdates"
 
     Sticker cache file:
 
-    - `~/.openclaw/telegram/sticker-cache.json`
+    - `~/.cimiclaw/telegram/sticker-cache.json`
 
     Stickers are described once (when possible) and cached to reduce repeated vision calls.
 

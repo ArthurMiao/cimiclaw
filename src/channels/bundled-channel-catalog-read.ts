@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { tryReadJsonSync } from "../infra/json-files.js";
-import { resolveOpenClawPackageRootSync } from "../infra/openclaw-root.js";
+import { resolveOpenClawPackageRootSync } from "../infra/cimiclaw-root.js";
 import { listChannelCatalogEntries } from "../plugins/channel-catalog-registry.js";
 import type { PluginPackageChannel } from "../plugins/manifest.js";
 import { normalizeOptionalLowercaseString } from "../shared/string-coerce.js";

@@ -1,5 +1,5 @@
 import { withTempWorkspace, type TempWorkspace } from "../infra/private-temp-workspace.js";
-import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-cimiclaw-dir.js";
 import { runExec } from "../process/exec.js";
 import { createLazyPromiseLoader } from "../shared/lazy-promise.js";
 

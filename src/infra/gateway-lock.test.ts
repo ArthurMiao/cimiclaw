@@ -22,7 +22,7 @@ function resolveTestLockDir() {
 
 async function makeEnv() {
   const dir = await fixtureRootTracker.make("case");
-  const configPath = path.join(dir, "openclaw.json");
+  const configPath = path.join(dir, "cimiclaw.json");
   await fs.writeFile(configPath, "{}", "utf8");
   return {
     ...process.env,

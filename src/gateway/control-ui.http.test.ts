@@ -6,7 +6,7 @@ import path from "node:path";
 import { describe, expect, it, vi } from "vitest";
 import { resolveStateDir } from "../config/paths.js";
 import { approveDevicePairing, requestDevicePairing } from "../infra/device-pairing.js";
-import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-cimiclaw-dir.js";
 import type { ResolvedGatewayAuth } from "./auth.js";
 import { CONTROL_UI_BOOTSTRAP_CONFIG_PATH } from "./control-ui-contract.js";
 import {

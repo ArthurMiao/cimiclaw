@@ -20,7 +20,7 @@ function createIndex(pluginId: string): InstalledPluginIndex {
     plugins: [
       {
         pluginId,
-        manifestPath: `/plugins/${pluginId}/openclaw.plugin.json`,
+        manifestPath: `/plugins/${pluginId}/cimiclaw.plugin.json`,
         manifestHash: `${pluginId}-manifest-hash`,
         rootDir: `/plugins/${pluginId}`,
         origin: "global",
@@ -100,7 +100,7 @@ describe("plugin control-plane context", () => {
       discovery: {
         loadPaths: ["/opt/plugins"],
         roots: {
-          global: "/openclaw/a/.openclaw/extensions",
+          global: "/openclaw/a/.cimiclaw/extensions",
         },
       },
       inventoryFingerprint: "inventory",

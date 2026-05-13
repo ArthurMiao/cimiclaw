@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { shouldRouteOpenAIPiThroughCodexAuthProvider } from "../openai-codex-routing.js";
 import { normalizeEmbeddedAgentRuntime } from "../pi-embedded-runner/runtime.js";
 import { resolveProviderIdForAuth } from "../provider-auth-aliases.js";

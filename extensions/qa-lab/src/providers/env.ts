@@ -151,7 +151,7 @@ export function resolveQaLiveCliAuthEnv(
 ) {
   const authMode = opts?.claudeCliAuthMode ?? "auto";
   const hasAnthropicKey = Boolean(
-    baseEnv.ANTHROPIC_API_KEY?.trim() || baseEnv.OPENCLAW_LIVE_ANTHROPIC_KEY?.trim(),
+    baseEnv.ANTHROPIC_API_KEY?.trim() || baseEnv.cimiclaw_LIVE_ANTHROPIC_KEY?.trim(),
   );
   if (opts?.forwardHostHomeForClaudeCli && authMode === "api-key" && !hasAnthropicKey) {
     throw new Error(
@@ -201,7 +201,7 @@ export function resolveQaLiveProviderConfigPath(env: NodeJS.ProcessEnv = process
     env[QA_LIVE_PROVIDER_CONFIG_PATH_ENV]?.trim() || env.OPENCLAW_CONFIG_PATH?.trim();
   return explicit
     ? { path: resolveUserPath(explicit, env), explicit: true }
-    : { path: path.join(os.homedir(), ".openclaw", "openclaw.json"), explicit: false };
+    : { path: path.join(os.homedir(), ".cimiclaw", "openclaw.json"), explicit: false };
 }
 
 export function resolveQaForwardedLiveEnv(baseEnv: NodeJS.ProcessEnv = process.env) {

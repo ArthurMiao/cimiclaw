@@ -68,7 +68,7 @@ async function withExecDryRunConfigHarness(
   }) => Promise<void>,
 ) {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), prefix));
-  const configPath = path.join(tempDir, "openclaw.json");
+  const configPath = path.join(tempDir, "cimiclaw.json");
   const batchPath = path.join(tempDir, "batch.json");
   const markerPath = path.join(tempDir, "marker.txt");
   const envSnapshot = captureEnv(["OPENCLAW_CONFIG_PATH", "OPENCLAW_TEST_FAST"]);
@@ -112,7 +112,7 @@ async function withExecDryRunConfigHarness(
 describe("config cli integration", () => {
   it("accepts plugin hook conversation-access policy via config set", async () => {
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-config-cli-plugin-hooks-"));
-    const configPath = path.join(tempDir, "openclaw.json");
+    const configPath = path.join(tempDir, "cimiclaw.json");
     const envSnapshot = captureEnv(["OPENCLAW_CONFIG_PATH", "OPENCLAW_TEST_FAST"]);
     try {
       fs.writeFileSync(
@@ -134,7 +134,7 @@ describe("config cli integration", () => {
 
       const runtime = createTestRuntime();
       await runConfigSet({
-        path: "plugins.entries.openclaw-mem0.hooks.allowConversationAccess",
+        path: "plugins.entries.cimiclaw-mem0.hooks.allowConversationAccess",
         value: "true",
         cliOptions: {},
         runtime: runtime.runtime,
@@ -155,7 +155,7 @@ describe("config cli integration", () => {
 
   it("supports batch-file dry-run and then writes real config changes", async () => {
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-config-cli-int-"));
-    const configPath = path.join(tempDir, "openclaw.json");
+    const configPath = path.join(tempDir, "cimiclaw.json");
     const batchPath = path.join(tempDir, "batch.json");
     const envSnapshot = captureEnv([
       "OPENCLAW_CONFIG_PATH",
@@ -244,7 +244,7 @@ describe("config cli integration", () => {
 
   it("keeps file unchanged when real-file dry-run fails and reports JSON error payload", async () => {
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-config-cli-int-fail-"));
-    const configPath = path.join(tempDir, "openclaw.json");
+    const configPath = path.join(tempDir, "cimiclaw.json");
     const envSnapshot = captureEnv([
       "OPENCLAW_CONFIG_PATH",
       "OPENCLAW_TEST_FAST",

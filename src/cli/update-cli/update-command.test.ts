@@ -120,12 +120,12 @@ describe("resolvePostInstallDoctorEnv", () => {
       baseEnv: {
         PATH: "/bin",
         OPENCLAW_STATE_DIR: "/wrong/state",
-        OPENCLAW_CONFIG_PATH: "/wrong/openclaw.json",
+        OPENCLAW_CONFIG_PATH: "/wrong/cimiclaw.json",
         OPENCLAW_PROFILE: "wrong",
       },
       serviceEnv: {
         OPENCLAW_STATE_DIR: "daemon-state",
-        OPENCLAW_CONFIG_PATH: "daemon-state/openclaw.json",
+        OPENCLAW_CONFIG_PATH: "daemon-state/cimiclaw.json",
         OPENCLAW_PROFILE: "work",
       },
     });
@@ -134,7 +134,7 @@ describe("resolvePostInstallDoctorEnv", () => {
     expect(env.NODE_DISABLE_COMPILE_CACHE).toBe("1");
     expect(env.OPENCLAW_STATE_DIR).toBe(path.join("/srv/openclaw", "daemon-state"));
     expect(env.OPENCLAW_CONFIG_PATH).toBe(
-      path.join("/srv/openclaw", "daemon-state", "openclaw.json"),
+      path.join("/srv/openclaw", "daemon-state", "cimiclaw.json"),
     );
     expect(env.OPENCLAW_PROFILE).toBe("work");
   });

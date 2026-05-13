@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { buildActiveSubagentSystemPromptAddition } from "./subagent-active-context.js";
 import {
   addSubagentRunForTests,

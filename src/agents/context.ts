@@ -4,7 +4,7 @@
 import path from "node:path";
 import { isHelpOrVersionInvocation } from "../cli/argv.js";
 import { getRuntimeConfig } from "../config/config.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { computeBackoff, type BackoffPolicy } from "../infra/backoff.js";
 import { consumeRootOptionToken, FLAG_TERMINATOR } from "../infra/cli-root-options.js";
 import { normalizeLowercaseStringOrEmpty } from "../shared/string-coerce.js";
@@ -112,7 +112,7 @@ function isLikelyOpenClawCliProcess(argv: string[] = process.argv): boolean {
   const entryBasename = normalizeLowercaseStringOrEmpty(path.basename(argv[1] ?? ""));
   return (
     entryBasename === "openclaw" ||
-    entryBasename === "openclaw.mjs" ||
+    entryBasename === "cimiclaw.mjs" ||
     entryBasename === "entry.js" ||
     entryBasename === "entry.mjs"
   );

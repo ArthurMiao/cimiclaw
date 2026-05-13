@@ -1,6 +1,6 @@
 import path from "node:path";
 import { describe, expect, test } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { runPluginSetupConfigMigrations } from "./setup-registry.js";
 
 describe("Canvas setup config migration", () => {

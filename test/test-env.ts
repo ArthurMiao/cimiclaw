@@ -226,7 +226,7 @@ function createIsolatedTestHome(restore: RestoreEntry[]): {
 
   // Windows: prefer the default state dir so auth/profile tests match real paths.
   if (process.platform === "win32") {
-    process.env.OPENCLAW_STATE_DIR = path.join(tempHome, ".openclaw");
+    process.env.OPENCLAW_STATE_DIR = path.join(tempHome, ".cimiclaw");
   }
 
   process.env.XDG_CONFIG_HOME = path.join(tempHome, ".config");
@@ -369,18 +369,18 @@ function stageLiveTestState(params: {
   const rawStateDir = params.env.OPENCLAW_STATE_DIR?.trim();
   let realStateDir = rawStateDir
     ? resolveHomeRelativePath(rawStateDir, params.realHome)
-    : path.join(params.realHome, ".openclaw");
+    : path.join(params.realHome, ".cimiclaw");
   const priorIsolatedHome = params.env.OPENCLAW_TEST_HOME?.trim();
   const snapshotHome = params.env.HOME?.trim();
   if (
     priorIsolatedHome &&
     snapshotHome &&
     snapshotHome !== priorIsolatedHome &&
-    realStateDir === path.join(priorIsolatedHome, ".openclaw")
+    realStateDir === path.join(priorIsolatedHome, ".cimiclaw")
   ) {
-    realStateDir = path.join(params.realHome, ".openclaw");
+    realStateDir = path.join(params.realHome, ".cimiclaw");
   }
-  const tempStateDir = path.join(params.tempHome, ".openclaw");
+  const tempStateDir = path.join(params.tempHome, ".cimiclaw");
   fs.mkdirSync(tempStateDir, { recursive: true });
   fs.mkdirSync(path.join(params.tempHome, ".gemini"), { recursive: true });
 

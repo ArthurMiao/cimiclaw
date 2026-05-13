@@ -61,7 +61,7 @@ function readBundledPluginRecords(): BundledPluginRecord[] {
     .flatMap((dirName) => {
       const rootDir = path.join(EXTENSIONS_ROOT, dirName);
       const packagePath = path.join(rootDir, "package.json");
-      const manifestPath = path.join(rootDir, "openclaw.plugin.json");
+      const manifestPath = path.join(rootDir, "cimiclaw.plugin.json");
       if (!fs.existsSync(packagePath) || !fs.existsSync(manifestPath)) {
         return [];
       }
@@ -79,8 +79,8 @@ function readBundledPluginRecords(): BundledPluginRecord[] {
           dirName,
           packageName,
           manifestId,
-          installNpmSpec: normalizeText(pkg.openclaw?.install?.npmSpec),
-          channelId: normalizeText(pkg.openclaw?.channel?.id),
+          installNpmSpec: normalizeText(pkg.cimiclaw?.install?.npmSpec),
+          channelId: normalizeText(pkg.cimiclaw?.channel?.id),
         },
       ];
     });
@@ -126,7 +126,7 @@ describe("bundled plugin naming guardrails", () => {
     {
       name: "keeps bundled workspace directories aligned with the plugin id unless explicitly allowlisted",
       message:
-        "Bundled extension directory names should match openclaw.plugin.json:id. If a legacy exception is unavoidable, add it to DIR_ID_EXCEPTIONS with a comment.",
+        "Bundled extension directory names should match cimiclaw.plugin.json:id. If a legacy exception is unavoidable, add it to DIR_ID_EXCEPTIONS with a comment.",
       collectMismatches: (records: BundledPluginRecord[]) =>
         records
           .filter(
@@ -164,7 +164,7 @@ describe("bundled plugin naming guardrails", () => {
     {
       name: "keeps bundled channel ids aligned with the canonical plugin id",
       message:
-        "Bundled openclaw.channel.id values must match openclaw.plugin.json:id for the owning plugin.",
+        "Bundled openclaw.channel.id values must match cimiclaw.plugin.json:id for the owning plugin.",
       collectMismatches: (records: BundledPluginRecord[]) =>
         records
           .filter(

@@ -11,7 +11,7 @@
  *   - During plugin startup, if the live config has an empty appId or
  *     secret, the gateway consults the backup and restores the values
  *     via the config mutation API.
- *   - Backups live under `~/.openclaw/qqbot/data/` so they survive
+ *   - Backups live under `~/.cimiclaw/qqbot/data/` so they survive
  *     plugin directory replacement.
  *
  * Safety notes:

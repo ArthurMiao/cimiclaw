@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { GatewayClient } from "../gateway/client.js";
 import {
   describeInterpreterInlineEval,

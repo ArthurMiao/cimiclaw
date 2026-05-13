@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { AgentBindingMatch } from "../config/types.agents.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveRequesterOriginForChild } from "./spawn-requester-origin.js";
 
 describe("resolveRequesterOriginForChild", () => {

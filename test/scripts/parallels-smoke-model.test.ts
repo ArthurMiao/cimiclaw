@@ -591,7 +591,7 @@ console.log(JSON.stringify({
     expect(powershell).toContain("configPathMapKey");
     expect(powershell).toContain('transport: "sse"');
     expect(powershell).toContain("Resolve-OpenClawCommand");
-    expect(powershell).toContain("npm\\node_modules\\openclaw\\openclaw.mjs");
+    expect(powershell).toContain("npm\\node_modules\\openclaw\\cimiclaw.mjs");
     expect(powershell).toContain("$ErrorActionPreference = 'Continue'");
     expect(powershell).toContain("$PSNativeCommandUseErrorActionPreference = $false");
     expect(windows).toContain("windowsOpenClawResolver");

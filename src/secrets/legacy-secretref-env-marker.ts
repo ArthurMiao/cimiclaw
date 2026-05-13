@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   LEGACY_SECRETREF_ENV_MARKER_PREFIX,
   parseLegacySecretRefEnvMarker,

@@ -61,13 +61,13 @@ export OPENCLAW_NIX_MODE=1
 On macOS, the GUI app does not automatically inherit shell environment variables. Enable Nix mode via defaults instead:
 
 ```bash
-defaults write ai.openclaw.mac openclaw.nixMode -bool true
+defaults write ai.cimiclaw.mac openclaw.nixMode -bool true
 ```
 
 ### What changes in Nix mode
 
 - Auto-install and self-mutation flows are disabled
-- `openclaw.json` is treated as immutable. Startup-derived defaults stay runtime-only, and config writers such as setup, onboarding, mutating `openclaw update`, plugin install/update/uninstall/enable, `doctor --fix`, `doctor --generate-gateway-token`, and `openclaw config set` refuse to edit the file.
+- `cimiclaw.json` is treated as immutable. Startup-derived defaults stay runtime-only, and config writers such as setup, onboarding, mutating `openclaw update`, plugin install/update/uninstall/enable, `doctor --fix`, `doctor --generate-gateway-token`, and `openclaw config set` refuse to edit the file.
 - Agents should edit the Nix source instead. For nix-openclaw, use the agent-first [Quick Start](https://github.com/openclaw/nix-openclaw#quick-start) and set config under `programs.openclaw.config` or `instances.<name>.config`.
 - Missing dependencies surface Nix-specific remediation messages
 - UI surfaces a read-only Nix mode banner
@@ -79,8 +79,8 @@ OpenClaw reads JSON5 config from `OPENCLAW_CONFIG_PATH` and stores mutable data 
 | Variable               | Default                                 |
 | ---------------------- | --------------------------------------- |
 | `OPENCLAW_HOME`        | `HOME` / `USERPROFILE` / `os.homedir()` |
-| `OPENCLAW_STATE_DIR`   | `~/.openclaw`                           |
-| `OPENCLAW_CONFIG_PATH` | `$OPENCLAW_STATE_DIR/openclaw.json`     |
+| `OPENCLAW_STATE_DIR`   | `~/.cimiclaw`                           |
+| `OPENCLAW_CONFIG_PATH` | `$OPENCLAW_STATE_DIR/cimiclaw.json`     |
 
 ### Service PATH discovery
 

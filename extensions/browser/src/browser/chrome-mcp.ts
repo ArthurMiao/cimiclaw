@@ -7,7 +7,7 @@ import {
   normalizeOptionalString,
   readStringValue,
 } from "openclaw/plugin-sdk/string-coerce-runtime";
-import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../infra/tmp-cimiclaw-dir.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import { asRecord } from "../record-shared.js";
 import type { ChromeMcpSnapshotNode } from "./chrome-mcp.snapshot.js";

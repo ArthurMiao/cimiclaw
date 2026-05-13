@@ -130,7 +130,7 @@ function writeTranscriptUsageLog(params: {
 }) {
   const logPath = path.join(
     params.dir,
-    ".openclaw",
+    ".cimiclaw",
     "agents",
     params.agentId,
     "sessions",
@@ -606,7 +606,7 @@ describe("buildStatusReply subagent summary", () => {
       async (dir) => {
         const authPath = path.join(
           dir,
-          ".openclaw",
+          ".cimiclaw",
           "agents",
           "main",
           "agent",
@@ -824,7 +824,7 @@ describe("buildStatusReply subagent summary", () => {
   it("uses workspace-scoped auth evidence in /status auth labels", async () => {
     const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-status-auth-label-"));
     const workspaceDir = path.join(tempRoot, "workspace");
-    const pluginDir = path.join(workspaceDir, ".openclaw", "extensions", "workspace-auth-label");
+    const pluginDir = path.join(workspaceDir, ".cimiclaw", "extensions", "workspace-auth-label");
     const bundledDir = path.join(tempRoot, "bundled");
     const stateDir = path.join(tempRoot, "state");
     const credentialPath = path.join(tempRoot, "credentials.json");
@@ -834,7 +834,7 @@ describe("buildStatusReply subagent summary", () => {
     fs.writeFileSync(path.join(pluginDir, "index.ts"), "export default {}\n", "utf8");
     fs.writeFileSync(credentialPath, "{}", "utf8");
     fs.writeFileSync(
-      path.join(pluginDir, "openclaw.plugin.json"),
+      path.join(pluginDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "workspace-auth-label",
         configSchema: { type: "object" },

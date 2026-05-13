@@ -72,7 +72,7 @@ const resolveDefaultModelForAgent = vi.hoisted(() =>
   vi.fn(() => ({ provider: "openai", model: "gpt-test" })),
 );
 const getAgentScopedMediaLocalRoots = vi.hoisted(() =>
-  vi.fn((_cfg: unknown, agentId: string) => [`/tmp/.openclaw/workspace-${agentId}`]),
+  vi.fn((_cfg: unknown, agentId: string) => [`/tmp/.cimiclaw/workspace-${agentId}`]),
 );
 const resolveChunkMode = vi.hoisted(() => vi.fn(() => undefined));
 const resolveMarkdownTableMode = vi.hoisted(() => vi.fn(() => "preserve"));
@@ -514,7 +514,7 @@ describe("dispatchTelegramMessage draft streaming", () => {
     expect(draftStream.update).toHaveBeenCalledWith("Hello");
     const delivery = expectDeliverRepliesParams({ thread: { id: 777, scope: "dm" } });
     expect(delivery.mediaLocalRoots).toContainEqual(
-      expect.stringMatching(/[\\/]\.openclaw[\\/]workspace-work$/u),
+      expect.stringMatching(/[\\/]\.cimiclaw[\\/]workspace-work$/u),
     );
     const dispatchParams = expectDispatchParams({});
     expect(

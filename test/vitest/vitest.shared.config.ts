@@ -182,7 +182,7 @@ export const sharedVitestConfig = {
       "test/setup.ts",
       "test/setup.shared.ts",
       "test/setup.extensions.ts",
-      "test/setup-openclaw-runtime.ts",
+      "test/setup-cimiclaw-runtime.ts",
       "test/vitest/vitest.channel-paths.mjs",
       "test/vitest/vitest.agents-paths.mjs",
       "test/vitest/vitest.agents-core.config.ts",

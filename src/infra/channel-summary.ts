@@ -7,7 +7,7 @@ import {
 import { formatChannelStatusState } from "../channels/plugins/status-state.js";
 import type { ChannelPlugin } from "../channels/plugins/types.plugin.js";
 import type { ChannelAccountSnapshot } from "../channels/plugins/types.public.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { DEFAULT_ACCOUNT_ID } from "../routing/session-key.js";
 import { sanitizeForLog } from "../terminal/ansi.js";
 import { theme } from "../terminal/theme.js";

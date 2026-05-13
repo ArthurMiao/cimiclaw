@@ -5,7 +5,7 @@ import { type ModelAliasIndex, resolveModelRefFromString } from "../../agents/mo
 import { resolveSandboxRuntimeStatus } from "../../agents/sandbox/runtime-status.js";
 import type { SkillCommandSpec } from "../../agents/skills.js";
 import type { SessionEntry } from "../../config/sessions.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { normalizeAgentId } from "../../routing/session-key.js";
 import { createLazyImportLoader } from "../../shared/lazy-promise.js";
 import {

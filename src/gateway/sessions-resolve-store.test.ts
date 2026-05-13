@@ -1,7 +1,7 @@
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { resolveStorePath, saveSessionStore } from "../config/sessions.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { withStateDirEnv } from "../test-helpers/state-dir-env.js";
 import { ErrorCodes } from "./protocol/index.js";
 import { resolveSessionKeyFromResolveParams } from "./sessions-resolve.js";

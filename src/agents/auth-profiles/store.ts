@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { withFileLock } from "../../infra/file-lock.js";
 import { saveJsonFile } from "../../infra/json-file.js";
 import { cloneAuthProfileStore } from "./clone.js";

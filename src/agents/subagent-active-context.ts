@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { sanitizeForPromptLiteral } from "./sanitize-for-prompt.js";
 import { listControlledSubagentRuns } from "./subagent-control.js";
 import { buildSubagentList } from "./subagent-list.js";

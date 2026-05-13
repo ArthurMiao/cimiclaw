@@ -2,7 +2,7 @@ import os from "node:os";
 import path from "node:path";
 import { assertConfigWriteAllowedInCurrentMode, readConfigFileSnapshot } from "../config/config.js";
 import { resolveStateDir } from "../config/paths.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   tracePluginLifecyclePhase,
   tracePluginLifecyclePhaseAsync,

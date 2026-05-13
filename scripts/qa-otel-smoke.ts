@@ -292,11 +292,11 @@ function openClawEntryArgs(): string[] {
   if (existsSync(path.join(process.cwd(), "scripts", "run-node.mjs"))) {
     return ["scripts/run-node.mjs"];
   }
-  return ["openclaw.mjs"];
+  return ["cimiclaw.mjs"];
 }
 
 function spawnOpenClaw(args: string[], env: NodeJS.ProcessEnv): ChildProcess {
-  return spawn(process.execPath, [...openClawEntryArgs(), ...args], {
+  return spawn(process.execPath, [...cimiclawEntryArgs(), ...args], {
     env,
     stdio: ["ignore", "pipe", "pipe"],
   });
@@ -318,7 +318,7 @@ function buildQaEnv(port: number): NodeJS.ProcessEnv {
   env.OTEL_EXPORTER_OTLP_TRACES_ENDPOINT = `http://127.0.0.1:${port}/v1/traces`;
   env.OTEL_SERVICE_NAME = "openclaw-qa-lab-otel-smoke";
   env.OTEL_SEMCONV_STABILITY_OPT_IN = "gen_ai_latest_experimental";
-  env.OPENCLAW_QA_SUITE_PROGRESS = env.OPENCLAW_QA_SUITE_PROGRESS ?? "1";
+  env.cimiclaw_QA_SUITE_PROGRESS = env.cimiclaw_QA_SUITE_PROGRESS ?? "1";
   return env;
 }
 

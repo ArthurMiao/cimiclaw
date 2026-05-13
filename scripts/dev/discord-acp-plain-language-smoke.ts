@@ -134,14 +134,14 @@ function parseNumber(value: string | undefined, fallback: number): number {
 }
 
 function resolveStateDir(): string {
-  const override = process.env.OPENCLAW_STATE_DIR?.trim();
+  const override = process.env.cimiclaw_STATE_DIR?.trim();
   if (override) {
     return override.startsWith("~")
       ? path.resolve(process.env.HOME || "", override.slice(1))
       : path.resolve(override);
   }
-  const home = process.env.OPENCLAW_HOME?.trim() || process.env.HOME || "";
-  return path.join(home, ".openclaw");
+  const home = process.env.cimiclaw_HOME?.trim() || process.env.HOME || "";
+  return path.join(home, ".cimiclaw");
 }
 
 function resolveArg(flag: string): string | undefined {
@@ -201,9 +201,9 @@ function usage(): string {
 }
 
 function parseArgs(): Args {
-  const channelId = resolveArg("--channel") || process.env.OPENCLAW_DISCORD_SMOKE_CHANNEL_ID || "";
+  const channelId = resolveArg("--channel") || process.env.cimiclaw_DISCORD_SMOKE_CHANNEL_ID || "";
   const driverModeRaw =
-    resolveArg("--driver") || process.env.OPENCLAW_DISCORD_SMOKE_DRIVER || "token";
+    resolveArg("--driver") || process.env.cimiclaw_DISCORD_SMOKE_DRIVER || "token";
   const normalizedDriverMode = driverModeRaw.trim().toLowerCase();
   const driverMode: DriverMode =
     normalizedDriverMode === "webhook"
@@ -214,38 +214,38 @@ function parseArgs(): Args {
           ? "token"
           : "token";
   const driverToken =
-    resolveArg("--token") || process.env.OPENCLAW_DISCORD_SMOKE_DRIVER_TOKEN || "";
+    resolveArg("--token") || process.env.cimiclaw_DISCORD_SMOKE_DRIVER_TOKEN || "";
   const driverTokenPrefix =
-    resolveArg("--token-prefix") || process.env.OPENCLAW_DISCORD_SMOKE_DRIVER_TOKEN_PREFIX || "Bot";
+    resolveArg("--token-prefix") || process.env.cimiclaw_DISCORD_SMOKE_DRIVER_TOKEN_PREFIX || "Bot";
   const botToken =
     resolveArg("--bot-token") ||
-    process.env.OPENCLAW_DISCORD_SMOKE_BOT_TOKEN ||
+    process.env.cimiclaw_DISCORD_SMOKE_BOT_TOKEN ||
     process.env.DISCORD_BOT_TOKEN ||
     "";
   const botTokenPrefix =
     resolveArg("--bot-token-prefix") ||
-    process.env.OPENCLAW_DISCORD_SMOKE_BOT_TOKEN_PREFIX ||
+    process.env.cimiclaw_DISCORD_SMOKE_BOT_TOKEN_PREFIX ||
     "Bot";
-  const targetAgent = resolveArg("--agent") || process.env.OPENCLAW_DISCORD_SMOKE_AGENT || "codex";
+  const targetAgent = resolveArg("--agent") || process.env.cimiclaw_DISCORD_SMOKE_AGENT || "codex";
   const mentionUserId =
-    resolveArg("--mention") || process.env.OPENCLAW_DISCORD_SMOKE_MENTION_USER_ID || undefined;
+    resolveArg("--mention") || process.env.cimiclaw_DISCORD_SMOKE_MENTION_USER_ID || undefined;
   const instruction =
-    resolveArg("--instruction") || process.env.OPENCLAW_DISCORD_SMOKE_INSTRUCTION || undefined;
+    resolveArg("--instruction") || process.env.cimiclaw_DISCORD_SMOKE_INSTRUCTION || undefined;
   const timeoutMs = parseNumber(
-    resolveArg("--timeout-ms") || process.env.OPENCLAW_DISCORD_SMOKE_TIMEOUT_MS,
+    resolveArg("--timeout-ms") || process.env.cimiclaw_DISCORD_SMOKE_TIMEOUT_MS,
     240_000,
   );
   const pollMs = parseNumber(
-    resolveArg("--poll-ms") || process.env.OPENCLAW_DISCORD_SMOKE_POLL_MS,
+    resolveArg("--poll-ms") || process.env.cimiclaw_DISCORD_SMOKE_POLL_MS,
     1_500,
   );
   const defaultBindingsPath = path.join(resolveStateDir(), "discord", "thread-bindings.json");
   const threadBindingsPath =
     resolveArg("--thread-bindings-path") ||
-    process.env.OPENCLAW_DISCORD_SMOKE_THREAD_BINDINGS_PATH ||
+    process.env.cimiclaw_DISCORD_SMOKE_THREAD_BINDINGS_PATH ||
     defaultBindingsPath;
   const openclawBin =
-    resolveArg("--openclaw-bin") || process.env.OPENCLAW_DISCORD_SMOKE_OPENCLAW_BIN || "openclaw";
+    resolveArg("--openclaw-bin") || process.env.cimiclaw_DISCORD_SMOKE_OPENCLAW_BIN || "openclaw";
   const json = hasFlag("--json");
 
   if (!channelId) {
@@ -277,7 +277,7 @@ function parseArgs(): Args {
 }
 
 async function openclawCliJson<T>(params: { openclawBin: string; args: string[] }): Promise<T> {
-  const result = await execFileAsync(params.openclawBin, params.args, {
+  const result = await execFileAsync(params.cimiclawBin, params.args, {
     maxBuffer: 8 * 1024 * 1024,
     env: process.env,
   });
@@ -298,7 +298,7 @@ async function readMessagesWithOpenclaw(params: {
       messages?: DiscordMessage[];
     };
   }>({
-    openclawBin: params.openclawBin,
+    openclawBin: params.cimiclawBin,
     args: [
       "message",
       "read",
@@ -477,7 +477,7 @@ async function loadParentRecentMessages(params: {
 }): Promise<DiscordMessage[]> {
   if (params.args.driverMode === "openclaw") {
     return await readMessagesWithOpenclaw({
-      openclawBin: params.args.openclawBin,
+      openclawBin: params.args.cimiclawBin,
       target: params.args.channelId,
       limit: 20,
     });
@@ -646,7 +646,7 @@ async function run(): Promise<SuccessResult | FailureResult> {
           };
         };
       }>({
-        openclawBin: args.openclawBin,
+        openclawBin: args.cimiclawBin,
         args: [
           "message",
           "send",
@@ -729,7 +729,7 @@ async function run(): Promise<SuccessResult | FailureResult> {
         const threadMessages =
           args.driverMode === "openclaw"
             ? await readMessagesWithOpenclaw({
-                openclawBin: args.openclawBin,
+                openclawBin: args.cimiclawBin,
                 target: threadId,
                 limit: 50,
               })

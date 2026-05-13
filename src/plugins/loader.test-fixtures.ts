@@ -88,7 +88,7 @@ export function writePlugin(params: {
   const file = path.join(dir, filename);
   fs.writeFileSync(file, params.body, "utf-8");
   fs.writeFileSync(
-    path.join(dir, "openclaw.plugin.json"),
+    path.join(dir, "cimiclaw.plugin.json"),
     JSON.stringify(
       {
         id: params.id,
@@ -116,7 +116,7 @@ export function loadBundleFixture(params: {
   useNoBundledPlugins();
   const workspaceDir = makeTempDir();
   const stateDir = makeTempDir();
-  const bundleRoot = path.join(workspaceDir, ".openclaw", "extensions", params.pluginId);
+  const bundleRoot = path.join(workspaceDir, ".cimiclaw", "extensions", params.pluginId);
   params.build(bundleRoot);
   return withEnv({ OPENCLAW_STATE_DIR: stateDir, ...params.env }, () =>
     loadOpenClawPlugins({

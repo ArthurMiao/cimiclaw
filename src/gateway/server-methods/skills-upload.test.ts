@@ -43,7 +43,7 @@ vi.mock("../../infra/replace-file.js", async (importOriginal) => {
       if (
         replaceFileState.publishFailures === 0 &&
         replaceFileState.publishFailureTarget &&
-        options.from.includes(".openclaw-install-stage-") &&
+        options.from.includes(".cimiclaw-install-stage-") &&
         options.to === replaceFileState.publishFailureTarget
       ) {
         replaceFileState.publishFailures += 1;

@@ -193,7 +193,7 @@ You can switch models for the current session without restarting:
   <Accordion title="Picker behavior">
     - `/model` (and `/model list`) is a compact, numbered picker (model family + available providers).
     - On Discord, `/model` and `/models` open an interactive picker with provider and model dropdowns plus a Submit step.
-    - On Telegram, `/models` picker selections are session-scoped; they do not change the agent's persistent default in `openclaw.json`.
+    - On Telegram, `/models` picker selections are session-scoped; they do not change the agent's persistent default in `cimiclaw.json`.
     - `/models add` is deprecated and now returns a deprecation message instead of registering models from chat.
     - `/model <#>` selects from that picker.
 
@@ -213,7 +213,7 @@ You can switch models for the current session without restarting:
     - If you omit the provider, OpenClaw resolves the input in this order:
       1. alias match
       2. unique configured-provider match for that exact unprefixed model id
-      3. deprecated fallback to the configured default provider â€” if that provider no longer exposes the configured default model, OpenClaw instead falls back to the first configured provider/model to avoid surfacing a stale removed-provider default.
+      3. deprecated fallback to the configured default provider â€?if that provider no longer exposes the configured default model, OpenClaw instead falls back to the first configured provider/model to avoid surfacing a stale removed-provider default.
   </Accordion>
 </AccordionGroup>
 
@@ -338,7 +338,7 @@ When live probes run in a TTY, you can select fallbacks interactively. In non-in
 
 ## Models registry (`models.json`)
 
-Custom providers in `models.providers` are written into `models.json` under the agent directory (default `~/.openclaw/agents/<agentId>/agent/models.json`). This file is merged by default unless `models.mode` is set to `replace`.
+Custom providers in `models.providers` are written into `models.json` under the agent directory (default `~/.cimiclaw/agents/<agentId>/agent/models.json`). This file is merged by default unless `models.mode` is set to `replace`.
 
 <AccordionGroup>
   <Accordion title="Merge mode precedence">
@@ -360,10 +360,10 @@ Marker persistence is source-authoritative: OpenClaw writes markers from the act
 
 ## Related
 
-- [Agent runtimes](/concepts/agent-runtimes) â€” PI, Codex, and other agent loop runtimes
-- [Configuration reference](/gateway/config-agents#agent-defaults) â€” model config keys
-- [Image generation](/tools/image-generation) â€” image model configuration
-- [Model failover](/concepts/model-failover) â€” fallback chains
-- [Model providers](/concepts/model-providers) â€” provider routing and auth
-- [Music generation](/tools/music-generation) â€” music model configuration
-- [Video generation](/tools/video-generation) â€” video model configuration
+- [Agent runtimes](/concepts/agent-runtimes) â€?PI, Codex, and other agent loop runtimes
+- [Configuration reference](/gateway/config-agents#agent-defaults) â€?model config keys
+- [Image generation](/tools/image-generation) â€?image model configuration
+- [Model failover](/concepts/model-failover) â€?fallback chains
+- [Model providers](/concepts/model-providers) â€?provider routing and auth
+- [Music generation](/tools/music-generation) â€?music model configuration
+- [Video generation](/tools/video-generation) â€?video model configuration

@@ -41,7 +41,7 @@ describe("volcengine plugin", () => {
 
   it("declares its coding provider auth alias in the manifest", () => {
     const pluginJson = JSON.parse(
-      readFileSync(resolve(import.meta.dirname, "openclaw.plugin.json"), "utf-8"),
+      readFileSync(resolve(import.meta.dirname, "cimiclaw.plugin.json"), "utf-8"),
     );
 
     expect(pluginJson.providerAuthAliases).toEqual({

@@ -168,7 +168,7 @@ describe("browser chrome profile decoration", () => {
     expect(prefs.savefile).toBeUndefined();
 
     const marker = await fsp.readFile(
-      path.join(userDataDir, ".openclaw-profile-decorated"),
+      path.join(userDataDir, ".cimiclaw-profile-decorated"),
       "utf-8",
     );
     expect(marker.trim()).toMatch(/^\d+$/);

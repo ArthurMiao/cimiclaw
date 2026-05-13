@@ -36,9 +36,9 @@ describe("sleep", () => {
 });
 
 describe("resolveConfigDir", () => {
-  it("prefers ~/.openclaw when legacy dir is missing", async () => {
+  it("prefers ~/.cimiclaw when legacy dir is missing", async () => {
     await withTempDir({ prefix: "openclaw-config-dir-" }, async (root) => {
-      const newDir = path.join(root, ".openclaw");
+      const newDir = path.join(root, ".cimiclaw");
       await fs.promises.mkdir(newDir, { recursive: true });
       const resolved = resolveConfigDir({} as NodeJS.ProcessEnv, () => root);
       expect(resolved).toBe(newDir);
@@ -57,7 +57,7 @@ describe("resolveConfigDir", () => {
   it("falls back to the config file directory when only OPENCLAW_CONFIG_PATH is set", () => {
     const env = {
       HOME: "/tmp/openclaw-home",
-      OPENCLAW_CONFIG_PATH: "~/profiles/dev/openclaw.json",
+      OPENCLAW_CONFIG_PATH: "~/profiles/dev/cimiclaw.json",
     } as NodeJS.ProcessEnv;
 
     expect(resolveConfigDir(env)).toBe(path.resolve("/tmp/openclaw-home", "profiles", "dev"));
@@ -81,8 +81,8 @@ describe("shortenHomePath", () => {
     vi.stubEnv("OPENCLAW_HOME", "/srv/openclaw-home");
     vi.stubEnv("HOME", "/home/other");
     try {
-      expect(shortenHomePath(`${path.resolve("/srv/openclaw-home")}/.openclaw/openclaw.json`)).toBe(
-        "$OPENCLAW_HOME/.openclaw/openclaw.json",
+      expect(shortenHomePath(`${path.resolve("/srv/openclaw-home")}/.cimiclaw/cimiclaw.json`)).toBe(
+        "$OPENCLAW_HOME/.cimiclaw/cimiclaw.json",
       );
     } finally {
       vi.unstubAllEnvs();
@@ -97,9 +97,9 @@ describe("shortenHomeInString", () => {
     try {
       expect(
         shortenHomeInString(
-          `config: ${path.resolve("/srv/openclaw-home")}/.openclaw/openclaw.json`,
+          `config: ${path.resolve("/srv/openclaw-home")}/.cimiclaw/cimiclaw.json`,
         ),
-      ).toBe("config: $OPENCLAW_HOME/.openclaw/openclaw.json");
+      ).toBe("config: $OPENCLAW_HOME/.cimiclaw/cimiclaw.json");
     } finally {
       vi.unstubAllEnvs();
     }

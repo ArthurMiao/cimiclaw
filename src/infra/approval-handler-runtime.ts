@@ -2,7 +2,7 @@ import type {
   ChannelApprovalCapability,
   ChannelApprovalNativeAdapter,
 } from "../channels/plugins/types.adapters.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import {
   CHANNEL_APPROVAL_NATIVE_RUNTIME_CONTEXT_CAPABILITY,

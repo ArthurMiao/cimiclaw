@@ -1,7 +1,7 @@
 import { resolveSendableOutboundReplyParts } from "openclaw/plugin-sdk/reply-payload";
 import { describe, expect, it } from "vitest";
 import type { ReplyPayload } from "../../auto-reply/types.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { typedCases } from "../../test-utils/typed-cases.js";
 import {
   createOutboundPayloadPlan,
@@ -81,7 +81,7 @@ describe("normalizeReplyPayloadsForDelivery", () => {
         { text: "Replied in-thread." },
         { text: "Replied in #maintainers." },
         {
-          text: "Updated [wiki/providers.md](/Users/steipete/.openclaw/workspace/wiki/providers.md:33). No channel reply.",
+          text: "Updated [wiki/providers.md](/Users/steipete/.cimiclaw/workspace/wiki/providers.md:33). No channel reply.",
         },
         {
           text: "Updated [wiki/tools.md] with the rollback failure-mode nuance. No channel reply.",

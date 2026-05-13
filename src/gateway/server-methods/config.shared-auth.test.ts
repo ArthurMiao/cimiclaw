@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { RestartSentinelPayload } from "../../infra/restart-sentinel.js";
 import {
   createConfigHandlerHarness,
@@ -27,7 +27,7 @@ vi.mock("../../config/config.js", async () => {
     await vi.importActual<typeof import("../../config/config.js")>("../../config/config.js");
   return {
     ...actual,
-    createConfigIO: () => ({ configPath: "/tmp/openclaw.json" }),
+    createConfigIO: () => ({ configPath: "/tmp/cimiclaw.json" }),
     readConfigFileSnapshotForWrite: readConfigFileSnapshotForWriteMock,
     validateConfigObjectWithPlugins: validateConfigObjectWithPluginsMock,
     writeConfigFile: writeConfigFileMock,

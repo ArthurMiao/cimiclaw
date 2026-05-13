@@ -1,6 +1,6 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { openClawRootFs, openClawRootFsSync } from "./openclaw-root.fs.runtime.js";
+import { openClawRootFs, openClawRootFsSync } from "./cimiclaw-root.fs.runtime.js";
 
 const CORE_PACKAGE_NAMES = new Set(["openclaw"]);
 const packageNameCache = new Map<string, string | null>();

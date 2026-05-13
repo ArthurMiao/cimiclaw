@@ -43,31 +43,31 @@ OpenClaw uses the pi SDK to embed an AI coding agent into its messaging gateway 
 src/agents/
 ├── pi-embedded-runner.ts          # Re-exports from pi-embedded-runner/
 ├── pi-embedded-runner/
-│   ├── run.ts                     # Main entry: runEmbeddedPiAgent()
-│   ├── run/
-│   │   ├── attempt.ts             # Single attempt logic with session setup
-│   │   ├── params.ts              # RunEmbeddedPiAgentParams type
-│   │   ├── payloads.ts            # Build response payloads from run results
-│   │   ├── images.ts              # Vision model image injection
-│   │   └── types.ts               # EmbeddedRunAttemptResult
-│   ├── abort.ts                   # Abort error detection
-│   ├── cache-ttl.ts               # Cache TTL tracking for context pruning
-│   ├── compact.ts                 # Manual/auto compaction logic
-│   ├── extensions.ts              # Load pi extensions for embedded runs
-│   ├── extra-params.ts            # Provider-specific stream params
-│   ├── google.ts                  # Google/Gemini turn ordering fixes
-│   ├── history.ts                 # History limiting (DM vs group)
-│   ├── lanes.ts                   # Session/global command lanes
-│   ├── logger.ts                  # Subsystem logger
-│   ├── model.ts                   # Model resolution via ModelRegistry
-│   ├── runs.ts                    # Active run tracking, abort, queue
-│   ├── sandbox-info.ts            # Sandbox info for system prompt
-│   ├── session-manager-cache.ts   # SessionManager instance caching
-│   ├── session-manager-init.ts    # Session file initialization
-│   ├── system-prompt.ts           # System prompt builder
-│   ├── tool-split.ts              # Split tools into builtIn vs custom
-│   ├── types.ts                   # EmbeddedPiAgentMeta, EmbeddedPiRunResult
-│   └── utils.ts                   # ThinkLevel mapping, error description
+�?  ├── run.ts                     # Main entry: runEmbeddedPiAgent()
+�?  ├── run/
+�?  �?  ├── attempt.ts             # Single attempt logic with session setup
+�?  �?  ├── params.ts              # RunEmbeddedPiAgentParams type
+�?  �?  ├── payloads.ts            # Build response payloads from run results
+�?  �?  ├── images.ts              # Vision model image injection
+�?  �?  └── types.ts               # EmbeddedRunAttemptResult
+�?  ├── abort.ts                   # Abort error detection
+�?  ├── cache-ttl.ts               # Cache TTL tracking for context pruning
+�?  ├── compact.ts                 # Manual/auto compaction logic
+�?  ├── extensions.ts              # Load pi extensions for embedded runs
+�?  ├── extra-params.ts            # Provider-specific stream params
+�?  ├── google.ts                  # Google/Gemini turn ordering fixes
+�?  ├── history.ts                 # History limiting (DM vs group)
+�?  ├── lanes.ts                   # Session/global command lanes
+�?  ├── logger.ts                  # Subsystem logger
+�?  ├── model.ts                   # Model resolution via ModelRegistry
+�?  ├── runs.ts                    # Active run tracking, abort, queue
+�?  ├── sandbox-info.ts            # Sandbox info for system prompt
+�?  ├── session-manager-cache.ts   # SessionManager instance caching
+�?  ├── session-manager-init.ts    # Session file initialization
+�?  ├── system-prompt.ts           # System prompt builder
+�?  ├── tool-split.ts              # Split tools into builtIn vs custom
+�?  ├── types.ts                   # EmbeddedPiAgentMeta, EmbeddedPiRunResult
+�?  └── utils.ts                   # ThinkLevel mapping, error description
 ├── pi-embedded-subscribe.ts       # Session event subscription/dispatch
 ├── pi-embedded-subscribe.types.ts # SubscribeEmbeddedPiSessionParams
 ├── pi-embedded-subscribe.handlers.ts # Event handler factory
@@ -87,10 +87,10 @@ src/agents/
 ├── pi-tool-definition-adapter.ts  # AgentTool -> ToolDefinition adapter
 ├── pi-settings.ts                 # Settings overrides
 ├── pi-hooks/                      # Custom pi hooks
-│   ├── compaction-safeguard.ts    # Safeguard extension
-│   ├── compaction-safeguard-runtime.ts
-│   ├── context-pruning.ts         # Cache-TTL context pruning extension
-│   └── context-pruning/
+�?  ├── compaction-safeguard.ts    # Safeguard extension
+�?  ├── compaction-safeguard-runtime.ts
+�?  ├── context-pruning.ts         # Cache-TTL context pruning extension
+�?  └── context-pruning/
 ├── model-auth.ts                  # Auth profile resolution
 ├── auth-profiles.ts               # Profile store, cooldown, failover
 ├── model-selection.ts             # Default model resolution
@@ -114,16 +114,16 @@ src/agents/
 ├── bash-tools.ts                  # exec/process tools
 ├── apply-patch.ts                 # apply_patch tool (OpenAI)
 ├── tools/                         # Individual tool implementations
-│   ├── browser-tool.ts
-│   ├── canvas-tool.ts
-│   ├── cron-tool.ts
-│   ├── gateway-tool.ts
-│   ├── image-tool.ts
-│   ├── message-tool.ts
-│   ├── nodes-tool.ts
-│   ├── session*.ts
-│   ├── web-*.ts
-│   └── ...
+�?  ├── browser-tool.ts
+�?  ├── canvas-tool.ts
+�?  ├── cron-tool.ts
+�?  ├── gateway-tool.ts
+�?  ├── image-tool.ts
+�?  ├── message-tool.ts
+�?  ├── nodes-tool.ts
+�?  ├── session*.ts
+�?  ├── web-*.ts
+�?  └── ...
 └── ...
 ```
 
@@ -530,7 +530,7 @@ This provides the interactive terminal experience similar to pi's native mode.
 | Invocation      | `pi` command / RPC      | SDK via `createAgentSession()`                                                                 |
 | Tools           | Default coding tools    | Custom OpenClaw tool suite                                                                     |
 | System prompt   | AGENTS.md + prompts     | Dynamic per-channel/context                                                                    |
-| Session storage | `~/.pi/agent/sessions/` | `~/.openclaw/agents/<agentId>/sessions/` (or `$OPENCLAW_STATE_DIR/agents/<agentId>/sessions/`) |
+| Session storage | `~/.pi/agent/sessions/` | `~/.cimiclaw/agents/<agentId>/sessions/` (or `$OPENCLAW_STATE_DIR/agents/<agentId>/sessions/`) |
 | Auth            | Single credential       | Multi-profile with rotation                                                                    |
 | Extensions      | Loaded from disk        | Programmatic + disk paths                                                                      |
 | Event handling  | TUI rendering           | Callback-based (onBlockReply, etc.)                                                            |

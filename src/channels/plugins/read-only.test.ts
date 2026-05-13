@@ -75,7 +75,7 @@ vi.mock("../../plugins/plugin-module-loader-cache.js", async (importOriginal) =>
       ? paths.filter((entry): entry is string => typeof entry === "string")
       : [];
     const workspaceExtensionsDir = params.workspaceDir
-      ? path.join(params.workspaceDir, ".openclaw", "extensions")
+      ? path.join(params.workspaceDir, ".cimiclaw", "extensions")
       : undefined;
     if (!workspaceExtensionsDir || !fs.existsSync(workspaceExtensionsDir)) {
       return explicitPaths;
@@ -91,7 +91,7 @@ vi.mock("../../plugins/plugin-module-loader-cache.js", async (importOriginal) =>
   function loadOpenClawPlugins(params: LoaderParams) {
     const onlyPluginIds = new Set(params.onlyPluginIds ?? []);
     const channelSetups = listCandidatePluginDirs(params).flatMap((pluginDir) => {
-      const manifestPath = path.join(pluginDir, "openclaw.plugin.json");
+      const manifestPath = path.join(pluginDir, "cimiclaw.plugin.json");
       const packagePath = path.join(pluginDir, "package.json");
       if (!fs.existsSync(manifestPath) || !fs.existsSync(packagePath)) {
         return [];
@@ -104,7 +104,7 @@ vi.mock("../../plugins/plugin-module-loader-cache.js", async (importOriginal) =>
         return [];
       }
       const packageJson = readJson(packagePath);
-      const openclaw = isRecord(packageJson) ? packageJson.openclaw : undefined;
+      const openclaw = isRecord(packageJson) ? packageJson.cimiclaw : undefined;
       const setupEntry = isRecord(openclaw) ? openclaw.setupEntry : undefined;
       if (typeof setupEntry !== "string") {
         return [];
@@ -179,7 +179,7 @@ function writeExternalSetupChannelPlugin(
     "utf-8",
   );
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify(
       {
         id: pluginId,
@@ -254,7 +254,7 @@ module.exports = {
             {
               id: ${JSON.stringify(`channels.${channelId}.token`)},
               targetType: "channel",
-              configFile: "openclaw.json",
+              configFile: "cimiclaw.json",
               pathPattern: ${JSON.stringify(`channels.${channelId}.token`)},
               secretShape: "secret_input",
               expectedResolvedValue: "string",
@@ -298,7 +298,7 @@ module.exports = {
             {
               id: ${JSON.stringify(`channels.${setupChannelId}.token`)},
               targetType: "channel",
-              configFile: "openclaw.json",
+              configFile: "cimiclaw.json",
               pathPattern: ${JSON.stringify(`channels.${setupChannelId}.token`)},
           secretShape: "secret_input",
           expectedResolvedValue: "string",
@@ -359,7 +359,7 @@ function writeBundledSetupChannelPlugin(
     "utf-8",
   );
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify(
       {
         id: pluginId,
@@ -1052,7 +1052,7 @@ describe("listReadOnlyChannelPluginsForConfig", () => {
 
   it("discovers trusted external channel plugins from the default agent workspace", () => {
     const workspaceDir = makeTempDir();
-    const pluginDir = path.join(workspaceDir, ".openclaw", "extensions", "external-chat-plugin");
+    const pluginDir = path.join(workspaceDir, ".cimiclaw", "extensions", "external-chat-plugin");
     fs.mkdirSync(pluginDir, { recursive: true });
     const { fullMarker, setupMarker } = writeExternalSetupChannelPlugin({
       pluginDir,

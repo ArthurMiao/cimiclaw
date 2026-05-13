@@ -2,7 +2,7 @@ import type { Api, Message } from "@mariozechner/pi-ai";
 import { normalizeModelRef } from "../../agents/model-selection.js";
 import type { NormalizedUsage, UsageLike } from "../../agents/usage.js";
 import { normalizeUsage } from "../../agents/usage.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { getChildLogger } from "../../logging.js";
 import { normalizeAgentId } from "../../routing/session-key.js";
 import { normalizeOptionalString } from "../../shared/string-coerce.js";

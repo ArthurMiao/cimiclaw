@@ -77,7 +77,7 @@ Options:
 For a node connecting to a non-loopback `ws://` Gateway on a trusted private
 network, set `OPENCLAW_ALLOW_INSECURE_PRIVATE_WS=1`. Without it, node startup
 fails closed and asks you to use `wss://`, an SSH tunnel, or Tailscale.
-This is a process-environment opt-in, not an `openclaw.json` config key.
+This is a process-environment opt-in, not an `cimiclaw.json` config key.
 `openclaw node install` persists it into the supervised node service when it is
 present in the install command environment.
 
@@ -154,13 +154,13 @@ the previous pending request is superseded and a new `requestId` is created.
 Run `openclaw devices list` again before approval.
 
 The node host stores its node id, token, display name, and gateway connection info in
-`~/.openclaw/node.json`.
+`~/.cimiclaw/node.json`.
 
 ## Exec approvals
 
 `system.run` is gated by local exec approvals:
 
-- `~/.openclaw/exec-approvals.json`
+- `~/.cimiclaw/exec-approvals.json`
 - [Exec approvals](/tools/exec-approvals)
 - `openclaw approvals --node <id|name|ip>` (edit from the Gateway)
 

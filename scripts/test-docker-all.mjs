@@ -734,7 +734,7 @@ async function prepareOpenClawPackage(baseEnv, logDir) {
   const packageTgz = path.join(packDir, "openclaw-current.tgz");
   await runForeground(
     "Prepare OpenClaw package once",
-    `node scripts/package-openclaw-for-docker.mjs --output-dir ${shellQuote(packDir)} --output-name openclaw-current.tgz`,
+    `node scripts/package-cimiclaw-for-docker.mjs --output-dir ${shellQuote(packDir)} --output-name openclaw-current.tgz`,
     baseEnv,
   );
   await fs.promises.access(packageTgz);

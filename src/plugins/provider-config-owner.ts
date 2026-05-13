@@ -1,5 +1,5 @@
 import { normalizeProviderId } from "../agents/provider-id.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 
 export function resolveProviderConfigApiOwnerHint(params: {
   provider: string;

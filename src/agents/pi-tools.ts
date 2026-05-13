@@ -2,7 +2,7 @@ import { createCodingTools, createReadTool } from "@mariozechner/pi-coding-agent
 import type { SourceReplyDeliveryMode } from "../auto-reply/get-reply-options.types.js";
 import { HEARTBEAT_RESPONSE_TOOL_NAME } from "../auto-reply/heartbeat-tool-response.js";
 import type { ModelCompatConfig } from "../config/types.models.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { DiagnosticTraceContext } from "../infra/diagnostic-trace-context.js";
 import { resolveMergedSafeBinProfileFixtures } from "../infra/exec-safe-bin-runtime-policy.js";
 import { logWarn } from "../logger.js";
@@ -24,8 +24,8 @@ import { listChannelAgentTools } from "./channel-tools.js";
 import { shouldSuppressManagedWebSearchTool } from "./codex-native-web-search.js";
 import { resolveImageSanitizationLimits } from "./image-sanitization.js";
 import type { ModelAuthMode } from "./model-auth.js";
-import { resolveOpenClawPluginToolsForOptions } from "./openclaw-plugin-tools.js";
-import { createOpenClawTools } from "./openclaw-tools.js";
+import { resolveOpenClawPluginToolsForOptions } from "./cimiclaw-plugin-tools.js";
+import { createOpenClawTools } from "./cimiclaw-tools.js";
 import { wrapToolWithAbortSignal } from "./pi-tools.abort.js";
 import {
   type ToolOutcomeObserver,
@@ -845,7 +845,7 @@ export function createOpenClawCodingTools(options?: {
       : pluginToolsOnly),
     ...toolSearchTools,
   ];
-  options?.recordToolPrepStage?.("openclaw-tools");
+  options?.recordToolPrepStage?.("cimiclaw-tools");
   const toolsForMemoryFlush: AnyAgentTool[] = isMemoryFlushRun && memoryFlushWritePath ? [] : tools;
   if (isMemoryFlushRun && memoryFlushWritePath) {
     for (const tool of tools) {

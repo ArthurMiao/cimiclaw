@@ -168,7 +168,7 @@ shape where the SUT OpenClaw gateway and the browser both live inside the same
 Linux desktop VM.
 
 With `--gateway-setup`, the command prepares a persistent disposable OpenClaw
-home at `$HOME/.openclaw-mantis/slack-openclaw`, patches Slack Socket Mode
+home at `$HOME/.cimiclaw-mantis/slack-openclaw`, patches Slack Socket Mode
 configuration for the selected channel, starts `openclaw gateway run` on port
 `38973`, and keeps Chrome running in the VNC session. This is the "leave me a
 Linux desktop with Slack and a claw running" mode; the bot-to-bot Slack QA lane

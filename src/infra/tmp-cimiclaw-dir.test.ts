@@ -1,7 +1,7 @@
 import { constants as fsConstants } from "node:fs";
 import path from "node:path";
 import { describe, expect, it, vi } from "vitest";
-import { POSIX_OPENCLAW_TMP_DIR, resolvePreferredOpenClawTmpDir } from "./tmp-openclaw-dir.js";
+import { POSIX_OPENCLAW_TMP_DIR, resolvePreferredOpenClawTmpDir } from "./tmp-cimiclaw-dir.js";
 
 type TmpDirOptions = NonNullable<Parameters<typeof resolvePreferredOpenClawTmpDir>[0]>;
 

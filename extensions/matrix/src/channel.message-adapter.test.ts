@@ -161,7 +161,7 @@ describe("matrix channel message adapter", () => {
 
     expect(rendered?.channelData?.matrix).toMatchObject({
       extraContent: {
-        "com.openclaw.presentation": {
+        "com.cimiclaw.presentation": {
           ...presentation,
           version: 1,
           type: "message.presentation",
@@ -186,7 +186,7 @@ describe("matrix channel message adapter", () => {
         accountId: "default",
         threadId: "$thread",
         extraContent: {
-          "com.openclaw.presentation": {
+          "com.cimiclaw.presentation": {
             ...presentation,
             version: 1,
             type: "message.presentation",

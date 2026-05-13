@@ -13,7 +13,7 @@ Debugging helpers for streaming output, especially when a provider mixes reasoni
 
 Use `/debug` in chat to set **runtime-only** config overrides (memory, not disk).
 `/debug` is disabled by default; enable with `commands.debug: true`.
-This is handy when you need to toggle obscure settings without editing `openclaw.json`.
+This is handy when you need to toggle obscure settings without editing `cimiclaw.json`.
 
 Examples:
 
@@ -176,7 +176,7 @@ The managed tmux pane also defaults to colored Gateway logs for readability;
 set `FORCE_COLOR=0` when starting `pnpm gateway:watch` to disable ANSI output.
 
 The watcher restarts on build-relevant files under `src/`, extension source files,
-extension `package.json` and `openclaw.plugin.json` metadata, `tsconfig.json`,
+extension `package.json` and `cimiclaw.plugin.json` metadata, `tsconfig.json`,
 `package.json`, and `tsdown.config.ts`. Extension metadata changes restart the
 gateway without forcing a `tsdown` rebuild; source and config changes still
 rebuild `dist` first.
@@ -191,7 +191,7 @@ are replaced instead of piling up.
 Use the dev profile to isolate state and spin up a safe, disposable setup for
 debugging. There are **two** `--dev` flags:
 
-- **Global `--dev` (profile):** isolates state under `~/.openclaw-dev` and
+- **Global `--dev` (profile):** isolates state under `~/.cimiclaw-dev` and
   defaults the gateway port to `19001` (derived ports shift with it).
 - **`gateway --dev`: tells the Gateway to auto-create a default config +
   workspace** when missing (and skip BOOTSTRAP.md).
@@ -209,8 +209,8 @@ What this does:
 
 1. **Profile isolation** (global `--dev`)
    - `OPENCLAW_PROFILE=dev`
-   - `OPENCLAW_STATE_DIR=~/.openclaw-dev`
-   - `OPENCLAW_CONFIG_PATH=~/.openclaw-dev/openclaw.json`
+   - `OPENCLAW_STATE_DIR=~/.cimiclaw-dev`
+   - `OPENCLAW_CONFIG_PATH=~/.cimiclaw-dev/cimiclaw.json`
    - `OPENCLAW_GATEWAY_PORT=19001` (browser/canvas shift accordingly)
 
 2. **Dev bootstrap** (`gateway --dev`)
@@ -264,19 +264,19 @@ pnpm gateway:watch --raw-stream
 Optional path override:
 
 ```bash
-pnpm gateway:watch --raw-stream --raw-stream-path ~/.openclaw/logs/raw-stream.jsonl
+pnpm gateway:watch --raw-stream --raw-stream-path ~/.cimiclaw/logs/raw-stream.jsonl
 ```
 
 Equivalent env vars:
 
 ```bash
 OPENCLAW_RAW_STREAM=1
-OPENCLAW_RAW_STREAM_PATH=~/.openclaw/logs/raw-stream.jsonl
+OPENCLAW_RAW_STREAM_PATH=~/.cimiclaw/logs/raw-stream.jsonl
 ```
 
 Default file:
 
-`~/.openclaw/logs/raw-stream.jsonl`
+`~/.cimiclaw/logs/raw-stream.jsonl`
 
 ## Raw chunk logging (pi-mono)
 
@@ -336,7 +336,7 @@ You can now set breakpoints in your TypeScript source files (`src/` directory) a
 - If using the **"Rebuild and Debug Gateway"** option - each time the debugger is launched it will completely delete the `/dist` folder and run a full `pnpm build` with source maps enabled before starting the Gateway
 - If using the **"Debug Gateway"** option - debug sessions can be started and stopped at any time without affecting the `/dist` folder, but you must use a separate terminal process to both enable debugging and manage the build cycle
 - Modify the `launch.json` settings for `args` to debug other sections of the project
-- If you need to use the built OpenClaw CLI for other tasks (i.e. `dashboard --no-open` if your debug session spawns a new auth token), you can execute it in another terminal as `node ./openclaw.mjs` or create a shell alias like `alias openclaw-build="node $(pwd)/openclaw.mjs"`
+- If you need to use the built OpenClaw CLI for other tasks (i.e. `dashboard --no-open` if your debug session spawns a new auth token), you can execute it in another terminal as `node ./cimiclaw.mjs` or create a shell alias like `alias openclaw-build="node $(pwd)/cimiclaw.mjs"`
 
 ## Related
 

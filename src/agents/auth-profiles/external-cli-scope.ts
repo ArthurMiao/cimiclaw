@@ -3,7 +3,7 @@ import {
   resolveAgentModelPrimaryValue,
 } from "../../config/model-input.js";
 import type { AgentModelConfig } from "../../config/types.agents-shared.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { normalizeProviderId } from "../provider-id.js";
 
 export type ExternalCliAuthScope = {

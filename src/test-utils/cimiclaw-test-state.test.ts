@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { createOpenClawTestState, withOpenClawTestState } from "./openclaw-test-state.js";
+import { createOpenClawTestState, withOpenClawTestState } from "./cimiclaw-test-state.js";
 
 async function expectPathMissing(targetPath: string): Promise<void> {
   try {
@@ -27,13 +27,13 @@ describe("openclaw test state", () => {
 
     try {
       expect(state.home).toBe(path.join(state.root, "home"));
-      expect(state.stateDir).toBe(path.join(state.home, ".openclaw"));
-      expect(state.configPath).toBe(path.join(state.stateDir, "openclaw.json"));
+      expect(state.stateDir).toBe(path.join(state.home, ".cimiclaw"));
+      expect(state.configPath).toBe(path.join(state.stateDir, "cimiclaw.json"));
       expect(state.workspaceDir).toBe(path.join(state.home, "workspace"));
       expect(state.env.HOME).toBe(state.home);
-      expect(state.env.OPENCLAW_HOME).toBe(state.home);
-      expect(state.env.OPENCLAW_STATE_DIR).toBe(state.stateDir);
-      expect(state.env.OPENCLAW_CONFIG_PATH).toBe(state.configPath);
+      expect(state.env.cimiclaw_HOME).toBe(state.home);
+      expect(state.env.cimiclaw_STATE_DIR).toBe(state.stateDir);
+      expect(state.env.cimiclaw_CONFIG_PATH).toBe(state.configPath);
       expect(process.env.HOME).toBe(state.home);
       expect(process.env.OPENCLAW_HOME).toBe(state.home);
       expect(JSON.parse(await fs.readFile(state.configPath, "utf8"))).toStrictEqual({});
@@ -80,7 +80,7 @@ describe("openclaw test state", () => {
       try {
         expect(process.env.OPENCLAW_AGENT_DIR).toBeUndefined();
         expect(process.env.PI_CODING_AGENT_DIR).toBeUndefined();
-        expect(state.env.OPENCLAW_AGENT_DIR).toBeUndefined();
+        expect(state.env.cimiclaw_AGENT_DIR).toBeUndefined();
         expect(state.env.PI_CODING_AGENT_DIR).toBeUndefined();
         expect(state.agentDir()).toBe(path.join(state.stateDir, "agents", "main", "agent"));
       } finally {
@@ -114,7 +114,7 @@ describe("openclaw test state", () => {
       async (state) => {
         expect(process.env.OPENCLAW_AGENT_DIR).toBe("/tmp/explicit-openclaw-agent");
         expect(process.env.PI_CODING_AGENT_DIR).toBe("/tmp/explicit-pi-agent");
-        expect(state.env.OPENCLAW_AGENT_DIR).toBe("/tmp/explicit-openclaw-agent");
+        expect(state.env.cimiclaw_AGENT_DIR).toBe("/tmp/explicit-openclaw-agent");
         expect(state.env.PI_CODING_AGENT_DIR).toBe("/tmp/explicit-pi-agent");
       },
     );
@@ -128,7 +128,7 @@ describe("openclaw test state", () => {
       async (state) => {
         expect(process.env.OPENCLAW_AGENT_DIR).toBe(state.agentDir());
         expect(process.env.PI_CODING_AGENT_DIR).toBe(state.agentDir());
-        expect(state.env.OPENCLAW_AGENT_DIR).toBe(state.agentDir());
+        expect(state.env.cimiclaw_AGENT_DIR).toBe(state.agentDir());
         expect(state.env.PI_CODING_AGENT_DIR).toBe(state.agentDir());
       },
     );
@@ -192,7 +192,7 @@ describe("openclaw test state", () => {
       },
       async (state) => {
         expect(process.env.OPENCLAW_SERVICE_REPAIR_POLICY).toBe("external");
-        expect(state.env.OPENCLAW_SERVICE_REPAIR_POLICY).toBe("external");
+        expect(state.env.cimiclaw_SERVICE_REPAIR_POLICY).toBe("external");
       },
     );
 

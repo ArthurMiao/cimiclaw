@@ -13,7 +13,7 @@ PACKAGE_TGZ="$(docker_e2e_prepare_package_tgz update-channel-switch "${OPENCLAW_
 # Bare lanes mount the package artifact instead of baking app sources into the image.
 docker_e2e_package_mount_args "$PACKAGE_TGZ"
 OPENCLAW_TEST_STATE_SCRIPT_B64="$(
-  node "$ROOT_DIR/scripts/lib/openclaw-test-state.mjs" shell \
+  node "$ROOT_DIR/scripts/lib/cimiclaw-test-state.mjs" shell \
     --label update-channel-switch \
     --scenario update-stable |
     base64 |
@@ -31,7 +31,7 @@ docker_e2e_run_with_harness \
   "${DOCKER_E2E_PACKAGE_ARGS[@]}" \
   "$IMAGE_NAME" \
   bash -lc 'set -euo pipefail
-source scripts/lib/openclaw-e2e-instance.sh
+source scripts/lib/cimiclaw-e2e-instance.sh
 
 export npm_config_loglevel=error
 export npm_config_fund=false

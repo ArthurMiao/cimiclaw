@@ -24,7 +24,7 @@ describe("buildCliRespawnPlan", () => {
   it("returns null when respawn policy skips the argv", () => {
     expect(
       buildCliRespawnPlan({
-        argv: ["node", "openclaw", "--help"],
+        argv: ["node", "cimiclaw", "--help"],
         env: {},
         execArgv: [],
         autoNodeExtraCaCerts: "/etc/ssl/certs/ca-certificates.crt",
@@ -34,7 +34,7 @@ describe("buildCliRespawnPlan", () => {
 
   it("adds NODE_EXTRA_CA_CERTS and warning suppression in one respawn", () => {
     const plan = buildCliRespawnPlan({
-      argv: ["node", "openclaw", "status"],
+      argv: ["node", "cimiclaw", "status"],
       env: {},
       execArgv: [],
       autoNodeExtraCaCerts: "/etc/ssl/certs/ca-certificates.crt",
@@ -52,14 +52,14 @@ describe("buildCliRespawnPlan", () => {
     "preserves NODE_EXTRA_CA_CERTS respawn for interactive %s",
     (command) => {
       const plan = buildCliRespawnPlan({
-        argv: ["node", "openclaw", command],
+        argv: ["node", "cimiclaw", command],
         env: {},
         execArgv: [],
         autoNodeExtraCaCerts: "/etc/ssl/certs/ca-certificates.crt",
       });
 
       const respawnPlan = expectCliRespawnPlan(plan);
-      expect(respawnPlan.argv).toEqual(["openclaw", command]);
+      expect(respawnPlan.argv).toEqual(["cimiclaw", command]);
       expect(respawnPlan.env.NODE_EXTRA_CA_CERTS).toBe("/etc/ssl/certs/ca-certificates.crt");
       expect(respawnPlan.env[OPENCLAW_NODE_EXTRA_CA_CERTS_READY]).toBe("1");
       expect(respawnPlan.env[OPENCLAW_NODE_OPTIONS_READY]).toBeUndefined();
@@ -69,7 +69,7 @@ describe("buildCliRespawnPlan", () => {
   it("does not respawn interactive commands for warning suppression only", () => {
     expect(
       buildCliRespawnPlan({
-        argv: ["node", "openclaw", "tui"],
+        argv: ["node", "cimiclaw", "tui"],
         env: { [OPENCLAW_NODE_EXTRA_CA_CERTS_READY]: "1" },
         execArgv: [],
         autoNodeExtraCaCerts: undefined,
@@ -79,7 +79,7 @@ describe("buildCliRespawnPlan", () => {
 
   it("does not overwrite an existing NODE_EXTRA_CA_CERTS value", () => {
     const plan = buildCliRespawnPlan({
-      argv: ["node", "openclaw", "status"],
+      argv: ["node", "cimiclaw", "status"],
       env: { NODE_EXTRA_CA_CERTS: "/custom/ca.pem" },
       execArgv: [],
       autoNodeExtraCaCerts: "/etc/ssl/certs/ca-certificates.crt",
@@ -92,7 +92,7 @@ describe("buildCliRespawnPlan", () => {
   it("returns null when both respawn guards are already satisfied", () => {
     expect(
       buildCliRespawnPlan({
-        argv: ["node", "openclaw", "status"],
+        argv: ["node", "cimiclaw", "status"],
         env: {
           [OPENCLAW_NODE_EXTRA_CA_CERTS_READY]: "1",
           [OPENCLAW_NODE_OPTIONS_READY]: "1",
@@ -108,7 +108,7 @@ describe("buildCliRespawnPlan", () => {
       buildCliRespawnPlan({
         argv: [
           "node",
-          "C:\\Users\\alice\\AppData\\Roaming\\npm\\node_modules\\openclaw\\openclaw.mjs",
+          "C:\\Users\\alice\\AppData\\Roaming\\npm\\node_modules\\openclaw\\cimiclaw.mjs",
           "onboard",
         ],
         env: {},
@@ -121,7 +121,7 @@ describe("buildCliRespawnPlan", () => {
 
   it("respawns Volta shims through node so the shim is not called directly", () => {
     const plan = buildCliRespawnPlan({
-      argv: ["/home/alice/.volta/bin/volta-shim", "/usr/local/bin/openclaw", "status"],
+      argv: ["/home/alice/.volta/bin/volta-shim", "/usr/local/bin/cimiclaw", "status"],
       env: { PATH: "/home/alice/.volta/bin:/usr/bin:/bin" },
       execArgv: [],
       execPath: "/home/alice/.volta/bin/volta-shim",
@@ -133,7 +133,7 @@ describe("buildCliRespawnPlan", () => {
     expect(respawnPlan.command).toBe("node");
     expect(respawnPlan.argv).toEqual([
       EXPERIMENTAL_WARNING_FLAG,
-      "/usr/local/bin/openclaw",
+      "/usr/local/bin/cimiclaw",
       "status",
     ]);
   });

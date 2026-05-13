@@ -145,7 +145,7 @@ vi.mock("../model-auth.js", () => ({
   },
 }));
 
-vi.mock("../openclaw-tools.js", async () => {
+vi.mock("../cimiclaw-tools.js", async () => {
   const { createImageTool } = await import("./image-tool.js");
   return {
     createOpenClawTools: vi.fn((options?: MockOpenClawToolsOptions) => {
@@ -1592,7 +1592,7 @@ describe("image tool implicit imageModel config", () => {
 
       const res = await tool.execute("t1", {
         prompt: "Describe the image.",
-        image: "@/Users/steipete/.openclaw/media/inbound/photo.png",
+        image: "@/Users/steipete/.cimiclaw/media/inbound/photo.png",
       });
 
       expect(fetch).toHaveBeenCalledTimes(1);

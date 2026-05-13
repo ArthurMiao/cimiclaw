@@ -25,7 +25,7 @@ System control (launchd/systemd) lives on the Gateway host. See [Gateway](/gatew
 
 ## Connection runbook
 
-Android node app â‡„ (mDNS/NSD + WebSocket) â‡„ **Gateway**
+Android node app â‡?(mDNS/NSD + WebSocket) â‡?**Gateway**
 
 Android connects directly to the Gateway WebSocket and uses device pairing (`role: node`).
 
@@ -82,7 +82,7 @@ openclaw gateway discover --json
 That shows `local.` plus the configured wide-area domain in one pass and uses the resolved
 service endpoint instead of TXT-only hints.
 
-#### Tailnet (Vienna â‡„ London) discovery via unicast DNS-SD
+#### Tailnet (Vienna â‡?London) discovery via unicast DNS-SD
 
 Android NSD/mDNS discovery won't cross networks. If your Android node and the gateway are on different networks but connected via Tailscale, use Wide-Area Bonjour / unicast DNS-SD instead.
 
@@ -175,7 +175,7 @@ The Android Chat tab supports session selection (default `main`, plus other exis
   are stripped, pure silent-token assistant rows such as exact `NO_REPLY` /
   `no_reply` are omitted, and oversized rows can be replaced with placeholders)
 - Send: `chat.send`
-- Push updates (best-effort): `chat.subscribe` â†’ `event:"chat"`
+- Push updates (best-effort): `chat.subscribe` â†?`event:"chat"`
 
 ### 7) Canvas + camera
 
@@ -187,7 +187,7 @@ If you want the node to show real HTML/CSS/JS that the agent can edit on disk, p
 Nodes load canvas from the Gateway HTTP server (same port as `gateway.port`, default `18789`).
 </Note>
 
-1. Create `~/.openclaw/workspace/canvas/index.html` on the gateway host.
+1. Create `~/.cimiclaw/workspace/canvas/index.html` on the gateway host.
 
 2. Navigate the node to it (LAN):
 

@@ -7,7 +7,7 @@ import {
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { loadSessionStore, updateSessionStore, type SessionEntry } from "../../config/sessions.js";
 import { withTempConfig } from "../../gateway/test-temp-config.js";
-import { resolvePreferredOpenClawTmpDir } from "../../infra/tmp-openclaw-dir.js";
+import { resolvePreferredOpenClawTmpDir } from "../../infra/tmp-cimiclaw-dir.js";
 import { cleanupReplacedPluginHostRegistry, runPluginHostCleanup } from "../host-hook-cleanup.js";
 import { clearPluginHostRuntimeState } from "../host-hook-runtime.js";
 import { patchPluginSessionExtension } from "../host-hook-state.js";

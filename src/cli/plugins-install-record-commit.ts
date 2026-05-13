@@ -1,7 +1,7 @@
 import { isDeepStrictEqual } from "node:util";
 import { replaceConfigFile } from "../config/config.js";
 import type { ConfigWriteOptions } from "../config/io.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { PluginInstallRecord } from "../config/types.plugins.js";
 import {
   loadInstalledPluginIndexInstallRecords,

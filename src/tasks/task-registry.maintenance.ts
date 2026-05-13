@@ -10,7 +10,7 @@ import {
 } from "../agents/subagent-recovery-state.js";
 import { loadSessionStore, resolveStorePath } from "../config/sessions.js";
 import type { SessionEntry } from "../config/sessions.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { isCronJobActive } from "../cron/active-jobs.js";
 import { readCronRunLogEntriesSync, resolveCronRunLogPath } from "../cron/run-log.js";
 import type { CronRunLogEntry } from "../cron/run-log.js";

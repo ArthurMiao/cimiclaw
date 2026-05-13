@@ -139,12 +139,12 @@ With the VCN locked down (only UDP 41641 open) and the Gateway bound to loopback
 | fail2ban           | No          | Port 22 is blocked at the VCN; no brute-force surface.                    |
 | sshd hardening     | No          | Tailscale SSH does not use sshd.                                          |
 | Disable root login | No          | Tailscale authenticates by tailnet identity, not system users.            |
-| SSH key-only auth  | No          | Same — tailnet identity replaces system SSH keys.                         |
+| SSH key-only auth  | No          | Same �?tailnet identity replaces system SSH keys.                         |
 | IPv6 hardening     | Usually not | Depends on VCN/subnet settings; verify what is actually assigned/exposed. |
 
 Still recommended:
 
-- `chmod 700 ~/.openclaw` to restrict credential file permissions.
+- `chmod 700 ~/.cimiclaw` to restrict credential file permissions.
 - `openclaw security audit` for an OpenClaw-specific posture check.
 - Regular `sudo apt update && sudo apt upgrade` for OS patches.
 - Review devices in the [Tailscale admin console](https://login.tailscale.com/admin) periodically.
@@ -176,8 +176,8 @@ Verify the architecture with `uname -m` (should print `aarch64`). For binaries w
 
 OpenClaw state lives under:
 
-- `~/.openclaw/` — `openclaw.json`, per-agent `auth-profiles.json`, channel/provider state, and session data.
-- `~/.openclaw/workspace/` — the agent workspace (SOUL.md, memory, artifacts).
+- `~/.cimiclaw/` �?`cimiclaw.json`, per-agent `auth-profiles.json`, channel/provider state, and session data.
+- `~/.cimiclaw/workspace/` �?the agent workspace (SOUL.md, memory, artifacts).
 
 These survive reboots. To take a portable snapshot:
 

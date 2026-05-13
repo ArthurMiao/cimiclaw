@@ -9,7 +9,7 @@ title: "Plugin inventory"
 
 # Plugin inventory
 
-This page is generated from `extensions/*/package.json`, `openclaw.plugin.json`,
+This page is generated from `extensions/*/package.json`, `cimiclaw.plugin.json`,
 and the root npm package `files` exclusions. Regenerate it with:
 
 ```bash

@@ -62,7 +62,7 @@ Any model available on the gateway can be used with the `kilocode/` prefix:
 
 | Model ref                                | Notes                              |
 | ---------------------------------------- | ---------------------------------- |
-| `kilocode/kilo/auto`                     | Default â€” smart routing            |
+| `kilocode/kilo/auto`                     | Default â€?smart routing            |
 | `kilocode/anthropic/claude-sonnet-4`     | Anthropic via Kilo                 |
 | `kilocode/openai/gpt-5.5`                | OpenAI via Kilo                    |
 | `kilocode/google/gemini-3.1-pro-preview` | Google via Kilo                    |
@@ -115,7 +115,7 @@ includes `kilocode/kilo/auto` (`Kilo Auto`) with `input: ["text", "image"]`,
   <Accordion title="Troubleshooting">
     - If model discovery fails at startup, OpenClaw falls back to the bundled static catalog containing `kilocode/kilo/auto`.
     - Confirm your API key is valid and that your Kilo account has the desired models enabled.
-    - When the Gateway runs as a daemon, ensure `KILOCODE_API_KEY` is available to that process (for example in `~/.openclaw/.env` or via `env.shellEnv`).
+    - When the Gateway runs as a daemon, ensure `KILOCODE_API_KEY` is available to that process (for example in `~/.cimiclaw/.env` or via `env.shellEnv`).
 
   </Accordion>
 </AccordionGroup>

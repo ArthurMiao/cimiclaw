@@ -19,7 +19,7 @@ Initialize the baseline config and agent workspace. With any onboarding flag pre
 
 | Flag                       | Description                                                                                         |
 | -------------------------- | --------------------------------------------------------------------------------------------------- |
-| `--workspace <dir>`        | Agent workspace directory (default `~/.openclaw/workspace`; stored as `agents.defaults.workspace`). |
+| `--workspace <dir>`        | Agent workspace directory (default `~/.cimiclaw/workspace`; stored as `agents.defaults.workspace`). |
 | `--wizard`                 | Run interactive onboarding.                                                                         |
 | `--non-interactive`        | Run onboarding without prompts.                                                                     |
 | `--mode <mode>`            | Onboarding mode: `local` or `remote`.                                                               |
@@ -39,7 +39,7 @@ Initialize the baseline config and agent workspace. With any onboarding flag pre
 
 ```bash
 openclaw setup
-openclaw setup --workspace ~/.openclaw/workspace
+openclaw setup --workspace ~/.cimiclaw/workspace
 openclaw setup --wizard
 openclaw setup --wizard --import-from hermes --import-source ~/.hermes
 openclaw setup --non-interactive --mode remote --remote-url wss://gateway-host:18789 --remote-token <token>

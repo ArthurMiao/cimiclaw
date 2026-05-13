@@ -3,7 +3,7 @@ import {
   getRuntimeConfigSourceSnapshot,
   selectApplicableRuntimeConfig,
 } from "../config/runtime-snapshot.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { logVerbose } from "../globals.js";
 import { resolveManifestContractOwnerPluginId } from "../plugins/plugin-registry-contributions.js";
 import type {

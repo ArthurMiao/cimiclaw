@@ -6,7 +6,7 @@
  */
 
 import { resolveConversationBindingContext } from "../channels/conversation-binding-context.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { ADMIN_SCOPE, isOperatorScope } from "../gateway/operator-scopes.js";
 import { logVerbose } from "../globals.js";
 import { normalizeLowercaseStringOrEmpty } from "../shared/string-coerce.js";

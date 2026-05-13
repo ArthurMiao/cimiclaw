@@ -1162,7 +1162,7 @@ describe("updateNpmInstalledPlugins", () => {
   it("expands home-relative install paths before checking installed npm versions", async () => {
     const home = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-plugin-update-home-"));
     tempDirs.push(home);
-    const installPath = path.join(home, ".openclaw", "extensions", "lossless-claw");
+    const installPath = path.join(home, ".cimiclaw", "extensions", "lossless-claw");
     fs.mkdirSync(installPath, { recursive: true });
     fs.writeFileSync(
       path.join(installPath, "package.json"),
@@ -1181,7 +1181,7 @@ describe("updateNpmInstalledPlugins", () => {
       config: createNpmInstallConfig({
         pluginId: "lossless-claw",
         spec: "@martian-engineering/lossless-claw",
-        installPath: "~/.openclaw/extensions/lossless-claw",
+        installPath: "~/.cimiclaw/extensions/lossless-claw",
         resolvedName: "@martian-engineering/lossless-claw",
         resolvedVersion: "0.9.0",
         resolvedSpec: "@martian-engineering/lossless-claw@0.9.0",

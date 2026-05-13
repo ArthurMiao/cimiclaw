@@ -4,7 +4,7 @@ import type { SkillCommandSpec } from "../../agents/skills.js";
 import { applyOwnerOnlyToolPolicy } from "../../agents/tool-policy.js";
 import { getChannelPlugin } from "../../channels/plugins/index.js";
 import type { SessionEntry } from "../../config/sessions.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { logVerbose } from "../../globals.js";
 import { formatErrorMessage } from "../../infra/errors.js";
 import { generateSecureToken } from "../../infra/secure-random.js";
@@ -37,7 +37,7 @@ import { extractInlineSimpleCommand } from "./reply-inline.js";
 import type { TypingController } from "./typing.js";
 
 type SkillCommandsRuntime = typeof import("../skill-commands.runtime.js");
-type OpenClawToolsRuntime = typeof import("../../agents/openclaw-tools.runtime.js");
+type OpenClawToolsRuntime = typeof import("../../agents/cimiclaw-tools.runtime.js");
 type AbortCutoffRuntime = typeof import("./abort-cutoff.runtime.js");
 type CommandsRuntime = typeof import("./commands.runtime.js");
 
@@ -45,7 +45,7 @@ const skillCommandsRuntimeLoader = createLazyImportLoader<SkillCommandsRuntime>(
   () => import("../skill-commands.runtime.js"),
 );
 const openClawToolsRuntimeLoader = createLazyImportLoader<OpenClawToolsRuntime>(
-  () => import("../../agents/openclaw-tools.runtime.js"),
+  () => import("../../agents/cimiclaw-tools.runtime.js"),
 );
 const abortCutoffRuntimeLoader = createLazyImportLoader<AbortCutoffRuntime>(
   () => import("./abort-cutoff.runtime.js"),

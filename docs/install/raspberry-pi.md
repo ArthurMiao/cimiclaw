@@ -7,7 +7,7 @@ read_when:
 title: "Raspberry Pi"
 ---
 
-Run a persistent, always-on OpenClaw Gateway on a Raspberry Pi. Since the Pi is just the gateway (models run in the cloud via API), even a modest Pi handles the workload well â€” typical hardware cost is **$35â€“80 one-time**, no monthly fees.
+Run a persistent, always-on OpenClaw Gateway on a Raspberry Pi. Since the Pi is just the gateway (models run in the cloud via API), even a modest Pi handles the workload well â€?typical hardware cost is **$35â€?0 one-time**, no monthly fees.
 
 ## Hardware compatibility
 
@@ -186,7 +186,7 @@ Since the Pi only runs the gateway, use cloud-hosted API models:
 }
 ```
 
-Do not run local LLMs on a Pi â€” even small models are too slow to be useful. Let Claude or GPT do the model work.
+Do not run local LLMs on a Pi â€?even small models are too slow to be useful. Let Claude or GPT do the model work.
 
 ## ARM binary notes
 
@@ -196,8 +196,8 @@ Most OpenClaw features work on ARM64 without changes (Node.js, Telegram, WhatsAp
 
 OpenClaw state lives under:
 
-- `~/.openclaw/` â€” `openclaw.json`, per-agent `auth-profiles.json`, channel/provider state, sessions.
-- `~/.openclaw/workspace/` â€” agent workspace (SOUL.md, memory, artifacts).
+- `~/.cimiclaw/` â€?`cimiclaw.json`, per-agent `auth-profiles.json`, channel/provider state, sessions.
+- `~/.cimiclaw/workspace/` â€?agent workspace (SOUL.md, memory, artifacts).
 
 These survive reboots. Take a portable snapshot with:
 

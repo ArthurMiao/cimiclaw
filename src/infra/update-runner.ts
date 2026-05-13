@@ -1274,7 +1274,7 @@ export async function runGatewayUpdate(opts: UpdateRunnerOptions = {}): Promise<
         };
       }
 
-      const doctorEntry = path.join(gitRoot, "openclaw.mjs");
+      const doctorEntry = path.join(gitRoot, "cimiclaw.mjs");
       const doctorEntryExists = await fs
         .stat(doctorEntry)
         .then(() => true)

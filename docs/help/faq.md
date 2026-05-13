@@ -76,8 +76,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
 
 ## Quick start and first-run setup
 
-First-run Q&A — install, onboard, auth routes, subscriptions, initial failures —
-lives on the [First-run FAQ](/help/faq-first-run).
+First-run Q&A �?install, onboard, auth routes, subscriptions, initial failures �?lives on the [First-run FAQ](/help/faq-first-run).
 
 ## What is OpenClaw?
 
@@ -168,11 +167,11 @@ lives on the [First-run FAQ](/help/faq-first-run).
 
 <AccordionGroup>
   <Accordion title="How do I customize skills without keeping the repo dirty?">
-    Use managed overrides instead of editing the repo copy. Put your changes in `~/.openclaw/skills/<name>/SKILL.md` (or add a folder via `skills.load.extraDirs` in `~/.openclaw/openclaw.json`). Precedence is `<workspace>/skills` → `<workspace>/.agents/skills` → `~/.agents/skills` → `~/.openclaw/skills` → bundled → `skills.load.extraDirs`, so managed overrides still win over bundled skills without touching git. If you need the skill installed globally but only visible to some agents, keep the shared copy in `~/.openclaw/skills` and control visibility with `agents.defaults.skills` and `agents.list[].skills`. Only upstream-worthy edits should live in the repo and go out as PRs.
+    Use managed overrides instead of editing the repo copy. Put your changes in `~/.cimiclaw/skills/<name>/SKILL.md` (or add a folder via `skills.load.extraDirs` in `~/.cimiclaw/cimiclaw.json`). Precedence is `<workspace>/skills` �?`<workspace>/.agents/skills` �?`~/.agents/skills` �?`~/.cimiclaw/skills` �?bundled �?`skills.load.extraDirs`, so managed overrides still win over bundled skills without touching git. If you need the skill installed globally but only visible to some agents, keep the shared copy in `~/.cimiclaw/skills` and control visibility with `agents.defaults.skills` and `agents.list[].skills`. Only upstream-worthy edits should live in the repo and go out as PRs.
   </Accordion>
 
   <Accordion title="Can I load skills from a custom folder?">
-    Yes. Add extra directories via `skills.load.extraDirs` in `~/.openclaw/openclaw.json` (lowest precedence). Default precedence is `<workspace>/skills` → `<workspace>/.agents/skills` → `~/.agents/skills` → `~/.openclaw/skills` → bundled → `skills.load.extraDirs`. `clawhub` installs into `./skills` by default, which OpenClaw treats as `<workspace>/skills` on the next session. If the skill should only be visible to certain agents, pair that with `agents.defaults.skills` or `agents.list[].skills`.
+    Yes. Add extra directories via `skills.load.extraDirs` in `~/.cimiclaw/cimiclaw.json` (lowest precedence). Default precedence is `<workspace>/skills` �?`<workspace>/.agents/skills` �?`~/.agents/skills` �?`~/.cimiclaw/skills` �?bundled �?`skills.load.extraDirs`. `clawhub` installs into `./skills` by default, which OpenClaw treats as `<workspace>/skills` on the next session. If the skill should only be visible to certain agents, pair that with `agents.defaults.skills` or `agents.list[].skills`.
   </Accordion>
 
   <Accordion title="How can I use different models for different tasks?">
@@ -332,7 +331,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
     Native `openclaw skills install` writes into the active workspace `skills/`
     directory. Install the separate `clawhub` CLI only if you want to publish or
     sync your own skills. For shared installs across agents, put the skill under
-    `~/.openclaw/skills` and use `agents.defaults.skills` or
+    `~/.cimiclaw/skills` and use `agents.defaults.skills` or
     `agents.list[].skills` if you want to narrow which agents can see it.
 
   </Accordion>
@@ -372,7 +371,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
        ```
 
     2. Put the wrapper on `PATH` on the Linux host (for example `~/bin/memo`).
-    3. Override the skill metadata (workspace or `~/.openclaw/skills`) to allow Linux:
+    3. Override the skill metadata (workspace or `~/.cimiclaw/skills`) to allow Linux:
 
        ```markdown
        ---
@@ -409,7 +408,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
     openclaw skills update --all
     ```
 
-    Native installs land in the active workspace `skills/` directory. For shared skills across agents, place them in `~/.openclaw/skills/<name>/SKILL.md`. If only some agents should see a shared install, configure `agents.defaults.skills` or `agents.list[].skills`. Some skills expect binaries installed via Homebrew; on Linux that means Linuxbrew (see the Homebrew Linux FAQ entry above). See [Skills](/tools/skills), [Skills config](/tools/skills-config), and [ClawHub](/clawhub).
+    Native installs land in the active workspace `skills/` directory. For shared skills across agents, place them in `~/.cimiclaw/skills/<name>/SKILL.md`. If only some agents should see a shared install, configure `agents.defaults.skills` or `agents.list[].skills`. Some skills expect binaries installed via Homebrew; on Linux that means Linuxbrew (see the Homebrew Linux FAQ entry above). See [Skills](/tools/skills), [Skills config](/tools/skills-config), and [ClawHub](/clawhub).
 
   </Accordion>
 
@@ -545,7 +544,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
     No - **OpenClaw's state is local**, but **external services still see what you send them**.
 
     - **Local by default:** sessions, memory files, config, and workspace live on the Gateway host
-      (`~/.openclaw` + your workspace directory).
+      (`~/.cimiclaw` + your workspace directory).
     - **Remote by necessity:** messages you send to model providers (Anthropic/OpenAI/etc.) go to
       their APIs, and chat platforms (WhatsApp/Telegram/Slack/etc.) store message data on their
       servers.
@@ -557,11 +556,11 @@ lives on the [First-run FAQ](/help/faq-first-run).
   </Accordion>
 
   <Accordion title="Where does OpenClaw store its data?">
-    Everything lives under `$OPENCLAW_STATE_DIR` (default: `~/.openclaw`):
+    Everything lives under `$OPENCLAW_STATE_DIR` (default: `~/.cimiclaw`):
 
     | Path                                                            | Purpose                                                            |
     | --------------------------------------------------------------- | ------------------------------------------------------------------ |
-    | `$OPENCLAW_STATE_DIR/openclaw.json`                             | Main config (JSON5)                                                |
+    | `$OPENCLAW_STATE_DIR/cimiclaw.json`                             | Main config (JSON5)                                                |
     | `$OPENCLAW_STATE_DIR/credentials/oauth.json`                    | Legacy OAuth import (copied into auth profiles on first use)       |
     | `$OPENCLAW_STATE_DIR/agents/<agentId>/agent/auth-profiles.json` | Auth profiles (OAuth, API keys, and optional `keyRef`/`tokenRef`)  |
     | `$OPENCLAW_STATE_DIR/secrets.json`                              | Optional file-backed secret payload for `file` SecretRef providers |
@@ -571,27 +570,27 @@ lives on the [First-run FAQ](/help/faq-first-run).
     | `$OPENCLAW_STATE_DIR/agents/<agentId>/sessions/`                | Conversation history & state (per agent)                           |
     | `$OPENCLAW_STATE_DIR/agents/<agentId>/sessions/sessions.json`   | Session metadata (per agent)                                       |
 
-    Legacy single-agent path: `~/.openclaw/agent/*` (migrated by `openclaw doctor`).
+    Legacy single-agent path: `~/.cimiclaw/agent/*` (migrated by `openclaw doctor`).
 
-    Your **workspace** (AGENTS.md, memory files, skills, etc.) is separate and configured via `agents.defaults.workspace` (default: `~/.openclaw/workspace`).
+    Your **workspace** (AGENTS.md, memory files, skills, etc.) is separate and configured via `agents.defaults.workspace` (default: `~/.cimiclaw/workspace`).
 
   </Accordion>
 
   <Accordion title="Where should AGENTS.md / SOUL.md / USER.md / MEMORY.md live?">
-    These files live in the **agent workspace**, not `~/.openclaw`.
+    These files live in the **agent workspace**, not `~/.cimiclaw`.
 
     - **Workspace (per agent)**: `AGENTS.md`, `SOUL.md`, `IDENTITY.md`, `USER.md`,
       `MEMORY.md`, `memory/YYYY-MM-DD.md`, optional `HEARTBEAT.md`.
       Lowercase root `memory.md` is legacy repair input only; `openclaw doctor --fix`
       can merge it into `MEMORY.md` when both files exist.
-    - **State dir (`~/.openclaw`)**: config, channel/provider state, auth profiles, sessions, logs,
-      and shared skills (`~/.openclaw/skills`).
+    - **State dir (`~/.cimiclaw`)**: config, channel/provider state, auth profiles, sessions, logs,
+      and shared skills (`~/.cimiclaw/skills`).
 
-    Default workspace is `~/.openclaw/workspace`, configurable via:
+    Default workspace is `~/.cimiclaw/workspace`, configurable via:
 
     ```json5
     {
-      agents: { defaults: { workspace: "~/.openclaw/workspace" } },
+      agents: { defaults: { workspace: "~/.cimiclaw/workspace" } },
     }
     ```
 
@@ -611,7 +610,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
     private (for example GitHub private). This captures memory + AGENTS/SOUL/USER
     files, and lets you restore the assistant's "mind" later.
 
-    Do **not** commit anything under `~/.openclaw` (credentials, sessions, tokens, or encrypted secrets payloads).
+    Do **not** commit anything under `~/.cimiclaw` (credentials, sessions, tokens, or encrypted secrets payloads).
     If you need a full restore, back up both the workspace and the state directory
     separately (see the migration question above).
 
@@ -655,13 +654,13 @@ lives on the [First-run FAQ](/help/faq-first-run).
 
 <AccordionGroup>
   <Accordion title="What format is the config? Where is it?">
-    OpenClaw reads an optional **JSON5** config from `$OPENCLAW_CONFIG_PATH` (default: `~/.openclaw/openclaw.json`):
+    OpenClaw reads an optional **JSON5** config from `$OPENCLAW_CONFIG_PATH` (default: `~/.cimiclaw/cimiclaw.json`):
 
     ```
     $OPENCLAW_CONFIG_PATH
     ```
 
-    If the file is missing, it uses safe-ish defaults (including a default workspace of `~/.openclaw/workspace`).
+    If the file is missing, it uses safe-ish defaults (including a default workspace of `~/.cimiclaw/workspace`).
 
   </Accordion>
 
@@ -790,7 +789,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
     - If you use allowlists, add `web_search`/`web_fetch`/`x_search` or `group:web`.
     - `web_fetch` is enabled by default (unless explicitly disabled).
     - If `tools.web.fetch.provider` is omitted, OpenClaw auto-detects the first ready fetch fallback provider from available credentials. Today the bundled provider is Firecrawl.
-    - Daemons read env vars from `~/.openclaw/.env` (or the service environment).
+    - Daemons read env vars from `~/.cimiclaw/.env` (or the service environment).
 
     Docs: [Web tools](/tools/web).
 
@@ -803,14 +802,14 @@ lives on the [First-run FAQ](/help/faq-first-run).
     Current OpenClaw protects many accidental clobbers:
 
     - OpenClaw-owned config writes validate the full post-change config before writing.
-    - Invalid or destructive OpenClaw-owned writes are rejected and saved as `openclaw.json.rejected.*`.
-    - If a direct edit breaks startup or hot reload, Gateway fails closed or skips the reload; it does not rewrite `openclaw.json`.
-    - `openclaw doctor --fix` owns repair and can restore last-known-good while saving the rejected file as `openclaw.json.clobbered.*`.
+    - Invalid or destructive OpenClaw-owned writes are rejected and saved as `cimiclaw.json.rejected.*`.
+    - If a direct edit breaks startup or hot reload, Gateway fails closed or skips the reload; it does not rewrite `cimiclaw.json`.
+    - `openclaw doctor --fix` owns repair and can restore last-known-good while saving the rejected file as `cimiclaw.json.clobbered.*`.
 
     Recover:
 
     - Check `openclaw logs --follow` for `Invalid config at`, `Config write rejected:`, or `config reload skipped (invalid config)`.
-    - Inspect the newest `openclaw.json.clobbered.*` or `openclaw.json.rejected.*` beside the active config.
+    - Inspect the newest `cimiclaw.json.clobbered.*` or `cimiclaw.json.rejected.*` beside the active config.
     - Run `openclaw config validate` and `openclaw doctor --fix`.
     - Copy only the intended keys back with `openclaw config set` or `config.patch`.
     - If you have no last-known-good or rejected payload, restore from backup, or re-run `openclaw doctor` and reconfigure channels/models.
@@ -879,7 +878,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
     Telegram messages are handled by the **gateway**. The gateway runs the agent and
     only then calls nodes over the **Gateway WebSocket** when a node tool is needed:
 
-    Telegram → Gateway → Agent → `node.*` → Node → Gateway → Telegram
+    Telegram �?Gateway �?Agent �?`node.*` �?Node �?Gateway �?Telegram
 
     Nodes don't see inbound provider traffic; they only receive node RPC calls.
 
@@ -1006,7 +1005,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
   <Accordion title="Minimal sane config for a first install">
     ```json5
     {
-      agents: { defaults: { workspace: "~/.openclaw/workspace" } },
+      agents: { defaults: { workspace: "~/.cimiclaw/workspace" } },
       channels: { whatsapp: { allowFrom: ["+15555550123"] } },
     }
     ```
@@ -1081,7 +1080,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
     OpenClaw reads env vars from the parent process (shell, launchd/systemd, CI, etc.) and additionally loads:
 
     - `.env` from the current working directory
-    - a global fallback `.env` from `~/.openclaw/.env` (aka `$OPENCLAW_STATE_DIR/.env`)
+    - a global fallback `.env` from `~/.cimiclaw/.env` (aka `$OPENCLAW_STATE_DIR/.env`)
 
     Neither `.env` file overrides existing env vars.
 
@@ -1103,7 +1102,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
   <Accordion title="I started the Gateway via the service and my env vars disappeared. What now?">
     Two common fixes:
 
-    1. Put the missing keys in `~/.openclaw/.env` so they're picked up even when the service doesn't inherit your shell env.
+    1. Put the missing keys in `~/.cimiclaw/.env` so they're picked up even when the service doesn't inherit your shell env.
     2. Enable shell import (opt-in convenience):
 
     ```json5
@@ -1130,7 +1129,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
     If the Gateway runs as a service (launchd/systemd), it won't inherit your shell
     environment. Fix by doing one of these:
 
-    1. Put the token in `~/.openclaw/.env`:
+    1. Put the token in `~/.cimiclaw/.env`:
 
        ```
        COPILOT_GITHUB_TOKEN=...
@@ -1223,7 +1222,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
     Notes:
 
     - Onboarding also offers **Reset** if it sees an existing config. See [Onboarding (CLI)](/start/wizard).
-    - If you used profiles (`--profile` / `OPENCLAW_PROFILE`), reset each state dir (defaults are `~/.openclaw-<profile>`).
+    - If you used profiles (`--profile` / `OPENCLAW_PROFILE`), reset each state dir (defaults are `~/.cimiclaw-<profile>`).
     - Dev reset: `openclaw gateway --dev --reset` (dev-only; wipes dev config + credentials + sessions + workspace).
 
   </Accordion>
@@ -1343,7 +1342,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
   <Accordion title="How many workspaces and agents can I create?">
     No hard limits. Dozens (even hundreds) are fine, but watch for:
 
-    - **Disk growth:** sessions + transcripts live under `~/.openclaw/agents/<agentId>/sessions/`.
+    - **Disk growth:** sessions + transcripts live under `~/.cimiclaw/agents/<agentId>/sessions/`.
     - **Token cost:** more agents means more concurrent model usage.
     - **Ops overhead:** per-agent auth profiles, workspaces, and channel routing.
 
@@ -1378,8 +1377,7 @@ lives on the [First-run FAQ](/help/faq-first-run).
 
 ## Models, failover, and auth profiles
 
-Model Q&A — defaults, selection, aliases, switching, failover, auth profiles —
-lives on the [Models FAQ](/help/faq-models).
+Model Q&A �?defaults, selection, aliases, switching, failover, auth profiles �?lives on the [Models FAQ](/help/faq-models).
 
 ## Gateway: ports, "already running", and remote mode
 
@@ -1503,11 +1501,11 @@ lives on the [Models FAQ](/help/faq-models).
 
     Quick setup (recommended):
 
-    - Use `openclaw --profile <name> ...` per instance (auto-creates `~/.openclaw-<name>`).
+    - Use `openclaw --profile <name> ...` per instance (auto-creates `~/.cimiclaw-<name>`).
     - Set a unique `gateway.port` in each profile config (or pass `--port` for manual runs).
     - Install a per-profile service: `openclaw --profile <name> gateway install`.
 
-    Profiles also suffix service names (`ai.openclaw.<profile>`; legacy `com.openclaw.*`, `openclaw-gateway-<profile>.service`, `OpenClaw Gateway (<profile>)`).
+    Profiles also suffix service names (`ai.cimiclaw.<profile>`; legacy `com.openclaw.*`, `openclaw-gateway-<profile>.service`, `OpenClaw Gateway (<profile>)`).
     Full guide: [Multiple gateways](/gateway/multiple-gateways).
 
   </Accordion>
@@ -1560,7 +1558,7 @@ lives on the [Models FAQ](/help/faq-models).
 
     Service/supervisor logs (when the gateway runs via launchd/systemd):
 
-    - macOS: `$OPENCLAW_STATE_DIR/logs/gateway.log` and `gateway.err.log` (default: `~/.openclaw/logs/...`; profiles use `~/.openclaw-<profile>/logs/...`)
+    - macOS: `$OPENCLAW_STATE_DIR/logs/gateway.log` and `gateway.err.log` (default: `~/.cimiclaw/logs/...`; profiles use `~/.cimiclaw-<profile>/logs/...`)
     - Linux: `journalctl --user -u openclaw-gateway[-<profile>].service -n 200 --no-pager`
     - Windows: `schtasks /Query /TN "OpenClaw Gateway (<profile>)" /V /FO LIST`
 
@@ -1969,6 +1967,6 @@ Still stuck? Ask in [Discord](https://discord.com/invite/clawd) or open a [GitHu
 
 ## Related
 
-- [First-run FAQ](/help/faq-first-run) — install, onboard, auth, subscriptions, early failures
-- [Models FAQ](/help/faq-models) — model selection, failover, auth profiles
-- [Troubleshooting](/help/troubleshooting) — symptom-first triage
+- [First-run FAQ](/help/faq-first-run) �?install, onboard, auth, subscriptions, early failures
+- [Models FAQ](/help/faq-models) �?model selection, failover, auth profiles
+- [Troubleshooting](/help/troubleshooting) �?symptom-first triage

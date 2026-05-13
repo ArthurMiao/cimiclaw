@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { resolveManifestContractOwnerPluginId } from "../../plugins/plugin-registry.js";
 import { getActiveRuntimeWebToolsMetadata } from "../../secrets/runtime-web-tools-state.js";
 import type {

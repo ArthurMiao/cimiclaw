@@ -56,7 +56,7 @@ function expectNoLogWith(text: string): void {
 
 function mockSnapshot(token: unknown = "abc") {
   readConfigFileSnapshotMock.mockResolvedValue({
-    path: "/tmp/openclaw.json",
+    path: "/tmp/cimiclaw.json",
     exists: true,
     raw: "{}",
     parsed: {},

@@ -594,12 +594,12 @@ describe("readSystemdServiceExecStart", () => {
 
   it("loads OPENCLAW_GATEWAY_TOKEN from EnvironmentFile", async () => {
     const readFileSpy = mockReadGatewayServiceFile(
-      ["[Service]", "ExecStart=/usr/bin/openclaw gateway run", "EnvironmentFile=%h/.openclaw/.env"],
-      { [`${TEST_SERVICE_HOME}/.openclaw/.env`]: "OPENCLAW_GATEWAY_TOKEN=env-file-token\n" },
+      ["[Service]", "ExecStart=/usr/bin/openclaw gateway run", "EnvironmentFile=%h/.cimiclaw/.env"],
+      { [`${TEST_SERVICE_HOME}/.cimiclaw/.env`]: "OPENCLAW_GATEWAY_TOKEN=env-file-token\n" },
     );
 
     const command = await readSystemdServiceExecStart({ HOME: TEST_SERVICE_HOME });
-    expect(command?.environment?.OPENCLAW_GATEWAY_TOKEN).toBe("env-file-token");
+    expect(command?.environment?.cimiclaw_GATEWAY_TOKEN).toBe("env-file-token");
     expect(readFileSpy).toHaveBeenCalledTimes(2);
   });
 
@@ -608,23 +608,23 @@ describe("readSystemdServiceExecStart", () => {
       [
         "[Service]",
         "ExecStart=/usr/bin/openclaw gateway run",
-        "EnvironmentFile=%h/.openclaw/.env",
+        "EnvironmentFile=%h/.cimiclaw/.env",
         'Environment="OPENCLAW_GATEWAY_TOKEN=inline-token"',
       ],
-      { [`${TEST_SERVICE_HOME}/.openclaw/.env`]: "OPENCLAW_GATEWAY_TOKEN=env-file-token\n" },
+      { [`${TEST_SERVICE_HOME}/.cimiclaw/.env`]: "OPENCLAW_GATEWAY_TOKEN=env-file-token\n" },
     );
 
     const command = await readSystemdServiceExecStart({ HOME: TEST_SERVICE_HOME });
-    expect(command?.environment?.OPENCLAW_GATEWAY_TOKEN).toBe("env-file-token");
-    expect(command?.environmentValueSources?.OPENCLAW_GATEWAY_TOKEN).toBe("inline-and-file");
+    expect(command?.environment?.cimiclaw_GATEWAY_TOKEN).toBe("env-file-token");
+    expect(command?.environmentValueSources?.cimiclaw_GATEWAY_TOKEN).toBe("inline-and-file");
   });
 
   it("ignores missing optional EnvironmentFile entries", async () => {
-    await expectExecStartWithoutEnvironment("EnvironmentFile=-%h/.openclaw/missing.env");
+    await expectExecStartWithoutEnvironment("EnvironmentFile=-%h/.cimiclaw/missing.env");
   });
 
   it("keeps parsing when non-optional EnvironmentFile entries are missing", async () => {
-    await expectExecStartWithoutEnvironment("EnvironmentFile=%h/.openclaw/missing.env");
+    await expectExecStartWithoutEnvironment("EnvironmentFile=%h/.cimiclaw/missing.env");
   });
 
   it("supports multiple EnvironmentFile entries and quoted paths", async () => {
@@ -634,13 +634,13 @@ describe("readSystemdServiceExecStart", () => {
         return [
           "[Service]",
           "ExecStart=/usr/bin/openclaw gateway run",
-          'EnvironmentFile=%h/.openclaw/first.env "%h/.openclaw/second env.env"',
+          'EnvironmentFile=%h/.cimiclaw/first.env "%h/.cimiclaw/second env.env"',
         ].join("\n");
       }
-      if (pathValue === "/home/test/.openclaw/first.env") {
+      if (pathValue === "/home/test/.cimiclaw/first.env") {
         return "OPENCLAW_GATEWAY_TOKEN=first-token\n"; // pragma: allowlist secret
       }
-      if (pathValue === "/home/test/.openclaw/second env.env") {
+      if (pathValue === "/home/test/.cimiclaw/second env.env") {
         return 'OPENCLAW_GATEWAY_PASSWORD="second password"\n'; // pragma: allowlist secret
       }
       throw new Error(`unexpected readFile path: ${pathValue}`);
@@ -689,10 +689,10 @@ describe("readSystemdServiceExecStart", () => {
         return [
           "[Service]",
           "ExecStart=/usr/bin/openclaw gateway run",
-          "EnvironmentFile=%h/.openclaw/gateway.env",
+          "EnvironmentFile=%h/.cimiclaw/gateway.env",
         ].join("\n");
       }
-      if (pathValue === "/home/test/.openclaw/gateway.env") {
+      if (pathValue === "/home/test/.cimiclaw/gateway.env") {
         return [
           "# comment",
           "; another comment",
@@ -726,7 +726,7 @@ describe("stageSystemdService", () => {
   ): Promise<void> {
     const tempHomeRoot = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-systemd-stage-"));
     const home = path.join(tempHomeRoot, "home");
-    const stateDir = path.join(home, ".openclaw");
+    const stateDir = path.join(home, ".cimiclaw");
     const env = {
       HOME: home,
       OPENCLAW_STATE_DIR: stateDir,
@@ -942,7 +942,7 @@ describe("systemd service install and uninstall", () => {
   ): Promise<void> {
     const tempHomeRoot = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-node-systemd-"));
     const home = path.join(tempHomeRoot, "home");
-    const stateDir = path.join(home, ".openclaw");
+    const stateDir = path.join(home, ".cimiclaw");
     const env = {
       HOME: home,
       OPENCLAW_STATE_DIR: stateDir,

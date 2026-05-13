@@ -201,12 +201,12 @@ function formatCliEnvKeyList(keys: readonly string[]): string {
 
 function buildCliEnvMcpLog(childEnv: Record<string, string>): string {
   return [
-    `token=${childEnv.OPENCLAW_MCP_TOKEN ? "set" : "missing"}`,
-    `sessionKey=${childEnv.OPENCLAW_MCP_SESSION_KEY ? "set" : "<empty>"}`,
-    `agentId=${childEnv.OPENCLAW_MCP_AGENT_ID || "<empty>"}`,
-    `accountId=${childEnv.OPENCLAW_MCP_ACCOUNT_ID || "<empty>"}`,
-    `messageChannel=${childEnv.OPENCLAW_MCP_MESSAGE_CHANNEL || "<empty>"}`,
-    `senderIsOwner=${childEnv.OPENCLAW_MCP_SENDER_IS_OWNER || "<empty>"}`,
+    `token=${childEnv.cimiclaw_MCP_TOKEN ? "set" : "missing"}`,
+    `sessionKey=${childEnv.cimiclaw_MCP_SESSION_KEY ? "set" : "<empty>"}`,
+    `agentId=${childEnv.cimiclaw_MCP_AGENT_ID || "<empty>"}`,
+    `accountId=${childEnv.cimiclaw_MCP_ACCOUNT_ID || "<empty>"}`,
+    `messageChannel=${childEnv.cimiclaw_MCP_MESSAGE_CHANNEL || "<empty>"}`,
+    `senderIsOwner=${childEnv.cimiclaw_MCP_SENDER_IS_OWNER || "<empty>"}`,
   ].join(" ");
 }
 

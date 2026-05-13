@@ -70,7 +70,7 @@ export function resolveProviderConfig(provider, env = process.env) {
     return null;
   }
   const providerEnvKey = `OPENCLAW_CROSS_OS_${provider.toUpperCase().replace(/[^A-Z0-9]+/gu, "_")}_MODEL`;
-  const model = env[providerEnvKey]?.trim() || env.OPENCLAW_CROSS_OS_MODEL?.trim() || config.model;
+  const model = env[providerEnvKey]?.trim() || env.cimiclaw_CROSS_OS_MODEL?.trim() || config.model;
   return { ...config, model };
 }
 
@@ -108,7 +108,7 @@ function buildReleaseProviderConfigOverride(providerMeta) {
 }
 
 const PACKAGE_DIST_INVENTORY_RELATIVE_PATH = "dist/postinstall-inventory.json";
-const INSTALL_STAGE_DEBRIS_DIR_PATTERN = /^\.openclaw-install-stage(?:-[^/]+)?$/iu;
+const INSTALL_STAGE_DEBRIS_DIR_PATTERN = /^\.cimiclaw-install-stage(?:-[^/]+)?$/iu;
 const OMITTED_QA_EXTENSION_PREFIXES = [
   "dist/extensions/qa-channel/",
   "dist/extensions/qa-lab/",
@@ -351,15 +351,15 @@ export function readRunnerOverrideEnv(env = process.env) {
   return {
     varUbuntuRunner: preferNonEmptyEnv(
       env.VAR_UBUNTU_RUNNER,
-      env.OPENCLAW_RELEASE_CHECKS_UBUNTU_RUNNER,
+      env.cimiclaw_RELEASE_CHECKS_UBUNTU_RUNNER,
     ),
     varWindowsRunner: preferNonEmptyEnv(
       env.VAR_WINDOWS_RUNNER,
-      env.OPENCLAW_RELEASE_CHECKS_WINDOWS_RUNNER,
+      env.cimiclaw_RELEASE_CHECKS_WINDOWS_RUNNER,
     ),
     varMacosRunner: preferNonEmptyEnv(
       env.VAR_MACOS_RUNNER,
-      env.OPENCLAW_RELEASE_CHECKS_MACOS_RUNNER,
+      env.cimiclaw_RELEASE_CHECKS_MACOS_RUNNER,
     ),
   };
 }
@@ -453,8 +453,8 @@ async function main(argv) {
 
   const summary = {
     platform: process.platform,
-    runnerOs: process.env.OPENCLAW_RELEASE_CHECK_OS ?? "",
-    runnerLabel: process.env.OPENCLAW_RELEASE_CHECK_RUNNER ?? "",
+    runnerOs: process.env.cimiclaw_RELEASE_CHECK_OS ?? "",
+    runnerLabel: process.env.cimiclaw_RELEASE_CHECK_RUNNER ?? "",
     provider,
     mode,
     suite,
@@ -1391,7 +1391,7 @@ function createLaneState(name) {
   const rootDir = mkdtempSync(join(tmpdir(), `openclaw-${name}-`));
   const prefixDir = join(rootDir, "prefix");
   const homeDir = join(rootDir, "home");
-  const stateDir = join(homeDir, ".openclaw");
+  const stateDir = join(homeDir, ".cimiclaw");
   const appDataDir = process.platform === "win32" ? join(homeDir, "AppData", "Roaming") : stateDir;
   mkdirSync(prefixDir, { recursive: true });
   mkdirSync(homeDir, { recursive: true });
@@ -1505,7 +1505,7 @@ export function buildRealUpdateEnv(env) {
     ...env,
     NODE_DISABLE_COMPILE_CACHE: "1",
   };
-  delete updateEnv.OPENCLAW_DISABLE_BUNDLED_PLUGIN_POSTINSTALL;
+  delete updateEnv.cimiclaw_DISABLE_BUNDLED_PLUGIN_POSTINSTALL;
   delete updateEnv.NODE_COMPILE_CACHE;
   return updateEnv;
 }
@@ -1547,7 +1547,7 @@ export function isRecoverableWindowsPackagedUpgradeSwapCleanupFailure(
     /\bglobal install swap\b/iu.test(output) &&
     /\bEPERM\b/iu.test(output) &&
     /\bunlink\b/iu.test(output) &&
-    /[/\\]\.openclaw-\d+-\d+[/\\]/u.test(output) &&
+    /[/\\]\.cimiclaw-\d+-\d+[/\\]/u.test(output) &&
     /\.node['"]?/iu.test(output)
   );
 }
@@ -2358,7 +2358,7 @@ async function configureDiscordSmoke(params) {
       lane: params.lane,
       cliPath: params.cliPath,
       env: gatewayEnv,
-      logPath: join(params.cwd, `.openclaw/logs/${params.lane.name}-discord-gateway.log`),
+      logPath: join(params.cwd, `.cimiclaw/logs/${params.lane.name}-discord-gateway.log`),
     });
     if (params.gatewayHolder) {
       params.gatewayHolder.current = gateway;
@@ -2485,11 +2485,11 @@ async function waitForInstalledDiscordReadback(params) {
 
 async function maybeRunDiscordRoundtrip(params) {
   const token =
-    process.env.OPENCLAW_DISCORD_SMOKE_BOT_TOKEN?.trim() ||
+    process.env.cimiclaw_DISCORD_SMOKE_BOT_TOKEN?.trim() ||
     process.env.DISCORD_BOT_TOKEN?.trim() ||
     "";
-  const guildId = process.env.OPENCLAW_DISCORD_SMOKE_GUILD_ID?.trim() || "";
-  const channelId = process.env.OPENCLAW_DISCORD_SMOKE_CHANNEL_ID?.trim() || "";
+  const guildId = process.env.cimiclaw_DISCORD_SMOKE_GUILD_ID?.trim() || "";
+  const channelId = process.env.cimiclaw_DISCORD_SMOKE_CHANNEL_ID?.trim() || "";
   if (!token || !guildId || !channelId) {
     return "skipped-missing-config";
   }
@@ -2642,7 +2642,7 @@ async function runBundledPluginPostinstall(params) {
   const installEnv = {
     ...params.env,
   };
-  delete installEnv.OPENCLAW_DISABLE_BUNDLED_PLUGIN_POSTINSTALL;
+  delete installEnv.cimiclaw_DISABLE_BUNDLED_PLUGIN_POSTINSTALL;
   delete installEnv.NPM_CONFIG_PREFIX;
   delete installEnv.npm_config_global;
   delete installEnv.npm_config_location;
@@ -2667,10 +2667,10 @@ export function buildInstalledBrowserOverrideImportProbeScript(
 import { existsSync } from "node:fs";
 import { startLazyPluginServiceModule } from ${JSON.stringify(runtimeModuleSpecifier)};
 
-const startedPath = process.env.OPENCLAW_BROWSER_OVERRIDE_STARTED_PATH;
-const stoppedPath = process.env.OPENCLAW_BROWSER_OVERRIDE_STOPPED_PATH;
+const startedPath = process.env.cimiclaw_BROWSER_OVERRIDE_STARTED_PATH;
+const stoppedPath = process.env.cimiclaw_BROWSER_OVERRIDE_STOPPED_PATH;
 
-if (!process.env.OPENCLAW_BROWSER_CONTROL_MODULE) {
+if (!process.env.cimiclaw_BROWSER_CONTROL_MODULE) {
   throw new Error("Missing OPENCLAW_BROWSER_CONTROL_MODULE.");
 }
 if (!startedPath || !stoppedPath) {
@@ -2709,11 +2709,11 @@ function buildBrowserOverrideProbeServiceModule() {
 import { writeFileSync } from "node:fs";
 
 export async function startBrowserControlService() {
-  writeFileSync(process.env.OPENCLAW_BROWSER_OVERRIDE_STARTED_PATH, "started\\n", "utf8");
+  writeFileSync(process.env.cimiclaw_BROWSER_OVERRIDE_STARTED_PATH, "started\\n", "utf8");
 }
 
 export async function stopBrowserControlService() {
-  writeFileSync(process.env.OPENCLAW_BROWSER_OVERRIDE_STOPPED_PATH, "stopped\\n", "utf8");
+  writeFileSync(process.env.cimiclaw_BROWSER_OVERRIDE_STOPPED_PATH, "stopped\\n", "utf8");
 }
 `.trim();
 }
@@ -3395,7 +3395,7 @@ function installedPackageRoot(prefixDir, platform = process.platform) {
 }
 
 function installedEntryPath(prefixDir) {
-  return join(installedPackageRoot(prefixDir), "openclaw.mjs");
+  return join(installedPackageRoot(prefixDir), "cimiclaw.mjs");
 }
 
 function npmShimPath(prefixDir) {

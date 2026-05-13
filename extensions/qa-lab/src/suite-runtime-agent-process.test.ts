@@ -123,7 +123,7 @@ describe("qa suite runtime agent process helpers", () => {
       {
         env: {
           OPENCLAW_STATE_DIR: "/tmp/isolated-state",
-          OPENCLAW_CONFIG_PATH: "/tmp/isolated-state/openclaw.json",
+          OPENCLAW_CONFIG_PATH: "/tmp/isolated-state/cimiclaw.json",
         },
       },
     );
@@ -140,7 +140,7 @@ describe("qa suite runtime agent process helpers", () => {
         env: expect.objectContaining({
           PATH: "/usr/bin",
           OPENCLAW_STATE_DIR: "/tmp/isolated-state",
-          OPENCLAW_CONFIG_PATH: "/tmp/isolated-state/openclaw.json",
+          OPENCLAW_CONFIG_PATH: "/tmp/isolated-state/cimiclaw.json",
         }),
       }),
     );

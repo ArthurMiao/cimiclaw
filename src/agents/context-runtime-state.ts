@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { createLazyImportLoader, type LazyPromiseLoader } from "../shared/lazy-promise.js";
 import { MODEL_CONTEXT_TOKEN_CACHE } from "./context-cache.js";
 

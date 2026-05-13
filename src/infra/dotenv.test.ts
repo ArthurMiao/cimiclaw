@@ -111,7 +111,7 @@ async function withDotEnvFixture(run: (fixture: DotEnvFixture) => Promise<void>)
 }
 
 describe("loadDotEnv", () => {
-  it("loads ~/.openclaw/.env as fallback without overriding CWD .env", async () => {
+  it("loads ~/.cimiclaw/.env as fallback without overriding CWD .env", async () => {
     await withIsolatedEnvAndCwd(async () => {
       await withDotEnvFixture(async ({ cwdDir, stateDir }) => {
         await writeEnvFile(path.join(stateDir, ".env"), "FOO=from-global\nBAR=1\n");
@@ -160,11 +160,11 @@ describe("loadDotEnv", () => {
     });
   });
 
-  it("loads the Ubuntu gateway.env compatibility fallback after ~/.openclaw/.env", async () => {
+  it("loads the Ubuntu gateway.env compatibility fallback after ~/.cimiclaw/.env", async () => {
     await withIsolatedEnvAndCwd(async () => {
       await withDotEnvFixture(async ({ base, cwdDir }) => {
         process.env.HOME = base;
-        const defaultStateDir = path.join(base, ".openclaw");
+        const defaultStateDir = path.join(base, ".cimiclaw");
         process.env.OPENCLAW_STATE_DIR = defaultStateDir;
         await writeEnvFile(path.join(defaultStateDir, ".env"), "FOO=from-global\n");
         await writeEnvFile(
@@ -593,7 +593,7 @@ describe("loadCliDotEnv", () => {
     await withIsolatedEnvAndCwd(async () => {
       await withDotEnvFixture(async ({ base, cwdDir }) => {
         process.env.HOME = base;
-        const defaultStateDir = path.join(base, ".openclaw");
+        const defaultStateDir = path.join(base, ".cimiclaw");
         process.env.OPENCLAW_STATE_DIR = defaultStateDir;
         await writeEnvFile(path.join(defaultStateDir, ".env"), "FOO=from-global\n");
         await writeEnvFile(

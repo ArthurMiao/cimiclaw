@@ -303,7 +303,7 @@ function Get-OpenClawListenerPids {
 }
 
 function Invoke-OpenClawStartupLauncher {
-  $launcherPath = Join-Path $env:USERPROFILE ".openclaw\\gateway.cmd"
+  $launcherPath = Join-Path $env:USERPROFILE ".cimiclaw\\gateway.cmd"
   if (-not (Test-Path -LiteralPath $launcherPath)) {
     Write-RestartLog "openclaw restart startup launcher missing source=update path=$launcherPath"
     return 1

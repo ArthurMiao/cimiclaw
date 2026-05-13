@@ -247,12 +247,12 @@ async function resolveConvexLeaseConfig(opts: Map<string, string>) {
   const fileEnv = await readEnvFile(envFile);
   const siteUrl =
     opts.get("site-url") ||
-    process.env.OPENCLAW_QA_CONVEX_SITE_URL?.trim() ||
-    fileEnv.OPENCLAW_QA_CONVEX_SITE_URL;
+    process.env.cimiclaw_QA_CONVEX_SITE_URL?.trim() ||
+    fileEnv.cimiclaw_QA_CONVEX_SITE_URL;
   const token =
     opts.get("ci-secret") ||
-    process.env.OPENCLAW_QA_CONVEX_SECRET_CI?.trim() ||
-    fileEnv.OPENCLAW_QA_CONVEX_SECRET_CI;
+    process.env.cimiclaw_QA_CONVEX_SECRET_CI?.trim() ||
+    fileEnv.cimiclaw_QA_CONVEX_SECRET_CI;
   if (!siteUrl) {
     throw new Error("Missing OPENCLAW_QA_CONVEX_SITE_URL.");
   }
@@ -264,19 +264,19 @@ async function resolveConvexLeaseConfig(opts: Map<string, string>) {
     token,
     leaseTtlMs: optionalPositiveInteger(
       opts.get("lease-ttl-ms") ||
-        process.env.OPENCLAW_QA_CREDENTIAL_LEASE_TTL_MS?.trim() ||
-        fileEnv.OPENCLAW_QA_CREDENTIAL_LEASE_TTL_MS,
+        process.env.cimiclaw_QA_CREDENTIAL_LEASE_TTL_MS?.trim() ||
+        fileEnv.cimiclaw_QA_CREDENTIAL_LEASE_TTL_MS,
       20 * 60 * 1_000,
     ),
     heartbeatIntervalMs: optionalPositiveInteger(
       opts.get("heartbeat-interval-ms") ||
-        process.env.OPENCLAW_QA_CREDENTIAL_HEARTBEAT_INTERVAL_MS?.trim() ||
-        fileEnv.OPENCLAW_QA_CREDENTIAL_HEARTBEAT_INTERVAL_MS,
+        process.env.cimiclaw_QA_CREDENTIAL_HEARTBEAT_INTERVAL_MS?.trim() ||
+        fileEnv.cimiclaw_QA_CREDENTIAL_HEARTBEAT_INTERVAL_MS,
       30_000,
     ),
     ownerId:
       opts.get("owner-id") ||
-      process.env.OPENCLAW_QA_CREDENTIAL_OWNER_ID?.trim() ||
+      process.env.cimiclaw_QA_CREDENTIAL_OWNER_ID?.trim() ||
       `telegram-user-${Date.now()}-${Math.random().toString(16).slice(2, 10)}`,
   };
 }
@@ -364,7 +364,7 @@ async function createTelegramUserPayload(opts: Map<string, string>) {
   const config = await readJson(`${userDriverDir}/config.local.json`);
   const botCredentials = await readJson(botCredentialsFile);
   const sutToken =
-    process.env.OPENCLAW_QA_TELEGRAM_SUT_BOT_TOKEN?.trim() ||
+    process.env.cimiclaw_QA_TELEGRAM_SUT_BOT_TOKEN?.trim() ||
     process.env.TELEGRAM_E2E_SUT_BOT_TOKEN?.trim() ||
     (typeof botCredentials.sutBotToken === "string" ? botCredentials.sutBotToken.trim() : "") ||
     (typeof botCredentials.botAToken === "string" ? botCredentials.botAToken.trim() : "") ||
@@ -374,7 +374,7 @@ async function createTelegramUserPayload(opts: Map<string, string>) {
   }
 
   const groupId =
-    process.env.OPENCLAW_QA_TELEGRAM_GROUP_ID?.trim() ||
+    process.env.cimiclaw_QA_TELEGRAM_GROUP_ID?.trim() ||
     process.env.TELEGRAM_E2E_GROUP_ID?.trim() ||
     (typeof config.defaultChatId === "string" ? config.defaultChatId.trim() : "") ||
     (typeof botCredentials.groupId === "string" ? botCredentials.groupId.trim() : "");

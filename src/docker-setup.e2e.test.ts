@@ -390,7 +390,7 @@ describe("scripts/docker/setup.sh", () => {
       "token-reuse",
       async (configDir) => {
         await writeFile(
-          join(configDir, "openclaw.json"),
+          join(configDir, "cimiclaw.json"),
           JSON.stringify({ gateway: { auth: { mode: "token", token: "config-token-123" } } }),
         );
       },
@@ -659,11 +659,11 @@ describe("scripts/docker/setup.sh", () => {
     const compose = await readFile(join(repoRoot, "docker-compose.yml"), "utf8");
     // Both gateway and CLI services must override the env_file values with the
     // canonical container paths so a host-style OPENCLAW_WORKSPACE_DIR like
-    // `/Users/<you>/.openclaw/workspace` written to `.env` by docker-setup.sh
+    // `/Users/<you>/.cimiclaw/workspace` written to `.env` by docker-setup.sh
     // cannot reach runtime code inside Linux Docker.
-    expect(compose.match(/OPENCLAW_CONFIG_DIR: \/home\/node\/\.openclaw$/gm)).toHaveLength(2);
+    expect(compose.match(/OPENCLAW_CONFIG_DIR: \/home\/node\/\.cimiclaw$/gm)).toHaveLength(2);
     expect(
-      compose.match(/OPENCLAW_WORKSPACE_DIR: \/home\/node\/\.openclaw\/workspace$/gm),
+      compose.match(/OPENCLAW_WORKSPACE_DIR: \/home\/node\/\.cimiclaw\/workspace$/gm),
     ).toHaveLength(2);
   });
 });

@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { coerceSecretRef, type SecretRef } from "../config/types.secrets.js";
 import { resolveDefaultSecretProviderAlias } from "../secrets/ref-contract.js";
 import type { PluginManifestRecord } from "./manifest-registry.js";

@@ -573,7 +573,7 @@ export function _resetIMessageShortIdState(): void {
   parseFailureLogged = false;
   // Only delete the persisted file when the test harness has explicitly
   // pointed us at an isolated state directory. Otherwise we would nuke
-  // whatever live gateway happens to share `~/.openclaw` — and in vitest
+  // whatever live gateway happens to share `~/.cimiclaw` — and in vitest
   // file-level parallelism, two test files calling this at once could
   // race a peer's appendFileSync mid-write.
   if (!process.env.OPENCLAW_STATE_DIR) {

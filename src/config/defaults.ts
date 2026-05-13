@@ -9,7 +9,7 @@ import {
 } from "./provider-policy.js";
 import { normalizeTalkConfig } from "./talk.js";
 import type { ModelDefinitionConfig } from "./types.models.js";
-import type { OpenClawConfig } from "./types.openclaw.js";
+import type { OpenClawConfig } from "./types.cimiclaw.js";
 
 type WarnState = { warned: boolean };
 type ProviderPolicyDefaultsOptions = {

@@ -3,7 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { readRegularFile, statRegularFile } from "./fs-utils.js";
 import { hashText } from "./hash.js";
-import { createSubsystemLogger, redactSensitiveText } from "./openclaw-runtime-io.js";
+import { createSubsystemLogger, redactSensitiveText } from "./cimiclaw-runtime-io.js";
 import {
   HEARTBEAT_PROMPT,
   HEARTBEAT_TOKEN,
@@ -19,7 +19,7 @@ import {
   resolveSessionTranscriptsDirForAgent,
   stripInboundMetadata,
   stripInternalRuntimeContext,
-} from "./openclaw-runtime-session.js";
+} from "./cimiclaw-runtime-session.js";
 
 const DREAMING_NARRATIVE_RUN_PREFIX = "dreaming-narrative-";
 // Keep the historical one-line-per-message export shape for normal turns, but

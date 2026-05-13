@@ -116,8 +116,8 @@ export function resolvePluginNpmRuntimePackageFiles(plan) {
       : [],
   );
   merged.add("dist/**");
-  if (packageRelativePathExists(plan.packageDir, "openclaw.plugin.json")) {
-    merged.add("openclaw.plugin.json");
+  if (packageRelativePathExists(plan.packageDir, "cimiclaw.plugin.json")) {
+    merged.add("cimiclaw.plugin.json");
   }
   if (packageRelativePathExists(plan.packageDir, "README.md")) {
     merged.add("README.md");

@@ -38,7 +38,7 @@ async function writePluginFixture(params: {
     manifest.channels = params.channels;
   }
   await fs.writeFile(
-    path.join(params.dir, "openclaw.plugin.json"),
+    path.join(params.dir, "cimiclaw.plugin.json"),
     JSON.stringify(manifest, null, 2),
     "utf-8",
   );
@@ -130,7 +130,7 @@ describe("config plugin validation", () => {
     ({
       HOME: suiteHome,
       OPENCLAW_HOME: undefined,
-      OPENCLAW_STATE_DIR: path.join(suiteHome, ".openclaw"),
+      OPENCLAW_STATE_DIR: path.join(suiteHome, ".cimiclaw"),
       OPENCLAW_BUNDLED_PLUGINS_DIR: undefined,
       OPENCLAW_VERSION: undefined,
       VITEST: "true",
@@ -223,7 +223,7 @@ describe("config plugin validation", () => {
       process.cwd(),
       "extensions",
       "voice-call",
-      "openclaw.plugin.json",
+      "cimiclaw.plugin.json",
     );
     const voiceCallManifest = JSON.parse(await fs.readFile(voiceCallManifestPath, "utf-8")) as {
       configSchema?: Record<string, unknown>;
@@ -539,7 +539,7 @@ describe("config plugin validation", () => {
   });
 
   it("uses persisted installed-plugin records as stale channel evidence", async () => {
-    const installedPluginIndexPath = path.join(suiteHome, ".openclaw", "plugins", "installs.json");
+    const installedPluginIndexPath = path.join(suiteHome, ".cimiclaw", "plugins", "installs.json");
     await mkdirSafe(path.dirname(installedPluginIndexPath));
     await fs.writeFile(
       installedPluginIndexPath,

@@ -9,7 +9,7 @@ GITHUB_OUTPUT_FILE="${GITHUB_OUTPUT:-}"
 
 usage() {
   cat >&2 <<'EOF'
-Usage: resolve-openclaw-ref.sh --ref <ref> [--expected-sha <sha>] [--fallback-ok] [--github-output <file>]
+Usage: resolve-cimiclaw-ref.sh --ref <ref> [--expected-sha <sha>] [--fallback-ok] [--github-output <file>]
 
 Fast-resolves OpenClaw branch and tag refs with git ls-remote. Full commit SHAs
 are returned as fallback refs so callers can decide whether to run deeper

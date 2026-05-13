@@ -58,7 +58,7 @@ export function makeConfigRuntime(
         const next = structuredClone(config);
         const result = await mutate(next, {
           snapshot: {
-            path: "/tmp/openclaw.json",
+            path: "/tmp/cimiclaw.json",
             exists: true,
             raw: "{}",
             parsed: {},

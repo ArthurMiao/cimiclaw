@@ -158,7 +158,7 @@ describe("doctor state integrity oauth dir checks", () => {
     tempHome = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-doctor-state-integrity-"));
     process.env.HOME = tempHome;
     process.env.OPENCLAW_HOME = tempHome;
-    process.env.OPENCLAW_STATE_DIR = path.join(tempHome, ".openclaw");
+    process.env.OPENCLAW_STATE_DIR = path.join(tempHome, ".cimiclaw");
     delete process.env.OPENCLAW_OAUTH_DIR;
     delete process.env.OPENCLAW_AGENT_DIR;
     delete process.env.PI_CODING_AGENT_DIR;
@@ -472,7 +472,7 @@ describe("doctor state integrity oauth dir checks", () => {
       try {
         process.env.HOME = symlinkHome;
         process.env.OPENCLAW_HOME = symlinkHome;
-        process.env.OPENCLAW_STATE_DIR = path.join(symlinkHome, ".openclaw");
+        process.env.OPENCLAW_STATE_DIR = path.join(symlinkHome, ".cimiclaw");
 
         setupSessionState(cfg, process.env, symlinkHome);
         const sessionsDir = resolveSessionTranscriptsDirForAgent(

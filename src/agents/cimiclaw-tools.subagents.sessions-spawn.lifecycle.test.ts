@@ -12,7 +12,7 @@ import {
   setupSessionsSpawnGatewayMock,
   setSessionsSpawnConfigOverride,
   waitForSessionsSpawnEvent,
-} from "./openclaw-tools.subagents.sessions-spawn.test-harness.js";
+} from "./cimiclaw-tools.subagents.sessions-spawn.test-harness.js";
 import {
   __testing as bundleMcpRuntimeTesting,
   getOrCreateSessionMcpRuntime,

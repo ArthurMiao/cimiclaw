@@ -100,7 +100,7 @@ function listSourceBundledPluginRoots(): string[] {
     .filter(
       (entryPath) =>
         fs.existsSync(path.join(entryPath, "package.json")) ||
-        fs.existsSync(path.join(entryPath, "openclaw.plugin.json")),
+        fs.existsSync(path.join(entryPath, "cimiclaw.plugin.json")),
     );
 }
 
@@ -741,7 +741,7 @@ describe("bundled channel entry shape guards", () => {
       };
       for (const feature of ["legacyStateMigrations", "legacySessionSurfaces"]) {
         const usesFeature = setupEntrySource.includes(`${feature}: true`);
-        const hasHint = packageJson.openclaw?.setupFeatures?.[feature] === true;
+        const hasHint = packageJson.cimiclaw?.setupFeatures?.[feature] === true;
         if (usesFeature !== hasHint) {
           offenders.push(`${path.relative(process.cwd(), extensionDir)}:${feature}`);
         }

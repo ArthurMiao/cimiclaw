@@ -13,7 +13,7 @@ function loadManifestEntries() {
     .readdirSync(extensionRoot, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
     .map((entry) => {
-      const manifestPath = path.join(extensionRoot, entry.name, "openclaw.plugin.json");
+      const manifestPath = path.join(extensionRoot, entry.name, "cimiclaw.plugin.json");
       if (!fs.existsSync(manifestPath)) {
         return null;
       }

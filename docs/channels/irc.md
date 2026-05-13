@@ -11,7 +11,7 @@ IRC ships as a bundled plugin, but it is configured in the main config under `ch
 
 ## Quick start
 
-1. Enable IRC config in `~/.openclaw/openclaw.json`.
+1. Enable IRC config in `~/.cimiclaw/cimiclaw.json`.
 2. Set at least:
 
 ```json5
@@ -92,7 +92,7 @@ Example (allow anyone in `#tuirc-dev` to talk to the bot):
 
 Even if a channel is allowed (via `groupPolicy` + `groups`) and the sender is allowed, OpenClaw defaults to **mention-gating** in group contexts.
 
-That means you may see logs like `drop channel â€¦ (missing-mention)` unless the message includes a mention pattern that matches the bot.
+That means you may see logs like `drop channel â€?(missing-mention)` unless the message includes a mention pattern that matches the bot.
 
 To make the bot reply in an IRC channel **without needing a mention**, disable mention gating for that channel:
 
@@ -246,8 +246,8 @@ Default account supports:
 
 ## Related
 
-- [Channels Overview](/channels) â€” all supported channels
-- [Pairing](/channels/pairing) â€” DM authentication and pairing flow
-- [Groups](/channels/groups) â€” group chat behavior and mention gating
-- [Channel Routing](/channels/channel-routing) â€” session routing for messages
-- [Security](/gateway/security) â€” access model and hardening
+- [Channels Overview](/channels) â€?all supported channels
+- [Pairing](/channels/pairing) â€?DM authentication and pairing flow
+- [Groups](/channels/groups) â€?group chat behavior and mention gating
+- [Channel Routing](/channels/channel-routing) â€?session routing for messages
+- [Security](/gateway/security) â€?access model and hardening

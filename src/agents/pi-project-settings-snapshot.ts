@@ -1,7 +1,7 @@
 import path from "node:path";
 import type { SettingsManager } from "@mariozechner/pi-coding-agent";
 import { applyMergePatch } from "../config/merge-patch.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { readRootJsonObjectSync } from "../infra/json-files.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import type { BundleMcpServerConfig } from "../plugins/bundle-mcp.js";

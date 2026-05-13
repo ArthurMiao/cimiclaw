@@ -9,7 +9,7 @@ title: "iMessage"
 <Note>
 For OpenClaw iMessage deployments, use `imsg` on a signed-in macOS Messages host. If your Gateway runs on Linux or Windows, point `channels.imessage.cliPath` at an SSH wrapper that runs `imsg` on the Mac.
 
-**Gateway-downtime catchup is opt-in.** When enabled (`channels.imessage.catchup.enabled: true`), the gateway replays inbound messages that landed in `chat.db` while it was offline (crash, restart, Mac sleep) on next startup. Disabled by default — see [Catching up after gateway downtime](#catching-up-after-gateway-downtime). Closes [openclaw#78649](https://github.com/openclaw/openclaw/issues/78649).
+**Gateway-downtime catchup is opt-in.** When enabled (`channels.imessage.catchup.enabled: true`), the gateway replays inbound messages that landed in `chat.db` while it was offline (crash, restart, Mac sleep) on next startup. Disabled by default �?see [Catching up after gateway downtime](#catching-up-after-gateway-downtime). Closes [openclaw#78649](https://github.com/openclaw/openclaw/issues/78649).
 </Note>
 
 <Warning>
@@ -101,7 +101,7 @@ exec ssh -T gateway-host imsg "$@"
   channels: {
     imessage: {
       enabled: true,
-      cliPath: "~/.openclaw/scripts/imsg-ssh",
+      cliPath: "~/.cimiclaw/scripts/imsg-ssh",
       remoteHost: "user@gateway-host", // used for SCP attachment fetches
       includeAttachments: true,
       // Optional: override allowed attachment roots.
@@ -126,7 +126,7 @@ exec ssh -T gateway-host imsg "$@"
 - Messages must be signed in on the Mac running `imsg`.
 - Full Disk Access is required for the process context running OpenClaw/`imsg` (Messages DB access).
 - Automation permission is required to send messages through Messages.app.
-- For advanced actions (react / edit / unsend / threaded reply / effects / group ops), System Integrity Protection must be disabled — see [Enabling the imsg private API](#enabling-the-imsg-private-api) below. Basic text and media send/receive work without it.
+- For advanced actions (react / edit / unsend / threaded reply / effects / group ops), System Integrity Protection must be disabled �?see [Enabling the imsg private API](#enabling-the-imsg-private-api) below. Basic text and media send/receive work without it.
 
 <Tip>
 Permissions are granted per process context. If gateway runs headless (LaunchAgent/SSH), run a one-time interactive command in that same context to trigger prompts:
@@ -155,7 +155,7 @@ The helper-injection technique uses `imsg`'s own dylib to reach Messages private
 <Warning>
 **Disabling SIP is a real security tradeoff.** SIP is one of macOS's core protections against running modified system code; turning it off system-wide opens up additional attack surface and side effects. Notably, **disabling SIP on Apple Silicon Macs also disables the ability to install and run iOS apps on your Mac**.
 
-Treat this as a deliberate operational choice, not a default. If your threat model can't tolerate SIP being off, bundled iMessage is limited to basic mode — text and media send/receive only, no reactions / edit / unsend / effects / group ops.
+Treat this as a deliberate operational choice, not a default. If your threat model can't tolerate SIP being off, bundled iMessage is limited to basic mode �?text and media send/receive only, no reactions / edit / unsend / effects / group ops.
 </Warning>
 
 ### Setup
@@ -171,9 +171,9 @@ Treat this as a deliberate operational choice, not a default. If your threat mod
    The `imsg status --json` output reports `bridge_version`, `rpc_methods`, and per-method `selectors` so you can see what the current build supports before you start.
 
 2. **Disable System Integrity Protection.** This is macOS-version-specific because the underlying Apple requirement depends on the OS and hardware:
-   - **macOS 10.13–10.15 (Sierra–Catalina):** disable Library Validation via Terminal, reboot to Recovery Mode, run `csrutil disable`, restart.
+   - **macOS 10.13�?0.15 (Sierra–Catalina):** disable Library Validation via Terminal, reboot to Recovery Mode, run `csrutil disable`, restart.
    - **macOS 11+ (Big Sur and later), Intel:** Recovery Mode (or Internet Recovery), `csrutil disable`, restart.
-   - **macOS 11+, Apple Silicon:** power-button startup sequence to enter Recovery; on recent macOS versions hold the **Left Shift** key when you click Continue, then `csrutil disable`. Virtual-machine setups follow a separate flow — take a VM snapshot first.
+   - **macOS 11+, Apple Silicon:** power-button startup sequence to enter Recovery; on recent macOS versions hold the **Left Shift** key when you click Continue, then `csrutil disable`. Virtual-machine setups follow a separate flow �?take a VM snapshot first.
    - **macOS 26 / Tahoe:** library-validation policies and `imagent` private-entitlement checks have tightened further; `imsg` may need an updated build to keep up. If `imsg launch` injection or specific `selectors` start returning false after a macOS major upgrade, check `imsg`'s release notes before assuming the SIP step succeeded.
 
    Follow Apple's Recovery-mode flow for your Mac to disable SIP before running `imsg launch`.
@@ -194,13 +194,13 @@ Treat this as a deliberate operational choice, not a default. If your threat mod
 
    The iMessage entry should report `works`, and `imsg status --json | jq '.selectors'` should show `retractMessagePart: true` plus whichever edit / typing / read selectors your macOS build exposes. The OpenClaw plugin per-method gating in `actions.ts` only advertises actions whose underlying selector is `true`, so the action surface you see in the agent's tool list reflects what the bridge can actually do on this host.
 
-If `openclaw channels status --probe` reports the channel as `works` but specific actions throw "iMessage `<action>` requires the imsg private API bridge" at dispatch time, run `imsg launch` again — the helper can fall out (Messages.app restart, OS update, etc.) and the cached `available: true` status will keep advertising actions until the next probe refreshes.
+If `openclaw channels status --probe` reports the channel as `works` but specific actions throw "iMessage `<action>` requires the imsg private API bridge" at dispatch time, run `imsg launch` again �?the helper can fall out (Messages.app restart, OS update, etc.) and the cached `available: true` status will keep advertising actions until the next probe refreshes.
 
 ### When you can't disable SIP
 
 If SIP-disabled isn't acceptable for your threat model:
 
-- `imsg` falls back to basic mode — text + media + receive only.
+- `imsg` falls back to basic mode �?text + media + receive only.
 - The OpenClaw plugin still advertises text/media send and inbound monitoring; it just hides `react`, `edit`, `unsend`, `reply`, `sendWithEffect`, and group ops from the action surface (per the per-method capability gate).
 - You can run a separate non-Apple-Silicon Mac (or a dedicated bot Mac) with SIP off for the iMessage workload, while keeping SIP enabled on your primary devices. See [Dedicated bot macOS user (separate iMessage identity)](#deployment-patterns) below.
 
@@ -238,8 +238,8 @@ If SIP-disabled isn't acceptable for your threat model:
     <Warning>
     Group routing has **two** allowlist gates running back-to-back, and both must pass:
 
-    1. **Sender / chat-target allowlist** (`channels.imessage.groupAllowFrom`) — handle, `chat_guid`, `chat_identifier`, or `chat_id`.
-    2. **Group registry** (`channels.imessage.groups`) — with `groupPolicy: "allowlist"`, this gate requires either a `groups: { "*": { ... } }` wildcard entry (sets `allowAll = true`), or an explicit per-`chat_id` entry under `groups`.
+    1. **Sender / chat-target allowlist** (`channels.imessage.groupAllowFrom`) �?handle, `chat_guid`, `chat_identifier`, or `chat_id`.
+    2. **Group registry** (`channels.imessage.groups`) �?with `groupPolicy: "allowlist"`, this gate requires either a `groups: { "*": { ... } }` wildcard entry (sets `allowAll = true`), or an explicit per-`chat_id` entry under `groups`.
 
     If gate 2 has nothing in it, every group message is dropped. The plugin emits two `warn`-level signals at the default log level:
 
@@ -262,7 +262,7 @@ If SIP-disabled isn't acceptable for your threat model:
     }
     ```
 
-    If those `warn` lines appear in the gateway log, gate 2 is dropping — add the `groups` block.
+    If those `warn` lines appear in the gateway log, gate 2 is dropping �?add the `groups` block.
     </Warning>
 
     Mention gating for groups:
@@ -302,7 +302,7 @@ If SIP-disabled isn't acceptable for your threat model:
     }
     ```
 
-    Per-group prompts only apply to group messages — direct messages in this channel are unaffected.
+    Per-group prompts only apply to group messages �?direct messages in this channel are unaffected.
 
   </Tab>
 
@@ -405,7 +405,7 @@ See [ACP Agents](/tools/acp-agents) for shared ACP binding behavior.
       channels: {
         imessage: {
           enabled: true,
-          cliPath: "~/.openclaw/scripts/imsg-ssh",
+          cliPath: "~/.cimiclaw/scripts/imsg-ssh",
           remoteHost: "bot@mac-mini.tailnet-1234.ts.net",
           includeAttachments: true,
           dbPath: "/Users/bot/Library/Messages/chat.db",
@@ -436,7 +436,7 @@ See [ACP Agents](/tools/acp-agents) for shared ACP binding behavior.
 
 <AccordionGroup>
   <Accordion title="Attachments and media">
-    - inbound attachment ingestion is **off by default** — set `channels.imessage.includeAttachments: true` to forward photos, voice memos, video, and other attachments to the agent. With it disabled, attachment-only iMessages are dropped before reaching the agent and may produce no `Inbound message` log line at all.
+    - inbound attachment ingestion is **off by default** �?set `channels.imessage.includeAttachments: true` to forward photos, voice memos, video, and other attachments to the agent. With it disabled, attachment-only iMessages are dropped before reaching the agent and may produce no `Inbound message` log line at all.
     - remote attachment paths can be fetched via SCP when `remoteHost` is set
     - attachment paths must match allowed roots:
       - `channels.imessage.attachmentRoots` (local)
@@ -561,12 +561,12 @@ Disable:
 
 ## Coalescing split-send DMs (command + URL in one composition)
 
-When a user types a command and a URL together — e.g. `Dump https://example.com/article` — Apple's Messages app splits the send into **two separate `chat.db` rows**:
+When a user types a command and a URL together �?e.g. `Dump https://example.com/article` �?Apple's Messages app splits the send into **two separate `chat.db` rows**:
 
 1. A text message (`"Dump"`).
 2. A URL-preview balloon (`"https://..."`) with OG-preview images as attachments.
 
-The two rows arrive at OpenClaw ~0.8-2.0 s apart on most setups. Without coalescing, the agent receives the command alone on turn 1, replies (often "send me the URL"), and only sees the URL on turn 2 — at which point the command context is already lost. This is Apple's send pipeline, not anything OpenClaw or `imsg` introduces.
+The two rows arrive at OpenClaw ~0.8-2.0 s apart on most setups. Without coalescing, the agent receives the command alone on turn 1, replies (often "send me the URL"), and only sees the URL on turn 2 �?at which point the command context is already lost. This is Apple's send pipeline, not anything OpenClaw or `imsg` introduces.
 
 `channels.imessage.coalesceSameSenderDms` opts a DM into merging consecutive same-sender rows into a single agent turn. Group chats continue to dispatch per-message so multi-user turn structure is preserved.
 
@@ -595,7 +595,7 @@ The two rows arrive at OpenClaw ~0.8-2.0 s apart on most setups. Without coalesc
     }
     ```
 
-    With the flag on and no explicit `messages.inbound.byChannel.imessage`, the debounce window widens to **2500 ms** (the legacy default is 0 ms — no debouncing). The wider window is required because Apple's split-send cadence of 0.8-2.0 s does not fit in a tighter default.
+    With the flag on and no explicit `messages.inbound.byChannel.imessage`, the debounce window widens to **2500 ms** (the legacy default is 0 ms �?no debouncing). The wider window is required because Apple's split-send cadence of 0.8-2.0 s does not fit in a tighter default.
 
     To tune the window yourself:
 
@@ -619,7 +619,7 @@ The two rows arrive at OpenClaw ~0.8-2.0 s apart on most setups. Without coalesc
     - **Added latency for DM messages.** With the flag on, every DM (including standalone control commands and single-text follow-ups) waits up to the debounce window before dispatching, in case a payload row is coming. Group-chat messages keep instant dispatch.
     - **Merged output is bounded.** Merged text caps at 4000 chars with an explicit `…[truncated]` marker; attachments cap at 20; source entries cap at 10 (first-plus-latest retained beyond that). Every source GUID is tracked in `coalescedMessageGuids` for downstream telemetry.
     - **DM-only.** Group chats fall through to per-message dispatch so the bot stays responsive when multiple people are typing.
-    - **Opt-in, per-channel.** Other channels (Telegram, WhatsApp, Slack, …) are unaffected. Legacy BlueBubbles configs that set `channels.bluebubbles.coalesceSameSenderDms` should migrate that value to `channels.imessage.coalesceSameSenderDms`.
+    - **Opt-in, per-channel.** Other channels (Telegram, WhatsApp, Slack, �? are unaffected. Legacy BlueBubbles configs that set `channels.bluebubbles.coalesceSameSenderDms` should migrate that value to `channels.imessage.coalesceSameSenderDms`.
 
   </Tab>
 </Tabs>
@@ -634,11 +634,11 @@ The two rows arrive at OpenClaw ~0.8-2.0 s apart on most setups. Without coalesc
 | URL pasted alone                                                   | 1 row                 | Instant dispatch                        | Instant dispatch (only one entry in bucket)                             |
 | Text + URL sent as two deliberate separate messages, minutes apart | 2 rows outside window | Two turns                               | Two turns (window expires between them)                                 |
 | Rapid flood (>10 small DMs inside window)                          | N rows                | N turns                                 | One turn, bounded output (first + latest, text/attachment caps applied) |
-| Two people typing in a group chat                                  | N rows from M senders | M+ turns (one per sender bucket)        | M+ turns — group chats are not coalesced                                |
+| Two people typing in a group chat                                  | N rows from M senders | M+ turns (one per sender bucket)        | M+ turns �?group chats are not coalesced                                |
 
 ## Catching up after gateway downtime
 
-When the gateway is offline (crash, restart, Mac sleep, machine off), `imsg watch` resumes from the current `chat.db` state once the gateway comes back up — anything that arrived during the gap is, by default, never seen. Catchup replays those messages on the next startup so the agent does not silently miss inbound traffic.
+When the gateway is offline (crash, restart, Mac sleep, machine off), `imsg watch` resumes from the current `chat.db` state once the gateway comes back up �?anything that arrived during the gap is, by default, never seen. Catchup replays those messages on the next startup so the agent does not silently miss inbound traffic.
 
 Catchup is **disabled by default**. Enable it per channel:
 
@@ -658,13 +658,13 @@ channels: {
 
 ### How it runs
 
-One pass per `monitorIMessageProvider` startup, sequenced as `imsg launch` ready → `watch.subscribe` → `performIMessageCatchup` → live dispatch loop. Catchup itself uses `chats.list` + per-chat `messages.history` against the same JSON-RPC client used by `imsg watch`. Anything that arrives during the catchup pass flows through live dispatch normally; the existing inbound-dedupe cache absorbs any overlap with replayed rows.
+One pass per `monitorIMessageProvider` startup, sequenced as `imsg launch` ready �?`watch.subscribe` �?`performIMessageCatchup` �?live dispatch loop. Catchup itself uses `chats.list` + per-chat `messages.history` against the same JSON-RPC client used by `imsg watch`. Anything that arrives during the catchup pass flows through live dispatch normally; the existing inbound-dedupe cache absorbs any overlap with replayed rows.
 
 Each replayed row is fed through the live dispatch path (`evaluateIMessageInbound` + `dispatchInboundMessage`), so allowlists, group policy, debouncer, echo cache, and read receipts behave identically on replayed and live messages.
 
 ### Cursor and retry semantics
 
-Catchup keeps a per-account cursor at `<openclawStateDir>/imessage/catchup/<account>__<hash>.json` (the OpenClaw state dir defaults to `~/.openclaw`, overridable with `OPENCLAW_STATE_DIR`):
+Catchup keeps a per-account cursor at `<openclawStateDir>/imessage/catchup/<account>__<hash>.json` (the OpenClaw state dir defaults to `~/.cimiclaw`, overridable with `OPENCLAW_STATE_DIR`):
 
 ```json
 {
@@ -675,15 +675,14 @@ Catchup keeps a per-account cursor at `<openclawStateDir>/imessage/catchup/<acco
 }
 ```
 
-- The cursor advances on each successful dispatch and is held when a row's dispatch throws — the next startup retries the same row from the held cursor.
+- The cursor advances on each successful dispatch and is held when a row's dispatch throws �?the next startup retries the same row from the held cursor.
 - After `maxFailureRetries` consecutive throws against the same `guid`, catchup logs a `warn` and force-advances the cursor past the wedged message so subsequent startups can make progress.
 - Already-given-up guids are skipped on sight (no dispatch attempt) on later runs and counted under `skippedGivenUp` in the run summary.
 
 ### Operator-visible signals
 
 ```
-imessage catchup: replayed=N skippedFromMe=… skippedGivenUp=… failed=… givenUp=… fetchedCount=…
-imessage catchup: giving up on guid=<guid> after <N> failures; advancing cursor past it
+imessage catchup: replayed=N skippedFromMe=�?skippedGivenUp=�?failed=�?givenUp=�?fetchedCount=�?imessage catchup: giving up on guid=<guid> after <N> failures; advancing cursor past it
 imessage catchup: fetched <X> rows across chats, capped to perRunLimit=<Y>
 ```
 
@@ -691,10 +690,10 @@ A `WARN ... capped to perRunLimit` line means a single startup did not drain the
 
 ### When to leave it off
 
-- Gateway runs continuously with watchdog auto-restart and gaps are always < a few seconds — the default of off is fine.
-- DM volume is low and missed messages would not change agent behavior — the `firstRunLookbackMinutes` initial window can dispatch surprising old context on first enable.
+- Gateway runs continuously with watchdog auto-restart and gaps are always < a few seconds �?the default of off is fine.
+- DM volume is low and missed messages would not change agent behavior �?the `firstRunLookbackMinutes` initial window can dispatch surprising old context on first enable.
 
-When you turn catchup on, the first startup with no cursor only looks back `firstRunLookbackMinutes` (30 min default), not the full `maxAgeMinutes` window — this avoids replaying a long history of pre-enable messages.
+When you turn catchup on, the first startup with no cursor only looks back `firstRunLookbackMinutes` (30 min default), not the full `maxAgeMinutes` window �?this avoids replaying a long history of pre-enable messages.
 
 ## Troubleshooting
 
@@ -779,9 +778,9 @@ openclaw channels status --probe --channel imessage
 
 ## Related
 
-- [Channels Overview](/channels) — all supported channels
-- [Coming from BlueBubbles](/channels/imessage-from-bluebubbles) — config translation table and step-by-step cutover
-- [Pairing](/channels/pairing) — DM authentication and pairing flow
-- [Groups](/channels/groups) — group chat behavior and mention gating
-- [Channel Routing](/channels/channel-routing) — session routing for messages
-- [Security](/gateway/security) — access model and hardening
+- [Channels Overview](/channels) �?all supported channels
+- [Coming from BlueBubbles](/channels/imessage-from-bluebubbles) �?config translation table and step-by-step cutover
+- [Pairing](/channels/pairing) �?DM authentication and pairing flow
+- [Groups](/channels/groups) �?group chat behavior and mention gating
+- [Channel Routing](/channels/channel-routing) �?session routing for messages
+- [Security](/gateway/security) �?access model and hardening

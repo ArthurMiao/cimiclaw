@@ -1,5 +1,5 @@
 import type { AssistantMessage } from "@mariozechner/pi-ai";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { estimateBase64DecodedBytes } from "../../media/base64.js";
 import { normalizeLowercaseStringOrEmpty } from "../../shared/string-coerce.js";
 import { findNormalizedProviderValue, normalizeProviderId } from "../model-selection.js";

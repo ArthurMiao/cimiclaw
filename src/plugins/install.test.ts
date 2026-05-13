@@ -3,7 +3,7 @@ import path from "node:path";
 import * as tar from "tar";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { safePathSegmentHashed } from "../infra/install-safe-path.js";
-import { resolveOpenClawPackageRootSync } from "../infra/openclaw-root.js";
+import { resolveOpenClawPackageRootSync } from "../infra/cimiclaw-root.js";
 import { runCommandWithTimeout } from "../process/exec.js";
 import { initializeGlobalHookRunner, resetGlobalHookRunner } from "./hook-runner-global.js";
 import { createMockPluginRegistry } from "./hooks.test-helpers.js";
@@ -20,7 +20,7 @@ vi.mock("../process/exec.js", () => ({
   runCommandWithTimeout: vi.fn(),
 }));
 
-vi.mock("../infra/openclaw-root.js", () => ({
+vi.mock("../infra/cimiclaw-root.js", () => ({
   resolveOpenClawPackageRootSync: vi.fn(),
 }));
 
@@ -266,7 +266,7 @@ function setupManifestInstallFixture(params: { manifestId: string; packageName?:
     fs.writeFileSync(packageJsonPath, JSON.stringify(manifest), "utf-8");
   }
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: params.manifestId,
       configSchema: { type: "object", properties: {} },
@@ -281,10 +281,10 @@ function setPluginMinHostVersion(pluginDir: string, minHostVersion: string) {
   const manifest = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8")) as {
     openclaw?: { install?: Record<string, unknown> };
   };
-  manifest.openclaw = {
-    ...manifest.openclaw,
+  manifest.cimiclaw = {
+    ...manifest.cimiclaw,
     install: {
-      ...manifest.openclaw?.install,
+      ...manifest.cimiclaw?.install,
       minHostVersion,
     },
   };
@@ -434,7 +434,7 @@ function setupDualFormatInstallFixture(params: { bundleFormat: "codex" | "claude
     "utf-8",
   );
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: "native-dual",
       configSchema: { type: "object", properties: {} },
@@ -557,7 +557,7 @@ async function ensureDynamicArchiveTemplate(params: {
     const packageName =
       typeof params.packageJson.name === "string" ? params.packageJson.name : "fixture-plugin";
     fs.writeFileSync(
-      path.join(pkgDir, "openclaw.plugin.json"),
+      path.join(pkgDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: params.manifestId ?? packageName,
         configSchema: { type: "object", properties: {} },
@@ -620,7 +620,7 @@ beforeAll(async () => {
     "utf-8",
   );
   fs.writeFileSync(
-    path.join(manifestInstallTemplateDir, "openclaw.plugin.json"),
+    path.join(manifestInstallTemplateDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: "manifest-template",
       configSchema: { type: "object", properties: {} },
@@ -671,7 +671,7 @@ describe("installPluginFromArchive", () => {
     if (!commandOptions || typeof commandOptions === "number") {
       throw new Error("expected command options object");
     }
-    expect(commandOptions.cwd).toContain(".openclaw-install-stage-");
+    expect(commandOptions.cwd).toContain(".cimiclaw-install-stage-");
   });
 
   it("installs scoped archives, rejects duplicate installs, and allows updates", async () => {
@@ -726,7 +726,7 @@ describe("installPluginFromArchive", () => {
     expect(manifest.version).toBe("0.0.2");
   });
 
-  it("rejects native plugin zip archives without openclaw.plugin.json", async () => {
+  it("rejects native plugin zip archives without cimiclaw.plugin.json", async () => {
     const stateDir = suiteTempRootTracker.makeTempDir();
     const archivePath = getArchiveFixturePath({
       cacheKey: "zipper:0.0.1",
@@ -741,7 +741,7 @@ describe("installPluginFromArchive", () => {
     });
     expect(result.ok).toBe(false);
     if (!result.ok) {
-      expect(result.error).toContain("package missing valid openclaw.plugin.json");
+      expect(result.error).toContain("package missing valid cimiclaw.plugin.json");
       expect(result.code).toBe(PLUGIN_INSTALL_ERROR_CODE.MISSING_PLUGIN_MANIFEST);
     }
     expect(fs.existsSync(resolvePluginInstallDir("@openclaw/zipper", extensionsDir))).toBe(false);
@@ -858,7 +858,7 @@ describe("installPluginFromArchive", () => {
       "utf-8",
     );
     fs.writeFileSync(
-      path.join(pluginDir, "openclaw.plugin.json"),
+      path.join(pluginDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "legacy-entry-fallback",
         configSchema: { type: "object", properties: {} },
@@ -1662,7 +1662,7 @@ describe("installPluginFromArchive", () => {
       const hostRoot = path.join(tmpDir, "host-openclaw");
       fs.mkdirSync(hostRoot, { recursive: true });
       fs.writeFileSync(path.join(hostRoot, "package.json"), '{"name":"openclaw"}\n');
-      const hostBin = path.join(hostRoot, "openclaw.mjs");
+      const hostBin = path.join(hostRoot, "cimiclaw.mjs");
       fs.writeFileSync(hostBin, "#!/usr/bin/env node\n");
       vi.mocked(resolveOpenClawPackageRootSync).mockReturnValue(hostRoot);
       writeMinimalPackagePlugin(pluginDir, "openclaw-bin-peer-plugin");
@@ -2781,7 +2781,7 @@ describe("installPluginFromDir", () => {
     },
   );
 
-  it("uses openclaw.plugin.json id as install key when it differs from package name", async () => {
+  it("uses cimiclaw.plugin.json id as install key when it differs from package name", async () => {
     const { pluginDir, extensionsDir } = setupManifestInstallFixture({
       manifestId: "memory-cognee",
     });

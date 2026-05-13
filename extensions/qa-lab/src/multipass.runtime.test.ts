@@ -177,7 +177,7 @@ describe("qa multipass runtime", () => {
       scenarioIds: ["channel-chat-baseline"],
     });
 
-    expect(plan.forwardedEnv.OPENCLAW_LIVE_ANTHROPIC_KEYS).toBe("anthropic-a anthropic-b");
+    expect(plan.forwardedEnv.cimiclaw_LIVE_ANTHROPIC_KEYS).toBe("anthropic-a anthropic-b");
     expect(plan.forwardedEnv.OPENAI_API_KEY_1).toBe("openai-one");
     expect(plan.forwardedEnv.GEMINI_API_KEY_2).toBe("gemini-two");
   });

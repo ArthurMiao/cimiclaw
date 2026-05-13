@@ -16,7 +16,7 @@ function makeRepoRoot(prefix: string): string {
 function writeDistPluginFile(repoRoot: string, root: "dist" | "dist-runtime", pluginId: string) {
   const pluginDir = path.join(repoRoot, root, "extensions", pluginId);
   fs.mkdirSync(pluginDir, { recursive: true });
-  fs.writeFileSync(path.join(pluginDir, "openclaw.plugin.json"), "{}\n", "utf8");
+  fs.writeFileSync(path.join(pluginDir, "cimiclaw.plugin.json"), "{}\n", "utf8");
 }
 
 afterEach(() => {

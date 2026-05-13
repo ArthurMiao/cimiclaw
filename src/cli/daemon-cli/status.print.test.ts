@@ -242,12 +242,12 @@ describe("printDaemonStatus", () => {
         },
         config: {
           cli: {
-            path: "/tmp/openclaw-cli/openclaw.json",
+            path: "/tmp/openclaw-cli/cimiclaw.json",
             exists: true,
             valid: true,
           },
           daemon: {
-            path: "/tmp/openclaw-daemon/openclaw.json",
+            path: "/tmp/openclaw-daemon/cimiclaw.json",
             exists: true,
             valid: true,
             controlUi: { basePath: "/ui" },
@@ -294,7 +294,7 @@ describe("printDaemonStatus", () => {
         },
         config: {
           cli: {
-            path: "/tmp/openclaw-cli/openclaw.json",
+            path: "/tmp/openclaw-cli/cimiclaw.json",
             exists: true,
             valid: true,
             warnings: [

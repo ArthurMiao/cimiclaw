@@ -1,6 +1,6 @@
 import { resolve, isAbsolute } from "node:path";
 import { Type } from "typebox";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { MediaUnderstandingModelConfig } from "../../config/types.tools.js";
 import {
   DEFAULT_TIMEOUT_SECONDS,

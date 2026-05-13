@@ -178,7 +178,7 @@ OpenClaw recognizes two plugin formats:
 
 | Format     | How it works                                                       | Examples                                               |
 | ---------- | ------------------------------------------------------------------ | ------------------------------------------------------ |
-| **Native** | `openclaw.plugin.json` + runtime module; executes in-process       | Official plugins, community npm packages               |
+| **Native** | `cimiclaw.plugin.json` + runtime module; executes in-process       | Official plugins, community npm packages               |
 | **Bundle** | Codex/Claude/Cursor-compatible layout; mapped to OpenClaw features | `.codex-plugin/`, `.claude-plugin/`, `.cursor-plugin/` |
 
 Both show up under `openclaw plugins list`. See [Plugin Bundles](/plugins/bundles) for bundle details.
@@ -353,11 +353,11 @@ OpenClaw scans for plugins in this order (first match wins):
   </Step>
 
   <Step title="Workspace plugins">
-    `\<workspace\>/.openclaw/<plugin-root>/*.ts` and `\<workspace\>/.openclaw/<plugin-root>/*/index.ts`.
+    `\<workspace\>/.cimiclaw/<plugin-root>/*.ts` and `\<workspace\>/.cimiclaw/<plugin-root>/*/index.ts`.
   </Step>
 
   <Step title="Global plugins">
-    `~/.openclaw/<plugin-root>/*.ts` and `~/.openclaw/<plugin-root>/*/index.ts`.
+    `~/.cimiclaw/<plugin-root>/*.ts` and `~/.cimiclaw/<plugin-root>/*/index.ts`.
   </Step>
 
   <Step title="Bundled plugins">

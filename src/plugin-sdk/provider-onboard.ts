@@ -13,7 +13,7 @@ import type {
   ModelDefinitionConfig,
   ModelProviderConfig,
 } from "../config/types.models.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolvePrimaryStringValue } from "../shared/string-coerce.js";
 
 export type { OpenClawConfig, ModelApi, ModelDefinitionConfig, ModelProviderConfig };

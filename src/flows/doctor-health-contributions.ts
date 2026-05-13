@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import type { probeGatewayMemoryStatus } from "../commands/doctor-gateway-health.js";
 import type { DoctorOptions, DoctorPrompter } from "../commands/doctor-prompter.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { buildGatewayConnectionDetails } from "../gateway/call.js";
 import type { RuntimeEnv } from "../runtime.js";
 import type { FlowContribution } from "./types.js";
@@ -57,7 +57,7 @@ function isTruthyEnvValue(value: string | undefined): boolean {
 export function shouldSkipLegacyUpdateDoctorConfigWrite(params: {
   env: NodeJS.ProcessEnv;
 }): boolean {
-  if (!isTruthyEnvValue(params.env.OPENCLAW_UPDATE_IN_PROGRESS)) {
+  if (!isTruthyEnvValue(params.env.cimiclaw_UPDATE_IN_PROGRESS)) {
     return false;
   }
   if (isTruthyEnvValue(params.env[UPDATE_PARENT_SUPPORTS_DOCTOR_CONFIG_WRITE_ENV])) {

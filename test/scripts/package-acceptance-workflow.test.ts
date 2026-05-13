@@ -268,7 +268,7 @@ describe("package artifact reuse", () => {
       "published_upgrade_survivor_baselines=${shellQuote(process.env.OPENCLAW_UPGRADE_SURVIVOR_BASELINE_SPECS)}",
     );
     expect(scheduler).toContain(
-      '["OPENCLAW_UPGRADE_SURVIVOR_BASELINE_SPEC", baseEnv.OPENCLAW_UPGRADE_SURVIVOR_BASELINE_SPEC]',
+      '["OPENCLAW_UPGRADE_SURVIVOR_BASELINE_SPEC", baseEnv.cimiclaw_UPGRADE_SURVIVOR_BASELINE_SPEC]',
     );
     expect(scheduler).toContain('["OPENCLAW_UPGRADE_SURVIVOR_BASELINE_SPECS",');
     expect(scheduler).toContain('["OPENCLAW_UPGRADE_SURVIVOR_SCENARIOS",');
@@ -602,10 +602,10 @@ describe("package artifact reuse", () => {
     expect(workflow).toContain("ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}");
     expect(workflow).toContain("ANTHROPIC_API_TOKEN: ${{ secrets.ANTHROPIC_API_TOKEN }}");
     expect(workflow).toContain(
-      "OPENCLAW_QA_CONVEX_SITE_URL: ${{ secrets.OPENCLAW_QA_CONVEX_SITE_URL }}",
+      "OPENCLAW_QA_CONVEX_SITE_URL: ${{ secrets.cimiclaw_QA_CONVEX_SITE_URL }}",
     );
     expect(workflow).toContain(
-      "OPENCLAW_QA_CONVEX_SECRET_CI: ${{ secrets.OPENCLAW_QA_CONVEX_SECRET_CI }}",
+      "OPENCLAW_QA_CONVEX_SECRET_CI: ${{ secrets.cimiclaw_QA_CONVEX_SECRET_CI }}",
     );
     expect(workflow).toContain("rerun_group:");
     expect(workflow).toContain("live_suite_filter:");
@@ -657,11 +657,11 @@ describe("package artifact reuse", () => {
     for (const channel of ["DISCORD", "WHATSAPP", "SLACK"]) {
       const lower = channel.toLowerCase();
       expect(releaseWorkflow).toContain(
-        `RELEASE_QA_${channel}_LIVE_CI_ENABLED: \${{ vars.OPENCLAW_RELEASE_QA_${channel}_LIVE_CI_ENABLED || 'false' }}`,
+        `RELEASE_QA_${channel}_LIVE_CI_ENABLED: \${{ vars.cimiclaw_RELEASE_QA_${channel}_LIVE_CI_ENABLED || 'false' }}`,
       );
       expect(releaseWorkflow).toContain(`qa_live_${lower}_enabled="$qa_live_${lower}_ci_enabled"`);
       expect(releaseWorkflow).toContain(
-        `vars.OPENCLAW_RELEASE_QA_${channel}_LIVE_CI_ENABLED == 'true'`,
+        `vars.cimiclaw_RELEASE_QA_${channel}_LIVE_CI_ENABLED == 'true'`,
       );
       expect(qaWorkflow).not.toContain(`OPENCLAW_QA_${channel}_LIVE_CI_ENABLED`);
     }

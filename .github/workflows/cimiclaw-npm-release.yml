@@ -456,4 +456,4 @@ jobs:
           if [[ -n "${publish_target}" ]]; then
             publish_target="./${publish_target}"
           fi
-          bash scripts/openclaw-npm-publish.sh --publish "${publish_target}"
+          bash scripts/cimiclaw-npm-publish.sh --publish "${publish_target}"

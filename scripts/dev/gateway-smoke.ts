@@ -9,8 +9,8 @@ function writeStderrLine(message: string): void {
 }
 
 const { get: getArg } = createArgReader();
-const urlRaw = getArg("--url") ?? process.env.OPENCLAW_GATEWAY_URL;
-const token = getArg("--token") ?? process.env.OPENCLAW_GATEWAY_TOKEN;
+const urlRaw = getArg("--url") ?? process.env.cimiclaw_GATEWAY_URL;
+const token = getArg("--token") ?? process.env.cimiclaw_GATEWAY_TOKEN;
 
 if (!urlRaw || !token) {
   writeStderrLine(

@@ -1,6 +1,6 @@
 import type { ChannelPlugin } from "../channels/plugins/types.plugin.js";
 import { isChannelConfigured } from "../config/channel-configured.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { unwrapDefaultModuleExport } from "./module-export.js";
 import type { PluginRuntime } from "./runtime/types.js";
 

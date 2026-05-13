@@ -289,7 +289,7 @@ describe("gateway-cli coverage", () => {
         instanceName: "Studio (OpenClaw)",
         displayName: "Studio",
         domain: "openclaw.internal.",
-        host: "studio.openclaw.internal",
+        host: "studio.cimiclaw.internal",
         port: 18789,
         lanHost: "studio.local",
         tailnetDns: "studio.tailnet.ts.net",

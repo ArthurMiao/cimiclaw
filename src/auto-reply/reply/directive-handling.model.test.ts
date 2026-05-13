@@ -426,7 +426,7 @@ describe("/model chat UX", () => {
   it("uses workspace-scoped auth evidence in /model list provider visibility", async () => {
     const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-model-list-auth-label-"));
     const workspaceDir = path.join(tempRoot, "workspace");
-    const pluginDir = path.join(workspaceDir, ".openclaw", "extensions", "workspace-model-list");
+    const pluginDir = path.join(workspaceDir, ".cimiclaw", "extensions", "workspace-model-list");
     const bundledDir = path.join(tempRoot, "bundled");
     const stateDir = path.join(tempRoot, "state");
     const credentialPath = path.join(tempRoot, "credentials.json");
@@ -436,7 +436,7 @@ describe("/model chat UX", () => {
     fs.writeFileSync(path.join(pluginDir, "index.ts"), "export default {}\n", "utf8");
     fs.writeFileSync(credentialPath, "{}", "utf8");
     fs.writeFileSync(
-      path.join(pluginDir, "openclaw.plugin.json"),
+      path.join(pluginDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "workspace-model-list",
         configSchema: { type: "object" },
@@ -723,7 +723,7 @@ describe("/model chat UX", () => {
   it("uses workspace-scoped auth evidence in /model status labels", async () => {
     const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-model-status-auth-label-"));
     const workspaceDir = path.join(tempRoot, "workspace");
-    const pluginDir = path.join(workspaceDir, ".openclaw", "extensions", "workspace-model-auth");
+    const pluginDir = path.join(workspaceDir, ".cimiclaw", "extensions", "workspace-model-auth");
     const bundledDir = path.join(tempRoot, "bundled");
     const stateDir = path.join(tempRoot, "state");
     const credentialPath = path.join(tempRoot, "credentials.json");
@@ -733,7 +733,7 @@ describe("/model chat UX", () => {
     fs.writeFileSync(path.join(pluginDir, "index.ts"), "export default {}\n", "utf8");
     fs.writeFileSync(credentialPath, "{}", "utf8");
     fs.writeFileSync(
-      path.join(pluginDir, "openclaw.plugin.json"),
+      path.join(pluginDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "workspace-model-auth",
         configSchema: { type: "object" },

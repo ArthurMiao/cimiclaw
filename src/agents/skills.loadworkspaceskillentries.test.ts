@@ -19,11 +19,11 @@ vi.mock("../plugins/manifest-registry.js", async () => {
   const path = await import("node:path");
   return {
     loadPluginManifestRegistry: (params: { workspaceDir?: string }) => {
-      const extensionsRoot = path.join(params.workspaceDir ?? "", ".openclaw", "extensions");
+      const extensionsRoot = path.join(params.workspaceDir ?? "", ".cimiclaw", "extensions");
       const plugins = [];
       for (const id of ["open-prose", "browser"]) {
         const rootDir = path.join(extensionsRoot, id);
-        const manifestPath = path.join(rootDir, "openclaw.plugin.json");
+        const manifestPath = path.join(rootDir, "cimiclaw.plugin.json");
         if (!fs.existsSync(manifestPath)) {
           continue;
         }
@@ -127,7 +127,7 @@ async function setupWorkspaceWithProsePlugin() {
   const workspaceDir = await createTempWorkspaceDir();
   const managedDir = path.join(workspaceDir, ".managed");
   const bundledDir = path.join(workspaceDir, ".bundled");
-  const pluginRoot = path.join(workspaceDir, ".openclaw", "extensions", "open-prose");
+  const pluginRoot = path.join(workspaceDir, ".cimiclaw", "extensions", "open-prose");
 
   await writePluginWithSkill({
     pluginRoot,
@@ -188,7 +188,7 @@ describe("loadWorkspaceSkillEntries", () => {
   it("loads the browser plugin automation skill when the bundled plugin is enabled", async () => {
     const workspaceDir = await createTempWorkspaceDir();
     const managedDir = path.join(workspaceDir, ".managed");
-    const pluginRoot = path.join(workspaceDir, ".openclaw", "extensions", "browser");
+    const pluginRoot = path.join(workspaceDir, ".cimiclaw", "extensions", "browser");
 
     await writePluginWithSkill({
       pluginRoot,
@@ -197,7 +197,7 @@ describe("loadWorkspaceSkillEntries", () => {
       skillDescription: "Browser automation",
     });
     await fs.writeFile(
-      path.join(pluginRoot, "openclaw.plugin.json"),
+      path.join(pluginRoot, "cimiclaw.plugin.json"),
       JSON.stringify(
         {
           id: "browser",

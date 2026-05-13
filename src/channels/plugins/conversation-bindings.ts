@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { getChannelPlugin } from "./registry.js";
 import type { ChannelId } from "./types.public.js";
 

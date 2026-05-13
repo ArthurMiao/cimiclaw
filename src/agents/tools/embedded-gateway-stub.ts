@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { CallGatewayOptions } from "../../gateway/call.js";
 import type { SessionsListParams, SessionsResolveParams } from "../../gateway/protocol/index.js";
 import type { ReadSessionMessagesAsyncOptions } from "../../gateway/session-utils.fs.js";

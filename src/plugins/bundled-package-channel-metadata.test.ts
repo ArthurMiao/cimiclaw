@@ -57,7 +57,7 @@ describe("bundled package channel metadata", () => {
         },
       },
     });
-    writeJsonFile(path.join(extensionsRoot, "matrix", "openclaw.plugin.json"), {
+    writeJsonFile(path.join(extensionsRoot, "matrix", "cimiclaw.plugin.json"), {
       id: "matrix",
       configSchema: { type: "object" },
       channels: ["matrix"],
@@ -94,7 +94,7 @@ describe("bundled package channel metadata", () => {
         },
       },
     });
-    writeJsonFile(path.join(extensionsRoot, "matrix", "openclaw.plugin.json"), {
+    writeJsonFile(path.join(extensionsRoot, "matrix", "cimiclaw.plugin.json"), {
       id: "matrix",
       configSchema: { type: "object" },
       channels: ["matrix"],

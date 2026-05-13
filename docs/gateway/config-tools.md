@@ -4,7 +4,7 @@ read_when:
   - Configuring `tools.*` policy, allowlists, or experimental features
   - Registering custom providers or overriding base URLs
   - Setting up OpenAI-compatible self-hosted endpoints
-title: "Configuration â€” tools and custom providers"
+title: "Configuration â€?tools and custom providers"
 sidebarTitle: "Tools and custom providers"
 ---
 
@@ -64,7 +64,7 @@ Global tool allow/deny policy (deny wins). Case-insensitive, supports `*` wildca
 
 ### `tools.byProvider`
 
-Further restrict tools for specific providers or models. Order: base profile â†’ provider profile â†’ allow/deny.
+Further restrict tools for specific providers or models. Order: base profile â†?provider profile â†?allow/deny.
 
 ```json5
 {
@@ -253,12 +253,12 @@ Configures inbound media understanding (image/audio/video):
 
     **Common fields:**
 
-    - `capabilities`: optional list (`image`, `audio`, `video`). Defaults: `openai`/`anthropic`/`minimax` â†’ image, `google` â†’ image+audio+video, `groq` â†’ audio.
+    - `capabilities`: optional list (`image`, `audio`, `video`). Defaults: `openai`/`anthropic`/`minimax` â†?image, `google` â†?image+audio+video, `groq` â†?audio.
     - `prompt`, `maxChars`, `maxBytes`, `timeoutSeconds`, `language`: per-entry overrides.
     - `tools.media.image.timeoutSeconds` and matching image model `timeoutSeconds` entries also apply when the agent calls the explicit `image` tool.
     - Failures fall back to the next entry.
 
-    Provider auth follows standard order: `auth-profiles.json` â†’ env vars â†’ `models.providers.*.apiKey`.
+    Provider auth follows standard order: `auth-profiles.json` â†?env vars â†?`models.providers.*.apiKey`.
 
     **Async completion fields:**
 
@@ -331,7 +331,7 @@ Controls inline attachment support for `sessions_spawn`.
 <AccordionGroup>
   <Accordion title="Attachment notes">
     - Attachments are only supported for `runtime: "subagent"`. ACP runtime rejects them.
-    - Files are materialized into the child workspace at `.openclaw/attachments/<uuid>/` with a `.manifest.json`.
+    - Files are materialized into the child workspace at `.cimiclaw/attachments/<uuid>/` with a `.manifest.json`.
     - Attachment content is automatically redacted from transcript persistence.
     - Base64 inputs are validated with strict alphabet/padding checks and a pre-decode size guard.
     - File permissions are `0700` for directories and `0600` for files.
@@ -387,7 +387,7 @@ Experimental built-in tool flags. Default off unless a strict-agentic GPT-5 auto
 
 ## Custom providers and base URLs
 
-OpenClaw uses the built-in model catalog. Add custom providers via `models.providers` in config or `~/.openclaw/agents/<agentId>/agent/models.json`.
+OpenClaw uses the built-in model catalog. Add custom providers via `models.providers` in config or `~/.cimiclaw/agents/<agentId>/agent/models.json`.
 
 ```json5
 {
@@ -706,7 +706,7 @@ Interactive custom-provider onboarding infers image input for common vision mode
 
 ## Related
 
-- [Configuration â€” agents](/gateway/config-agents)
-- [Configuration â€” channels](/gateway/config-channels)
-- [Configuration reference](/gateway/configuration-reference) â€” other top-level keys
+- [Configuration â€?agents](/gateway/config-agents)
+- [Configuration â€?channels](/gateway/config-channels)
+- [Configuration reference](/gateway/configuration-reference) â€?other top-level keys
 - [Tools and plugins](/tools)

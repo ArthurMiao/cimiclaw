@@ -6,9 +6,9 @@ read_when: "You want multiple isolated agents (workspaces + auth) in one gateway
 status: active
 ---
 
-Run multiple _isolated_ agents — each with its own workspace, state directory (`agentDir`), and session history — plus multiple channel accounts (e.g. two WhatsApps) in one running Gateway. Inbound messages are routed to the right agent through bindings.
+Run multiple _isolated_ agents �?each with its own workspace, state directory (`agentDir`), and session history �?plus multiple channel accounts (e.g. two WhatsApps) in one running Gateway. Inbound messages are routed to the right agent through bindings.
 
-An **agent** here is the full per-persona scope: workspace files, auth profiles, model registry, and session store. `agentDir` is the on-disk state directory that holds this per-agent config at `~/.openclaw/agents/<agentId>/`. A **binding** maps a channel account (e.g. a Slack workspace or a WhatsApp number) to one of those agents.
+An **agent** here is the full per-persona scope: workspace files, auth profiles, model registry, and session store. `agentDir` is the on-disk state directory that holds this per-agent config at `~/.cimiclaw/agents/<agentId>/`. A **binding** maps a channel account (e.g. a Slack workspace or a WhatsApp number) to one of those agents.
 
 ## What is "one agent"?
 
@@ -16,12 +16,12 @@ An **agent** is a fully scoped brain with its own:
 
 - **Workspace** (files, AGENTS.md/SOUL.md/USER.md, local notes, persona rules).
 - **State directory** (`agentDir`) for auth profiles, model registry, and per-agent config.
-- **Session store** (chat history + routing state) under `~/.openclaw/agents/<agentId>/sessions`.
+- **Session store** (chat history + routing state) under `~/.cimiclaw/agents/<agentId>/sessions`.
 
 Auth profiles are **per-agent**. Each agent reads from its own:
 
 ```text
-~/.openclaw/agents/<agentId>/agent/auth-profiles.json
+~/.cimiclaw/agents/<agentId>/agent/auth-profiles.json
 ```
 
 <Note>
@@ -37,7 +37,7 @@ that agent; if you copy credentials manually, copy only portable static
 `api_key` or `token` profiles.
 </Warning>
 
-Skills are loaded from each agent workspace plus shared roots such as `~/.openclaw/skills`, then filtered by the effective agent skill allowlist when configured. Use `agents.defaults.skills` for a shared baseline and `agents.list[].skills` for per-agent replacement. See [Skills: per-agent vs shared](/tools/skills#per-agent-vs-shared-skills) and [Skills: agent skill allowlists](/tools/skills#agent-skill-allowlists).
+Skills are loaded from each agent workspace plus shared roots such as `~/.cimiclaw/skills`, then filtered by the effective agent skill allowlist when configured. Use `agents.defaults.skills` for a shared baseline and `agents.list[].skills` for per-agent replacement. See [Skills: per-agent vs shared](/tools/skills#per-agent-vs-shared-skills) and [Skills: agent skill allowlists](/tools/skills#agent-skill-allowlists).
 
 The Gateway can host **one agent** (default) or **many agents** side-by-side.
 
@@ -47,11 +47,11 @@ The Gateway can host **one agent** (default) or **many agents** side-by-side.
 
 ## Paths (quick map)
 
-- Config: `~/.openclaw/openclaw.json` (or `OPENCLAW_CONFIG_PATH`)
-- State dir: `~/.openclaw` (or `OPENCLAW_STATE_DIR`)
-- Workspace: `~/.openclaw/workspace` (or `~/.openclaw/workspace-<agentId>`)
-- Agent dir: `~/.openclaw/agents/<agentId>/agent` (or `agents.list[].agentDir`)
-- Sessions: `~/.openclaw/agents/<agentId>/sessions`
+- Config: `~/.cimiclaw/cimiclaw.json` (or `OPENCLAW_CONFIG_PATH`)
+- State dir: `~/.cimiclaw` (or `OPENCLAW_STATE_DIR`)
+- Workspace: `~/.cimiclaw/workspace` (or `~/.cimiclaw/workspace-<agentId>`)
+- Agent dir: `~/.cimiclaw/agents/<agentId>/agent` (or `agents.list[].agentDir`)
+- Sessions: `~/.cimiclaw/agents/<agentId>/sessions`
 
 ### Single-agent mode (default)
 
@@ -59,8 +59,8 @@ If you do nothing, OpenClaw runs a single agent:
 
 - `agentId` defaults to **`main`**.
 - Sessions are keyed as `agent:main:<mainKey>`.
-- Workspace defaults to `~/.openclaw/workspace` (or `~/.openclaw/workspace-<profile>` when `OPENCLAW_PROFILE` is set).
-- State defaults to `~/.openclaw/agents/main/agent`.
+- Workspace defaults to `~/.cimiclaw/workspace` (or `~/.cimiclaw/workspace-<profile>` when `OPENCLAW_PROFILE` is set).
+- State defaults to `~/.cimiclaw/agents/main/agent`.
 
 ## Agent helper
 
@@ -89,7 +89,7 @@ openclaw agents list --bindings
     openclaw agents add social
     ```
 
-    Each agent gets its own workspace with `SOUL.md`, `AGENTS.md`, and optional `USER.md`, plus a dedicated `agentDir` and session store under `~/.openclaw/agents/<agentId>`.
+    Each agent gets its own workspace with `SOUL.md`, `AGENTS.md`, and optional `USER.md`, plus a dedicated `agentDir` and session store under `~/.cimiclaw/agents/<agentId>`.
 
   </Step>
   <Step title="Create channel accounts">
@@ -179,8 +179,8 @@ Example:
 {
   agents: {
     list: [
-      { id: "alex", workspace: "~/.openclaw/workspace-alex" },
-      { id: "mia", workspace: "~/.openclaw/workspace-mia" },
+      { id: "alex", workspace: "~/.cimiclaw/workspace-alex" },
+      { id: "mia", workspace: "~/.cimiclaw/workspace-mia" },
     ],
   },
   bindings: [
@@ -281,8 +281,8 @@ Common channels supporting this pattern include:
     {
       agents: {
         list: [
-          { id: "main", workspace: "~/.openclaw/workspace-main" },
-          { id: "coding", workspace: "~/.openclaw/workspace-coding" },
+          { id: "main", workspace: "~/.cimiclaw/workspace-main" },
+          { id: "coding", workspace: "~/.cimiclaw/workspace-coding" },
         ],
       },
       bindings: [
@@ -328,8 +328,8 @@ Common channels supporting this pattern include:
     {
       agents: {
         list: [
-          { id: "main", workspace: "~/.openclaw/workspace-main" },
-          { id: "alerts", workspace: "~/.openclaw/workspace-alerts" },
+          { id: "main", workspace: "~/.cimiclaw/workspace-main" },
+          { id: "alerts", workspace: "~/.cimiclaw/workspace-alerts" },
         ],
       },
       bindings: [
@@ -366,7 +366,7 @@ Common channels supporting this pattern include:
     openclaw channels login --channel whatsapp --account biz
     ```
 
-    `~/.openclaw/openclaw.json` (JSON5):
+    `~/.cimiclaw/cimiclaw.json` (JSON5):
 
     ```js
     {
@@ -376,14 +376,14 @@ Common channels supporting this pattern include:
             id: "home",
             default: true,
             name: "Home",
-            workspace: "~/.openclaw/workspace-home",
-            agentDir: "~/.openclaw/agents/home/agent",
+            workspace: "~/.cimiclaw/workspace-home",
+            agentDir: "~/.cimiclaw/agents/home/agent",
           },
           {
             id: "work",
             name: "Work",
-            workspace: "~/.openclaw/workspace-work",
-            agentDir: "~/.openclaw/agents/work/agent",
+            workspace: "~/.cimiclaw/workspace-work",
+            agentDir: "~/.cimiclaw/agents/work/agent",
           },
         ],
       },
@@ -416,12 +416,12 @@ Common channels supporting this pattern include:
         whatsapp: {
           accounts: {
             personal: {
-              // Optional override. Default: ~/.openclaw/credentials/whatsapp/personal
-              // authDir: "~/.openclaw/credentials/whatsapp/personal",
+              // Optional override. Default: ~/.cimiclaw/credentials/whatsapp/personal
+              // authDir: "~/.cimiclaw/credentials/whatsapp/personal",
             },
             biz: {
-              // Optional override. Default: ~/.openclaw/credentials/whatsapp/biz
-              // authDir: "~/.openclaw/credentials/whatsapp/biz",
+              // Optional override. Default: ~/.cimiclaw/credentials/whatsapp/biz
+              // authDir: "~/.cimiclaw/credentials/whatsapp/biz",
             },
           },
         },
@@ -445,13 +445,13 @@ Common channels supporting this pattern include:
           {
             id: "chat",
             name: "Everyday",
-            workspace: "~/.openclaw/workspace-chat",
+            workspace: "~/.cimiclaw/workspace-chat",
             model: "anthropic/claude-sonnet-4-6",
           },
           {
             id: "opus",
             name: "Deep Work",
-            workspace: "~/.openclaw/workspace-opus",
+            workspace: "~/.cimiclaw/workspace-opus",
             model: "anthropic/claude-opus-4-6",
           },
         ],
@@ -479,13 +479,13 @@ Common channels supporting this pattern include:
           {
             id: "chat",
             name: "Everyday",
-            workspace: "~/.openclaw/workspace-chat",
+            workspace: "~/.cimiclaw/workspace-chat",
             model: "anthropic/claude-sonnet-4-6",
           },
           {
             id: "opus",
             name: "Deep Work",
-            workspace: "~/.openclaw/workspace-opus",
+            workspace: "~/.cimiclaw/workspace-opus",
             model: "anthropic/claude-opus-4-6",
           },
         ],
@@ -513,7 +513,7 @@ Common channels supporting this pattern include:
           {
             id: "family",
             name: "Family",
-            workspace: "~/.openclaw/workspace-family",
+            workspace: "~/.cimiclaw/workspace-family",
             identity: { name: "Family Bot" },
             groupChat: {
               mentionPatterns: ["@family", "@familybot", "@Family Bot"],
@@ -567,7 +567,7 @@ Each agent can have its own sandbox and tool restrictions:
     list: [
       {
         id: "personal",
-        workspace: "~/.openclaw/workspace-personal",
+        workspace: "~/.cimiclaw/workspace-personal",
         sandbox: {
           mode: "off",  // No sandbox for personal agent
         },
@@ -575,7 +575,7 @@ Each agent can have its own sandbox and tool restrictions:
       },
       {
         id: "family",
-        workspace: "~/.openclaw/workspace-family",
+        workspace: "~/.cimiclaw/workspace-family",
         sandbox: {
           mode: "all",     // Always sandboxed
           scope: "agent",  // One container per agent
@@ -612,8 +612,8 @@ See [Multi-agent sandbox and tools](/tools/multi-agent-sandbox-tools) for detail
 
 ## Related
 
-- [ACP agents](/tools/acp-agents) — running external coding harnesses
-- [Channel routing](/channels/channel-routing) — how messages route to agents
-- [Presence](/concepts/presence) — agent presence and availability
-- [Session](/concepts/session) — session isolation and routing
-- [Sub-agents](/tools/subagents) — spawning background agent runs
+- [ACP agents](/tools/acp-agents) �?running external coding harnesses
+- [Channel routing](/channels/channel-routing) �?how messages route to agents
+- [Presence](/concepts/presence) �?agent presence and availability
+- [Session](/concepts/session) �?session isolation and routing
+- [Sub-agents](/tools/subagents) �?spawning background agent runs

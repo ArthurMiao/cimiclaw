@@ -3,7 +3,7 @@ import type { ModelDefinitionConfig } from "openclaw/plugin-sdk/provider-model-s
 import { createSubsystemLogger, retryAsync } from "openclaw/plugin-sdk/runtime-env";
 import { fetchWithSsrFGuard } from "openclaw/plugin-sdk/ssrf-runtime";
 import { normalizeLowercaseStringOrEmpty } from "openclaw/plugin-sdk/string-coerce-runtime";
-import manifest from "./openclaw.plugin.json" with { type: "json" };
+import manifest from "./cimiclaw.plugin.json" with { type: "json" };
 
 const log = createSubsystemLogger("venice-models");
 

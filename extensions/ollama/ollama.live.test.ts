@@ -29,7 +29,7 @@ async function withTempOpenClawState<T>(run: (paths: { root: string }) => Promis
   const root = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-ollama-cli-live-"));
   try {
     await fs.writeFile(
-      path.join(root, "openclaw.json"),
+      path.join(root, "cimiclaw.json"),
       JSON.stringify(
         {
           models: {
@@ -62,7 +62,7 @@ async function runOpenClawCli(args: string[], env: NodeJS.ProcessEnv) {
   let stdoutClosed = false;
   let stderrClosed = false;
   try {
-    const result = spawnSync(process.execPath, ["openclaw.mjs", ...args], {
+    const result = spawnSync(process.execPath, ["cimiclaw.mjs", ...args], {
       cwd: process.cwd(),
       env,
       timeout: 90_000,
@@ -107,7 +107,7 @@ function buildCliEnv(root: string): NodeJS.ProcessEnv {
     OPENCLAW_LIVE_OLLAMA: "1",
     OPENCLAW_LIVE_OLLAMA_WEB_SEARCH: "0",
     OPENCLAW_STATE_DIR: path.join(root, "state"),
-    OPENCLAW_CONFIG_PATH: path.join(root, "openclaw.json"),
+    OPENCLAW_CONFIG_PATH: path.join(root, "cimiclaw.json"),
     OPENCLAW_NO_RESPAWN: "1",
     OPENCLAW_TEST_FAST: "1",
     OLLAMA_API_KEY: "ollama-local",

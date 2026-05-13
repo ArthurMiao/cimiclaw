@@ -54,7 +54,7 @@ vi.mock("../secrets/target-registry.js", () => {
   const entry = {
     id: "channels.discord.token",
     targetType: "channels.discord.token",
-    configFile: "openclaw.json",
+    configFile: "cimiclaw.json",
     pathPattern: "channels.discord.token",
     secretShape: "secret_input",
     expectedResolvedValue: "string",

@@ -3,7 +3,7 @@ import {
   normalizeAgentModelRefForConfig,
 } from "../config/model-input.js";
 import type { AgentModelListConfig } from "../config/types.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 
 function resolvePrimaryModel(model?: AgentModelListConfig | string): string | undefined {
   if (typeof model === "string") {

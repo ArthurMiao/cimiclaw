@@ -248,7 +248,7 @@ describe("browser server-context listKnownProfileNames", () => {
         [
           "stale-removed",
           {
-            profile: { ...openclaw, name: "stale-removed" },
+            profile: { ...cimiclaw, name: "stale-removed" },
             running: null,
           },
         ],

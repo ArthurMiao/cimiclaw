@@ -176,10 +176,10 @@ describe("embedded acpx plugin config", () => {
       workspaceDir: "/tmp/openclaw-acpx",
     });
 
-    const server = resolved.mcpServers["openclaw-tools"];
+    const server = resolved.mcpServers["cimiclaw-tools"];
     expect(server).toEqual({
       command: process.execPath,
-      args: expectedSourceMcpServerArgs("src/mcp/openclaw-tools-serve.ts"),
+      args: expectedSourceMcpServerArgs("src/mcp/cimiclaw-tools-serve.ts"),
     });
   });
 
@@ -193,7 +193,7 @@ describe("embedded acpx plugin config", () => {
   it("keeps the runtime json schema in sync with the manifest config schema", () => {
     const pluginRoot = resolveAcpxPluginRoot();
     const manifest = JSON.parse(
-      fs.readFileSync(path.join(pluginRoot, "openclaw.plugin.json"), "utf8"),
+      fs.readFileSync(path.join(pluginRoot, "cimiclaw.plugin.json"), "utf8"),
     ) as { configSchema?: unknown };
 
     expect(manifest.configSchema).toStrictEqual({

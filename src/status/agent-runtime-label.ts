@@ -1,6 +1,6 @@
 import { isCliProvider } from "../agents/model-selection.js";
 import type { SessionEntry } from "../config/sessions/types.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   normalizeOptionalLowercaseString,
   normalizeOptionalString,

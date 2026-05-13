@@ -39,7 +39,7 @@ describe("browser server-context loopback direct WebSocket profiles", () => {
     global.fetch = withBrowserFetchPreconnect(fetchMock);
     const state = makeState("openclaw");
     state.resolved.ssrfPolicy = {};
-    state.resolved.profiles.openclaw = {
+    state.resolved.profiles.cimiclaw = {
       cdpUrl: "ws://127.0.0.1:18800/devtools/browser/SESSION?token=abc",
       color: "#FF4500",
     };
@@ -84,7 +84,7 @@ describe("browser server-context loopback direct WebSocket profiles", () => {
     global.fetch = withBrowserFetchPreconnect(fetchMock);
     const state = makeState("openclaw");
     state.resolved.ssrfPolicy = {};
-    state.resolved.profiles.openclaw = {
+    state.resolved.profiles.cimiclaw = {
       cdpUrl: "ws://127.0.0.1:18800/devtools/browser/SESSION?token=abc",
       color: "#FF4500",
     };
@@ -132,7 +132,7 @@ describe("browser server-context loopback direct WebSocket profiles", () => {
 
     global.fetch = withBrowserFetchPreconnect(fetchMock);
     const state = makeState("openclaw");
-    state.resolved.profiles.openclaw = {
+    state.resolved.profiles.cimiclaw = {
       cdpUrl: "wss://127.0.0.1:18800/cdp?token=abc",
       color: "#FF4500",
     };
@@ -157,7 +157,7 @@ describe("browser server-context loopback direct WebSocket profiles", () => {
       dangerouslyAllowPrivateNetwork: false,
       hostnameAllowlist: ["browserless.example.com"],
     };
-    state.resolved.profiles.openclaw = {
+    state.resolved.profiles.cimiclaw = {
       cdpUrl: "ws://10.0.0.42:18800/devtools/browser/SESSION?token=abc",
       color: "#FF4500",
     };

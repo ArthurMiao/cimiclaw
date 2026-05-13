@@ -30,7 +30,7 @@ function writeChannelToolPlugin(params: {
     fs.chmodSync(pluginDir, 0o755);
   }
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify(
       {
         id: params.id,

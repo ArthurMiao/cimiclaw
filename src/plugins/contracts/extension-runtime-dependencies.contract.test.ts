@@ -117,7 +117,7 @@ function listRuntimeFiles(root: string): string[] {
 }
 
 function readManifestText(root: string): string {
-  const manifestPath = path.join(root, "openclaw.plugin.json");
+  const manifestPath = path.join(root, "cimiclaw.plugin.json");
   return fs.existsSync(manifestPath) ? fs.readFileSync(manifestPath, "utf8") : "";
 }
 

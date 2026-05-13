@@ -1156,8 +1156,8 @@ vi.mock("./doctor-config-preflight.js", async () => {
   function resolveConfigPath() {
     const stateDir =
       process.env.OPENCLAW_STATE_DIR ||
-      (process.env.HOME ? path.join(process.env.HOME, ".openclaw") : "");
-    return process.env.OPENCLAW_CONFIG_PATH || path.join(stateDir, "openclaw.json");
+      (process.env.HOME ? path.join(process.env.HOME, ".cimiclaw") : "");
+    return process.env.OPENCLAW_CONFIG_PATH || path.join(stateDir, "cimiclaw.json");
   }
 
   function normalizeDiscordStreamingCompat(cfg: Record<string, unknown>): Record<string, unknown> {
@@ -1422,7 +1422,7 @@ describe("doctor config flow", () => {
       hooks: {
         enabled: true,
         token: "hook-secret",
-        transformsDir: "/virtual/.openclaw/workspace/skills/linear-webhook",
+        transformsDir: "/virtual/.cimiclaw/workspace/skills/linear-webhook",
         mappings: [
           {
             match: { path: "linear" },
@@ -1436,8 +1436,8 @@ describe("doctor config flow", () => {
 
     const warning = doctorWarnings.join("\n");
     expect(warning).toContain("hooks.transformsDir:");
-    expect(warning).toContain("/virtual/.openclaw/workspace/skills/linear-webhook");
-    expect(warning).toContain("/virtual/.openclaw/hooks/transforms");
+    expect(warning).toContain("/virtual/.cimiclaw/workspace/skills/linear-webhook");
+    expect(warning).toContain("/virtual/.cimiclaw/hooks/transforms");
     expect(warning).toContain("move custom transforms there or remove hooks.transformsDir");
   });
 
@@ -1794,8 +1794,8 @@ describe("doctor config flow", () => {
   it("keeps discord streaming aliases on disk during repair so downgrades stay recoverable", async () => {
     await withTempHome(
       async (home) => {
-        const configDir = path.join(home, ".openclaw");
-        const configPath = path.join(configDir, "openclaw.json");
+        const configDir = path.join(home, ".cimiclaw");
+        const configPath = path.join(configDir, "cimiclaw.json");
         await fs.mkdir(configDir, { recursive: true });
         await fs.writeFile(
           configPath,
@@ -2096,10 +2096,10 @@ describe("doctor config flow", () => {
   it("converts numeric discord ids to strings on repair", async () => {
     await withTempHome(
       async (home) => {
-        const configDir = path.join(home, ".openclaw");
+        const configDir = path.join(home, ".cimiclaw");
         await fs.mkdir(configDir, { recursive: true });
         await fs.writeFile(
-          path.join(configDir, "openclaw.json"),
+          path.join(configDir, "cimiclaw.json"),
           JSON.stringify(
             {
               channels: {
@@ -2267,11 +2267,11 @@ describe("doctor config flow", () => {
   it('repairs dmPolicy="allowlist" by restoring allowFrom from pairing store on repair', async () => {
     const result = await withTempHome(
       async (home) => {
-        const configDir = path.join(home, ".openclaw");
+        const configDir = path.join(home, ".cimiclaw");
         const credentialsDir = path.join(configDir, "credentials");
         await fs.mkdir(credentialsDir, { recursive: true });
         await fs.writeFile(
-          path.join(configDir, "openclaw.json"),
+          path.join(configDir, "cimiclaw.json"),
           JSON.stringify(
             {
               channels: {
@@ -2596,10 +2596,10 @@ describe("doctor config flow", () => {
     await withTempHome(
       async (home) => {
         const providerId = "acme-speech";
-        const configDir = path.join(home, ".openclaw");
+        const configDir = path.join(home, ".cimiclaw");
         await fs.mkdir(configDir, { recursive: true });
         await fs.writeFile(
-          path.join(configDir, "openclaw.json"),
+          path.join(configDir, "cimiclaw.json"),
           JSON.stringify(
             {
               talk: {

@@ -6,7 +6,7 @@ import os from "node:os";
 import path from "node:path";
 import { runCli, shouldStartCrestodianForBareRoot } from "../../dist/cli/run-main.js";
 import { clearConfigCache } from "../../dist/config/config.js";
-import type { OpenClawConfig } from "../../dist/config/types.openclaw.js";
+import type { OpenClawConfig } from "../../dist/config/types.cimiclaw.js";
 import { runCrestodian } from "../../dist/crestodian/crestodian.js";
 import type { RuntimeEnv } from "../../dist/runtime.js";
 
@@ -64,11 +64,11 @@ function renderCommandTemplate(template: string, vars: Record<string, string>): 
 async function main() {
   const spec = await readFirstRunSpec();
   const stateDir =
-    process.env.OPENCLAW_STATE_DIR ??
+    process.env.cimiclaw_STATE_DIR ??
     (await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-crestodian-first-run-")));
-  const configPath = process.env.OPENCLAW_CONFIG_PATH ?? path.join(stateDir, "openclaw.json");
-  process.env.OPENCLAW_STATE_DIR = stateDir;
-  process.env.OPENCLAW_CONFIG_PATH = configPath;
+  const configPath = process.env.cimiclaw_CONFIG_PATH ?? path.join(stateDir, "openclaw.json");
+  process.env.cimiclaw_STATE_DIR = stateDir;
+  process.env.cimiclaw_CONFIG_PATH = configPath;
   await fs.rm(stateDir, { recursive: true, force: true });
   await fs.mkdir(stateDir, { recursive: true });
   clearConfigCache();

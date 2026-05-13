@@ -5,7 +5,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 import {
   callGatewayMock,
   setSubagentsConfigOverride,
-} from "./openclaw-tools.subagents.test-harness.js";
+} from "./cimiclaw-tools.subagents.test-harness.js";
 import {
   addSubagentRunForTests,
   listSubagentRunsForRequester,

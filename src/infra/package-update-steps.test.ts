@@ -143,7 +143,7 @@ describe("runGlobalPackageUpdateSteps", () => {
           const fromPath = String(from);
           if (
             exdevMoves === 0 &&
-            fromPath.includes(`${path.sep}.openclaw-update-stage-`) &&
+            fromPath.includes(`${path.sep}.cimiclaw-update-stage-`) &&
             path.basename(fromPath) === "openclaw" &&
             String(to) === packageRoot
           ) {
@@ -298,9 +298,9 @@ describe("runGlobalPackageUpdateSteps", () => {
       const rmSpy = vi.spyOn(fs, "rm").mockImplementation(async (target, options) => {
         const targetPath = String(target);
         if (
-          targetPath.includes(`${path.sep}.openclaw-`) &&
-          !targetPath.includes(".openclaw-update-stage-") &&
-          !targetPath.includes(".openclaw-shim-backup-")
+          targetPath.includes(`${path.sep}.cimiclaw-`) &&
+          !targetPath.includes(".cimiclaw-update-stage-") &&
+          !targetPath.includes(".cimiclaw-shim-backup-")
         ) {
           throw Object.assign(new Error("EPERM: operation not permitted, unlink native.node"), {
             code: "EPERM",

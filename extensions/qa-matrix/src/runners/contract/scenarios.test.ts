@@ -4745,9 +4745,9 @@ describe("matrix live qa scenarios", () => {
       ]);
       expect(runMatrixQaOpenClawCli.mock.calls[0]?.[0].stdin).toBe("encoded-recovery-key\n");
       const cliEnv = startMatrixQaOpenClawCli.mock.calls[0]?.[0].env;
-      expect(cliEnv?.OPENCLAW_STATE_DIR).toContain("openclaw-matrix-cli-qa-");
-      expect(cliEnv?.OPENCLAW_CONFIG_PATH).toContain("openclaw-matrix-cli-qa-");
-      const configPath = String(cliEnv?.OPENCLAW_CONFIG_PATH);
+      expect(cliEnv?.cimiclaw_STATE_DIR).toContain("openclaw-matrix-cli-qa-");
+      expect(cliEnv?.cimiclaw_CONFIG_PATH).toContain("openclaw-matrix-cli-qa-");
+      const configPath = String(cliEnv?.cimiclaw_CONFIG_PATH);
       if (!cliAccountConfigDuringRun) {
         throw new Error("expected CLI account config to be captured");
       }
@@ -4761,7 +4761,7 @@ describe("matrix live qa scenarios", () => {
       expect(cliAccountConfig.startupVerification).toBe("off");
       expect(cliAccountConfig.userId).toBe("@cli-owner:matrix-qa.test");
       await expectPathMissing(configPath);
-      await expectPathMissing(String(cliEnv?.OPENCLAW_STATE_DIR));
+      await expectPathMissing(String(cliEnv?.cimiclaw_STATE_DIR));
       expect(acceptVerification).toHaveBeenCalledWith("owner-request");
       expect(confirmVerificationSas).toHaveBeenCalledWith("owner-request");
       expect(deleteOwnDevices).toHaveBeenCalledWith(["CLIDEVICE"]);

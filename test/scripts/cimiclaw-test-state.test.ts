@@ -8,7 +8,7 @@ import { describe, expect, it } from "vitest";
 
 const execFileAsync = promisify(execFile);
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const scriptPath = path.join(repoRoot, "scripts/lib/openclaw-test-state.mjs");
+const scriptPath = path.join(repoRoot, "scripts/lib/cimiclaw-test-state.mjs");
 const onboardDockerScriptPath = path.join(repoRoot, "scripts/e2e/onboard-docker.sh");
 
 function shellQuote(value: string): string {
@@ -19,9 +19,9 @@ function escapeRegex(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
 }
 
-describe("scripts/lib/openclaw-test-state", () => {
+describe("scripts/lib/cimiclaw-test-state", () => {
   it("creates a sourceable env file and JSON description", async () => {
-    const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-test-state-script-"));
+    const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), "cimiclaw-test-state-script-"));
     const envFile = path.join(tempRoot, "env.sh");
     try {
       const { stdout } = await execFileAsync(process.execPath, [
@@ -44,8 +44,8 @@ describe("scripts/lib/openclaw-test-state", () => {
         expect(payload[field].length).toBeGreaterThan(0);
       }
       expect(payload.home).toBe(path.join(payload.root, "home"));
-      expect(payload.stateDir).toBe(path.join(payload.home, ".openclaw"));
-      expect(payload.configPath).toBe(path.join(payload.stateDir, "openclaw.json"));
+      expect(payload.stateDir).toBe(path.join(payload.home, ".cimiclaw"));
+      expect(payload.configPath).toBe(path.join(payload.stateDir, "cimiclaw.json"));
       expect(payload.workspaceDir).toBe(path.join(payload.home, "workspace"));
       expect(payload.env).toEqual({
         HOME: payload.home,
@@ -83,7 +83,7 @@ describe("scripts/lib/openclaw-test-state", () => {
   });
 
   it("renders a Docker-friendly shell snippet", async () => {
-    const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-test-state-shell-"));
+    const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), "cimiclaw-test-state-shell-"));
     const snippetFile = path.join(tempRoot, "state.sh");
     try {
       const { stdout } = await execFileAsync(process.execPath, [
@@ -114,7 +114,7 @@ describe("scripts/lib/openclaw-test-state", () => {
       expect(path.basename(payload.home)).toMatch(
         /^openclaw-update-channel-switch-update-stable-home\./u,
       );
-      expect(payload.openclawHome).toBe(payload.home);
+      expect(payload.cimiclawHome).toBe(payload.home);
       expect(payload.workspace).toBe(`${payload.home}/workspace`);
       expect(payload.channel).toBe("stable");
 
@@ -171,7 +171,7 @@ describe("scripts/lib/openclaw-test-state", () => {
   });
 
   it("renders a reusable Docker shell function", async () => {
-    const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-test-state-function-"));
+    const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), "cimiclaw-test-state-function-"));
     const snippetFile = path.join(tempRoot, "state-function.sh");
     try {
       const { stdout } = await execFileAsync(process.execPath, [scriptPath, "shell-function"]);

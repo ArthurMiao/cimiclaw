@@ -47,12 +47,12 @@ the refactored protocol.
 
 ## Frames
 
-Client â†’ Gateway:
+Client â†?Gateway:
 
 - `req` / `res`: scoped gateway RPC (chat, sessions, config, health, voicewake, skills.bins)
 - `event`: node signals (voice transcript, agent request, chat subscribe, exec lifecycle)
 
-Gateway â†’ Client:
+Gateway â†?Client:
 
 - `invoke` / `invoke-res`: node commands (`canvas.*`, `camera.*`, `screen.record`,
   `location.get`, `sms.send`)
@@ -77,7 +77,7 @@ Payload fields (all optional unless noted):
 ## Historical tailnet usage
 
 - Bind the bridge to a tailnet IP: `bridge.bind: "tailnet"` in
-  `~/.openclaw/openclaw.json` (historical only; `bridge.*` is no longer valid).
+  `~/.cimiclaw/cimiclaw.json` (historical only; `bridge.*` is no longer valid).
 - Clients connect via MagicDNS name or tailnet IP.
 - Bonjour does **not** cross networks; use manual host/port or wide-area DNS-SD
   when needed.

@@ -13,7 +13,7 @@ import type { CrestodianOverview } from "./overview.js";
 function overview(overrides: Partial<CrestodianOverview["tools"]> = {}): CrestodianOverview {
   return {
     config: {
-      path: "/tmp/openclaw.json",
+      path: "/tmp/cimiclaw.json",
       exists: false,
       valid: false,
       issues: [],
@@ -33,7 +33,7 @@ function overview(overrides: Partial<CrestodianOverview["tools"]> = {}): Crestod
       reachable: false,
     },
     references: {
-      docsUrl: "https://docs.openclaw.ai",
+      docsUrl: "https://docs.cimiclaw.ai",
       sourceUrl: "https://github.com/openclaw/openclaw",
     },
   };
@@ -76,7 +76,7 @@ describe("Crestodian assistant", () => {
           apiKeys: { openai: true, anthropic: false },
         }),
         config: {
-          path: "/tmp/openclaw.json",
+          path: "/tmp/cimiclaw.json",
           exists: true,
           valid: true,
           issues: [],
@@ -95,7 +95,7 @@ describe("Crestodian assistant", () => {
         defaultModel: "openai/gpt-5.5",
         references: {
           docsPath: "/tmp/openclaw/docs",
-          docsUrl: "https://docs.openclaw.ai",
+          docsUrl: "https://docs.cimiclaw.ai",
           sourcePath: "/tmp/openclaw",
           sourceUrl: "https://github.com/openclaw/openclaw",
         },

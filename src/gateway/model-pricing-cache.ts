@@ -9,7 +9,7 @@ import {
 } from "../agents/model-selection.js";
 import { resolvePluginWebSearchConfig } from "../config/plugin-web-search-config.js";
 import type { ModelDefinitionConfig } from "../config/types.models.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import { planManifestModelCatalogRows, type ModelCatalogCost } from "../model-catalog/index.js";
 import { isInstalledPluginEnabled } from "../plugins/installed-plugin-index.js";

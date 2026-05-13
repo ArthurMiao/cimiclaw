@@ -650,16 +650,16 @@ describe("sendMessageMatrix threads", () => {
     await sendMessageMatrix("room:!room:example", "ignored", {
       client,
       cfg: {} as never,
-      extraContent: { "com.openclaw.approval": { id: "req-1" } },
+      extraContent: { "com.cimiclaw.approval": { id: "req-1" } },
     });
 
     expect(sendMessage).toHaveBeenCalledTimes(3);
     expect(sentContent(sendMessage, 0).body).toBe("first");
-    expect(sentContent(sendMessage, 0)["com.openclaw.approval"]).toEqual({ id: "req-1" });
+    expect(sentContent(sendMessage, 0)["com.cimiclaw.approval"]).toEqual({ id: "req-1" });
     expect(sentContent(sendMessage, 1).body).toBe("second");
-    expect(sendMessage.mock.calls[1]?.[1]).not.toHaveProperty("com.openclaw.approval");
+    expect(sendMessage.mock.calls[1]?.[1]).not.toHaveProperty("com.cimiclaw.approval");
     expect(sentContent(sendMessage, 2).body).toBe("third");
-    expect(sendMessage.mock.calls[2]?.[1]).not.toHaveProperty("com.openclaw.approval");
+    expect(sendMessage.mock.calls[2]?.[1]).not.toHaveProperty("com.cimiclaw.approval");
   });
 });
 

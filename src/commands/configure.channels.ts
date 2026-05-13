@@ -2,7 +2,7 @@ import { listChatChannels } from "../channels/chat-meta.js";
 import { formatCliCommand } from "../cli/command-format.js";
 import { CONFIG_PATH } from "../config/config.js";
 import { isBlockedObjectKey } from "../config/prototype-keys.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { note } from "../terminal/note.js";
 import { sanitizeTerminalText } from "../terminal/safe-text.js";
@@ -77,7 +77,7 @@ export async function removeChannelConfigWizard(
     if (configured.length === 0) {
       note(
         [
-          "No channel config found in openclaw.json.",
+          "No channel config found in cimiclaw.json.",
           `Tip: \`${formatCliCommand("openclaw channels status")}\` shows what is configured and enabled.`,
         ].join("\n"),
         "Remove channel",

@@ -30,7 +30,7 @@ export type ProviderInstallCatalogEntry = ProviderAuthChoiceMetadata & {
 };
 
 type ProviderInstallCatalogParams = {
-  config?: import("../config/types.openclaw.js").OpenClawConfig;
+  config?: import("../config/types.cimiclaw.js").OpenClawConfig;
   workspaceDir?: string;
   env?: NodeJS.ProcessEnv;
   includeUntrustedWorkspacePlugins?: boolean;

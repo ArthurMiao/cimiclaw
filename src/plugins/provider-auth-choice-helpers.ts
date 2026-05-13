@@ -5,7 +5,7 @@ import {
 } from "../config/model-input.js";
 import { normalizeProviderConfigForConfigDefaults } from "../config/provider-policy.js";
 import type { ModelProviderConfig } from "../config/types.models.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   normalizeLowercaseStringOrEmpty,
   normalizeOptionalLowercaseString,

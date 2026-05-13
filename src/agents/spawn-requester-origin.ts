@@ -1,5 +1,5 @@
 import type { ChatType } from "../channels/chat-type.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveFirstBoundAccountId } from "../routing/bound-account-read.js";
 import { normalizeDeliveryContext } from "../utils/delivery-context.shared.js";
 

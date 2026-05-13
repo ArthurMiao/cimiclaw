@@ -38,7 +38,7 @@ OAuth providers commonly mint a **new refresh token** during login/refresh flows
 
 Practical symptom:
 
-- you log in via OpenClaw _and_ via Claude Code / Codex CLI â†’ one of them randomly gets "logged out" later
+- you log in via OpenClaw _and_ via Claude Code / Codex CLI â†?one of them randomly gets "logged out" later
 
 To reduce that, OpenClaw treats `auth-profiles.json` as a **token sink**:
 
@@ -56,13 +56,13 @@ To reduce that, OpenClaw treats `auth-profiles.json` as a **token sink**:
 
 Secrets are stored in agent auth stores:
 
-- Auth profiles (OAuth + API keys + optional value-level refs): `~/.openclaw/agents/<agentId>/agent/auth-profiles.json`
-- Legacy compatibility file: `~/.openclaw/agents/<agentId>/agent/auth.json`
+- Auth profiles (OAuth + API keys + optional value-level refs): `~/.cimiclaw/agents/<agentId>/agent/auth-profiles.json`
+- Legacy compatibility file: `~/.cimiclaw/agents/<agentId>/agent/auth.json`
   (static `api_key` entries are scrubbed when discovered)
 
 Legacy import-only file (still supported, but not the main store):
 
-- `~/.openclaw/credentials/oauth.json` (imported into `auth-profiles.json` on first use)
+- `~/.cimiclaw/credentials/oauth.json` (imported into `auth-profiles.json` on first use)
 
 All of the above also respect `$OPENCLAW_STATE_DIR` (state dir override). Full reference: [/gateway/configuration](/gateway/configuration-reference#auth-storage)
 
@@ -129,7 +129,7 @@ Flow shape (PKCE):
 5. exchange at `https://auth.openai.com/oauth/token`
 6. extract `accountId` from the access token and store `{ access, refresh, expires, accountId }`
 
-Wizard path is `openclaw onboard` â†’ auth choice `openai-codex`.
+Wizard path is `openclaw onboard` â†?auth choice `openai-codex`.
 
 ## Refresh + expiry
 
@@ -137,8 +137,8 @@ Profiles store an `expires` timestamp.
 
 At runtime:
 
-- if `expires` is in the future â†’ use the stored access token
-- if expired â†’ refresh (under a file lock) and overwrite the stored credentials
+- if `expires` is in the future â†?use the stored access token
+- if expired â†?refresh (under a file lock) and overwrite the stored credentials
 - if a secondary agent reads an inherited main-agent OAuth profile, refresh
   writes back to the main agent store instead of copying the refresh token into
   the secondary agent store

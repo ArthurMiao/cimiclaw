@@ -424,7 +424,7 @@ title: "Plugin reference"
 # Plugin reference
 
 This page is generated from \`extensions/*/package.json\` and
-\`openclaw.plugin.json\`. Regenerate it with:
+\`cimiclaw.plugin.json\`. Regenerate it with:
 
 \`\`\`bash
 pnpm plugins:inventory:gen
@@ -440,7 +440,7 @@ function collectPluginSourceEntries() {
     .readdirSync(EXTENSIONS_DIR)
     .toSorted((left, right) => left.localeCompare(right))) {
     const packagePath = path.join(EXTENSIONS_DIR, dirName, "package.json");
-    const manifestPath = path.join(EXTENSIONS_DIR, dirName, "openclaw.plugin.json");
+    const manifestPath = path.join(EXTENSIONS_DIR, dirName, "cimiclaw.plugin.json");
     if (!fs.existsSync(packagePath) || !fs.existsSync(manifestPath)) {
       continue;
     }
@@ -541,7 +541,7 @@ title: "Plugin inventory"
 
 # Plugin inventory
 
-This page is generated from \`extensions/*/package.json\`, \`openclaw.plugin.json\`,
+This page is generated from \`extensions/*/package.json\`, \`cimiclaw.plugin.json\`,
 and the root npm package \`files\` exclusions. Regenerate it with:
 
 \`\`\`bash

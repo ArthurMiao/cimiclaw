@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { resolveRegistryUpdateChannel } from "../infra/update-channels.js";
 import type { PluginEnableResult } from "../plugins/enable.js";
 import { resolveNpmInstallSpecsForUpdateChannel } from "../plugins/install-channel-specs.js";

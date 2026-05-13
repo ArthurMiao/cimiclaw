@@ -21,7 +21,7 @@ vi.mock("../media/store.js", async (importOriginal) => {
   };
 });
 
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { MAX_IMAGE_BYTES } from "../media/constants.js";
 import {
   buildMessageWithAttachments,

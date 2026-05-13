@@ -4,7 +4,7 @@ import {
   type SkillArchiveInstallFailureKind,
   validateRequestedSkillSlug,
 } from "../../agents/skills-archive-install.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { formatErrorMessage } from "../../infra/errors.js";
 import {
   ErrorCodes,

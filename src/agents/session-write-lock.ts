@@ -316,8 +316,8 @@ function isOpenClawSessionOwnerArgv(args: string[]): boolean {
       (arg) =>
         arg === "openclaw" ||
         arg.endsWith("/openclaw") ||
-        arg === "openclaw.mjs" ||
-        arg.endsWith("/openclaw.mjs"),
+        arg === "cimiclaw.mjs" ||
+        arg.endsWith("/cimiclaw.mjs"),
     )
   ) {
     return true;

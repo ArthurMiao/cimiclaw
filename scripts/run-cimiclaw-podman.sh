@@ -3,8 +3,8 @@
 #
 # One-time setup (from repo root): ./scripts/podman/setup.sh
 # Then:
-#   ./scripts/run-openclaw-podman.sh launch        # Start gateway
-#   ./scripts/run-openclaw-podman.sh launch setup  # Onboarding wizard
+#   ./scripts/run-cimiclaw-podman.sh launch        # Start gateway
+#   ./scripts/run-cimiclaw-podman.sh launch setup  # Onboarding wizard
 #
 # Manage the running container from the host CLI:
 #   openclaw --container openclaw dashboard --no-open
@@ -197,7 +197,7 @@ if [[ -z "$EFFECTIVE_HOME" ]]; then
   EFFECTIVE_HOME="$(resolve_user_home "$EFFECTIVE_USER")"
 fi
 if [[ "$(id -u)" -eq 0 ]]; then
-  fail "Run run-openclaw-podman.sh as your normal user so Podman stays rootless."
+  fail "Run run-cimiclaw-podman.sh as your normal user so Podman stays rootless."
 fi
 
 # Legacy: setup-host -> run the Podman setup script

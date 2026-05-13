@@ -32,7 +32,7 @@ function writeJson(file, value) {
 }
 
 function manifestPath(pluginDir) {
-  return path.join(process.cwd(), "dist", "extensions", pluginDir, "openclaw.plugin.json");
+  return path.join(process.cwd(), "dist", "extensions", pluginDir, "cimiclaw.plugin.json");
 }
 
 function loadManifest(pluginDir) {

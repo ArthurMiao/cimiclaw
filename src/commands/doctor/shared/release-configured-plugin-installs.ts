@@ -4,7 +4,7 @@ import { normalizeChatChannelId } from "../../../channels/registry.js";
 import { isChannelConfigured } from "../../../config/channel-configured.js";
 import { collectConfiguredModelRefs } from "../../../config/model-refs.js";
 import { detectPluginAutoEnableCandidates } from "../../../config/plugin-auto-enable.js";
-import type { OpenClawConfig } from "../../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../../config/types.cimiclaw.js";
 import { compareOpenClawVersions } from "../../../config/version.js";
 import { isTruthyEnvValue } from "../../../infra/env.js";
 import { getOfficialExternalPluginCatalogEntry } from "../../../plugins/official-external-plugin-catalog.js";

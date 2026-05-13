@@ -6,7 +6,7 @@ read_when:
   - You are validating channel, model, gateway, or tool config blocks
 ---
 
-Core config reference for `~/.openclaw/openclaw.json`. For a task-oriented overview, see [Configuration](/gateway/configuration).
+Core config reference for `~/.cimiclaw/cimiclaw.json`. For a task-oriented overview, see [Configuration](/gateway/configuration).
 
 Covers the main OpenClaw config surfaces and links out when a subsystem has its own deeper reference. Channel- and plugin-owned command catalogs and deep memory/QMD knobs live on their own pages rather than on this one.
 
@@ -198,7 +198,7 @@ See [MCP](/cli/mcp#openclaw-as-an-mcp-client-registry) and
 }
 ```
 
-- Loaded from `~/.openclaw/extensions`, `<workspace>/.openclaw/extensions`, plus `plugins.load.paths`.
+- Loaded from `~/.cimiclaw/extensions`, `<workspace>/.cimiclaw/extensions`, plus `plugins.load.paths`.
 - Discovery accepts native OpenClaw plugins plus compatible Codex bundles and Claude bundles, including manifestless Claude default-layout bundles.
 - **Config changes require a gateway restart.**
 - `allow`: optional allowlist (only listed plugins load). `deny` wins.
@@ -404,7 +404,7 @@ See [Inferred commitments](/concepts/commitments).
   post-launch CDP websocket readiness. Raise them on slower hosts where Chrome
   starts successfully but readiness checks race startup. Both values must be
   positive integers up to `120000` ms; invalid config values are rejected.
-- Auto-detect order: default browser if Chromium-based → Chrome → Brave → Edge → Chromium → Chrome Canary.
+- Auto-detect order: default browser if Chromium-based �?Chrome �?Brave �?Edge �?Chromium �?Chrome Canary.
 - `browser.executablePath` and `browser.profiles.<name>.executablePath` both
   accept `~` and `~/...` for your OS home directory before Chromium launch.
   Per-profile `userDataDir` on `existing-session` profiles is also tilde-expanded.
@@ -535,7 +535,7 @@ See [Inferred commitments](/concepts/commitments).
 - `remote.transport`: `ssh` (default) or `direct` (ws/wss). For `direct`, `remote.url` must be `ws://` or `wss://`.
 - `OPENCLAW_ALLOW_INSECURE_PRIVATE_WS=1`: client-side process-environment
   break-glass override that allows plaintext `ws://` to trusted private-network
-  IPs; default remains loopback-only for plaintext. There is no `openclaw.json`
+  IPs; default remains loopback-only for plaintext. There is no `cimiclaw.json`
   equivalent, and browser private-network config such as
   `browser.ssrfPolicy.dangerouslyAllowPrivateNetwork` does not affect Gateway
   WebSocket clients.
@@ -580,12 +580,12 @@ See [Inferred commitments](/concepts/commitments).
 Run multiple gateways on one host with unique ports and state dirs:
 
 ```bash
-OPENCLAW_CONFIG_PATH=~/.openclaw/a.json \
-OPENCLAW_STATE_DIR=~/.openclaw-a \
+OPENCLAW_CONFIG_PATH=~/.cimiclaw/a.json \
+OPENCLAW_STATE_DIR=~/.cimiclaw-a \
 openclaw gateway --port 19001
 ```
 
-Convenience flags: `--dev` (uses `~/.openclaw-dev` + port `19001`), `--profile <name>` (uses `~/.openclaw-<name>`).
+Convenience flags: `--dev` (uses `~/.cimiclaw-dev` + port `19001`), `--profile <name>` (uses `~/.cimiclaw-<name>`).
 
 See [Multiple Gateways](/gateway/multiple-gateways).
 
@@ -649,7 +649,7 @@ See [Multiple Gateways](/gateway/multiple-gateways).
     allowedSessionKeyPrefixes: ["hook:", "hook:gmail:"],
     allowedAgentIds: ["hooks", "main"],
     presets: ["gmail"],
-    transformsDir: "~/.openclaw/hooks/transforms",
+    transformsDir: "~/.cimiclaw/hooks/transforms",
     mappings: [
       {
         match: { path: "gmail" },
@@ -681,20 +681,20 @@ Validation and safety notes:
 
 **Endpoints:**
 
-- `POST /hooks/wake` → `{ text, mode?: "now"|"next-heartbeat" }`
-- `POST /hooks/agent` → `{ message, name?, agentId?, sessionKey?, wakeMode?, deliver?, channel?, to?, model?, thinking?, timeoutSeconds? }`
+- `POST /hooks/wake` �?`{ text, mode?: "now"|"next-heartbeat" }`
+- `POST /hooks/agent` �?`{ message, name?, agentId?, sessionKey?, wakeMode?, deliver?, channel?, to?, model?, thinking?, timeoutSeconds? }`
   - `sessionKey` from request payload is accepted only when `hooks.allowRequestSessionKey=true` (default: `false`).
-- `POST /hooks/<name>` → resolved via `hooks.mappings`
+- `POST /hooks/<name>` �?resolved via `hooks.mappings`
   - Template-rendered mapping `sessionKey` values are treated as externally supplied and also require `hooks.allowRequestSessionKey=true`.
 
 <Accordion title="Mapping details">
 
-- `match.path` matches sub-path after `/hooks` (e.g. `/hooks/gmail` → `gmail`).
+- `match.path` matches sub-path after `/hooks` (e.g. `/hooks/gmail` �?`gmail`).
 - `match.source` matches a payload field for generic paths.
 - Templates like `{{messages[0].subject}}` read from the payload.
 - `transform` can point to a JS/TS module returning a hook action.
   - `transform.module` must be a relative path and stays within `hooks.transformsDir` (absolute paths and traversal are rejected).
-  - Keep `hooks.transformsDir` under `~/.openclaw/hooks/transforms`; workspace skill directories are rejected. If `openclaw doctor` reports this path as invalid, move the transform module into the hooks transforms directory or remove `hooks.transformsDir`.
+  - Keep `hooks.transformsDir` under `~/.cimiclaw/hooks/transforms`; workspace skill directories are rejected. If `openclaw doctor` reports this path as invalid, move the transform module into the hooks transforms directory or remove `hooks.transformsDir`.
 - `agentId` routes to a specific agent; unknown IDs fall back to default.
 - `allowedAgentIds`: restricts explicit routing (`*` or omitted = allow all, `[]` = deny all).
 - `defaultSessionKey`: optional fixed session key for hook agent runs without explicit `sessionKey`.
@@ -746,7 +746,7 @@ Validation and safety notes:
       canvas: {
         config: {
           host: {
-            root: "~/.openclaw/workspace/canvas",
+            root: "~/.cimiclaw/workspace/canvas",
             liveReload: true,
             // enabled: false, // or OPENCLAW_SKIP_CANVAS_HOST=1
           },
@@ -802,7 +802,7 @@ Validation and safety notes:
 }
 ```
 
-Writes a unicast DNS-SD zone under `~/.openclaw/dns/`. For cross-network discovery, pair with a DNS server (CoreDNS recommended) + Tailscale split DNS.
+Writes a unicast DNS-SD zone under `~/.cimiclaw/dns/`. For cross-network discovery, pair with a DNS server (CoreDNS recommended) + Tailscale split DNS.
 
 Setup: `openclaw dns setup --apply`.
 
@@ -828,7 +828,7 @@ Setup: `openclaw dns setup --apply`.
 ```
 
 - Inline env vars are only applied if the process env is missing the key.
-- `.env` files: CWD `.env` + `~/.openclaw/.env` (neither overrides existing vars).
+- `.env` files: CWD `.env` + `~/.cimiclaw/.env` (neither overrides existing vars).
 - `shellEnv`: imports missing expected keys from your login shell profile.
 - See [Environment](/help/environment) for full precedence.
 
@@ -874,7 +874,7 @@ Validation:
 ### Supported credential surface
 
 - Canonical matrix: [SecretRef Credential Surface](/reference/secretref-credential-surface)
-- `secrets apply` targets supported `openclaw.json` credential paths.
+- `secrets apply` targets supported `cimiclaw.json` credential paths.
 - `auth-profiles.json` refs are included in runtime resolution and audit coverage.
 
 ### Secret providers config
@@ -886,7 +886,7 @@ Validation:
       default: { source: "env" }, // optional explicit env provider
       filemain: {
         source: "file",
-        path: "~/.openclaw/secrets.json",
+        path: "~/.cimiclaw/secrets.json",
         mode: "json",
         timeoutMs: 5000,
       },
@@ -941,7 +941,7 @@ Notes:
 - Legacy flat `auth-profiles.json` maps such as `{ "provider": { "apiKey": "..." } }` are not a runtime format; `openclaw doctor --fix` rewrites them to canonical `provider:default` API-key profiles with a `.legacy-flat.*.bak` backup.
 - OAuth-mode profiles (`auth.profiles.<id>.mode = "oauth"`) do not support SecretRef-backed auth-profile credentials.
 - Static runtime credentials come from in-memory resolved snapshots; legacy static `auth.json` entries are scrubbed when discovered.
-- Legacy OAuth imports from `~/.openclaw/credentials/oauth.json`.
+- Legacy OAuth imports from `~/.cimiclaw/credentials/oauth.json`.
 - See [OAuth](/concepts/oauth).
 - Secrets runtime behavior and `audit/configure/apply` tooling: [Secrets Management](/gateway/secrets).
 
@@ -1042,7 +1042,7 @@ Notes:
 
     cacheTrace: {
       enabled: false,
-      filePath: "~/.openclaw/logs/cache-trace.jsonl",
+      filePath: "~/.cimiclaw/logs/cache-trace.jsonl",
       includeMessages: true,
       includePrompt: true,
       includeSystem: true,
@@ -1330,7 +1330,7 @@ Template placeholders expanded in `tools.media.models[].args`:
 | `{{IsNewSession}}` | `"true"` when new session created                 |
 | `{{MediaUrl}}`     | Inbound media pseudo-URL                          |
 | `{{MediaPath}}`    | Local media path                                  |
-| `{{MediaType}}`    | Media type (image/audio/document/…)               |
+| `{{MediaType}}`    | Media type (image/audio/document/�?               |
 | `{{Transcript}}`   | Audio transcript                                  |
 | `{{Prompt}}`       | Resolved media prompt for CLI entries             |
 | `{{MaxChars}}`     | Resolved max output chars for CLI entries         |
@@ -1348,7 +1348,7 @@ Template placeholders expanded in `tools.media.models[].args`:
 Split config into multiple files:
 
 ```json5
-// ~/.openclaw/openclaw.json
+// ~/.cimiclaw/cimiclaw.json
 {
   gateway: { port: 18789 },
   agents: { $include: "./agents.json5" },
@@ -1364,8 +1364,8 @@ Split config into multiple files:
 - Array of files: deep-merged in order (later overrides earlier).
 - Sibling keys: merged after includes (override included values).
 - Nested includes: up to 10 levels deep.
-- Paths: resolved relative to the including file, but must stay inside the top-level config directory (`dirname` of `openclaw.json`). Absolute/`../` forms are allowed only when they still resolve inside that boundary.
-- OpenClaw-owned writes that change only one top-level section backed by a single-file include write through to that included file. For example, `plugins install` updates `plugins: { $include: "./plugins.json5" }` in `plugins.json5` and leaves `openclaw.json` intact.
+- Paths: resolved relative to the including file, but must stay inside the top-level config directory (`dirname` of `cimiclaw.json`). Absolute/`../` forms are allowed only when they still resolve inside that boundary.
+- OpenClaw-owned writes that change only one top-level section backed by a single-file include write through to that included file. For example, `plugins install` updates `plugins: { $include: "./plugins.json5" }` in `plugins.json5` and leaves `cimiclaw.json` intact.
 - Root includes, include arrays, and includes with sibling overrides are read-only for OpenClaw-owned writes; those writes fail closed instead of flattening the config.
 - Errors: clear messages for missing files, parse errors, and circular includes.
 

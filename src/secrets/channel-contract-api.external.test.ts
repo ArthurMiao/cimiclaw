@@ -57,7 +57,7 @@ module.exports = {
     {
       id: "channels.${channelId}.token",
       targetType: "channels.${channelId}.token",
-      configFile: "openclaw.json",
+      configFile: "cimiclaw.json",
       pathPattern: "channels.${channelId}.token",
       secretShape: "secret_input",
       expectedResolvedValue: "string",

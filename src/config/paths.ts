@@ -19,8 +19,8 @@ export const isNixMode = resolveIsNixMode();
 
 // Support the remaining legacy pre-rebrand state dir.
 const LEGACY_STATE_DIRNAMES = [".clawdbot"] as const;
-const NEW_STATE_DIRNAME = ".openclaw";
-const CONFIG_FILENAME = "openclaw.json";
+const NEW_STATE_DIRNAME = ".cimiclaw";
+const CONFIG_FILENAME = "cimiclaw.json";
 const LEGACY_CONFIG_FILENAMES = ["clawdbot.json"] as const;
 
 function resolveDefaultHomeDir(): string {
@@ -55,7 +55,7 @@ export function resolveNewStateDir(homedir: () => string = resolveDefaultHomeDir
 /**
  * State directory for mutable data (sessions, logs, caches).
  * Can be overridden via OPENCLAW_STATE_DIR.
- * Default: ~/.openclaw
+ * Default: ~/.cimiclaw
  */
 export function resolveStateDir(
   env: NodeJS.ProcessEnv = process.env,
@@ -106,7 +106,7 @@ function resolveUserPath(
  *
  * Returns an empty array when the var is unset or contains no usable entries,
  * preserving the historical behavior where `$include` is confined to the
- * directory containing `openclaw.json`.
+ * directory containing `cimiclaw.json`.
  */
 export function resolveIncludeRoots(
   env: NodeJS.ProcessEnv = process.env,
@@ -141,7 +141,7 @@ export const STATE_DIR = resolveStateDir();
 /**
  * Config file path (JSON or JSON5).
  * Can be overridden via OPENCLAW_CONFIG_PATH.
- * Default: ~/.openclaw/openclaw.json (or $OPENCLAW_STATE_DIR/openclaw.json)
+ * Default: ~/.cimiclaw/cimiclaw.json (or $OPENCLAW_STATE_DIR/cimiclaw.json)
  */
 export function resolveCanonicalConfigPath(
   env: NodeJS.ProcessEnv = process.env,
@@ -260,7 +260,7 @@ export const DEFAULT_GATEWAY_PORT = 18789;
 export function resolveGatewayLockDir(tmpdir: () => string = os.tmpdir): string {
   const base = tmpdir();
   const uid = typeof process.getuid === "function" ? process.getuid() : undefined;
-  const suffix = uid != null ? `openclaw-${uid}` : "openclaw";
+  const suffix = uid != null ? `cimiclaw-${uid}` : "cimiclaw";
   return path.join(base, suffix);
 }
 

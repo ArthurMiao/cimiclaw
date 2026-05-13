@@ -85,8 +85,8 @@ quit
 
 Crestodian's startup path is deliberately small. It can run when:
 
-- `openclaw.json` is missing
-- `openclaw.json` is invalid
+- `cimiclaw.json` is missing
+- `cimiclaw.json` is invalid
 - the Gateway is down
 - plugin command registration is unavailable
 - no agent has been configured yet
@@ -129,7 +129,7 @@ you pass `--yes` for a direct command:
 Applied writes are recorded in:
 
 ```text
-~/.openclaw/audit/crestodian.jsonl
+~/.cimiclaw/audit/crestodian.jsonl
 ```
 
 Discovery is not audited. Only applied operations and writes are logged.

@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { normalizeGooglePreviewModelId } from "../plugin-sdk/provider-model-id-normalize.js";
 import {
   normalizeLowercaseStringOrEmpty,

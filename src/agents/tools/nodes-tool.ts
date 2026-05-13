@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import { Type } from "typebox";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { OperatorScope } from "../../gateway/method-scopes.js";
 import { readConnectPairingRequiredMessage } from "../../gateway/protocol/connect-error-details.js";
 import { formatErrorMessage } from "../../infra/errors.js";

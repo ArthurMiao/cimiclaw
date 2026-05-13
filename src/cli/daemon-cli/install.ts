@@ -268,7 +268,7 @@ async function getGatewayServiceAutoRefreshMessage(params: {
         config: params.config,
       });
       const plannedEmbeddedToken = normalizeOptionalString(
-        plannedInstall.environment.OPENCLAW_GATEWAY_TOKEN,
+        plannedInstall.environment.cimiclaw_GATEWAY_TOKEN,
       );
       if (currentEmbeddedToken !== plannedEmbeddedToken) {
         return "Gateway service OPENCLAW_GATEWAY_TOKEN differs from the current install plan; refreshing the install.";

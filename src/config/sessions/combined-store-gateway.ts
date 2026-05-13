@@ -4,7 +4,7 @@ import {
   resolveStoredSessionKeyForAgentStore,
 } from "../../gateway/session-store-key.js";
 import { normalizeAgentId } from "../../routing/session-key.js";
-import type { OpenClawConfig } from "../types.openclaw.js";
+import type { OpenClawConfig } from "../types.cimiclaw.js";
 import { resolveStorePath } from "./paths.js";
 import { loadSessionStore } from "./store-load.js";
 import {

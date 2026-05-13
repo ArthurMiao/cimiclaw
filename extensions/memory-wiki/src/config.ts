@@ -194,7 +194,7 @@ function expandHomePath(inputPath: string, homedir: string): string {
 }
 
 export function resolveDefaultMemoryWikiVaultPath(homedir = os.homedir()): string {
-  return path.join(homedir, ".openclaw", "wiki", "main");
+  return path.join(homedir, ".cimiclaw", "wiki", "main");
 }
 
 export function resolveMemoryWikiConfig(

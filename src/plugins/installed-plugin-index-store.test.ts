@@ -34,7 +34,7 @@ function createIndex(overrides: Partial<InstalledPluginIndex> = {}): InstalledPl
     plugins: [
       {
         pluginId: "demo",
-        manifestPath: "/plugins/demo/openclaw.plugin.json",
+        manifestPath: "/plugins/demo/cimiclaw.plugin.json",
         manifestHash: "manifest-hash",
         rootDir: "/plugins/demo",
         origin: "global",
@@ -62,7 +62,7 @@ function createCandidate(rootDir: string, options: { id?: string } = {}): Plugin
     "utf8",
   );
   fs.writeFileSync(
-    path.join(rootDir, "openclaw.plugin.json"),
+    path.join(rootDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id,
       name: id === "demo" ? "Demo" : "Next Demo",
@@ -284,7 +284,7 @@ describe("installed plugin index persistence", () => {
     expectPluginFields(policyInspect.current, "demo", { enabled: false });
 
     fs.writeFileSync(
-      path.join(pluginDir, "openclaw.plugin.json"),
+      path.join(pluginDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "demo",
         name: "Demo",
@@ -347,7 +347,7 @@ describe("installed plugin index persistence", () => {
       env,
     });
     fs.writeFileSync(
-      path.join(pluginDir, "openclaw.plugin.json"),
+      path.join(pluginDir, "cimiclaw.plugin.json"),
       JSON.stringify({
         id: "demo",
         name: "Demo",

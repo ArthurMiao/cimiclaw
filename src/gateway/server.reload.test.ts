@@ -213,8 +213,8 @@ vi.mock("../agents/pi-bundle-mcp-tools.js", async () => {
   };
 });
 
-vi.mock("../infra/openclaw-root.js", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("../infra/openclaw-root.js")>();
+vi.mock("../infra/cimiclaw-root.js", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("../infra/cimiclaw-root.js")>();
   return {
     ...actual,
     resolveOpenClawPackageRootSync: hoisted.resolveOpenClawPackageRootSync,

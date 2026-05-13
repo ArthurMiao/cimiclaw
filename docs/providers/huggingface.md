@@ -121,8 +121,8 @@ You can append `:fastest` or `:cheapest` to any model id. Set your default order
     ```
 
     - **Policy suffixes:** OpenClaw's bundled Hugging Face docs and helpers currently treat these two suffixes as the built-in policy variants:
-      - **`:fastest`** â€” highest throughput.
-      - **`:cheapest`** â€” lowest cost per output token.
+      - **`:fastest`** â€?highest throughput.
+      - **`:cheapest`** â€?lowest cost per output token.
 
       You can add these as separate entries in `models.providers.huggingface.models` or set `model.primary` with the suffix. You can also set your default provider order in [Inference Provider settings](https://hf.co/settings/inference-providers) (no suffix = use that order).
 
@@ -131,7 +131,7 @@ You can append `:fastest` or `:cheapest` to any model id. Set your default order
   </Accordion>
 
   <Accordion title="Environment and daemon setup">
-    If the Gateway runs as a daemon (launchd/systemd), make sure `HUGGINGFACE_HUB_TOKEN` or `HF_TOKEN` is available to that process (for example, in `~/.openclaw/.env` or via `env.shellEnv`).
+    If the Gateway runs as a daemon (launchd/systemd), make sure `HUGGINGFACE_HUB_TOKEN` or `HF_TOKEN` is available to that process (for example, in `~/.cimiclaw/.env` or via `env.shellEnv`).
 
     <Note>
     OpenClaw accepts both `HUGGINGFACE_HUB_TOKEN` and `HF_TOKEN` as env var aliases. Either one works; if both are set, `HUGGINGFACE_HUB_TOKEN` takes precedence.

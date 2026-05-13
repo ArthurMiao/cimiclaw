@@ -1,7 +1,7 @@
 import { mkdirSync } from "node:fs";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { requireNodeSqlite } from "../infra/node-sqlite.js";
-import { withOpenClawTestState } from "../test-utils/openclaw-test-state.js";
+import { withOpenClawTestState } from "../test-utils/cimiclaw-test-state.js";
 import {
   closePluginStateSqliteStore,
   createPluginStateKeyedStore,

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { findGitRoot } from "../infra/git-root.js";
 import type { ActiveProcessSessionReference } from "./bash-process-references.js";
 import {

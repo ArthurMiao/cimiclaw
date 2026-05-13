@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { callGateway } from "../gateway/call.js";
 import type { EmbeddedPiQueueMessageOptions } from "./pi-embedded-runner/run-state.js";
 import type { EmbeddedPiQueueMessageOutcome } from "./pi-embedded-runner/runs.js";

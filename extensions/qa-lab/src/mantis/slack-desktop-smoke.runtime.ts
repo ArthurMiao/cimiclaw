@@ -235,32 +235,32 @@ function buildCrabboxEnv(env: NodeJS.ProcessEnv): NodeJS.ProcessEnv {
   const next = {
     ...env,
   };
-  if (!trimToValue(next.OPENCLAW_LIVE_OPENAI_KEY) && trimToValue(next.OPENAI_API_KEY)) {
-    next.OPENCLAW_LIVE_OPENAI_KEY = next.OPENAI_API_KEY;
+  if (!trimToValue(next.cimiclaw_LIVE_OPENAI_KEY) && trimToValue(next.OPENAI_API_KEY)) {
+    next.cimiclaw_LIVE_OPENAI_KEY = next.OPENAI_API_KEY;
   }
-  if (!trimToValue(next.OPENCLAW_MANTIS_SLACK_BOT_TOKEN) && trimToValue(next.SLACK_BOT_TOKEN)) {
-    next.OPENCLAW_MANTIS_SLACK_BOT_TOKEN = next.SLACK_BOT_TOKEN;
-  }
-  if (
-    !trimToValue(next.OPENCLAW_MANTIS_SLACK_BOT_TOKEN) &&
-    trimToValue(next.OPENCLAW_QA_SLACK_SUT_BOT_TOKEN)
-  ) {
-    next.OPENCLAW_MANTIS_SLACK_BOT_TOKEN = next.OPENCLAW_QA_SLACK_SUT_BOT_TOKEN;
-  }
-  if (!trimToValue(next.OPENCLAW_MANTIS_SLACK_APP_TOKEN) && trimToValue(next.SLACK_APP_TOKEN)) {
-    next.OPENCLAW_MANTIS_SLACK_APP_TOKEN = next.SLACK_APP_TOKEN;
+  if (!trimToValue(next.cimiclaw_MANTIS_SLACK_BOT_TOKEN) && trimToValue(next.SLACK_BOT_TOKEN)) {
+    next.cimiclaw_MANTIS_SLACK_BOT_TOKEN = next.SLACK_BOT_TOKEN;
   }
   if (
-    !trimToValue(next.OPENCLAW_MANTIS_SLACK_APP_TOKEN) &&
-    trimToValue(next.OPENCLAW_QA_SLACK_SUT_APP_TOKEN)
+    !trimToValue(next.cimiclaw_MANTIS_SLACK_BOT_TOKEN) &&
+    trimToValue(next.cimiclaw_QA_SLACK_SUT_BOT_TOKEN)
   ) {
-    next.OPENCLAW_MANTIS_SLACK_APP_TOKEN = next.OPENCLAW_QA_SLACK_SUT_APP_TOKEN;
+    next.cimiclaw_MANTIS_SLACK_BOT_TOKEN = next.cimiclaw_QA_SLACK_SUT_BOT_TOKEN;
+  }
+  if (!trimToValue(next.cimiclaw_MANTIS_SLACK_APP_TOKEN) && trimToValue(next.SLACK_APP_TOKEN)) {
+    next.cimiclaw_MANTIS_SLACK_APP_TOKEN = next.SLACK_APP_TOKEN;
   }
   if (
-    !trimToValue(next.OPENCLAW_MANTIS_SLACK_CHANNEL_ID) &&
-    trimToValue(next.OPENCLAW_QA_SLACK_CHANNEL_ID)
+    !trimToValue(next.cimiclaw_MANTIS_SLACK_APP_TOKEN) &&
+    trimToValue(next.cimiclaw_QA_SLACK_SUT_APP_TOKEN)
   ) {
-    next.OPENCLAW_MANTIS_SLACK_CHANNEL_ID = next.OPENCLAW_QA_SLACK_CHANNEL_ID;
+    next.cimiclaw_MANTIS_SLACK_APP_TOKEN = next.cimiclaw_QA_SLACK_SUT_APP_TOKEN;
+  }
+  if (
+    !trimToValue(next.cimiclaw_MANTIS_SLACK_CHANNEL_ID) &&
+    trimToValue(next.cimiclaw_QA_SLACK_CHANNEL_ID)
+  ) {
+    next.cimiclaw_MANTIS_SLACK_CHANNEL_ID = next.cimiclaw_QA_SLACK_CHANNEL_ID;
   }
   return next;
 }
@@ -516,7 +516,7 @@ qa_status=0
     exit 3
   fi
   if [ "$setup_gateway" = "1" ]; then
-    export OPENCLAW_HOME="$HOME/.openclaw-mantis/slack-openclaw"
+    export OPENCLAW_HOME="$HOME/.cimiclaw-mantis/slack-openclaw"
     mkdir -p "$OPENCLAW_HOME"
     cat >"$out/slack.socket.patch.json5" <<MANTIS_SLACK_PATCH
 {

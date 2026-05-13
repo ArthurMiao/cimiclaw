@@ -346,7 +346,7 @@ telegram-live`) or directly from a pull request comment:
   - Telegram Desktop still needs a user login/profile. The bot token configures OpenClaw only. Use `--telegram-profile-archive-env <name>` for a base64 `.tgz` profile archive, or use `--keep-lease` and log in manually through VNC once.
   - Writes `mantis-telegram-desktop-builder-report.md`, `mantis-telegram-desktop-builder-summary.json`, `telegram-desktop-builder.png`, and `telegram-desktop-builder.mp4` under the output directory.
 
-Live transport lanes share one standard contract so new transports do not drift; the per-lane coverage matrix lives in [QA overview → Live transport coverage](/concepts/qa-e2e-automation#live-transport-coverage). `qa-channel` is the broad synthetic suite and is not part of that matrix.
+Live transport lanes share one standard contract so new transports do not drift; the per-lane coverage matrix lives in [QA overview �?Live transport coverage](/concepts/qa-e2e-automation#live-transport-coverage). `qa-channel` is the broad synthetic suite and is not part of that matrix.
 
 ### Shared Telegram credentials via Convex (v1)
 
@@ -512,7 +512,7 @@ for Slack rows.
 
 ### Adding a channel to QA
 
-The architecture and scenario-helper names for new channel adapters live in [QA overview → Adding a channel](/concepts/qa-e2e-automation#adding-a-channel). The minimum bar: implement the transport runner on the shared `qa-lab` host seam, declare `qaRunners` in the plugin manifest, mount as `openclaw qa <runner>`, and author scenarios under `qa/scenarios/`.
+The architecture and scenario-helper names for new channel adapters live in [QA overview �?Adding a channel](/concepts/qa-e2e-automation#adding-a-channel). The minimum bar: implement the transport runner on the shared `qa-lab` host seam, declare `qaRunners` in the plugin manifest, mount as `openclaw qa <runner>`, and author scenarios under `qa/scenarios/`.
 
 ## Test suites (what runs where)
 
@@ -707,7 +707,7 @@ Native dependency policy:
   - Costs money / uses rate limits
   - Prefer running narrowed subsets instead of "everything"
 - Live runs source `~/.profile` to pick up missing API keys.
-- By default, live runs still isolate `HOME` and copy config/auth material into a temp test home so unit fixtures cannot mutate your real `~/.openclaw`.
+- By default, live runs still isolate `HOME` and copy config/auth material into a temp test home so unit fixtures cannot mutate your real `~/.cimiclaw`.
 - Set `OPENCLAW_LIVE_USE_REAL_HOME=1` only when you intentionally need live tests to use your real home directory.
 - `pnpm test:live` now defaults to a quieter mode: it keeps `[live] ...` progress output, but suppresses the extra `~/.profile` notice and mutes gateway bootstrap logs/Bonjour chatter. Set `OPENCLAW_LIVE_TEST_QUIET=0` if you want the full startup logs back.
 - API key rotation (provider-specific): set `*_API_KEYS` with comma/semicolon format or `*_API_KEY_1`, `*_API_KEY_2` (for example `OPENAI_API_KEYS`, `ANTHROPIC_API_KEYS`, `GEMINI_API_KEYS`) or per-live override via `OPENCLAW_LIVE_*_KEY`; tests retry on rate limit responses.
@@ -845,8 +845,8 @@ Manual ACP plain-language thread smoke (not CI):
 
 Useful env vars:
 
-- `OPENCLAW_CONFIG_DIR=...` (default: `~/.openclaw`) mounted to `/home/node/.openclaw`
-- `OPENCLAW_WORKSPACE_DIR=...` (default: `~/.openclaw/workspace`) mounted to `/home/node/.openclaw/workspace`
+- `OPENCLAW_CONFIG_DIR=...` (default: `~/.cimiclaw`) mounted to `/home/node/.cimiclaw`
+- `OPENCLAW_WORKSPACE_DIR=...` (default: `~/.cimiclaw/workspace`) mounted to `/home/node/.cimiclaw/workspace`
 - `OPENCLAW_PROFILE_FILE=...` (default: `~/.profile`) mounted to `/home/node/.profile` and sourced before running tests
 - `OPENCLAW_DOCKER_PROFILE_ENV_ONLY=1` to verify only env vars sourced from `OPENCLAW_PROFILE_FILE`, using temporary config/workspace dirs and no external CLI auth mounts
 - `OPENCLAW_DOCKER_CLI_TOOLS_DIR=...` (default: `~/.cache/openclaw/docker-cli-tools`) mounted to `/home/node/.npm-global` for cached CLI installs inside Docker
@@ -957,8 +957,8 @@ When you fix a provider/model issue discovered in live:
 - Add a CI-safe regression if possible (mock/stub provider, or capture the exact request-shape transformation)
 - If it's inherently live-only (rate limits, auth policies), keep the live test narrow and opt-in via env vars
 - Prefer targeting the smallest layer that catches the bug:
-  - provider request conversion/replay bug → direct models test
-  - gateway session/history/tool pipeline bug → gateway live smoke or CI-safe gateway mock test
+  - provider request conversion/replay bug �?direct models test
+  - gateway session/history/tool pipeline bug �?gateway live smoke or CI-safe gateway mock test
 - SecretRef traversal guardrail:
   - `src/secrets/exec-secret-ref-id-parity.test.ts` derives one sampled target per SecretRef class from registry metadata (`listSecretTargetRegistryEntries()`), then asserts traversal-segment exec ids are rejected.
   - If you add a new `includeInPlan` SecretRef target family in `src/secrets/target-registry-data.ts`, update `classifyTargetClass` in that test. The test intentionally fails on unclassified target ids so new classes cannot be skipped silently.

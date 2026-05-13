@@ -116,12 +116,12 @@ export function readBundledChannelCatalog(
           };
         };
       };
-      const id = parsed.openclaw?.channel?.id;
+      const id = parsed.cimiclaw?.channel?.id;
       if (typeof id !== "string" || !id.trim()) {
         continue;
       }
-      const orderRaw = parsed.openclaw?.channel?.order;
-      const labelRaw = parsed.openclaw?.channel?.label;
+      const orderRaw = parsed.cimiclaw?.channel?.order;
+      const labelRaw = parsed.cimiclaw?.channel?.label;
       entries.push({
         id: id.trim(),
         order: typeof orderRaw === "number" ? orderRaw : 999,
@@ -150,7 +150,7 @@ export function readBundledChannelCatalogIds(
 function createIsolatedRootHelpRenderContext(
   bundledPluginsDir: string = extensionsDir,
 ): RootHelpRenderContext {
-  const stateDir = path.join(rootDir, ".openclaw-build-root-help");
+  const stateDir = path.join(rootDir, ".cimiclaw-build-root-help");
   const workspaceDir = path.join(stateDir, "workspace");
   const homeDir = path.join(stateDir, "home");
   const env: NodeJS.ProcessEnv = {

@@ -15,7 +15,7 @@ export const OPENCLAW_PACKAGE_SPEC_RE =
   /^openclaw@(alpha|beta|latest|[0-9]{4}\.[1-9][0-9]*\.[1-9][0-9]*(-[1-9][0-9]*|-(alpha|beta)\.[1-9][0-9]*)?)$/u;
 
 function usage() {
-  return `Usage: node scripts/resolve-openclaw-package-candidate.mjs --source <ref|npm|url|artifact> --output-dir <dir> [options]
+  return `Usage: node scripts/resolve-cimiclaw-package-candidate.mjs --source <ref|npm|url|artifact> --output-dir <dir> [options]
 
 Options:
   --package-spec <spec>       Published npm spec for source=npm.
@@ -406,7 +406,7 @@ async function resolveCandidate(options) {
       packageTrustedReason = packageSource.trustedReason;
       await installPackageSourceDeps(packageSource.sourceDir);
       await run("node", [
-        "scripts/package-openclaw-for-docker.mjs",
+        "scripts/package-cimiclaw-for-docker.mjs",
         "--source-dir",
         packageSource.sourceDir,
         "--output-dir",
@@ -471,7 +471,7 @@ async function resolveCandidate(options) {
   const digest = await assertExpectedSha256(target, options.packageSha256 || artifactSha256);
   console.error(`Checking OpenClaw package tarball: ${target}`);
   const checkStartedAt = Date.now();
-  await run("node", ["scripts/check-openclaw-package-tarball.mjs", target], {
+  await run("node", ["scripts/check-cimiclaw-package-tarball.mjs", target], {
     timeoutMs: 5 * 60 * 1000,
   });
   console.error(

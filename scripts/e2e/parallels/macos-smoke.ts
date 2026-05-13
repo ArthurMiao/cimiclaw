@@ -95,7 +95,7 @@ interface MacosSummary {
 const guestPath =
   "/opt/homebrew/bin:/opt/homebrew/opt/node/bin:/opt/homebrew/sbin:/usr/bin:/bin:/usr/sbin:/sbin";
 const guestOpenClaw = "/opt/homebrew/bin/openclaw";
-const guestOpenClawEntry = "/opt/homebrew/lib/node_modules/openclaw/openclaw.mjs";
+const guestOpenClawEntry = "/opt/homebrew/lib/node_modules/openclaw/cimiclaw.mjs";
 const guestNode = "/opt/homebrew/bin/node";
 const guestNpm = "/opt/homebrew/bin/npm";
 
@@ -475,7 +475,7 @@ class MacosSmoke {
     this.status.freshDashboard = "pass";
     await this.phase(
       "fresh.first-agent-turn",
-      Number(process.env.OPENCLAW_PARALLELS_MACOS_AGENT_TIMEOUT_S || 2700),
+      Number(process.env.cimiclaw_PARALLELS_MACOS_AGENT_TIMEOUT_S || 2700),
       () => this.verifyTurn(),
     );
     this.status.freshAgent = "pass";
@@ -518,7 +518,7 @@ class MacosSmoke {
     } else {
       await this.phase(
         "upgrade.update-dev",
-        Number(process.env.OPENCLAW_PARALLELS_MACOS_UPDATE_DEV_TIMEOUT_S || 1800),
+        Number(process.env.cimiclaw_PARALLELS_MACOS_UPDATE_DEV_TIMEOUT_S || 1800),
         () => this.runDevChannelUpdate(),
       );
       this.status.upgradeVersion = await this.extractLastVersion("upgrade.update-dev");
@@ -532,7 +532,7 @@ class MacosSmoke {
     this.status.upgradeDashboard = "pass";
     await this.phase(
       "upgrade.first-agent-turn",
-      Number(process.env.OPENCLAW_PARALLELS_MACOS_AGENT_TIMEOUT_S || 2700),
+      Number(process.env.cimiclaw_PARALLELS_MACOS_AGENT_TIMEOUT_S || 2700),
       () => this.verifyTurn(),
     );
     this.status.upgradeAgent = "pass";
@@ -728,14 +728,14 @@ class MacosSmoke {
   private resetState(): void {
     this.guestSh(String.raw`/usr/bin/pkill -f 'openclaw.*gateway run' >/dev/null 2>&1 || true
 /usr/bin/pkill -f 'openclaw-gateway' >/dev/null 2>&1 || true
-/usr/bin/pkill -f 'openclaw.mjs gateway' >/dev/null 2>&1 || true
+/usr/bin/pkill -f 'cimiclaw.mjs gateway' >/dev/null 2>&1 || true
 printf 'preflight.user=%s\n' "$(whoami)"
 printf 'preflight.home=%s\n' "$HOME"
 printf 'preflight.path=%s\n' "$PATH"
 printf 'preflight.umask=%s\n' "$(umask)"
 printf 'preflight.npmRoot=%s\n' "$(${guestNpm} root -g 2>/dev/null || true)"
 ${guestNpm} uninstall -g openclaw >/dev/null 2>&1 || true
-rm -rf "$HOME/.openclaw"
+rm -rf "$HOME/.cimiclaw"
 rm -f /tmp/openclaw-parallels-macos-gateway.log`);
   }
 
@@ -865,7 +865,7 @@ export PATH=${shellQuote(`/tmp/openclaw-smoke-pnpm-bootstrap/node_modules/.bin:$
 ${guestNode} - <<'JS'
 const fs = require("node:fs");
 const path = require("node:path");
-const configPath = path.join(process.env.HOME || ${JSON.stringify(home)}, ".openclaw", "openclaw.json");
+const configPath = path.join(process.env.HOME || ${JSON.stringify(home)}, ".cimiclaw", "openclaw.json");
 const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
 config.update = { ...(config.update || {}), channel: "dev" };
 fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + "\\n");
@@ -895,11 +895,11 @@ ${guestNode} ${guestOpenClawEntry} update status --json`,
 trap '' HUP
 /usr/bin/pkill -f 'openclaw.*gateway run' >/dev/null 2>&1 || true
 /usr/bin/pkill -f 'openclaw-gateway' >/dev/null 2>&1 || true
-/usr/bin/pkill -f 'openclaw.mjs gateway' >/dev/null 2>&1 || true
+/usr/bin/pkill -f 'cimiclaw.mjs gateway' >/dev/null 2>&1 || true
 /usr/bin/env HOME=${shellQuote(home)} USER=${shellQuote(this.guestUser)} LOGNAME=${shellQuote(this.guestUser)} PATH=${shellQuote(guestPath)} ${shellQuote(
         `${this.auth.apiKeyEnv}=${this.auth.apiKeyValue}`,
-      )} OPENCLAW_HOME=${shellQuote(home)} OPENCLAW_STATE_DIR=${shellQuote(`${home}/.openclaw`)} OPENCLAW_CONFIG_PATH=${shellQuote(
-        `${home}/.openclaw/openclaw.json`,
+      )} OPENCLAW_HOME=${shellQuote(home)} OPENCLAW_STATE_DIR=${shellQuote(`${home}/.cimiclaw`)} OPENCLAW_CONFIG_PATH=${shellQuote(
+        `${home}/.cimiclaw/openclaw.json`,
       )} ${guestNode} ${guestOpenClawEntry} gateway run --bind loopback --port 18789 --force </dev/null >/tmp/openclaw-parallels-macos-gateway.log 2>&1 &
 sleep 1`,
     );
@@ -1006,7 +1006,7 @@ agent_ok=false
 for attempt in 1 2; do
   session_id="parallels-macos-smoke"
   if [ "$attempt" -gt 1 ]; then session_id="parallels-macos-smoke-retry-$attempt"; fi
-  rm -f "$HOME/.openclaw/agents/main/sessions/$session_id.jsonl"
+  rm -f "$HOME/.cimiclaw/agents/main/sessions/$session_id.jsonl"
   output_file="$(mktemp)"
   set +e
   /usr/bin/env ${shellQuote(`${this.auth.apiKeyEnv}=${this.auth.apiKeyValue}`)} ${guestNode} ${guestOpenClawEntry} agent --local --agent main --session-id "$session_id" --message ${shellQuote(

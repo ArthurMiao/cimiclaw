@@ -94,7 +94,7 @@ export function collectBundledPluginBuildEntries(params = {}) {
     }
 
     const pluginDir = path.join(extensionsRoot, dirent.name);
-    const manifestPath = path.join(pluginDir, "openclaw.plugin.json");
+    const manifestPath = path.join(pluginDir, "cimiclaw.plugin.json");
     const hasManifest = fs.existsSync(manifestPath);
     const packageJsonPath = path.join(pluginDir, "package.json");
     const packageJson = readBundledPluginPackageJson(packageJsonPath);
@@ -178,7 +178,7 @@ export function listBundledPluginPackArtifacts(params = {}) {
 
   for (const { id, hasManifest, hasPackageJson, sourceEntries } of entries) {
     if (hasManifest) {
-      artifacts.add(bundledDistPluginFile(id, "openclaw.plugin.json"));
+      artifacts.add(bundledDistPluginFile(id, "cimiclaw.plugin.json"));
     }
     if (hasPackageJson) {
       artifacts.add(bundledDistPluginFile(id, "package.json"));

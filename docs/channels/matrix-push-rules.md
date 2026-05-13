@@ -64,7 +64,7 @@ If no pushers come back, fix normal Matrix push delivery for this account before
   </Step>
 
   <Step title="Install the override push rule">
-    OpenClaw marks finalized text-only preview edits with `content["com.openclaw.finalized_preview"] = true`. Install a rule that matches that marker plus the bot MXID as sender:
+    OpenClaw marks finalized text-only preview edits with `content["com.cimiclaw.finalized_preview"] = true`. Install a rule that matches that marker plus the bot MXID as sender:
 
 ```bash
 curl -sS -X PUT \
@@ -81,7 +81,7 @@ curl -sS -X PUT \
       },
       {
         "kind": "event_property_is",
-        "key": "content.com\\.openclaw\\.finalized_preview",
+        "key": "content.com\\.cimiclaw\\.finalized_preview",
         "value": true
       },
       { "kind": "event_match", "key": "sender", "pattern": "@bot:example.org" }

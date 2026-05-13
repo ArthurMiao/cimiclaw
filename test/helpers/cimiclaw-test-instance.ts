@@ -11,7 +11,7 @@ import {
   createOpenClawTestState,
   type OpenClawTestState,
   type OpenClawTestStateOptions,
-} from "../../src/test-utils/openclaw-test-state.js";
+} from "../../src/test-utils/cimiclaw-test-state.js";
 import { sleep } from "../../src/utils.js";
 
 export type OpenClawTestInstanceOptions = {

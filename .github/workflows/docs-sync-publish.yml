@@ -71,14 +71,14 @@ jobs:
         run: npm install --no-save --package-lock=false @mdx-js/mdx@3.1.1
 
       - name: Check publish docs MDX
-        run: node "$GITHUB_WORKSPACE/publish/.openclaw-sync/check-docs-mdx.mjs" "$GITHUB_WORKSPACE/publish/docs"
+        run: node "$GITHUB_WORKSPACE/publish/.cimiclaw-sync/check-docs-mdx.mjs" "$GITHUB_WORKSPACE/publish/docs"
 
       - name: Commit publish repo sync
         working-directory: publish
         run: |
           set -euo pipefail
           remote_source_sha() {
-            git show refs/remotes/origin/main:.openclaw-sync/source.json 2>/dev/null \
+            git show refs/remotes/origin/main:.cimiclaw-sync/source.json 2>/dev/null \
               | node -e 'const fs = require("node:fs"); try { const data = JSON.parse(fs.readFileSync(0, "utf8")); if (data.sha) process.stdout.write(data.sha); } catch {}' \
               || true
           }
@@ -95,7 +95,7 @@ jobs:
             fi
           }
 
-          if git diff --quiet -- docs .openclaw-sync; then
+          if git diff --quiet -- docs .cimiclaw-sync; then
             echo "No publish-repo changes."
             exit 0
           fi
@@ -106,7 +106,7 @@ jobs:
 
           git config user.name "openclaw-docs-sync[bot]"
           git config user.email "openclaw-docs-sync[bot]@users.noreply.github.com"
-          git add docs .openclaw-sync
+          git add docs .cimiclaw-sync
           git commit -m "chore(sync): mirror docs from $GITHUB_REPOSITORY@$GITHUB_SHA"
           for attempt in 1 2 3 4 5; do
             if git fetch origin main:refs/remotes/origin/main; then

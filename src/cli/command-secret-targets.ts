@@ -1,5 +1,5 @@
 import { listReadOnlyChannelPluginsForConfig } from "../channels/plugins/read-only.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { normalizeOptionalAccountId } from "../routing/session-key.js";
 import { loadChannelSecretContractApi } from "../secrets/channel-contract-api.js";
 import {
@@ -103,7 +103,7 @@ function isScopedChannelSecretTargetEntry(params: {
   const allowedPrefix = `channels.${channelId}.`;
   return (
     params.entry.id.startsWith(allowedPrefix) &&
-    params.entry.configFile === "openclaw.json" &&
+    params.entry.configFile === "cimiclaw.json" &&
     typeof params.entry.pathPattern === "string" &&
     params.entry.pathPattern.startsWith(allowedPrefix) &&
     (params.entry.refPathPattern === undefined ||

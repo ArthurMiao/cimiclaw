@@ -36,7 +36,7 @@ describe("compactSkillPaths", () => {
 
   it("replaces home directory prefix with ~ in skill locations", () => {
     const home = os.homedir();
-    const skillDir = path.join(home, ".openclaw-test-skills", "test-skill");
+    const skillDir = path.join(home, ".cimiclaw-test-skills", "test-skill");
 
     const prompt = buildPromptForFixtureSkill({
       workspaceRoot: home,

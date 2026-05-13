@@ -1,5 +1,5 @@
 import type { AgentAcpBinding, AgentBinding, AgentRouteBinding } from "./types.agents.js";
-import type { OpenClawConfig } from "./types.openclaw.js";
+import type { OpenClawConfig } from "./types.cimiclaw.js";
 
 function normalizeBindingType(binding: AgentBinding): "route" | "acp" {
   return binding.type === "acp" ? "acp" : "route";

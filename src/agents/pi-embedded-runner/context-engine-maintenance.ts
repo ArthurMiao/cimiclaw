@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { resolveContextEngineOwnerPluginId } from "../../context-engine/registry.js";
 import type {
   ContextEngine,

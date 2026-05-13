@@ -8,7 +8,7 @@ import {
   resolveSandboxedMediaSource,
 } from "../../agents/sandbox-paths.js";
 import { ensureSandboxWorkspaceForSession } from "../../agents/sandbox.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { logVerbose } from "../../globals.js";
 import { resolveChannelAccountMediaMaxMb } from "../../media/configured-max-bytes.js";
 import { isPassThroughRemoteMediaSource } from "../../media/media-source-url.js";

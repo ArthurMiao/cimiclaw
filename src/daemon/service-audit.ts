@@ -286,7 +286,7 @@ function auditGatewayToken(
   issues.push({
     code: SERVICE_AUDIT_CODES.gatewayTokenMismatch,
     message:
-      "Gateway service OPENCLAW_GATEWAY_TOKEN does not match gateway.auth.token in openclaw.json",
+      "Gateway service OPENCLAW_GATEWAY_TOKEN does not match gateway.auth.token in cimiclaw.json",
     detail: "service token is stale",
     level: "recommended",
   });
@@ -373,10 +373,10 @@ export function readEmbeddedGatewayToken(command: GatewayServiceCommand): string
   if (!command) {
     return undefined;
   }
-  if (isEnvironmentFileOnlySource(command.environmentValueSources?.OPENCLAW_GATEWAY_TOKEN)) {
+  if (isEnvironmentFileOnlySource(command.environmentValueSources?.cimiclaw_GATEWAY_TOKEN)) {
     return undefined;
   }
-  return normalizeOptionalString(command.environment?.OPENCLAW_GATEWAY_TOKEN);
+  return normalizeOptionalString(command.environment?.cimiclaw_GATEWAY_TOKEN);
 }
 
 function getPathModule(platform: NodeJS.Platform) {

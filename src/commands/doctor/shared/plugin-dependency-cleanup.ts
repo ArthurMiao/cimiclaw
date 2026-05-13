@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { resolveStateDir } from "../../../config/paths.js";
-import { resolveOpenClawPackageRootSync } from "../../../infra/openclaw-root.js";
+import { resolveOpenClawPackageRootSync } from "../../../infra/cimiclaw-root.js";
 import { resolveConfigDir, resolveUserPath } from "../../../utils.js";
 import { removeStalePluginRuntimeSymlinks } from "./plugin-runtime-symlinks.js";
 
@@ -37,18 +37,18 @@ async function pathExists(targetPath: string): Promise<boolean> {
 
 function isRuntimeDependencyMarkerName(name: string): boolean {
   return (
-    name === ".openclaw-runtime-deps.json" ||
-    name === ".openclaw-runtime-deps-stamp.json" ||
-    name.startsWith(".openclaw-runtime-deps-")
+    name === ".cimiclaw-runtime-deps.json" ||
+    name === ".cimiclaw-runtime-deps-stamp.json" ||
+    name.startsWith(".cimiclaw-runtime-deps-")
   );
 }
 
 function isLegacyDependencyDebrisName(name: string): boolean {
   return (
     isRuntimeDependencyMarkerName(name) ||
-    name === ".openclaw-pnpm-store" ||
-    name === ".openclaw-install-backups" ||
-    name.startsWith(".openclaw-install-stage-")
+    name === ".cimiclaw-pnpm-store" ||
+    name === ".cimiclaw-install-backups" ||
+    name.startsWith(".cimiclaw-install-stage-")
   );
 }
 

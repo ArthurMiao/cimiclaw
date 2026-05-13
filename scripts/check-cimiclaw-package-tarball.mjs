@@ -15,7 +15,7 @@ import {
 } from "./lib/package-dist-imports.mjs";
 
 function usage() {
-  return "Usage: node scripts/check-openclaw-package-tarball.mjs <openclaw.tgz>";
+  return "Usage: node scripts/check-cimiclaw-package-tarball.mjs <openclaw.tgz>";
 }
 
 function fail(message) {
@@ -39,7 +39,7 @@ function runPhase(label, action) {
   } finally {
     if (phaseTimingsEnabled) {
       const durationMs = Math.round(performance.now() - startedAt);
-      console.error(`check-openclaw-package-tarball: ${label} completed in ${durationMs}ms`);
+      console.error(`check-cimiclaw-package-tarball: ${label} completed in ${durationMs}ms`);
     }
   }
 }

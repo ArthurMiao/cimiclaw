@@ -69,7 +69,7 @@ type CliOptions = {
 const DEFAULT_RUNS = 5;
 const DEFAULT_WARMUP = 1;
 const DEFAULT_TIMEOUT_MS = 30_000;
-const DEFAULT_ENTRY = "openclaw.mjs";
+const DEFAULT_ENTRY = "cimiclaw.mjs";
 const MAX_RSS_MARKER = "__OPENCLAW_MAX_RSS_KB__=";
 
 const COMMAND_CASES: readonly CommandCase[] = [
@@ -516,7 +516,7 @@ async function runSample(params: {
   rssHookPath: string;
 }): Promise<Sample> {
   const runRoot = mkdtempSync(path.join(os.tmpdir(), "openclaw-cli-bench-home-"));
-  const stateDir = path.join(runRoot, ".openclaw");
+  const stateDir = path.join(runRoot, ".cimiclaw");
   const configPath = path.join(stateDir, "openclaw.json");
   const nodeArgs = [
     "--import",
@@ -775,7 +775,7 @@ Options:
   --preset <startup|real|response|all>
                                Command preset to run (default: startup)
   --case <id>                  Specific case id to run; repeatable
-  --entry <path>               Primary entry file (default: openclaw.mjs)
+  --entry <path>               Primary entry file (default: cimiclaw.mjs)
   --entry-secondary <path>     Secondary entry file for avg delta comparison
   --runs <n>                   Measured runs per case (default: ${DEFAULT_RUNS})
   --warmup <n>                 Warmup runs per case (default: ${DEFAULT_WARMUP})

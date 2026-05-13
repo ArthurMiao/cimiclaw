@@ -7,7 +7,7 @@ import {
   resolveSessionIdentityFromMeta,
 } from "../../acp/runtime/session-identity.js";
 import { resolveAgentDir } from "../../agents/agent-scope.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { TtsAutoMode } from "../../config/types.tts.js";
 import { logVerbose } from "../../globals.js";
 import { emitAgentEvent } from "../../infra/agent-events.js";

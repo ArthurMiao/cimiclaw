@@ -2,7 +2,7 @@ import { getChannelPlugin } from "../../channels/plugins/index.js";
 import type { ChannelThreadingAdapter } from "../../channels/plugins/types.core.js";
 import { normalizeAnyChannelId } from "../../channels/registry.js";
 import type { ReplyToMode } from "../../config/types.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { normalizeOptionalLowercaseString } from "../../shared/string-coerce.js";
 import { copyReplyPayloadMetadata } from "../reply-payload.js";
 import type { OriginatingChannelType } from "../templating.js";

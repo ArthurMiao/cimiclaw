@@ -49,7 +49,7 @@ ssh <vm-name>.exe.xyz
 ```
 
 <Tip>
-Keep this VM **stateful**. OpenClaw stores `openclaw.json`, per-agent `auth-profiles.json`, sessions, and channel/provider state under `~/.openclaw/`, plus the workspace under `~/.openclaw/workspace/`.
+Keep this VM **stateful**. OpenClaw stores `cimiclaw.json`, per-agent `auth-profiles.json`, sessions, and channel/provider state under `~/.cimiclaw/`, plus the workspace under `~/.cimiclaw/workspace/`.
 </Tip>
 
 ## 2) Install prerequisites (on the VM)
@@ -115,12 +115,12 @@ Approve devices with `openclaw devices list` and `openclaw devices approve <requ
 
 ## Remote channel setup
 
-For remote hosts, prefer one `config patch` call over many SSH calls to `config set`. Keep real tokens in the VM environment or `~/.openclaw/.env`, and put only SecretRefs in `openclaw.json`.
+For remote hosts, prefer one `config patch` call over many SSH calls to `config set`. Keep real tokens in the VM environment or `~/.cimiclaw/.env`, and put only SecretRefs in `cimiclaw.json`.
 
 On the VM, make the service environment contain the secrets it needs:
 
 ```bash
-cat >> ~/.openclaw/.env <<'EOF'
+cat >> ~/.cimiclaw/.env <<'EOF'
 SLACK_BOT_TOKEN=xoxb-...
 SLACK_APP_TOKEN=xapp-...
 DISCORD_BOT_TOKEN=...

@@ -122,7 +122,7 @@ function findQaBundledPluginDirsByManifestId(params: {
         continue;
       }
       const candidate = path.join(sourceRoot, entry.name);
-      const manifestId = readQaBundledManifestId(path.join(candidate, "openclaw.plugin.json"));
+      const manifestId = readQaBundledManifestId(path.join(candidate, "cimiclaw.plugin.json"));
       if (manifestId === params.pluginId) {
         candidates.push(candidate);
       }
@@ -150,7 +150,7 @@ export async function resolveQaOwnerPluginIdsForProviderIds(params: {
       if (!entry.isDirectory()) {
         continue;
       }
-      const manifestPath = path.join(sourceRoot, entry.name, "openclaw.plugin.json");
+      const manifestPath = path.join(sourceRoot, entry.name, "cimiclaw.plugin.json");
       if (!existsSync(manifestPath)) {
         continue;
       }
@@ -379,7 +379,7 @@ export async function resolveQaRuntimeHostVersion(params: {
         };
       };
     };
-    const candidate = parseStableSemverFloor(packageJson.openclaw?.install?.minHostVersion);
+    const candidate = parseStableSemverFloor(packageJson.cimiclaw?.install?.minHostVersion);
     if (compareSemverFloors(candidate, selected) > 0) {
       selected = candidate;
     }

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import os from "node:os";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { getShellEnvAppliedKeys } from "../infra/shell-env.js";
 import { resolvePluginSetupProvider } from "../plugins/setup-registry.js";
 import type { ProviderAuthEvidence } from "../secrets/provider-env-vars.js";

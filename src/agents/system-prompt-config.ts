@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { buildTtsSystemPromptHint } from "../tts/tts.js";
 import { resolveAgentConfig } from "./agent-scope.js";
 import { buildModelAliasLines } from "./model-alias-lines.js";

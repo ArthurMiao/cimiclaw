@@ -24,7 +24,7 @@ Not every agent run creates a task. Heartbeat turns and normal interactive chat 
 
 - Tasks are **records**, not schedulers - cron and heartbeat decide _when_ work runs, tasks track _what happened_.
 - ACP, subagents, all cron jobs, and CLI operations create tasks. Heartbeat turns do not.
-- Each task moves through `queued â†’ running â†’ terminal` (succeeded, failed, timed_out, cancelled, or lost).
+- Each task moves through `queued â†?running â†?terminal` (succeeded, failed, timed_out, cancelled, or lost).
 - Cron tasks stay live while the cron runtime still owns the job; if the
   in-memory runtime state is gone, task maintenance first checks durable cron
   run history before marking a task lost.
@@ -346,7 +346,7 @@ A sweeper runs every **60 seconds** and handles four things:
 
   </Accordion>
   <Accordion title="Tasks and cron">
-    A cron job **definition** lives in `~/.openclaw/cron/jobs.json`; runtime execution state lives beside it in `~/.openclaw/cron/jobs-state.json`. **Every** cron execution creates a task record - both main-session and isolated. Main-session cron tasks default to `silent` notify policy so they track without generating notifications.
+    A cron job **definition** lives in `~/.cimiclaw/cron/jobs.json`; runtime execution state lives beside it in `~/.cimiclaw/cron/jobs-state.json`. **Every** cron execution creates a task record - both main-session and isolated. Main-session cron tasks default to `silent` notify policy so they track without generating notifications.
 
     See [Cron Jobs](/automation/cron-jobs).
 

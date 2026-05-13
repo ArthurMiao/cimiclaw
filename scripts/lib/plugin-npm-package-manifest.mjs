@@ -198,7 +198,7 @@ export function mergeGeneratedChannelConfigs(manifest, generatedChannelConfigs) 
 export function resolveAugmentedPluginNpmManifest(params) {
   const repoRoot = path.resolve(params.repoRoot ?? ".");
   const packageDir = resolvePackageDir(repoRoot, params.packageDir);
-  const manifestPath = path.join(packageDir, "openclaw.plugin.json");
+  const manifestPath = path.join(packageDir, "cimiclaw.plugin.json");
   if (!fs.existsSync(manifestPath)) {
     return {
       manifestPath,

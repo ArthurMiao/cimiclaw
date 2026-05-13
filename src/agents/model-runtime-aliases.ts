@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { normalizeStaticProviderModelId } from "./model-ref-shared.js";
 import { resolveModelRuntimePolicy } from "./model-runtime-policy.js";
 import { normalizeProviderId } from "./provider-id.js";

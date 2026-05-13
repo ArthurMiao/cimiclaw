@@ -5,7 +5,7 @@ import {
   resolveSessionFilePath,
   resolveSessionFilePathOptions,
 } from "../../config/sessions/paths.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { isPathInside } from "../../infra/path-guards.js";
 import { resolveSessionAgentIds } from "../agent-scope.js";
 import {

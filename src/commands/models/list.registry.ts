@@ -6,7 +6,7 @@ import {
   shouldSuppressBuiltInModelFromManifest,
 } from "../../agents/model-suppression.js";
 import { discoverAuthStorage, discoverModels } from "../../agents/pi-model-discovery.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import {
   formatErrorWithStack,
   MODEL_AVAILABILITY_UNAVAILABLE_CODE,

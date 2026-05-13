@@ -25,7 +25,7 @@ This is the easiest "no terminal on the server" path: Railway runs the Gateway f
   Deploy on Railway
 </a>
 
-After deploy, find your public URL in **Railway → your service → Settings → Domains**.
+After deploy, find your public URL in **Railway �?your service �?Settings �?Domains**.
 
 Railway will either:
 
@@ -34,12 +34,12 @@ Railway will either:
 
 Then open:
 
-- `https://<your-railway-domain>/openclaw` — Control UI
+- `https://<your-railway-domain>/openclaw` �?Control UI
 
 ## What you get
 
 - Hosted OpenClaw Gateway + Control UI
-- Persistent storage via Railway Volume (`/data`) so `openclaw.json`,
+- Persistent storage via Railway Volume (`/data`) so `cimiclaw.json`,
   per-agent `auth-profiles.json`, channel/provider state, sessions, and
   workspace survive redeploys
 
@@ -61,16 +61,16 @@ Attach a volume mounted at:
 
 Set these variables on the service:
 
-- `OPENCLAW_GATEWAY_PORT=8080` (required — must match the port in Public Networking)
+- `OPENCLAW_GATEWAY_PORT=8080` (required �?must match the port in Public Networking)
 - `OPENCLAW_GATEWAY_TOKEN` (required; treat as an admin secret)
-- `OPENCLAW_STATE_DIR=/data/.openclaw` (recommended)
+- `OPENCLAW_STATE_DIR=/data/.cimiclaw` (recommended)
 - `OPENCLAW_WORKSPACE_DIR=/data/workspace` (recommended)
 
 ## Connect a channel
 
 Use the Control UI at `/openclaw` or run `openclaw onboard` via Railway's shell for channel setup instructions:
 
-- [Telegram](/channels/telegram) (fastest — just a bot token)
+- [Telegram](/channels/telegram) (fastest �?just a bot token)
 - [Discord](/channels/discord)
 - [All channels](/channels)
 

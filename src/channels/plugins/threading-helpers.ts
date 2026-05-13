@@ -1,5 +1,5 @@
 import type { ReplyToMode } from "../../config/types.base.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import type { ChannelThreadingAdapter } from "./types.core.js";
 
 type ReplyToModeResolver = NonNullable<ChannelThreadingAdapter["resolveReplyToMode"]>;

@@ -6,7 +6,7 @@ import {
   type SessionEntry,
   type SessionHeader,
 } from "@mariozechner/pi-coding-agent";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { collectDuplicateUserMessageEntryIdsForCompaction } from "./compaction-duplicate-user-messages.js";
 import {
   readTranscriptFileState,

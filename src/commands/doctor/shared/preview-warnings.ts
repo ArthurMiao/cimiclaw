@@ -1,7 +1,7 @@
 import { pickSandboxToolPolicy } from "../../../agents/sandbox-tool-policy.js";
 import { isToolAllowedByPolicies } from "../../../agents/tool-policy-match.js";
 import { mergeAlsoAllowPolicy, resolveToolProfilePolicy } from "../../../agents/tool-policy.js";
-import type { OpenClawConfig } from "../../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../../config/types.cimiclaw.js";
 import type { AgentToolsConfig, ToolsConfig } from "../../../config/types.tools.js";
 import { createLazyImportLoader } from "../../../shared/lazy-promise.js";
 

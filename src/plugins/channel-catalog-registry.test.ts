@@ -18,7 +18,7 @@ const RECORDS: Record<string, PluginInstallRecord> = {
     source: "npm",
     spec: "@tencent-weixin/openclaw-weixin@2.3.7",
     installPath:
-      "/tmp/openclaw-test-home/.openclaw/npm/node_modules/@tencent-weixin/openclaw-weixin",
+      "/tmp/openclaw-test-home/.cimiclaw/npm/node_modules/@tencent-weixin/openclaw-weixin",
   } as PluginInstallRecord,
 };
 

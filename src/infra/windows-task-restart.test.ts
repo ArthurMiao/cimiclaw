@@ -9,7 +9,7 @@ const resolvePreferredOpenClawTmpDirMock = vi.hoisted(() => vi.fn(() => os.tmpdi
 const resolveTaskScriptPathMock = vi.hoisted(() =>
   vi.fn((env: Record<string, string | undefined>) => {
     const home = env.USERPROFILE || env.HOME || os.homedir();
-    return path.join(home, ".openclaw", "gateway.cmd");
+    return path.join(home, ".cimiclaw", "gateway.cmd");
   }),
 );
 
@@ -22,7 +22,7 @@ vi.mock("node:child_process", async () => {
     },
   );
 });
-vi.mock("./tmp-openclaw-dir.js", () => ({
+vi.mock("./tmp-cimiclaw-dir.js", () => ({
   resolvePreferredOpenClawTmpDir: () => resolvePreferredOpenClawTmpDirMock(),
 }));
 vi.mock("../daemon/schtasks.js", () => ({
@@ -77,7 +77,7 @@ describe("relaunchGatewayScheduledTask", () => {
     resolveTaskScriptPathMock.mockReset();
     resolveTaskScriptPathMock.mockImplementation((env: Record<string, string | undefined>) => {
       const home = env.USERPROFILE || env.HOME || os.homedir();
-      return path.join(home, ".openclaw", "gateway.cmd");
+      return path.join(home, ".cimiclaw", "gateway.cmd");
     });
   });
 

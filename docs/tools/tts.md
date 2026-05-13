@@ -1,5 +1,5 @@
 ---
-summary: "Text-to-speech for outbound replies — providers, personas, slash commands, and per-channel output"
+summary: "Text-to-speech for outbound replies 鈥?providers, personas, slash commands, and per-channel output"
 read_when:
   - Enabling text-to-speech for replies
   - Configuring a TTS provider, fallback chain, or persona
@@ -86,14 +86,14 @@ if you keep summaries enabled.
 <Warning>
 The bundled **Microsoft** provider uses Microsoft Edge's online neural TTS
 service via `node-edge-tts`. It is a public web service without a published
-SLA or quota — treat it as best-effort. The legacy provider id `edge` is
+SLA or quota 鈥?treat it as best-effort. The legacy provider id `edge` is
 normalized to `microsoft` and `openclaw doctor --fix` rewrites persisted
 config; new configs should always use `microsoft`.
 </Warning>
 
 ## Configuration
 
-TTS config lives under `messages.tts` in `~/.openclaw/openclaw.json`. Pick a
+TTS config lives under `messages.tts` in `~/.cimiclaw/cimiclaw.json`. Pick a
 preset and adapt the provider block:
 
 <Tabs>
@@ -405,7 +405,7 @@ voice, model, persona, or auto-TTS mode. The agent block deep-merges over
 ```
 
 To pin a per-agent persona, set `agents.list[].tts.persona` alongside provider
-config — it overrides the global `messages.tts.persona` for that agent only.
+config 鈥?it overrides the global `messages.tts.persona` for that agent only.
 
 Precedence order for automatic replies, `/tts audio`, `/tts status`, and the
 `tts` agent tool:
@@ -625,8 +625,8 @@ directive warnings.
 - `voice` / `voiceName` / `voice_name` / `google_voice` / `voiceId`
 - `model` / `google_model`
 - `stability`, `similarityBoost`, `style`, `speed`, `useSpeakerBoost`
-- `vol` / `volume` (MiniMax volume, 0–10)
-- `pitch` (MiniMax integer pitch, −12 to 12; fractional values are truncated)
+- `vol` / `volume` (MiniMax volume, 0鈥?0)
+- `pitch` (MiniMax integer pitch, 鈭?2 to 12; fractional values are truncated)
 - `emotion` (Volcengine emotion tag)
 - `applyTextNormalization` (`auto|on|off`)
 - `languageCode` (ISO 639-1)
@@ -647,7 +647,7 @@ directive warnings.
 ## Slash commands
 
 Single command `/tts`. On Discord, OpenClaw also registers `/voice` because
-`/tts` is a built-in Discord command — text `/tts ...` still works.
+`/tts` is a built-in Discord command 鈥?text `/tts ...` still works.
 
 ```text
 /tts off | on | status
@@ -673,18 +673,18 @@ Behavior notes:
 - `/tts latest` reads the latest assistant reply from the current session transcript and sends it as audio once. It stores only a hash of that reply on the session entry to suppress duplicate voice sends.
 - `/tts audio` generates a one-off audio reply (does **not** toggle TTS on).
 - `limit` and `summary` are stored in **local prefs**, not the main config.
-- `/tts status` includes fallback diagnostics for the latest attempt — `Fallback: <primary> -> <used>`, `Attempts: ...`, and per-attempt detail (`provider:outcome(reasonCode) latency`).
+- `/tts status` includes fallback diagnostics for the latest attempt 鈥?`Fallback: <primary> -> <used>`, `Attempts: ...`, and per-attempt detail (`provider:outcome(reasonCode) latency`).
 - `/status` shows the active TTS mode plus configured provider, model, voice, and sanitized custom endpoint metadata when TTS is enabled.
 
 ## Per-user preferences
 
 Slash commands write local overrides to `prefsPath`. The default is
-`~/.openclaw/settings/tts.json`; override with the `OPENCLAW_TTS_PREFS` env var
+`~/.cimiclaw/settings/tts.json`; override with the `OPENCLAW_TTS_PREFS` env var
 or `messages.tts.prefsPath`.
 
 | Stored field | Effect                                       |
 | ------------ | -------------------------------------------- |
-| `auto`       | Local auto-TTS override (`always`, `off`, …) |
+| `auto`       | Local auto-TTS override (`always`, `off`, 鈥? |
 | `provider`   | Local primary provider override              |
 | `persona`    | Local persona override                       |
 | `maxLength`  | Summary threshold (default `1500` chars)     |
@@ -772,7 +772,7 @@ Per-provider notes:
 - **Local CLI:** Uses configured `outputFormat`. Voice-note targets are converted to Ogg/Opus and telephony output to raw 16 kHz mono PCM.
 - **Google Gemini:** Returns raw 24 kHz PCM. OpenClaw wraps as WAV for attachments, transcodes to 48 kHz Opus for voice-note targets, returns PCM directly for Talk/telephony.
 - **Inworld:** MP3 attachments, native `OGG_OPUS` voice-note, raw `PCM` 22050 Hz for Talk/telephony.
-- **xAI:** MP3 by default; `responseFormat` may be `mp3|wav|pcm|mulaw|alaw`. Uses xAI's batch REST endpoint — streaming WebSocket TTS is **not** used. Native Opus voice-note format is **not** supported.
+- **xAI:** MP3 by default; `responseFormat` may be `mp3|wav|pcm|mulaw|alaw`. Uses xAI's batch REST endpoint 鈥?streaming WebSocket TTS is **not** used. Native Opus voice-note format is **not** supported.
 - **Microsoft:** Uses `microsoft.outputFormat` (default `audio-24khz-48kbitrate-mono-mp3`). Telegram `sendVoice` accepts OGG/MP3/M4A; use OpenAI/ElevenLabs if you need guaranteed Opus voice messages. If the configured Microsoft format fails, OpenClaw retries with MP3.
 
 OpenAI and ElevenLabs output formats are fixed per channel as listed above.
@@ -815,7 +815,7 @@ OpenAI and ElevenLabs output formats are fixed per channel as listed above.
       Request timeout in milliseconds.
     </ParamField>
     <ParamField path="prefsPath" type="string">
-      Override the local prefs JSON path (provider/limit/summary). Default `~/.openclaw/settings/tts.json`.
+      Override the local prefs JSON path (provider/limit/summary). Default `~/.cimiclaw/settings/tts.json`.
     </ParamField>
   </Accordion>
 
@@ -908,7 +908,7 @@ OpenAI and ElevenLabs output formats are fixed per channel as listed above.
     <ParamField path="instructions" type="string">Explicit OpenAI `instructions` field. When set, persona prompt fields are **not** auto-mapped.</ParamField>
     <ParamField path="extraBody / extra_body" type="Record<string, unknown>">Extra JSON fields merged into `/audio/speech` request bodies after generated OpenAI TTS fields. Use this for OpenAI-compatible endpoints such as Kokoro that require provider-specific keys like `lang`; unsafe prototype keys are ignored.</ParamField>
     <ParamField path="baseUrl" type="string">
-      Override the OpenAI TTS endpoint. Resolution order: config → `OPENAI_TTS_BASE_URL` → `https://api.openai.com/v1`. Non-default values are treated as OpenAI-compatible TTS endpoints, so custom model and voice names are accepted.
+      Override the OpenAI TTS endpoint. Resolution order: config 鈫?`OPENAI_TTS_BASE_URL` 鈫?`https://api.openai.com/v1`. Non-default values are treated as OpenAI-compatible TTS endpoints, so custom model and voice names are accepted.
     </ParamField>
   </Accordion>
 
@@ -973,7 +973,7 @@ per-call provider request timeout in milliseconds.
 | `tts.status`      | Read current TTS state and last attempt. |
 | `tts.enable`      | Set local auto preference to `always`.   |
 | `tts.disable`     | Set local auto preference to `off`.      |
-| `tts.convert`     | One-off text → audio.                    |
+| `tts.convert`     | One-off text 鈫?audio.                    |
 | `tts.setProvider` | Set local provider preference.           |
 | `tts.setPersona`  | Set local persona preference.            |
 | `tts.providers`   | List configured providers and status.    |

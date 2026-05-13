@@ -10,7 +10,7 @@ import type {
   ReadConfigFileSnapshotWithPluginMetadataResult,
 } from "../../config/config.js";
 import { CONFIG_PATH, resolveGatewayPort, resolveStateDir } from "../../config/paths.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { hasConfiguredSecretInput } from "../../config/types.secrets.js";
 import {
   defaultGatewayBindMode,

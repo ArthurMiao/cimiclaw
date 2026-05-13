@@ -9,7 +9,7 @@ import { runWatchMain } from "../../scripts/watch-node.mjs";
 import { withTempDir } from "../test-helpers/temp-dir.js";
 
 const VOICE_CALL_README = bundledPluginFile("voice-call", "README.md");
-const VOICE_CALL_MANIFEST = bundledPluginFile("voice-call", "openclaw.plugin.json");
+const VOICE_CALL_MANIFEST = bundledPluginFile("voice-call", "cimiclaw.plugin.json");
 const VOICE_CALL_PACKAGE = bundledPluginFile("voice-call", "package.json");
 const VOICE_CALL_INDEX = bundledPluginFile("voice-call", "index.ts");
 const VOICE_CALL_RUNTIME = bundledPluginFile("voice-call", "src/runtime.ts");
@@ -165,11 +165,11 @@ describe("watch-node script", () => {
       expect(spawnOptions.stdio).toBe("inherit");
       const spawnEnv = requireSpawnEnv(spawn, 0);
       expect(spawnEnv.PATH).toBe("/usr/bin");
-      expect(spawnEnv.OPENCLAW_WATCH_MODE).toBe("1");
-      expect(spawnEnv.OPENCLAW_WATCH_SESSION).toBe("1700000000000-4242");
-      expect(spawnEnv.OPENCLAW_NO_RESPAWN).toBe("1");
-      expect(spawnEnv.OPENCLAW_WATCH_COMMAND).toBe("gateway --force");
-      expect(spawnEnv.OPENCLAW_TRACE_SYNC_IO).toBeUndefined();
+      expect(spawnEnv.cimiclaw_WATCH_MODE).toBe("1");
+      expect(spawnEnv.cimiclaw_WATCH_SESSION).toBe("1700000000000-4242");
+      expect(spawnEnv.cimiclaw_NO_RESPAWN).toBe("1");
+      expect(spawnEnv.cimiclaw_WATCH_COMMAND).toBe("gateway --force");
+      expect(spawnEnv.cimiclaw_TRACE_SYNC_IO).toBeUndefined();
       fakeProcess.emit("SIGINT");
       const exitCode = await runPromise;
       expect(exitCode).toBe(130);
@@ -194,7 +194,7 @@ describe("watch-node script", () => {
       const spawnCall = requireMockCall(spawn, 0);
       expect(spawnCall[0]).toBe("/usr/local/bin/node");
       expect(spawnCall[1]).toEqual(["scripts/run-node.mjs", "gateway", "--force"]);
-      expect(requireSpawnEnv(spawn, 0).OPENCLAW_TRACE_SYNC_IO).toBe("0");
+      expect(requireSpawnEnv(spawn, 0).cimiclaw_TRACE_SYNC_IO).toBe("0");
 
       fakeProcess.emit("SIGINT");
       await runPromise;
@@ -396,7 +396,7 @@ describe("watch-node script", () => {
       args: ["gateway", "--force"],
       createWatcher,
       env: {
-        LAUNCH_JOB_LABEL: "ai.openclaw.gateway",
+        LAUNCH_JOB_LABEL: "ai.cimiclaw.gateway",
         PATH: "/usr/bin",
       },
       lockDisabled: true,
@@ -408,8 +408,8 @@ describe("watch-node script", () => {
     expect(spawnCall[0]).toBe("/usr/local/bin/node");
     expect(spawnCall[1]).toEqual(["scripts/run-node.mjs", "gateway", "--force"]);
     const spawnEnv = requireSpawnEnv(spawn, 0);
-    expect(spawnEnv.LAUNCH_JOB_LABEL).toBe("ai.openclaw.gateway");
-    expect(spawnEnv.OPENCLAW_NO_RESPAWN).toBe("1");
+    expect(spawnEnv.LAUNCH_JOB_LABEL).toBe("ai.cimiclaw.gateway");
+    expect(spawnEnv.cimiclaw_NO_RESPAWN).toBe("1");
 
     fakeProcess.emit("SIGINT");
     const exitCode = await runPromise;

@@ -8,7 +8,7 @@ import { commitConfigWithPendingPluginInstalls } from "../cli/plugins-install-re
 import { readConfigFileSnapshot, resolveGatewayPort } from "../config/config.js";
 import { logConfigUpdated } from "../config/logging.js";
 import { ConfigMutationConflictError } from "../config/mutate.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { ensureControlUiAssetsBuilt } from "../infra/control-ui-assets.js";
 import { resolvePluginContributionOwners } from "../plugins/plugin-registry.js";
 import type { RuntimeEnv } from "../runtime.js";
@@ -193,7 +193,7 @@ async function promptChannelMode(runtime: RuntimeEnv): Promise<ChannelsWizardMod
         {
           value: "remove",
           label: "Remove channel config",
-          hint: "Delete channel tokens/settings from openclaw.json",
+          hint: "Delete channel tokens/settings from cimiclaw.json",
         },
       ],
       initialValue: "configure",

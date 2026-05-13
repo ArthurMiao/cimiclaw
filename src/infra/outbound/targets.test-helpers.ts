@@ -3,7 +3,7 @@ import type {
   ChannelOutboundAdapter,
   ChannelPlugin,
 } from "../../channels/plugins/types.public.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { createTestRegistry } from "../../test-utils/channel-plugins.js";
 
 function readTestDefaultTo(cfg: OpenClawConfig, channelId: string): string | undefined {

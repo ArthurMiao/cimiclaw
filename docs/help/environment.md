@@ -9,15 +9,15 @@ title: "Environment variables"
 
 OpenClaw pulls environment variables from multiple sources. The rule is **never override existing values**.
 
-## Precedence (highest → lowest)
+## Precedence (highest �?lowest)
 
 1. **Process environment** (what the Gateway process already has from the parent shell/daemon).
 2. **`.env` in the current working directory** (dotenv default; does not override).
-3. **Global `.env`** at `~/.openclaw/.env` (aka `$OPENCLAW_STATE_DIR/.env`; does not override).
-4. **Config `env` block** in `~/.openclaw/openclaw.json` (applied only if missing).
+3. **Global `.env`** at `~/.cimiclaw/.env` (aka `$OPENCLAW_STATE_DIR/.env`; does not override).
+4. **Config `env` block** in `~/.cimiclaw/cimiclaw.json` (applied only if missing).
 5. **Optional login-shell import** (`env.shellEnv.enabled` or `OPENCLAW_LOAD_SHELL_ENV=1`), applied only for missing expected keys.
 
-On Ubuntu fresh installs that use the default state dir, OpenClaw also treats `~/.config/openclaw/gateway.env` as a compatibility fallback after the global `.env`. If both files exist and disagree, OpenClaw keeps `~/.openclaw/.env` and prints a warning.
+On Ubuntu fresh installs that use the default state dir, OpenClaw also treats `~/.config/openclaw/gateway.env` as a compatibility fallback after the global `.env`. If both files exist and disagree, OpenClaw keeps `~/.cimiclaw/.env` and prints a warning.
 
 If the config file is missing entirely, step 4 is skipped; shell import still runs if enabled.
 
@@ -105,10 +105,10 @@ Both resolve from process env at activation time. SecretRef details are document
 
 | Variable                 | Purpose                                                                                                                                                                          |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `OPENCLAW_HOME`          | Override the home directory used for all internal path resolution (`~/.openclaw/`, agent dirs, sessions, credentials). Useful when running OpenClaw as a dedicated service user. |
-| `OPENCLAW_STATE_DIR`     | Override the state directory (default `~/.openclaw`).                                                                                                                            |
-| `OPENCLAW_CONFIG_PATH`   | Override the config file path (default `~/.openclaw/openclaw.json`).                                                                                                             |
-| `OPENCLAW_INCLUDE_ROOTS` | Path-list of directories where `$include` directives may resolve files outside the config directory (default: none — `$include` is confined to the config dir). Tilde-expanded.  |
+| `OPENCLAW_HOME`          | Override the home directory used for all internal path resolution (`~/.cimiclaw/`, agent dirs, sessions, credentials). Useful when running OpenClaw as a dedicated service user. |
+| `OPENCLAW_STATE_DIR`     | Override the state directory (default `~/.cimiclaw`).                                                                                                                            |
+| `OPENCLAW_CONFIG_PATH`   | Override the config file path (default `~/.cimiclaw/cimiclaw.json`).                                                                                                             |
+| `OPENCLAW_INCLUDE_ROOTS` | Path-list of directories where `$include` directives may resolve files outside the config directory (default: none �?`$include` is confined to the config dir). Tilde-expanded.  |
 
 ## Logging
 
@@ -154,7 +154,7 @@ export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
 openclaw gateway run
 ```
 
-Do not rely on writing only to `~/.openclaw/.env` for this variable; Node reads
+Do not rely on writing only to `~/.cimiclaw/.env` for this variable; Node reads
 `NODE_EXTRA_CA_CERTS` at process startup.
 
 ## Legacy environment variables
@@ -166,8 +166,7 @@ ignored.
 If any are still set on the Gateway process at startup, OpenClaw emits a
 single Node deprecation warning (`OPENCLAW_LEGACY_ENV_VARS`) listing the
 detected prefixes and the total count. Rename each value by replacing the
-legacy prefix with `OPENCLAW_` (for example `CLAWDBOT_GATEWAY_TOKEN` →
-`OPENCLAW_GATEWAY_TOKEN`); the old names take no effect.
+legacy prefix with `OPENCLAW_` (for example `CLAWDBOT_GATEWAY_TOKEN` �?`OPENCLAW_GATEWAY_TOKEN`); the old names take no effect.
 
 ## Related
 

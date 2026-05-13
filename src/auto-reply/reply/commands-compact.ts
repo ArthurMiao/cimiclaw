@@ -1,5 +1,5 @@
 import { resolveAgentDir, resolveSessionAgentId } from "../../agents/agent-scope.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { logVerbose } from "../../globals.js";
 import { createLazyImportLoader } from "../../shared/lazy-promise.js";
 import {

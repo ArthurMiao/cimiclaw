@@ -1,5 +1,5 @@
 import { SettingsManager } from "@mariozechner/pi-coding-agent";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { PluginMetadataSnapshot } from "../plugins/plugin-metadata-snapshot.js";
 import {
   buildEmbeddedPiSettingsSnapshot,

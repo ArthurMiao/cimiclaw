@@ -9,7 +9,7 @@ import {
   resolveAgentMainSessionKey,
 } from "../config/sessions.js";
 import { resolveStorePath } from "../config/sessions/paths.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { runCronIsolatedAgentTurn } from "../cron/isolated-agent.js";
 import {
   appendCronRunLog,

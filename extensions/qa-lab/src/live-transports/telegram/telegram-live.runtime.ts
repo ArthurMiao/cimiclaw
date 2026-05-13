@@ -1533,7 +1533,7 @@ async function runInstalledOpenClawTelegramOnboardingPreflight(params: {
     path.join(resolvePreferredOpenClawTmpDir(), "openclaw-npm-telegram-"),
   );
   const homeDir = path.join(tempRoot, "home");
-  const stateDir = path.join(homeDir, ".openclaw");
+  const stateDir = path.join(homeDir, ".cimiclaw");
   await fs.mkdir(stateDir, { recursive: true });
   const tokenPath = path.join(tempRoot, "sut-token.txt");
   await fs.writeFile(tokenPath, params.sutToken, { encoding: "utf8", mode: 0o600 });

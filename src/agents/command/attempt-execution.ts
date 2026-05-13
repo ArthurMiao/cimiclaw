@@ -8,7 +8,7 @@ import {
   resolveSessionTranscriptFile,
 } from "../../config/sessions/transcript.js";
 import type { SessionEntry } from "../../config/sessions/types.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { emitAgentEvent } from "../../infra/agent-events.js";
 import { createSubsystemLogger } from "../../logging/subsystem.js";
 import { annotateInterSessionPromptText } from "../../sessions/input-provenance.js";

@@ -75,7 +75,7 @@ Fields:
 
 ## Operational notes
 
-- Sync metadata is written to `.openclaw-sync/source.json` in the publish repo.
+- Sync metadata is written to `.cimiclaw-sync/source.json` in the publish repo.
 - Source repo secret: `OPENCLAW_DOCS_SYNC_TOKEN`
 - Publish repo secret: `OPENCLAW_DOCS_I18N_OPENAI_API_KEY`
 - If locale output looks stale, check the `Translate All` workflow in `openclaw/docs` first.

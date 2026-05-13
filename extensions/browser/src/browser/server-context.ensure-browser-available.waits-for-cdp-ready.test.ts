@@ -306,7 +306,7 @@ describe("browser server-context ensureBrowserAvailable", () => {
       'Port 18800 is in use for profile "openclaw" but not by openclaw.',
     );
     await expect(promise).rejects.toThrow(
-      "set browser.profiles.openclaw.attachOnly=true so OpenClaw attaches without trying to manage the local process",
+      "set browser.profiles.cimiclaw.attachOnly=true so OpenClaw attaches without trying to manage the local process",
     );
     await expect(promise).rejects.toThrow(
       "For Browserless Docker, set EXTERNAL to the same WebSocket endpoint OpenClaw can reach via browser.profiles.<name>.cdpUrl.",
@@ -322,7 +322,7 @@ describe("browser server-context ensureBrowserAvailable", () => {
     const isChromeReachable = vi.mocked(chromeModule.isChromeReachable);
 
     const state = makeBrowserServerState();
-    state.resolved.profiles.openclaw = {
+    state.resolved.profiles.cimiclaw = {
       cdpUrl: "ws://browserless:3001",
       color: "#00AA00",
     };

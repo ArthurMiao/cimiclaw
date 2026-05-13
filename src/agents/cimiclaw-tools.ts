@@ -1,6 +1,6 @@
 import type { SourceReplyDeliveryMode } from "../auto-reply/get-reply-options.types.js";
 import { selectApplicableRuntimeConfig } from "../config/config.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { callGateway } from "../gateway/call.js";
 import { isEmbeddedMode } from "../infra/embedded-mode.js";
 import {
@@ -11,18 +11,18 @@ import { normalizeDeliveryContext } from "../utils/delivery-context.js";
 import type { GatewayMessageChannel } from "../utils/message-channel.js";
 import { resolveAgentWorkspaceDir, resolveSessionAgentIds } from "./agent-scope.js";
 import type { AuthProfileStore } from "./auth-profiles/types.js";
-import { resolveOpenClawPluginToolsForOptions } from "./openclaw-plugin-tools.js";
+import { resolveOpenClawPluginToolsForOptions } from "./cimiclaw-plugin-tools.js";
 import {
   isToolExplicitlyAllowedByFactoryPolicy,
   mergeFactoryPolicyList,
   resolveImageToolFactoryAvailable,
   resolveOptionalMediaToolFactoryPlan,
-} from "./openclaw-tools.media-factory-plan.js";
-import { applyNodesToolWorkspaceGuard } from "./openclaw-tools.nodes-workspace-guard.js";
+} from "./cimiclaw-tools.media-factory-plan.js";
+import { applyNodesToolWorkspaceGuard } from "./cimiclaw-tools.nodes-workspace-guard.js";
 import {
   collectPresentOpenClawTools,
   isUpdatePlanToolEnabledForOpenClawTools,
-} from "./openclaw-tools.registration.js";
+} from "./cimiclaw-tools.registration.js";
 import {
   type HookContext,
   isToolWrappedWithBeforeToolCallHook,

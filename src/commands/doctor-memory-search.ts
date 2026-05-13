@@ -12,7 +12,7 @@ import {
   resolveUsableCustomProviderApiKey,
 } from "../agents/model-auth.js";
 import { formatCliCommand } from "../cli/command-format.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { formatErrorMessage } from "../infra/errors.js";
 import { checkQmdBinaryAvailability } from "../memory-host-sdk/engine-qmd.js";
 import { DEFAULT_LOCAL_MODEL } from "../memory-host-sdk/host/embedding-defaults.js";

@@ -281,7 +281,7 @@ describe("doctor preview warnings", () => {
       doctorFixCommand: "openclaw doctor --fix",
     });
 
-    expectSingleWarningContaining(warnings, "channels.openclaw-weixin: dangling channel config");
+    expectSingleWarningContaining(warnings, "channels.cimiclaw-weixin: dangling channel config");
   });
 
   it("includes bundled plugin load path migration warnings", async () => {

@@ -9,7 +9,7 @@ import type { TlsOptions } from "node:tls";
 import type { WebSocketServer } from "ws";
 import { resolveBundledChannelGatewayAuthBypassPaths } from "../channels/plugins/gateway-auth-bypass.js";
 import { getRuntimeConfig } from "../config/io.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import {
   createDiagnosticTraceContext,
   runWithDiagnosticTraceContext,

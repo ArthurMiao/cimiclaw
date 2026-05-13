@@ -65,7 +65,7 @@ describe("exa web search provider", () => {
       endpoint: "https://proxy.example/exa/search",
     });
     expect(__testing.resolveExaSearchEndpoint({ baseUrl: "ftp://proxy.example/exa" })).toEqual({
-      docs: "https://docs.openclaw.ai/tools/exa-search",
+      docs: "https://docs.cimiclaw.ai/tools/exa-search",
       error: "invalid_base_url",
       message:
         "plugins.entries.exa.config.webSearch.baseUrl must be a valid http(s) URL. Got: ftp://proxy.example/exa",

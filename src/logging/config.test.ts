@@ -11,7 +11,7 @@ let tempDirs: string[] = [];
 function writeConfig(source: string): string {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-logging-config-"));
   tempDirs.push(dir);
-  const configPath = path.join(dir, "openclaw.json");
+  const configPath = path.join(dir, "cimiclaw.json");
   fs.writeFileSync(configPath, source);
   process.env.OPENCLAW_CONFIG_PATH = configPath;
   return configPath;
@@ -32,7 +32,7 @@ describe("readLoggingConfig", () => {
   });
 
   it("skips mutating config loads for config schema", () => {
-    process.argv = ["node", "openclaw", "config", "schema"];
+    process.argv = ["node", "cimiclaw", "config", "schema"];
     const configPath = writeConfig(`{ logging: { file: "/tmp/should-not-read.log" } }`);
     fs.rmSync(configPath);
 
@@ -57,7 +57,7 @@ describe("readLoggingConfig", () => {
 
   it("supports JSON5 comments and trailing commas", () => {
     writeConfig(`{
-      // users commonly keep comments in openclaw.json
+      // users commonly keep comments in cimiclaw.json
       logging: {
         consoleLevel: "warn",
       },

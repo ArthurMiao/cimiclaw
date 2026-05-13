@@ -1,5 +1,5 @@
 ---
-summary: "FAQ: quick-start and first-run setup — install, onboard, auth, subscriptions, initial failures"
+summary: "FAQ: quick-start and first-run setup �?install, onboard, auth, subscriptions, initial failures"
 read_when:
   - New install, onboarding stuck, or first-run errors
   - Choosing auth and provider subscriptions
@@ -215,8 +215,8 @@ and troubleshooting see the main [FAQ](/help/faq).
     state) as long as you copy **both** locations:
 
     1. Install OpenClaw on the new machine.
-    2. Copy `$OPENCLAW_STATE_DIR` (default: `~/.openclaw`) from the old machine.
-    3. Copy your workspace (default: `~/.openclaw/workspace`).
+    2. Copy `$OPENCLAW_STATE_DIR` (default: `~/.cimiclaw`) from the old machine.
+    3. Copy your workspace (default: `~/.cimiclaw/workspace`).
     4. Run `openclaw doctor` and restart the Gateway service.
 
     That preserves config, auth profiles, WhatsApp creds, sessions, and memory. If you're in
@@ -224,7 +224,7 @@ and troubleshooting see the main [FAQ](/help/faq).
 
     **Important:** if you only commit/push your workspace to GitHub, you're backing
     up **memory + bootstrap files**, but **not** session history or auth. Those live
-    under `~/.openclaw/` (for example `~/.openclaw/agents/<agentId>/sessions/`).
+    under `~/.cimiclaw/` (for example `~/.cimiclaw/agents/<agentId>/sessions/`).
 
     Related: [Migrating](/install/migrating), [Where things live on disk](/help/faq#where-things-live-on-disk),
     [Agent workspace](/concepts/agent-workspace), [Doctor](/gateway/doctor),
@@ -641,7 +641,7 @@ and troubleshooting see the main [FAQ](/help/faq).
   </Accordion>
 
   <Accordion title="How do I set up Gemini CLI OAuth?">
-    Gemini CLI uses a **plugin auth flow**, not a client id or secret in `openclaw.json`.
+    Gemini CLI uses a **plugin auth flow**, not a client id or secret in `cimiclaw.json`.
 
     Steps:
 
@@ -770,7 +770,7 @@ and troubleshooting see the main [FAQ](/help/faq).
   <Accordion title="Can I switch between npm and git installs later?">
     Yes. Use `openclaw update --channel ...` when OpenClaw is already installed.
     This **does not delete your data** - it only changes the OpenClaw code install.
-    Your state (`~/.openclaw`) and workspace (`~/.openclaw/workspace`) stay untouched.
+    Your state (`~/.cimiclaw`) and workspace (`~/.cimiclaw/workspace`) stay untouched.
 
     From npm to git:
 
@@ -861,7 +861,7 @@ and troubleshooting see the main [FAQ](/help/faq).
 
 ## Related
 
-- [FAQ](/help/faq) — the main FAQ (models, sessions, gateway, security, more)
+- [FAQ](/help/faq) �?the main FAQ (models, sessions, gateway, security, more)
 - [Install overview](/install)
 - [Getting started](/start/getting-started)
 - [Troubleshooting](/help/troubleshooting)

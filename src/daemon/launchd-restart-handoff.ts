@@ -64,8 +64,8 @@ function collectRestartLogEnv(env?: Record<string, string | undefined>): Launchd
   return {
     HOME: source.HOME,
     USERPROFILE: source.USERPROFILE,
-    OPENCLAW_STATE_DIR: source.OPENCLAW_STATE_DIR,
-    OPENCLAW_PROFILE: source.OPENCLAW_PROFILE,
+    OPENCLAW_STATE_DIR: source.cimiclaw_STATE_DIR,
+    OPENCLAW_PROFILE: source.cimiclaw_PROFILE,
   };
 }
 

@@ -1,6 +1,6 @@
 import { formatPortRangeHint } from "../cli/error-format.js";
 import { resolveGatewayPort } from "../config/config.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { isValidEnvSecretRefId, type SecretInput } from "../config/types.secrets.js";
 import {
   maybeAddTailnetOriginToControlUiAllowedOrigins,

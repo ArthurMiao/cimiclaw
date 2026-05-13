@@ -4,7 +4,7 @@ import path from "node:path";
 import { setTimeout as sleep } from "node:timers/promises";
 import type { CliDeps } from "../cli/deps.types.js";
 import type { GatewayTailscaleMode } from "../config/types.gateway.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import { hasConfiguredInternalHooks } from "../hooks/configured.js";
 import { isTruthyEnvValue } from "../infra/env.js";
 import type { scheduleGatewayUpdateCheck } from "../infra/update-startup.js";
@@ -182,7 +182,7 @@ async function resolveRestartSentinelPathFast(
     return path.join(resolveUserPath(override), RESTART_SENTINEL_FILENAME);
   }
   const home = resolveHome();
-  const newStateDir = path.join(home, ".openclaw");
+  const newStateDir = path.join(home, ".cimiclaw");
   if (env.OPENCLAW_TEST_FAST === "1" || (await pathExists(newStateDir))) {
     return path.join(newStateDir, RESTART_SENTINEL_FILENAME);
   }

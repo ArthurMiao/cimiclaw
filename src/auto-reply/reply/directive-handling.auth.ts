@@ -12,7 +12,7 @@ import {
   resolveUsableCustomProviderApiKey,
 } from "../../agents/model-auth.js";
 import { findNormalizedProviderValue, normalizeProviderId } from "../../agents/model-selection.js";
-import type { OpenClawConfig } from "../../config/types.openclaw.js";
+import type { OpenClawConfig } from "../../config/types.cimiclaw.js";
 import { coerceSecretRef } from "../../config/types.secrets.js";
 import { normalizeLowercaseStringOrEmpty } from "../../shared/string-coerce.js";
 import { shortenHomePath } from "../../utils.js";

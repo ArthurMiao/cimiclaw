@@ -73,7 +73,7 @@ The plugin checks the resolved `apiKey` first and falls back to the `GRADIUM_API
 | `messages.tts.providers.gradium.baseUrl` | string | Override the API origin. Trailing slashes are stripped. Defaults to `https://api.gradium.ai`. |
 | `messages.tts.providers.gradium.voiceId` | string | Default voice id used when no directive override is present.                                  |
 
-The output audio format is selected automatically by the runtime based on the target surface and is not configurable from `openclaw.json`. See [Output](#output) below.
+The output audio format is selected automatically by the runtime based on the target surface and is not configurable from `cimiclaw.json`. See [Output](#output) below.
 
 ## Voices
 

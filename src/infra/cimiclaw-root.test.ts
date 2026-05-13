@@ -32,9 +32,9 @@ function setPackageRoot(root: string, name = "openclaw") {
 }
 
 function expectResolvedPackageRoot(
-  syncResolver: typeof import("./openclaw-root.js").resolveOpenClawPackageRootSync,
-  asyncResolver: typeof import("./openclaw-root.js").resolveOpenClawPackageRoot,
-  opts: Parameters<typeof import("./openclaw-root.js").resolveOpenClawPackageRootSync>[0],
+  syncResolver: typeof import("./cimiclaw-root.js").resolveOpenClawPackageRootSync,
+  asyncResolver: typeof import("./cimiclaw-root.js").resolveOpenClawPackageRoot,
+  opts: Parameters<typeof import("./cimiclaw-root.js").resolveOpenClawPackageRootSync>[0],
   expected: string | null,
 ) {
   expect(syncResolver(opts)).toBe(expected);
@@ -106,16 +106,16 @@ vi.mock("./openclaw-root.fs.runtime.js", () => ({
 }));
 
 describe("resolveOpenClawPackageRoot", () => {
-  let resolveOpenClawPackageRoot: typeof import("./openclaw-root.js").resolveOpenClawPackageRoot;
-  let resolveOpenClawPackageRootSync: typeof import("./openclaw-root.js").resolveOpenClawPackageRootSync;
-  let clearOpenClawPackageRootCaches: typeof import("./openclaw-root.js").__testing.clearOpenClawPackageRootCaches;
+  let resolveOpenClawPackageRoot: typeof import("./cimiclaw-root.js").resolveOpenClawPackageRoot;
+  let resolveOpenClawPackageRootSync: typeof import("./cimiclaw-root.js").resolveOpenClawPackageRootSync;
+  let clearOpenClawPackageRootCaches: typeof import("./cimiclaw-root.js").__testing.clearOpenClawPackageRootCaches;
 
   beforeAll(async () => {
     ({
       resolveOpenClawPackageRoot,
       resolveOpenClawPackageRootSync,
       __testing: { clearOpenClawPackageRootCaches },
-    } = await import("./openclaw-root.js"));
+    } = await import("./cimiclaw-root.js"));
   });
 
   beforeEach(() => {
@@ -142,7 +142,7 @@ describe("resolveOpenClawPackageRoot", () => {
         const project = fx("symlink-scenario");
         const bin = path.join(project, "bin", "openclaw");
         const realPkg = path.join(project, "real-pkg");
-        state.realpaths.set(abs(bin), abs(path.join(realPkg, "openclaw.mjs")));
+        state.realpaths.set(abs(bin), abs(path.join(realPkg, "cimiclaw.mjs")));
         setPackageRoot(realPkg);
         return { opts: { argv1: bin }, expected: realPkg };
       },
@@ -211,7 +211,7 @@ describe("resolveOpenClawPackageRoot", () => {
         const argv1 = path.join(project, "node_modules", ".bin", "openclaw");
         state.realpaths.set(
           abs(argv1),
-          abs(path.join(project, "versions", "current", "openclaw.mjs")),
+          abs(path.join(project, "versions", "current", "cimiclaw.mjs")),
         );
         const pkgRoot = path.join(project, "node_modules", "openclaw");
         setPackageRoot(pkgRoot);

@@ -100,7 +100,7 @@ export async function loadChannelConfigSurfaceModule(
     const script = `
       import { pathToFileURL } from "node:url";
       const { buildChannelConfigSchema } = await import(${JSON.stringify(bunBuildChannelConfigSchemaUrl)});
-      const modulePath = process.env.OPENCLAW_CONFIG_SURFACE_MODULE;
+      const modulePath = process.env.cimiclaw_CONFIG_SURFACE_MODULE;
       if (!modulePath) {
         throw new Error("missing OPENCLAW_CONFIG_SURFACE_MODULE");
       }

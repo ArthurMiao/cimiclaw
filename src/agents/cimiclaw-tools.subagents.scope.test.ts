@@ -6,7 +6,7 @@ import {
   callGatewayMock,
   resetSubagentsConfigOverride,
   setSubagentsConfigOverride,
-} from "./openclaw-tools.subagents.test-harness.js";
+} from "./cimiclaw-tools.subagents.test-harness.js";
 import { addSubagentRunForTests, resetSubagentRegistryForTests } from "./subagent-registry.js";
 import { createPerSenderSessionConfig } from "./test-helpers/session-config.js";
 import { createSubagentsTool } from "./tools/subagents-tool.js";

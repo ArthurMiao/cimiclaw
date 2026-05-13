@@ -164,7 +164,7 @@ function createRepoBundledManifestRegistry(): PluginManifestRegistry {
       origin: "bundled",
       rootDir: path.join(repoRoot, "extensions", dirName),
       source: path.join(repoRoot, "extensions", dirName, "index.ts"),
-      manifestPath: path.join(repoRoot, "extensions", dirName, "openclaw.plugin.json"),
+      manifestPath: path.join(repoRoot, "extensions", dirName, "cimiclaw.plugin.json"),
       activation: manifest.activation,
       setup: manifest.setup,
       hooks: [],
@@ -578,7 +578,7 @@ describe("bundled plugin metadata", () => {
         extensions: ["./index.ts"],
       },
     });
-    writeJson(path.join(pluginRoot, "openclaw.plugin.json"), {
+    writeJson(path.join(pluginRoot, "cimiclaw.plugin.json"), {
       id: "alpha",
       channels: ["alpha"],
       configSchema: { type: "object" },
@@ -615,7 +615,7 @@ describe("bundled plugin metadata", () => {
       },
     });
     fs.writeFileSync(path.join(pluginRoot, "index.ts"), "export const source = true;\n", "utf8");
-    writeJson(path.join(pluginRoot, "openclaw.plugin.json"), {
+    writeJson(path.join(pluginRoot, "cimiclaw.plugin.json"), {
       id: "alpha",
       name: "Before",
       configSchema: { type: "object" },
@@ -623,7 +623,7 @@ describe("bundled plugin metadata", () => {
 
     expect(listBundledPluginMetadata({ rootDir: tempRoot })[0]?.manifest.name).toBe("Before");
 
-    writeJson(path.join(pluginRoot, "openclaw.plugin.json"), {
+    writeJson(path.join(pluginRoot, "cimiclaw.plugin.json"), {
       id: "alpha",
       name: "After",
       configSchema: { type: "object" },
@@ -671,7 +671,7 @@ describe("bundled plugin metadata", () => {
         extensions: ["./index.ts"],
       },
     });
-    writeJson(path.join(pluginRoot, "openclaw.plugin.json"), {
+    writeJson(path.join(pluginRoot, "cimiclaw.plugin.json"), {
       id: "alpha",
       configSchema: { type: "object" },
     });
@@ -712,7 +712,7 @@ describe("bundled plugin metadata", () => {
         },
       },
     });
-    writeJson(path.join(tempRoot, "extensions", "alpha", "openclaw.plugin.json"), {
+    writeJson(path.join(tempRoot, "extensions", "alpha", "cimiclaw.plugin.json"), {
       id: "alpha",
       channels: ["alpha"],
       configSchema: { type: "object" },
@@ -782,7 +782,7 @@ describe("bundled plugin metadata", () => {
         setupEntry: "./setup-entry.ts",
       },
     });
-    writeJson(path.join(tempRoot, "extensions", "alpha", "openclaw.plugin.json"), {
+    writeJson(path.join(tempRoot, "extensions", "alpha", "cimiclaw.plugin.json"), {
       id: "alpha",
       configSchema: { type: "object" },
     });
@@ -829,7 +829,7 @@ describe("bundled plugin metadata", () => {
         },
       },
     });
-    writeJson(path.join(distRoot, "extensions", "alpha", "openclaw.plugin.json"), {
+    writeJson(path.join(distRoot, "extensions", "alpha", "cimiclaw.plugin.json"), {
       id: "alpha",
       configSchema: {
         type: "object",
@@ -905,7 +905,7 @@ describe("bundled plugin metadata", () => {
         },
       },
     });
-    writeJson(path.join(distRoot, "extensions", "alpha", "openclaw.plugin.json"), {
+    writeJson(path.join(distRoot, "extensions", "alpha", "cimiclaw.plugin.json"), {
       id: "alpha",
       configSchema: {
         type: "object",

@@ -12,7 +12,7 @@ type ComfyManifest = {
 
 function readManifest(): ComfyManifest {
   return JSON.parse(
-    fs.readFileSync(new URL("./openclaw.plugin.json", import.meta.url), "utf8"),
+    fs.readFileSync(new URL("./cimiclaw.plugin.json", import.meta.url), "utf8"),
   ) as ComfyManifest;
 }
 

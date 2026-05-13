@@ -302,7 +302,7 @@ The implicit default set always covers canary, mention gating, native command re
 Output artifacts:
 
 - `telegram-qa-report.md`
-- `telegram-qa-summary.json` - includes per-reply RTT (driver send → observed SUT reply) starting with the canary.
+- `telegram-qa-summary.json` - includes per-reply RTT (driver send �?observed SUT reply) starting with the canary.
 - `telegram-qa-observed-messages.json` - bodies redacted unless `OPENCLAW_QA_TELEGRAM_CAPTURE_CONTENT=1`.
 
 ### Discord QA
@@ -410,7 +410,7 @@ The SUT manifest below intentionally narrows the bundled Slack plugin's producti
 
 **1. Create the Driver app**
 
-Go to [api.slack.com/apps](https://api.slack.com/apps) → _Create New App_ → _From a manifest_ → pick the QA workspace, paste the following manifest, then _Install to Workspace_:
+Go to [api.slack.com/apps](https://api.slack.com/apps) �?_Create New App_ �?_From a manifest_ �?pick the QA workspace, paste the following manifest, then _Install to Workspace_:
 
 ```json
 {
@@ -439,7 +439,7 @@ Copy the _Bot User OAuth Token_ (`xoxb-...`) - that becomes `driverBotToken`. Th
 
 **2. Create the SUT app**
 
-Repeat _Create New App → From a manifest_ in the same workspace. This QA app intentionally uses a narrower version of the bundled Slack plugin's production manifest (`extensions/slack/src/setup-shared.ts:10`): reaction scopes and events are omitted because the live Slack QA suite does not cover reaction handling yet.
+Repeat _Create New App �?From a manifest_ in the same workspace. This QA app intentionally uses a narrower version of the bundled Slack plugin's production manifest (`extensions/slack/src/setup-shared.ts:10`): reaction scopes and events are omitted because the live Slack QA suite does not cover reaction handling yet.
 
 ```json
 {
@@ -508,8 +508,8 @@ Repeat _Create New App → From a manifest_ in the same workspace. This QA app i
 
 After Slack creates the app, do two things on its settings page:
 
-- _Install to Workspace_ → copy the _Bot User OAuth Token_ → that becomes `sutBotToken`.
-- _Basic Information → App-Level Tokens → Generate Token and Scopes_ → add scope `connections:write` → save → copy the `xapp-...` value → that becomes `sutAppToken`.
+- _Install to Workspace_ �?copy the _Bot User OAuth Token_ �?that becomes `sutBotToken`.
+- _Basic Information �?App-Level Tokens �?Generate Token and Scopes_ �?add scope `connections:write` �?save �?copy the `xapp-...` value �?that becomes `sutAppToken`.
 
 Verify the two bots have distinct user ids by calling `auth.test` on each token. The runtime distinguishes driver and SUT by user id; reusing one app for both will fail mention-gating immediately.
 
@@ -522,7 +522,7 @@ In the QA workspace, create a channel (e.g. `#openclaw-qa`) and invite both bots
 /invite @OpenClaw QA SUT
 ```
 
-Copy the `Cxxxxxxxxxx` id from _channel info → About → Channel ID_ - that becomes `channelId`. A public channel works; if you use a private channel both apps already have `groups:history` so the harness's history reads will still succeed.
+Copy the `Cxxxxxxxxxx` id from _channel info �?About �?Channel ID_ - that becomes `channelId`. A public channel works; if you use a private channel both apps already have `groups:history` so the harness's history reads will still succeed.
 
 **4. Register the credentials**
 
@@ -603,7 +603,7 @@ contains only the intended GIFs.
 
 Slack lanes can also use the pool. Slack payload shape checks currently live in the Slack QA runner rather than the broker; use `{ channelId: string, driverBotToken: string, sutBotToken: string, sutAppToken: string }`, with a Slack channel id like `Cxxxxxxxxxx`. See [Setting up the Slack workspace](#setting-up-the-slack-workspace) for app and scope provisioning.
 
-Operational env vars and the Convex broker endpoint contract live in [Testing → Shared Telegram credentials via Convex](/help/testing#shared-telegram-credentials-via-convex-v1) (the section name predates the multi-channel pool; the lease semantics are shared across kinds).
+Operational env vars and the Convex broker endpoint contract live in [Testing �?Shared Telegram credentials via Convex](/help/testing#shared-telegram-credentials-via-convex-v1) (the section name predates the multi-channel pool; the lease semantics are shared across kinds).
 
 ## Repo-backed seeds
 
@@ -707,7 +707,7 @@ The minimum adoption bar for a new channel:
 1. Keep `qa-lab` as the owner of the shared `qa` root.
 2. Implement the transport runner on the shared `qa-lab` host seam.
 3. Keep transport-specific mechanics inside the runner plugin or channel harness.
-4. Mount the runner as `openclaw qa <runner>` instead of registering a competing root command. Runner plugins should declare `qaRunners` in `openclaw.plugin.json` and export a matching `qaRunnerCliRegistrations` array from `runtime-api.ts`. Keep `runtime-api.ts` light; lazy CLI and runner execution should stay behind separate entrypoints.
+4. Mount the runner as `openclaw qa <runner>` instead of registering a competing root command. Runner plugins should declare `qaRunners` in `cimiclaw.plugin.json` and export a matching `qaRunnerCliRegistrations` array from `runtime-api.ts`. Keep `runtime-api.ts` light; lazy CLI and runner execution should stay behind separate entrypoints.
 5. Author or adapt markdown scenarios under the themed `qa/scenarios/` directories.
 6. Use the generic scenario helpers for new scenarios.
 7. Keep existing compatibility aliases working unless the repo is doing an intentional migration.

@@ -297,7 +297,7 @@ describe("lookupContextTokens", () => {
 
     expect(contextTestState.discoverModels).toHaveBeenCalledWith(
       {},
-      expect.stringMatching(/\/\.openclaw\/agents\/main\/agent$/),
+      expect.stringMatching(/\/\.cimiclaw\/agents\/main\/agent$/),
       { normalizeModels: false },
     );
     expect(lookupContextTokens("anthropic/claude-opus-4.7-20260219")).toBe(1_048_576);

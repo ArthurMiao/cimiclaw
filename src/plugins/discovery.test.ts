@@ -42,7 +42,7 @@ function withOpenClawPackageArgv<T>(packageRoot: string, fn: () => T): T {
   mkdirSafe(path.join(packageRoot, "bin"));
   fs.writeFileSync(path.join(packageRoot, "package.json"), '{"name":"openclaw"}\n', "utf-8");
   const originalArgv = process.argv;
-  process.argv = [originalArgv[0] ?? "node", path.join(packageRoot, "bin", "openclaw")];
+  process.argv = [originalArgv[0] ?? "node", path.join(packageRoot, "bin", "cimiclaw")];
   try {
     return fn();
   } finally {
@@ -103,7 +103,7 @@ function buildDiscoveryEnvWithOverrides(
 ): NodeJS.ProcessEnv {
   const enablesBundledOverride =
     Object.prototype.hasOwnProperty.call(overrides, "OPENCLAW_BUNDLED_PLUGINS_DIR") &&
-    overrides.OPENCLAW_BUNDLED_PLUGINS_DIR !== undefined;
+    overrides.cimiclaw_BUNDLED_PLUGINS_DIR !== undefined;
   return {
     ...buildDiscoveryEnv(stateDir),
     ...(enablesBundledOverride ? { OPENCLAW_DISABLE_BUNDLED_PLUGINS: undefined } : {}),
@@ -155,7 +155,7 @@ function writePluginPackageManifest(params: {
 
 function writePluginManifest(params: { pluginDir: string; id: string }) {
   fs.writeFileSync(
-    path.join(params.pluginDir, "openclaw.plugin.json"),
+    path.join(params.pluginDir, "cimiclaw.plugin.json"),
     JSON.stringify({
       id: params.id,
       configSchema: { type: "object" },
@@ -433,7 +433,7 @@ describe("discoverOpenClawPlugins", () => {
     mkdirSafe(globalExt);
     fs.writeFileSync(path.join(globalExt, "alpha.ts"), "export default function () {}", "utf-8");
 
-    const workspaceExt = path.join(workspaceDir, ".openclaw", "extensions");
+    const workspaceExt = path.join(workspaceDir, ".cimiclaw", "extensions");
     mkdirSafe(workspaceExt);
     fs.writeFileSync(path.join(workspaceExt, "beta.ts"), "export default function () {}", "utf-8");
 
@@ -471,7 +471,7 @@ describe("discoverOpenClawPlugins", () => {
     async () => {
       const stateDir = makeTempDir();
       const workspaceDir = path.join(stateDir, "workspace");
-      const workspaceExt = path.join(workspaceDir, ".openclaw", "extensions");
+      const workspaceExt = path.join(workspaceDir, ".cimiclaw", "extensions");
       mkdirSafe(workspaceExt);
 
       const linkedPluginDir = path.join(stateDir, "workspace-linked-plugin-src");
@@ -510,7 +510,7 @@ describe("discoverOpenClawPlugins", () => {
   it("does not recurse arbitrary workspace directories for plugin auto-discovery", () => {
     const stateDir = makeTempDir();
     const workspaceDir = path.join(stateDir, "workspace");
-    const workspaceExt = path.join(workspaceDir, ".openclaw", "extensions");
+    const workspaceExt = path.join(workspaceDir, ".cimiclaw", "extensions");
 
     const expectedWorkspacePluginDir = path.join(workspaceExt, "workspace-plugin");
     createPackagePluginWithEntry({
@@ -541,7 +541,7 @@ describe("discoverOpenClawPlugins", () => {
     const stateDir = makeTempDir();
     const homeDir = makeTempDir();
     const workspaceRoot = path.join(homeDir, "workspace");
-    const workspaceExt = path.join(workspaceRoot, ".openclaw", "extensions");
+    const workspaceExt = path.join(workspaceRoot, ".cimiclaw", "extensions");
     mkdirSafe(workspaceExt);
     fs.writeFileSync(path.join(workspaceExt, "tilde-workspace.ts"), "export default {}", "utf-8");
 
@@ -601,7 +601,7 @@ describe("discoverOpenClawPlugins", () => {
       '{"name":"@openclaw/twitch"}\n',
       "utf-8",
     );
-    fs.writeFileSync(path.join(extensionDir, "openclaw.plugin.json"), '{"id":"twitch"}\n', "utf-8");
+    fs.writeFileSync(path.join(extensionDir, "cimiclaw.plugin.json"), '{"id":"twitch"}\n', "utf-8");
 
     const result = withOpenClawPackageArgv(packageRoot, () =>
       discoverOpenClawPlugins({ env: buildDiscoveryEnv(stateDir) }),
@@ -1132,7 +1132,7 @@ describe("discoverOpenClawPlugins", () => {
   it("keeps workspace package TypeScript entries unless runtime entries are explicit", () => {
     const stateDir = makeTempDir();
     const workspaceDir = path.join(stateDir, "workspace");
-    const pluginDir = path.join(workspaceDir, ".openclaw", "extensions", "workspace-pack");
+    const pluginDir = path.join(workspaceDir, ".cimiclaw", "extensions", "workspace-pack");
     mkdirSafe(path.join(pluginDir, "src"));
     mkdirSafe(path.join(pluginDir, "dist"));
 
@@ -1288,7 +1288,7 @@ describe("discoverOpenClawPlugins", () => {
   it("skips dependency and build directories while scanning workspace roots", () => {
     const stateDir = makeTempDir();
     const workspaceDir = path.join(stateDir, "workspace");
-    const workspaceRoot = path.join(workspaceDir, ".openclaw", "extensions");
+    const workspaceRoot = path.join(workspaceDir, ".cimiclaw", "extensions");
     const workspacePluginDir = path.join(workspaceRoot, "workspace-plugin");
     const nestedNodeModulesDir = path.join(workspaceRoot, "node_modules", "openclaw");
     const nestedDistDir = path.join(workspaceRoot, "dist", "extensions", "diffs");
@@ -1894,12 +1894,12 @@ describe("discoverOpenClawPlugins", () => {
       pluginId: "global-plugin",
     });
     createPackagePluginWithEntry({
-      packageDir: path.join(workspaceA, ".openclaw", "extensions", "workspace-a-plugin"),
+      packageDir: path.join(workspaceA, ".cimiclaw", "extensions", "workspace-a-plugin"),
       packageName: "@openclaw/workspace-a-plugin",
       pluginId: "workspace-a-plugin",
     });
     createPackagePluginWithEntry({
-      packageDir: path.join(workspaceB, ".openclaw", "extensions", "workspace-b-plugin"),
+      packageDir: path.join(workspaceB, ".cimiclaw", "extensions", "workspace-b-plugin"),
       packageName: "@openclaw/workspace-b-plugin",
       pluginId: "workspace-b-plugin",
     });

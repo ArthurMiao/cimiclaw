@@ -481,7 +481,7 @@ describe("plugin status reports", () => {
       snapshot: createInstalledPluginIndexSnapshot([
         {
           pluginId: "provider-env-plugin",
-          manifestPath: "/tmp/provider-env-plugin/openclaw.plugin.json",
+          manifestPath: "/tmp/provider-env-plugin/cimiclaw.plugin.json",
           manifestHash: "manifest-hash",
           rootDir: "/tmp/provider-env-plugin",
           origin: "workspace",

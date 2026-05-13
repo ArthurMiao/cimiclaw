@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-source scripts/lib/openclaw-e2e-instance.sh
+source scripts/lib/cimiclaw-e2e-instance.sh
 
 if [ -f dist/index.mjs ]; then
   OPENCLAW_ENTRY="dist/index.mjs"

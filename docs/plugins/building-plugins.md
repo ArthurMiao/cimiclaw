@@ -76,7 +76,7 @@ and provider plugins have dedicated guides linked above.
     }
     ```
 
-    ```json openclaw.plugin.json
+    ```json cimiclaw.plugin.json
     {
       "id": "my-plugin",
       "name": "My Plugin",
@@ -368,7 +368,7 @@ reserved surfaces, not as the default pattern for new third-party plugins.
 ## Pre-submission checklist
 
 <Check>**package.json** has correct `openclaw` metadata</Check>
-<Check>**openclaw.plugin.json** manifest is present and valid</Check>
+<Check>**cimiclaw.plugin.json** manifest is present and valid</Check>
 <Check>Entry point uses `defineChannelPluginEntry` or `definePluginEntry`</Check>
 <Check>All imports use focused `plugin-sdk/<subpath>` paths</Check>
 <Check>Internal imports use local modules, not SDK self-imports</Check>

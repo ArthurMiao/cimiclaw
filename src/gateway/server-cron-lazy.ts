@@ -1,5 +1,5 @@
 import type { CliDeps } from "../cli/deps.types.js";
-import type { OpenClawConfig } from "../config/types.openclaw.js";
+import type { OpenClawConfig } from "../config/types.cimiclaw.js";
 import type { CronServiceContract } from "../cron/service-contract.js";
 import { resolveCronStorePath } from "../cron/store.js";
 import type { GatewayCronState } from "./server-cron.js";
