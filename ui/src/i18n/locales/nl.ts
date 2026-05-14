@@ -1026,7 +1026,7 @@ export const nl: TranslationMap = {
         stepDevUi:
           "Als je pnpm ui:dev gebruikt, bouw of herstart de dev-UI tegen de huidige checkout.",
         stepRestart:
-          "Herstart de Gateway na het bijwerken van OpenClaw zodat het huidige protocol wordt geserveerd.",
+          "Herstart de Gateway na het bijwerken van CimiClaw zodat het huidige protocol wordt geserveerd.",
       },
       network: {
         title: "Kan niet verbinden",

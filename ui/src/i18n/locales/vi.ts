@@ -1014,7 +1014,7 @@ export const vi: TranslationMap = {
         stepDevUi:
           "Nếu dùng pnpm ui:dev, hãy build lại hoặc khởi động lại UI dev theo checkout hiện tại.",
         stepRestart:
-          "Khởi động lại Gateway sau khi cập nhật OpenClaw để nó phục vụ giao thức hiện tại.",
+          "Khởi động lại Gateway sau khi cập nhật CimiClaw để nó phục vụ giao thức hiện tại.",
       },
       network: {
         title: "Không thể kết nối",

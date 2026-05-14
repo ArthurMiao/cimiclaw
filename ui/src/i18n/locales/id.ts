@@ -1021,7 +1021,7 @@ export const id: TranslationMap = {
         stepDevUi:
           "Jika menggunakan pnpm ui:dev, bangun ulang atau mulai ulang UI dev terhadap checkout saat ini.",
         stepRestart:
-          "Mulai ulang Gateway setelah memperbarui OpenClaw agar menyajikan protokol saat ini.",
+          "Mulai ulang Gateway setelah memperbarui CimiClaw agar menyajikan protokol saat ini.",
       },
       network: {
         title: "Tidak dapat terhubung",

@@ -165,7 +165,7 @@ describe("renderSkills", () => {
               score: 0.95,
               slug: "github",
               displayName: "GitHub",
-              summary: "GitHub integration for OpenClaw",
+              summary: "GitHub integration for CimiClaw",
               version: "1.2.3",
             },
           ],
@@ -179,7 +179,7 @@ describe("renderSkills", () => {
 
     let text = normalizeText(container);
     expect(text).toContain("GitHub");
-    expect(text).toContain("GitHub integration for OpenClaw");
+    expect(text).toContain("GitHub integration for CimiClaw");
     expect(text).toContain("v1.2.3");
 
     const resultItem = container.querySelector<HTMLElement>(".list-item");
@@ -207,7 +207,7 @@ describe("renderSkills", () => {
             skill: {
               slug: "github",
               displayName: "GitHub",
-              summary: "GitHub integration for OpenClaw",
+              summary: "GitHub integration for CimiClaw",
               createdAt: 1_700_000_000,
               updatedAt: 1_700_000_100,
             },
@@ -220,7 +220,7 @@ describe("renderSkills", () => {
               os: ["macos", "linux"],
             },
             owner: {
-              displayName: "OpenClaw",
+              displayName: "CimiClaw",
               handle: "openclaw",
             },
           },
@@ -235,7 +235,7 @@ describe("renderSkills", () => {
     text = normalizeText(container);
     expect(text).toContain("rate limited");
     expect(text).toContain("Installed github");
-    expect(text).toContain("By OpenClaw (@openclaw)");
+    expect(text).toContain("By CimiClaw (@openclaw)");
     expect(text).toContain("Latest: v1.2.3");
     expect(text).toContain("Platforms: macos, linux");
     expect(text).toContain("Added search support");

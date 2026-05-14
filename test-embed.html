@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat Embed Test</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; background: #1a1a2e; color: #e0e0e0; }
+    .toolbar {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 20px; background: #16213e; border-bottom: 1px solid #0f3460;
+    }
+    .toolbar h1 { font-size: 16px; font-weight: 600; }
+    .toolbar button {
+      padding: 6px 14px; border: 1px solid #0f3460; border-radius: 6px;
+      background: #0f3460; color: #e0e0e0; cursor: pointer; font-size: 13px;
+    }
+    .toolbar button:hover { background: #1a4a8a; }
+    .toolbar button.active { background: #e94560; border-color: #e94560; }
+    #log {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 120px; overflow-y: auto;
+      background: #0d1117; padding: 8px 16px;
+      font-family: monospace; font-size: 12px; color: #8b949e;
+      border-top: 1px solid #30363d;
+    }
+    #log .msg { margin: 2px 0; }
+    #log .msg.out { color: #58a6ff; }
+    #log .msg.in { color: #3fb950; }
+    iframe {
+      width: 100%; height: calc(100vh - 52px - 120px);
+      border: 2px solid #0f3460; border-radius: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <h1>Chat Embed iframe Test</h1>
+    <button onclick="sendNav('chat')" id="btn-chat">Chat</button>
+    <button onclick="sendNav('skills')" id="btn-skills">Skills</button>
+    <button onclick="sendNav('usage')" id="btn-usage">Usage</button>
+    <button onclick="sendNav('cron')" id="btn-cron">Cron</button>
+    <button onclick="sendNav('sessions')" id="btn-sessions">Sessions</button>
+    <span style="margin-left:auto;font-size:12px;color:#8b949e;">
+      Send <code>openclaw:navigate</code> messages to iframe
+    </span>
+  </div>
+
+  <iframe
+    id="chat-frame"
+    src="http://localhost:5173/chat?embed=1"
+    allow="clipboard-write"
+  ></iframe>
+
+  <div id="log"></div>
+
+  <script>
+    const frame = document.getElementById("chat-frame");
+    const logEl = document.getElementById("log");
+    const ALLOWED_TABS = ["chat", "skills", "usage", "cron", "sessions"];
+
+    function log(text, cls = "") {
+      const div = document.createElement("div");
+      div.className = "msg " + cls;
+      div.textContent = `[${new Date().toLocaleTimeString()}] ${text}`;
+      logEl.appendChild(div);
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    function sendNav(tab) {
+      if (!ALLOWED_TABS.includes(tab)) return;
+      const payload = { type: "openclaw:navigate", payload: { tab } };
+      frame.contentWindow.postMessage(payload, "*");
+      log(`→ navigate: ${tab}`, "out");
+
+      // Update active button
+      document.querySelectorAll(".toolbar button").forEach(b => b.classList.remove("active"));
+      const btn = document.getElementById("btn-" + tab);
+      if (btn) btn.classList.add("active");
+    }
+
+    // Listen for messages FROM the iframe (if any)
+    window.addEventListener("message", (event) => {
+      if (event.source !== frame.contentWindow) return;
+      log(`← ${JSON.stringify(event.data)}`, "in");
+    });
+
+    log("Test page loaded. iframe src: http://localhost:5173/chat?embed=1");
+    log("Click toolbar buttons to navigate the embedded chat.");
+  </script>
+</body>
+</html>

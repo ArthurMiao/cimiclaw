@@ -1027,7 +1027,7 @@ export const tr: TranslationMap = {
         stepDevUi:
           "pnpm ui:dev kullanıyorsanız geliştirme UI’sini mevcut checkouta göre yeniden derleyin veya yeniden başlatın.",
         stepRestart:
-          "OpenClaw güncellemesinden sonra Gateway’i yeniden başlatın, böylece güncel protokolü sunsun.",
+          "CimiClaw güncellemesinden sonra Gateway’i yeniden başlatın, böylece güncel protokolü sunsun.",
       },
       network: {
         title: "Bağlanılamadı",

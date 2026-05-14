@@ -1034,7 +1034,7 @@ export const fr: TranslationMap = {
         stepDevUi:
           "Si vous utilisez pnpm ui:dev, reconstruisez ou redémarrez l’UI de développement avec le checkout actuel.",
         stepRestart:
-          "Redémarrez le Gateway après la mise à jour d’OpenClaw afin qu’il serve le protocole actuel.",
+          "Redémarrez le Gateway après la mise à jour d’CimiClaw afin qu’il serve le protocole actuel.",
       },
       network: {
         title: "Connexion impossible",

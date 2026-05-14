@@ -138,7 +138,7 @@ function renderAssistantMessages(
     renderMessageGroup(group, {
       showReasoning: true,
       showToolCalls: true,
-      assistantName: "OpenClaw",
+      assistantName: "CimiClaw",
       assistantAvatar: null,
       ...opts,
     }),
@@ -163,7 +163,7 @@ function renderAssistantMessageEntries(
     renderMessageGroup(group, {
       showReasoning: true,
       showToolCalls: true,
-      assistantName: "OpenClaw",
+      assistantName: "CimiClaw",
       assistantAvatar: null,
       ...opts,
     }),
@@ -195,7 +195,7 @@ function renderGroupedMessage(
     renderMessageGroup(group, {
       showReasoning: true,
       showToolCalls: true,
-      assistantName: "OpenClaw",
+      assistantName: "CimiClaw",
       assistantAvatar: null,
       ...opts,
     }),
@@ -268,7 +268,7 @@ function renderMessageGroups(
       renderMessageGroup(group, {
         showReasoning: true,
         showToolCalls: true,
-        assistantName: "OpenClaw",
+        assistantName: "CimiClaw",
         assistantAvatar: null,
         ...opts,
       }),
