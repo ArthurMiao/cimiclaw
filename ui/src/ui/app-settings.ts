@@ -62,6 +62,7 @@ import {
   tabFromPath,
   type Tab,
 } from "./navigation.ts";
+import { resolveEmbedShellMode, setEmbedShellParam } from "./embed-shell.ts";
 import {
   saveLocalUserIdentity,
   saveSettings,
@@ -94,6 +95,7 @@ type SettingsHost = {
   eventLog: unknown[];
   eventLogBuffer: unknown[];
   basePath: string;
+  embedMode?: boolean;
   agentsList?: AgentsListResult | null;
   agentsSelectedId?: string | null;
   agentsPanel?: "overview" | "files" | "tools" | "skills" | "channels" | "cron";
@@ -197,6 +199,7 @@ export function applySettingsFromUrl(host: SettingsHost) {
     return;
   }
   const url = new URL(window.location.href);
+  host.embedMode = resolveEmbedShellMode(url);
   const params = new URLSearchParams(url.search);
   const hashParams = new URLSearchParams(url.hash.startsWith("#") ? url.hash.slice(1) : url.hash);
 
@@ -399,6 +402,19 @@ export async function refreshActiveTab(host: SettingsHost) {
         break;
       case "chat":
         await refreshChat(host as unknown as Parameters<typeof refreshChat>[0]);
+        if (host.embedMode) {
+          await Promise.allSettled([
+            loadSessions(app, {
+              activeMinutes: 0,
+              limit: 0,
+              includeGlobal: true,
+              includeUnknown: true,
+              showArchived: app.sessionsShowArchived,
+            }),
+            loadCronStatus(app),
+            loadCronJobsPage(app),
+          ]);
+        }
         scheduleChatScroll(
           host as unknown as Parameters<typeof scheduleChatScroll>[0],
           !host.chatHasAutoScrolled,
@@ -522,6 +538,7 @@ export function syncTabWithLocation(host: SettingsHost, replace: boolean) {
   if (typeof window === "undefined") {
     return;
   }
+  host.embedMode = resolveEmbedShellMode(new URL(window.location.href));
   const resolved = tabFromPath(window.location.pathname, host.basePath) ?? "chat";
   setTabFromRoute(host, resolved);
   syncUrlWithTab(host, resolved, replace);
@@ -531,6 +548,7 @@ export function onPopState(host: SettingsHost) {
   if (typeof window === "undefined") {
     return;
   }
+  host.embedMode = resolveEmbedShellMode(new URL(window.location.href));
   const resolved = tabFromPath(window.location.pathname, host.basePath);
   if (!resolved) {
     return;
@@ -610,6 +628,8 @@ export function syncUrlWithTab(host: SettingsHost, tab: Tab, replace: boolean) {
   } else {
     url.searchParams.delete("session");
   }
+
+  setEmbedShellParam(url, Boolean(host.embedMode));
 
   if (currentPath !== targetPath) {
     url.pathname = targetPath;

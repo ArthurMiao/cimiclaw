@@ -159,6 +159,7 @@ vi.mock("./agents-utils.ts", () => ({
   isRenderableControlUiAvatarUrl: (value: string) =>
     /^data:image\//i.test(value) || (value.startsWith("/") && !value.startsWith("//")),
   agentLogoUrl: () => "/openclaw-logo.svg",
+  chatClawLogoUrl: () => "/chat-claw-logo.png",
   assistantAvatarFallbackUrl: () => "apple-touch-icon.png",
   resolveChatAvatarRenderUrl: (
     candidate: string | null | undefined,
@@ -826,6 +827,7 @@ describe("chat welcome", () => {
   function renderWelcome(params: {
     assistantAvatar: string | null;
     assistantAvatarUrl?: string | null;
+    embedMode?: boolean;
   }) {
     const container = document.createElement("div");
     render(
@@ -833,6 +835,7 @@ describe("chat welcome", () => {
         assistantName: "Val",
         assistantAvatar: params.assistantAvatar,
         assistantAvatarUrl: params.assistantAvatarUrl,
+        embedMode: params.embedMode,
         onDraftChange: () => undefined,
         onSend: () => undefined,
       }),
@@ -865,6 +868,52 @@ describe("chat welcome", () => {
     );
     expect(fallbackAvatar?.getAttribute("src")).toBe("apple-touch-icon.png");
     expect(fallbackAvatar?.getAttribute("alt")).toBe("Val");
+  });
+
+  it("renders the branded embed welcome state", () => {
+    const container = renderWelcome({ assistantAvatar: null, assistantAvatarUrl: null, embedMode: true });
+
+    expect(container.querySelector(".chat-embed-welcome__copy")?.textContent).toContain(
+      "CimiClaw已就位，有新的任务安排吗",
+    );
+    expect(container.querySelector<HTMLImageElement>(".chat-embed-welcome__logo")?.getAttribute("src")).toBe(
+      "/chat-claw-logo.png",
+    );
+  });
+});
+
+describe("chat embed shell", () => {
+  it("renders the left rail and top-right links in embed mode", () => {
+    const onNavigateToTab = vi.fn();
+    const onSessionSelect = vi.fn();
+    const container = renderChatView({
+      embedMode: true,
+      sessions: {
+        ts: 0,
+        path: "",
+        count: 1,
+        defaults: { modelProvider: "openai", model: "gpt-5", contextTokens: null },
+        sessions: [{ key: "agent:main:plan", kind: "direct", updatedAt: 10 }],
+      },
+      onNavigateToTab,
+      onSessionSelect,
+    });
+
+    expect(container.querySelector(".chat-embed-rail__new")?.textContent).toContain("新对话");
+    expect(container.textContent).toContain("历史对话");
+    expect(container.textContent).toContain("定时任务");
+    expect(container.textContent).toContain("Skills");
+    expect(container.textContent).toContain("使用情况");
+
+    const sessionButton = container.querySelector<HTMLButtonElement>(".chat-embed-rail__item");
+    sessionButton?.click();
+    expect(onSessionSelect).toHaveBeenCalledWith("agent:main:plan");
+
+    const skillsButton = Array.from(container.querySelectorAll<HTMLButtonElement>(".chat-embed-links__item")).find(
+      (button) => button.textContent?.includes("Skills"),
+    );
+    skillsButton?.click();
+    expect(onNavigateToTab).toHaveBeenCalledWith("skills");
   });
 });
 

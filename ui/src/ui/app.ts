@@ -39,7 +39,10 @@ import {
   handleUpdated,
 } from "./app-lifecycle.ts";
 import { initNativeBridge } from "./app-native-bridge.ts";
-import { createChatSession as createChatSessionInternal } from "./app-render.helpers.ts";
+import {
+  createChatSession as createChatSessionInternal,
+  switchChatSession as switchChatSessionInternal,
+} from "./app-render.helpers.ts";
 import { renderApp } from "./app-render.ts";
 import {
   exportLogs as exportLogsInternal,
@@ -92,6 +95,7 @@ import type {
   SkillMessage,
 } from "./controllers/skills.ts";
 import { importCustomThemeFromUrl } from "./custom-theme.ts";
+import { parseEmbedShellNavigationMessage, resolveEmbedShellMode } from "./embed-shell.ts";
 import type { GatewayBrowserClient, GatewayHelloOk } from "./gateway.ts";
 import type { Tab } from "./navigation.ts";
 import { resolveAgentIdFromSessionKey } from "./session-key.ts";
@@ -149,6 +153,13 @@ function resolveOnboardingMode(): boolean {
   return normalized === "1" || normalized === "true" || normalized === "yes" || normalized === "on";
 }
 
+function resolveEmbedMode(): boolean {
+  if (typeof window === "undefined") {
+    return false;
+  }
+  return resolveEmbedShellMode(new URL(window.location.href));
+}
+
 export class OpenClawApp extends LitElement {
   private i18nController = new I18nController(this);
   clientInstanceId = generateUUID();
@@ -165,6 +176,7 @@ export class OpenClawApp extends LitElement {
   @state() loginShowGatewayPassword = false;
   @state() tab: Tab = "chat";
   @state() onboarding = resolveOnboardingMode();
+  @state() embedMode = resolveEmbedMode();
   @state() connected = false;
   @state() theme: ThemeName = this.settings.theme ?? "claw";
   @state() themeMode: ThemeMode = this.settings.themeMode ?? "system";
@@ -248,6 +260,25 @@ export class OpenClawApp extends LitElement {
   };
   private realtimeTalkSession: RealtimeTalkSession | null = null;
   private nativeBridgeCleanup: (() => void) | null = null;
+  private readonly embedMessageHandler = (event: MessageEvent) => {
+    if (!this.embedMode) {
+      return;
+    }
+    if (typeof window !== "undefined" && event.source && window.parent && event.source !== window.parent) {
+      return;
+    }
+    const target = parseEmbedShellNavigationMessage(event.data);
+    if (!target) {
+      return;
+    }
+    const nextTab = target.sessionKey ? "chat" : target.tab;
+    if (nextTab) {
+      this.setTab(nextTab);
+    }
+    if (target.sessionKey) {
+      switchChatSessionInternal(this as unknown as AppViewState, target.sessionKey);
+    }
+  };
   @state() chatManualRefreshInFlight = false;
   @state() chatHeaderControlsHidden = false;
   @state() chatMobileControlsOpen = false;
@@ -663,6 +694,7 @@ export class OpenClawApp extends LitElement {
     document.addEventListener("keydown", this.globalKeydownHandler);
     document.addEventListener("keydown", this.chatMobileControlsKeydownHandler);
     document.addEventListener("pointerdown", this.chatMobileControlsPointerdownHandler);
+    window.addEventListener("message", this.embedMessageHandler);
     handleConnected(this as unknown as Parameters<typeof handleConnected>[0]);
     this.nativeBridgeCleanup = initNativeBridge(this);
     void this.initWebPushState();
@@ -676,6 +708,7 @@ export class OpenClawApp extends LitElement {
     document.removeEventListener("keydown", this.globalKeydownHandler);
     this.nativeBridgeCleanup?.();
     this.nativeBridgeCleanup = null;
+    window.removeEventListener("message", this.embedMessageHandler);
     document.removeEventListener("keydown", this.chatMobileControlsKeydownHandler);
     document.removeEventListener("pointerdown", this.chatMobileControlsPointerdownHandler);
     if (this.sessionSwitchNoticeTimer !== null) {

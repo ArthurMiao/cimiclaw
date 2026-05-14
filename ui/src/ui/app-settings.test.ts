@@ -5,6 +5,7 @@ import {
   applySettings,
   applySettingsFromUrl,
   setTabFromRoute,
+  syncUrlWithTab,
   syncThemeWithSettings,
 } from "./app-settings.ts";
 import { normalizeImportedCustomTheme } from "./custom-theme.ts";
@@ -60,6 +61,7 @@ type SettingsHost = {
   eventLog: unknown[];
   eventLogBuffer: unknown[];
   basePath: string;
+  embedMode?: boolean;
   themeMedia: MediaQueryList | null;
   themeMediaHandler: ((event: MediaQueryListEvent) => void) | null;
   logsPollInterval: number | null;
@@ -89,6 +91,15 @@ function setTestWindowUrl(urlString: string) {
   const current = new URL(urlString);
   const history = {
     replaceState: vi.fn((_state: unknown, _title: string, nextUrl: string | URL) => {
+      const next = new URL(String(nextUrl), current.toString());
+      current.href = next.toString();
+      current.protocol = next.protocol;
+      current.host = next.host;
+      current.pathname = next.pathname;
+      current.search = next.search;
+      current.hash = next.hash;
+    }),
+    pushState: vi.fn((_state: unknown, _title: string, nextUrl: string | URL) => {
       const next = new URL(String(nextUrl), current.toString());
       current.href = next.toString();
       current.protocol = next.protocol;
@@ -504,5 +515,29 @@ describe("applySettingsFromUrl", () => {
       expect(window.location.search, scenario.name).toBe(scenario.expectedSearch);
       expect(window.location.hash, scenario.name).toBe("");
     }
+  });
+
+  it("tracks embed mode from the URL without stripping it", () => {
+    setTestWindowUrl("https://control.example/ui/chat?embed=1&session=agent%3Amain%3Awork");
+    const host = createHost("chat");
+
+    applySettingsFromUrl(host);
+
+    expect(host.embedMode).toBe(true);
+    expect(host.sessionKey).toBe("agent:main:work");
+    expect(window.location.search).toBe("?embed=1&session=agent%3Amain%3Awork");
+  });
+
+  it("preserves embed mode when syncing tab URLs", () => {
+    setTestWindowUrl("https://control.example/ui/chat?embed=1&session=main");
+    const host = createHost("chat");
+    host.basePath = "/ui";
+    host.embedMode = true;
+    host.sessionKey = "main";
+
+    syncUrlWithTab(host, "skills", false);
+
+    expect(window.location.pathname).toBe("/ui/skills");
+    expect(window.location.search).toBe("?embed=1");
   });
 });

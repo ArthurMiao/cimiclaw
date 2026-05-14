@@ -2,6 +2,7 @@ import { html } from "lit";
 import {
   agentLogoUrl,
   assistantAvatarFallbackUrl,
+  chatClawLogoUrl,
   resolveChatAvatarRenderUrl,
   resolveAssistantTextAvatar,
 } from "../views/agents-utils.ts";
@@ -11,6 +12,7 @@ export type ChatWelcomeProps = {
   assistantAvatar: string | null;
   assistantAvatarUrl?: string | null;
   basePath?: string;
+  embedMode?: boolean;
   onDraftChange: (next: string) => void;
   onSend: () => void;
 };
@@ -40,6 +42,19 @@ export function resolveAssistantDisplayAvatar(
 }
 
 export function renderWelcomeState(props: ChatWelcomeProps) {
+  if (props.embedMode) {
+    const clawLogoUrl = chatClawLogoUrl(props.basePath ?? "");
+    return html`
+      <div class="chat-embed-welcome">
+        <div class="chat-embed-welcome__copy">
+          <h1>CimiClaw已就位，有新的任务安排吗</h1>
+          <p>从“说给你听”到“替你完成”　7*24h接管你的事务</p>
+        </div>
+        <img class="chat-embed-welcome__logo" src=${clawLogoUrl} alt="CimiClaw" />
+      </div>
+    `;
+  }
+
   const name = props.assistantName || "Assistant";
   const avatar = resolveAssistantAvatarUrl(props);
   const avatarText = avatar ? null : resolveAssistantTextAvatar(props.assistantAvatar);
