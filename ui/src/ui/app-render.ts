@@ -1450,11 +1450,11 @@ export function renderApp(state: AppViewState) {
                       <img
                         class="sidebar-brand__logo"
                         src="${agentLogoUrl(basePath)}"
-                        alt="OpenClaw"
+                        alt="CimiClaw"
                       />
                       <span class="sidebar-brand__copy">
                         <span class="sidebar-brand__eyebrow">${t("nav.control")}</span>
-                        <span class="sidebar-brand__title">OpenClaw</span>
+                        <span class="sidebar-brand__title">CimiClaw</span>
                       </span>
                     `}
               </div>
@@ -1518,7 +1518,7 @@ export function renderApp(state: AppViewState) {
               <div class="sidebar-utility-group">
                 <a
                   class="nav-item nav-item--external sidebar-utility-link"
-                  href="https://docs.openclaw.ai"
+                  href="https://docs.cimiclaw.ai"
                   target=${EXTERNAL_LINK_TARGET}
                   rel=${buildExternalLinkRel()}
                   title=${t("chat.docsOpensInNewTab", { label: t("common.docs") })}

@@ -202,9 +202,9 @@ describe("toSanitizedMarkdownHtml", () => {
     });
 
     it("does NOT rewrite explicit markdown links with CJK display text", () => {
-      const html = toSanitizedMarkdownHtml("[OpenClaw中文](https://docs.openclaw.ai)");
-      expect(html).toContain('href="https://docs.openclaw.ai"');
-      expect(html).toContain("OpenClaw中文</a>");
+      const html = toSanitizedMarkdownHtml("[CimiClaw中文](https://docs.cimiclaw.ai)");
+      expect(html).toContain('href="https://docs.cimiclaw.ai"');
+      expect(html).toContain("CimiClaw中文</a>");
     });
 
     it("preserves mailto: scheme when trimming CJK from email links", () => {

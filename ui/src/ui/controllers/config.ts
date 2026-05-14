@@ -167,7 +167,7 @@ function resolveUpdateStatusBanner(params: { status?: string; reason?: string })
       dirty: "Commit or stash changes, then retry.",
       "no-upstream": "Set an upstream branch, then retry.",
       "not-git-install":
-        "Not a git checkout. Run `openclaw update` from the CLI for a global reinstall.",
+        "Not a git checkout. Run `cimiclaw update` from the CLI for a global reinstall.",
       "not-openclaw-root":
         "Run the update from an OpenClaw checkout or use the CLI global reinstall path.",
       "deps-install-failed": "Dependency install failed. Fix the install error and retry.",
@@ -176,12 +176,12 @@ function resolveUpdateStatusBanner(params: { status?: string; reason?: string })
       "global-install-failed":
         "The global package install did not verify on disk. Retry or reinstall from the CLI.",
       "restart-disabled":
-        "The update was not applied because gateway restarts are disabled. Enable restarts in config, then retry — or run `openclaw update` from the CLI.",
+        "The update was not applied because gateway restarts are disabled. Enable restarts in config, then retry — or run `cimiclaw update` from the CLI.",
       "restart-unavailable":
         "This global install cannot be safely replaced while restarts are disabled and no supervisor is present.",
       "restart-unhealthy":
         "The replacement process never became healthy. The previous process stayed up so you can recover.",
-      "doctor-failed": "Doctor repair failed. Run `openclaw doctor --non-interactive` and retry.",
+      "doctor-failed": "Doctor repair failed. Run `cimiclaw doctor --non-interactive` and retry.",
     }[reason] ?? "See the gateway logs for the exact failure and retry once the cause is fixed.";
   return {
     tone,

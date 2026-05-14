@@ -61,7 +61,7 @@ function createProps(overrides: Partial<QuickSettingsProps> = {}): QuickSettings
     onAdvancedSettings: vi.fn(),
     connected: true,
     gatewayUrl: "ws://localhost:18789",
-    assistantName: "OpenClaw",
+    assistantName: "CimiClaw",
     assistantAvatar: null,
     assistantAvatarUrl: null,
     assistantAvatarSource: null,

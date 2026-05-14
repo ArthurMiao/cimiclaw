@@ -55,8 +55,8 @@ describe("resolveLoginFailureFeedback", () => {
 
     expect(feedback?.kind).toBe("auth-required");
     expect(feedback?.title).toBe("Auth required");
-    expect(feedback?.steps.join(" ")).toContain("openclaw dashboard --no-open");
-    expect(feedback?.steps.join(" ")).toContain("openclaw doctor --generate-gateway-token");
+    expect(feedback?.steps.join(" ")).toContain("cimiclaw dashboard --no-open");
+    expect(feedback?.steps.join(" ")).toContain("cimiclaw doctor --generate-gateway-token");
   });
 
   it("explains rejected stale credentials", () => {
@@ -98,7 +98,7 @@ describe("resolveLoginFailureFeedback", () => {
 
     expect(feedback?.kind).toBe("pairing-required");
     expect(feedback?.title).toBe("Scope upgrade pending");
-    expect(feedback?.steps.join(" ")).toContain("openclaw devices approve req-123");
+    expect(feedback?.steps.join(" ")).toContain("cimiclaw devices approve req-123");
   });
 
   it("explains insecure HTTP device identity failures", () => {
@@ -139,7 +139,7 @@ describe("resolveLoginFailureFeedback", () => {
 
     expect(feedback?.kind).toBe("protocol-mismatch");
     expect(feedback?.summary).toContain("supported connection protocol");
-    expect(feedback?.steps.join(" ")).toContain("openclaw dashboard");
+    expect(feedback?.steps.join(" ")).toContain("cimiclaw dashboard");
   });
 
   it("falls back to connection diagnostics for generic close errors", () => {
@@ -194,8 +194,8 @@ describe("renderLoginGate", () => {
     const alert = container.querySelector<HTMLElement>('[role="alert"]');
     expect(alert?.dataset.kind).toBe("protocol-mismatch");
     expect(alert?.textContent).toContain("Protocol mismatch");
-    expect(alert?.textContent).toContain("openclaw dashboard");
+    expect(alert?.textContent).toContain("cimiclaw dashboard");
     expect(alert?.querySelector("details")?.textContent).toContain("protocol mismatch");
-    expect(alert?.querySelector("a")?.getAttribute("href")).toContain("docs.openclaw.ai");
+    expect(alert?.querySelector("a")?.getAttribute("href")).toContain("docs.cimiclaw.ai");
   });
 });

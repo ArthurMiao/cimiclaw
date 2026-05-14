@@ -772,7 +772,7 @@ describe("doctor state integrity oauth dir checks", () => {
       "main-session",
     );
 
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-tui-pointer-clear-"));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "cimiclaw-tui-pointer-clear-"));
     try {
       const filePath = path.join(tempDir, "last-session.json");
       fs.writeFileSync(

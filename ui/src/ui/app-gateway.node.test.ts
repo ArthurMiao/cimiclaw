@@ -154,7 +154,7 @@ function createHost(): TestGatewayHost {
     agentsList: null,
     agentsError: null,
     debugHealth: null,
-    assistantName: "OpenClaw",
+    assistantName: "CimiClaw",
     assistantAvatar: null,
     assistantAgentId: null,
     localMediaPreviewRoots: [],

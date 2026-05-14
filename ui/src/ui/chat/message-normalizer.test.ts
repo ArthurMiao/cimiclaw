@@ -2,7 +2,10 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { normalizeMessage } from "./message-normalizer.ts";
 
 const SENDER_METADATA_BLOCK =
-  'Sender (untrusted metadata):\n```json\n{"label":"openclaw-control-ui","id":"openclaw-control-ui"}\n```';
+  'Sender (untrusted metadata):\n```json\n{"label":"openclaw-control-ui","id":"openclaw-control-ui"}\n```'.replaceAll(
+    "openclaw-control-ui",
+    "cimiclaw-control-ui",
+  );
 
 describe("message-normalizer", () => {
   describe("normalizeMessage", () => {

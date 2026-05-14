@@ -213,7 +213,7 @@ describe("attachGatewayWsConnectionHandler", () => {
 
     const registered = handlerParams.setClient({
       socket,
-      connect: { client: { id: "openclaw-control-ui", mode: "webchat" } },
+      connect: { client: { id: "cimiclaw-control-ui", mode: "webchat" } },
       connId: "late-client",
       usesSharedGatewayAuth: false,
     });
@@ -232,7 +232,7 @@ describe("attachGatewayWsConnectionHandler", () => {
     expect(
       handlerParams.setClient({
         socket,
-        connect: { client: { id: "openclaw-control-ui", mode: "webchat" } },
+        connect: { client: { id: "cimiclaw-control-ui", mode: "webchat" } },
         connId: "ping-client",
         usesSharedGatewayAuth: false,
       }),

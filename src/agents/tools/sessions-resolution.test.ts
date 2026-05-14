@@ -124,11 +124,11 @@ describe("session key display/internal mapping", () => {
   it("maps interactive client ids to the requester session", () => {
     expect(
       resolveCurrentSessionClientAlias({
-        key: "openclaw-tui",
+        key: "cimiclaw-tui",
         requesterInternalKey: "agent:main:main",
       }),
     ).toBe("agent:main:main");
-    expect(resolveCurrentSessionClientAlias({ key: "openclaw-tui" })).toBeUndefined();
+    expect(resolveCurrentSessionClientAlias({ key: "cimiclaw-tui" })).toBeUndefined();
     expect(
       resolveCurrentSessionClientAlias({
         key: "node-host",
@@ -331,7 +331,7 @@ describe("resolveSessionReference", () => {
 
   it("treats the TUI client label as the requester session", async () => {
     const result = await resolveSessionReference({
-      sessionKey: "openclaw-tui",
+      sessionKey: "cimiclaw-tui",
       alias: "main",
       mainKey: "main",
       requesterInternalKey: "agent:main:main",

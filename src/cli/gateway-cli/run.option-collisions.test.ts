@@ -38,7 +38,7 @@ const writeDiagnosticStabilityBundleForFailureSync = vi.fn((_reason: string, _er
   path: "/tmp/openclaw-stability.json",
 }));
 const controlUiState = vi.hoisted(() => ({
-  root: "/tmp/openclaw-control-ui" as string | null,
+  root: "/tmp/cimiclaw-control-ui" as string | null,
 }));
 const withoutSupervisorEnv = Object.fromEntries(
   SUPERVISOR_HINT_ENV_VARS.map((key) => [key, undefined]),
@@ -179,7 +179,7 @@ describe("gateway run option collisions", () => {
     configState.snapshot = { exists: false };
     readBestEffortConfig.mockClear();
     readConfigFileSnapshotWithPluginMetadata.mockClear();
-    controlUiState.root = "/tmp/openclaw-control-ui";
+    controlUiState.root = "/tmp/cimiclaw-control-ui";
     gatewayLogMessages.length = 0;
     writeDiagnosticStabilityBundleForFailureSync.mockClear();
     startGatewayServer.mockClear();

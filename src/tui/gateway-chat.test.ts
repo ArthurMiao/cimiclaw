@@ -65,7 +65,7 @@ async function withModeExecProviderFixture(
   label: string,
   run: (fixture: ModeExecProviderFixture) => Promise<void>,
 ) {
-  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), `openclaw-tui-mode-${label}-`));
+  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), `cimiclaw-tui-mode-${label}-`));
   const tokenMarker = path.join(tempDir, "token-provider-ran");
   const passwordMarker = path.join(tempDir, "password-provider-ran");
   const tokenExecProgram = [
@@ -352,7 +352,7 @@ describe("resolveGatewayConnection", () => {
   it.runIf(process.platform !== "win32")(
     "resolves file-backed SecretRef token for local mode",
     async () => {
-      const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-tui-file-secret-"));
+      const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "cimiclaw-tui-file-secret-"));
       const secretFile = path.join(tempDir, "secrets.json");
       await fs.writeFile(secretFile, JSON.stringify({ gatewayToken: "file-secret-token" }), "utf8");
       await fs.chmod(secretFile, 0o600);
@@ -526,7 +526,7 @@ describe("GatewayChatClient", () => {
     expect(
       (client as unknown as { client: { opts: { clientName?: string; mode?: string } } }).client
         .opts.clientName,
-    ).toBe("openclaw-tui");
+    ).toBe("cimiclaw-tui");
     expect(
       (client as unknown as { client: { opts: { clientName?: string; mode?: string } } }).client
         .opts.mode,

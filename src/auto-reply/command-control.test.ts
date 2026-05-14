@@ -365,7 +365,7 @@ describe("resolveCommandAuthorization", () => {
       Provider: "webchat",
       Surface: "webchat",
       OriginatingChannel: "webchat",
-      SenderId: "openclaw-control-ui",
+      SenderId: "cimiclaw-control-ui",
     } as MsgContext;
 
     const auth = resolveCommandAuthorization({
