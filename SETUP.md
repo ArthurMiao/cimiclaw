@@ -1,4 +1,4 @@
-# OpenClaw 快速启动指南
+# CimiClaw 快速启动指南
 
 ## 1. 环境要求
 
@@ -19,27 +19,32 @@ pnpm install
 cp .env.example .env
 ```
 
-编辑 `.env`，取消注释并填入至少一个模型 API Key：
+编辑 `.env`，填入至少一个模型 API Key。例如使用智谱：
 
 ```
 ZAI_API_KEY=你的智谱API Key
 ```
 
-## 4. 配置默认模型（可选）
+也支持其他提供商（按需填一个即可）：
 
-编辑 `~/.openclaw/openclaw.json`，在 `agents.defaults` 下添加：
-
-```json
-{
-  "agents": {
-    "defaults": {
-      "model": {
-        "primary": "zai/glm-5.1"
-      }
-    }
-  }
-}
 ```
+# OPENAI_API_KEY=sk-...
+# ANTHROPIC_API_KEY=sk-ant-...
+# GEMINI_API_KEY=...
+# OPENROUTER_API_KEY=sk-or-...
+```
+
+## 4. 初始化配置
+
+运行 onboard 向导，交互式完成模型选择、网关认证等初始配置：
+
+```bash
+pnpm openclaw onboard
+```
+
+向导会在 `~/.cimiclaw/` 下生成 `cimiclaw.json` 配置文件。
+
+> **已有旧配置？** 如果之前使用过 `~/.openclaw/`，系统会自动迁移到 `~/.cimiclaw/`。也可以手动将 `~/.openclaw/openclaw.json` 复制到 `~/.cimiclaw/cimiclaw.json`。
 
 ## 5. 构建 UI
 
@@ -70,15 +75,26 @@ pnpm dev gateway
 - **聊天界面**：http://127.0.0.1:18789/
 - **健康检查**：http://127.0.0.1:18789/healthz
 
-首次访问会显示登录页面（这是前端 WebSocket 连接入口）。由于已配置免认证（`auth.mode: none`），直接点击 **Connect** 按钮即可进入聊天界面，无需填写 Token。
+首次访问会显示登录页面。如果 onboard 时选择了免认证（`auth.mode: none`），直接点击 **Connect** 即可进入聊天界面，无需填写 Token。
 
 ## 8. 常用命令
 
 ```bash
 pnpm dev gateway          # 启动开发服务器
 pnpm gateway:dev          # 跳过渠道的快速开发模式
-pnpm ui:dev               # UI 开发
+pnpm ui:dev               # UI 开发（热更新）
 pnpm test                 # 运行测试
 pnpm check                # 代码检查
 pnpm format               # 格式化
+pnpm openclaw onboard     # 重新运行配置向导
+pnpm openclaw doctor      # 诊断和修复配置问题
 ```
+
+## 配置文件位置
+
+| 路径 | 说明 |
+|---|---|
+| `~/.cimiclaw/cimiclaw.json` | 主配置文件（模型、网关、渠道等） |
+| `~/.cimiclaw/.env` 或项目 `.env` | API Key 和环境变量 |
+| `~/.cimiclaw/workspace/` | Agent 工作区 |
+| `~/.cimiclaw/credentials/` | 渠道/提供商凭证 |

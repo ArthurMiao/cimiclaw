@@ -1377,7 +1377,9 @@ export function renderApp(state: AppViewState) {
         ? "shell--chat-focus"
         : ""} ${navCollapsed ? "shell--nav-collapsed" : ""} ${navDrawerOpen
         ? "shell--nav-drawer-open"
-        : ""} ${state.onboarding ? "shell--onboarding" : ""}"
+        : ""} ${state.onboarding ? "shell--onboarding" : ""} ${state.embedMode
+        ? "shell--embed"
+        : ""}"
       style=${styleMap(
         state.chatMessageMaxWidth ? { "--chat-message-max-width": state.chatMessageMaxWidth } : {},
       )}
@@ -1390,51 +1392,55 @@ export function renderApp(state: AppViewState) {
           state.navDrawerOpen = false;
         }}
       ></button>
-      <header class="topbar">
-        <div class="topnav-shell">
-          <button
-            type="button"
-            class="sidebar-menu-trigger topbar-nav-toggle"
-            @click=${() => {
-              state.navDrawerOpen = !navDrawerOpen;
-            }}
-            title="${navDrawerOpen ? t("nav.collapse") : t("nav.expand")}"
-            aria-label="${navDrawerOpen ? t("nav.collapse") : t("nav.expand")}"
-            aria-expanded=${navDrawerOpen}
-          >
-            <span class="nav-collapse-toggle__icon" aria-hidden="true">${icons.menu}</span>
-          </button>
-          <div class="topnav-shell__content">
-            <dashboard-header
-              .tab=${state.tab}
-              .basePath=${state.basePath}
-              .agentLabel=${dashboardHeaderContext.agentLabel}
-              @navigate=${(event: CustomEvent<Tab>) => {
-                state.setTab(event.detail);
-              }}
-            ></dashboard-header>
-          </div>
-          <div class="topnav-shell__actions">
-            <button
-              class="topbar-search"
-              @click=${() => {
-                state.paletteOpen = !state.paletteOpen;
-              }}
-              title=${t("chat.commandPaletteTitle")}
-              aria-label=${t("chat.openCommandPalette")}
-            >
-              <span class="topbar-search__label">${t("common.search")}</span>
-              <kbd class="topbar-search__kbd">⌘K</kbd>
-            </button>
-            <div class="topbar-status">
-              ${isChat ? renderChatMobileToggle(state) : nothing}
-              ${renderTopbarThemeModeToggle(state)}
-            </div>
-          </div>
-        </div>
-      </header>
-      <div class="shell-nav">
-        <aside class="sidebar ${navCollapsed ? "sidebar--collapsed" : ""}">
+      ${state.embedMode
+        ? nothing
+        : html`<header class="topbar">
+              <div class="topnav-shell">
+                <button
+                  type="button"
+                  class="sidebar-menu-trigger topbar-nav-toggle"
+                  @click=${() => {
+                    state.navDrawerOpen = !navDrawerOpen;
+                  }}
+                  title="${navDrawerOpen ? t("nav.collapse") : t("nav.expand")}"
+                  aria-label="${navDrawerOpen ? t("nav.collapse") : t("nav.expand")}"
+                  aria-expanded=${navDrawerOpen}
+                >
+                  <span class="nav-collapse-toggle__icon" aria-hidden="true">${icons.menu}</span>
+                </button>
+                <div class="topnav-shell__content">
+                  <dashboard-header
+                    .tab=${state.tab}
+                    .basePath=${state.basePath}
+                    .agentLabel=${dashboardHeaderContext.agentLabel}
+                    @navigate=${(event: CustomEvent<Tab>) => {
+                      state.setTab(event.detail);
+                    }}
+                  ></dashboard-header>
+                </div>
+                <div class="topnav-shell__actions">
+                  <button
+                    class="topbar-search"
+                    @click=${() => {
+                      state.paletteOpen = !state.paletteOpen;
+                    }}
+                    title=${t("chat.commandPaletteTitle")}
+                    aria-label=${t("chat.openCommandPalette")}
+                  >
+                    <span class="topbar-search__label">${t("common.search")}</span>
+                    <kbd class="topbar-search__kbd">⌘K</kbd>
+                  </button>
+                  <div class="topbar-status">
+                    ${isChat ? renderChatMobileToggle(state) : nothing}
+                    ${renderTopbarThemeModeToggle(state)}
+                  </div>
+                </div>
+              </div>
+            </header>`}
+      ${state.embedMode
+        ? nothing
+        : html`<div class="shell-nav">
+            <aside class="sidebar ${navCollapsed ? "sidebar--collapsed" : ""}">
           <div class="sidebar-shell">
             <div class="sidebar-shell__header">
               <div class="sidebar-brand">
@@ -1546,8 +1552,10 @@ export function renderApp(state: AppViewState) {
             </div>
           </div>
         </aside>
-      </div>
-      <main class="content ${isChat ? "content--chat" : ""}">
+      </div>`}
+      <main class="content ${isChat ? "content--chat" : ""} ${state.embedMode
+        ? "content--embed"
+        : ""}">
         ${state.updateStatusBanner
           ? html`<div class="callout ${state.updateStatusBanner.tone}" role="alert">
               ${state.updateStatusBanner.text}
@@ -1580,7 +1588,18 @@ export function renderApp(state: AppViewState) {
               </button>
             </div>`
           : nothing}
-        ${state.tab === "config"
+        ${state.embedMode && state.tab !== "chat"
+          ? html`<div class="embed-utility-bar">
+              <button type="button" class="embed-utility-bar__brand" @click=${() => state.setTab("chat")}>
+                CimiClaw
+              </button>
+              <div class="embed-utility-bar__actions">
+                <button type="button" @click=${() => state.setTab("skills")}>Skills</button>
+                <button type="button" @click=${() => state.setTab("usage")}>使用情况</button>
+              </div>
+            </div>`
+          : nothing}
+        ${state.tab === "config" || state.embedMode
           ? nothing
           : html`<section
               class=${isChat && state.chatHeaderControlsHidden
@@ -2455,7 +2474,9 @@ export function renderApp(state: AppViewState) {
                   error: state.lastError,
                   onDismissError: () => dismissChatError(state),
                   sessions: state.sessionsResult,
+                  cronJobs: state.cronJobs,
                   focusMode: chatFocus,
+                  embedMode: state.embedMode,
                   autoExpandToolCalls: false,
                   onRefresh: () => {
                     state.chatSideResult = null;
@@ -2523,6 +2544,7 @@ export function renderApp(state: AppViewState) {
                   onAgentChange: (agentId: string) => {
                     switchChatSession(state, buildAgentMainSessionKey({ agentId }));
                   },
+                  onNavigateToTab: (tab) => state.setTab(tab),
                   onNavigateToAgent: () => {
                     state.agentsSelectedId = resolvedAgentId;
                     state.setTab("agents" as import("./navigation.ts").Tab);

@@ -154,10 +154,10 @@ The Docker setup uses three config files on the host. The container never stores
 | File                        | Purpose                                          | Examples                                                            |
 | --------------------------- | ------------------------------------------------ | ------------------------------------------------------------------- |
 | `<project>/.env`            | **Docker infra** — image, ports, gateway token   | `OPENCLAW_GATEWAY_TOKEN`, `OPENCLAW_IMAGE`, `OPENCLAW_GATEWAY_PORT` |
-| `~/.openclaw/.env`          | **Secrets** — API keys and bot tokens            | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `TELEGRAM_BOT_TOKEN`         |
-| `~/.openclaw/openclaw.json` | **Behavior config** — models, channels, policies | Model selection, WhatsApp allowlists, agent settings                |
+| `~/.cimiclaw/.env`          | **Secrets** — API keys and bot tokens            | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `TELEGRAM_BOT_TOKEN`         |
+| `~/.cimiclaw/cimiclaw.json` | **Behavior config** — models, channels, policies | Model selection, WhatsApp allowlists, agent settings                |
 
-**Do NOT** put API keys or bot tokens in `openclaw.json`. Use `~/.openclaw/.env` for all secrets.
+**Do NOT** put API keys or bot tokens in `cimiclaw.json`. Use `~/.cimiclaw/.env` for all secrets.
 
 ### Initial Setup
 
@@ -165,7 +165,7 @@ The Docker setup uses three config files on the host. The container never stores
 
 - Builds the `openclaw:local` image from `Dockerfile`
 - Creates `<project>/.env` from `.env.example` with a generated gateway token
-- Sets up `~/.openclaw` directories if they don't exist
+- Sets up `~/.cimiclaw` directories if they don't exist
 
 ```bash
 ./scripts/docker/setup.sh
@@ -174,7 +174,7 @@ The Docker setup uses three config files on the host. The container never stores
 After setup, add your API keys:
 
 ```bash
-vim ~/.openclaw/.env
+vim ~/.cimiclaw/.env
 ```
 
 See `.env.example` for all supported keys.
@@ -190,21 +190,21 @@ The `Dockerfile` supports two optional build args:
 
 ```yaml
 volumes:
-  - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw
-  - ${OPENCLAW_WORKSPACE_DIR}:/home/node/.openclaw/workspace
+  - ${OPENCLAW_CONFIG_DIR}:/home/node/.cimiclaw
+  - ${OPENCLAW_WORKSPACE_DIR}:/home/node/.cimiclaw/workspace
 ```
 
 This means:
 
-- `~/.openclaw/.env` is available inside the container at `/home/node/.openclaw/.env` — OpenClaw loads it automatically as the global env fallback
-- `~/.openclaw/openclaw.json` is available at `/home/node/.openclaw/openclaw.json` — the gateway watches it and hot-reloads most changes
+- `~/.cimiclaw/.env` is available inside the container at `/home/node/.cimiclaw/.env` — OpenClaw loads it automatically as the global env fallback
+- `~/.cimiclaw/cimiclaw.json` is available at `/home/node/.cimiclaw/cimiclaw.json` — the gateway watches it and hot-reloads most changes
 - Downloadable plugin packages and install records live under the mounted OpenClaw home
 - No need to add API keys to `docker-compose.yml` or configure anything inside the container
 - Keys survive `clawdock-update`, `clawdock-rebuild`, and `clawdock-clean` because they live on the host
 
-The project `.env` feeds Docker Compose directly (gateway token, image name, ports). The `~/.openclaw/.env` feeds the OpenClaw process inside the container.
+The project `.env` feeds Docker Compose directly (gateway token, image name, ports). The `~/.cimiclaw/.env` feeds the OpenClaw process inside the container.
 
-### Example `~/.openclaw/.env`
+### Example `~/.cimiclaw/.env`
 
 ```bash
 OPENAI_API_KEY=sk-...
@@ -215,8 +215,8 @@ TELEGRAM_BOT_TOKEN=123456:ABCDEF...
 ### Example `<project>/.env`
 
 ```bash
-OPENCLAW_CONFIG_DIR=/Users/you/.openclaw
-OPENCLAW_WORKSPACE_DIR=/Users/you/.openclaw/workspace
+OPENCLAW_CONFIG_DIR=/Users/you/.cimiclaw
+OPENCLAW_WORKSPACE_DIR=/Users/you/.cimiclaw/workspace
 OPENCLAW_GATEWAY_PORT=18789
 OPENCLAW_BRIDGE_PORT=18790
 OPENCLAW_GATEWAY_BIND=lan
@@ -230,8 +230,8 @@ OpenClaw loads env vars in this order (highest wins, never overrides existing):
 
 1. **Process environment** — `docker-compose.yml` `environment:` block (gateway token, session keys)
 2. **`.env` in CWD** — project root `.env` (Docker infra vars)
-3. **`~/.openclaw/.env`** — global secrets (API keys, bot tokens)
-4. **`openclaw.json` `env` block** — inline vars, applied only if still missing
+3. **`~/.cimiclaw/.env`** — global secrets (API keys, bot tokens)
+4. **`cimiclaw.json` `env` block** — inline vars, applied only if still missing
 5. **Shell env import** — optional login-shell scrape (`OPENCLAW_LOAD_SHELL_ENV=1`)
 
 ## Common Workflows

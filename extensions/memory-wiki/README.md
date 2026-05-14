@@ -23,7 +23,7 @@ Put config under `plugins.entries.memory-wiki.config`:
   vaultMode: "isolated",
 
   vault: {
-    path: "~/.openclaw/wiki/main",
+    path: "~/.cimiclaw/wiki/main",
     renderMode: "obsidian", // or "native"
   },
 

@@ -248,6 +248,11 @@ export function agentLogoUrl(basePath: string): string {
   return base ? `${base}/favicon.svg` : "favicon.svg";
 }
 
+export function chatClawLogoUrl(basePath: string): string {
+  const base = normalizeOptionalString(basePath)?.replace(/\/$/, "") ?? "";
+  return base ? `${base}/chat-claw-logo.png` : "chat-claw-logo.png";
+}
+
 export function assistantAvatarFallbackUrl(basePath: string): string {
   const base = normalizeOptionalString(basePath)?.replace(/\/$/, "") ?? "";
   return base ? `${base}/apple-touch-icon.png` : "apple-touch-icon.png";

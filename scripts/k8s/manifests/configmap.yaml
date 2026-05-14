@@ -5,7 +5,7 @@ metadata:
   labels:
     app: openclaw
 data:
-  openclaw.json: |
+  cimiclaw.json: |
     {
       "gateway": {
         "mode": "local",
@@ -20,13 +20,13 @@ data:
       },
       "agents": {
         "defaults": {
-          "workspace": "~/.openclaw/workspace"
+          "workspace": "~/.cimiclaw/workspace"
         },
         "list": [
           {
             "id": "default",
             "name": "OpenClaw Assistant",
-            "workspace": "~/.openclaw/workspace"
+            "workspace": "~/.cimiclaw/workspace"
           }
         ]
       },

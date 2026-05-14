@@ -18,10 +18,10 @@ export function resolveIsNixMode(env: NodeJS.ProcessEnv = process.env): boolean 
 export const isNixMode = resolveIsNixMode();
 
 // Support the remaining legacy pre-rebrand state dir.
-const LEGACY_STATE_DIRNAMES = [".clawdbot"] as const;
+const LEGACY_STATE_DIRNAMES = [".openclaw", ".clawdbot"] as const;
 const NEW_STATE_DIRNAME = ".cimiclaw";
 const CONFIG_FILENAME = "cimiclaw.json";
-const LEGACY_CONFIG_FILENAMES = ["clawdbot.json"] as const;
+const LEGACY_CONFIG_FILENAMES = ["openclaw.json", "clawdbot.json"] as const;
 
 function resolveDefaultHomeDir(): string {
   return resolveRequiredHomeDir(process.env, os.homedir);

@@ -255,13 +255,13 @@ Details: [Development channels](https://docs.openclaw.ai/install/development-cha
 
 ## Agent workspace + skills
 
-- Workspace root: `~/.openclaw/workspace` (configurable via `agents.defaults.workspace`).
+- Workspace root: `~/.cimiclaw/workspace` (configurable via `agents.defaults.workspace`).
 - Injected prompt files: `AGENTS.md`, `SOUL.md`, `TOOLS.md`.
-- Skills: `~/.openclaw/workspace/skills/<skill>/SKILL.md`.
+- Skills: `~/.cimiclaw/workspace/skills/<skill>/SKILL.md`.
 
 ## Configuration
 
-Minimal `~/.openclaw/openclaw.json` (model + defaults):
+Minimal `~/.cimiclaw/cimiclaw.json` (model + defaults):
 
 ```json5
 {

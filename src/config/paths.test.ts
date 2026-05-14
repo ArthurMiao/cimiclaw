@@ -144,8 +144,13 @@ describe("state + config path candidates", () => {
     const candidates = resolveDefaultConfigCandidates({} as NodeJS.ProcessEnv, () => home);
     const expected = [
       path.join(resolvedHome, ".cimiclaw", "cimiclaw.json"),
+      path.join(resolvedHome, ".cimiclaw", "openclaw.json"),
       path.join(resolvedHome, ".cimiclaw", "clawdbot.json"),
+      path.join(resolvedHome, ".openclaw", "cimiclaw.json"),
+      path.join(resolvedHome, ".openclaw", "openclaw.json"),
+      path.join(resolvedHome, ".openclaw", "clawdbot.json"),
       path.join(resolvedHome, ".clawdbot", "cimiclaw.json"),
+      path.join(resolvedHome, ".clawdbot", "openclaw.json"),
       path.join(resolvedHome, ".clawdbot", "clawdbot.json"),
     ];
     expect(candidates).toEqual(expected);

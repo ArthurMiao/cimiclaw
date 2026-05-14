@@ -304,7 +304,7 @@ process action:log sessionId:XXX
 5. **--full-auto for building** - auto-approves changes
 6. **vanilla for reviewing** - no special flags needed
 7. **Parallel is OK** - run many Codex processes at once for batch work
-8. **NEVER start Codex inside your OpenClaw state directory** (`$OPENCLAW_STATE_DIR`, default `~/.openclaw`) - it'll read your soul docs and get weird ideas about the org chart!
+8. **NEVER start Codex inside your OpenClaw state directory** (`$OPENCLAW_STATE_DIR`, default `~/.cimiclaw`) - it'll read your soul docs and get weird ideas about the org chart!
 9. **NEVER checkout branches in ~/Projects/openclaw/** - that's the LIVE OpenClaw instance!
 10. **Always inject the Completion Prompt Snippet** into the worker prompt before spawning. The simplified examples below omit it for brevity — never spawn a worker without it.
 
@@ -351,7 +351,7 @@ This prevents the user from seeing only a missing reply and having no idea what 
    - Do not kill sessions just because they are slow.
 9. **Parallel is OK.**
    - Many background Codex sessions can run at once.
-10. **Never start Codex in `~/.openclaw/`.**
+10. **Never start Codex in `~/.cimiclaw/`.**
 11. **Never checkout branches in `~/Projects/openclaw/`.**
 
 ---

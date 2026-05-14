@@ -57,7 +57,7 @@ This is why localhost URLs don't work - the node receives the Tailscale hostname
 
 ## Configuration
 
-In the active OpenClaw config file (`$OPENCLAW_CONFIG_PATH`, default `~/.openclaw/openclaw.json`):
+In the active OpenClaw config file (`$OPENCLAW_CONFIG_PATH`, default `~/.cimiclaw/cimiclaw.json`):
 
 ```json
 {

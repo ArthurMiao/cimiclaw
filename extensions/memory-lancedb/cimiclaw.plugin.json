@@ -40,7 +40,7 @@
     },
     "dbPath": {
       "label": "Database Path",
-      "placeholder": "~/.openclaw/memory/lancedb",
+      "placeholder": "~/.cimiclaw/memory/lancedb",
       "advanced": true
     },
     "autoCapture": {

@@ -130,7 +130,7 @@ Skills own workflows; root owns hard policy and routing.
 ## Security / Release
 
 - Never commit real phone numbers, videos, credentials, live config.
-- Secrets: channel/provider creds in `~/.openclaw/credentials/`; model auth profiles in `~/.openclaw/agents/<agentId>/agent/auth-profiles.json`.
+- Secrets: channel/provider creds in `~/.cimiclaw/credentials/`; model auth profiles in `~/.cimiclaw/agents/<agentId>/agent/auth-profiles.json`.
 - Env keys: check `~/.profile`; redact output.
 - Dependency patches/overrides/vendor changes need explicit approval. `pnpm.patchedDependencies` exact versions only.
 - Carbon pins owner-only: do not change `@buape/carbon` unless Shadow (`@thewilloftheshadow`, verified by `gh`) asks.
