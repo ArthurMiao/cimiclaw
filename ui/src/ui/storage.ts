@@ -196,7 +196,7 @@ export function loadSettings(): UiSettings {
     token: loadSessionToken(defaultUrl),
     sessionKey: "main",
     lastActiveSessionKey: "main",
-    theme: "claw",
+    theme: "ocean",
     themeMode: "system",
     chatFocusMode: false,
     chatShowThinking: true,
@@ -233,7 +233,7 @@ export function loadSettings(): UiSettings {
       token: loadSessionToken(gatewayUrl),
       sessionKey: scopedSessionSelection.sessionKey,
       lastActiveSessionKey: scopedSessionSelection.lastActiveSessionKey,
-      theme: theme === "custom" && !customTheme ? "claw" : theme,
+      theme: theme === "custom" && !customTheme ? "ocean" : theme,
       themeMode: mode,
       chatFocusMode:
         typeof parsed.chatFocusMode === "boolean" ? parsed.chatFocusMode : defaults.chatFocusMode,

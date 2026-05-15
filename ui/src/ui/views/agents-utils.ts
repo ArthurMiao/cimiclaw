@@ -255,7 +255,7 @@ export function chatClawLogoUrl(basePath: string): string {
 
 export function assistantAvatarFallbackUrl(basePath: string): string {
   const base = normalizeOptionalString(basePath)?.replace(/\/$/, "") ?? "";
-  return base ? `${base}/apple-touch-icon.png` : "apple-touch-icon.png";
+  return base ? `${base}/cimiclaw-logo.png` : "cimiclaw-logo.png";
 }
 
 function isAvatarUrl(value: string): boolean {

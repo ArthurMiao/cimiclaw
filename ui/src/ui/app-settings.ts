@@ -453,8 +453,8 @@ export function syncThemeWithSettings(host: SettingsHost) {
   syncCustomThemeStyleTag(host.settings.customTheme);
   const normalizedTheme =
     host.settings.theme === "custom" && !host.settings.customTheme
-      ? "claw"
-      : (host.settings.theme ?? "claw");
+      ? "ocean"
+      : (host.settings.theme ?? "ocean");
   host.theme = normalizedTheme;
   host.themeMode = host.settings.themeMode ?? "system";
   if (normalizedTheme !== host.settings.theme) {

@@ -2515,7 +2515,6 @@ export function renderApp(state: AppViewState) {
                       includeUnknown: true,
                     });
                   },
-                  onToggleRealtimeTalk: () => state.toggleRealtimeTalk(),
                   onToggleRealtimeTalkOptions: () => {
                     state.realtimeTalkOptionsOpen = !state.realtimeTalkOptionsOpen;
                   },

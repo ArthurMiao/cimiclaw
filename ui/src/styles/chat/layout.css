@@ -1660,9 +1660,9 @@
 }
 
 .agent-chat__avatar--logo img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .agent-chat__badges {

@@ -4,7 +4,7 @@ import { normalizeOptionalString } from "./string-coerce.ts";
 export const EMBED_SHELL_PARAM = "embed";
 
 const EMBED_TRUE_VALUES = new Set(["1", "true", "yes", "on", "embed", "iframe"]);
-const EMBED_ALLOWED_TABS = new Set<Tab>(["chat", "skills", "usage", "cron", "sessions"]);
+const EMBED_ALLOWED_TABS = new Set<Tab>(["chat", "skills", "usage", "cron", "sessions", "appearance"]);
 
 function isTruthyEmbedValue(value: string | null): boolean {
   if (value == null) {

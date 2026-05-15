@@ -897,7 +897,7 @@ export class OpenClawApp extends LitElement {
   }
 
   clearCustomTheme() {
-    const nextTheme = this.theme === "custom" ? "claw" : this.theme;
+    const nextTheme = this.theme === "custom" ? "ocean" : this.theme;
     this.customThemeImportExpanded = true;
     this.customThemeImportSelectOnSuccess = false;
     applySettingsInternal(this as unknown as Parameters<typeof applySettingsInternal>[0], {
