@@ -1,4 +1,4 @@
-export type ThemeName = "claw" | "knot" | "dash" | "custom";
+export type ThemeName = "claw" | "knot" | "dash" | "ocean" | "custom";
 export type ThemeMode = "system" | "light" | "dark";
 export type ResolvedTheme =
   | "dark"
@@ -7,10 +7,12 @@ export type ResolvedTheme =
   | "openknot-light"
   | "dash"
   | "dash-light"
+  | "ocean"
+  | "ocean-light"
   | "custom"
   | "custom-light";
 
-export const VALID_THEME_NAMES = new Set<ThemeName>(["claw", "knot", "dash", "custom"]);
+export const VALID_THEME_NAMES = new Set<ThemeName>(["claw", "knot", "dash", "ocean", "custom"]);
 const VALID_THEME_MODES = new Set<ThemeMode>(["system", "light", "dark"]);
 
 type ThemeSelection = { theme: ThemeName; mode: ThemeMode };
@@ -49,10 +51,10 @@ export function parseThemeSelection(
 
   const normalizedTheme = VALID_THEME_NAMES.has(theme as ThemeName)
     ? (theme as ThemeName)
-    : (LEGACY_MAP[theme]?.theme ?? "claw");
+    : (LEGACY_MAP[theme]?.theme ?? "ocean");
   const normalizedMode = VALID_THEME_MODES.has(mode as ThemeMode)
     ? (mode as ThemeMode)
-    : (LEGACY_MAP[theme]?.mode ?? "system");
+    : (LEGACY_MAP[theme]?.mode ?? "dark");
 
   return { theme: normalizedTheme, mode: normalizedMode };
 }
@@ -74,6 +76,9 @@ export function resolveTheme(theme: ThemeName, mode: ThemeMode): ResolvedTheme {
   }
   if (theme === "dash") {
     return resolvedMode === "light" ? "dash-light" : "dash";
+  }
+  if (theme === "ocean") {
+    return resolvedMode === "light" ? "ocean-light" : "ocean";
   }
   return resolvedMode === "light" ? "custom-light" : "custom";
 }

@@ -1592,11 +1592,14 @@ export function renderApp(state: AppViewState) {
         ${state.embedMode && state.tab !== "chat"
           ? html`<div class="embed-utility-bar">
               <button type="button" class="embed-utility-bar__brand" @click=${() => state.setTab("chat")}>
-                CimiClaw
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+                Chat
               </button>
               <div class="embed-utility-bar__actions">
-                <button type="button" @click=${() => state.setTab("skills")}>Skills</button>
-                <button type="button" @click=${() => state.setTab("usage")}>使用情况</button>
+                <button type="button" class="${state.tab === "skills" ? "button--active" : ""}" @click=${() => state.setTab("skills")}>Skills</button>
+                <button type="button" class="${state.tab === "usage" ? "button--active" : ""}" @click=${() => state.setTab("usage")}>使用情况</button>
               </div>
             </div>`
           : nothing}
