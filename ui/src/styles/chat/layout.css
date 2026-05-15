@@ -27,6 +27,8 @@
   grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
   min-height: 100%;
   background: linear-gradient(180deg, #fbfdff 0%, #f5f9ff 100%);
+  --ring: rgba(76, 151, 255, 0.45);
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 3px rgba(76, 151, 255, 0.45);
 }
 
 .chat-embed-rail {
@@ -180,6 +182,19 @@
 
 .chat-embed-main__footer {
   padding: 0 16px 18px;
+}
+
+.chat-embed-main__footer .chat-controls__session.chat-controls__model {
+  display: inline-block;
+  width: auto;
+  max-width: 260px;
+  margin: 0 12px 6px;
+}
+
+.chat-embed-main__footer .chat-controls__session.chat-controls__model select {
+  border-radius: 12px;
+  background: rgba(76, 151, 255, 0.08);
+  border-color: rgba(76, 151, 255, 0.2);
 }
 
 .chat-embed-main__footer .agent-chat__input {

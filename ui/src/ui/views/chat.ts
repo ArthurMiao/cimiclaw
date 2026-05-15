@@ -145,6 +145,7 @@ export type ChatProps = {
   currentAgentId: string;
   onAgentChange: (agentId: string) => void;
   onNavigateToTab?: (tab: Tab) => void;
+  renderModelSelect?: () => unknown;
   onNavigateToAgent?: () => void;
   onSessionSelect?: (sessionKey: string) => void;
   onOpenSidebar?: (content: SidebarContent) => void;
@@ -1624,7 +1625,10 @@ export function renderChat(props: ChatProps) {
               <div class="chat-embed-main">
                 <div class="chat-embed-main__top">${renderEmbedUtilityLinks(props)}</div>
                 <div class="chat-embed-main__body">${conversationSurface}</div>
-                <div class="chat-embed-main__footer">${composer}</div>
+                <div class="chat-embed-main__footer">
+                  ${props.renderModelSelect?.() ?? nothing}
+                  ${composer}
+                </div>
               </div>
             </div>
           `

@@ -8,6 +8,7 @@ import { renderUsageTab } from "./app-render-usage-tab.ts";
 import {
   renderChatControls,
   renderChatMobileToggle,
+  renderChatModelSelect,
   renderChatSessionSelect,
   renderTab,
   resolveAssistantAttachmentAuthToken,
@@ -2545,6 +2546,7 @@ export function renderApp(state: AppViewState) {
                     switchChatSession(state, buildAgentMainSessionKey({ agentId }));
                   },
                   onNavigateToTab: (tab) => state.setTab(tab),
+                  renderModelSelect: () => renderChatModelSelect(state),
                   onNavigateToAgent: () => {
                     state.agentsSelectedId = resolvedAgentId;
                     state.setTab("agents" as import("./navigation.ts").Tab);

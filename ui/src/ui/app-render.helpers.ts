@@ -6,6 +6,7 @@ import type { AppViewState } from "./app-view-state.ts";
 import {
   isCronSessionKey,
   parseSessionKey,
+  renderChatModelSelect,
   renderChatSessionSelect as renderChatSessionSelectBase,
   resolveSessionDisplayName,
   resolveSessionOptionGroups,
@@ -252,6 +253,8 @@ function renderCronFilterIcon(hiddenCount: number) {
 export function renderChatSessionSelect(state: AppViewState) {
   return renderChatSessionSelectBase(state, switchChatSession);
 }
+
+export { renderChatModelSelect };
 
 export function renderChatControls(state: AppViewState) {
   const hideCron = state.sessionsHideCron ?? true;

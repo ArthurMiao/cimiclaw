@@ -157,7 +157,7 @@ async function refreshVisibleToolsEffectiveForCurrentSessionLazy(state: AppViewS
   return refreshVisibleToolsEffectiveForCurrentSession(state);
 }
 
-function renderChatModelSelect(state: AppViewState) {
+export function renderChatModelSelect(state: AppViewState) {
   const { currentOverride, defaultLabel, options } = resolveChatModelSelectState(state);
   const busy =
     state.chatLoading || state.chatSending || Boolean(state.chatRunId) || state.chatStream !== null;
